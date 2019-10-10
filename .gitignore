@@ -1,0 +1,7 @@
+*.log
+*.out
+*.gz
+*.mtc0
+*.mtc
+*.maf
+*.aux
