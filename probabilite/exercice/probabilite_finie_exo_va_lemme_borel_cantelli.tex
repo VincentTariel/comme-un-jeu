@@ -1,0 +1,18 @@
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[***, Lemme de Borel-Cantelli]
+Soit $(A_n)_{n\in \N}$ une suite d'évènements dans un même espace probabilisé.
+On note 
+$A =$ «~Il y a une infinité d'évènements parmi les $A_n$ qui sont réalisés~».\\
+a) Montrer que $A$ est un évènement.\\
+b) Si la série $\sum_k P(A_k)$ est convergente, montrer que $P(A)=0$.\\
+c) Si la série $\sum_k P(A_k)$ est divergente et si les $A_k$ sont mutuellement
+    indépendants, montrer que ${P(A)=1}$.\\
+d) Donner un cas où $P(A)=\frac12$.
+   
+\begin{indication}
+$A = \cap_{n=0}^\infty(\cup_{k=n}^\infty A_k)$\\
+b) $P(\cup_{k=n}^\infty A_k)\leq \sum_{k=n}^\infty P(A_k)\rightarrow_{n\rightarrow \infty}0$.\\c) $1-P(\cup_{k=n}^\infty A_k) = 1-P(A_n) + P(\overline{A_n}\cap A_{n+1})+ P(\overline{A_n}\cap\overline{A_{n+1}}\cap A_{n+2})+\ldots                   =(1-P(A_n))(1-P(A_{n+1}))\ldots $
+
+    La série de terme général $-\ln(1-P(A_n))$ est divergente : grossièrement   si $P(A_n)$ ne tend pas vers zéro, sinon par équivalence si  $P(A_n)\to_{n\to \infty}0$. Donc le produit infini précédent est nul, ce qui suffit à conclure.\\
+    d) Tous les $A_k$ égaux à un même évènement de probabilité~$\frac12$.
+\end{indication}
+\finexo

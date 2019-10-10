@@ -1,0 +1,14 @@
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Anagramme]
+Dénombrer les anagrammes des mots suivants : MATHS, RIRE.
+   
+\begin{correction}
+Un anagramme correspond à une permutation des lettres d'un mot. Pour le premier mot MATHS, il n'y a pas de lettres identiques, d'où  5! combinaisons.\\
+Pour le second mot, on a deux façons de compter : 
+\begin{enumerate}
+\item R est présent deux fois et si on permute cette lettre, on trouve le même mot.
+On doit donc diviser le nombre total de permutations par le nombres de permutations entre lettres identiques, d'où  4!/2! combinaisons.
+\item en utilisant le principe de décomposition, on place d'abord la lettre R, soit 2 lettres parmi 4, d'où 4!/(2!2!) combinaisons, puis la lettre I (il reste 2 places), soit 2 combinaisons , et enfin la lettre E (il reste 1 place), soit 1 combinaison. En multipliant ces combinaisons, on obtient  4!/2! combinaisons.
+\end{enumerate}
+\end{correction}
+
+\finexo

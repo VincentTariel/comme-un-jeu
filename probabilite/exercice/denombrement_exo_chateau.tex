@@ -1,0 +1,51 @@
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Poker]
+Lors d'une partie de poker, un joueur reçoit 5 cartes d'un jeu de 32 cartes ; ce qui constitue une main.\\
+\begin{enumerate}
+\item Combien y a-t-il de mains possible ? 
+\item Combien y a-t-il de mains possible avec un carré ? . 1$\clubsuit$ 1$\blacklozenge$ 1$\heartsuit$ 1$\spadesuit$ V $\heartsuit$
+\item Combien y a-t-il de mains avec un full ?ex. R$\clubsuit$ R$\blacklozenge$ 8$\heartsuit$ 8$\spadesuit$ 8$\clubsuit$
+\item  Combien y a-t-il de mains avec une double paire ?ex. D$\clubsuit$ D$\blacklozenge$ 8$\heartsuit$ 8$\clubsuit$ R$\spadesuit$
+\item  Combien y a-t-il de mains avec un brelan ?ex. V $\clubsuit$ V $\blacklozenge$ V $\heartsuit$ 1$\spadesuit$ 9$\clubsuit$
+\item  Combien y a-t-il de mains avec une paire ?ex. D$\clubsuit$ D$\blacklozenge$ 7$\heartsuit$ 9$\spadesuit$ V $\clubsuit$
+\item  Combien y a-t-il de mains avec une quinte flush ?ex. 7$\clubsuit$ 8$\clubsuit$ 9$\clubsuit$ 10$\clubsuit$ V $\clubsuit$
+\item  Combien y a-t-il de mains avec une suite ?ex. 8$\clubsuit$ 9$\blacklozenge$ 10$\heartsuit$ V $\spadesuit$ D$\blacklozenge$
+\item  Combien y a-t-il de mains avec une couleur ?ex. 1$\heartsuit$ 7$\heartsuit$ 10$\heartsuit$ D$\heartsuit$ R$\heartsuit$
+\item  Combien y a-t-il de mains avec au moins un as ?
+\end{enumerate}
+\begin{correction}
+\begin{enumerate}
+\item Une main correspond à un tirage sans remise et sans ordre. Donc le nombre de mains est $\begin{pmatrix}52\\5\end{pmatrix}$
+\item nombre de mains avec un carré = " choisir 1 carré (parmi 13) et une autre
+carte (parmi 48) ". D'après le principe de décomposition,  on a  $\begin{pmatrix}13\\1\end{pmatrix}\begin{pmatrix}48\\1\end{pmatrix}=624$
+\item  nombre de mains avec un full= " choisir 1 brelan et choisir une paire "  mais
+attention : choisir 1 brelan=" choisir une figure (parmi 13) et choisir 3 cartes (parmi les
+4 de la figure) " et choisir 1 paire=" choisir une figure (parmi les 12 restantes) et choisir 2 cartes
+(parmi les 4 de la figure)". D'après le principe de décomposition,  on a  
+$$\overbrace{\begin{pmatrix}13\\1\end{pmatrix}\begin{pmatrix}4\\3\end{pmatrix}}^{brelan}\overbrace{\begin{pmatrix}12\\1\end{pmatrix}\begin{pmatrix}4\\2\end{pmatrix}}^{paire}=3744$$
+\item nombre de mains avec une double paire= " choisir deux paires (différente sinon
+c'est un carré !) et choisir une cinquième carte ". D'après le principe de décomposition,  on a  
+$$\overbrace{\begin{pmatrix}13\\2\end{pmatrix}\begin{pmatrix}4\\2\end{pmatrix}\begin{pmatrix}4\\2\end{pmatrix}}^{2 paires \neq}\begin{pmatrix}48\\1\end{pmatrix}=3744$$
+Attention, le nombre de mains n'est pas = " choisir 1 paire, puis choisir une paire parmi 12 et une autre
+carte (parmi 44) " car on met de l'ordre  dans les paires. 
+\item  nombre de mains avec un brelan=" Choisir un brelan et deux autres cartes
+(mais sans paire) ". D'après le principe de décomposition,  on a  
+$$\overbrace{\begin{pmatrix}13\\1\end{pmatrix}\begin{pmatrix}4\\3\end{pmatrix}}^{brelan}\overbrace{\begin{pmatrix}12\\2\end{pmatrix}\begin{pmatrix}4\\1\end{pmatrix}\begin{pmatrix}4\\1\end{pmatrix}}^{2 cartes}=54912$$
+\item nombre de mains avec une paire= " choisir une paire et choisir 3 autres cartes
+qui ne forment ni un brelan ni une autre paire ". D'après le principe de décomposition,  on a  
+$$\overbrace{\begin{pmatrix}13\\1\end{pmatrix}\begin{pmatrix}4\\2\end{pmatrix}}^{brelan}\overbrace{\begin{pmatrix}12\\3\end{pmatrix}\begin{pmatrix}4\\1\end{pmatrix}\begin{pmatrix}4\\1\end{pmatrix}\begin{pmatrix}4\\1\end{pmatrix}}^{3 cartes}=1098240$$
+\item nombre de mains avec une quinte flush=" choisir une couleur puis 5
+cartes qui se suivent ". Pour choisir les 5 cartes à suivre il suffit de choisir la
+première. On peut choisir l?as, le roi ,. . ., le 5 mais pas l'une des 4 dernières
+cartes. D'après le principe de décomposition,  on a  
+$$\begin{pmatrix}4\\1\end{pmatrix}*9=36$$
+\item  nombre de mains avec une suite=" choisir 5 cartes qui se suivent peu importe
+leur couleur et retrancher les quintes flush". On 9 choix de la première l?as, le roi ,. . ., le 5 avec 4 choix de couleurs, puis pour la seconde 4 choix de couleurs  et ainsi de suite  ce qui donne : $9\time 4^5 × 9 ? 36 = 9180$
+\item   nombre de mains avec une couleur=" choisir une couleur puis 5 cartes dans
+la couleur et retrancher les quintes flush" ce qui donne : $4\begin{pmatrix}13\\4\end{pmatrix}- 36 = 5112$
+\item nombre de mains avec au moins un as = nombre de mains possibles - nombre de mains sans as donc on a 
+$\begin{pmatrix}52\\4\end{pmatrix}- \begin{pmatrix}48\\4\end{pmatrix} =886656$
+\end{enumerate}
+
+\end{correction}
+
+\finexo

@@ -1,0 +1,29 @@
+\exo{ 6001 , tariel, 01/09/2017, 1-2, {}}[Marche aléatoire]
+Une particule se trouve à l'instant 0 au point d'abscisse $a$ ($a$ entier), sur un segment gradué de $0$ à $N$ (on suppose donc $0\leq a\leq N$).
+A chaque instant, elle fait un bond de $+1$ avec la probabilité $p$ ($0<p<1/2$), ou un bond de $-1$ avec la probabilité $q=1-p$.
+Autrement dit, si $x_n$ est l'abscisse de la particule à l'instant $n$, on a :
+$$x_{n+1}=\left\{\begin{array}{ll}
+x_n+1&\textrm{avec probabilité $p$}\\
+x_n-1&\textrm{avec probabilité $1-p$.}
+\end{array}\right.$$
+Le processus se termine lorsque la particule atteint une des extrémités du segment (i.e. s'il existe $x_n$ avec $x_n=0$ ou $x_n=N$).
+\begin{enumerate}
+\item \'Ecrire un algorithme qui simule cette marche aléatoire. En particulier, cet algorithme prendra en entrée l'abscisse $a$ de départ,
+la longueur $N$ du segment,
+et produira en sortie un message indiquant si la marche s'arrête en 0 ou en $N$, et le nombre de pas nécessaires pour que le processus s'arrête.
+On supposera qu'on dispose d'une fonction alea() qui retourne un nombre aléatoire suivant une loi uniforme sur $[0,1]$.
+\item On note $u_a$ la probabilité pour que la particule partant de $a$, le processus s'arrête en $0$. 
+\begin{enumerate}
+\item Que vaut $u_0$? $u_N$?
+\item Montrer que si $0<a<N$, alors $u_a={pu_{a+1}}+qu_{a-1}$.
+\item En déduire l'expression exacte de $u_a$.
+\end{enumerate}
+\item On note $v_a$ la probabilité pour que la particule partant de $a$, le processus s'arrête en $N$. Reprendre les questions précédentes avec $v_a$ au lieu de $u_a$.
+\item Calculer $u_a+v_a$. Qu'en déduisez-vous?
+\end{enumerate}
+%\begin{indication}
+%\includegraphics[width=15cm]{3_saut_puce.png}
+%\end{indication}
+
+% correction http://www.bibmath.net/ressources/index.php?action=affiche&quoi=mathsup/colles/espaceproba&type=fexo
+\finexo

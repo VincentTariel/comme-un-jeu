@@ -1,0 +1,14 @@
+import random
+n = 100000 #nombre de parties
+Sn=0      #gains/pertes cumules
+for i in range(0,n):
+    de1 = random.randint(1, 6)
+    de2 = random.randint(1, 6)
+    sum = de1 + de2
+    if sum==2 or sum ==12 :
+        Sn = Sn + 2
+    if sum==7 :
+        Sn = Sn - 1
+Sn_norm = Sn/n
+print("Gain: ",Sn)
+print("Gain moyen: ",Sn_norm)

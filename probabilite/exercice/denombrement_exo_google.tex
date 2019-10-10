@@ -1,0 +1,20 @@
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, google]
+Voici le plan d?une ville américaine, G étant la gare et H un hôtel :
+\includegraphics[width=0.25\textwidth]{chemin_court.png}
+
+Chaque bloc est un carré de 100 m sur 100 m. Quelle est la longueur minimale d?un
+trajet qui va de la gare à l'hôtel indiqué ? Comment faut-il se déplacer sur ce quadrillage
+si on ne veut pas dépasser cette longueur minimale ? Combien de trajets différents y a-t-il
+pour aller de la gare à l'hôtel sans faire de détour ?
+\begin{correction}
+1600 m\\
+16 déplacements\\
+On pose B = "vers le bas" et D = "vers la droite". Un exemple de chemin de G à H est le mot
+BD...DBB...B où B est écrit 6 fois et D est écrit 10 fois. Le nombre de chemins cherché est clairement le
+nombre d'anagrammes du mot précédent. Si on regarde la position du D dans un anagramme, on se ramène à un triage sans remise et sans ordre.
+Donc le nombre de chemins est 6 parmi 16, soit $\begin{pmatrix}
+16\\6
+\end{pmatrix}$
+\end{correction}
+
+\finexo
