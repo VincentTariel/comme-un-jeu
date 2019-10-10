@@ -4,4 +4,6 @@
 *.mtc0
 *.mtc
 *.maf
+*.dvi
+*.toc
 *.aux
