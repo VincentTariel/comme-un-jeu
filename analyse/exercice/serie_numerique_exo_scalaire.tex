@@ -1,0 +1,15 @@
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, produit scalaire]
+Soit $(u_n)$ et $(v_n)$ deux suites. Les séries $\sum u_n ^2$ et $\sum v_n ^2$ sont convergentes.\\ 
+Démontrer que la série $\sum u_n v_n$ est convergente.
+
+
+
+
+Application : soit $(a_n)$ une suite positive telle que la série de terme général $a_n$ converge. Étudier la nature de la série de terme général $\frac{\sqrt{a_n}}{n}$.
+\begin{correction}
+En développement l'inégalité $(|a|-|b|)^2\geq 0$, on obtient $|a||b|\leq \frac{1}{2}(a^2+b^2)$. Donc: 
+$$|u_nv_n|\leq  \frac{1}{2}(u_n^2+v_n^2).$$
+Les séries $\sum u_n ^2$ et $\sum v_n ^2$ sont convergentes donc la série $\sum \frac{1}{2}(u_n^2+v_n^2)$ est convergente. Par critère de comparaison, la série $\sum |u_nv_n| $ est convergente. Donc la série $\sum u_nv_n $ est absolument convergente.\\
+C'est une application directe du théorème précédent en prenant $u_n=\sqrt{a_n}$ et $v_n=\frac{1}{n}$. 
+\end{correction}
+\finexo

@@ -65,11 +65,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{tocdepth}{5}
 \begin{document}
-%\dominitoc
+
+%TODO proof  et rajouter des exemples
+\dominitoc
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Espace vectoriel $E$}
-%\tableofcontents
+\tableofcontents
 
 \begin{Ex}[$\vec{x}\in \R^2$]
 Tout d'abord, commençons par les vecteurs du plan :\\
@@ -93,8 +95,7 @@ Addition  & \includegraphics[width=0.15\textwidth]{espace_vectoriel_vecteur_sum.
 \end{tabular}\\
 \end{Ex}
 Du fait de l'équivalence entre ces trois représentations,  géométrique,  numérique et algébrique, tout ce qui est vrai ou faux pour l'un l'est aussi pour l'autre
-%\footnote{Il y a des limites à cette équivalence. La représentation géométrique est uniquement pertinente dans le plan et l'espace. La représentation numérique est limitée aux espaces vectoriels de dimension finie.}
-.
+\footnote{Il y a des limites à cette équivalence. La représentation géométrique est uniquement pertinente dans le plan et l'espace. La représentation numérique est limitée aux espaces vectoriels de dimension finie.}.
 Savoir passer d'une représentation à l'autre est essentiel pour bien comprendre l'algèbre linéaire. 
 \begin{Ex}[Exemples d'ensembles de vecteurs : $E=\{\vec{x}\}$]
 Il existe de très nombreux ensembles  où il est possible d'effectuer une addition et une homothétie soit une combinaison linéaire, par exemples :
@@ -199,35 +200,35 @@ Par exemple sur $\R^2$, $2.(1,-2)=(2,-4)$.
 \end{Ex}
 
 \begin{Df}[Corps $\K$ : $\R$ ou $\C$] Dans ce cours
-%\footnote{%\begin{tiny}
-%Un \defi{corps} est un triplet $(\K,+,×)$ où
-%\begin{enumerate}
-%\item $\K$ est un ensemble;
-%\item
-%  $+$ et $×$ sont des lois de composition internes sur $\K$;
-%\item
-%  $(\K,+)$ est un groupe abélien, i.e.  
-%  $+$ est associative, commutative, admet un neutre et tout élément de $\K$ admet un symétrique pour $+$.
-%  On note $0_\K$ le neutre de $+$;
-%\item
-%  $×$ est associative, commutative, admet un neutre et tout élément de $\K\setminus\{0_\K\}$ admet un symétrique pour $×$.
-%  On note $1_\K$ le neutre de $×$;
-%\item
-%  La loi $×$ est distributive sur la loi $+$, i.e.  
-%  $\forall(x,y,z)\in\K ^3$, $x×(y+z) = (x×y)+(x×z)$;
-%\item
-%  $0_\K ? 1_\K$.
-%\end{enumerate}
-%\textbf{Remarque} Lorsque le contexte est clair, on écrit souvent $\K$ au lieu de $(\K,+,×)$.\\
-%\textbf{Exemples}
-%\begin{itemize}
-%\item le corps des réels $?$, des complexes $?$, des rationnels $?$;
-%\item si $\K$ est un corps, le corps des fractions rationnelles à coefficients dans $\K$, noté $\K(X)$;
-%\item $\Q [i] = \{a+ib:(a,b)\in \Q ^2\}$;
-%\item le corps des entiers modulo un nombre premier $p$, noté $\Z/p\Z$.
-%\end{itemize}
-%Tous ces corps sont munis des lois usuelles.
-%}
+\footnote{%\begin{tiny}
+Un \defi{corps} est un triplet $(\K,+,×)$ où
+\begin{enumerate}
+\item $\K$ est un ensemble;
+\item
+  $+$ et $×$ sont des lois de composition internes sur $\K$;
+\item
+  $(\K,+)$ est un groupe abélien, i.e.  
+  $+$ est associative, commutative, admet un neutre et tout élément de $\K$ admet un symétrique pour $+$.
+  On note $0_\K$ le neutre de $+$;
+\item
+  $×$ est associative, commutative, admet un neutre et tout élément de $\K\setminus\{0_\K\}$ admet un symétrique pour $×$.
+  On note $1_\K$ le neutre de $×$;
+\item
+  La loi $×$ est distributive sur la loi $+$, i.e.  
+  $\forall(x,y,z)\in\K ^3$, $x×(y+z) = (x×y)+(x×z)$;
+\item
+  $0_\K ? 1_\K$.
+\end{enumerate}
+\textbf{Remarque} Lorsque le contexte est clair, on écrit souvent $\K$ au lieu de $(\K,+,×)$.\\
+\textbf{Exemples}
+\begin{itemize}
+\item le corps des réels $?$, des complexes $?$, des rationnels $?$;
+\item si $\K$ est un corps, le corps des fractions rationnelles à coefficients dans $\K$, noté $\K(X)$;
+\item $\Q [i] = \{a+ib:(a,b)\in \Q ^2\}$;
+\item le corps des entiers modulo un nombre premier $p$, noté $\Z/p\Z$.
+\end{itemize}
+Tous ces corps sont munis des lois usuelles.
+}
 , un corps $\K$ désigne soit l'ensemble des nombres réels $\R$ ou soit l'ensemble des nombres complexes $\C$. 
 \end{Df}
 \begin{Df}[Espace vectoriel : $\lambda\vec{x}+\mu\vec{y}$]
@@ -663,119 +664,128 @@ La démonstration est identique à la précédente exceptée que $\mathcal{L}=\emptys
 Si $E$ est un espace vectoriel de dimension finie admettant une famille génératrice de $n$ vecteurs, alors toute famille de $n+1$ vecteurs est liée.
 \end{Prop}
 \begin{proof}
-
+Démontrons cette proposition par récurrence.\\
+\underline{Initialisation} :
+\begin{adjustwidth}{0.5cm}{}
+Soit $(\vec{g}_1)$ une famille génératrice de $E$.\\
+Soit $(\vec{v}_1,\vec{v}_2)$ une famille de $E$. Il existe $\alpha_1$ et $\alpha_2$ dans $\R$ tel que $\vec{v}_1=\alpha_1 \vec{g}_1$ et $\vec{v}_2=\alpha_2 \vec{g}_1$.\\
+Si  $\alpha_1=\alpha_2=0$ alors la famille $(\vec{v}_1=\vec{0},\vec{v}_2=\vec{0})$ est liée.\\
+Si $\alpha_1\neq 0$, alors $\vec{v}_1=\frac{\lambda_2}{\lambda_1}\vec{v}_2$. Les vecteurs sont colinéaires donc liées.\\
+Idem si $\alpha_2\neq 0$.\\
+\end{adjustwidth}
+\underline{Hérédité} :
+\begin{adjustwidth}{0.5cm}{}
+Soit $(\vec{g_1},\dots,\vec{g_n})$ une famille génératrice de $E$.\\
+Soit $(\vec{v}_1, \vec{v}_2,\dots \vec{v}_{n+1})$ une famille de $n+1$ vecteurs de $E$.\\
+Pour tout $i\in \{1,\dots,n+1\}$, il existe $\lambda_{i,1},\lambda_{i,2},\dots,\lambda_{i,n}\in\K$ tel que $$\vec{v}_i=  \lambda_{i,1}\vec{g}_1 + \lambda_{i,2}\vec{g_2}+\dots+\lambda_{i,n}.\vec{g_n}$$
+Quitte à réorganiser les deux familles, on peut supposer que $\lambda_{n+1,n}\neq 0$. Pour tout  $i\in \{1,\dots,n\}$, on a 
+$$\vec{v}_i-\frac{\lambda_{i,n}}{\lambda_{n+1,n}}\vec{v}_{n+1}\in Vect(\vec{g_1},\dots,\vec{g}_{n-1}).$$
+On applique l'hypothèse de récurrence à l'espace vectoriel générée par la famille $\vec{g_1},\dots,\vec{g}_{n-1})$. Donc la famille $\left(\vec{v}_1-\frac{\lambda_{1,n}}{\lambda_{n+1,n}}\vec{v}_{n+1},\dots, \vec{v}_n-\frac{\lambda_{n,n}}{\lambda_{n+1,n}}\vec{v}_{n+1}\right)$ est liée. Il existe  $\beta_{1},\beta_{2},\dots,\beta{n}\in\K$ non tous nuls tel que :
+$$\beta_1 (\vec{v}_1-\frac{\lambda_{1,n}}{\lambda_{n+1,n}}\vec{v}_{n+1})+\dots+\beta_n (\vec{v}_n-\frac{\lambda_{n,n}}{\lambda_{n+1,n}}\vec{v}_{n+1})=\vec{0}.$$
+d'où 
+$$\beta_1\vec{v}_1+\dots +\beta_n\vec{v}_n - (\beta_1\frac{\lambda_{1,n}}{\lambda_{n+1,n}}+\dots +\beta_n\frac{\lambda_{n,n}}{\lambda_{n+1,n}})\vec{v}_{n+1}=\vec{0}.$$
+La famille est donc liée. 
+\end{adjustwidth}
 \end{proof}
-%\Para{Corollaire}
-%
-%Soit $E$ un £evdf. et $(\vec{e}_1,\dots,\vec{e_p})$ et $(\vec{f}_1,\dots,\vec{f_q})$ deux bases de $E$.
-%Alors $p=q$.
-%
-%\Para{Proposition-Définition}
-%
-%La \textbf{dimension} d'un £evdf. est égale au cardinal d'une base quelconque de $E$.
-%
-%\Para{Critère}
-%Soit $E$ un £ev. de dimension $n$..
-%Si $(\vec{e}_1,\dots,\vec{e_n})$ est une famille libre, alors $(\vec{e}_1,\dots,\vec{e_n})$ est une base de $E$.\\
-%Si $(\vec{e}_1,\dots,\vec{e_n})$ est une famille génératrice, alors $(\vec{e}_1,\dots,\vec{e_n})$ est une base de $E$.
-%
-%\Para{Exemple} Pour tout polynôme $P$ appartenant à $\K _{n}[X]$, la combinaison linéaire des polynômes de Lagrange  $\sum _{j=0}^{n}P(x_{j})l_{j}(X)$ avec $x_{0},\ldots ,x_{n}$ $n + 1$ scalaires distincts  est égale au polynôme $P$ aux points $x_{0},\ldots ,x_{n}$, donc égal à $P$. Les polynômes de Lagrange forment une famille génératrice de $n+1$ vecteurs. Comme $\dim(\K _{n}[X])=n+1$, ils forment une base de $\K _{n}[X]$. 
-%
-%
-%\Para{Proposition}
-%
-%Soit $E$ un £evdf. et $F$ un £sev. de $E$.
-%Alors $F$ est également de dimension finie et $\dim F ? \dim E$, avec égalité £ssi. $F = E$.
-%
-%
-%
-%
-%
-%\subsection{Base adaptée}
-%
-%\Para{Définition}
-%
-%Soit $E$ un $\K $-£evdf. $n$ et $F$ un £sev. de $E$.
-%La base $\B = (\vec{e}_1,\dots,\vec{e_n})$ est dite \textbf{adaptée} à $F$
-%si et seulement s'il existe $p\in \Dcro{0,n}$
-%tel que $(\vec{e}_1,\dots,\vec{e_p})$ soit une base de $F$.
-%
-%\Para{Exemple}  La base $((1,-1,0),(0,1,-1),(0,0,1)$ est adapté à $F=\{(x,y,z)\in\R ^3: x+y+z=0\}$ dans l'espace vectoriel $\R ^3$ car $((1,-1,0),(0,1,-1))$ est une base de $F$. 
-%
-%
-%
-%\Para{Définition-Proposition}
-%
-%Soit $E$ un $\K $-£evdf., $\Uplet{F_1}{F_p}$ des sous-espaces vectoriels supplémentaires de $E$ et $\B$ une base de $E$.
-%La base $\B$ est dite \textbf{adaptée} à la décomposition $E =?_{k=1}^p F_k$ si et seulement si $\B$ peut s'écrire comme la concaténation de $\Uplet{\B_1}{\B_p}$ où $\B_k$ est une base de $F_k$ pour tout $k\in \Dcro{1,p}$. La base ainsi définie existe.
-%
-%
-%\Para{Proposition}
-%
-%Soit $E$ un $\K $-£evdf. et $\B$ une base de $E$.
-%On suppose que $\B$ s'écrit comme la concaténation de $\Uplet{\B_1}{\B_p}$.
-%Pour $k\in \Dcro{1,p}$, notons $F_k$ le £sev. engendré par $\B_k$.
-%Alors les sous-espaces vectoriels $\Uplet{F_1}{F_p}$ sont supplémentaires.
-%\section{Théorèmes en dimension finie}
-%
-%
-%
-%\Para{Proposition}
-%Dans un £evdf., tout £sev. admet un supplémentaire.
-%
-%Autrement dit, si $E$ est un £evdf. et $F$ un £sev. de $E$,
-%alors il existe un £sev. $G$ de $E$ tel que $E = F \oplus G$.
-%
-%\Para{Proposition}
-%
-%Soit $\Uplet{E_1}{E_p}$ des $\K $-espaces vectoriels.
-%L'espace vectoriel produit $\prod_{k=1}^p E_k$ est de dimension finie £ssi. $\forall k\in \Dcro{1,p}$, $E_k$ est de dimension finie.
-%De plus, dans ce cas, \[ \dim \Pa{ \prod_{k=1}^p E_k } = \sum_{k=1}^p \dim E_k. \]
-%
-%
-%\Para{Proposition}
-%Soit E un $\K $-espace vectoriel dimension finie et $F_1$, $F_2$ deux s£sev. de $E$. On a :
-%$$\dim (F_1 + F_2) = \dim F_1 + \dim F_2 ? \dim(F_1 \cap F_1)$$
-%
-%\Para{Corollaire}
-%
-%Pour $p\in \Ns$ et $E$ un $\K $-espace vectoriel.
-%L'£ev. $E^p$ est de dimension finie £ssi. $E$ l'est;
-%dans ce cas, on a $\dim(E^p) = p\dim E$.
-%
-%
-%
-%\Para{Proposition}
-%
-%Soit $E$ un $\K $-espace vectoriel et $\Uplet{F_1}{F_p}$ des sous-espaces vectoriels de dimension finie de $E$.
-%Alors la somme $\sum_{k=1}^p F_k$ est également de dimension finie, et
-%\[ \dim\Pa{ \sum_{k=1}^p F_k } ? \sum_{k=1}^p \dim(F_k). \]
-%De plus, il y a égalité si et seulement si la somme $\sum_{k=1}^p F_k$ est directe.
-%
-%\Para{Proposition}
-%
-%Soit $E$ un $\K $-£evdf. et $F_1, \dots, F_p$ des £sevs. de $E$.
-%On suppose que \[ \sum_{k=1}^p \dim F_k = \dim E. \]
-%Les conditions suivantes sont alors équivalentes:
-%\begin{enumerate}
-%\item
-%  les £sevs. $F_1, \dots, F_p$ sont supplémentaires;
-%\item
-%  les £sevs. $F_1, \dots, F_p$ sont en somme directe;
-%\item
-%  $\sum_{k=1}^p F_k = E$;
-%\item
-%  tout vecteur $x\in E$ se décompose sous la forme
-%  $x = \sum_{k=1}^p f_k$
-%  où $f_1\in F_1$, $\dots$, $f_p\in F_p$,
-%\item pour tous $f_1\in F_1$, $f_2\in F_2$, $\dots$, $f_p\in F_p$,
-%  si $\sum_{k=1}^p f_k = 0$, alors $f_1 = \dots = f_p = 0$.
-%\end{enumerate}
+\begin{Prop}
+Si $E$ est un espace vectoriel de dimension finie admettant une famille génératrice de $n$ vecteurs, alors toute famille ayant strictement plus de $n$ vecteurs est liée.
+\end{Prop}
+\begin{proof}
+Si la famille a strictement plus de $n$ vecteurs, on peut en enlever pour constituer une famille de $n+1$ vecteurs qui est donc liée d'après la proposition précédente. A fortiori, la famille initiale est liée. 
+\end{proof}
 
+\begin{Prop}
+Soit $E$ un espace vectoriel de dimension finie et $(\vec{e}_1,\dots,\vec{e_p})$ et $(\vec{f}_1,\dots,\vec{f_q})$ deux bases de $E$.\\
+Alors $p=q$.
+\end{Prop}
+\begin{proof}
+$(\vec{e}_1,\dots,\vec{e_p})$ est une famille génératrice de $E$. Comme $(\vec{f}_1,\dots,\vec{f_q})$ est libre d'après la proposition précédente,  $q\leq p$.
+Par symétrie, on a aussi $p\leq q$. Finalement $p=q$.
+\end{proof}
+Cette proposition nous permet cette définition.
+\begin{Prop}
+La \defi{dimension} d'un espace vectoriel de dimension finie est égale au cardinal d'une base quelconque de $E$.
+\end{Prop}
 
+\begin{Prop}[Critère]
+Soit $E$ un espace vectoriel de dimension $n$.\\
+Si $(\vec{e}_1,\dots,\vec{e_n})$ est une famille libre, alors $(\vec{e}_1,\dots,\vec{e_n})$ est une base de $E$.\\
+Si $(\vec{e}_1,\dots,\vec{e_n})$ est une famille génératrice, alors $(\vec{e}_1,\dots,\vec{e_n})$ est une base de $E$.
+\end{Prop}
+\begin{Ex} Pour tout polynôme $P$ appartenant à $\K _{n}[X]$, la combinaison linéaire des polynômes de Lagrange  $\sum _{j=0}^{n}P(x_{j})l_{j}(X)$ avec $x_{0},\ldots ,x_{n}$ $n + 1$ scalaires distincts  est égale au polynôme $P$ aux points $x_{0},\ldots ,x_{n}$, donc égal à $P$. Les polynômes de Lagrange forment une famille génératrice de $n+1$ vecteurs. Comme $\dim(\K _{n}[X])=n+1$, ils forment une base de $\K _{n}[X]$. 
+\end{Ex}
 
+\begin{Prop}
+Soit $E$ un espace vectoriel de dimension finie et $F$ un sous espace vectoriel de $E$.\\
+Alors $F$ est également de dimension finie et $\dim F \leq \dim E$, avec égalité si et seulement si $F = E$.
+\end{Prop}
 
+\subsection{Base adaptée}
 
+\begin{Df}
 
+Soit $E$ un $\K $-espace vectoriel de dimension  $n$ et $F$ un sous espace vectoriel de $E$.\\
+La base $(\vec{e}_1,\dots,\vec{e_n})$ est dite \defi{adaptée} à $F$
+si et seulement s'il existe $p\in \{1,n\}$ tel que $(\vec{e}_1,\dots,\vec{e_p})$ soit une base de $F$.
+\end{Df}
+\begin{Ex} La base $((1,-1,0),(0,1,-1),(0,0,1)$ est adapté à $F=\{(x,y,z)\in\R ^3: x+y+z=0\}$ dans l'espace vectoriel $\R ^3$ car $((1,-1,0),(0,1,-1))$ est une base de $F$. 
+\end{Ex}
+\begin{Df}
+Soit $E$ un $\K $-espace vectoriel de dimension finie, $F_1,\dots, F_p$ des sous-espaces vectoriels supplémentaires de $E$ et $B$ une base de $E$.\\
+La base $\mathcal{B}$ est dite \defi{adaptée} à la décomposition $E =\oplus_{k=1}^p F_k$ si et seulement si $\mathcal{B}$ peut s'écrire comme la concaténation de $\mathcal{B}_1,\dots,\mathcal{B}_p$ où $\mathcal{B}_k$ est une base de $F_k$ pour tout $k\in \{1,p\}$.
+\end{Df}
+\begin{Prop}
+ La base ainsi définie existe.
+\end{Prop}
+\begin{Prop}
+\label{prop:base}
+Soit $E$ un $\K $-espace vectoriel de dimension finie et $\mathcal{B}$ une base de $E$.\\
+On suppose que $\mathcal{B}$ s'écrit comme la concaténation de $\mathcal{B}_1,\dots \mathcal{B}_p$.\\
+Pour $k\in \{1,p\}$, notons $F_k$ le sous espace vectoriel engendré par $\mathcal{B}_k$.\\
+Alors les sous-espaces vectoriels $F_1,\dots, F_p$ sont supplémentaires.
+\end{Prop}
 
+\section{Théorèmes en dimension finie}
+\begin{Prop}
+Dans un espace vectoriel de dimension finie, tout sous espace vectoriel admet un supplémentaire.\\
+Autrement dit, soit $E$ est un espace vectoriel de dimension finie et $F$ un sous espace vectoriel de $E$.\\
+Alors il existe un sous espace vectoriel $G$ de $E$ tel que $E = F \oplus G$.
+\end{Prop}
+\begin{proof}
+Soit $\mathcal{B}_1$ une base de $F$ que l'on complète avec $\mathcal{B}_2$ pour former une base de $E$.\\
+D'après la proposition \ref{prop:base}, si on pose $G$ l'espace vectoriel engendrée par  $\mathcal{B}_2$, alors $E = F \oplus G$.  
+\end{proof}
+\begin{Prop}
+Soit $E_1,\dots E_p$ des $\K $-espaces vectoriels.\\
+L'espace vectoriel produit $\prod_{k=1}^p E_k$ est de dimension finie si et seulement si $\forall k\in \{1,p\}$, $E_k$ est de dimension finie.\\
+De plus, dans ce cas, \[ \dim( \prod_{k=1}^p E_k ) = \sum_{k=1}^p \dim(E_k). \]
+\end{Prop}
+\begin{Cor}
+Pour $p\in \N^*$ et $E$ un $\K $-espace vectoriel.\\
+L'espace vectoriel $E^p$ est de dimension finie si et seulement si $E$ l'est;
+dans ce cas, on a $\dim(E^p) = p.\dim(E)$.
+\end{Cor}
+\begin{Prop}
+Soit E un $\K $-espace vectoriel dimension finie et $F_1$, $F_2$ deux sous espace vectoriel de $E$. On a :
+$$\dim (F_1 + F_2) = \dim F_1 + \dim F_2 - \dim(F_1 \cap F_1).$$
+\end{Prop}
+
+\begin{Prop}
+Soit $E$ un $\K $-espace vectoriel et $F_1,\dots F_p$ des sous-espaces vectoriels de dimension finie de $E$.
+Alors la somme $\sum_{k=1}^p F_k$ est également de dimension finie, et
+\[ \dim\left(\sum_{k=1}^p F_k \right)  \leq \sum_{k=1}^p \dim(F_k). \]
+De plus, il y a égalité si et seulement si la somme $\sum_{k=1}^p F_k$ est directe.
+\end{Prop}
+\begin{Prop}
+Soit $E$ un $\K $-espace vectoriels de dimensions finies et $F_1, \dots, F_p$ des sous espaces vectoriels de $E$.\\
+On suppose que \[ \sum_{k=1}^p \dim F_k = \dim E. \]
+Les conditions suivantes sont alors équivalentes:
+\begin{enumerate}
+\item
+ les sous espaces vectoriels $F_1, \dots, F_p$ sont supplémentaires,
+\item
+  les sous espaces vectoriels $F_1, \dots, F_p$ sont en somme directe,
+\item  $\sum_{k=1}^p F_k = E$.
+\end{enumerate}
+\end{Prop}
 \end{document}

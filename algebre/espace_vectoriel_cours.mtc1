@@ -1,0 +1,17 @@
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.1}Structure alg\'ebrique}{\reset@font\mtcSfont 4}{section.1.1}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.2}Construire des espaces vectoriels}{\reset@font\mtcSfont 7}{section.1.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.2.1}Sous-espace vectoriel : $F\subset E$ et $F$ e.v.}{\reset@font\mtcSSfont 7}{subsection.1.2.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode D\'efinition}{\reset@font\mtcSSSfont 7}{section*.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Engendr\'e par une famille finie : $Vect (\mathaccentV {vec}17E{x}_1,\dots ,\mathaccentV {vec}17E{x_p})=\{\lambda _1. \mathaccentV {vec}17E{x_1}+\dots + \lambda _p. \mathaccentV {vec}17E{x_p} \}$ }{\reset@font\mtcSSSfont 8}{section*.3}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Intersection $F_1\cap F_2$}{\reset@font\mtcSSSfont 9}{section*.4}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Somme de sous-espaces vectoriels : $F_1+F2=\{\mathaccentV {vec}17E{x_1}+\mathaccentV {vec}17E{x_2}:\mathaccentV {vec}17E{x_1} \in F_1,\mathaccentV {vec}17E{x_2} \in F_2 \}$ }{\reset@font\mtcSSSfont 10}{section*.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.2.2}Espace vectoriel produit : $(\mathaccentV {vec}17E{x_1},\mathaccentV {vec}17E{x_2})\in E_1\times E_2$}{\reset@font\mtcSSfont 14}{subsection.1.2.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.3}Base: $\forall \mathaccentV {vec}17E{x}\in E, \exists !(\lambda _1,\dots \lambda _p),\hskip 1em\relax \mathaccentV {vec}17E{x} = \lambda _1 \mathaccentV {vec}17E{e_1}+\dots +\lambda _p \mathaccentV {vec}17E{e_p}$}{\reset@font\mtcSfont 14}{section.1.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.3.1}D\'efinition}{\reset@font\mtcSSfont 14}{subsection.1.3.1}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Famille g\'en\'eratrice : existence}{\reset@font\mtcSSSfont 14}{section*.6}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Famille libre : unicit\'e}{\reset@font\mtcSSSfont 15}{section*.7}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Base : existence et unicit\'e}{\reset@font\mtcSSSfont 15}{section*.8}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.3.2}Existence d'une base}{\reset@font\mtcSSfont 16}{subsection.1.3.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.3.3}Unicit\'e du cardinal de la base}{\reset@font\mtcSSfont 17}{subsection.1.3.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.3.4}Base adapt\'ee}{\reset@font\mtcSSfont 18}{subsection.1.3.4}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.4}Th\'eor\`emes en dimension finie}{\reset@font\mtcSfont 18}{section.1.4}}

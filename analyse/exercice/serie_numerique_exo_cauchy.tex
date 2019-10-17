@@ -1,0 +1,14 @@
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Cauchy]
+On note, pour tout $n \in \N^*$  : 
+$$u_n = \sum_{k=0}^n\frac{(-1) ^k}{3^k(n-k)!}$$
+Montrer que la série$\sum u_n$ converge et  calculer sa somme. 
+
+\begin{correction}
+Le terme général $\sum_{k=0}^n\frac{(-1) ^k}{3^k(n-k)!}$  est le produit de Cauchy de la suite $\left( \left(-\frac{1}{3}\right)^n \right)$ et de la suite  $(\frac{1}{n!})$.\\
+Les deux séries  $\sum -\left(\frac{1}{3}\right)^n $ et $\sum \frac{1}{n!}$ sont absolument convergente donc la série produit de Cauchy est absolument convergente.\\
+
+
+De plus, sa somme est égale au produit des deux sommes, soit :
+$$\sum_{n=0}^{+\infty}u_n = \sum_{n=0}^{+\infty} \left(-\frac{1}{3}\right)^n\times\sum_{n=0}^{+\infty} \frac{1}{n!}=\frac{1}{1+\frac{1}{3}}e^1=\frac{4e}{3}.$$
+\end{correction}
+\finexo

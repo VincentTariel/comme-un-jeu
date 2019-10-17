@@ -1,0 +1,321 @@
+\documentclass[a4paper]{book}
+\usepackage{t1enc}
+\usepackage[latin1]{inputenc}
+\usepackage[french]{minitoc}
+ \usepackage{amsmath}
+\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
+\usepackage[francais]{babel}
+\usepackage{amsmath}
+\usepackage{TikZ}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tkz-fct}   
+\usepackage{a4wide,jlq2eams} 
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{slashbox}
+\usepackage{thmbox}
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{longtable} 
+\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
+\sectionfont{\color{magenta}}
+\subsectionfont{\color{red}}
+\subsubsectionfont{\color{red}}
+\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}}
+
+\setlength{\shadowsize}{1.5pt}
+ 
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth} 
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\fancypagestyle{plain}{%
+   \fancyhead{} % get rid of headers
+   \renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+\setcounter{minitocdepth}{3}
+
+
+
+\thmboxoptions{S,bodystyle=\itshape\noindent}
+\newtheorem[L]{Lem}{Lemme}[section]
+\newtheorem[L]{Th}[Lem]{Théorème}
+\newtheorem[L]{Cor}[Lem]{Corollaire}
+\newtheorem[L]{Prop}[Lem]{Proposition}
+
+\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
+\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
+\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
+\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\E}{(-4,-1) rectangle (4,4);\node[above right] at (-4,-1) {$\Omega$};}
+\newcommand{\A}{(0,0) ++(135:2) circle (2);\node at (-1.4,-0.75) {$A$};}
+\newcommand{\B}{(0,0) ++(45:2) circle (2);\node at (1.4,-0.75) {$B$};}
+\newcommand{\AuB}{(0,0) arc(-135:135:2) arc(45:315:2);\node at (0,1.5) {$A\cup B$};}
+\newcommand{\AnB}{(0,0) arc (-45:45:2) arc (135:225:2);\node at (0,1.5) {$A\cap B$};}
+
+
+
+\begin{document}
+
+
+
+\chapter{Probabilité discrete}
+
+
+
+
+%\dominitoc
+La théorie des probabilités fournit des modèles mathématiques permettant
+l'étude d'expériences dont le résultat ne peut être prévu avec une totale
+certitude.
+
+\begin{center}
+
+\begin{tabular}{| p{6.5cm}| p{6.5cm} |p{1.7cm} |}
+\hline
+Expérience & Univers  $\Omega$ (ensemble des issues) & cardinal\\
+\hline \hline 
+Lancer d'un dé & Un entier $k\in\{1,\dots,6\}$&finie \\
+\hline
+Prélèvement de n objets en sortie d'une chaîne de production dans l'échantillon & Nombre d'objets défectueux, $k\in\{0,\dots,n\}$&finie\\
+\hline
+Questionnaire à 100 questions  binaires & Suite $\omega$ de 100 réponses $\omega\in\{oui, non\}^{100}$&finie\\
+\hline
+Lancer d'une pièce jusqu'à la première obtention de pile & Un entier $k \in \mathbb{N}$ : le temps d'attente du premier succès&dénombrable\\
+\hline
+Temps d'attente pour une hotline  & un temps $\omega\in [0,+\infty[$&continue\\
+\hline
+Mouvement d'un grain de pollen dans un liquide & Une fonction continue : la trajectoire $f:\mathbb{R}^+\to\mathbb{R}^2$&continue  \\
+\hline
+Mouvement d'un cours boursier & Une fonction continue : $f:\mathbb{R}^+\to\mathbb{R}$&continue\\
+\hline
+ \end{tabular}
+\end{center}
+Bien que le résultat précis de chacune de ces expériences soit imprévisible,
+l'observation et l'intuition nous amènent à penser que ces phénomènes
+obéissent à certaines lois. Par exemple si on jette 6000 fois le dé, on s'attend
+à ce que le nombre d'apparitions de la face « 3 » soit voisin de 1000. Si on
+met en service 100 ampoules, leurs durées de vie observées seront concentrées
+autour d'une certaine valeur moyenne.\\
+La théorie des probabilités modélise l'expérience aléatoire dans un cadre formel en quantifiant le sentiment d'incertitude vis-à-vis d'un événement. La \textit{statistique} permet de confronter les modèles probabilistes avec la réalité observée afin de les valider ou de les invalider. Par
+exemple si quelqu'un a 60 bonnes réponses sur 100 au questionnaire, est-il
+légitime de considérer qu'il a « mieux fait » que le hasard ?\\
+Dans le cadre de cours, on limite l'univers à un ensemble \defi{dénombrable}, c'est à dire que l'on peut effectuer une énumération finie ou infinie des issues de l'expérience aléatoire.    
+ 
+
+\section{Modélisation probabilistes pour un univers fini}
+\subsection{Axiomes des probabilité. Premières propriétés}
+\begin{Ex}
+Pour le lancer d'une pièce jusqu'à la première obtention de pile. L'univers est dénombrable $\N$ où une issue $\omega\in \N$ représente le temps du premiers succès.
+\end{Ex}
+\begin{Df}[Axiomes des tribus]
+La probabilité $P$  est une fonction qui à un événement associe
+un nombre compris entre 0 et 1 quantifiant la chance de réalisation
+de cet événement. Pour des raisons sortant du cadre de ce cours, il n'est pas
+toujours possible d'attribuer ainsi de manière cohérente une probabilité à
+chaque partie de $\Omega$, noté $\mathcal{P}(\Omega)$.\\
+En d'autres termes, $P$ ne peut pas être considérée comme une application de $\mathcal{P}(\Omega)$
+ dans $[0, 1$] mais comme une fonction ayant un domaine de définition $\mathcal{A}$ généralement plus
+petit que , noté $\mathcal{P}(\Omega)$.\\
+Voici les propriétés qu'il est raisonnable d'exiger de $\mathcal{A}$ :
+\begin{itemize}
+\item  $\mathcal{A}$ contient $\emptyset$ et tous les singletons $\{\omega\}$,
+\item $\mathcal{A}$ est stable par passage au complémentaire : si $A$ est un événement
+de $\mathcal{A}$,  $\mathcal{A}^c$ l'est aussi,
+\item $\mathcal{A}$ est stable par les opérations de réunion et d'intersection sur les suites
+d'événements 2. Si $A_1,A_2,\ldots$ est une suite finie ou infinie d'événements
+de $\mathcal{A}$, sa réunion et son intersection sont encore des événements de $\mathcal{A}$.
+\end{itemize}
+Nous appellerons \defi{tribu} toute famille  $\mathcal{A}$ de parties de  vérifiant les conditions ci-dessus.\\
+$(\Omega,\mathcal{A})$ est appelé \defi{espace probabilisable}. 
+\end{Df}
+
+
+
+\begin{Df}[Axiomes des probabilités]
+Soit $(\Omega,\mathcal{A})$ un espace probabilisable.
+Une \defi{probabilité} sur $(\Omega,\mathcal{A})$ est une application
+de $\mathcal{A}$ dans $\R^+$ vérifiant :
+\begin{itemize}
+\item
+  $P(\Omega)=1$.
+\item
+  Pour toute suite $(A_n)_{n\in\N^*}$ d'événements de $\mathcal{A}$ deux à deux disjoints (incompatibles) :
+$$P(\bigcup_{n\in\N^*}A_n)=\sum_{n=1}^{+\infty}P(A_n)$$  
+\end{itemize}
+Le triplet  $(\Omega,\mathcal{A},P)$ s'appelle un \defi{espace probabilisé}.
+\end{Df}
+\begin{Ex}
+Pour le lancer d'un dé, l'espace probabilisable est $(\Omega=\{1,2,3,4,5,6\},\mathcal{P}(\Omega))$. La probabilité est l'équiprobabilité :
+$$ P(A)=\frac{card(A)}{card(\Omega)}.$$
+\end{Ex}
+\begin{Prop}
+\begin{enumerate}
+\item $ P(\emptyset)=0.$
+\item Pour toute suite finie $(A_i)_{1\leq i \leq n}$ d'événements de $\mathcal{A}$ deux à deux disjoints (incompatibles) :
+$$P(\bigcup_{1\leq i \leq n}A_i)=\sum_{i=1}^{n}P(A_i).$$
+\item Pour tout $A,B\in \mathcal{A}$ tel que  $A\subset B$, on a :
+$$P(A)\leq P(B)$$
+$$P(B\setminus A )=P(B)-P(A)$$
+\item Pour tout $A\in \mathcal{A}$, on a $P(A)\in[0,1]$.
+\item Pour tout $A,B\in \mathcal{A}$, on a $$P(A\cup B)+P(A\cap B)=P(A)+P(B).$$
+\item Pour tout $A,B\in \mathcal{A}$, on a $$P(A\cap B)\leq P(A)+P(B).$$
+\item Pour tout $A\in \mathcal{A}$, on a 
+$$P(A)=1-P(A^c).$$
+\item \defi{Continuité monotone séquentielle :}
+\begin{enumerate}
+\item  Soit $(A_n)_{n\in\N^*}$ est une suite croissante d'événements de $\mathcal{A}$, c'est à dire $A_n\subset A_{n+1}$, on a
+$$P(\bigcup_{n\in\N^*}A_n)=\lim\limits_{n \to +\infty} P(A_n)$$ 
+\item Soit $(A_n)_{n\in\N^*}$ est une suite décroissante d'événements de $\mathcal{A}$, c'est à dire $A_{n+1}\subset A_{n}$, on a
+$$P(\bigcap_{n\in\N^*}A_n)=\lim\limits_{n \to +\infty} P(A_n)$$ 
+\end{enumerate}
+\item \defi{Sous additivité} : Pour toute suite finie $(A_i)_{1\leq i \leq n}$ d'événements de $\mathcal{A}$, on a  :
+$$P(\bigcup_{n\in\N^*}A_n)=\sum_{n=1}^{+\infty} P(A_n).$$
+\end{enumerate}
+\end{Prop}
+\begin{proof}
+\begin{enumerate}
+\item Soit la suite $(A_n)_{n\in\N^*}$ définit par $A_1=\Omega$ et $A_n=\emptyset$ si $n>1$. Les événements de cette suite sont deux à deux disjoints et $\bigcup_{n\in\N^*}A_n=\Omega$.
+\begin{align*}
+P(\Omega)=&P(\bigcup_{n\in\N^*}A_n)\\
+P(\Omega)=&P(\Omega)+P(\emptyset)+P(\emptyset)+\cdots \text{ car deux à deux disjoints}\\
+0=&P(\emptyset)+P(\emptyset)+\cdots\\
+P(\emptyset)=&0.
+\end{align*}
+\item Soit la suite $(B_i)_{i\in\N^*}$ définit par $B_i=A_i$ si $i\leq n$ et $B_i=\emptyset$ si $i>n$. On a :
+\begin{align*}
+P(\bigcup_{1\leq i \leq n}A_i)=&P(\bigcup_{i\in\N^*}B_i)\\
+P(\bigcup_{1\leq i \leq n}A_i)=&\sum_{n=1}^{+\infty}P(B_n)\\
+P(\bigcup_{1\leq i \leq n}A_i)=&P(A_1)+\dots+P(A_n)+P(\emptyset)+\dots \\
+P(\bigcup_{1\leq i \leq n}A_i)=&\sum_{i=1}^{n}P(A_i)
+\end{align*}
+\item Comme  $A \bigcup\limits_{\text{disjoints}}(B\setminus A)=B$, on a :
+$$ P(A)+P(B\setminus A)=P(B).$$
+\item Comme $A\subset \Omega$, on a $P(A)\leq P(\Omega)=1$.
+\item Comme $A\cup B=(A\setminus (A\cap B))\bigcup\limits_{\text{disjoints}}B$, on a $P(A\cup B)=P(A\setminus (A\cap B))+P(B).$ Comme $(A\cap B)\subset A$, on a bien : 
+ $P(A\cup B)=P(A)- P(A\cap B)+P(B).$
+\item Comme $P(A\cup B)+ P(A\cap B)=P(A)+P(B)$, on a $P(A\cup B)\leq P(A)+P(B)$.
+\item Comme $A \bigcup\limits_{\text{disjoints}}A^c=\Omega$, on a 
+$$P(A)+P(A^c)=1.$$
+\item \defi{Continuité monotone séquentielle :}
+\begin{enumerate}
+\item  Soit $(A_n)_{n\in\N^*}$ est une suite croissante d'événements de $\mathcal{A}$. On pose la suite $(B_n)$ défini $B_0=A_0$ et $B_n =A_{n}\setminus A_{n-1}$ pour tout $n\geq 1$. Les éléments de cette suite sont deux à deux disjoints et $\cup_{k=0}^n A_k = \cup_{k=0}^n B_k$. On a :
+\begin{align*}
+P(\cup_{k=0}^n A_k)=&P(\cup_{k=0}^n B_k)\\
+=& \sum_{k=0}^n P(B_k)
+\end{align*}
+La série numérique $\sum  P(B_n)$ est à termes positifs et majoré par 1 $\left(\sum_{k=0}^n P(B_k)=P(\cup_{k=0}^n B_k)\leq P(\Omega)=1\right)$ donc convergente. Par passage à la limite on a 
+\begin{align*}
+\lim\limits_{n\to \infty}P(A_n) &=\lim\limits_{n\to \infty} P(\cup_{k=0}^n B_k)\\
+&=\sum_{k=0}^{+\infty} P(B_k)\\
+&=P(\cup_{k=0}^{+\infty} B_k)\\
+&=P(\cup_{k=0}^{+\infty} A_k)
+\end{align*}
+\item On a :
+\begin{align*}
+P(\bigcap_{n\in\N^*}A_n)&=1-P((\bigcap_{n\in\N^*}A_n)^c)\\
+&=1-P(\bigcup_{n\in\N^*}A_n^c)\\
+&=1-\lim\limits_{n\to \infty}P(A_n^c)\\
+&=\lim\limits_{n\to \infty}(1-P(A_n^c))\\
+&=\lim\limits_{n\to \infty}P(A_n)
+\end{align*}
+\end{enumerate}
+\item \defi{Sous additivité} : Pour toute suite finie $(A_i)_{1\leq i \leq n}$ d'événements de $\mathcal{A}$, on a  :
+$$\forall n \in \N :\quad P(\bigcup_{i=1}^n A_n)\leq \sum_{i=1}^{n} P(A_i)\underbrace{\leq}_{\text{termes positifs} } \sum_{i=1}^{+\infty} P(A_i).$$
+De plus $\bigcup_{n=1}^{+\infty} A_n= \bigcup_{n=1}^{+\infty} (\cup_{i=1}^n A_i)$ et la suite $(\cup_{i=1}^n A_i)$ est croissante d'où :
+$$P(\bigcup_{n=1}^{+\infty} A_n) \underbrace{=}_{\text{Continuité monotome}}\lim\limits_{n\to \infty}P(\bigcup_{i=1}^n A_n)\leq  \lim\limits_{n\to \infty} \sum_{i=1}^{n} P(A_i).$$ 
+
+\end{enumerate}
+\end{proof}
+\begin{Ex}
+Considérons un seul lancé de pièce sans hypothèse si la pièce est juste.
+L'univers est  $ \Omega = \{H, T \}$ et la tribu $\mathcal{A}= \{\varnothing, \{H \}, \{T \}, \{H, T \} \}$.\\
+La probabilité de ne pas avoir de tête ni de queue est $0=P(\{H, T \}^c)= P (\varnothing) $.\\
+La probabilité d'avoir la tête ou la queue est $1= P (\{H \}) + P (\{T \})$
+\end{Ex}
+
+\section{Variables aléatoire}
+\begin{Ex}[Martingale Roulette]La Roulette, inventée par Blaise Pascal, est un des jeux les plus populaires des casinos. Elle vous propose de parier la case sur laquelle la bille lancée dans le cylindre va s'arrêter parmis 37 numéros (18 rouges, 18 noirs et un vert). Le gain est la mise lors d'un pari simple d'une couleur. \\
+La martingale consiste à jouer une couleur. Le joueur doit, suite à chaque perte, tripler sa mise. S'il perd à nouveau, il mise la somme initiale triplée et ainsi de suite, jusqu'à ce qu'il gagne.\\
+A votre avis, ce jeu est-il favorable au joueur ou au casino ? A chaque partie quelle est le gain moyen du joueur ?
+\end{Ex}
+
+%TODO modif extrait de suret 
+Dans ce jeu, on fait intervenir le hasard en observant la somme des points marqués par deux dés. Considérons le jet d'un dé bleu et d'un dé
+rouge et notons $S$ la somme des points obtenus. On modélise cette expérience
+en prenant l'équiprobabilité sur l'univers  
+$$\Omega=\{1,2,3,4,5,6\}^2=\overbrace{\{1,2,3,4,5,6\}}^{\text{Issues du premier dé}}\times \overbrace{\{1,2,3,4,5,6\}}^{\text{Issues du second dé}}.$$
+Une issue, $\omega$, est un couple $(b, r)$ où b désigne le chiffre du
+dé bleu et r celui du rouge. La somme $S$ est l'application :
+$$\Fonction{S}{\Omega}{\{2,3,\dots,12\} }{(b, r)}{b+r}$$ 
+Cette application est représenter par ce tableau  : 
+\begin{center}
+\begin{tabular}{c||c|c|c|c|c|c}
+ \backslashbox{$b$}{$r$} & 1 & 2&3&4&5&6 \\\hline\hline
+1 & 2 & 3 & 4&5&6&7\\
+2 & 3 & 4 & 5&6&7&8\\
+3 & 4 & 5 & 6&7&8&9\\
+2 & 5 & 6 & 7&8&9&10\\
+1 & 6 & 7 & 8&9&10&11\\
+2 & 7 & 8 & 9&10&11&12\\
+\end{tabular}
+\end{center}
+On dit que S est une variable aléatoire sur $\{2,3,\dots,12\}$.
+En fait, l'observation qui nous intéresse dans cette expérience, ce n'est pas $\omega$,  mais seulement $S(\omega)$. On aimerait connaître la probabilité que
+la somme des points prenne une valeur donnée, soit $P(S = k)$ pour $k$ entier
+fixé entre 2 et 12. En utilisant l'équiprobabilité sur et le tableau ci-dessus, on obtient 
+\begin{center}
+\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+$k$ & 2 & 3& 4& 5& 6& 7& 8& 9& 10& 11& 12 \\\hline
+$P(S=k)$ & $\frac{1}{36}$ & $\frac{2}{36}$& $\frac{3}{36}$& $\frac{4}{36}$& $\frac{5}{36}$& $\frac{6}{36}$& $\frac{5}{36}$& $\frac{4}{36}$& $\frac{3}{36}$& $\frac{2}{36}$& $\frac{1}{36}$\\\hline
+\end{tabular}
+\end{center}
+Cela revient à considérer un nouvel univers :
+$$\Omega'=\{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}$$
+et à munir cet ensemble de la probabilité $P_S$ définie par le tableau des $P(S =
+k)$. Cette nouvelle probabilité s'appelle loi de la variable aléatoire S.
+\begin{Ex}
+Pour le lancer d'une pièce jusqu'à la première obtention de pile. L'univers est dénombrable $\N$ où une issue $\omega\in \N$ représente le temps du premiers succès.
+\end{Ex}
+ 
+Rajouter le gain !
+ 
+ 
+ Définition de la loi 
+ et de l'expérance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

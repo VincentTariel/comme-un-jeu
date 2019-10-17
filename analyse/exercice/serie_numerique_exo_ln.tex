@@ -1,0 +1,8 @@
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, convergence]
+Soit $\sum u_n$ une série à termes positif convergente.\\ 
+Démontrer que la suite $\left(\prod_{k=0}^n (1+u_k)\right)$ est convergente.
+\begin{correction}
+On a $\ln(\prod_{k=0}^n (1+u_k))=\sum_{k=0}^n \ln( (1+u_k))$. 
+Comme la série $\sum u_n$ converge, on a $u_n\xrightarrow[n\to\infty]{}0$ d'où $\ln(1+u_n)\Sim_{n\to\infty}u_n$. La série à  termes positifs  $\sum \ln (1+u_n)$ est convergente car $\sum u_n$ est convergente. Comme la fonction $\ln$ est continue, la suite $\left(\prod_{k=0}^n (1+u_k)\right)$ est convergente.
+\end{correction}
+\finexo

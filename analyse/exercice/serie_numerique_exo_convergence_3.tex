@@ -1,0 +1,36 @@
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Nature]
+Etudier la convergence des séries $\sum u_n$ suivantes :
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item $u_n =\frac{\sin(\frac 1 n)}{n}$ 
+        \item $u_n=\frac{\sin(n)+\cos(n)}{n^2}$
+        \item $u_n=\frac{|\sin(n)|+|\cos(n)|}{n}$
+        \item $u_n=\frac{(n!)^2}{2n!}$
+        \item $u_n=(\ln(n+1))^2-(\ln(n))^2$
+        \item $u_n=\frac{\ln(n)}{n^2}$
+    \end{enumerate}
+    \end{multicols}  
+\begin{correction}
+    \begin{enumerate}
+        \item $\sum \frac{\sin(\frac 1 n)}{n}$ est une série à termes positifs (SATP). On a :
+$$\frac{\sin(\frac 1 n)}{n}\Sim_{n\to\infty}\frac{\frac 1 n}{n}=\frac{1}{n^2}.$$
+Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \frac{\sin(\frac 1 n)}{n}$ est convergente par règle de comparaison.
+	   \item 	Étudions la nature de SATP $\sum \frac{|\sin(n)+\cos(n)|}{n^2}$. On a :
+	   $$\frac{|\sin(n)+\cos(n)|}{n^2} \leq \frac{2}{n^2}.$$
+	   Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \frac{|\sin(n)+\cos(n)|}{n^2}$ est convergente par règle de comparaison. La série 
+	   $\sum \frac{\sin(n)+\cos(n)}{n^2}$ est absolument convergente donc convergente.
+	   \item  $\sum\frac{|\sin(n)|+|\cos(n)|}{n}$ est une STAP. On a :
+ 	   $$\frac{|\sin(n)|+|\cos(n)|}{n} \geq \frac{|\sin(n)|^2+|\cos(n)|^2}{n}= \frac{1}{n}.$$
+	   Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum\frac{|\sin(n)|+|\cos(n)|}{n}$  est divergente par règle de comparaison.
+	   \item 	$\sum\frac{(n!)^2}{2n!}$ est une SATP. On a :
+ $$\frac{u_{n+1}}{u_n}=\frac{\frac{((n+1)!)^2}{2(n+1)!}}{\frac{(n!)^2}{2n!}}=\frac{((n+1)!)^2}{(n!)^2}\frac{2n!}{(2(n+1))!}=\frac{(n+1)^2}{(2n+1)(2n+2)}\to_{n\to\infty}\frac 1 4.$$	  
+D'après la règle de d'Alembert ($\frac 1 4 <1$), la série $\sum\frac{(n!)^2}{2n!}$ est convergente.
+	    \item  On a $u_n=a_{n+1}-a_n$  avec $a_n = (\ln(n))^2$. $\sum (\ln(n+1))^2-(\ln(n))^2$ est une série télescopique. Sa somme partielle est égale :
+	    $$S_n =  (\ln(n+1))^2 - (\ln(1))^2=(\ln(n+1))^2\to_{n\to\infty} +\infty.$$
+	    Donc la série diverge.
+	    \item 	$\sum\frac{\ln(n)}{n^2}$ est une SATP. On a :
+	    $$\frac{\ln(n)}{n^2}=o\left(\frac{1}{n^{3/2}}\right)\text{ car }\lim\limits_{n\to+\infty}\frac{\frac{\ln(n)}{n^2}}{\frac{1}{n^{3/2}}}=\lim\limits_{n\to+\infty}\frac{\ln(n)}{n^{1/2}}=0$$
+	    Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente ($\frac{3}{2}>1$), la série $\sum\frac{\ln(n)}{n^2}$ est convergente par règle de comparaison.
+    \end{enumerate}
+\end{correction}
+\finexo

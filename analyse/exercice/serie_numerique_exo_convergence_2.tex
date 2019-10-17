@@ -1,0 +1,31 @@
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Nature]
+Étudier la convergence des séries $\sum u_n$ suivantes :\\
+    \begin{enumerate}
+        \item  $u_n=\frac{1}{n+(-1)^n\sqrt{n}}$
+        \item $u_n=\left(\frac{n+3}{2n+1}\right)^{\ln n}$
+        \item  $u_n=\frac{1}{\ln(n)\ln(\ch n)}$
+        \item  $u_n=e-\left(1+\frac{1}{n}\right)^n$
+      \end{enumerate}      
+       
+
+
+
+\begin{correction}
+    \begin{enumerate}
+        \item $\sum \frac{1}{n+(-1)^n\sqrt{n}}$ est une série à termes positifs. On a :
+$$\frac{1}{n+(-1)^n\sqrt{n}} = \frac{1}{n(1+(-1)^n\sqrt{n}/n)}\Sim_{n\to\infty}\frac{1}{n}.$$
+Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum \frac{1}{n+(-1)^n\sqrt{n}}$ est divergente par règle de comparaison.
+        \item $\sum \left(\frac{n+3}{2n+1}\right)^{\ln n}$ est une série à termes positifs. On a :
+$$\left(\frac{n+3}{2n+1}\right)^{\ln n} =e^{\ln(n)\ln\left(\frac{n+3}{2n+1}\right) } \Sim_{n\to\infty}e^{\ln(n)\ln\left(\frac{1}{2}\right) }\Sim_{n\to\infty}\frac{1}{n^{\ln 2}} .$$
+Comme la série de Riemann $\sum \frac{1}{n^{\ln 2}}$ est divergente, la série $\sum \left(\frac{n+3}{2n+1}\right)^{\ln n}$ est divergente par règle de comparaison.
+\item $\sum\frac{1}{\ln(n)\ln(\ch n)}$ est une série à termes positifs. On a :
+$$\ln(\ch(n)) = \ln\left(  \frac{e^n+e^{-n}}{2}\right)\Sim_{n\to\infty}\ln(e^n/2  )\Sim_{n\to\infty}n-2\Sim_{n\to\infty}n.$$
+Étudions la nature de la série $\sum \frac{1}{\ln(n)n}$ à l'aide d'une comparaison série intégrale.\\
+La fonction $x\rightarrow x\ln x$ est continue, croissante et strictement positive sur $]1,+\infty[$ (produit de deux fonctions strictement positives et croissantes sur $]1,+\infty[$). Par suite, la fonction $x\rightarrow\frac{1}{x\ln x}$ est continue, décroissante sur $]1,+\infty[$ et de limite 0 en l'infini. Les hypothèses étant vérifiée, la série $\sum \frac{1}{\ln(n)n}$ est de même nature que la suite $\left(\int_{2}^n \frac{1}{x\ln x}dx\right)=\left(\ln(\ln(n))-2\right)$. Cette suite diverge donc la série aussi.\\
+Enfin par théorème de comparaison, la série $\sum\frac{1}{\ln(n)\ln(\ch n)}$ diverge.
+\item On a :
+$$ e-\left(1+\frac{1}{n}\right)^n=e-e^{n\ln(1+\frac{1}{n})}=e-e^{n(\frac{1}{n}-\frac{1}{2n^2}+O(\frac{1}{n^2}))}=e(1-e^{-\frac{1}{2n}+O(\frac{1}{n})})\Sim_{n\to\infty}\frac{e}{2n}  $$
+Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum e-\left(1+\frac{1}{n}\right)^n$ est divergente par règle de comparaison.
+    \end{enumerate}
+\end{correction}
+\finexo

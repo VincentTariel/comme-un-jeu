@@ -1,0 +1,200 @@
+\documentclass[a4paper]{book}
+\usepackage{t1enc}
+\usepackage[latin1]{inputenc}
+\usepackage[french]{minitoc}
+ \usepackage{amsmath}
+\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
+\usepackage[francais]{babel}
+\usepackage{amsmath}
+\usepackage{TikZ}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tkz-fct}   
+\usepackage{a4wide,jlq2eams} 
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{slashbox}
+\usepackage{thmbox}
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{longtable} 
+\usepackage{listings}
+\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
+\sectionfont{\color{magenta}}
+\subsectionfont{\color{red}}
+\subsubsectionfont{\color{red}}
+\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}}
+
+\setlength{\shadowsize}{1.5pt}
+ 
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth} 
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\fancypagestyle{plain}{%
+   \fancyhead{} % get rid of headers
+   \renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+\setcounter{minitocdepth}{3}
+
+
+
+\thmboxoptions{S,bodystyle=\itshape\noindent}
+\newtheorem[L]{Lem}{Lemme}[section]
+\newtheorem[L]{Th}[Lem]{Théorème}
+\newtheorem[L]{Cor}[Lem]{Corollaire}
+\newtheorem[L]{Prop}[Lem]{Proposition}
+
+\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
+\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
+\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
+\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\E}{(-4,-1) rectangle (4,4);\node[above right] at (-4,-1) {$\Omega$};}
+\newcommand{\A}{(0,0) ++(135:2) circle (2);\node at (-1.4,-0.75) {$A$};}
+\newcommand{\B}{(0,0) ++(45:2) circle (2);\node at (1.4,-0.75) {$B$};}
+\newcommand{\AuB}{(0,0) arc(-135:135:2) arc(45:315:2);\node at (0,1.5) {$A\cup B$};}
+\newcommand{\AnB}{(0,0) arc (-45:45:2) arc (135:225:2);\node at (0,1.5) {$A\cap B$};}
+
+
+
+
+
+
+\lstset{language={C++}}
+
+\begin{document}
+\section*{Simulation de variables aléatoires}
+
+\paragraph{Principe}
+Simuler une variable aléatoire, $X$, consiste à écrire un programme exécuter par la machine afin de réaliser virtuellement l'expérience
+aléatoire aboutissant à une réalisation de la variable aléatoire, $X(\omega)$, où $\omega$ est une issue de l'expérience aléatoire. 
+Un avantage important de l'outil informatique est qu'il peut répéter
+un grand nombre de fois une expérience en très peu de temps.
+\paragraph*{Bibliothèque random}
+La bibliothèque random \url{http://www.cplusplus.com/reference/random/} contient des fonctions permettant de simuler la
+réalisation d'une variable aléatoire suivant une loi donnée parmi les lois classiques.\\ 
+Commençons par faire les importations nécessaires :
+\begin{lstlisting}
+#include <random>
+\end{lstlisting}
+\paragraph{Loi uniforme: $X\sim\mathcal{U}(a, b)$}
+On utilise la fonction randint (de l'anglais random integer) pour générer une variable aléatoire suivant la loi uniforme. Attention, le dernier entier est toujours exclu dans la bibliothèque Numpy. Pour simuler un dé à 6 faces, il faudra donc taper
+\begin{lstlisting}
+#include <iostream>
+#include <random>
+int main()
+{
+    std::random_device random_device;
+    std::mt19937 random_engine(random_device());
+    std::uniform_int_distribution<int> distribution(1, 6);
+    auto const randomNumber = distribution(random_engine);
+    std::cout << randomNumber << '\n';
+    return 0;
+}
+\end{lstlisting}
+
+\paragraph{Simuler la somme de deux dés}
+Ecrire un programme permettant de simuler plusieurs fois l'expérience aléatoire consistant à calculer la somme de deux dés jetés.
+\paragraph{Loi binomial : $X\sim\mathcal{B}(n, p)$}
+On utilise la class binomial$\_$distribution pour générer une variable aléatoire suivant la loi binomial, $\mathcal{B}(n, p)$.
+\begin{lstlisting}
+#include <iostream>
+#include <random>
+int main()
+{
+    std::random_device random_device;
+    std::mt19937 random_engine(random_device());
+    std::binomial_distribution<int> distribution(100,0.1);
+    auto const randomNumber = distribution(random_engine);
+    std::cout << randomNumber << '\n';
+    return 0;
+}
+\end{lstlisting}
+\paragraph{Pièces défectueuses}
+Ecrire un programme permettant de simuler l'expérience aléatoire consistant à compter le nombre de pièces défectueuses  lorsque on prélève 1000 pièces dans une chaîne de fabrication. La probabilité d'être défectueuse par pièce est de $1\%$ .    
+
+
+\paragraph{Répéter une expérience}
+On peut aussi demander de renvoyer non pas une réalisation, $X(\omega)$, mais plusieurs réalisations d'une
+loi donnée, $(X(\omega_1),X(\omega_2),\dots,X(\omega_n))$. Ceci s'appelle l'échantillonnage (en anglais :
+sampling). Par exemple, pour simuler 100 fois le lancé d'un dé à 6 faces, il faudra donc taper
+\begin{lstlisting}
+#include <iostream>
+#include <random>
+int main()
+{
+    std::random_device random_device;
+    std::mt19937 random_engine(random_device());
+    std::uniform_int_distribution<int> distribution(1, 6);
+    for(int i=0;i<100;i++){
+        auto const randomNumber = distribution(random_engine);
+        std::cout << randomNumber << '\n';
+    }
+    return 0;
+}
+\end{lstlisting}
+\paragraph{Gain moyen d'un jeu dés}
+Pour attirer les clients, un casino propose un nouveau jeu : le croupier lance simultanément 2 dés et calcule leur somme,
+\begin{itemize} 
+\item si la somme est égale à 2 ou 12, le joueur gagne 2 euros,
+\item si la somme est égale à 7, le casino gagne 1 euro,
+\item dans les autres cas, c'est nul (le joueur gagne 0 euro).  
+\end{itemize}
+Ecrire un programme permettant de simuler cette expérience aléatoire en calculant le gain moyen du joueur après $1 000 000$ de parties. Le jeu est-il favorable au joueur ?
+
+\section*{Méthode de Monte-Carlo}
+\paragraph{Loi des grands nombres}
+Si l'on répète identiquement une épreuve $n$ fois et qu'on
+compte la proportion des issues où un événement $E$ s'est réalisé (on parle aussi
+de fréquence), alors quand $n ? +?$ cette proportion tend vers $\mathbb{P}(E)$.
+Par exemple en jetant 10000 fois une pièce, le rapport entre le nombre de fois où l'on obtient FACE et le nombre de lancés, est environ 1/2 soit $P("FACE") = 1/2$.\\
+Pour estimer la probabilité d'un évènement $E$, en particulier dans le cas où il est difficile de calculer théoriquement  $P(E)$ exactement, une possibilité est donc d'observer la
+proportion de fois où celui-ci se réalise lorsqu'on répète un grand nombre de fois
+l'expérience correspondante.
+\paragraph{Auto-correction}
+Un professeur décide de faire corriger les copies par les élèves. A chaque évaluation, il mélange toutes les copies puis les distribue aux élèves. Il se pose la question suivante mais quelle est la probabilité qu'au moins un élève corrige sa propre copie ? 
+L'outil permutation permet de modéliser l'affectation des copies aux élèves. Une permutation, $\sigma$, est une bijection de $\{1,\dots,n\}$ sur lui-même.  Chaque élève a un numéro et  la copie de l'élève numéro $i$ est corrigé par l'élève numéro $\sigma(i)$.  Par exemple, 
+\begin{enumerate}
+\item la copie de l'élève numéro 1 est corrigée par l'élève numéro 4
+\item la copie de l'élève numéro 2 est corrigée par l'élève numéro 1
+\item la copie de l'élève numéro 3 est corrigée par l'élève numéro 3
+\item la copie de l'élève numéro 4 est corrigée par l'élève numéro 2
+\end{enumerate}
+est modélisé par la permutation  $\sigma(1)=4,\sigma(2)=1,\sigma(3)=3, \sigma(4)=2$. On représente une permutation par la liste ordonnée des images de la permutation, dans notre exemple $(4,1,3,2)$. Dans l'exemple, un élève corrige sa propre copie (l'élève numéro 3).  La permutation possède un point fixe, c'est dire il existe un  entier image de lui-même (ici $\sigma(3)=3$).  
+
+  
+\begin{enumerate}
+\item \textbf{Modéliser le mélange} : écrire une fonction permute(n) qui génère une permutation aléatoire, c'est à dire une liste contenant les entiers de 1 à n dans un ordre aléatoire.  
+\item \textbf{Tester qu'un élève ait sa propre copie} : écrire une fonction pointFixe(permutation)
+qui renvoie True ou False selon que liste permutation contienne ou non un point fixe.
+\item  \textbf{Estimer $P$("au moins un élève corrige sa propre copie")} : en utilisant les deux questions précédentes, écrire une fonction probaCorrection(n, nbrexp)
+qui estime $P$("un élève corrige sa propre copie") par le principe de Monte-Carlo en réalisant l'expérience nbexp fois avec $n$ élèves
+\item \textbf{$P$("au moins un élève corrige sa propre copie")$\approx 1-1/e$} : estimer cette probabilité pour $n=23$ et pour $n=49$. Que remarquez-vous ?  (note, on peut démontrer ce résultat \url{https://fr.wikiversity.org/wiki/Formule_du_crible/D%C3%A9nombrement_des_d%C3%A9rangements}).
+\end{enumerate}
+\paragraph{Estimer $\pi$}
+Un joueur tire une flèche aléatoirement sur une cible carré avec un disque inscrit (voir figure~1). 
+Quelle est la loi de probabilité que la flèche soit dans le disque ?\\
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{monteCarlo.png}
+\label{monte}
+\caption{Les points bleues représentent les issues dans le disque et les points rouges à l'extérieur}
+\end{figure}
+La méthode pour estimer $\pi$ consiste alors à tirer au hasard des nombres $x$ et $y$ dans l'intervalle $[-1,1]$ ; 
+si $x^2 + y^2 < 1$ le point $M(x,y)$ appartient au disque de rayon 1. On utilise la commande uniform(-1,1) pour générer une variable aléatoire suivant la loi uniforme dans le segment $[-1,1]$. On répète cette expérience un grand nombre de fois pour estimer $P$("Flèche dans disque") et ainsi estimer $\pi$. 
+\begin{enumerate}
+\item \textbf{Tirer} : écrire une fonction lancerFleche(n) qui génère un couple de variables aléatoires suivant la loi uniforme dans le segment $[-1,1]$  
+\item \textbf{Tester dans disque} : écrire une fonction dansDisque(x,y)
+qui renvoie True ou False selon que la flèche de coordonnées (x,y) est dans le disque.
+\item  \textbf{Estimer $P$("Flèche dans disque")} : en utilisant les deux questions précédentes, écrire une fonction probaDisque(nbrexp)
+qui estime $P$("Flèche dans disque") par le principe de Monte-Carlo en réalisant l'expérience nbrexp fois
+\item \textbf{Estimer $\pi$} : donner une approximation de $\pi$.
+\end{enumerate}
+\end{document}

@@ -1,0 +1,25 @@
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Série harmonique]
+Pour $n\geq 1$, on note $H_n=\sum_{k=1}^n \frac 1k$. 
+\begin{enumerate}
+\item Démontrer que, pour tout $n\geq 1$, 
+$$\ln(n+1)\leq H_n\leq 1+\ln(n).$$
+\item En déduire un équivalent de $H_n$.
+\item On pose pour $n\geq 1$, $v_n=H_n-\ln(n)$. Vérifier que $v_{n}-v_{n-1}=\frac 1n+\ln\left(1-\frac 1n\right)$.
+\item \'Etudier la monotonie de $(v_n)$.
+\item En déduire que la suite $(H_n-\ln(n+1))$ est convergente.
+\end{enumerate}
+          
+\begin{correction}
+    \begin{enumerate}
+        \item Voir la démonstration sur la comparaison série-intégrale. On a :
+$$ \int_{1}^{n+1}\frac{1}{x}dx=\ln(n+1) \leq H_n \leq 1 + \int_{1}^{n}\frac{1}{x}dx=1  \ln(n)$$.
+\item On divise ces inégalités par $\ln(n)$ :
+$$1 + \ln(1+1/n) \leq H_n/\ln(n) \leq 1+1/\ln(n).$$
+Les deux extrémités tendent vers 1 donc   $H_n \Sim_{n\to\infty} \ln(n).$
+\item $v_{n}-v_{n-1}=H_n-H_{n-1}-  \ln(n) + \ln(n-1)= \frac{1}{n}+\ln\left(1-\frac 1n\right).$
+\item On a $\ln(1-x)\leq -x$. D'où $x+\ln(1-x)\leq 0$. Ainsi $(v_n)$ est décroissante car $v_{n}-v_{n-1}\leq 0$. 
+\item D'après l'inégalité de la question 1 on $0\geq \ln(n+1)-\ln(n)\leq H_n - \ln(n)$. La suite $(v_n)=(H_n-\ln(n))$ est minorée et décroissante donc convergente.
+  \end{enumerate}      
+
+\end{correction}
+\finexo
