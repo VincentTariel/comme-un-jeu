@@ -153,7 +153,7 @@ Ecrire un programme permettant de simuler cette expérience aléatoire en calculan
 \paragraph{Loi des grands nombres}
 Si l'on répète identiquement une épreuve $n$ fois et qu'on
 compte la proportion des issues où un événement $E$ s'est réalisé (on parle aussi
-de fréquence), alors quand $n ? +?$ cette proportion tend vers $\mathbb{P}(E)$.
+de fréquence), alors quand $n \to +\infty$ cette proportion tend vers $\mathbb{P}(E)$.
 Par exemple en jetant 10000 fois une pièce, le rapport entre le nombre de fois où l'on obtient FACE et le nombre de lancés, est environ 1/2 soit $P("FACE") = 1/2$.\\
 Pour estimer la probabilité d'un évènement $E$, en particulier dans le cas où il est difficile de calculer théoriquement  $P(E)$ exactement, une possibilité est donc d'observer la
 proportion de fois où celui-ci se réalise lorsqu'on répète un grand nombre de fois
@@ -190,7 +190,7 @@ Quelle est la loi de probabilité que la flèche soit dans le disque ?\\
 La méthode pour estimer $\pi$ consiste alors à tirer au hasard des nombres $x$ et $y$ dans l'intervalle $[-1,1]$ ; 
 si $x^2 + y^2 < 1$ le point $M(x,y)$ appartient au disque de rayon 1. On utilise la commande uniform(-1,1) pour générer une variable aléatoire suivant la loi uniforme dans le segment $[-1,1]$. On répète cette expérience un grand nombre de fois pour estimer $P$("Flèche dans disque") et ainsi estimer $\pi$. 
 \begin{enumerate}
-\item \textbf{Tirer} : écrire une fonction lancerFleche(n) qui génère un couple de variables aléatoires suivant la loi uniforme dans le segment $[-1,1]$  
+\item \textbf{Tirer} : écrire une fonction lancerFleche() qui génère un couple de variables aléatoires suivant la loi uniforme dans le segment $[-1,1]$  
 \item \textbf{Tester dans disque} : écrire une fonction dansDisque(x,y)
 qui renvoie True ou False selon que la flèche de coordonnées (x,y) est dans le disque.
 \item  \textbf{Estimer $P$("Flèche dans disque")} : en utilisant les deux questions précédentes, écrire une fonction probaDisque(nbrexp)

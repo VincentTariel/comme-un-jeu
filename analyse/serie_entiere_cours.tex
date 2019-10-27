@@ -1,0 +1,625 @@
+\documentclass[a4paper]{book}
+\usepackage{t1enc}
+\usepackage[latin1]{inputenc}
+\usepackage[french]{minitoc}
+ \usepackage{amsmath}
+\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
+\usepackage[francais]{babel}
+\usepackage{amsmath}
+\usepackage{TikZ}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tkz-fct}   
+\usepackage{a4wide,jlq2eams} 
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{slashbox}
+\usepackage{thmbox}
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{longtable} 
+\usepackage{multicol}
+\usepackage{caption}
+\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
+\sectionfont{\color{magenta}}
+\subsectionfont{\color{red}}
+\subsubsectionfont{\color{red}}
+\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}}
+
+\setlength{\shadowsize}{1.5pt}
+ 
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth} 
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\fancypagestyle{plain}{%
+   \fancyhead{} % get rid of headers
+   \renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+\setcounter{minitocdepth}{3}
+
+
+
+\thmboxoptions{S,bodystyle=\itshape\noindent}
+\newtheorem[L]{Lem}{Lemme}[section]
+\newtheorem[L]{Th}[Lem]{Théorème}
+\newtheorem[L]{Cor}[Lem]{Corollaire}
+\newtheorem[L]{Prop}[Lem]{Proposition}
+
+\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
+\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
+\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
+\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
+
+
+
+\newcommand\SUI{(u_n)_{n\in\N}}
+\newcommand\SER{ \sum u_n}
+\newcommand\CC[1]{C^{#1}}
+\newcommand{\sumni}{\sum_{n=0}^{+\infty}}
+\newcommand\Sanxn{ \sum_n a_n x^n}
+\newcommand\Sanzn{ \sum_n a_n z^n}
+\newcommand\Sbnzn{ \sum_n b_n z^n}
+\newcommand\Scnzn{ \sum_n c_n z^n}
+\def\abs#1{\mathopen|{#1}\mathclose|}
+\def\Abs#1{\left|{#1}\right|}
+\newcommand{\Rpinf}{\R \cup \{+\infty\}}
+\newcommand\DS{\displaystyle}
+\newcommand\To[1]{\xrightarrow[#1]{}}
+\newcommand\Toninf{\To{\ninf}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+\dominitoc
+%\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Série entière}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Séries entières}
+
+
+Considérons l'équation différentielle suivante :
+$$y' = y ,\quad y(0)=1 (E)$$
+L'unique solution sur $\R^=$ de cette équation différentielle linéaire homogène du premier ordre sans
+second membre est l'application $x\to e^x$. Par définition, la fonction exponentielle est l'unique fonction égale à sa dérivée.\\
+\begin{enumerate}
+\item Déterminons les solutions de $(E)$ sous forme polynomiale.  Soit $f:x\to \sum_{n=0}^{N}a_n x^n$. Pour des raisons de
+degré, uniquement le polynôme nul convient.
+\item Déterminons les solutions de $(E)$ sous forme "polynomiale de degré infini". Soit $f:x\to \sum_{n=0}^{+\infty}a_n x^n$.
+"Soit x tel que 
+
+Par dérivation, on obtient :
+\begin{align*}
+f'(x)=&(\sum_{n=0}^{+\infty}a_n x^n)'\\
+f'(x)=&\sum_{n=0}^{+\infty}(a_n x^n)' \text{ "par permutaion dérivé et somme" }\\
+f'(x)=&\sum_{n=1}^{+\infty} n a_n x^{n-1} \\
+f'(x)=&\sum_{n=0}^{+\infty} (n+1) a_{n+1} x^{n}\text{ "par translation d'indice" } \\
+\end{align*}
+Comme $f'(x)=f(x)$, on obtient :
+$$\sum_{n=0}^{+\infty}a_n x^n=\sum_{n=0}^{+\infty} (n+1) a_{n+1} x^{n}.$$
+Par identification, on obtient :
+$$ \forall n \in \N (n + 1)a_{n+1} = a_n.$$
+%Ce qui conduit rapidement à an =
+%a0
+%n!
+%pour tout n ? N. Ainsi, si toutes les opérations effectuées sont
+%licites, en prenant arbitrairement a0 = 1,
+%f (x ) =
+%+
+%X?
+%n=0
+%x
+%n
+%n!
+%apparaît comme une solution de l?équation (E).
+%1. Pourquoi diantre se limiter à des sommes finies...
+%2 Chap. 2 Séries entières
+%? L?équation (E) n?est cependant pas très mystérieuse, nous savons que ses solutions sont de la forme
+%x 7? ?e
+%x
+%. Comme la fonction exponentielle est l?unique solution de (E) qui vérifie la condition initiale
+%y (0) = 1, on trouve alors :
+%?x ? R exp(x ) =
+%+
+%X?
+%n=0
+%x
+%n
+%n!
+\end{enumerate}
+Ce premier exemple soulève de nombreuses questions auxquelles nous al
+
+Une série entière est une série de fonctions de la forme
+$$\sum a_{n}z^{n}$$
+où les coefficients $a_n$ forment une suite réelle ou complexe et $z$ une variable complexe.\\
+Les séries entières possèdent des propriétés de convergence remarquables, qui s'expriment pour la plupart à l'aide de son rayon de convergence $R$, grandeur associée à la série. Sur le disque de convergence (disque ouvert de centre 0 et de rayon R), la fonction somme de la série peut être dérivée indéfiniment terme à terme.\\
+Les séries entières sont 
+\begin{enumerate}
+\item un outil :
+\begin{enumerate}
+\item dans la résolution d'équations différentielles, par exemple $(1 + x)y' = \alpha y$, en cherchant les solutions sous la forme $y(x)=\sum a_{n}x^{n}$,    
+\item dans l'étude du comportement asymptotique d'un somme de variable aléatoires et la caractérisation d'une variable aléatoire par la fonction génératrice : $G_X(t)=E[t^X]=\sum_{k=0}P (X=k)t^{k}$,
+\item dans la modélisation des systèmes dynamiques de manière discrète à l'aide de la transformée en $Z$, soit $s(n)$ l'état du système au temps $n$, sa transformée en $Z$ est
+$$ S(z) = \mathcal{Z}\{s(n)\} =\sum_{n=-\infty}^{+\infty}s(n)z^{-n}.$$
+\end{enumerate}
+\item un objet préalable à l'analyse complexe des fonctions holomorphes et analytiques.
+\end{enumerate}
+
+
+
+\section{Généralités}
+
+\begin{Df}[Série entière]
+
+On appelle \defi{série entière} toute série de fonctions de la forme $\sum _n f_n$
+où $(a_n)_{n\in \C}$ est une suite numérique et
+où $f_n:\C\to\C$ est définie par $f_n(z) = a_n z^n$.
+La \defi{somme} de la série entière est la fonction \[ f \colon z \mapsto \sum_{n=0}^{+\infty} a_n z^n. \]
+\end{Df}
+
+\begin{Ex}[Série exponentielle] 
+La somme de la série $\sum_n \frac {x^{n}}{n!}$ est la fonction exponentielle :
+$$\forall x\in \R : e^{x}=\sum _{n=0}^{\infty }{\frac {x^{n}}{n!}}=1+x+{\frac {x^{2}}{2!}}+{\frac {x^{3}}{3!}}+\cdots .$$
+\end{Ex}
+\begin{figure}
+\begin{center}
+\includegraphics[width=2.5cm]{Exp_series-0.png}\includegraphics[width=2.5cm]{Exp_series-1.png}\includegraphics[width=2.5cm]{Exp_series-2.png}\includegraphics[width=2.5cm]{Exp_series-3.png}\includegraphics[width=2.5cm]{Exp_series-4.png}\includegraphics[width=2.5cm]{Exp_series-5.png}
+\caption{La fonction exponentielle, $x\mapsto e^x$ en bleue, et la somme des $n+1$ termes $x\mapsto \sum_0^n \frac{x^n}{n!}$ en rouge. }
+\end{center}
+\end{figure}
+\begin{Ex}[Série géométrique] 
+La somme de la série $\sum_n x^{n}$ est  :
+$$\forall x\in ]-1,1[ : \frac{1}{1-x}=\sum _{n=0}^{\infty }{\frac {x^{n}}{n!}}=1+x+x^2 + x^3+\cdots .$$
+\end{Ex}
+%Domaine de définition et convergence uniforme pour la continuité, dérivabilité
+ 
+\begin{Lem}[Lemme d'Abel]
+
+Soit $\Sanzn$ une série entière et $z_0\in \C$ telle que la suite numérique $(a_n z_0^n)_{n\in \N }$ soit bornée.
+Alors:
+\begin{enumerate}
+\item
+  La série $\Sanzn$ converge absolument pour tout $z\in \C$ tel que $|z| < |z_0|$.
+\item
+  Plus précisément, la série de fonctions $\Sanzn$ converge normalement sur $\{z\in \C:\Abs{z}\leq r\}$ dès que $0 \leq r < \Abs{z_0}$.
+\end{enumerate}
+\end{Lem}
+
+
+
+\begin{NB} Il n'y a pas toujours convergence normale (ni uniforme) sur $\{z\in \C:\Abs{z}<\Abs{z_0}\}$.
+\end{NB}
+
+
+\begin{Df}[rayon de convergence]
+
+Soit $\Sanzn$ une série entière.
+Le \defi{rayon de convergence} $R\in \Rpinf$
+de la série entière $\Sanzn$ est défini par
+$$
+  R = \sup \, \Bigl\{ \, r>0 \text{ tel que la suite de terme général } \Abs{a_n} r^n \text{ est bornée} \, \Bigr\}.$$
+\end{Df}
+\begin{Cor}[Convergence]
+
+Soit $\Sanzn$ une série entière de rayon de convergence $R$ et $z_0 \in \C$.
+\begin{itemize}
+\item
+  Si $\Abs{z_0} < R$,
+  la série numérique $\sum _n a_n z_0^n$ converge absolument.
+\item
+  Si $\Abs{z_0} > R$,
+  la série numérique $\sum _n a_n z_0^n$ diverge grossièrement;
+  plus précisément, la suite $(a_n z_0^n)_{n\in \N }$ n'est pas bornée.
+\item
+  Si $\Abs{z_0} = R$, la série peut ou non converger.
+\end{itemize}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+  \filldraw[thick,fill=gray] (0,0) circle (1) ;
+  \draw[->] (-2,0) -- (2,0) ;
+  \draw[->] (0,-1.5) -- (0,1.5) ;
+  \draw (0.3,0.3) node {ACV};
+  \draw (1,0) node {$\bullet$} node[above right] {$R$} ;
+  \draw (1,1) node {DV};
+\end{tikzpicture}
+\captionof{figure}{Disque de convergence d'une série entière}
+\end{center}
+\end{Cor}
+
+
+
+Para\\{Définitions}
+
+Soit $\Sanzn$ une série entière de rayon de convergence $R$.
+\begin{itemize}
+\item
+  On appelle \defi{disque ouvert de convergence} de la série entière $\Sanzn$ l'ensemble
+  \[ \{z\in \C :\Abs{z}<R\}. \]
+\item
+  On appelle \defi{cercle d'incertitude}
+  (et parfois aussi, malheureusement, cercle de convergence)
+  de la série entière $\Sanzn$ l'ensemble
+  \[ \{z\in \C:\Abs{z}=R\}. \]
+\end{itemize}
+
+
+
+% -----------------------------------------------------------------------------
+\section{Détermination du rayon de convergence}
+
+\subsection{Avec le lemme d'Abel}
+
+Para\\{Proposition}
+
+Soit $\Sanzn$ une série entière de rayon de convergence $R$.
+Soit $z_0\in \C$.
+\begin{itemize}
+\item
+  Si $(a_n z_0^n)$ est bornée, alors $R?\Abs{z_0}$.
+\item
+  Si $\sum _n \Abs{a_n z_0^n}$ diverge, alors $R?\Abs{z_0}$.
+\end{itemize}
+\begin{Ex} La rayon de convergence de la série entière $\sum x^n$ est 1 car
+\begin{itemize}
+\item la suite $(x^n)$ tend vers $0$ si $|x|<1$ (donc est bornée), donc $R?1$,
+\item la suite $(x^n)$ diverge si $|x|>1$, donc $R?1$,
+\end{itemize}
+En conclusion  $R=1$.
+\end{Ex}
+\subsection{Avec d'Alembert}
+Soit $\Sanzn$ une série entière et $R$ son rayon de convergence.
+On suppose que:
+\begin{itemize}
+\item
+  il existe $N\in \N $ tel que pour tout $n?N$ on ait $a_n?0$,
+\item
+  $\left|\frac{a_{n+1}}{a_n}\right| \to_{}\in \Rpinf$.
+\end{itemize}
+Alors $R=1/?$ si $l\neq 0$ et  $+\infty$ si $l=0$.
+\begin{Ex} La rayon de convergence de la série entière $\sum \frac{x^n}{n!}$ est $+\infty$ car
+\begin{itemize}
+\item la suite $(x^n)$ tend vers $0$ si $|x|<1$ (donc est bornée), donc $R?1$,
+\item la suite $(x^n)$ diverge si $|x|>1$, donc $R?1$,
+\end{itemize}
+En conclusion  $R=1$.
+\end{Ex}
+
+
+\subsection{Avec les règles de comparaison}
+
+Para\\{Théorème}
+
+Soit $\Sanzn$ et $\Sbnzn$ deux séries entières de rayons de convergence
+respectivement $R_a$ et $R_b$.
+\begin{enumerate}
+\item
+  S'il existe $\alpha \in \R $ tel que $\Abs{a_n} = \GrandO \left( n^\alpha \Abs{b_n} \right)$ quand $n\to+\infty $, alors $R_a?R_b$.
+\item
+  S'il existe $\alpha \in \R $ et $K>0$ tel que $\Abs{a_n} \sim K n^\alpha \Abs{b_n}$ quand $n\to+\infty $, alors $R_a = R_b$.
+\end{enumerate}
+
+\pagebreak
+
+% -----------------------------------------------------------------------------
+\section{Opérations sur les séries entières}
+
+Para\\{Notations}
+\begin{itemize}
+\item
+  Étant donné une série entière $\Sanzn$, on note $R_a$ son rayon de convergence et $f_a$ sa somme.
+\item
+  De même pour $\Sbnzn$ et $\Scnzn$.
+\end{itemize}
+
+\subsection{Somme}
+
+\begin{Df}
+
+Soit $\Sanzn$ et $\Sbnzn$ deux séries entières.
+On définit la \defi{somme} de ces deux séries entières
+comme étant la série entière $\Scnzn$ où
+\[ ?n\in \N , \quad  c_n = a_n+b_n. \]
+\end{Df}
+Para\\{Proposition}
+
+Dans ces conditions,
+\begin{itemize}
+\item
+  $R_c?\min(R_a,R_b)$ avec égalité si $R_a?R_b$,
+\item
+  pour tout $z\in \C$ tel que $\Abs{z} < \min(R_a,R_b)$, on a $f_c(z) = f_a(z) + f_b(z)$.
+\end{itemize}
+
+\subsection{Multiplication par un scalaire}
+
+\begin{Df}
+
+Soit $?$ un scalaire et $\Sanzn$ une série entière.
+On définit le \defi{produit} du scalaire et de la série entière
+comme étant la série entière $\Sbnzn$ où
+\[ ?n\in \N , \quad  b_n =?a_n. \]
+\end{Df}
+Para\\{Proposition}
+
+Dans ces conditions,
+\begin{itemize}
+\item
+  $R_b = R_a$ si $??0$, et $R_b = +\infty $ si $?= 0$,
+\item
+  pour tout $z\in \C$ tel que $\Abs{z} < R_a$, on a $f_b(z) =?f_a(z)$.
+\end{itemize}
+
+\subsection{Produit de Cauchy}
+
+\begin{Df}
+
+Soit $\Sanzn$ et $\Sbnzn$ deux séries entières.
+On définit le \defi{produit de Cauchy} de ces deux séries entières
+comme étant la série entière $\Scnzn=\Sanzn\times\Sbnzn$ où
+\[ ?n\in \N , \quad c_n = \sum _{k=0}^n a_k b_{n-k}. \]
+\end{Df}
+Para\\{Proposition}
+
+Dans ces conditions,
+\begin{itemize}
+\item
+  $R_c ?\min(R_a,R_b)$,
+\item
+  pour tout $z\in \C$ tel que $\Abs{z} < \min(R_a,R_b)$, on a $f_c(z) = f_a(z) f_b(z)$.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Propriétés de la somme}
+
+Para\\{Théorème}[continuité sur le disque ouvert de convergence]
+
+Soit $\Sanzn$ une série entière de rayon de convergence $R$ et de somme $f$.
+Alors $f$ est continue sur le disque ouvert de convergence
+\[ \{z\in \C:\Abs{z}<R\}. \]
+
+Para\\{Proposition}
+
+Soit $\Sanzn$ une série entière de rayon de convergence $R$.
+Alors les deux séries entières suivantes:
+\begin{itemize}
+\item
+  la \og{}dérivée formelle\fg{} $\sum _n b_n z^n$ où $b_n = (n+1)a_{n+1}$,
+\item
+  la \og{}primitive formelle\fg{} $\sum _n c_n z^n$ où $c_n = \frac{a_{n-1}}{n}$
+\end{itemize}
+ont également un rayon de convergence égal à $R$.
+
+Para\\{Théorème}[primitivation terme à terme]
+
+Soit $\Sanxn$ une série entière de rayon de convergence $R$ et de somme $f$.
+Une primitive de $f$ sur $]-R,R[$ est donnée par
+\[ F \colon x \mapsto \sumni a_n \frac{x^{n+1}}{n+1} = \sum _{n=1}^{+\infty } \frac{a_{n-1}}{n} x^n. \]
+
+Para\\{Proposition}[dérivation terme à terme]
+
+Soit $\Sanxn$ une série entière de rayon de convergence $R$ et de somme $f$.
+Alors $f$ est une fonction de classe $\CC1$ sur $]-R,R[$
+et $\forall x\in ]-R,R[$,
+\[ f'(x) = \sum _{n=1}^{+\infty } n a_n x^{n-1} = \sumni (n+1) a_{n+1} \, x^n. \]
+
+Para\\{Théorème}[généralisation]
+
+Soit $\Sanxn$ une série entière de rayon de convergence $R$ et de somme $f$.
+Alors $f$ est une fonction de classe $\CC1$ sur $]-R,R[$
+et $\forall p\in \N $, $\forall x\in]-R,R[$,
+\[ \begin{aligned} f^{(p)}(x)
+    &= \sum _{n=p}^{+\infty } a_n n(n-1) \cdots (n-p+1) x^{n-p} \\
+    &= \sumni a_{n+p} \frac{(n+p)!}{n!} x^n.
+\end{aligned} \]
+
+Para\\{Corollaire}
+
+Soit $\Sanxn$ une série entière de rayon de convergence $R>0$ et de somme $f$.
+Alors pour tout $n\in \N $, on a
+\[ a_n = \frac{f^{(n)}(0)}{n!}. \]
+
+% -----------------------------------------------------------------------------
+\section{Fonctions développables en séries entières}
+
+Para\\{Notation}
+\begin{itemize}
+\item
+  $I$ désigne un intervalle de $\R $ tel qu'il existe
+  $\alpha> 0$ tel que $]-\alpha,+\alpha[\subset I$.
+\end{itemize}
+
+\begin{Df}
+
+Soit $f:I\to \C$.
+On dit que $f$ est \defi{développable en série entière} au voisinage de $0$
+si et seulement si il existe $\alpha > 0$
+et une série entière $\Sanxn$ de rayon de convergence $R?\alpha $ tels que
+$]-\alpha ,\alpha [\subset I$ et
+\[ \forall x\in ]-\alpha ,\alpha [,\quad f(x) = \sumni a_n x^n. \]
+\end{Df}
+Para\\{Proposition}
+
+Si $f:I\to \C$ est développable en série entière au voisinage de $0$,
+alors il existe $\alpha > 0$ tel que
+$f$ soit de classe $\CC1$ sur $]-\alpha ,\alpha[$.
+
+\begin{Df}
+
+Soit $f:I\to \C$ une fonction de classe $\CC1$.
+On appelle \defi{série de Taylor} de $f$ au voisinage de $0$
+la série entière
+\[ \sum_n a_n z^n \quad \text{où} \quad \forall n\in \N,\quad a_n = \frac{f^{(n)}(0)}{n!}. \]
+\end{Df}
+Para\\{Théorème}[unicité du développement en série entière]
+
+Soit $f:I\to \C$ développable en série entière au voisinage de $0$.
+Alors tout développement en série entière de $f$ au voisinage de $0$
+est égal à sa série de Taylor au voisinage de $0$.
+
+Para\\{Corollaire}
+
+Soit $f:I\to \C$ développable en série entière au voisinage de $0$.
+Alors $f$ admet un développement limité au voisinage de $0$ à tout ordre,
+et ce développement limité s'obtient en tronquant le développement en série entière.
+
+Para\\{Proposition}
+
+Soit $f:I\to \C$.
+Alors $f$ est développable en série entière au voisinage de $0$
+si et seulement si il existe $\alpha > 0$ tel que
+\begin{itemize}
+\item
+  $f$ est de classe $\CC1$ sur $]-\alpha ,\alpha[$,
+\item
+  la série de Taylor de $f$ converge sur $]-\alpha ,\alpha[$,
+\item
+  $f$ soit égale à la somme de se série de Taylor sur $]-\alpha ,\alpha [$.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Fonctions usuelles}
+
+\subsection{Exponentielle complexe}
+
+Para\\{Proposition}
+
+La série entière $\sum _n \frac{z^n}{n!}$ a un rayon de convergence infini.
+Notons $\phi: z \mapsto \sumni \frac{z^n}{n!}$ sa somme.
+On montre successivement:
+\begin{enumerate}
+\item
+  $\phi(z_1,z_2)\in \C^2$, $?(z_1+z_2) =?(z_1)?(z_2)$
+\item
+  $\forall x\in \R $, $\phi(x) = e^x$
+\item
+  $\forall \theta\in \R $, $\phi(i\theta) = \cos\theta+ i \sin\theta$
+\item
+  $\forall (x,y)\in \R ^2$, $\phi(x+i y) = e^x(\cos y + i \sin y)$
+\end{enumerate}
+
+\begin{Df}
+
+On appelle \defi{exponentielle} la fonction définie par
+\[ \forall z\in \C, \quad \exp(z) = \sumni \frac{z^n}{n!}. \]
+Il s'agit d'une série entière de rayon de convergence infini.
+On note fréquemment $e^z$ au lieu de $\exp(z)$.
+\end{Df}
+Para\\{Proposition}
+
+Soit $z\in \C$ fixé et $\Fonction{\phi}{\R }{\C}{t}{\exp(tz)}$\\
+Alors $\phi$ est de classe $\CC\infty$ et
+\[ \forall n\in \N , \quad \forall t\in \R , \quad \phi^{(n)}(t) = z^n \exp(tz). \]
+
+\subsection{Trigonométrie}
+
+Para\\{Définitions}
+
+On définit, pour tout $z\in \C$:
+\begin{multicols}{2}
+  \begin{itemize}
+  \item
+    $\cos z = \frac{e^{i z} + e^{-i z}}{2}$
+  \item
+    $\sin z = \frac{e^{i z} - e^{-i z}}{2i}$
+  \item
+    $\ch z = \frac{e^{z} + e^{-z}}{2}$
+  \item
+    $\sh z = \frac{e^{z} - e^{-z}}{2}$
+  \end{itemize}
+\end{multicols}
+Il s'agit de prolongement des fonctions cosinus, sinus, cosinus hyperbolique
+et sinus hyperbolique, classiquement définies sur $\R $.
+
+Para\\{Proposition}
+
+\begin{itemize}
+\item
+  Les formules usuelles de trigonométries restent valables,
+  notamment $\forall(a,b)\in \C^2$:
+  \begin{itemize}
+  \item
+    $\cos(a+b) = \cos(a) \cos(b) - \sin(a) \sin(b)$
+  \item
+    $\sin(a+b) = \sin(a) \cos(b) + \cos(a) \sin(b)$
+  \end{itemize}
+\item
+  On peut passer de la trigonométrie directe
+  à la trigonométrie hyperbolique sachant que $?z\in \C$:
+  \begin{multicols}{2}
+    \begin{itemize}
+    \item
+      $\ch(i z) = \cos(z)$
+    \item
+      $\sh(i z) = i\sin(z)$
+    \item
+      $\cos(i z) = \ch(z)$
+    \item
+      $\sin(i z) = i\sh(z)$
+    \end{itemize}
+  \end{multicols}
+\end{itemize}
+
+Para\\{Proposition}
+
+On a, pour tout $z\in \C$:
+\begin{itemize}
+\item
+  $\DS \cos z  = \sum _{n=0}^{+\infty } \frac{(-1)^n}{(2n)!} \, z^{2n}$
+\item
+  $\DS \sin z  = \sum _{n=0}^{+\infty } \frac{(-1)^n}{(2n+1)!} \, z^{2n+1}$
+\item
+  $\DS \ch z = \sum _{n=0}^{+\infty } \frac{1}{(2n)!} \, z^{2n}$
+\item
+  $\DS \sh z = \sum _{n=0}^{+\infty } \frac{1}{(2n+1)!} \, z^{2n+1}$
+\end{itemize}
+
+Il s'agit de séries entières de rayon de convergence infini.
+
+\subsection{$x \mapsto (1+x)^\alpha $}
+
+Para\\{Proposition}
+
+Soit $\alpha \in \R $ et $f:]-1,+\infty[\to \R $ définie par $f(x)=(1+x)^\alpha $.
+Alors $f$ est développable en série entière au voisinage de $0$.
+Plus précisément, on a
+\[ \forall x\in ]-1,1[, \quad (1+x)^\alpha = \sum _{n=0}^{+\infty } a_n x^n \]
+où $a_0 = 1$ et \[ \forall n\in \N*,\quad a_n = \frac{1}{n!}\prod_{k=0}^{n-1} (\alpha -k). \]
+On note parfois $a_n = \binom{\alpha }{n}$.
+Il s'agit d'une série entière de rayon de convergence égal à~1
+si $\alpha ?\N $, et $+\infty $ si $\alpha \in \N $.
+
+Para\\{Remarque}
+
+Si $\alpha \in ?$, le développement est également valable dans $\C$
+\[ ?z\in \C\text{ tel que } \Abs{z}<1, \quad
+(1+z)^\alpha =\sum _{n=0}^{+\infty } a_n z^n, \]
+où $(a_n)_{n\in \N }$ est défini comme ci-dessus.
+
+\begin{Ex}
+
+Déterminer le développement en série entière de la fonction $x\mapsto\arcsin x$.
+\end{Ex}
+\subsection{Fractions rationnelles}
+
+Para\\{Méthode}
+
+Pour obtenir un développement en série entière (au voisinage de $0$)
+d'une fraction rationnelle, on peut:
+\begin{itemize}
+\item
+  la décomposer en éléments simples $\frac{1}{(x-a)^n}$ où $a\in \C^*$;
+\item
+  remarquer que $\frac{1}{(x-a)^n} = (-a)^{-n} \left[ 1+\left(-\frac xa\right) \right]^{-n}$;
+\item
+  se ramener à $(1+u)^\alpha $.
+\end{itemize}
+
+On obtient une série entière de rayon de convergence~$\Abs{a}$.
+\end{document}

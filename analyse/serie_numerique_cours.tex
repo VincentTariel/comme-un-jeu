@@ -7,12 +7,21 @@
 \usepackage[francais]{babel}
 \usepackage{amsmath}
 \usepackage{TikZ}
+\usetikzlibrary{shapes,backgrounds}
 \usepackage{tkz-fct}   
 \usepackage{a4wide,jlq2eams} 
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{slashbox}
 \usepackage{thmbox}
-
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{longtable} 
+\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
+\sectionfont{\color{magenta}}
+\subsectionfont{\color{red}}
+\subsubsectionfont{\color{red}}
+\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}}
 
 \setlength{\shadowsize}{1.5pt}
  
@@ -134,22 +143,22 @@ D'où une contradiction car $\lim_{n\to\infty}S_{n}\geq \frac 1 2 $ et $\lim_{n\t
 \begin{Df}
 
   Soit $\SUI$ une suite numérique.
-  La \emph{série numérique} de \emph{terme général} $u_n$ est la suite $(S_n)_{n\in\N}= (\sum_{k=0}^n u_k)_{n\in\N}$. En particulier on a $$S_0=u_0,\quad S_1=u_0+u_1,\quad S_2=u_0+u_1+u_2.$$
-  $S_n$ s'appelle la \emph{somme partielle} d'ordre $n$ de la série $\SER$.
+  La \defi{série numérique} de \defi{terme général} $u_n$ est la suite $(S_n)_{n\in\N}= (\sum_{k=0}^n u_k)_{n\in\N}$. En particulier on a $$S_0=u_0,\quad S_1=u_0+u_1,\quad S_2=u_0+u_1+u_2.$$
+  $S_n$ s'appelle la \defi{somme partielle} d'ordre $n$ de la série $\SER$.
 \end{Df}
 \begin{Ex}
 La somme partielle de  la série harmonique $\sum \frac 1 n$ est  égale à $S_n=1+\frac 1 2 +\frac 1 3+\cdots +\frac 1 n$. 
 \end{Ex}
 \begin{Df}
 On dit que la série $\SER$ est convergente (respectivement divergente, majorée, minorée, bornée, croissante ou décroissante) si et seulement si la suite $(S_n)_{n\in\N}$ l'est.\\
-Dans ce cas, on appelle \emph{somme de la série} la limite $S$ de la suite de ses sommes partielles $(S_n)_{n\in\N}$, et on la note $\sum_{n=0}^{+\infty} u_n$.
+Dans ce cas, on appelle \defi{somme de la série} la limite $S$ de la suite de ses sommes partielles $(S_n)_{n\in\N}$, et on la note $\sum_{n=0}^{+\infty} u_n$.
 Ainsi, 
 \begin{center}
 \shadowbox{
 $S = \sum_{n=0}^{+\infty} u_n = \lim_{n\to\infty} S_n = \lim_{n\to\infty} \sum_{k=0}^n u_k.$
 }
 \end{center}
-De plus, on appelle \emph{reste} d'ordre $n$ de la série la quantité
+De plus, on appelle \defi{reste} d'ordre $n$ de la série la quantité
 \begin{center}
 \shadowbox{
 $R_n = S - S_n = \sum_{k=0}^{+\infty} u_k -\sum_{k=0}^n u_k = \sum_{k=n+1}^{+\infty} u_k = \sum_{k>n} u_k.$
@@ -228,16 +237,16 @@ Comme contre-exemple, la série $\sum \frac{1}{n(n+1)}=\sum \left(\frac{1}{n}-\fr
 \begin{Prop}
 Soit $\SER$ une série numérique.
 Si la série converge, alors $ \lim_{n\to\infty}u_n= 0$.\\
-On dit que la série numérique $\SER$ est \emph{grossièrement divergente} si $u_n$ ne tend pas vers 0.
+On dit que la série numérique $\SER$ est \defi{grossièrement divergente} si $u_n$ ne tend pas vers 0.
 \end{Prop}
 \begin{proof}
 Soit $\SER$ une série convergente.
 On a $u_n = S_{n}-S_{n-1}.$ Par passage à la limite (l'ensemble des suites convergentes est un espace vectoriel), on a  :$$\lim_{n\to\infty}u_n =\lim_{n\to\infty}( S_{n}-S_{n-1})=S-S=0.$$
 \end{proof}
 \begin{NB}
-La réciproque est \emph{FAUSSE}.
-Le contre-exemple classique est la \emph{série harmonique}
-$\sum_{n\geq 1} \frac1n$ qui est \emph{divergente},
+La réciproque est fausse.
+Le contre-exemple classique est la série harmonique
+$\sum_{n\geq 1} \frac1n$ qui est divergente,
 bien que $ \lim_{n\to\infty} \frac1n =0$.
 \end{NB}
 %
@@ -289,7 +298,7 @@ Comme A est quelconque, cela signifie que $(S_n)$ tend vers l'infini.
 
 
 \begin{Df}
-Une \emph{série à termes positifs} est une série réelle $\SER$ telle que $$\forall n\in\N,\quad u_n\geq 0.$$
+Une \defi{série à termes positifs} est une série réelle $\SER$ telle que $$\forall n\in\N,\quad u_n\geq 0.$$
 \end{Df}
 \begin{Prop}
 Une SATP converge si et seulement si la suite de ses sommes partielles est majorée.\\
@@ -351,8 +360,8 @@ Comme la convergence ne dépend pas des premiers termes, la série $\sum u_n$ est 
 Étudions la nature de la  série $\sum \frac{1}{\sqrt{n}}$. On a  $\frac{1}{n}=\PetitO_\ninf(\frac{1}{\sqrt{n}})$. La série harmonique $\sum \frac 1 n$ est divergente  donc la série $\sum \frac{1}{\sqrt{n}}$ est divergente d'après la règle de comparaison. 
 \end{Ex}
 \begin{Prop}[Règle de comparaison]
-Soit $\SER$ et $\sum v_n$ deux SATP telles que \emph{$u_n \Sim_\ninf v_n$}.
-Alors $\SER$ et $\sum v_n$ ont \emph{même nature}.
+Soit $\SER$ et $\sum v_n$ deux SATP telles que \defi{$u_n \Sim_\ninf v_n$}.
+Alors $\SER$ et $\sum v_n$ ont \defi{même nature}.
 \end{Prop}
 \begin{proof}
 $u_n \Sim_\ninf v_n$ implique que $u_n= \GrandO_\ninf(v_n)$ et que $v_n= \GrandO_\ninf(u_n)$. On conclut à l'aide de la proposition~\ref{prop:comp}.
@@ -515,7 +524,7 @@ la convergence d'une série à termes de signe variable.\\
 Si la SATP $\sum |u_n|$ converge alors $\sum u_n$ converge.
 \end{Th}
 \begin{Df}[Absolue convergence]
-La série est dite \emph{absolument convergente} si la série $\sum |u_n|$ converge.\\ 
+La série est dite \defi{absolument convergente} si la série $\sum |u_n|$ converge.\\ 
 Le théorème précédent s'énonce ainsi : "toute série absolument convergente est convergente".
 \end{Df}
 \begin{Ex}
@@ -572,7 +581,7 @@ La série alternée $\sum \frac{(-1)^n}{n}$ respecte le critère spéciale donc elle
 \section{Produit de Cauchy}
 
 \begin{Df}[Produit de Cauchy]
-Le \textit{produit de Cauchy} de deux séries $\sum a_{n}$  et $\sum b_{n}$ est la série de terme général 
+Le \defi{produit de Cauchy} de deux séries $\sum a_{n}$  et $\sum b_{n}$ est la série de terme général 
 $$ c_{n}=\sum _{k=0}^{n}a_{k}b_{n-k} $$
 \end{Df}
 \begin{Th}
