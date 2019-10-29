@@ -84,62 +84,44 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Séries entières}
 
-
+\begin{Ex}[Série exponentielle]
 Considérons l'équation différentielle suivante :
-$$y' = y ,\quad y(0)=1 (E)$$
-L'unique solution sur $\R^=$ de cette équation différentielle linéaire homogène du premier ordre sans
-second membre est l'application $x\to e^x$. Par définition, la fonction exponentielle est l'unique fonction égale à sa dérivée.\\
+$$y' = y ,\quad y(0)=1\quad (E)$$
+Par définition, l'unique solution sur $\R$ de cette équation différentielle linéaire homogène du premier ordre sans
+second membre est l'application $x\to e^x$.\\
 \begin{enumerate}
 \item Déterminons les solutions de $(E)$ sous forme polynomiale.  Soit $f:x\to \sum_{n=0}^{N}a_n x^n$. Pour des raisons de
 degré, uniquement le polynôme nul convient.
 \item Déterminons les solutions de $(E)$ sous forme "polynomiale de degré infini". Soit $f:x\to \sum_{n=0}^{+\infty}a_n x^n$.
-"Soit x tel que 
-
-Par dérivation, on obtient :
+"Soit $x$."\\ 
+"Par dérivation", on obtient :
 \begin{align*}
-f'(x)=&(\sum_{n=0}^{+\infty}a_n x^n)'\\
-f'(x)=&\sum_{n=0}^{+\infty}(a_n x^n)' \text{ "par permutaion dérivé et somme" }\\
-f'(x)=&\sum_{n=1}^{+\infty} n a_n x^{n-1} \\
-f'(x)=&\sum_{n=0}^{+\infty} (n+1) a_{n+1} x^{n}\text{ "par translation d'indice" } \\
+\frac{d}{dx}f(x)=&\frac{d}{dx}(\sum_{n=0}^{+\infty}a_n x^n)\\
+\frac{d}{dx}f(x)=&\sum_{n=0}^{+\infty}\frac{d}{dx}(a_n x^n) \text{ "par interversion des symboles dérivée et somme" }\\
+\frac{d}{dx}f(x)=&\sum_{n=1}^{+\infty} n a_n x^{n-1} \\
+\frac{d}{dx}f(x)=&\sum_{n=0}^{+\infty} (n+1) a_{n+1} x^{n}\text{ par translation d'indice } \\
 \end{align*}
 Comme $f'(x)=f(x)$, on obtient :
 $$\sum_{n=0}^{+\infty}a_n x^n=\sum_{n=0}^{+\infty} (n+1) a_{n+1} x^{n}.$$
-Par identification, on obtient :
-$$ \forall n \in \N (n + 1)a_{n+1} = a_n.$$
-%Ce qui conduit rapidement à an =
-%a0
-%n!
-%pour tout n ? N. Ainsi, si toutes les opérations effectuées sont
-%licites, en prenant arbitrairement a0 = 1,
-%f (x ) =
-%+
-%X?
-%n=0
-%x
-%n
-%n!
-%apparaît comme une solution de l?équation (E).
-%1. Pourquoi diantre se limiter à des sommes finies...
-%2 Chap. 2 Séries entières
-%? L?équation (E) n?est cependant pas très mystérieuse, nous savons que ses solutions sont de la forme
-%x 7? ?e
-%x
-%. Comme la fonction exponentielle est l?unique solution de (E) qui vérifie la condition initiale
-%y (0) = 1, on trouve alors :
-%?x ? R exp(x ) =
-%+
-%X?
-%n=0
-%x
-%n
-%n!
+"Par identification", on obtient :
+$$ \forall n \in \N:\quad (n + 1)a_{n+1} = a_n.$$
+Par récurrence, on prouve que $$a_n=\frac{a_0}{n!}.$$ Comme la condition initiale est $f(0)=1$ et  $f(0)= \sum_{n=0}^{+\infty}a_n 0^n=a_0$, on obtient $a_0=1$.  
+Comme la fonction exponentielle est l'unique solution de (E) qui vérifie la condition initiale, on trouve alors :
+$$\forall x \in \R :\quad \exp(x) = \sum_{n=0}^{+\infty}  \frac{x^{n}}{n!}.$$
+\item Déterminons les solutions de $(E)$ sur $\C$. Par un raisonnement similaire, l'unique solution sur $\C$ est la fonction exponentielle définie par : 
+$$\forall z \in \C :\quad \exp(z) = \sum_{n=0}^{+\infty}  \frac{z^{n}}{n!}.$$  
 \end{enumerate}
-Ce premier exemple soulève de nombreuses questions auxquelles nous al
-
-Une série entière est une série de fonctions de la forme
+\end{Ex}
+Une \defi{série entière} est un "polynôme de degré infini" :
 $$\sum a_{n}z^{n}$$
 où les coefficients $a_n$ forment une suite réelle ou complexe et $z$ une variable complexe.\\
-Les séries entières possèdent des propriétés de convergence remarquables, qui s'expriment pour la plupart à l'aide de son rayon de convergence $R$, grandeur associée à la série. Sur le disque de convergence (disque ouvert de centre 0 et de rayon R), la fonction somme de la série peut être dérivée indéfiniment terme à terme.\\
+Dans ce chapitre, nous allons donner du sens aux guillemets de l'exemple précédent :
+\begin{enumerate}
+\item "Soit $x$." : déterminer le domaine de définition de la fonction $f:x\to \sum_{n=0}^{+\infty}a_n x^n$, c'est à dire déterminer le domaine de convergence de la série $\sum_{n=0}^{+\infty}a_n x^n$,
+\item "Par dérivation"  : déterminer la dérivabilité de la fonction $f:x\to \sum_{n=0}^{+\infty}a_n x^n$, 
+\item "Par interversion des symboles dérivée et somme" : démontrer l'égalité,
+\item "Par identification" : démontrer l'unicité du développement sous la forme $\sum_{n=0}^{+\infty}a_n x^n$. 
+\end{enumerate}
 Les séries entières sont 
 \begin{enumerate}
 \item un outil :
@@ -149,9 +131,9 @@ Les séries entières sont
 \item dans la modélisation des systèmes dynamiques de manière discrète à l'aide de la transformée en $Z$, soit $s(n)$ l'état du système au temps $n$, sa transformée en $Z$ est
 $$ S(z) = \mathcal{Z}\{s(n)\} =\sum_{n=-\infty}^{+\infty}s(n)z^{-n}.$$
 \end{enumerate}
-\item un objet préalable à l'analyse complexe des fonctions holomorphes et analytiques.
+\item un objet préalable à l'analyse complexe des fonctions holomorphes et analytiques par exemple la fonction exponentielle définie sur $\C$ dans l'exemple 1.
 \end{enumerate}
-
+Les séries entières sont un exemple de séries de fonctions. Pour une cohérence mathématiques, il faudrait étudier d'abord le cadre général des suites et séries de fonctions avant l'exemple. Cependant, d'un point de vue pédagogique, nous commençons par cet exemple comme introduction du cadre général. Nous utiliserons voir chapitre $(f_n)_{n\in N}$ quand ferons référence au cadre général.     
 
 
 \section{Généralités}
@@ -165,13 +147,13 @@ La \defi{somme} de la série entière est la fonction \[ f \colon z \mapsto \sum_{
 \end{Df}
 
 \begin{Ex}[Série exponentielle] 
-La somme de la série $\sum_n \frac {x^{n}}{n!}$ est la fonction exponentielle :
+Comme vu dans l'exemple 1, la somme de la série $\sum_n \frac {x^{n}}{n!}$ est la fonction exponentielle :
 $$\forall x\in \R : e^{x}=\sum _{n=0}^{\infty }{\frac {x^{n}}{n!}}=1+x+{\frac {x^{2}}{2!}}+{\frac {x^{3}}{3!}}+\cdots .$$
 \end{Ex}
 \begin{figure}
 \begin{center}
 \includegraphics[width=2.5cm]{Exp_series-0.png}\includegraphics[width=2.5cm]{Exp_series-1.png}\includegraphics[width=2.5cm]{Exp_series-2.png}\includegraphics[width=2.5cm]{Exp_series-3.png}\includegraphics[width=2.5cm]{Exp_series-4.png}\includegraphics[width=2.5cm]{Exp_series-5.png}
-\caption{La fonction exponentielle, $x\mapsto e^x$ en bleue, et la somme des $n+1$ termes $x\mapsto \sum_0^n \frac{x^n}{n!}$ en rouge. }
+\caption{La fonction exponentielle, $x\mapsto e^x$ en bleue, et les fonctions sommes partielles $x\mapsto \sum_{k=0}^{n} \frac{x^k}{k!}$ pour différents $n$ en rouge. On observe la convergence de la fonction somme partielle vers la fonction exponentielle.}
 \end{center}
 \end{figure}
 \begin{Ex}[Série géométrique] 
@@ -191,8 +173,6 @@ Alors:
   Plus précisément, la série de fonctions $\Sanzn$ converge normalement sur $\{z\in \C:\Abs{z}\leq r\}$ dès que $0 \leq r < \Abs{z_0}$.
 \end{enumerate}
 \end{Lem}
-
-
 
 \begin{NB} Il n'y a pas toujours convergence normale (ni uniforme) sur $\{z\in \C:\Abs{z}<\Abs{z_0}\}$.
 \end{NB}
