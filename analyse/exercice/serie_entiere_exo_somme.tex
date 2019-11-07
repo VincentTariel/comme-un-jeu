@@ -1,0 +1,124 @@
+ \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Rayon de convergence et somme]
+Calculer le rayon de convergence  puis la somme de :
+\label{exo:2}
+\begin{multicols}{3}
+  	\begin{enumerate}
+    \item $ \sum\limits_{n \geqslant 0} {\frac{{n - 1}}{{n!}}x^n } $
+     
+    \item $ \sum\limits_{n \geqslant 0} {\frac{{(n + 1)(n - 2)}}{{n!}}x^n } $
+
+	\item $ \sum\limits_{n \geqslant 2} {\frac{{x^n }}{{n(n - 1)}}} $
+	
+	\item $ \sum\limits_{n \geqslant 0} \frac{3n }{n+2} x^n$
+	
+	\item $ \sum\limits_{n \geqslant 0} \frac{x^{4n} }{ (4n)! } $	
+  \end{enumerate} 
+\end{multicols} 
+\begin{correction}
+\renewcommand {\theenumi}{\alph{enumi}}
+  	\begin{enumerate}
+    \item %$ \sum\limits_{n \geqslant 0} {\frac{{n - 1}}{{n!}}x^n } $
+    \begin{itemize}
+    	\item Rayon de CV $R = + \infty$ (utiliser la règle de D'Alembert \dots)
+    	
+    	\item Pour tout $x \in \R$ :
+
+L'égalité est bien valable car chacune des séries du membre de droite a aussi $+ \infty$ pour rayon de CV 
+    	
+\hspace{0.7cm} $ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n =  
+\sum\limits_{n = 0}^{ + \infty } {\frac{{n}}{{n!}}x^n }  - \sum\limits_{n = 0}^{ + \infty } {\frac{{1}}{{n!}}x^n } $
+    	
+\hspace{0.7cm} $\phantom{ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n  } =  
+\sum\limits_{n = 1}^{ + \infty } \frac{{n}}{{n!}}x^n  - \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
+
+\hspace{0.7cm} $\phantom{ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n  } = 
+x \sum\limits_{n = 1}^{ + \infty } \frac{1}{ (n-1)! }x^{n-1}  - \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
+
+\hspace{0.7cm} $\phantom{ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n  } = 
+\sum\limits_{n = 0}^{ + \infty } \frac{1}{ n! }x^{n}  - \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
+
+\hspace{0.7cm} $\phantom{ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n  } = x \mathrm{e}^x  -  \mathrm{e}^x $
+    \end{itemize}
+
+     
+    \item %$ \sum\limits_{n \geqslant 0} \frac{(n + 1)(n - 2)}{n!}x^n  $
+    \begin{itemize}
+    	\item Rayon de CV $R = + \infty$ (utiliser la règle de D'Alembert \dots)
+    	
+    	\item Pour tout $x \in \R$ : sachant que $(n+1)(n-2) = n^2 - n - 2 = n(n-1) - 2$
+ 
+L'égalité est bien valable car chacune des séries du membre de droite a aussi $+ \infty$ pour rayon de CV 
+    	
+\hspace{0.7cm} $\sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n  =  
+\sum\limits_{n = 0}^{ + \infty } \frac{ n(n-1) }{ n! }x^n   - 2 \sum\limits_{n = 0}^{ + \infty } \frac{ 1 }{ n!} x^n  $
+    	
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n   } =  
+\sum\limits_{n = 2}^{ + \infty } \frac{ n(n-1) }{ n! } x^n  - 2 \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
+
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n   } =   
+x^2 \sum\limits_{n = 2}^{ + \infty } \frac{ 1 }{ (n-2) ! } x^{n-2}  - 2 \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
+
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n   } =  
+x^2 \sum\limits_{n = 0}^{ + \infty } \frac{ 1 }{ n! } x^n  - 2 \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
+
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n   } = 
+x^2 \mathrm{e}^x  -  2 \mathrm{e}^x $
+    \end{itemize}
+    
+
+
+	\item %$ \sum\limits_{n \geqslant 2} \frac{x^n }{n(n - 1)} $
+    \begin{itemize}
+    	\item Rayon de CV $R = 1$ (utiliser la règle de D'Alembert \dots)
+    	
+    	\item Pour tout $x \in ]-1 ; 1[$ : sachant que par décomposition en éléments simples $\frac{1}{n(n-1)} = \frac{1}{n-1} - \frac{1}{n}$
+    	
+    	 L'égalité est bien valable car chacune des séries du membre de droite a aussi $1$ pour rayon de CV  
+    	
+\hspace{0.7cm} $\sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n(n - 1)}  =  
+\sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n - 1} -  \sum\limits_{n = 2}^{ + \infty } \frac{ x^n }{ n }$
+    	
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n(n - 1)}  }=    
+x \sum\limits_{n = 2}^{ + \infty } \frac{x^{n-1} }{n - 1} -  \sum\limits_{n = 1}^{ + \infty } \frac{ x^n }{ n } + x$
+
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n(n - 1)}  }=    
+x \sum\limits_{n = 1}^{ + \infty } \frac{x^{n}}{n} -  \sum\limits_{n = 1}^{ + \infty } \frac{ x^n }{ n } + x$
+
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n(n - 1)}  }=  
+- x \ln(1-x)   +  \ln(1-x) + x $
+    \end{itemize}	
+
+	\item %$ \sum\limits_{n \geqslant 0} \frac{3n }{n+2} x^n$
+    \begin{itemize}
+    	\item Rayon de CV $R = 1$ (utiliser la règle de D'Alembert \dots)
+    	
+    	\item Pour tout $x \in ]-1 ; 1[$ : sachant que par décomposition en éléments simples $\frac{3n}{n+2} = 3\left( 1 - 2 \frac{1}{n+2} \right)$
+   
+  L'égalité ci-dessous est vraie car chacune des séries du membre de droite a aussi $1$ pour rayon de CV     
+    	
+\hspace{0.7cm} $\sum\limits_{n = 0}^{ + \infty } \frac{3n }{n+2}   =  
+3 \left( \sum\limits_{n = 0}^{ + \infty } x^n  -  2 \sum\limits_{n = 0}^{ + \infty } \frac{ x^n }{ n+2 } \right)$
+
+Soit $x=0$ et dans ce cas la somme est nulle, soit $x \neq 0$ et on peut factoriser par $x$ :
+
+\hspace{0.7cm} $\sum\limits_{n = 0}^{ + \infty } \frac{3n }{n+2}   =  
+3 \left( \sum\limits_{n = 0}^{ + \infty } x^n  -  \frac{2}{x^2} \sum\limits_{n = 0}^{ + \infty } \frac{ x^{n+2} }{ n+2 } \right)$
+    	
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty }  \frac{3n }{n+2}   }  =    
+3 \left( \sum\limits_{n = 0}^{ + \infty } x^n  -  \frac{2}{x^2} \sum\limits_{ n = 2 }^{ + \infty } \frac{ x^{n} }{ n }  \right)$
+
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty }  \frac{3n }{n+2}   }  =    
+3 \left( \sum\limits_{n = 0}^{ + \infty } x^n  -  \frac{2}{x^2} \sum\limits_{ n = 1 }^{ + \infty } \frac{ x^{n} }{ n } + -  \frac{2}{x^2} x   \right)$
+
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty }  \frac{3n }{n+2}   }  =    
+3 \left(  \frac{1}{1-x}  + \frac{2}{x^2} \ln(1-x) +  \frac{2}{x}   \right)$
+    \end{itemize}		
+	
+	\item %$ \sum\limits_{n \geqslant 0} \frac{x^{4n} }{ (4n)! } $	
+	Il faut le voir mais on a immédiatement $R = + \infty$ par linéarité avec :
+	
+	\hspace{0.7cm}$ \sum\limits_{n \geqslant 0} \frac{x^{4n} }{ (4n)! } = \tfrac{1}{2} \left( \mathrm{ch}(x) + \cos(x) \right)$
+	
+ \end{enumerate} 
+\end{correction}
+\finexo 

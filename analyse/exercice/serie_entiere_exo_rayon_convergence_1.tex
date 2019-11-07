@@ -1,0 +1,190 @@
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Rayon de convergence] 
+Déterminer le rayon de convergence des séries entières suivantes :
+\begin{multicols}{2}
+  	\begin{enumerate}
+    \item $\sum\limits {\frac{{n^2 + 1}}{{3^n }}z^n }$
+     
+    \item $\sum\limits {{\mathrm{e}}^{ - n^2 } z^n }$
+     
+    \item $\sum\limits {\frac{{\ln n}}{{n^2 }}z^{2n} }$
+
+	\item $ \sum\limits {\frac{{n^n }}{{n!}}z^{3n} }$
+	
+	\item $ \sum\limits a_n z^{n} $ avec $a_n = \ln \left( 1 + \frac{ 1 }{ n } \right)$	
+
+	\item $ \sum\limits a_n z^{n} $ avec $a_n = \frac{ \mathrm{i}^n n^2 }{ n^2 + 1 }$	
+	
+	\item $ \sum\limits a_n z^{n} $ avec $a_n = \frac{1}{ n \binom{2n}{n} }$
+
+	\item $ \sum\limits a_n z^{n} $ avec $a_n = \tan \left( \frac{2n \pi}{3} \right)$
+
+	\item $ \sum\limits a_n z^{n} $ avec 
+	$a_n = \begin{cases}
+	a_{2n} &= a^n \\
+	a_{2n+1} &= b^n
+	\end{cases}$ où $0<a<b$
+  \end{enumerate}
+  \end{multicols}
+\begin{correction}
+On prend dans chaque cas $z \neq 0$. et on revient à la règle de d'Alembert des séries numériques :
+
+
+\begin{enumerate}
+\item %$\sum\limits \frac{{n^2 + 1}}{{3^n }  z^n }$
+	Pour tout $n \in \N$ : $a_n = \frac{ n^2 + 1 }{ 3^n } > 0$ et :    
+    
+		\hspace{0.7cm} $\frac{ a_{n+1} }{ a_n } |z| = \frac{ \frac{ (n+1)^2 + 1 }{ 3^{n+1} } }{ \frac{n^2 + 1}{ 3^n }  } |z|$
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \frac{ (n+1)^2 + 1 }{ 3 (n^2 + 1) } |z| $
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } \underset{ n \to + \infty }{\sim} \frac{ n^2 }{ 3  n^2}|z| $
+				
+	Donc :
+	
+		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } |z| = |z| \frac{1}{3}$ 
+		
+	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = 3$.
+			
+     
+\item %$\sum\limits \mathrm{e}^{ - n^2 } z^n $
+	Pour tout $n \in \N$ : $a_n = \mathrm{e}^{ - n^2 } > 0$ et :    
+    
+		\hspace{0.7cm} $\frac{ a_{n+1} }{ a_n } |z| = \frac{ \mathrm{e}^{ - (n+1)^2 }  }{  \mathrm{e}^{ - n^2 } } |z|$
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \mathrm{e}^{ - 2n - 1 }|z|$
+		
+	Donc :
+	
+		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } |z| = 0$ 
+		
+	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = + \infty$.
+	
+	     
+\item %$\sum\limits \frac{ \ln n }{ n^2 }z^{2n} $
+	Pour tout $n \in \N \backslash \{ 0 ; 1 \}$ : $a_n = \frac{ \ln n }{ n^2 } > 0$ et :    
+    
+ 	\hspace{0.7cm} $\frac{ a_{n+1}|z|^{2(n+1)}}{ a_n|z|^{2n} }  = \frac{ \frac{ \ln (n+1) }{ (n+1)^2 } }{ \frac{ \ln n }{ n^2 }  } |z|^2$
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \frac{ n^2  \ln(n+1) }{ (n+1)^2 \ln n } |z|^2$
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } \underset{ n \to + \infty }{\sim} |z|^2 $
+		
+	Donc :
+	
+		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } |z| = 1 |z|^2$ 
+		
+	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = \sqrt{\frac{1}{1}}$.
+
+
+\item %$ \sum\limits  \frac{n^n }{n!}z^{3n} $ 
+%
+
+Pour tout $n \in \N^*$ : $u_n = \frac{n^n }{n!} |z|^{3n}> 0$ et :    
+    
+		\hspace{0.7cm} $\frac{ u_{n+1} }{ u_n } = \left( \frac{n+1}{n}\right)^n |z|^3$
+
+		\hspace{0.7cm} $\phantom{ \frac{ u_{n+1} }{ u_n } } = \mathrm{e}^{n \ln \left( 1+\frac{1}{n} \right) } |z|^3$
+
+		\hspace{0.7cm} $\phantom{ \frac{ u_{n+1} }{ u_n } } \underset{ n \to + \infty }{=} \mathrm{e}^{n   \left( \frac{1}{n} +  \circ \left( \frac{1}{n} \right) \right) } |z|^3$
+		
+	Donc :
+	
+		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ u_{n+1} }{ u_n } = \mathrm{e} \times |z|^3$ 
+		
+	D'après la règle de D'Alembert la série CV pour $ \mathrm{e} \times |z|^3 < 1$ soit $|z| < \frac{1}{\sqrt[3]{\mathrm{e}}}$, et diverge pour $r > \frac{1}{\sqrt[3]{\mathrm{e}}}$.	
+
+\smallskip
+
+On en déduit d'après la caractérisation du rayon de CV que $R_a = 	\frac{1}{\sqrt[3]{\mathrm{e}}}$.
+	
+	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \ln \left( 1 + \frac{ 1 }{ n } \right)$
+	Pour tout $n \in \N$ : $a_n = \ln \left( 1 + \frac{ 1 }{ n } \right) > 0$ et :    
+    
+		\hspace{0.7cm} $\frac{ a_{n+1} }{ a_n } |z| = \frac{ \ln \left( 1 + \frac{ 1 }{ n+1 } \right) }{ \ln \left( 1 + \frac{ 1 }{ n } \right)  } |z|$
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } \underset{ n \to + \infty }{\sim} \frac{ \frac{1}{n+1} }{ \frac{1}{n} } |z|$
+				
+	Donc :
+	
+		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } = 1 \times |z|$ 
+		
+	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = 1$.	
+		
+
+	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \frac{ \mathrm{i}^n n^2 }{ n^2 + 1 }$
+Les coefficients ne sont pas réels (et pas positifs), on travaille alors avec les modules.
+	
+	Pour tout $n \in \N$ : $|a_n| = \frac{ n^2 }{ n^2 + 1 } > 0$ et :    
+    
+		\hspace{0.7cm} \dots (à vous, c'est facile avec les équivalents)
+				
+	Donc :
+	
+		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ |a_{n+1}| }{ |a_n| } |z| = |z|$ 
+		
+	D'après la règle de D'Alembert le rayon de CV de $\sum\limits |a_n| z^{n} $ vaut :
+	%µ$1$, or $\sum\limits |a_n| z^{n} $ et $\sum\limits a_n z^{n}$ ont le même rayon de CV, donc :
+	 $R_a = 1$, .
+			
+	
+	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \frac{1}{ n \binom{2n}{n} }$
+	Pour tout $n \in \N$ : $a_n = \frac{1}{ n \binom{2n}{n} } > 0$ et :
+    
+		\hspace{0.7cm} $\frac{ a_{n+1} }{ a_n } |z| = \frac{ \frac{ 1 }{ n \binom{2n+2}{n+1} } }{  \frac{1}{ n \binom{2n}{n} }  } |z|$
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \frac{ n \times (2n)! \times ((n+1)!)^2 }{ (n+1) \times (2n+2)! \times (n!)^2  } |z|$
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \frac{ n }{ 2 (2n+1) } |z|$
+				
+	Donc :
+	
+		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } = \frac{|z|}{4}$ 
+		
+	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = 4$.
+
+
+
+	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \tan \left( \frac{2n \pi}{3} \right)$
+On analyse les valeurs de $a_n$, avec la $\pi$-périodicité de tan : 
+
+\hspace{0.7cm} $\forall n \in \N$, $a_{n+3} = a_n$
+
+Donc $a_n$ ne prend que trois valeurs : pour tout $p \in \N$, 
+$\begin{cases}
+a_{3p} & = a_0 = 0 \\
+a_{3p+1} & = a_1 = - \sqrt{3} \\
+a_{3p+2} & = a_2 = \sqrt{3} \\
+\end{cases}$.
+
+Point de critère de D'Alembert possible directement (indirectement oui)... mais si on a bien compris ce qu'est un rayon de CV c'est rapide :
+
+On déduit des valeurs d'une part que $a_n \underset{n \to + \infty}{\nrightarrow} 0$ donc $\sum\limits a_n 1^{n} $ diverge grossièrement, d'où $R_a \leqslant 1$ avec la caractérisation du rayon de CV.
+
+Et d'autre part que  $(|a_n| 1^{n}) $ est bornée, donc que $R_a \geqslant 1$ avec la définition du rayon de CV.
+
+Finalement : $R_a = 1$
+
+
+	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \begin{cases} a_{2n} &= a^n \\ a_{2n+1}= & b^n \end{cases}$ où $0<a<b$
+Le règle de D'Alembert n'est pas exploitable directement ici.
+
+On revient à la définition du rayon de CV. et on utilise les suites extraites des termes d'indices pairs et impairs.
+
+Soit $r > 0$, la suite $(a_n r^n)$ est bornée équivaut à $(a_{2n} r^{2n})$ et $(a_{2n+1} r^{2n+1})$ sont bornées.
+
+\begin{itemize}
+	\item $a_{2n} r^{2n} = (a r^2)^n$ donc $(a_{2n} r^{2n})$ est une suite géométrique de raison $a r^2$,
+	
+	elle est bornée lorsque $a r^2 \leqslant 1 \Longleftrightarrow r \leqslant \frac{1}{\sqrt{a}}$.
+
+	\item $a_{2n+1} r^{2n+1} = r \times (b r^2)^n$ donc $(a_{2n+1} r^{2n+1})$ est une suite géométrique de raison $b r^2$,
+	
+	elle est bornée lorsque $b r^2 \leqslant 1 \Longleftrightarrow r \leqslant \frac{1}{\sqrt{b}}$.
+	
+	\item Et de plus  :  $0<a<b \Rightarrow  \frac{1}{\sqrt{b}} <  \frac{1}{\sqrt{a}}$
+\end{itemize}
+
+Donc $(a_n r^n)$ est bornée lorsque $r \leqslant \frac{1}{\sqrt{b}}$, le rayon de CV est $R_a = \frac{1}{\sqrt{b}}$.
+  \end{enumerate}
+\end{correction}
+\finexo

@@ -1,0 +1,26 @@
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, derivation]
+On considère la série entière de la variable réelle   $\sum _{n\geq 3}\frac {x^{n}}{(n+1)(n-2)}$
+\begin{enumerate}
+\item Déterminer le rayon de convergence $ R$ de cette série entière. Est-elle convergente pour $|x|=R$ ?
+\item Pour tout nombre réel $x$ tel que la série entière précédente converge, on note $S(x)$ sa somme.\\
+Expliciter la dérivée de la fonction $x\mapsto xS(x)$  sur $ ]-R,R[$.\\
+En déduire $ S(x)$ pour $x$ appartenant à $]-R,R[$.\\
+\item Calculer la somme de chacune des séries numériques suivantes :
+$$ \sum _{n\geq 3}(-1)^{n}{\frac {R^{n}}{(n+1)(n-2)}},$$
+$$ \sum _{n\geq 3}{\frac {R^{n}}{(n+1)(n-2)}}.$$ 
+\end{enumerate}
+\begin{correction}
+\begin{enumerate}
+\item $R=1$. En effet, $\frac {|x|^{n}}{(n+1)(n-2)}\sim {\frac {|x|^{n}}{n^{2}}}$. Donc si $|x|\leq 1$, la série est absolument convergente (par comparaison avec la série de Riemann convergente $\sum _{n\geq 1}{\frac {1}{n^{2}}}$) tandis que si $|x|>1$ , $\frac {|x|^{n}}{n^{2}}\to +\infty $ et la série diverge grossièrement.
+\item On peut naturellement dériver la fonction sur son ouvert de convergence, soit ici $ ]-R,R[$.
+$$xS(x)=\sum _{n=3}^{\infty }{\frac {x^{n+1}}{(n+1)(n-2)}}.$$
+On a donc $(xS)'(x)=\sum _{n=3}^{\infty }{\frac {x^{n}}{n-2}}=x^{2}\sum _{k\geq 1}^{\infty }{\frac {x^{k}}{k}}=-x^{2}\ln(1-x)$.
+Une intégration par parties, suivie d'une intégration de fraction rationnelle, permet d'en déduire 
+$xS(x)$, puis
+$$S(x)={\frac {1}{3}}\left({\frac {1-x^{3}}{x}}\ln(1-x)+1+{\frac {x}{2}}+{\frac {x^{2}}{3}}\right).$$
+(Une autre méthode aboutissant à ce résultat est d'écrire :
+$$3S(x)=\sum _{n=3}^{\infty }\left({\frac {x^{n}}{n-2}}-{\frac {x^{n}}{n+1}}\right)={\frac {x^{3}}{1}}+{\frac {x^{4}}{2}}+{\frac {x^{5}}{3}}+{\frac {x^{3}-1}{x}}\sum _{n\geq 4}{\frac {x^{n}}{n}}=x^{3}+{\frac {x^{4}}{2}}+{\frac {x^{5}}{3}}+{\frac {1-x^{3}}{x}}\left(\ln(1-x)+x+{\frac {x^{2}}{2}}+{\frac {x^{3}}{3}}\right).$$
+\item Par continuité, $S(-1)={\frac {1}{3}}\left({\frac {2}{-1}}\ln 2+1-{\frac {1}{2}}+{\frac {(-1)^{2}}{3}}\right)={\frac {5}{18}}-{\frac {2}{3}}\ln 2$ et $S(1)={\frac {1}{3}}\left(0+1+{\frac {1}{2}}+{\frac {1^{2}}{3}}\right)={\frac {11}{18}}.$
+\end{enumerate}
+\end{correction}
+\finexo

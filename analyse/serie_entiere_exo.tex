@@ -1,0 +1,135 @@
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsfonts,amsmath,amssymb,graphicx}
+\usepackage[francais]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{answers}
+\usepackage{a4wide,jlq2eams} 
+\usepackage{multicol}
+%---- Dimensions des marges ---
+\setlength{\paperwidth}{21cm} 
+\setlength{\paperheight}{29.7cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\oddsidemargin}{0cm} 
+\setlength{\topmargin}{-2.5cm}
+\setlength{\headsep}{0.7cm} 
+\setlength{\headheight}{1cm}
+\setlength{\textheight}{25cm} 
+\setlength{\textwidth}{17cm}
+
+
+
+
+%---- Structure Exercice -----
+\newtheorem{Exc}{Exercice}
+\Newassociation{correction}{Soln}{mycor}
+\Newassociation{indication}{Indi}{myind}
+%\newcommand{\precorrection}{~{\bf \footnotesize [Exercice corrig\'e]}}
+%\newcommand{\preindication}{~{\bf \footnotesize [Indication]}}
+\renewcommand{\Solnlabel}[1]{\bf \emph{Correction #1}}
+\renewcommand{\Indilabel}[1]{\bf \emph{Indication #1}}
+
+\def\exo#1{\futurelet\testchar\MaybeOptArgmyexoo}
+\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
+                        \else \let\next\NoOptArgmyexoo \fi \next}
+\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
+\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
+
+\newcommand{\finexo}{\end{Exc}}
+\newcommand{\flag}[1]{}
+
+\newtheorem{question}{Question}
+
+
+
+%---- Style de l'entete -----                     % -> à personnaliser <-
+\setlength{\parindent}{0cm}
+\newcommand{\entete}[1]
+{
+{\noindent
+  \textsf{Feuille d'exercices}    \hfill   \textsf{ISEN}          % Université
+}
+\hrule
+\hrule
+\begin{center} 
+\textbf{\textsf{\Large 
+     Série numérique     % TITRE
+}}
+\end{center}
+\hrule
+}
+
+
+\begin{document}
+
+%--- Gestion des corrections ---
+ \Opensolutionfile{mycor}[ficcorex]
+ \Opensolutionfile{myind}[ficind]
+ \entete{\'Enoncés}
+
+
+
+\input{exercice/serie_entiere_exo_rayon_convergence_1}
+\input{exercice/serie_entiere_exo_rayon_convergence_2}
+\input{exercice/serie_entiere_exo_somme}
+\input{exercice/serie_entiere_exo_DSE}
+\input{exercice/serie_entiere_exo_eq_diff}
+\input{exercice/serie_entiere_exo_derivation}
+\input{exercice/serie_entiere_exo_impaire}
+\input{exercice/serie_entiere_exo_alternee}
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+%--- Fin des exercices ---
+%------------------------------------------------------
+%------------------------------------------------------
+
+%--- Gestion des corrections ---
+% \ \newpage
+% \setcounter{page}{1}
+% \entete{Indications}
+%
+% \Closesolutionfile{myind}
+% \Readsolutionfile{myind}
+
+ \ \newpage
+ \setcounter{page}{1}
+ \entete{Corrections}
+
+ \Closesolutionfile{mycor}
+ \Readsolutionfile{mycor}
+
+\end{document}
+\endinput
+
+
+
+
