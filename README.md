@@ -7,7 +7,7 @@ Bienvenue sur le dépôt des cours de Vincent Tariel enseignant en CPGE à l'ISE
 L'objectif de ces cours est d'être partagé avec
 # les élèves
 
-Vous trouvez les fichiers pdf des cours et des exercices voir mon site [mon site internet](https://vincenttariel.github.io/teaching/).
+Vous trouvez les fichiers pdf des cours et des exercices  [voir mon site internet](https://vincenttariel.github.io/teaching/).
   
 # les enseignants
 
