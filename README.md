@@ -2,6 +2,7 @@
 
 Bienvenue sur le dépôt des cours de Vincent Tariel enseignant en CPGE à l'ISEN.
 
+Ce dépôt est là pour encourager la collaboration et l'échange.
 
 
 L'objectif de ces cours est d'être partagé avec
@@ -12,9 +13,3 @@ Vous trouvez les fichiers pdf des cours et des exercices  [voir mon site interne
 # les enseignants
 
 Vous trouvez les fichiers tex des cours et des exercices.
-
-
-
-
-
-Ce dépôt est là pour encourager la collaboration et l'échange.
