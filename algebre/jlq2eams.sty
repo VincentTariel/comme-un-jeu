@@ -477,7 +477,7 @@
 % Les matrices,
 %--------------------------------------------------
 
-\newcommand{\mat}[1][B]{\mathcal{M}\mathrm{at}_{\mathcal{#1}}}
+\newcommand{\mat}{\mathrm{Mat}}
   % matrice Mat dans la base #1 (B)
 \newcommand{\Mat}[2]{\mathcal{M}\mathrm{at}_{\mathcal{#1},\mathcal{#2}}}
   % matrice dans les bases #1 et #2
@@ -486,7 +486,8 @@
 \newcommand{\Diag}[3][]{\mathrm{Diag}#1( #2_1,\ldots,#2_{#3} #1)}
   % matrice diagonale d'ordre #2
 
-\newcommand{\transposee}[1]{{\vphantom{#1}}^t\!#1\/}
+
+\newcommand{\transposee}[1]{#1^{\mathsf {T}}}
     % nouvelle version;
     % attention, les textes doivent être revus pour
     % l'utiliser.
@@ -502,18 +503,21 @@
 \renewcommand{\sp}{\mathop{\mathrm{sp}}\nolimits}
   % spectre d'une matrice, ...
 \DeclareMathOperator{\rg}{rg}
+\DeclareMathOperator{\Rang}{rg}
   % rang d'une matrice, ...
-
+\DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\Ima}{Im}
   % image d'une application linéaire
 \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Tr}{tr}
   % trace d'une matrice, ...
 %\DeclareMathOperator{\deter}{det}
 \renewcommand{\det}{\mathop{\mathrm{det}}\nolimits}
   % déterminant, \det est "mal défini" chez AmsTeX!
 \newcommand{\Det}[1][B]{\det_{\mathcal{#1}}}
   % déterminant dans la base B ...
-
+\newcommand{\M}[3]{\mathcal{M}_{#1,#2}(#3)}
 \newcommand{\MnpK}{\mathcal{M}_{n,p}(\K)}
 \newcommand{\Mnp}[2][n,p]{\mathcal{M}_{#1}(#2)}
 \newcommand{\MnK}{\mathcal{M}_{n}(\K)}

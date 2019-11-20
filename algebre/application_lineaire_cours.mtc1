@@ -1,0 +1,26 @@
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.1}Applications lin\'eaires}{\reset@font\mtcSfont 4}{section.1.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.1.1}Proportionnalit\'e : $\mathbb {R}\rightarrow \mathbb {R}$}{\reset@font\mtcSSfont 4}{subsection.1.1.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.1.2}Calcul matriciel : $\mathbb {R}^p\rightarrow \mathbb {R}^n$}{\reset@font\mtcSSfont 4}{subsection.1.1.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.1.3}Cas g\'en\'eral : $E\to F$ }{\reset@font\mtcSSfont 11}{subsection.1.1.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.1.4}Dualit\'e entre le point vue vectoriel et le point de vue matriciel en dimension finie}{\reset@font\mtcSSfont 12}{subsection.1.1.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.1.5}Endomorphisme/Matrice carr\'e}{\reset@font\mtcSSfont 16}{subsection.1.1.5}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.2}Image et noyau}{\reset@font\mtcSfont 17}{section.1.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.2.1}G\'en\'eralit\'es}{\reset@font\mtcSSfont 17}{subsection.1.2.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.2.2}Effet d'une applications lin\'eaire sur la dimension}{\reset@font\mtcSSfont 19}{subsection.1.2.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.2.3}Th\'eor\`eme du rang : $\qopname \relax o{dim}E = \Rang u + \qopname \relax o{dim}\Ker u$}{\reset@font\mtcSSfont 20}{subsection.1.2.3}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.3}Changement de base}{\reset@font\mtcSfont 21}{section.1.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.3.1}D'une repr\'esentation \`a l'autre}{\reset@font\mtcSSfont 21}{subsection.1.3.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.3.2}Similitude}{\reset@font\mtcSSfont 23}{subsection.1.3.2}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.4}Endomorphisme/Matrice carr\'e}{\reset@font\mtcSfont 24}{section.1.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.4.1}D\'eterminant}{\reset@font\mtcSSfont 24}{subsection.1.4.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.4.2}Trace}{\reset@font\mtcSSfont 27}{subsection.1.4.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.4.3}Polyn\^ome d'endomorphismes/de matrices carr\'es}{\reset@font\mtcSSfont 27}{subsection.1.4.3}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.5}Cat\'egories d'applications lin\'eaires}{\reset@font\mtcSfont 29}{section.1.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.5.1}Forme lin\'eaire : $E\DOTSB \mapstochar \rightarrow \mathbb {K}$}{\reset@font\mtcSSfont 29}{subsection.1.5.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.5.2}Projecteur/Sym\'etrie}{\reset@font\mtcSSfont 30}{subsection.1.5.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Projecteur $p(\mathaccentV {vec}17E{x_1} + \mathaccentV {vec}17E{x_2})=\mathaccentV {vec}17E{x_1}$}{\reset@font\mtcSSSfont 30}{section*.2}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Sym\'etrie : $s(\mathaccentV {vec}17E{x_1} + \mathaccentV {vec}17E{x_2})=\mathaccentV {vec}17E{x_1}-\mathaccentV {vec}17E{x_2}$}{\reset@font\mtcSSSfont 31}{section*.3}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.6}Matrices par blocs}{\reset@font\mtcSfont 32}{section.1.6}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.7}Annexe}{\reset@font\mtcSfont 34}{section.1.7}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.7.1}Dualit\'e entre l'interpr\'etation alg\'ebrique et l'interpr\'etation alg\'ebrique}{\reset@font\mtcSSfont 34}{subsection.1.7.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.7.2}Exercice de synth\`ese: endomorphisme sur $\mathbb {R}_2[X]$}{\reset@font\mtcSSfont 37}{subsection.1.7.2}}
