@@ -205,7 +205,7 @@ $$p_1=p_2=p_3=p_4=p_5=\frac 1 7 \text{ et }  p_6=\frac 2 7.$$
 
 
 
-\begin{Df}[système complet d'événements]
+\begin{Df}[Système complet d'événements]
 Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.\\
 Un \defi{système complet d'événements}, appelé aussi \defi{partition}, est une famille $(A_1,\ldots,A_n)$
 d'événements deux à deux incompatibles tels que
@@ -223,9 +223,9 @@ $A_1,A_2,A_3$ est un système complet d'événements de $\Omega$.
 \end{center}
 \end{Df}
 \begin{NB}[$A,\bar A$]
-Pour tout événement $A$, $A,\bar A$ est un système complet d'événements.
+$A,$ et $\bar A$ forme un système complet d'événements pour tout événement $A$.
 \end{NB}
-\begin{Prop}[système complet d'événements]
+\begin{Prop}[Probabilité d'un système complet d'événements]
 \label{prop:sce}
 Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.\\
 Soit$(A_1,\ldots,A_n)$ un système complet d'événements.\\
@@ -341,7 +341,7 @@ En particulier, si  $A$ est un événement de probabilité non nulle, on a pour tou
 
 
 
-\begin{Prop}[formule de Bayes]
+\begin{Prop}[Formule de Bayes]
 Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.\\
 Soit $A$ et $B$ deux événements de probabilités non nulles.\\
 Alors
@@ -349,7 +349,7 @@ $$ P_B(A) = \frac{ P_A(B)P(A) }{ P(B) } $$
 \end{Prop}
 Cette formule permet d'inverser des conditions. Sa version simple découle de façon directe de la
 définition d'une probabilité conditionnelle.
-\begin{Prop}[formule de Bayes usuelle]
+\begin{Prop}[Formule de Bayes usuelle]
 Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.
 Soit $(A_1,\ldots,A_n)$ un système complet d'événements de probabilités non nulles.
 Pour tout événement $B$ de probabilité non nulle,
@@ -382,7 +382,7 @@ C'est catastrophique! Il y a que 91$\%$ de chances qu'une personne positive au t
 \end{Ex}
 
 
-\begin{Df}[arbre de probabilité]
+\begin{Df}[Arbre de probabilité]
 Un \defi{arbre de probabilité} est un schéma permettant de résumer une expérience aléatoire connaissant des probabilités conditionnelles, soit un graphe orienté et pondéré obéissant aux règles suivantes :
 \begin{enumerate}
 \item la somme des probabilités des branches issues d'un même sommet donne 1,
@@ -424,7 +424,40 @@ La probabilité de  l'événement $B$ est la somme des probabilités des parcours
 qui mènent à B, d'où 
 $$P(B)= P_{U_1}(B)P(U_1)+P_{U_1}(B)P(U_2)+P_{U_1}(B)P(U_3).$$
 \end{Ex}
-
+\begin{Prop}[Formule des probabilités composées]
+Soit $A_1,A_2,\dots, A_n$ $n$ événements vérifiant $P(A_1\cap A_2\cap \dots \cap A_{n-1})\neq 0$.\\
+Alors 
+$$P(A_1\cap A_2\cap \dots \cap A_{n})=P(A_1)P_{A_1}(A_2)P_{A_1\cap A_2 }(A_3)\dots P_{A_1\cap A_2\cap \dots \cap A_{n-1}}(A_n).$$
+\end{Prop}
+\begin{tikzpicture}[scale=1.5]
+\node (start) at (0,0) {$\Omega$};
+\node (A1) at (1.5,1) {$A_1$};
+\node (A1f) at (1.5,0) {};
+\node (A2) at (3,2) {$A_2$};
+\node (A2f) at (3,1) {};
+\node (A3) at (4.5,3) {};
+\node (A3f) at (4.5,2) {};
+\node (A4) at (7.2,3) {$A_3:\quad P(A_1\cap A_2\cap A_{3})=P(A_1)P_{A_1}(A_2)P_{A_1\cap A_2 }(A_3)$};
+\draw(start) -- (A1)node[midway,sloped,above]{$P(A_1)$};
+\draw[dashed] (start) -- (A1f);
+\draw(A1) -- (A2)node[midway,sloped,above]{$P_{A_1}(A_2)$};
+\draw[dashed] (A1) -- (A2f);
+\draw(A2) -- (A3)node[midway,sloped,above]{$P_{A_3}(A_1\cap A_2)$};
+\draw[dashed] (A2) -- (A3f);
+\end{tikzpicture}\\
+\begin{proof}
+Il suffit de remonter le temps : 
+$$P(A_1\cap A_2\cap \dots \cap A_{n})=P(A_1\cap A_2\cap \dots \cap A_{n-1}) P_{A_1\cap A_2\cap \dots \cap A_{n-1}}(A_n).$$
+Puis :
+$$P(A_1\cap A_2\cap \dots \cap A_{n})=P(A_1\cap A_2\cap \dots \cap A_{n-2}) P_{A_1\cap A_2\cap \dots \cap A_{n-2}}(A_{n-1})P_{A_1\cap A_2\cap \dots \cap A_{n-1}}(A_n).$$
+On itère jusqu'à $A_1$.
+\end{proof}
+\begin{Ex}
+On considère une urne contenant 4 boules blanches et 3 boules noires. On tire une à une et sans remise 3 boules de l'urne. Quelle est la probabilité pour que la première boule tirée soit blanche, la seconde blanche et la troisième noire ?\\
+On note $B_i$  l'événement : "La i-ème boule tirée est blanche (resp. noire)". On cherche à calculer $P(B_1\cap B_2 \cap \bar B_3)$, ce que l'on va faire en utilisant la formule des probabilités composées :
+$$P(B_1\cap B_2 \cap \bar B_3)=P(B_1)P(B_2|B_1)P(\bar B_3|B_1\cap B_2).$$
+Chacune des probabilités qui apparaît est facile à calculer, car $P(B_1)=4/7$, $P(B_2|B_1)=3/6$ (il reste 6 boules dont 3 blanches) et $P(\bar B_3|B_1\cap B_2)=3/5$. Finalement, on obtient $P(B_1\cap B_2 \cap \bar B_3)=6/35$.
+\end{Ex}
 % -----------------------------------------------------------------------------
 \subsection{Indépendance}
 On considère l'expérience aléatoire de lancer successivement deux fois un dé.\\
@@ -433,7 +466,7 @@ soit  $B$ un événement relié au second lancer, par exemple obtenir un chiffre im
 L'information de savoir que l'événement $A$ est réalisé, ne modifie pas la probabilité de l'événement $B$, autrement dit $P_A(B) = P(B)$. 
 Mais, d'après la définition de la probabilité conditionnelle, on a : $P_A(B) =\frac{P(A\cap B)}{P(A)}$. De ces deux égalités, on obtient $P(A\cap B)=P(A)P(B)$ et on dit que les deux événements sont indépendants.\\ 
 Par analogie, la définition formelle est :
-\begin{Df}[indépendance]
+\begin{Df}[Indépendance]
 
 Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.
 \begin{itemize}
@@ -465,7 +498,7 @@ Les événements $A$, $B$ et $C$ sont deux à deux indépendants mais :
  $$P(A\cap B\cap C )= P(\{1\})=\frac 1 4 \neq  \frac 1 8 =  P(A)P(B)P(C).$$
  Donc les événements ne sont pas mutuellement indépendants.
 \end{NB}
-\begin{Prop}[lien avec la probabilité conditionnelle]
+\begin{Prop}[Lien avec la probabilité conditionnelle]
 Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.\\
 Soit $A$ un événement de probabilité non nulle
 et $B$ un événement quelconque.\\
@@ -480,34 +513,7 @@ A, B \text{ sont indépendants } & \Leftrightarrow P(B\cap A)=P(B)P(A)\\
 \end{align*} 
 \end{proof}
 
-\begin{Prop}[Formule des probabilités composées]
-Soit $A_1,A_2,\dots, A_n$ $n$ événements vérifiant $P(A_1\cap A_2\cap \dots \cap A_{n-1})\neq 0$.\\
-Alors 
-$$P(A_1\cap A_2\cap \dots \cap A_{n})=P(A_1)P_{A_1}(A_2)P_{A_1\cap A_2 }(A_3)\dots P_{A_1\cap A_2\cap \dots \cap A_{n-1}}(A_n).$$
-\end{Prop}
-\begin{tikzpicture}[scale=1.5]
-\node (start) at (0,0) {$\Omega$};
-\node (A1) at (1.5,1) {$A_1$};
-\node (A1f) at (1.5,0) {};
-\node (A2) at (3,2) {$A_2$};
-\node (A2f) at (3,1) {};
-\node (A3) at (4.5,3) {};
-\node (A3f) at (4.5,2) {};
-\node (A4) at (7.2,3) {$A_3:\quad P(A_1\cap A_2\cap A_{3})=P(A_1)P_{A_1}(A_2)P_{A_1\cap A_2 }(A_3)$};
-\draw(start) -- (A1)node[midway,sloped,above]{$P(A_1)$};
-\draw[dashed] (start) -- (A1f);
-\draw(A1) -- (A2)node[midway,sloped,above]{$P_{A_1}(A_2)$};
-\draw[dashed] (A1) -- (A2f);
-\draw(A2) -- (A3)node[midway,sloped,above]{$P_{A_3}(A_1\cap A_2)$};
-\draw[dashed] (A2) -- (A3f);
-\end{tikzpicture}\\
-\begin{proof}
-Il suffit de remonter le temps : 
-$$P(A_1\cap A_2\cap \dots \cap A_{n})=P(A_1\cap A_2\cap \dots \cap A_{n-1}) P_{A_1\cap A_2\cap \dots \cap A_{n-1}}(A_n).$$
-Puis :
-$$P(A_1\cap A_2\cap \dots \cap A_{n})=P(A_1\cap A_2\cap \dots \cap A_{n-2}) P_{A_1\cap A_2\cap \dots \cap A_{n-2}}(A_{n-1})P_{A_1\cap A_2\cap \dots \cap A_{n-1}}(A_n).$$
-On itère jusqu'à $A_1$.
-\end{proof}
+
 
 
 %TODO voir cours de mpsi sur les méthodes

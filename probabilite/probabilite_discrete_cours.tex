@@ -64,57 +64,25 @@
 
 
 \begin{document}
-
-
-
-\chapter{Probabilité discrete}
-
-
-
-
-%\dominitoc
-La théorie des probabilités fournit des modèles mathématiques permettant
-l'étude d'expériences dont le résultat ne peut être prévu avec une totale
-certitude.
-
-\begin{center}
-
-\begin{tabular}{| p{6.5cm}| p{6.5cm} |p{1.7cm} |}
-\hline
-Expérience & Univers  $\Omega$ (ensemble des issues) & cardinal\\
-\hline \hline 
-Lancer d'un dé & Un entier $k\in\{1,\dots,6\}$&finie \\
-\hline
-Prélèvement de n objets en sortie d'une chaîne de production dans l'échantillon & Nombre d'objets défectueux, $k\in\{0,\dots,n\}$&finie\\
-\hline
-Questionnaire à 100 questions  binaires & Suite $\omega$ de 100 réponses $\omega\in\{oui, non\}^{100}$&finie\\
-\hline
-Lancer d'une pièce jusqu'à la première obtention de pile & Un entier $k \in \mathbb{N}$ : le temps d'attente du premier succès&dénombrable\\
-\hline
-Temps d'attente pour une hotline  & un temps $\omega\in [0,+\infty[$&continue\\
-\hline
-Mouvement d'un grain de pollen dans un liquide & Une fonction continue : la trajectoire $f:\mathbb{R}^+\to\mathbb{R}^2$&continue  \\
-\hline
-Mouvement d'un cours boursier & Une fonction continue : $f:\mathbb{R}^+\to\mathbb{R}$&continue\\
-\hline
- \end{tabular}
-\end{center}
-Bien que le résultat précis de chacune de ces expériences soit imprévisible,
-l'observation et l'intuition nous amènent à penser que ces phénomènes
-obéissent à certaines lois. Par exemple si on jette 6000 fois le dé, on s'attend
-à ce que le nombre d'apparitions de la face « 3 » soit voisin de 1000. Si on
-met en service 100 ampoules, leurs durées de vie observées seront concentrées
-autour d'une certaine valeur moyenne.\\
-La théorie des probabilités modélise l'expérience aléatoire dans un cadre formel en quantifiant le sentiment d'incertitude vis-à-vis d'un événement. La \textit{statistique} permet de confronter les modèles probabilistes avec la réalité observée afin de les valider ou de les invalider. Par
-exemple si quelqu'un a 60 bonnes réponses sur 100 au questionnaire, est-il
-légitime de considérer qu'il a « mieux fait » que le hasard ?\\
-Dans le cadre de cours, on limite l'univers à un ensemble \defi{dénombrable}, c'est à dire que l'on peut effectuer une énumération finie ou infinie des issues de l'expérience aléatoire.    
+\chapter{Probabilité discrète}
+Lors du cours sur les probabilité finies, nous avons posé le cadre probabiliste afin de modéliser une expérience aléatoire dans les issues sont finies. Ce cours étend le cadre pour aussi modéliser une expérience aléatoire dans les issues sont \textbf{dénombrables finies ou infinies}, c'est à dire que l'on peut effectuer une énumération finie ou infinie des issues de l'expérience aléatoire.    
  
 
-\section{Modélisation probabilistes pour un univers fini}
+\section{Extension  de la modélisation probabilistes pour un univers dénombrable}
 \subsection{Axiomes des probabilité. Premières propriétés}
-\begin{Ex}
+\begin{Ex}[Première fois pile]
 Pour le lancer d'une pièce jusqu'à la première obtention de pile. L'univers est dénombrable $\N$ où une issue $\omega\in \N$ représente le temps du premiers succès.
+\end{Ex}
+\begin{Df}[Réunion et intersection dénombrables]
+Soit $(A_n )_{n\in \N}$ une suite d'événements de $\Omega$. On définit les ensembles $\bigcup\limits_{n\in\N}A_n$ et $\bigcap\limits_{n\in\N}A_n$ par :
+$$ \omega  \in \bigcup\limits_{n\in\N}A_n \Leftrightarrow \exists n\in\N:\quad \omega \in A_n$$ 
+et 
+$$ \omega  \in \bigcap\limits_{n\in\N}A_n \Leftrightarrow \forall n\in\N:\quad \omega \in A_n$$ 
+\end{Df}
+\begin{Ex}[Première fois pile]
+L'événement $A_p$="l'expérience se termine après le p-ième lancer" est le singleton $\{p\}$.\\
+L'évènement "l'expérience se termine après le p-ième lancer" s'écrit $\bigcup\limits_{n=p}^{+\infty}A_p$.\\
+L'évènement "l'expérience se termine après un temps infini" s'écrit $\bigcap\limits_{n=1}^{+\infty} \bar A_p$.
 \end{Ex}
 \begin{Df}[Axiomes des tribus]
 La probabilité $P$  est une fonction qui à un événement associe
@@ -127,19 +95,17 @@ En d'autres termes, $P$ ne peut pas être considérée comme une application de $\m
 petit que , noté $\mathcal{P}(\Omega)$.\\
 Voici les propriétés qu'il est raisonnable d'exiger de $\mathcal{A}$ :
 \begin{itemize}
-\item  $\mathcal{A}$ contient $\emptyset$ et tous les singletons $\{\omega\}$,
+\item  $\mathcal{A}$ contient $\emptyset$ (et tous les singletons $\{\omega\}$),
 \item $\mathcal{A}$ est stable par passage au complémentaire : si $A$ est un événement
 de $\mathcal{A}$,  $\mathcal{A}^c$ l'est aussi,
 \item $\mathcal{A}$ est stable par les opérations de réunion et d'intersection sur les suites
-d'événements 2. Si $A_1,A_2,\ldots$ est une suite finie ou infinie d'événements
+d'événements 
+\item Si $A_1,A_2,\ldots$ est une suite finie ou infinie d'événements
 de $\mathcal{A}$, sa réunion et son intersection sont encore des événements de $\mathcal{A}$.
 \end{itemize}
 Nous appellerons \defi{tribu} toute famille  $\mathcal{A}$ de parties de  vérifiant les conditions ci-dessus.\\
-$(\Omega,\mathcal{A})$ est appelé \defi{espace probabilisable}. 
+$(\Omega,\mathcal{A})$ est appelé \defi{espace probabilisable}. L'objectif de ce cours n'est pas de savoir construire mathématiquement la tribu  $\mathcal{A}$. On supposera que l'on sait construire à partir de l'univers la tribu ayant les "bonnes propriétés". 
 \end{Df}
-
-
-
 \begin{Df}[Axiomes des probabilités]
 Soit $(\Omega,\mathcal{A})$ un espace probabilisable.
 Une \defi{probabilité} sur $(\Omega,\mathcal{A})$ est une application
@@ -153,9 +119,17 @@ $$P(\bigcup_{n\in\N^*}A_n)=\sum_{n=1}^{+\infty}P(A_n)$$
 \end{itemize}
 Le triplet  $(\Omega,\mathcal{A},P)$ s'appelle un \defi{espace probabilisé}.
 \end{Df}
-\begin{Ex}
-Pour le lancer d'un dé, l'espace probabilisable est $(\Omega=\{1,2,3,4,5,6\},\mathcal{P}(\Omega))$. La probabilité est l'équiprobabilité :
-$$ P(A)=\frac{card(A)}{card(\Omega)}.$$
+\begin{Prop}
+Une probabilité $P$ sur un univers dénombrable est complètement déterminée par les $P(\{\omega\})$ pour tout $\omega \in \Omega$. $P(\{\omega\})$, appelé poids de probabilité.\\
+En effet, pour $A \subset \Omega$, on a :
+\begin{align*}
+P(A)&=P(\bigcup\limits_{\omega\in A}\{w\} ),\\
+ &=\sum_{\omega\in A}P(\{w\}).
+\end{align*}
+\end{Prop}
+\begin{Ex}[Première fois pile]
+Soit $p$ la probabilité d'obtenir pile. On pose $p_k=P(\{k\})=\overbrace{(1-p)^{k-1}}^{\text{proba d'obtenir d'abord k-1 piles}}p. $. On doit vérifier que $\sum_{k=1}^{+\infty}p_k=1$. 
+On a $$\sum_{k=1}^{+\infty}p_k=\sum_{k=1}^{+\infty} (1-p)^{k-1} p = p \sum_{k=1}^{+\infty} (1-p)^{k-1} \overbrace{=}^{\text{somme d'une série géométrique}}=p.\frac{1}{1-(1-p)}=1.$$
 \end{Ex}
 \begin{Prop}
 \begin{enumerate}
@@ -232,66 +206,44 @@ P(\bigcap_{n\in\N^*}A_n)&=1-P((\bigcap_{n\in\N^*}A_n)^c)\\
 $$\forall n \in \N :\quad P(\bigcup_{i=1}^n A_n)\leq \sum_{i=1}^{n} P(A_i)\underbrace{\leq}_{\text{termes positifs} } \sum_{i=1}^{+\infty} P(A_i).$$
 De plus $\bigcup_{n=1}^{+\infty} A_n= \bigcup_{n=1}^{+\infty} (\cup_{i=1}^n A_i)$ et la suite $(\cup_{i=1}^n A_i)$ est croissante d'où :
 $$P(\bigcup_{n=1}^{+\infty} A_n) \underbrace{=}_{\text{Continuité monotome}}\lim\limits_{n\to \infty}P(\bigcup_{i=1}^n A_n)\leq  \lim\limits_{n\to \infty} \sum_{i=1}^{n} P(A_i).$$ 
-
 \end{enumerate}
 \end{proof}
-\begin{Ex}
-Considérons un seul lancé de pièce sans hypothèse si la pièce est juste.
-L'univers est  $ \Omega = \{H, T \}$ et la tribu $\mathcal{A}= \{\varnothing, \{H \}, \{T \}, \{H, T \} \}$.\\
-La probabilité de ne pas avoir de tête ni de queue est $0=P(\{H, T \}^c)= P (\varnothing) $.\\
-La probabilité d'avoir la tête ou la queue est $1= P (\{H \}) + P (\{T \})$
-\end{Ex}
+
+
+\begin{Prop}[Formule des probabilités totales]
+Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.\\
+Soit $ (A_n)_{n\in \N*}$ un système complet d'événements de probabilités non nulles.\\
+Pour tout événement $B$, on a
+\[ P(B) = \sum_{i=1}^{+\infty} P_{A_i}(B)P(A_i). \]
+\end{Prop}
+\begin{Prop}[formule de Bayes usuelle]
+Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.
+Soit $(A_n)_{n\in \N*}$ un système complet d'événements de probabilités non nulles.
+Pour tout événement $B$ de probabilité non nulle,
+et pour tout $k\in\{1,n\}$, on a
+\[ P_B(A_k) = \frac{ P_{A_k}(B)P(A_k) }{ \sum\limits_{i=1}^{+\infty} P_{A_i}(B)P(A_i) }. \]
+\end{Prop}
+
+
 
 \section{Variables aléatoire}
-\begin{Ex}[Martingale Roulette]La Roulette, inventée par Blaise Pascal, est un des jeux les plus populaires des casinos. Elle vous propose de parier la case sur laquelle la bille lancée dans le cylindre va s'arrêter parmis 37 numéros (18 rouges, 18 noirs et un vert). Le gain est la mise lors d'un pari simple d'une couleur. \\
-La martingale consiste à jouer une couleur. Le joueur doit, suite à chaque perte, tripler sa mise. S'il perd à nouveau, il mise la somme initiale triplée et ainsi de suite, jusqu'à ce qu'il gagne.\\
-A votre avis, ce jeu est-il favorable au joueur ou au casino ? A chaque partie quelle est le gain moyen du joueur ?
-\end{Ex}
-
-%TODO modif extrait de suret 
-Dans ce jeu, on fait intervenir le hasard en observant la somme des points marqués par deux dés. Considérons le jet d'un dé bleu et d'un dé
-rouge et notons $S$ la somme des points obtenus. On modélise cette expérience
-en prenant l'équiprobabilité sur l'univers  
-$$\Omega=\{1,2,3,4,5,6\}^2=\overbrace{\{1,2,3,4,5,6\}}^{\text{Issues du premier dé}}\times \overbrace{\{1,2,3,4,5,6\}}^{\text{Issues du second dé}}.$$
-Une issue, $\omega$, est un couple $(b, r)$ où b désigne le chiffre du
-dé bleu et r celui du rouge. La somme $S$ est l'application :
-$$\Fonction{S}{\Omega}{\{2,3,\dots,12\} }{(b, r)}{b+r}$$ 
-Cette application est représenter par ce tableau  : 
+\begin{Ex}[Martingale Roulette]La Roulette, inventée par Blaise Pascal, est un des jeux les plus populaires des casinos. Le pari simple est de parier la couleur de la case sur laquelle la bille lancée dans le cylindre va s'arrêter parmi 37 cases (18 rouges, 18 noirs et un vert).\\
+La martingale est : le joueur doit, suite à chaque perte, tripler sa mise. S'il perd à nouveau, il mise la somme initiale triplée et ainsi de suite, jusqu'à ce qu'il gagne. Par exemple, le joueur joue 1 euro à la première partie et perd. Puis il joue donc 3 euros et  perd encore. Après, il joue donc 9 et gagne. Finalement, son gain est $9-3-1=5$ euros.\\  
+A votre avis, ce jeu est-il favorable au joueur ou au casino ? A chaque partie quelle est le gain moyen du joueur ?\\
+\'Etape 1 : comme pour l'expérience aléatoire du lancer d'une pièce jusqu'à la première obtention de pile, on pose $X$ la variable aléatoire représentant le nombre de partir joué jusqu'à gagner. Par exemple, $X=3$ signifie que l'on a perdu les deux premières parties et gagné la troisième. La loi de la variable aléatoire est $T$ est :
+$$P(X=n)=(1-p)^{n-1} p\text{ avec } p=\frac{18}{37}.$$
+\'Etape 2 :  on calcule nos gains en fonction de T.
 \begin{center}
-\begin{tabular}{c||c|c|c|c|c|c}
- \backslashbox{$b$}{$r$} & 1 & 2&3&4&5&6 \\\hline\hline
-1 & 2 & 3 & 4&5&6&7\\
-2 & 3 & 4 & 5&6&7&8\\
-3 & 4 & 5 & 6&7&8&9\\
-2 & 5 & 6 & 7&8&9&10\\
-1 & 6 & 7 & 8&9&10&11\\
-2 & 7 & 8 & 9&10&11&12\\
-\end{tabular}
-\end{center}
-On dit que S est une variable aléatoire sur $\{2,3,\dots,12\}$.
-En fait, l'observation qui nous intéresse dans cette expérience, ce n'est pas $\omega$,  mais seulement $S(\omega)$. On aimerait connaître la probabilité que
-la somme des points prenne une valeur donnée, soit $P(S = k)$ pour $k$ entier
-fixé entre 2 et 12. En utilisant l'équiprobabilité sur et le tableau ci-dessus, on obtient 
-\begin{center}
-\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|}
+\begin{tabular}{|c||c|c|c|c|c|c|c|}
 \hline
-$k$ & 2 & 3& 4& 5& 6& 7& 8& 9& 10& 11& 12 \\\hline
-$P(S=k)$ & $\frac{1}{36}$ & $\frac{2}{36}$& $\frac{3}{36}$& $\frac{4}{36}$& $\frac{5}{36}$& $\frac{6}{36}$& $\frac{5}{36}$& $\frac{4}{36}$& $\frac{3}{36}$& $\frac{2}{36}$& $\frac{1}{36}$\\\hline
+$X$ & 1 & 2  & 3&       4        & \dots & $n$& \dots  \\\hline
+$G$ & 1 & 3-1& 9-(1+3)&27-(1-3-9)&\dots  &$3^{n-1}-\sum_{k=0}^{n-2}3^k=\frac{3^{n-1}+1}{2}$& \\\hline
 \end{tabular}
-\end{center}
-Cela revient à considérer un nouvel univers :
-$$\Omega'=\{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}$$
-et à munir cet ensemble de la probabilité $P_S$ définie par le tableau des $P(S =
-k)$. Cette nouvelle probabilité s'appelle loi de la variable aléatoire S.
-\begin{Ex}
-Pour le lancer d'une pièce jusqu'à la première obtention de pile. L'univers est dénombrable $\N$ où une issue $\omega\in \N$ représente le temps du premiers succès.
+ \end{center}
+Le gain moyen est donc :
+$$E(G(X))=\sum_{n=1}^{+\infty} \frac{3^{n-1}+1}{2}  (1-p)^{n-1} p=\frac p 2 \sum_{n=1}^{+\infty} (3^{n-1}+1)  (1-p)^{n-1}$$
+La série géométrique $\sum (1-p)^{n-1}$ converge car $|1-p|<1$. Par contre, la série numérique  $\sum (3(1-p))^{n-1}$ diverge vers l'infini car $|3(1-p)|>1$. En conclusion, $E(G(X))=+\infty$ et donc ce jeu est "très" favorable au joueur. L'unique condition pour jouer à ce jeu est de n'avoir pas de limite sur son compte en banque$\dots$.  
 \end{Ex}
- 
-Rajouter le gain !
- 
- 
- Définition de la loi 
- et de l'expérance
 
 
 
@@ -305,6 +257,13 @@ Rajouter le gain !
 
 
 
+\begin{Ex}[Bayes]
+Un magasin possède $n$ caisses. Les clients se répartissent de façon indépendante et équiprobable entre
+les différentes caisses. On suppose que la probabilité qu'il y ait $k$ clients dans le magasin est $p_k = e^{-\lambda}\frac{\lambda^k}{k!}$.\\
+La caisse numéro 1 a vu passer m clients un jour donné.\\
+Quelle est la probabilité qu'il y ait eu dans le magasin $n·m$ clients ?
+
+\end{Ex}
 
 
 

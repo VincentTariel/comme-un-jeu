@@ -18,6 +18,7 @@
 \usepackage{sectsty}
 \usepackage{longtable} 
 \usepackage{listings}
+\usepackage{caption}
 \definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
 \sectionfont{\color{magenta}}
 \subsectionfont{\color{red}}
@@ -52,6 +53,7 @@
 
 \newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
 \newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
+\newtheorem[S,bodystyle=\upshape\noindent]{Exo}{Exercice}
 \newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
 \newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
 
@@ -84,7 +86,7 @@ Commençons par faire les importations nécessaires :
 \begin{lstlisting}
 import numpy.random as rd
 \end{lstlisting}
-Cette vidéo \url{https://www.youtube.com/watch?v=HJ9bTO5yYw0} vous explique comment importer la bibliothèque numpy dans pycharm.
+%Cette vidéo \url{https://www.youtube.com/watch?v=HJ9bTO5yYw0} vous explique comment importer la bibliothèque numpy dans pycharm.
 \paragraph{Loi uniforme: $X\sim\mathcal{U}(a, b)$}
 On utilise la fonction randint (de l'anglais random integer) pour générer une variable aléatoire suivant la loi uniforme. Attention, le dernier entier est toujours exclu dans la bibliothèque Numpy. Pour simuler un dé à 6 faces, il faudra donc taper
 \begin{lstlisting}
@@ -93,8 +95,9 @@ x=rd.randint(1,7)
 print(x)
 \end{lstlisting}
 Exécuter plusieurs fois ce programme afin de remarquer que le résultat est aléatoire.
-\paragraph{Simuler la somme de deux dés}
-Ecrire un programme permettant de simuler l'expérience aléatoire consistant à calculer la somme de deux dés jetés.
+\begin{Exo}[Simuler la somme de deux dés]
+Écrire un programme permettant de simuler l'expérience aléatoire consistant à calculer la somme de deux dés jetés.
+\end{Exo}
 \paragraph{Loi binomial : $X\sim\mathcal{B}(n, p)$}
 On utilise la fonction binomial($n$,$p$) pour générer une variable aléatoire suivant la loi binomial, $\mathcal{B}(n, p)$.
 \begin{lstlisting}
@@ -102,9 +105,9 @@ import numpy.random as rd
 x=rd.binomial(100,0.01)
 print(x)
 \end{lstlisting}
-\paragraph{Pièces défectueuses}
-Ecrire un programme permettant de simuler l'expérience aléatoire consistant à compter le nombre de pièces défectueuses  lorsque on prélève 1000 pièces dans une chaîne de fabrication. La probabilité d'être défectueuse par pièce est de $1\%$ .    
-
+\begin{Exo}[Pièces défectueuses]
+Écrire un programme permettant de simuler l'expérience aléatoire consistant à compter le nombre de pièces défectueuses  lorsque on prélève 1000 pièces dans une chaîne de fabrication. La probabilité d'être défectueuse par pièce est de $1\%$ .    
+\end{Exo}
 
 \paragraph{Répéter une expérience}
 On peut aussi demander de renvoyer non pas une réalisation, $X(\omega)$, mais plusieurs réalisations d'une
@@ -117,25 +120,29 @@ import numpy.random as rd
 x=rd.randint(1,7,100)
 print(x)
 \end{lstlisting}
-\paragraph{Gain moyen d'un jeu dés}
+\begin{Exo}[Gain moyen d'un jeu dés]
 Pour attirer les clients, un casino propose un nouveau jeu : le croupier lance simultanément 2 dés et calcule leur somme,
 \begin{itemize} 
 \item si la somme est égale à 2 ou 12, le joueur gagne 2 euros,
 \item si la somme est égale à 7, le casino gagne 1 euro,
 \item dans les autres cas, c'est nul (le joueur gagne 0 euro).  
 \end{itemize}
-Ecrire un programme permettant de simuler cette expérience aléatoire en calculant le gain moyen du joueur après $1 000 000$ de parties. Le jeu est-il favorable au joueur ?
+Écrire un programme permettant de simuler cette expérience aléatoire en calculant le gain moyen du joueur après $1 000 000$ de parties. Le jeu est-il favorable au joueur ?
+\end{Exo}
 
 \section*{Méthode de Monte-Carlo}
-\paragraph{Loi des grands nombres}
-Si l'on répète identiquement une épreuve $n$ fois et qu'on
-compte la proportion des issues où un événement $E$ s'est réalisé (on parle aussi
-de fréquence), alors quand $n \to +\infty$ cette proportion tend vers $\mathbb{P}(E)$.
+\paragraph{Loi faible des grands nombres}
+Si l'on répète identiquement et indépendamment une épreuve de Bernoulli $n$ fois de paramètre $p$, $(X_n)_{n\in \N^*}$,  et qu'on 
+calcule la fréquence, $S_n$, soit la moyenne des résultats obtenus au cours des $n$ premiers lancers
+$$ S_n =\frac{X_1+X_2+\dots+X_n}{n}$$ 
+alors quand $n \to +\infty$ la variable aléatoire $S_n$  converge en probabilité vers $E(X_1)=0.(1-p)+1p=p$.\\
+\paragraph{Estimer la probabilité d'un évènement $E$} Chaque épreuve de Bernoulli, $X_n$,  représente la réalisation de l'événement au n\up{ième} lancer, $E_n$, soit $$
+X_n:{\begin{array}{rcl}\Omega &\longrightarrow &\{0,1\}\\\omega &\longmapsto &\left\{{\begin{matrix}1\ {\mbox{si}}\ \omega\ \in \ E_n\\0\ {\mbox{si}}\ \omega\ \notin \ E_n\end{matrix}}\right.\end{array}}.$$
 Par exemple en jetant 10000 fois une pièce, le rapport entre le nombre de fois où l'on obtient FACE et le nombre de lancés, est environ 1/2 soit $P("FACE") = 1/2$.\\
 Pour estimer la probabilité d'un évènement $E$, en particulier dans le cas où il est difficile de calculer théoriquement  $P(E)$ exactement, une possibilité est donc d'observer la
 proportion de fois où celui-ci se réalise lorsqu'on répète un grand nombre de fois
 l'expérience correspondante.
-\paragraph{Auto-correction}
+\begin{Exo}[Auto-correction]
 Un professeur décide de faire corriger les copies par les élèves. A chaque évaluation, il mélange toutes les copies puis les distribue aux élèves. Il se pose la question suivante mais quelle est la probabilité qu'au moins un élève corrige sa propre copie ? 
 L'outil permutation permet de modéliser l'affectation des copies aux élèves. Une permutation, $\sigma$, est une bijection de $\{1,\dots,n\}$ sur lui-même.  Chaque élève a un numéro et  la copie de l'élève numéro $i$ est corrigé par l'élève numéro $\sigma(i)$.  Par exemple, 
 \begin{enumerate}
@@ -145,8 +152,6 @@ L'outil permutation permet de modéliser l'affectation des copies aux élèves. Une
 \item la copie de l'élève numéro 4 est corrigée par l'élève numéro 2
 \end{enumerate}
 est modélisé par la permutation  $\sigma(1)=4,\sigma(2)=1,\sigma(3)=3, \sigma(4)=2$. On représente une permutation par la liste ordonnée des images de la permutation, dans notre exemple $(4,1,3,2)$. Dans l'exemple, un élève corrige sa propre copie (l'élève numéro 3).  La permutation possède un point fixe, c'est dire il existe un  entier image de lui-même (ici $\sigma(3)=3$).  
-
-  
 \begin{enumerate}
 \item \textbf{Modéliser le mélange} : écrire une fonction permute(n) qui génère une permutation aléatoire, c'est à dire une liste contenant les entiers de 1 à n dans un ordre aléatoire.  
 \item \textbf{Tester qu'un élève ait sa propre copie} : écrire une fonction pointFixe(permutation)
@@ -155,15 +160,14 @@ qui renvoie True ou False selon que liste permutation contienne ou non un point 
 qui estime $P$("un élève corrige sa propre copie") par le principe de Monte-Carlo en réalisant l'expérience nbexp fois avec $n$ élèves
 \item \textbf{$P$("au moins un élève corrige sa propre copie")$\approx 1-1/e$} : estimer cette probabilité pour $n=23$ et pour $n=49$. Que remarquez-vous ?  (note, on peut démontrer ce résultat \url{https://fr.wikiversity.org/wiki/Formule_du_crible/D%C3%A9nombrement_des_d%C3%A9rangements}).
 \end{enumerate}
-\paragraph{Estimer $\pi$}
+\end{Exo}
+\begin{Exo}[Estimer $\pi$]
 Un joueur tire une flèche aléatoirement sur une cible carré avec un disque inscrit (voir figure~1). 
-Quelle est la loi de probabilité que la flèche soit dans le disque ?\\
-\begin{figure}
-\centering
+\begin{center}
 \includegraphics[scale=0.25]{monteCarlo.png}
-\label{monte}
-\caption{Les points bleues représentent les issues dans le disque et les points rouges à l'extérieur}
-\end{figure}
+\captionof{figure}{Les points bleues représentent les issues dans le disque et les points rouges à l'extérieur}
+\end{center}
+Quelle est la loi de probabilité que la flèche soit dans le disque ?\\
 La méthode pour estimer $\pi$ consiste alors à tirer au hasard des nombres $x$ et $y$ dans l'intervalle $[-1,1]$ ; 
 si $x^2 + y^2 < 1$ le point $M(x,y)$ appartient au disque de rayon 1. On utilise la commande uniform(-1,1) pour générer une variable aléatoire suivant la loi uniforme dans le segment $[-1,1]$. On répète cette expérience un grand nombre de fois pour estimer $P$("Flèche dans disque") et ainsi estimer $\pi$. 
 \begin{enumerate}
@@ -174,4 +178,5 @@ qui renvoie True ou False selon que la flèche de coordonnées (x,y) est dans le d
 qui estime $P$("Flèche dans disque") par le principe de Monte-Carlo en réalisant l'expérience nbrexp fois
 \item \textbf{Estimer $\pi$} : donner une approximation de $\pi$.
 \end{enumerate}
+\end{Exo}
 \end{document}

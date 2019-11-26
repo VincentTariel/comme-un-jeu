@@ -205,12 +205,12 @@ a_{21} & a_{22} & \cdots & a_{2p}\\
 a_{n1} & a_{m2} & \cdots & a_{np}\\
 \end{pmatrix}.$$
 Le scalaire $a_{ij}$ est appelé \defi{coefficient de A de position (i,j)}.\\
-La matrice $\begin{pmatrix}
-a_{1,j}\\
+La matrice $C_j=\begin{pmatrix}
+a_{1j}\\
 \vdots\\
-a_{n,j}
+a_{nj}
 \end{pmatrix}$ est appelée la \defi{$j^{\text{ième}}$ colonne} de $A$. \\
-La matrice $\begin{pmatrix}
+La matrice $L_i=\begin{pmatrix}
 a_{i,1}&\cdots&a_{i,p}
 \end{pmatrix}$ est appelée la \defi{$i^{\text{ième}}$ ligne} de $A$.\\ 
 L'ensemble des matrices de taille $n\times p$ à coefficients dans $\K$ est noté \defi{$\MnpK$}. En particulier,
@@ -275,7 +275,7 @@ $
 \begin{Prop}
 $\MnpK$ possède une structure de $\K $-espace vectoriel. 
 \end{Prop}
-\begin{Prop}[Base canonique] La dimension de $\MnpK$ est  $n p$. La base canonique est $(E_{i,j})_{1\leqslant i\leqslant n, 1\leqslant j\leqslant p}$. La matrice  $E_{i,j}$ est celle dont tous les coefficients sont nuls sauf celui d'indice $(i,j)$ , qui vaut 1. Les coordonnées dans la base canonique d'une matrice $A$ sont ses coefficients :$$ A = \sum _{1\leqslant i\leqslant n\atop 1\leqslant j\leqslant p}  a_{i,j} E_{i,j}.$$
+\begin{Prop}[Base canonique]La base canonique est $(E_{i,j})_{1\leqslant i\leqslant n, 1\leqslant j\leqslant p}$. La matrice  $E_{i,j}$ est celle dont tous les coefficients sont nuls sauf celui d'indice $(i,j)$ , qui vaut 1. Les coordonnées dans la base canonique d'une matrice $A$ sont ses coefficients :$$ A = \sum _{1\leqslant i\leqslant n\atop 1\leqslant j\leqslant p}  a_{i,j} E_{i,j}.$$
 On a $\dim( \MnpK)=np$.
 \end{Prop}
 
@@ -324,7 +324,8 @@ Dans l'exemple introductif, $M=\begin{pmatrix} 120 & 50 & 25  \\
 On identifiera fréquemment les $p$-uplets avec les matrices colonnes;
 cela est légitime car l'application
 \[ \Fonction{\Phi }{\K ^p}{\M{p}{1}{\K}}{(\lambda_1,\dots,\lambda_p)}{\begin{pmatrix}\lambda_1\\\vdots\\\lambda_p\end{pmatrix}} \]
-est un isomorphisme.
+est un isomorphisme.\\
+Par exemple, on notera $X=\begin{pmatrix}x_1\\x_2\\\end{pmatrix}\overbrace{=}^{\text{identification}}(x_1,x_2)=\vec{x}.$
 \end{NB}
 \begin{Df}[Produit matriciel]
 Spot $A\in\MnpK$ et $B\in\M{p}{q}{\K}$.\\
@@ -512,7 +513,7 @@ $\Phi _3$ et $R_\theta$ sont des endomorphismes. Comme $R_\theta$ est bijectif, 
 Soit $E$ et $F$ deux $\K $-espaces vectoriels.
 L'ensemble des applications linéaires de $E$ dans $F$ est noté \defi{$\mathcal{L}(E,F)$} ;
 il s'agit d'un sous espace vectoriel de l'espace des fonctions de $E$ dans $F$ muni des lois usuelles.\\
-L'espace vectoriel des endomorphismes de \defi{$\mathcal{L}(E)$} se note $\LE = \mathcal{L}(E,E)$.
+L'espace vectoriel des endomorphismes de $E$ se note \defi{$\LE$}$= \mathcal{L}(E,E)$.
 \end{Df}
 
 \begin{Df}[composition d'application linéaire]
@@ -567,7 +568,7 @@ Soit $P=1-X^2\in \R_n[X]$. Dans la base canonique $\mathcal{B}=(1,X,X^2,\dots,X^
 \begin{Df}[Matrice d'une application linéaire]
 Soit $\mathcal{B} = (\vec{e_1},\dots,\vec{e_p})$ une base de $E$ et $\mathcal{B}' = (\vec{f_1},\dots,\vec{f_n})$ une base de $F$.
 Pour tout $j\in  \{1,\dots,p\}$, le vecteur $u(\vec{e_j})$ se décompose dans la base $\mathcal{B}'$:
-\[u(\vec{e_j})=a_{1,j}.\vec{f_1}+\dots +a_{n,j}.\vec{f_n}. \]
+\[u(\vec{e_j})=a_{1j}.\vec{f_1}+\dots +a_{nj}.\vec{f_n}. \]
 On appelle \defi{matrice de l'application linéaire $u$} la matrice, $[u]_\mathcal{B}^{\mathcal{B}'}$,  définie par :
 
 \begin{center}
@@ -585,8 +586,8 @@ On appelle \defi{matrice de l'application linéaire $u$} la matrice, $[u]_\mathca
       left delimiter=(,
       right delimiter=),
     ]{
-      \node (A) {$a_{1,1}$}; &[1.1cm] \node (B) {$a_{1,p}$}; \\[1.1cm]
-      \node (C) {$a_{n,1}$}; &        \node (D) {$a_{n,p}$}; \\
+      \node (A) {$a_{11}$}; &[1.1cm] \node (B) {$a_{1p}$}; \\[1.1cm]
+      \node (C) {$a_{n1}$}; &        \node (D) {$a_{np}$}; \\
     };
 
     \draw (M.west) node[left] {$[u]_\mathcal{B}^{\mathcal{B}'}=$};
@@ -649,11 +650,11 @@ $$[\Phi_3(P)]_\mathcal{B}=  [\Phi _3]_{\mathcal{B}} [P]_\mathcal{B} =\begin{pmat
 D'où le résultat escompté $\Phi_3(P)=-2X$.
 \end{Ex}
 
-\begin{Th}[produit matriciel et composition d'applications linéaires]
+\begin{Th}[Produit matriciel et composition d'applications linéaires]
 Soit $E$, $F$, $G$ trois espaces vectoriels de dimension finie munis des bases respectives $\mathcal{B}$, $\mathcal{B}'$ et $\mathcal{B}''$.\\
 Soit $u:E\to F$ et $v:F\to G$ deux applications linéaires.\\
 Alors
-\[  [v?u]_{\mathcal{B}}^{\mathcal{B}''} = [v]_{\mathcal{B}'}^{\mathcal{B}''} ×[u]_{\mathcal{B}}^{\mathcal{B}'}. \]
+\[  [v\circ u]_{\mathcal{B}}^{\mathcal{B}''} = [v]_{\mathcal{B}'}^{\mathcal{B}''} ×[u]_{\mathcal{B}}^{\mathcal{B}'}. \]
 \end{Th}
 En résumé, si l'espace vectoriel de départ est le même que celui d'arrivée, avec $\mathcal{B}=(\vec{e}_1, \dots  ,\vec{e}_n)$ base de $E$, nous avons :\\
 \begin{center}
@@ -675,8 +676,8 @@ $u\in\mathcal{L}(E)$ &$\longrightarrow$    & \begin{tikzpicture}[
       left delimiter=(,
       right delimiter=),
     ]{
-      \node (A) {$a_{1,1}$}; &[1.1cm] \node (B) {$a_{1,n}$}; \\[1.1cm]
-      \node (C) {$a_{n,1}$}; &        \node (D) {$a_{n,n}$}; \\
+      \node (A) {$a_{11}$}; &[1.1cm] \node (B) {$a_{1n}$}; \\[1.1cm]
+      \node (C) {$a_{n1}$}; &        \node (D) {$a_{nn}$}; \\
     };
 
     \draw (M.west) node[left] {$A=[u]_\mathcal{B}=$};
@@ -880,31 +881,31 @@ Soit $u:E\to F$ une application linéaire.
 \begin{Prop}[Cas $\dim E = \dim F$]
 Soit $u:E\to F$ une application linéaire tel que $\dim E = \dim F$.
 \begin{center}
-$u$ est bijective $\Leftrightarrow$ $u$ est surjective $\Leftrightarrow$ $u$ est surjective.
+$u$ est bijective $\Leftrightarrow$ $u$ est injective $\Leftrightarrow$ $u$ est surjective.
 \end{center}
 Soit $u:E\to E$ une application linéaire tel que $\dim E$ est finie.
 \begin{center}
 \begin{tabular}{ccccc}
-$u$ est bijective& $\Leftrightarrow$& $u$ est surjective &$\Leftrightarrow$ &$u$ est surjective \\
+$u$ est bijective& $\Leftrightarrow$& $u$ est injective &$\Leftrightarrow$ &$u$ est surjective \\
 $u\in \mathcal{GL}(E)$ &$\Leftrightarrow$ &  $u$ est inversible à gauche &$\Leftrightarrow$ &  $u$ est inversible à droite \\
-$\exists v\in \mathcal{L}(E): u\circ v =v \circ u = \mathrm{Id}_E$ &$\Leftrightarrow$ &  $\exists v\in \mathcal{L}(E): u\circ v= \mathrm{Id}_E$  &$\Leftrightarrow$ &  $\exists v\in \mathcal{L}(E): v\circ u = \mathrm{Id}_E$
+$\exists v\in \mathcal{L}(E): u\circ v =v \circ u = \mathrm{Id}_E$ &$\Leftrightarrow$ &  $\exists v\in \mathcal{L}(E): v\circ u= \mathrm{Id}_E$  &$\Leftrightarrow$ &  $\exists v\in \mathcal{L}(E): u\circ v= \mathrm{Id}_E$
 \end{tabular}
 \end{center}
 \end{Prop}
 \begin{Ex}
-Soit $u:(x,y)\to (x+y,x-y)$ est bijective.\\
-Comme $u$ est un endomorphisme, il suffit montrer qu'elle est injective.\\
+Démontrons que l'application linéaire $u:(x,y)\to (x+y,x-y)$ est bijective.\\
+Comme $u$ est un endomorphisme, il suffit de démontrer qu'elle est injective.\\
 $$(x,y)\in \Ker u \Leftrightarrow \begin{cases}x+y=0\\x-y=0\end{cases}  \Leftrightarrow  \begin{cases}x=0\\y=0\end{cases} $$ 
 Donc $\Ker u =\{(0,0)\}.$
 \end{Ex}
 \begin{Ex}
-Soit $u:P\to P-P'$ est bijective sur $\R_n[X]$.\\
-Comme $u$ est un endomorphisme, il suffit montrer qu'elle est injective.\\
+Démontrons que l'application linéaire $u:P\to P-P'$ est bijective sur $\R_n[X]$.\\
+Comme $u$ est un endomorphisme, il suffit de montrer qu'elle est injective.\\
 $$P\in \Ker u \Leftrightarrow P-P'=0  \Leftrightarrow  P=P'$$ 
 Donc $\Ker u =\{0\}$ car $\deg(P)=\deg(P')$ si et seulement $P=0$.
 \end{Ex}
 \begin{Prop}[Inversibilité à gauche et à droite d'une matrice carré]
-Soit $A,B\in \M{n}{\K}$.
+Soit $A,B\in \MnK$.
 Si $AB=I_n$ alors $A$ et $B$ sont toutes deux inversibles et inverses l'une de l'autre.
 \end{Prop}
 \subsection{Théorème du rang : $\dim E = \Rang u + \dim \Ker u$}
@@ -941,7 +942,7 @@ Alors
 Il faut bien garder à l'esprit que la matrice d'une application linéaire est une "représentation"
 de celle-ci qui dépend du choix des bases au départ et à l'arrivée. Il est utile de savoir passer
 d'une représentation à une autre. Connaissant la matrice d'une application linéaire dans deux
-bases, il faut savoir déterminer celle du même dans deux autres bases.
+bases, il faut savoir la déterminer dans deux autres bases.
 \subsection{D'une représentation à l'autre}
 \begin{Df}[Matrice de passage]
 Soit $E$ un espace vectoriel de dimension finie et  $\mathcal{B}$ et $\mathcal{B}'$ deux bases de $E$.
@@ -988,7 +989,7 @@ Ainsi,
 \end{Df}
 \begin{Prop}[Inversible]
 Si $P$ est une matrice de passage alors $P$ est inversible.\\
-Si  $P$ est inversible alors $P$ est une matrice de passage de la base canonique à la base de ses colonnes $(C_1,\dots, C_n)$.
+Si  $P$ est inversible alors $P$ est la matrice de passage de la base canonique à la base de ses colonnes $(C_1,\dots, C_n)$.
 \end{Prop}
 
 
@@ -1129,7 +1130,7 @@ On souhaite étendre l'application déterminant pour calculer le volume d'un paral
 \begin{center}
 \includegraphics[width=3cm]{determinant3.png}
 \end{center}
-L'idée fondamentale est de déterminer l'application  déterminant à partir de ses propriétés  dans le plan.\\ 
+L'idée fondamentale est de prolonger l'application  déterminant dans le plan à partir de ses propriétés.\\ 
 Sur le plan, on remarque que cette application est :
 \begin{enumerate}
 \item \defi{Normalisé} : l'aire du carré unité est 1, $\det(\vec{e_1},\vec{e_2})=1$
@@ -1187,7 +1188,7 @@ où $\transposee{\text{com}A}$ est la transposée de la comatrice de $A$.
 \end{enumerate}
 Dans toutes les propriétés précédentes, on peut remplacer les opération sur les colonnes par des opération sur les lignes.
 \end{Prop}
-\begin{Prop}[Matrice triangulaire] Le déterminant d'une matrice triangulaire,$\begin{pmatrix}a_{1,1}&a_{1,2}&\cdots &\cdots &a_{1,n}\\0&a_{2,2}&&&a_{2,n}\\\vdots &\ddots &\ddots &&\vdots \\\vdots &&\ddots &\ddots &\vdots \\0&\cdots &\cdots &0&a_{n,n}\\\end{pmatrix}$,  est égale au produit des coefficients de la diagonale, soit $a_{1,1}\times a_{2,2} \times\dots\times a_{n,n}$.
+\begin{Prop}[Matrice triangulaire] Le déterminant d'une matrice triangulaire,$\begin{pmatrix}a_{11}&a_{12}&\cdots &\cdots &a_{1n}\\0&a_{22}&&&a_{2n}\\\vdots &\ddots &\ddots &&\vdots \\\vdots &&\ddots &\ddots &\vdots \\0&\cdots &\cdots &0&a_{nn}\\\end{pmatrix}$,  est égale au produit des coefficients de la diagonale, soit $a_{11}\times a_{22} \times\dots\times a_{nn}$.
 \end{Prop}
 \begin{Df}[Déterminant d'un endomorphisme]
 Soit $E$ un $\K $-espace vectoriel de dimension finie et $u$ un endomorphisme de $E$.\\
@@ -1573,7 +1574,7 @@ On range les coordonnées dans un vecteur colonne.
  L'ensemble des vecteurs colonnes est noté $\M{p}{1}{\K}$, soit l'ensemble des matrices ayant une unique colonne. On identifie les p-uplets $\mathbb{K}^p=\{(\lambda_1,\dots,\lambda_p)\}$, avec les vecteurs colonnes $\M{p}{1}{\K}=\{\begin{pmatrix}\lambda_1\\\vdots\\\lambda_p\end{pmatrix}\}$. \\
 \textbf{Représentation matricielle de l'application linéaire $u$}\\
 Tout d'abord,  calculons l'image de chaque vecteur de la base $\mathcal{B}_E=(\vec{e_1},\dots,\vec{e_p})$ par l'application linéaire $u$ :
-$$u(\vec{e_j})=a_{1,j}.\vec{f_1}+\cdots +a_{n,j}.\vec{f_n}\text{ avec } 1\leq j \leq p.$$
+$$u(\vec{e_j})=a_{1j}.\vec{f_1}+\cdots +a_{nj}.\vec{f_n}\text{ avec } 1\leq j \leq p.$$
 On range les coefficient, $a_{i,j}$ dans un tableau de taille $(n,p)$, noté $\left[u\right]_{\mathcal{B}_E}^{\mathcal{B}_F}$, que l'on appelle \textbf{matrice} :
 \begin{center}
   \begin{tikzpicture}[
@@ -1590,8 +1591,8 @@ On range les coefficient, $a_{i,j}$ dans un tableau de taille $(n,p)$, noté $\le
       left delimiter=(,
       right delimiter=),
     ]{
-      \node (A) {$a_{1,1}$}; &[1.1cm] \node (B) {$a_{1,p}$}; \\[1.1cm]
-      \node (C) {$a_{n,1}$}; &        \node (D) {$a_{n,p}$}; \\
+      \node (A) {$a_{11}$}; &[1.1cm] \node (B) {$a_{1p}$}; \\[1.1cm]
+      \node (C) {$a_{n1}$}; &        \node (D) {$a_{np}$}; \\
     };
 
     \draw (M.west) node[left] {$\left[u\right]_{\mathcal{B}_E}^{\mathcal{B}_F}=$};
@@ -1616,54 +1617,54 @@ u(\vec{x})&=\lambda_1.u(\vec{e_1})+\dots +\lambda_p.u(\vec{e_p})
 Cela implique que l'application linéaire $u$ est entièrement déterminée par les vecteurs :
 $(u(\vec{e_1}),\dots,u(\vec{e_p}))$\\
 \textbf{Représentation du vecteur $u(\vec{x})$ de $F$ en un vecteur colonne $\M{M}{n,1}{\K}$}\\
-Substituons $u(\vec{e_j})$ par $a_{1,j}.\vec{f_1}+\cdots +a_{n,j}.\vec{f_n}$ dans l'équation précédente, ce qui donne après réorganisation des termes :
+Substituons $u(\vec{e_j})$ par $a_{1j}.\vec{f_1}+\cdots +a_{nj}.\vec{f_n}$ dans l'équation précédente, ce qui donne après réorganisation des termes :
 \begin{align}
-u(\vec{x})=& (a_{1,1}.\lambda_1+\dots+a_{1,p}.\lambda_p).\vec{f_1}+\cdots \\
-        &+(a_{n,1}.\lambda_1+\dots+a_{n,p}.\lambda_p).\vec{f_n}.
+u(\vec{x})=& (a_{11}.\lambda_1+\dots+a_{1p}.\lambda_p).\vec{f_1}+\cdots \\
+        &+(a_{n1}.\lambda_1+\dots+a_{np}.\lambda_p).\vec{f_n}.
 \end{align}        
-Donc, l'application linéaire $u$ est entièrement déterminée par les coefficient $a_{i,j}$. On range les coordonnées du vecteur $u(\vec{x})$  dans un vecteur colonne $\M{M}{n,1}{\K}$:      
-$$\left[u(\vec{x})\right]_{\mathcal{B}_F}=\begin{pmatrix}a_{1,1}.\lambda_1+\dots+a_{1,p}.\lambda_p\\ \vdots\\a_{n,1}.\lambda_1+\dots+a_{n,p}.\lambda_p\end{pmatrix}.$$
+Donc, l'application linéaire $u$ est entièrement déterminée par les coefficient $a_{ij}$. On range les coordonnées du vecteur $u(\vec{x})$  dans un vecteur colonne $\M{n}{1}{\K}$:      
+$$\left[u(\vec{x})\right]_{\mathcal{B}_F}=\begin{pmatrix}a_{11}.\lambda_1+\dots+a_{1p}.\lambda_p\\ \vdots\\a_{n1}.\lambda_1+\dots+a_{np}.\lambda_p\end{pmatrix}.$$
 Chaque coordonné du vecteur colonne $\left[u(\vec{x})\right]_{\mathcal{B}_F}$ est la multiplication terme par terme entre les coefficients de la $i$-ème ligne de $\left[u\right]_{\mathcal{B}_E}^{\mathcal{B}_F}$ et les coefficients de la colonne $\left[\vec{x}\right]_{\mathcal{B}_E}$ : 
 \begin{align*}
 \left[u(\vec{x})\right]_{\mathcal{B}_F} =  \left[u\right]_{\mathcal{B}_E}^{\mathcal{B}_F} \times&\left[\vec{x}\right]_{\mathcal{B}_E} \\
 & \begin{pmatrix}\lambda_1\\\vdots\\\lambda_p\end{pmatrix} \\
 \left[u(\vec{x})\right]_{\mathcal{B}_F}=\begin{pmatrix}
-    a_{1,1} &  \dots & a_{1,p}  \\
+    a_{11} &  \dots & a_{1p}  \\
     \vdots &   &  \vdots  \\
-    a_{n,1} &  \dots & a_{n,p}
+    a_{n1} &  \dots & a_{np}
   \end{pmatrix}& \\
- \left[u(\vec{x})\right]_{\mathcal{B}_F}=\begin{pmatrix}a_{1,1}.\lambda_1+\dots+a_{1,p}.\lambda_p\\\vdots\\a_{n,1}.\lambda_1+\dots+a_{n,p}.\lambda_p\end{pmatrix}&.
+ \left[u(\vec{x})\right]_{\mathcal{B}_F}=\begin{pmatrix}a_{11}.\lambda_1+\dots+a_{1p}.\lambda_p\\\vdots\\a_{n1}.\lambda_1+\dots+a_{np}.\lambda_p\end{pmatrix}&.
 \end{align*}
 En conclusion, pour calculer l'image d'un vecteur $\vec{x}$ par l'application linéaire $u$, il suffit de faire des multiplications et des additions entre coefficients. \\
 \textbf{Représentation matricielle de la composition d'applications linéaires $v\circ u$}\\
-Soit $v$ une application linéaire de $F$ dans $G$. On cherche une représentation matricielle de $v\circ u$. Soit $A=\left[u\right]_{\mathcal{B}_E}^{\mathcal{B}_F}$, $B=\left[u\right]_{\mathcal{B}_F}^{\mathcal{B}_G}$ et $C=\left[v\circ u\right]_{\mathcal{B}_E}^{\mathcal{B}_G}$, que l'on note $C=B\times A$. On cherche donc à définir la multiplication entre deux matrices. Le coefficient  $c_{i,j}$ de la matrice $C$ est la $j$-coordonnée du vecteur $C\times [e_i]_{\mathcal{B}_E}$, soit :  
+Soit $v$ une application linéaire de $F$ dans $G$. On cherche une représentation matricielle de $v\circ u$. Soit $A=\left[u\right]_{\mathcal{B}_E}^{\mathcal{B}_F}$, $B=\left[u\right]_{\mathcal{B}_F}^{\mathcal{B}_G}$ et $C=\left[v\circ u\right]_{\mathcal{B}_E}^{\mathcal{B}_G}$, que l'on note $C=B\times A$. On cherche donc à définir la multiplication entre deux matrices. Le coefficient  $c_{ij}$ de la matrice $C$ est la $j$-coordonnée du vecteur $C\times [e_i]_{\mathcal{B}_E}$, soit :  
 \begin{align*}
 &\begin{pmatrix}0\\\vdots\\0\\1\\0\\\vdots\\0\end{pmatrix}  \\
 \begin{pmatrix}
-    c_{1,1} &  \dots & c_{1,m}  \\
+    c_{11} &  \dots & c_{1m}  \\
     \vdots &   &  \vdots  \\
-    c_{n,1} &  \dots & c_{n,m}
-  \end{pmatrix}& &=\begin{pmatrix}c_{1,j}\\\vdots\\c_{n,j}\end{pmatrix}
+    c_{n1} &  \dots & c_{nm}
+  \end{pmatrix}& &=\begin{pmatrix}c_{1j}\\\vdots\\c_{nj}\end{pmatrix}
 \end{align*}
 Comme $ (v\circ u)(e_i)=v(u(e_i))$, on a $C\times[e_i]_{\mathcal{B}_E} = B\times(A\times [e_i]_{\mathcal{B}_E})$. Donc on applique d'abord la matrice $A$ :
 \begin{align*}
 &\begin{pmatrix}0\\\vdots\\1\\\vdots\\0\end{pmatrix}&\\   
 \begin{pmatrix}
-    a_{1,1} &  \dots & a_{1,p}  \\
+    a_{11} &  \dots & a_{1p}  \\
     \vdots &   &  \vdots  \\
-    a_{n,1} &  \dots & a_{n,p}
-  \end{pmatrix}& &=\begin{pmatrix}a_{1,j}\\\vdots\\a_{n,j}\end{pmatrix}
+    a_{n1} &  \dots & a_{np}
+  \end{pmatrix}& &=\begin{pmatrix}a_{1j}\\\vdots\\a_{nj}\end{pmatrix}
 \end{align*}
 puis la matrice $B$,
 \begin{align*}
-&\begin{pmatrix}a_{1,j}\\\vdots\\a_{n,j}\end{pmatrix}&\\   
+&\begin{pmatrix}a_{1j}\\\vdots\\a_{nj}\end{pmatrix}&\\   
 \begin{pmatrix}
-    b_{1,1} &  \dots & b_{1,n}  \\
+    b_{11} &  \dots & b_{1n}  \\
     \vdots &   &  \vdots  \\
-    b_{m,1} &  \dots & b_{m,n}
-  \end{pmatrix}& &=\begin{pmatrix}b_{1,1}a_{1,j}+\cdots +b_{1,n}a_{n,j}\\\vdots\\b_{m,1}a_{1,j}+\cdots +b_{m,n}a_{p,n}\end{pmatrix}
+    b_{m1} &  \dots & b_{mn}
+  \end{pmatrix}& &=\begin{pmatrix}b_{1,1}a_{1j}+\cdots +b_{1n}a_{nj}\\\vdots\\b_{m1}a_{1j}+\cdots +b_{mn}a_{pn}\end{pmatrix}
 \end{align*}
-par identification, on obtient $c_{i,j}=b_{i,1}a_{1,j}+\cdots +b_{i,n}a_{n,j}=\sum _{k=1}^{n}b_{i,k}a_{k,j}$, soit la multiplication terme à terme des coefficients de la  i-ème ligne de $B$ et de j-ème colonne de $A$,et la somme de ces produits. Un schéma de ce produit est :  
+par identification, on obtient $c_{ij}=b_{i1}a_{1j}+\cdots +b_{in}a_{nj}=\sum _{k=1}^{n}b_{ik}a_{kj}$, soit la multiplication terme à terme des coefficients de la  i-ème ligne de $B$ et de j-ème colonne de $A$,et la somme de ces produits. Un schéma de ce produit est :  
 \begin{center}
 \includegraphics[width=3cm]{product_matriciel.png}
 \end{center}
