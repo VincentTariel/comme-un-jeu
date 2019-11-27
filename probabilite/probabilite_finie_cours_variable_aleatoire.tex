@@ -1,5 +1,5 @@
 \section{Variable aléatoire}
-
+\subsection{Définition}
 \begin{Ex}[Jeu]Pour attirer les clients, un casino propose un nouveau jeu : le croupier lance simultanément 2 dés et calcule leur somme,
 \begin{itemize} 
 \item si la somme est égale à 2 ou 12, le joueur gagne 2 euros,
@@ -7,7 +7,7 @@
 \item dans les autres cas, c'est nul (le joueur gagne 0 euro).  
 \end{itemize}
 A votre avis, ce jeu est-il favorable au joueur ou au casino ? A chaque partie quelle est le gain moyen du joueur ?
-\end{Ex}
+
 %TODO modif extrait de suret 
 Dans ce jeu, on fait intervenir le hasard en observant la somme des points marqués par deux dés. Considérons le jet d'un dé bleu et d'un dé
 rouge et notons $S$ la somme des points obtenus. On modélise cette expérience
@@ -43,18 +43,18 @@ Cela revient à considérer un nouvel univers :
 $$\Omega'=\{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}$$
 et à munir cet ensemble de la probabilité $P_S$ définie par le tableau des $P(S =
 k)$. Cette nouvelle probabilité s'appelle loi de la variable aléatoire S.
-\subsection{Généralités}
+\end{Ex}
 \begin{Df}[Variable aléatoire]
 Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé fini.\\
-Une \defi{variable aléatoire} est une application : $$\Fonction{X}{\Omega}{E}{\omega}{X(\omega)}.$$
-Lorsque $E=\R$, on parle de \defi{variable aléatoire réelle}.\\
+Une \defi{variable aléatoire réelle} est une application : $$\Fonction{X}{\Omega}{\R}{\omega}{X(\omega)}.$$
 On note $X(\Omega)=\{X(\omega):\omega \in \Omega \}$ l'ensemble des images de la variable aléatoire.
 \end{Df}
-
+\begin{NB}
+Malgré son nom, une variable aléatoire n'est pas une variable (c'est une fonction) et elle n'est pas aléatoire.
+\end{NB}
 \begin{Df}[Événements associés à une variable aléatoire]
-Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.\\
-Soit $X$ une variable aléatoire à valeurs dans $E$.\\
-Pour tout $A\subset E$, on définit l'événement $\{ X \in A \}$ comme étant
+Soit $(\Omega,\mathcal{P}(\Omega)$ un espace probabilisé et $X$ une variable aléatoire réelle sur cette espace.\\
+Pour tout $A\subset \R$, on définit l'événement $\{ X \in A \}$ comme étant
 \[ X^{-1}(A) = \{\omega\in\Omega :   X(\omega )\in A\}. \]
 
 Dans le cadre de ce chapitre, nous aurons recours aux notations suivantes (pour $x \in \R$ et $A \subset \R$) :
@@ -66,9 +66,8 @@ Dans le cadre de ce chapitre, nous aurons recours aux notations suivantes (pour 
 (X \geq x ) =& X^{-1}([x,+\infty[) = \{\omega \in \Omega | X (\omega) \geq x \}\\
 (X > x ) =& X^{-1}(]x,+\infty[) = \{\omega \in \Omega | X (\omega) > x \}\\
 \end{align*}
-
 \end{Df}
-
+Comme toutes les variables aléatoires sont supposées finies, on s'autorise désormais à écrire l'ensemble des images sous la forme $X (\Omega) = \{x_n,x_2,\dots,x_n\}$.
 
 
 
@@ -78,32 +77,9 @@ $$\{S=7\}= S^{-1}(\{7\})=\{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\}.$$
 et l'ensemble des issues donnant une somme à 2 ou 12 est :
 $$\{S\in \{2,12\}\}= S^{-1}(\{2,12\})=\{(1,1),(6,6)\}.$$
 \end{Ex}
-\begin{Df}[Loi d'une variable aléatoire]
-Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé fini.\\
-Soit $X$ une variable aléatoire à valeurs dans l'ensemble $E$ fini.\\
-L'application
-\[ \Fonction{P_X}{\mathcal{P}(E)}{[0,1]}{A}{P(X^{-1}(A))} \]
-est une probabilité sur $E$, appelée \defi{loi de la variable $X$}.
-\end{Df}
-
-\begin{Prop}[Déterminer une loi]
-Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé fini.\\
-Soit $X$ une variable aléatoire.\\
-Déterminer \defi{la loi de probabilité $P_X$} de la variable aléatoire $X$, c'est donner
-\begin{enumerate}
-\item l'ensemble $X(\Omega)=\{x_1,\dots,x_n\}$ des valeurs prises par $X$,
-\item pour chaque $x_i$ de $X(\Omega)$, la probabilité $p_i=P(X=x_i)$. 
-\end{enumerate} : 
-\end{Prop}
-\begin{proof}
-La démonstration repose sur $$\forall A \subset \mathcal{P}(E): \quad P(X\in A)=P(\underbrace{\bigcup_{x\in A\cap X(\Omega)  }}_{disjoints} (X=x))=\sum_{x\in A}P(X=x).$$
-\end{proof}
 \begin{Prop}
-\begin{itemize}
-\item $\forall x\in X(\Omega):\quad p_i=\sum_{\omega\in\Omega \text{ tel que }X(\omega)=x_i}P(\{\omega\})$,
-\item Les événements $X=x_1,X=x_2,\dots,X=x_n$ forme un système complet d'événements de $\Omega$ et donc :
-$$\sum_{x_i\in X(\Omega)}P(X=x_i)=\sum_{i=1}^n p_i=1.$$
-\end{itemize} 
+Soit $(\Omega,\mathcal{P}(\Omega))$ un espace probabilisé et $X$ une variable aléatoire réelle sur cette espace.\\
+L'ensemble $(X=x_i)_{1\leq i\leq n}$ forme un système complet d'événements de $\Omega$.
 \begin{center}
 \begin{tikzpicture}[scale=0.75]
 \draw[fill=red!20] (-4,1) rectangle (-2,4) node[pos=.5] {$\{X=x_1\}$} ;
@@ -113,6 +89,32 @@ $$\sum_{x_i\in X(\Omega)}P(X=x_i)=\sum_{i=1}^n p_i=1.$$
 \draw \E;
 \end{tikzpicture} 
 \end{center}
+\end{Prop}
+
+
+\subsection{Loi de probabilité}
+\begin{Df}[Loi d'une variable aléatoire]
+Soit $X$ une variable aléatoire discrète sur un espace probabilisé $(\Omega,\mathcal{P}(\Omega),P)$.\\ 
+L'application
+\[ \Fonction{P_X}{\mathcal{P}(\R)}{[0,1]}{A}{P(X^{-1}(A))} \]
+est une probabilité sur $\R$, appelée \defi{loi de la variable $X$}.
+\end{Df}
+\begin{Prop}[Déterminer une loi]
+Déterminer \defi{la loi de probabilité $P_X$} de la variable aléatoire $X$, c'est donner
+\begin{enumerate}
+\item l'ensemble $X(\Omega)=\{x_1,\dots,x_n\}$ des valeurs prises par $X$,
+\item pour chaque $x_i$ de $X(\Omega)$, la probabilité $p_i=P(X=x_i)$. 
+\end{enumerate} : 
+\end{Prop}
+\begin{proof}
+La démonstration repose sur $$\forall A \in \mathcal{P}(E): \quad P(X\in A)=P(\underbrace{\bigcup_{x\in A\cap X(\Omega)  }}_{disjoints} (X=x))=\sum_{x\in A}P(X=x).$$
+\end{proof}
+\begin{Prop}
+\begin{itemize}
+\item $\forall x\in X(\Omega):\quad p_i=\sum_{\omega\in\Omega \text{ tel que }X(\omega)=x_i}P(\{\omega\})$,
+\item Comme les événements $X=x_1,X=x_2,\dots,X=x_n$ forme un système complet d'événements de $\Omega$, on a :
+$$\sum_{x_i\in X(\Omega)}P(X=x_i)=\sum_{i=1}^n p_i=1.$$
+\end{itemize} 
 \end{Prop}
 
 \begin{Ex}[Jeu]
@@ -145,22 +147,21 @@ Sa représentation graphique est :
 \end{center}
 \end{Ex}
 
-Le théorème permet surtout 
-définir une variable aléatoire par sa loi de probabilité sans avoir à étudier l'expérience aléatoire sous-jacente.
+
 \begin{Th}
 Soit $\{x_1,\dots,x_n\}$ une famille finie de réels et $\{p_1,\dots,p_n\}$ une famille de réels positifs telle que $\sum_{i=1} p_i = 1$. Alors il existe 
 une variable aléatoire  $X$ sur un
 espace probabilisé $(\Omega ,\mathcal{P}(\Omega) ,P)$ à valeurs dans  $\{x_1,\dots,x_n\}$ telle que : 
-$$ \forall n \in \N :  P( X = x_n ) = p_n.$$
+$$ \forall i \in \{1,\dots,n\}:  P( X = x_i ) = p_i.$$
 \end{Th}
-
-
+\begin{NB}
+Ce théorème permet de définir une variable aléatoire par sa loi de probabilité sans avoir à étudier l'expérience aléatoire sous-jacente, c'est à dire définir l'espace de probabilité $(\Omega,\mathcal{P}(\Omega),P)$ et la fonction de la variable aléatoire. Par exemple, on modélise l'expérience aléatoire d'un lancer de dé en posant : la variable aléatoire $X$ représente le chiffre du dé avec $p_1=p_2=p_3=p_4=p_5=p_6=\frac{1}{6}$.    
+\end{NB}
 \begin{Df}[Fonction d'une variable aléatoire]
-Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.\\
-Soit $X$ une variable aléatoire à valeurs dans $E$.\\
-Soit $f:E\to F$ une application quelconque.
+Soit $X$ une variable aléatoire discrète sur un espace probabilisé $(\Omega,\mathcal{P}(\Omega),P)$.\\ 
+Soit $f:\R\to \R$ une application quelconque.
 L'application ,
-\[ \Fonction{f\circ  X}{\Omega}{F}{\omega}{f(X(\omega))} \]
+\[ \Fonction{f\circ  X}{\Omega}{\R}{\omega}{f(X(\omega))} \]
 est une variable aléatoire à valeurs dans $F$.
 L'usage veut qu'on la note abusivement $f(X)$ au lieu de $f\circ X$.\\
 \begin{center}
@@ -173,7 +174,7 @@ L'usage veut qu'on la note abusivement $f(X)$ au lieu de $f\circ X$.\\
 \draw[->] (set1) to[bend right]node[midway,below]{$f\circ X$} (set3);
 \end{tikzpicture}
 \end{center}
-On a $$P(f(X)=y)=\sum_{x\in X(\Omega)\text{ tel que }f(x)=y }P(X=x)$$  
+On a $$\forall j\in \{1,\dots,m\}:\quad P(f(X)=y_j)=\sum_{i\in\{1,\dots,n \} \text{ tel que }f(x_i)=y_j }P(X=x_i)$$  
 \end{Df}
 \begin{Ex}[Jeu]
 Le gain obtenu est fonction de la somme obtenue avec les deux dés. La modélisation est d'appliquer une fonction à la somme, S, des dés  : 
@@ -200,11 +201,11 @@ On note  $(X,Y)$ le \defi{couple de variables aléatoires} prenant ses valeurs da
 La \defi{loi conjointe} du couple $(X,Y)$ est déterminé par  :
 \begin{enumerate}
 \item $X(\Omega)\times Y(\Omega)=\{x_1,\dots,x_n\}\times \{y_1,\dots,y_m\} $, les valeurs prises par le couple
-\item $\forall (x,y)\in X(\Omega)\times Y(\Omega): P(X=x\cap Y=y)$,
+\item $\forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\}:\quad P(X=x_i\cap Y=y_j)$,
 \end{enumerate}
 On note $p_{i,j}=P(X=x_i\cap Y=y_j)$.\\
-Les événements $((X=x)\cap (y=y))_{(x,y)\in X(\Omega)\times Y(\Omega)}$ forment un système complet d'événements de $\Omega$. En particulier, on a : 
-$$\sum_{\forall (x,y)\in X(\Omega)\times Y(\Omega)}P(X=x\cap Y=y)=\sum_{i=1}^n \sum_{j=1}^m p_{i,j}=1.$$ 
+Les événements $((X=x_i)\cap (y=y_j))_{\forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\}}$ forment un système complet d'événements de $\Omega$. En particulier, on a : 
+$$\sum_{i=1}^n \sum_{j=1}^mP(X=x_i\cap Y=y_j)=\sum_{i=1}^n \sum_{j=1}^m p_{i,j}=1.$$ 
 \end{Df}
 \begin{Df}[Lois marginales]
 Soit $X,Y$ deux variables aléatoires réelles définies sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
@@ -212,20 +213,20 @@ La loi de $X$ appelé \defi{première loi marginale} et la loi de $Y$ \defi{second
 \end{Df}
 \begin{Prop}[Relations]
 Soit $X,Y$ deux variables aléatoires réelles définies sur $(\Omega,\mathcal{P}(\Omega),P)$. On a :
-$$\forall x\in X(\Omega): P(X=x)=\sum_{y\in Y(\Omega)}P((X=x)\cap (Y=y))$$
+$$\forall i\in \{1,\dots,n\}: P(X=x_i)=\sum_{j\in \{1,\dots,m\} }P((X=x_i)\cap (Y=y_j))$$
 et 
-$$\forall j\in Y(\Omega): P(Y=y)=\sum_{i\in X(\Omega)}P((X=x)\cap (Y=y)).$$ 
+$$\forall j\in \{1,\dots,m\}: P(Y=y_j)=\sum_{i\in \{1,\dots,n\}}P((X=x_i)\cap (Y=y_j)).$$ 
 
 \begin{center}
 \begin{tabular}{|c|ccccc|c|c}
 \cline{1-7}
-\backslashbox{$X$}{$Y$} & $y_1$ &$\dots$ & $y_j$&$\dots$&$y_m$&$P(X=x)$\\\cline{1-7}
+\backslashbox{$X$}{$Y$} & $y_1$ &$\dots$ & $y_j$&$\dots$&$y_m$&$P(X=x_i)$\\\cline{1-7}
 $x_1$ & $p_{1,1}$ &$\dots$ & $p_{1,j}$&$\dots$&$p_{1,m}$&$P(X=x_1)$\\
 $\vdots$ & $\vdots$ &  & $\vdots$& &$\vdots$&$\vdots$\\
 $x_i$ & $p_{i,1}$ &$\dots$ & $p_{i,j}$&$\dots$&$p_{i,m}$&$P(X=x_i)$&$\leftarrow\sum_{k=1}^m p_{i,k}$ \\
 $\vdots$ & $\vdots$ &  & $\vdots$& &$\vdots$&$\vdots$\\
 $x_n$ & $p_{n,1}$ &$\dots$ & $p_{n,j}$&$\dots$&$p_{n,m}$&$P(X=x_n)$\\\cline{1-7}
-$P(Y=y)$& $P(Y=x_1)$&$\dots$&$P(Y=x_j)$&$\dots$&$P(Y=x_m)$&1\\\cline{1-7}
+$P(Y=y_j)$& $P(Y=y_1)$&$\dots$&$P(Y=y_j)$&$\dots$&$P(Y=y_m)$&1\\\cline{1-7}
       & & &$\overset{\uparrow}{\sum_{k=1}^n p_{k,j}}$ & & &\\
 \end{tabular}
 \end{center} 
@@ -288,22 +289,21 @@ $P(Y=y)$&7/24&17/24&1 \\\hline
 \begin{Df}[Lois conditionnelles]
 Soit $(X,Y)$ un couple de variables aléatoires sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
 \begin{enumerate}
-\item On appelle \defi{loi conditionnelle} de $X$ sachant $(Y = y )$ pour $P(Y = y )\neq 0$, la probabilité définie par  :
-$$\forall x\in X (\Omega):\quad  P_{Y=y}(X=x)=\frac{P(X=x\cap Y=y) } {P(Y=y)}$$ 
-\item On appelle \defi{loi conditionnelle} de $Y$ sachant $(X = x )$ pour $P(X = X )\neq 0$, la probabilité définie par  :
-$$\forall y\in Y (\Omega):\quad  P_{X=x}(Y=y)=\frac{P(X=x\cap Y=y) } {P(X=x)}$$ 
+\item On appelle \defi{loi conditionnelle} de $X$ sachant $(Y = y_j )$ pour $P(Y = y_j )\neq 0$, la probabilité définie par  :
+$$\forall i\in \{1,\dots,n\}:\quad  P_{Y=y_j}(X=x_i)=\frac{P(X=x_i\cap Y=y_j) } {P(Y=y_i)}$$ 
+\item On appelle \defi{loi conditionnelle} de $Y$ sachant $(X = x_i )$ pour $P(X = x_i )\neq 0$, la probabilité définie par  :
+$$\forall j\in \{1,\dots,m\}:\quad  P_{X=x_i}(Y=y_j)=\frac{P(X=x_i\cap Y=y_j) } {P(X=x_i)}$$ 
 \end{enumerate}
 \end{Df}
 \begin{NB}
 Les lois marginales et les lois conditionnelles déterminent la loi conjointe :
-$$\forall (x,y)\in X(\Omega)\times Y(\Omega):\quad P(X=x\cap Y=y) =P_{X=x}(Y=y)P(X=x)$$
-$$\forall (x,y)\in X(\Omega)\times Y(\Omega):\quad P(X=x\cap Y=y) =P_{Y=y}(X=x)P(Y=y)$$
+$$\forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\}:\quad P(X=x_i\cap Y=y_j)=P_{X=x_i}(Y=y_j)P(X=x_i)$$
+$$\forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\}:\quad P(X=x_i\cap Y=y_j)=P_{Y=y_j}(X=x_i)P(Y=y_j)$$
 \end{NB}
 \begin{Df}[Indépendance]
-Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé fini.\\
-Soit $X$ une variable aléatoire à valeurs dans $X(\Omega)$ et $Y$ une variable aléatoire à valeurs dans $Y(\Omega)$.
+Soit $(X,Y)$ un couple de variables aléatoires sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
 On dit que $X$ et $Y$ sont \defi{indépendantes} si 
-$$  \forall x\in X(\Omega), \forall y\in Y(\Omega),\quad P( (X=x)\cap (Y=y) ) = P(X=x) P(Y=y).$$
+$$ \forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\}:\quad P(X=x_i\cap Y=y_j):\quad P( (X=x_i)\cap (Y=y_j) ) = P(X=x_i) P(Y=y_j).$$
 \end{Df}
 \begin{NB} Dans la modélisation d'une expérience aléatoire, l'hypothèse d'indépendance des variables aléatoires est souvent une donnée de l'expérience et 
 non pas une propriété à vérifier. Par exemple, la modélisation de l'expérience du jeter des deux dés serait :
@@ -316,10 +316,9 @@ non pas une propriété à vérifier. Par exemple, la modélisation de l'expérience d
 \end{NB}
 
 \begin{Th}
-Soit  $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé fini.\\
-Soit $X$ une variable aléatoire à valeurs dans $E$ et $Y$ une variable aléatoire à valeurs dans $F$.
+Soit $(X,Y)$ un couple de variables aléatoires sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
 Si $X$ et $Y$ sont indépendantes, il en va de même pour les variables aléatoires $f(X)$ et $g(Y)$
-où $f:E\to E'$ et $g:F\to F'$ sont deux applications quelconques.
+où $f:\R\to \R$ et $g:\R\to \R $ sont deux applications quelconques.
 
 \end{Th}
 
@@ -329,7 +328,7 @@ L'espérance mathématique d'une variable aléatoire réelle est la moyenne pondérée
 \begin{Df}[Espérance d'une variable aléatoire]
 Soit $X$ une valeur aléatoire réelle.\\
 L'\defi{espérance de $X$} est
-\[ E(X) = \sum_{x\in X(\Omega) } x P(X=x) \]
+\[ E(X) = \sum_{\forall i\in \{1,\dots,n\} } x_i P(X=x_i) \]
 \end{Df} 
 \begin{Ex}[Somme de deux dés]
 Reprenons l'exemple du lancer de deux dés en notant $S$ la somme des chiffres obtenus. 
@@ -339,11 +338,9 @@ $$E(S ) = \sum_{s\in S (\Omega)} sP(S = s)=  2.\frac{1}{36}+3.\frac{2}{36}+4.\fr
 
 
 \begin{Th}[Formule de transfert]
-Si $X$ est une variable aléatoire réelle, alors
-\[ E(X) = \sum_{x\in X(\Omega)} x P(X=x). \]
-Plus généralement, si $X$ est une variable aléatoire à valeurs dans $E$
- et $f:E\to F$, alors
-\[ E(f(X)) =  \sum_{x\in X(\Omega)}  f(x) P(X=x). \]
+Si $X$ est une variable aléatoire réelle
+ et $f:\R\to \R$, alors
+\[ E(f(X)) =  \sum_{\forall i\in \{1,\dots,n\} }  f(x_i) P(X=x_i). \]
 \end{Th}
 
 \begin{NB}
@@ -353,18 +350,18 @@ Dans l'exemple du jeu, l'espérance de la variable aléatoire $G(X)$ représente le
 En conclusion, ce jeu n'est pas favorable au joueur.
 \end{NB}
 
-\begin{proof}
-Soit $X(\Omega)=\{x_1,x_2,\dots,x_n\}$ les valeurs prises par la variables aléatoires.\\
-Les événements $X^{-1}(x_1),\dots,X^{-1}(x_n)$ est un système complet d'événements. On a :
-\begin{align*}
- E(X) &= \sum_{\omega\in\Omega} X(\omega) P(\{\omega\})\\
- &= \sum_{\omega\in \cup_{i=1}^{n}X^{-1}(x_i)} X(\omega) P(\{\omega\})\\
-  &= \sum_{x\in \{x_1,x_2,\dots,x_n\} } \sum_{\omega \in X^{-1}(x)} X(\omega) P(\{\omega\})\\
-    &= \sum_{x\in \{x_1,x_2,\dots,x_n\} } \sum_{\omega \in X^{-1}(x)} x P(\{\omega\})\\
-    &= \sum_{x\in \{x_1,x_2,\dots,x_n\} }  x \sum_{\omega \in X^{-1}(x)} P(\{\omega\})\\
-      &= \sum_{x\in X(\Omega) }  x P(X=x)
-\end{align*} 
-\end{proof}
+%\begin{proof}
+%Soit $X(\Omega)=\{x_1,x_2,\dots,x_n\}$ les valeurs prises par la variables aléatoires.\\
+%Les événements $X^{-1}(x_1),\dots,X^{-1}(x_n)$ est un système complet d'événements. On a :
+%\begin{align*}
+% E(X) &= \sum_{\omega\in\Omega} X(\omega) P(\{\omega\})\\
+% &= \sum_{\omega\in \cup_{i=1}^{n}X^{-1}(x_i)} X(\omega) P(\{\omega\})\\
+%  &= \sum_{x\in \{x_1,x_2,\dots,x_n\} } \sum_{\omega \in X^{-1}(x)} X(\omega) P(\{\omega\})\\
+%    &= \sum_{x\in \{x_1,x_2,\dots,x_n\} } \sum_{\omega \in X^{-1}(x)} x P(\{\omega\})\\
+%    &= \sum_{x\in \{x_1,x_2,\dots,x_n\} }  x \sum_{\omega \in X^{-1}(x)} P(\{\omega\})\\
+%      &= \sum_{x\in X(\Omega) }  x P(X=x)
+%\end{align*} 
+%\end{proof}
 
 \begin{Th}
 Soit $X$ et $Y$ deux variables aléatoires indépendantes.\\
@@ -373,10 +370,10 @@ Alors \[ E(XY) = E(X) E(Y). \]
 \begin{proof}
 On applique le théorème de transfert à la variable aléatoire $f(X,Y)=XY$ d'où
 \begin{align*}
- E(XY) &= \sum_{ (x,y)\in X(\Omega)\times Y(\Omega) } xy P(X=x\cap Y=y )\\
-       &\overbrace{=}^{\text{indépendance} } \sum_{ (x,y)\in X(\Omega)\times Y(\Omega) } xy P(X=x) P(Y=y)\\
-       &= \sum_{ x\in X(\Omega) }  \sum_{ y\in  Y(\Omega) }xy P(X=x) P(Y=y) \\
-       &= \sum_{ x\in X(\Omega) } x P(X=x) \sum_{ y\in  Y(\Omega) }y  P(Y=y) \\
+ E(XY) &= \sum_{ \forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\} } x_i y_j P(X=x_i\cap Y=y_j )\\
+       &\overbrace{=}^{\text{indépendance} } \sum_{  \forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\} } x_i y_j P(X=x_i) P(Y=y_j)\\
+       &= \sum_{ i=0 }^n  \sum_{j=0}^m  x_i y_j P(X=x_i) P(Y=y_j)\\
+       &= \sum_{ i=0 }^n  x_i P(X=x_i) \sum_{j=0}^m y_j  P(Y=y_j) \\
        &= E(X)E(Y).
 \end{align*} 
 \end{proof}
@@ -498,7 +495,7 @@ Soit $A$ est un événement de $\Omega$. La variable aléatoire réelle $1_A$ défini
 $$1_A(\omega) =\begin{cases}1\text{ si }\omega \in A\\0\text{ si }\omega \in \bar A \end{cases}$$
 est une variable de Bernoulli de paramètre $p=P(A)$. On l'appelle \defi{loi indicatrice} de l'événement $A$.
 \end{Prop}
-\begin{Df}[loi binomiale]
+\begin{Df}[Loi binomiale]
 Une variable $X$ à valeurs dans $\{0,n\}$ suit la \defi{loi binomiale} de paramètres $n$ et $p$
 si
 \begin{enumerate}
@@ -520,27 +517,27 @@ En d'autres termes, si l'expérience aléatoire est  une répétition de $n$ épreuve
 
 \subsection{Convergence et approximations}
 
-\begin{Prop}[Approximation d'une loi binomiale par une loi de Poisson]
-Soit $(X_n)_{n\in\N}$ une suite de variables aléatoires tel que $X_n\hookrightarrow \mathcal{B}(n,p_n)$ et $\lim\limits_{n\to\infty}np_n=\lambda$.\\
-Alors on a :
-$$\forall k \in \N:\quad  \lim\limits_{n\to\infty} P(X_n = k) = e^{-\lambda}\frac{\lambda^k}{k!}.$$
-\end{Prop}
-\begin{proof}
-Soit $k\in \N$. On a :
-\begin{align*}
-P(X_n = k) &= \begin{pmatrix}n \\ k \end{pmatrix} (p_n)^k (1-p_n)^{n-k}\\
-&= \frac{1}{k!} n.(n-1).\dots (n-k+1)(p_n)^k (1-p_n)^{n-k} \\
-&= \frac{1}{k!} 1.(1-1/n).\dots (1-(k+1)/n)(p_n/n)^k (1-p_n)^{n-k} \\
-\end{align*}
-D'une part  $\overbrace{1.(1-1/n).\dots (1-(k+1)/n)}^{k \text{ facteurs fixes}}\tend[n\to+\infty]1$, d'autre part $(p_n/n)^k\tend[n\to+\infty] \lambda^k$ et enfin $(1-p_n)^{n-k}=e^{(n-k)\ln(1-p_n)}\tend[n\to+\infty] e^{-\lambda}$ car $(n-k)\ln(1-p_n)\equivalent[n\to+\infty] -np_n$. Finalement
-$$\lim\limits_{n\to\infty} P(X_n = k) = e^{-\lambda}\frac{\lambda^k}{k!}.$$
-\end{proof}
-%TODO DEMO
-
-%TODO loi faible des grands nombres
-% Rajouter 
-En pratique, si $X$ est une variable aléatoire suivant la loi binomiale $\mathcal{B}(n,p)$ avec $n\geq 30$, $p\leq 0,10$ et $np\geq 15$, on peut approximer la loi de $X$ par la loi de Poisson de paramètre $np$.\\
-Ce théorème  justifie le fait que la loi de Poisson est utilisée comme modèle de certaines expériences aléatoires (nombre de clients entrant dans un magasin, nombre de coquilles dans une page de journal,...).
+%\begin{Prop}[Approximation d'une loi binomiale par une loi de Poisson]
+%Soit $(X_n)_{n\in\N}$ une suite de variables aléatoires tel que $X_n\hookrightarrow \mathcal{B}(n,p_n)$ et $\lim\limits_{n\to\infty}np_n=\lambda$.\\
+%Alors on a :
+%$$\forall k \in \N:\quad  \lim\limits_{n\to\infty} P(X_n = k) = e^{-\lambda}\frac{\lambda^k}{k!}.$$
+%\end{Prop}
+%\begin{proof}
+%Soit $k\in \N$. On a :
+%\begin{align*}
+%P(X_n = k) &= \begin{pmatrix}n \\ k \end{pmatrix} (p_n)^k (1-p_n)^{n-k}\\
+%&= \frac{1}{k!} n.(n-1).\dots (n-k+1)(p_n)^k (1-p_n)^{n-k} \\
+%&= \frac{1}{k!} 1.(1-1/n).\dots (1-(k+1)/n)(p_n/n)^k (1-p_n)^{n-k} \\
+%\end{align*}
+%D'une part  $\overbrace{1.(1-1/n).\dots (1-(k+1)/n)}^{k \text{ facteurs fixes}}\tend[n\to+\infty]1$, d'autre part $(p_n/n)^k\tend[n\to+\infty] \lambda^k$ et enfin $(1-p_n)^{n-k}=e^{(n-k)\ln(1-p_n)}\tend[n\to+\infty] e^{-\lambda}$ car $(n-k)\ln(1-p_n)\equivalent[n\to+\infty] -np_n$. Finalement
+%$$\lim\limits_{n\to\infty} P(X_n = k) = e^{-\lambda}\frac{\lambda^k}{k!}.$$
+%\end{proof}
+%%TODO DEMO
+%
+%%TODO loi faible des grands nombres
+%% Rajouter 
+%En pratique, si $X$ est une variable aléatoire suivant la loi binomiale $\mathcal{B}(n,p)$ avec $n\geq 30$, $p\leq 0,10$ et $np\geq 15$, on peut approximer la loi de $X$ par la loi de Poisson de paramètre $np$.\\
+%Ce théorème  justifie le fait que la loi de Poisson est utilisée comme modèle de certaines expériences aléatoires (nombre de clients entrant dans un magasin, nombre de coquilles dans une page de journal,...).
 
 \begin{Prop}[Inégalité de Markov]
 Soit $X$ une variable aléatoire réelle positive.\\

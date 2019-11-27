@@ -40,12 +40,13 @@
    \renewcommand{\headrulewidth}{0pt} % and the line
 }
 
-\setcounter{minitocdepth}{3}
+%\setcounter{minitocdepth}{3}
+%\addto\captionsfrench{\renewcommand{\chaptername}{}}
 
-
-
+\renewcommand{\thesection}{\Roman{section}} 
+\renewcommand{\thesubsection}{\Alph{subsection}}
 \thmboxoptions{S,bodystyle=\itshape\noindent}
-\newtheorem[L]{Lem}{Lemme}[section]
+\newtheorem[L]{Lem}{Lemme}
 \newtheorem[L]{Th}[Lem]{Théorème}
 \newtheorem[L]{Cor}[Lem]{Corollaire}
 \newtheorem[L]{Prop}[Lem]{Proposition}
@@ -68,6 +69,7 @@
 
 
 \chapter{Probabilité finie}
+
 %\dominitoc
 La théorie des probabilités fournit des modèles mathématiques permettant
 l'étude d'expériences dont le résultat ne peut être prévu avec une totale
@@ -79,13 +81,13 @@ certitude.
 \hline
 Expérience & Univers  $\Omega$ (ensemble des issues) & cardinal\\
 \hline \hline 
-Lancer d'un dé & Un entier $k\in\{1,\dots,6\}$&finie \\
+Lancer d'un dé & Un entier $k\in\{1,\dots,6\}$&dénombrable fini \\
 \hline
-Prélèvement de n objets en sortie d'une chaîne de production dans l'échantillon & Nombre d'objets défectueux, $k\in\{0,\dots,n\}$&finie\\
+Prélèvement de n objets en sortie d'une chaîne de production dans l'échantillon & Nombre d'objets défectueux, $k\in\{0,\dots,n\}$&dénombrable fini\\
 \hline
-Questionnaire à 100 questions  binaires & Suite $\omega$ de 100 réponses $\omega\in\{oui, non\}^{100}$&finie\\
+Questionnaire à 100 questions  binaires & Suite $\omega$ de 100 réponses $\omega\in\{oui, non\}^{100}$&dénombrable fini\\
 \hline
-Lancer d'une pièce jusqu'à la première obtention de pile & Un entier $k \in \mathbb{N}$ : le temps d'attente du premier succès&dénombrable\\
+Lancer d'une pièce jusqu'à la première obtention de pile & Un entier $k \in \mathbb{N}$ : le temps d'attente du premier succès&dénombrable infini\\
 \hline
 Temps d'attente pour une hotline  & un temps $\omega\in [0,+\infty[$&continue\\
 \hline
@@ -101,10 +103,10 @@ obéissent à certaines lois. Par exemple si on jette 6000 fois le dé, on s'attend
 à ce que le nombre d'apparitions de la face « 3 » soit voisin de 1000. Si on
 met en service 100 ampoules, leurs durées de vie observées seront concentrées
 autour d'une certaine valeur moyenne.\\
-La théorie des probabilités modélise l'expérience aléatoire dans un cadre formel en quantifiant le sentiment d'incertitude vis-à-vis d'un événement. La \textit{statistique} permet de confronter les modèles probabilistes avec la réalité observée afin de les valider ou de les invalider. Par
+La \defi{théorie des probabilités} modélise l'expérience aléatoire dans un cadre formel en quantifiant le sentiment d'incertitude vis-à-vis d'un événement. La \defi{statistique} permet de confronter les modèles probabilistes avec la réalité observée afin de les valider ou de les invalider. Par
 exemple si quelqu'un a 60 bonnes réponses sur 100 au questionnaire, est-il
 légitime de considérer qu'il a « mieux fait » que le hasard ?\\
-Dans le cadre de cours, on limite l'univers à un ensemble finie, c'est à dire que l'on peut effectuer une énumération finie des issues de l'expérience aléatoire.    
+Dans le cadre de cours, on limite l'univers à un ensemble \defi{dénombrable fini}, c'est à dire que l'on peut effectuer une énumération finie des issues de l'expérience aléatoire.    
  
 \input{probabilite_finie_cours_modele_probabilite}
 \input{probabilite_finie_cours_variable_aleatoire}
