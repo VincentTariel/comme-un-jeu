@@ -143,7 +143,7 @@ $p_k=P(S=k)$ & $\frac{1}{36}$ & $\frac{2}{36}$& $\frac{3}{36}$& $\frac{4}{36}$& 
 \end{center}
 Sa représentation graphique est :
 \begin{center}
-\includegraphics[width=6cm]{somme.png}
+\includegraphics[width=8cm]{somme.png}
 \end{center}
 \end{Ex}
 
@@ -213,9 +213,9 @@ La loi de $X$ appelé \defi{première loi marginale} et la loi de $Y$ \defi{second
 \end{Df}
 \begin{Prop}[Relations]
 Soit $X,Y$ deux variables aléatoires réelles définies sur $(\Omega,\mathcal{P}(\Omega),P)$. On a :
-$$\forall i\in \{1,\dots,n\}: P(X=x_i)=\sum_{j\in \{1,\dots,m\} }P((X=x_i)\cap (Y=y_j))$$
+$$\forall i\in \{1,\dots,n\}: \quad P(X=x_i)=\sum_{j=1}^{m }P((X=x_i)\cap (Y=y_j))$$
 et 
-$$\forall j\in \{1,\dots,m\}: P(Y=y_j)=\sum_{i\in \{1,\dots,n\}}P((X=x_i)\cap (Y=y_j)).$$ 
+$$\forall j\in \{1,\dots,m\}: \quad P(Y=y_j)=\sum_{i=1}^{n }P((X=x_i)\cap (Y=y_j)).$$ 
 
 \begin{center}
 \begin{tabular}{|c|ccccc|c|c}
@@ -295,6 +295,7 @@ $$\forall i\in \{1,\dots,n\}:\quad  P_{Y=y_j}(X=x_i)=\frac{P(X=x_i\cap Y=y_j) } 
 $$\forall j\in \{1,\dots,m\}:\quad  P_{X=x_i}(Y=y_j)=\frac{P(X=x_i\cap Y=y_j) } {P(X=x_i)}$$ 
 \end{enumerate}
 \end{Df}
+
 \begin{NB}
 Les lois marginales et les lois conditionnelles déterminent la loi conjointe :
 $$\forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\}:\quad P(X=x_i\cap Y=y_j)=P_{X=x_i}(Y=y_j)P(X=x_i)$$
@@ -306,7 +307,7 @@ On dit que $X$ et $Y$ sont \defi{indépendantes} si
 $$ \forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\}:\quad P(X=x_i\cap Y=y_j):\quad P( (X=x_i)\cap (Y=y_j) ) = P(X=x_i) P(Y=y_j).$$
 \end{Df}
 \begin{NB} Dans la modélisation d'une expérience aléatoire, l'hypothèse d'indépendance des variables aléatoires est souvent une donnée de l'expérience et 
-non pas une propriété à vérifier. Par exemple, la modélisation de l'expérience du jeter des deux dés serait :
+non pas une propriété à vérifier. Par exemple, la modélisation de l'expérience du jeter de deux dés serait :
 \begin{itemize}
 \item $X_1$,  la variable aléatoire représentant le chiffre du premier dé,
 \item $X_2$, la variable aléatoire représentant le chiffre du second dé,
@@ -314,13 +315,14 @@ non pas une propriété à vérifier. Par exemple, la modélisation de l'expérience d
 \item $S=X_1+X_2$, la somme des deux dés.
 \end{itemize}
 \end{NB}
-
 \begin{Th}
 Soit $(X,Y)$ un couple de variables aléatoires sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
 Si $X$ et $Y$ sont indépendantes, il en va de même pour les variables aléatoires $f(X)$ et $g(Y)$
 où $f:\R\to \R$ et $g:\R\to \R $ sont deux applications quelconques.
-
 \end{Th}
+
+
+
 
 %% -----------------------------------------------------------------------------
 \subsection{Espérance}
@@ -396,13 +398,17 @@ Soit $X$ et $Y$ deux variables aléatoires réelles et $(a,b)\in\R^2$.
 \end{Prop}
 \begin{Ex}[Centrée une variable aléatoire]
 Soit $X$ une variable aléatoire.\\
-Alors la variable aléatoire $Y=X-E(X)$ est centrée.
+Alors la variable aléatoire $Y=X-E(X)$ est centrée car $E(Y)=E(X-E(X))=E(X)-E(E(X))=E(X)-E(X)=0$
 \end{Ex}
 
 %
 
 
 \subsection{Variance}
+
+
+
+
 La variance est une mesure de la dispersion des valeurs d'une loi de probabilité.
 \begin{Df}[variance d'une variable aléatoire]
 
@@ -410,7 +416,7 @@ Soit $X$ une variable aléatoire réelle.
 Sa \defi{variance} est $E\left( (X-E(X))^2\right)$ et on la note $V(X)$.
 Son \defi{écart-type} est $\sigma(X) =\sqrt{V(X)}$.
 \end{Df}
-\begin{Prop}[Formule]
+\begin{Prop}[Formule de K\oe nig-Hugens]
 Soit $X$ une variable aléatoire réelle.
 Pour tout $a>0$, on a
 \[ V(X) = E(X^2)-(E(X))^2 \]
@@ -426,7 +432,7 @@ $$\sigma(S)=\sqrt{V(S)}\approx 2,42.$$
 \end{Ex}
 
 
-\begin{Df}[covariance de deux variables aléatoires]
+\begin{Df}[Covariance de deux variables aléatoires]
 
 Soit $X$ et $Y$ deux variables aléatoires réelles.
 Leur \defi{covariance} est $E( (X-E(X)) (Y-E(Y)) )$ et on la note $\mathrm{Cov}(X,Y)$.
@@ -444,7 +450,7 @@ Soit $X$ et $Y$ deux variables aléatoires réelles.
 \end{itemize}
 \end{Prop}
 
-\begin{Df}[corrélation]
+\begin{Df}[Corrélation]
 
 Soit $X$ et $Y$ deux variables aléatoires réelles de variance non nulles.
 Leur \defi{coefficient de corrélation} est
@@ -468,7 +474,7 @@ Soit $X$ et $Y$ deux variables aléatoires réelles de variance non nulles.
 %% -----------------------------------------------------------------------------
 \subsection{Lois usuelles}
 
-\begin{Df}[loi uniforme]
+\begin{Df}[Loi uniforme]
 
 Une variable aléatoire réelle $X$ suit la \defi{loi uniforme} sur $\{1,2,\dots,n\}$
 si 
@@ -480,7 +486,7 @@ On note $X \hookrightarrow \mathcal{U}(E)$.\\
 On a : $E(X)=\frac{n+1}{2}$ et $V(X)=\frac{n^2-1}{2}$.
 \end{Df}
 
-\begin{Df}[loi de Bernoulli]
+\begin{Df}[Loi de Bernoulli]
 Une variable $X$ à valeurs dans $\{0,1\}$ suit la \defi{loi de Bernoulli} de paramètre $p$
 si 
 \begin{enumerate}
@@ -547,7 +553,7 @@ Pour tout $a > 0$, on a :
 \begin{Prop}[Inégalité de Bienaymé-Tchebychev]
 Soit $X$ une variable aléatoire réelle.
 Pour tout $a>0$, on a
-\[ E( |X-E(X)| \geq a ) \leq \frac{V(X)}{a^2} \]
+\[ P( |X-E(X)| \geq a ) \leq \frac{V(X)}{a^2} \]
 \end{Prop}
 %TODO FAIRE LES DEMOS
 Cette inégalité présente un intérêt théorique en majorant la
