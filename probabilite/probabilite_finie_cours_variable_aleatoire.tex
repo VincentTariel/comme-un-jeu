@@ -177,7 +177,7 @@ L'usage veut qu'on la note abusivement $f(X)$ au lieu de $f\circ X$.\\
 On a $$\forall j\in \{1,\dots,m\}:\quad P(f(X)=y_j)=\sum_{i\in\{1,\dots,n \} \text{ tel que }f(x_i)=y_j }P(X=x_i)$$  
 \end{Df}
 \begin{Ex}[Jeu]
-Le gain obtenu est fonction de la somme obtenue avec les deux dés. La modélisation est d'appliquer une fonction à la somme, S, des dés  : 
+Le gain obtenu est fonction de la somme obtenue avec les deux dés. La modélisation est d'appliquer une fonction à la somme, $s$, des dés  : 
  \[ \Fonction{G}{\{2,3,\dots,12\}}{\{-1,0,2\}}{s}{\begin{cases}2&\text{ si }s=2 \text{ ou } 12\\-1&\text{ si }s=7\\0 &\text{ sinon} \end{cases}}.\]
  La variable aléatoire Gain est $G\circ X$.\\ 
 Vérifions sur un exemple la modélisation. Si le jeté des dés donne $\omega=(1,6)$, le gain de -1. On a $G\circ S(\omega=(1,6))=G(S(1,6))=G(1+6)=G(7)=-1$.\\

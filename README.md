@@ -8,9 +8,9 @@ Ce dépôt est là pour encourager la collaboration et l'échange.
 L'objectif de ces cours est d'être partagé avec
 # les élèves
 
-Vous trouvez les fichiers pdf des cours et des exercices  [voir mon site internet](https://vincenttariel.github.io/teaching/).
+Les fichiers pdf des cours et des exercices  [voir mon site internet](https://vincenttariel.github.io/teaching/).
   
 # les enseignants
 
-Vous trouvez les fichiers tex des cours et des exercices.
+Les fichiers tex des cours et des exercices.
 
