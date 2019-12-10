@@ -89,8 +89,8 @@
 \chapter{Suites et séries de fonctions}
 
 Dans le chapitre sur les séries numériques, nous avons étudié la série de Riemann, $\sum _{n\geq 1}{\frac {1}{n^{\alpha }}}$ dépendant du paramètre. Si $\alpha=1$, la série de Riemann s'appelle série harmonique et diverge. Si $\alpha=2$, la série de Riemann converge et est égale $\frac{\pi^2}{6}$.  On peut définir la fonction zêta de Riemann en considérant le paramètre $\alpha$ comme la variable, $x$, de la fonction, c'est à dire :
-$$ \Fonction{\zeta}{]1,+\infty[}{\R }{x}{\sum _{n=1}^{\infty }\ {\frac {1}{n^{x}}}}.$$On a $\zeta(2)= \frac{\pi^2}{6}$. Ainsi définie, la fonction $\zeta$ est-elle continue, dérivable ? \\
-La première partie de ce cours définira les notions de suites et séries de fonctions. Puis la seconde partie, nous définirons une fonction comme limite de la convergence simple d'une suite ou d'une série de fonctions. Ainsi définie, la fonction limite n'est pas garantie d'être continue, dérivable, etc. C'est pourquoi, nous définirons une convergence plus forte appelée convergence uniforme afin de garantir des propriétés de continuités, de dérivabilité, de permutation de la limite et de l'intégrale. Les théorèmes associés à ces  propriétés constitueront la dernière partie de ce cours. \\   
+$$ \Fonction{\zeta}{]1,+\infty[}{\R }{x}{\sum _{n=1}^{\infty }\ {\frac {1}{n^{x}}}}.$$On a $\zeta(2)= \frac{\pi^2}{6}$. Ainsi définie comme la somme de la série, la fonction $\zeta$ est-elle continue, dérivable ? \\
+La première partie de ce cours définira les notions de suites et séries de fonctions  ainsi que les différents modes de convergence. La fonction limite de la convergence simple sera définie comme la limite point à point. Ainsi définie, la fonction limite n'est pas garantie d'être continue, dérivable, etc. C'est pourquoi, nous définirons une convergence plus forte appelée convergence uniforme afin de garantir des propriétés de continuités, de dérivabilité, de permutation de la limite et de l'intégrale. Les théorèmes associés à ces  propriétés constitueront la dernière partie de ce cours. \\   
 \textit{Notations} : 
 \begin{itemize}
 \item
@@ -556,7 +556,7 @@ $$ \int_a^b f(t)dt\underset{\text{par définition}}{=}\lim_{n\to\infty}\int_a^b f
 Alors il existe une suite de fonctions polynomiales convergeant uniformément vers la fonction $f$.
 \end{Th}
 \begin{Df}[Série entière (voir le chapitre)]
- Une série entière réelle est une série de fonctions de la forme $\sum a_{n}x^{n}$ 
+ Une \defi{série entière} réelle est une série de fonctions de la forme $\sum a_{n}x^{n}$ 
 où les coefficients $a_n$ forment une suite réelle. On dit qu'une fonction $f\in \mathcal{C}^\infty$ est développable en série entière en $0$ si il existe une série entière $\sum a_{n}x^{n}$ tel que $f:x\mapsto\sum a_{n}x^{n}$ au voisinage de $0$.  
 \end{Df}
 
