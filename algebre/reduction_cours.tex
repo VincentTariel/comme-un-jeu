@@ -54,6 +54,7 @@
 \newtheorem[S,bodystyle=\upshape\noindent]{DfProp}{Définition-Proposition}
 \newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
 \newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
+\newtheorem[S,bodystyle=\upshape\noindent]{Meth}{Méthode}
 \newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
 
 
@@ -448,105 +449,121 @@ Alors le polynôme caractéristique de $u$ est un polynôme annulateur de $u$.\\
 Soit $M\in \MnK$.\\
 Alors le polynôme caractéristique de $M$ est un polynôme annulateur de $M$.\\
 \end{Th}
-%% -----------------------------------------------------------------------------
-%\section{Endomorphismes diagonalisables}
-%
-%\Para{Définitions}
-%\begin{itemize}
-%\item Un endomorphisme $u\in \LE$ est dit \defi{diagonalisable} si et seulement si
-%  il existe une base $\mathcal{B} $ de $E$ telle que $[u]_\mathcal{B} $ est diagonale.
-%\item Une matrice $A$ de $\MnK$ est dite \defi{diagonalisable} si et seulement si
-%  elle est semblable à une matrice diagonale.
-%\end{itemize}
-%
-%\Para{Proposition}
-%
-%Soit $u\in \LE$ et $\mathcal{B} $ une base de $E$.
-%Alors $u$ est diagonalisable si et seulement si $[u]_\mathcal{B} $ est diagonalisable.
-%
-%\Para{Remarque}
-%
-%On dira que $P\in \K [X]$ est \defi{scindé simple} s'il est scindé et que toutes ses racines sont simples.
-%
-%\vfil
-%
-%\Para{Théorème fondamental}
-%
-%Soit $u\in \LE$.
-%Pour toute valeur propre $\lambda    $ de $u$, on note $m_\lambda    $ sa multiplicité et $E_\lambda    $ le sous-espace propre associé.
-%Les conditions suivantes sont équivalentes:
-%\begin{enumerate}
-%\item $u$ est diagonalisable, c'est à dire  il existe une base $\mathcal{B} $ de $E$ telle que $[u]_\mathcal{B} $ est diagonale;
-%\item $u$ admet un polynôme annulateur scindé et $\forall   \lambda    \in \mathrm{Sp} u$, $\dim E_\lambda    = m_\lambda    $;
-%\item $\chi       _u$ est scindé et $\forall   \lambda    \in \mathrm{Sp} u$, $\dim E_\lambda    = m_\lambda    $;
-%\item $\sum_{\lambda    \in \mathrm{Sp} u} \dim E_\lambda     = \dim E$;
-%\item $E$ est somme directe des espaces propres de $u$, c'est à dire  $E = \oplus     _{\lambda    \in \mathrm{Sp} u} E_\lambda    $;
-%\item Il existe une base $\mathcal{B} $ de $E$ formée de vecteurs propres de $u$;
-%\item Le polynôme scindé simple $\prod_{\lambda    \in \mathrm{Sp} u}(X-\lambda    )$ annule $u$;
-%\item $u$ admet un polynôme annulateur scindé simple.
-%\end{enumerate}
-%
-%
-%
-%\Para{Corollaires}
-%
-%Soit $u\in \LE$.
-%\begin{enumerate}
-%\item Si $\chi       _u$ est un polynôme scindé simple, alors $u$ est diagonalisable.
-%  La réciproque est fausse (contre-exemple: $u = \mathrm{Id}_E$).
-%\item Si $u$ est diagonalisable et que $F$ est stable par $u$, alors l'endomorphisme induit par $u$ sur $F$ est également diagonalisable.
-%\item Si $E = \oplus     _{k=1}^p F_k$ et que pour tout $k\in \ccro{1,p}$, $u_{\vert F_k}$ est une homothétie, alors $u$ est diagonalisable.
-%  Pour la réciproque, cf. 2. du théorème précédent.
-%\end{enumerate}
-%
-%
-%
-%\Para{Remarque}[en pratique]
-%
-%Une méthode pour diagonaliser une matrice $A$ de $\MnK$:
-%\begin{itemize}
-%\item on calcule le polynôme caractéristique $\chi       _A$;
-%\item on factorise $\chi       _A$: s'il n'est pas scindé, c'est que $A$ n'est pas diagonalisable dans $\K $;
-%\item pour chaque racine $\lambda    $, on détermine une base du sous-espace propre $E_\lambda    $ en résolvant le système linéaire $AX =\lambda    X$. Si on trouve strictement moins de $m_\lambda    $ vecteurs libres, c'est que $A$ n'est pas diagonalisable;
-%\item soit $P$ la matrice carrée dont les colonnes sont les $n$ vecteurs propres trouvés. Soit $D$ la matrice diagonale formée des valeurs propres correspondantes. On a alors $A = PDP^{-1}$ et $D = P^{-1}AP$.
-%\end{itemize}
-%
-%\Para{Applications}
-%\begin{itemize}
-%\item calcul des puissances d'une matrice $A$;
-%\item suites linéaires récurrentes à coefficients constants;
-%\item système de suites linéaires récurrences à coefficients constants;
-%\item systèmes différentiels linéaires à coefficients constants.
-%\end{itemize}
-%
-%% -----------------------------------------------------------------------------
-%\section{Endomorphismes trigonalisables}
-%
-%\Para{Définitions}
-%\begin{itemize}
-%\item Un endomorphisme $u\in \LE$ est dit \defi{trigonalisable} si et seulement si il existe une base $\mathcal{B} $ de $E$ telle que $[u]_\mathcal{B} $ est triangulaire supérieure.
-%\item Une matrice $A$ de $\MnK$ est dite \defi{trigonalisable} si et seulement si elle est semblable à une matrice triangulaire supérieure.
-%\end{itemize}
-%
-%\Para{Proposition}
-%
-%Soit $u\in \LE$ et $\mathcal{B} $ une base de $E$.
-%Alors $u$ est trigonalisable si et seulement si $[u]_\mathcal{B} $ est trigonalisable.
-%
-%\Para{Théorème}
-%
-%Soit $u\in \LE$. Les conditions suivantes sont équivalentes:
-%\begin{enumerate}
-%\item $u$ est trigonalisable, c'est à dire  il existe $\mathcal{B} $ base de $E$ telle que $[u]_\mathcal{B} $ est triangulaire supérieure;
-%\item $\chi       _u$ est scindé;
-%\item $u$ admet un polynôme annulateur scindé.
-%\end{enumerate}
-%
-%\Para{Corollaire}
-%\begin{enumerate}
-%\item Tout endomorphisme d'un $\C$-espace vectoriel de dimension finie est trigonalisable.
-%\item Toute matrice carrée est trigonalisable dans $\MnC$.
-%\end{enumerate}
+% -----------------------------------------------------------------------------
+\section{Endomorphismes diagonalisables}
 
+\begin{Df}[Diagonalisable]
+\begin{itemize}
+\item Un endomorphisme $u\in \LE$ est dit \defi{diagonalisable} si et seulement si
+  il existe une base $\mathcal{B} $ de $E$ telle que $[u]_\mathcal{B} $ est diagonale.
+\item Une matrice $A$ de $\MnK$ est dite \defi{diagonalisable} si et seulement si
+  elle est semblable à une matrice diagonale.
+\end{itemize}
+\end{Df}
+\begin{Prop}
+Soit $u\in \LE$ et $\mathcal{B} $ une base de $E$.\\
+Alors $u$ est diagonalisable si et seulement si $[u]_\mathcal{B} $ est diagonalisable.
+\end{Prop}
+\begin{Df}[Scindé simple]
+On dira que $P\in \K [X]$ est \defi{scindé simple} s'il est scindé et que toutes ses racines sont simples.
+\end{Df}
+
+\begin{Th}
+Soit $u\in \LE$.\\
+Pour toute valeur propre $\lambda    $ de $u$, on note $m_\lambda    $ sa multiplicité et $E_\lambda    $ le sous-espace propre associé.\\
+Les conditions suivantes sont équivalentes:
+\begin{enumerate}
+\item $u$ est diagonalisable, c'est à dire  il existe une base $\mathcal{B} $ de $E$ telle que $[u]_\mathcal{B} $ est diagonale;
+\item $u$ admet un polynôme annulateur scindé et $\forall   \lambda    \in \mathrm{Sp} u$, $\dim E_\lambda    = m_\lambda    $;
+\item $\chi       _u$ est scindé et $\forall   \lambda    \in \mathrm{Sp} u$, $\dim E_\lambda    = m_\lambda    $;
+\item $\sum_{\lambda    \in \mathrm{Sp} u} \dim E_\lambda     = \dim E$;
+\item $E$ est somme directe des espaces propres de $u$, c'est à dire  $E = \oplus     _{\lambda    \in \mathrm{Sp} u} E_\lambda    $;
+\item Il existe une base $\mathcal{B} $ de $E$ formée de vecteurs propres de $u$;
+\item Le polynôme scindé simple $\prod_{\lambda    \in \mathrm{Sp} u}(X-\lambda    )$ annule $u$;
+\item $u$ admet un polynôme annulateur scindé simple.
+\end{enumerate}
+\end{Th}
+
+
+\begin{Cor}
+Soit $u\in \LE$.
+\begin{enumerate}
+\item Si $\chi       _u$ est un polynôme scindé simple, alors $u$ est diagonalisable.
+  La réciproque est fausse (contre-exemple: $u = \mathrm{Id}_E$).
+\item Si $u$ est diagonalisable et que $F$ est stable par $u$, alors l'endomorphisme induit par $u$ sur $F$ est également diagonalisable.
+\item Si $E = \oplus_{k=1}^p F_k$ et que pour tout $k\in \{1,\dots,p\}$, $u_{\vert F_k}$ est une homothétie, alors $u$ est diagonalisable.
+  Pour la réciproque, cf. 2. du théorème précédent.
+\end{enumerate}
+\end{Cor}
+
+\begin{Th}
+Soit $M\in \MnK$.\\
+Pour toute valeur propre $\lambda$ de $M$, on note $m_\lambda    $ sa multiplicité et $E_\lambda    $ le sous-espace propre associé.\\
+Les conditions suivantes sont équivalentes:
+\begin{enumerate}
+\item $M$ est diagonalisable, c'est à dire  $M$ est semblable à une matrice diagonale;
+\item $M$ admet un polynôme annulateur scindé et $\forall   \lambda    \in \mathrm{Sp} M$, $\dim E_\lambda    = m_\lambda    $;
+\item $\chi_M$ est scindé et $\forall   \lambda    \in \mathrm{Sp} M$, $\dim E_\lambda    = m_\lambda    $;
+\item $\sum_{\lambda    \in \mathrm{Sp} M} \dim E_\lambda     = \dim E$;
+\item $E$ est somme directe des espaces propres de $M$, c'est à dire  $E = \oplus     _{\lambda    \in \mathrm{Sp} M} E_\lambda    $;
+\item Il existe une base $\mathcal{B} $ de $\M{n}{1}{\K}$ formée de vecteurs propres de $M$;
+\item Le polynôme scindé simple $\prod_{\lambda    \in \mathrm{Sp} M}(X-\lambda    )$ annule $M$;
+\item $M$ admet un polynôme annulateur scindé simple.
+\end{enumerate}
+\end{Th}
+
+
+\begin{Cor}
+Soit $M\in \MnK$.
+Si $\chi_M$ est un polynôme scindé simple.
+Alors $M$ est diagonalisable.
+\end{Cor}
+
+
+\begin{Meth}
+
+Une méthode pour diagonaliser une matrice $A$ de $\MnK$:
+\begin{itemize}
+\item on calcule le polynôme caractéristique $\chi       _A$;
+\item on factorise $\chi       _A$: s'il n'est pas scindé, c'est que $A$ n'est pas diagonalisable dans $\K $;
+\item pour chaque racine $\lambda    $, on détermine une base du sous-espace propre $E_\lambda    $ en résolvant le système linéaire $AX =\lambda    X$. Si on trouve strictement moins de $m_\lambda    $ vecteurs libres, c'est que $A$ n'est pas diagonalisable;
+\item soit $P$ la matrice carrée dont les colonnes sont les $n$ vecteurs propres trouvés. Soit $D$ la matrice diagonale formée des valeurs propres correspondantes. On a alors $A = PDP^{-1}$ et $D = P^{-1}AP$.
+\end{itemize}
+\end{Meth}
+Des applications :
+\begin{itemize}
+\item calcul des puissances d'une matrice $A$;
+\item système de suites linéaires récurrences à coefficients constants;
+\item systèmes différentiels linéaires à coefficients constants.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Endomorphismes trigonalisables}
+
+\begin{Df}[Trigonalisable]
+\begin{itemize}
+\item Un endomorphisme $u\in \LE$ est dit \defi{trigonalisable} si et seulement si il existe une base $\mathcal{B} $ de $E$ telle que $[u]_\mathcal{B} $ est triangulaire supérieure.
+\item Une matrice $A$ de $\MnK$ est dite \defi{trigonalisable} si et seulement si elle est semblable à une matrice triangulaire supérieure.
+\end{itemize}
+\end{Df}
+
+\begin{Prop}
+Soit $u\in \LE$ et $\mathcal{B} $ une base de $E$.\\
+Alors $u$ est trigonalisable si et seulement si $[u]_\mathcal{B} $ est trigonalisable.
+\end{Prop}
+\begin{Th}
+Soit $u\in \LE$. Les conditions suivantes sont équivalentes:
+\begin{enumerate}
+\item $u$ est trigonalisable, c'est à dire  il existe $\mathcal{B} $ base de $E$ telle que $[u]_\mathcal{B} $ est triangulaire supérieure;
+\item $\chi       _u$ est scindé;
+\item $u$ admet un polynôme annulateur scindé.
+\end{enumerate}
+\end{Th}
+\begin{Cor}
+\begin{enumerate}
+\item Tout endomorphisme d'un $\C$-espace vectoriel de dimension finie est trigonalisable.
+\item Toute matrice carrée est trigonalisable dans $\mathcal{M}_{n}{\C}$.
+\end{enumerate}
+\end{Cor}
 
 \end{document}
