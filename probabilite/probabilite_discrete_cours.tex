@@ -232,18 +232,18 @@ et pour tout $k\in\{1,n\}$, on a
 \begin{Ex}[Martingale Roulette]La Roulette, inventée par Blaise Pascal, est un des jeux les plus populaires des casinos. Le pari simple est de parier la couleur de la case sur laquelle la bille lancée dans le cylindre va s'arrêter parmi 37 cases (18 rouges, 18 noirs et un vert).\\
 La martingale est : le joueur doit, suite à chaque perte, tripler sa mise. S'il perd à nouveau, il mise la somme initiale triplée et ainsi de suite, jusqu'à ce qu'il gagne. Par exemple, le joueur joue 1 euro à la première partie et perd. Puis il joue donc 3 euros et  perd encore. Après, il joue donc 9 et gagne. Finalement, son gain est $9-3-1=5$ euros.\\  
 A votre avis, ce jeu est-il favorable au joueur ou au casino ? A chaque partie quelle est le gain moyen du joueur ?\\
-\'Etape 1 : comme pour l'expérience aléatoire du lancer d'une pièce jusqu'à la première obtention de pile, on pose $X$ la variable aléatoire représentant le nombre de partir joué jusqu'à gagner. Par exemple, $X=3$ signifie que l'on a perdu les deux premières parties et gagné la troisième. La loi de la variable aléatoire est $X$ est :
+\'Etape 1 : comme pour l'expérience aléatoire du lancer d'une pièce jusqu'à la première obtention de pile, on pose $X$ la variable aléatoire représentant le nombre de parties joués jusqu'à gagner une première fois. Par exemple, $X=3$ signifie que l'on a perdu les deux premières parties et gagné la troisième. La loi de la variable aléatoire est $X$ est :
 $$P(X=n)=(1-p)^{n-1} p\text{ avec } p=\frac{18}{37}.$$
-\'Etape 2 :  on calcule nos gains en fonction de $x$ .
+\'Etape 2 :  on calcule nos gains en fonction du nombre de parties joués jusqu'à gagner une première fois  $n$.
 \begin{center}
 \begin{tabular}{|c||c|c|c|c|c|c|c|}
 \hline
-$x$ & 1 & 2  & 3&       4        & \dots & $n$& \dots  \\\hline
-$g$ & 1 & 3-1& 9-(1+3)&27-(1-3-9)&\dots  &$3^{n-1}-\sum_{k=0}^{n-2}3^k=\frac{3^{n-1}+1}{2}$& \\\hline
+$n$ & 1 & 2  & 3&       4        & \dots & $n$& \dots  \\\hline
+$G(n)$ & 1 & 3-1& 9-(1+3)&27-(1-3-9)&\dots  &$3^{n-1}-\sum_{k=0}^{n-2}3^k=\frac{3^{n-1}+1}{2}$& \\\hline
 \end{tabular}
  \end{center}
 Le gain moyen est donc :
-$$E(G(X))=\sum_{n=1}^{+\infty} \frac{3^{n-1}+1}{2}  (1-p)^{n-1} p=\frac p 2 \sum_{n=1}^{+\infty} (3^{n-1}+1)  (1-p)^{n-1}$$
+$$E(G(X))=\sum_{n=1}^{+\infty}G(n)P(X=n)=\sum_{n=1}^{+\infty} \frac{3^{n-1}+1}{2}  (1-p)^{n-1} p=\frac p 2 \sum_{n=1}^{+\infty} (3^{n-1}+1)  (1-p)^{n-1}$$
 La série géométrique $\sum (1-p)^{n-1}$ converge car $|1-p|<1$. Par contre, la série numérique  $\sum (3(1-p))^{n-1}$ diverge vers l'infini car $|3(1-p)|>1$. En conclusion, $E(G(X))=+\infty$ et donc ce jeu est "très" favorable au joueur. L'unique condition pour jouer à ce jeu est de n'avoir pas de limite sur son compte en banque$\dots$.  
 \end{Ex}
 \begin{Df}[Variable aléatoire réelle discrète]
@@ -255,7 +255,7 @@ Une \defi{variable aléatoire réelle discrète} est une application : $$\Fonction{
 \end{enumerate}
 \end{Df}
 \begin{NB}
-Lors de la définition de l'axiome des tribus, l'ensemble des événements ne devait ne pas être "trop grand" afin de donner du sens à l'application probabilité. La définition de la variable aléatoire impose que l'ensemble des événements ne soit pas être "trop petit".
+Lors de la définition de l'axiome des tribus, l'ensemble des événements ne devait ne pas être "trop grand" afin de donner du sens à l'application probabilité. La définition de la variable aléatoire impose que l'ensemble des événements ne doit pas être "trop petit" pour que chaque $x$, $(X = x )$ soit un élément de $\mathcal{A}$.
 \end{NB}
 
 \begin{Prop}
@@ -290,12 +290,12 @@ Soit $X,Y$ deux variables aléatoires réelles discrètes définies sur $(\Omega,\ma
 On note  $(X,Y)$ le \defi{couple de variables aléatoires} prenant ses valeurs dans $\R^2$.\\
 La \defi{loi conjointe} du couple $(X,Y)$ est déterminé par  :
 \begin{enumerate}
-\item $X(\Omega)\times Y(\Omega)=\{x_i:i\in I\}\times \{y_j:j\in J\} $, les valeurs prises par le couple
-\item $\forall (i,j)\in I\times J:\quad P(X=x_i\cap Y=y_j)$,
+\item $X(\Omega)\times Y(\Omega)=\{x_i:i\in \N\}\times \{y_j:j\in \N\} $, les valeurs prises par le couple
+\item $\forall (i,j)\in \N\times \N:\quad P(X=x_i\cap Y=y_j)$,
 \end{enumerate}
 On note $p_{i,j}=P(X=x_i\cap Y=y_j)$.\\
-Les événements $((X=x_i)\cap (y=y_j))_{\forall (i,j)\in I\times J}$ forment un système complet d'événements de $\Omega$. En particulier, on a : 
-$$\sum_{i=1}^{+\infty} \sum_{j=1}^{+\infty}P(X=x_i\cap Y=y_j)=\sum_{i=1}^{+\infty} \sum_{j=1}^m{+\infty}p_{i,j}=1.$$ 
+Les événements $((X=x_i)\cap (y=y_j))_{\forall (i,j)\in \N\times \N}$ forment un système complet d'événements de $\Omega$. En particulier, on a : 
+$$\sum_{i=1}^{+\infty} \sum_{j=1}^{+\infty}P(X=x_i\cap Y=y_j)=\sum_{i=1}^{+\infty} \sum_{j=1}^{+\infty}p_{i,j}=1.$$ 
 \end{Df}
 \begin{Df}[Lois marginales]
 Soit $X,Y$ deux variables aléatoires réelles définies sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
@@ -303,9 +303,9 @@ La loi de $X$ appelé \defi{première loi marginale} et la loi de $Y$ \defi{second
 \end{Df}
 \begin{Prop}[Relations]
 Soit $X,Y$ deux variables aléatoires réelles définies sur $(\Omega,\mathcal{A},P)$. On a :
-$$\forall i\in I: \quad P(X=x_i)=\sum_{j=1}^{+\infty}P\left((X=x_i)\cap (Y=y_j)\right)$$
+$$\forall i\in \N: \quad P(X=x_i)=\sum_{j=1}^{+\infty}P\left((X=x_i)\cap (Y=y_j)\right)$$
 et 
-$$\forall j\in J: \quad P(Y=y_j)=\sum_{i=1}^{+\infty }P((X=x_i)\cap (Y=y_j)).$$ 
+$$\forall j\in \N: \quad P(Y=y_j)=\sum_{i=1}^{+\infty }P((X=x_i)\cap (Y=y_j)).$$ 
 \end{Prop}
 \begin{Ex}[Deux piles]
 Dans une succession de piles ou faces pour laquelle la probabilité d'obtenir pile est $p \in ]0,1[$ et d'obtenir
@@ -323,20 +323,20 @@ conjointe de $(X ,Y )$ est :
 Soit $(X,Y)$ un couple de variables aléatoires sur $(\Omega,\mathcal{A},P)$.\\
 \begin{enumerate}
 \item On appelle \defi{loi conditionnelle} de $X$ sachant $(Y = y_j )$ pour $P(Y = y_j )\neq 0$, la probabilité définie par  :
-$$\forall i\in I:\quad  P_{Y=y_j}(X=x_i)=\frac{P(X=x_i\cap Y=y_j) } {P(Y=y_i)}$$ 
+$$\forall i\in \N:\quad  P_{Y=y_j}(X=x_i)=\frac{P(X=x_i\cap Y=y_j) } {P(Y=y_i)}$$ 
 \item On appelle \defi{loi conditionnelle} de $Y$ sachant $(X = x_i )$ pour $P(X = x_i )\neq 0$, la probabilité définie par  :
-$$\forall j\in J:\quad  P_{X=x_i}(Y=y_j)=\frac{P(X=x_i\cap Y=y_j) } {P(X=x_i)}$$ 
+$$\forall j\in \N:\quad  P_{X=x_i}(Y=y_j)=\frac{P(X=x_i\cap Y=y_j) } {P(X=x_i)}$$ 
 \end{enumerate}
 \end{Df}
 \begin{NB}
 Les lois marginales et les lois conditionnelles déterminent la loi conjointe :
-$$\forall (i,j)\in I\times J:\quad P(X=x_i\cap Y=y_j)=P_{X=x_i}(Y=y_j)P(X=x_i)$$
-$$\forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\}:\quad P(X=x_i\cap Y=y_j)=P_{Y=y_j}(X=x_i)P(Y=y_j)$$
+$$\forall (i,j)\in \N\times \N:\quad P(X=x_i\cap Y=y_j)=P_{X=x_i}(Y=y_j)P(X=x_i)$$
+$$\forall (i,j)\in \N\times \N:\quad P(X=x_i\cap Y=y_j)=P_{Y=y_j}(X=x_i)P(Y=y_j)$$
 \end{NB}
 \begin{Df}[Indépendance]
 Soit $(X,Y)$ un couple de variables aléatoires sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
 On dit que $X$ et $Y$ sont \defi{indépendantes} si 
-$$ \forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\}:\quad P(X=x_i\cap Y=y_j):\quad P( (X=x_i)\cap (Y=y_j) ) = P(X=x_i) P(Y=y_j).$$
+$$ \forall (i,j)\in \N\times \N:\quad P(X=x_i\cap Y=y_j):\quad P( (X=x_i)\cap (Y=y_j) ) = P(X=x_i) P(Y=y_j).$$
 \end{Df}
 \begin{NB} Dans la modélisation d'une expérience aléatoire, l'hypothèse d'indépendance des variables aléatoires est souvent une donnée de l'expérience et 
 non pas une propriété à vérifier. Par exemple, la modélisation de l'expérience du jeter de deux dés serait :
@@ -385,7 +385,7 @@ sommation ?
 \end{enumerate}
 La réponse aux deux questions est oui, du moment que la série est supposée absolument convergente.
 \begin{Df}[Espérance mathématique]
-Soit $X$ une variable aléatoire discrète sur l'espace probabilisé $(\Omega,\mathcal{A},P)$. On énumère l'ensemble $X (\Omega) = \{x_n | n \in \N\}$.
+Soit $X$ une variable aléatoire discrète sur l'espace probabilisé $(\Omega,\mathcal{A},P)$. 
 $X$ est dite d'espérance finie si la série $\sum x_n P(X = x_n )$ converge absolument.\\
 Dans ce cas, on appelle \defi{espérance} de $X$ et on note $E(X )$ le réel :
 $$E(X ) =\sum_{n=0}^{+\infty} x_n P(X = x_n )$$
@@ -629,5 +629,9 @@ $$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon\right)\l
 \begin{NB}
 Le TP Python \url{https://github.com/VincentTariel/cours/blob/master/probabilite/simulation_variable_aleatoire_avtivite_python.pdf} permet de vous familiariser avec ce théorème sur des applications.
 \end{NB}
-
+Rapidement, on tombe sur le problème suivant : combien de
+lancers de pièces (ou combien de personnes doit on
+interroger), pour que le résultat que l'on avance soit correct
+avec grosse probabilité... En d'autres termes, on aimerait connaitre "la vitesse" de
+convergence. C'est l'objet d'un autre cours sur le théorème centrale limite.
 \end{document}

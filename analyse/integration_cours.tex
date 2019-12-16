@@ -19,7 +19,6 @@
 \usepackage{longtable} 
 \usepackage{multicol}
 \usepackage{caption}
-\usepackage{pgfplots}
 \definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
 \sectionfont{\color{magenta}}
 \subsectionfont{\color{red}}
@@ -142,66 +141,42 @@ $$
 \end{Df} 
 
 \begin{Methode}[Prouver la convergence simple]
-Pour prouver que $\fn$ converge simplement vers $f$ sur $I$, il faut fixer la variable de de la fonction, \textbf{soit $a\in I$ fixé},  et chercher à prouver que la \textbf{suite numérique} $(f_n(a))_{n\in \N }$ converge vers $f(a)$. Il s'agit donc d'un problème de convergence d'une  suite numérique.\\
-L'exemple ci dessous représente la convergence simple pour la suite $(f_n:x\to x^n)_{n\in \N   }$. 
-\begin{tikzpicture}
-   \begin{axis}[
-       axis y line = middle,
-       axis x line = middle,
-       samples     = 200,
-       domain      = 0:1,
-       xmin = 0, xmax = 1,
-       ymin = 0, ymax = 1,
-       unbounded coords=jump
-     ]
-     \addplot[black,mark=*] coordinates {(.8,0)}node[above] {$a$};
-     \addplot[green, thick, mark=none] {x}node[pos=0.5, left] {$f_1:x\to x$};
-     \addplot[green,mark=*] coordinates {(.8,.8)}node[left] {$(a,f_1(a))$}; 
-     \addplot[blue, thick, mark=none] {x^2}node[pos=0.4, left] {$f_2:x\to x^2$};
-     \addplot[blue,mark=*] coordinates {(.8,.64)}node[left] {$(a,f_2(a))$}; 
-     \addplot[yellow, thick, mark=none] {x^3}node[pos=0.3,left] {$f_3:x\to x^3$};
-     \addplot[yellow,mark=*] coordinates {(.8,.512)}node[left] {$(a,f_3(a))$};      
-     \addplot[pink, thick, mark=none] {x^9}node[pos=0.2,above] {$f_9:x\to x^9$};
-     \addplot[pink,mark=*] coordinates {(.8,.134)}node[left] {$(a,f_9(a))$};   
-   \end{axis}
-\end{tikzpicture}
-
-
+Pour prouver que $\fn$ converge simplement vers $f$ sur $I$, il faut fixer la variable de de la fonction, \textbf{soit $x\in I$ fixé},  et chercher à prouver que la \textbf{suite numérique} $(f_n(x))_{n\in \N }$ converge vers $f(x)$. Il s'agit donc d'un problème de convergence d'une  suite numérique.
  \end{Methode}
 
 \begin{Ex}
 \begin{enumerate}
 \item  Démontrons que la suite $(f_n)_{n\in \mathbb{N}}$ converge simplement vers la fonction\newline$x \mapsto \begin{cases}0&{\text{si }}x\in[0,1[\\1&{\text{si } x=0}\end{cases} $ sur $[0,1]$.\\
-Soit $a\in [0,1]$ fixé.\\
-Si $a=1$, on a $a^n=1^n=1\Toninf 1$.\\
-Si $a\neq 1$, la suite numérique $(a^n)_{n\in \mathbb{N}}$ est la suite géométrique de raison $q=a$. Comme $|a|<1$, la suite   converge vers 0.
+Soit $x\in [0,1]$ fixé.\\
+Si $x=1$, on a $x^n=1^n=1\Toninf 1$.\\
+Si $x\neq 1$, la suite numérique $(x^n)_{n\in \mathbb{N}}$ est la suite géométrique de raison $q=x$. Comme $|q|<1$, la suite   converge vers 0.
 \item Démontrons que la suite $(g_n)_{n\in \mathbb{N}}$ converge simplement vers la fonction $x \mapsto e^{x}$ sur $\R $.\\
-Soit $a\in \R $ fixé.\\
-Si $a=0$, on a $(1+\frac 0 n)^n=1\Toninf 1=e^0$.\\
-Si $a\neq0$, on a :
+Soit $x\in \R $ fixé.\\
+Si $x=0$, on a $(1+\frac 0 n)^n=1\Toninf 1=e^0$.\\
+Si $x\neq0$, on a :
 $$
 \begin{array}{rcl}
-(1+\frac a n)^n &=& e^{n\ln (1+a/n)}\\
-(1+\frac a n)^n &=& e^{n (a/n+o(1/n))} \text{ par développement limité}\\
-(1+\frac a n)^n &=& e^{a+o(1)}\\
-(1+\frac a n)^n &\underset{ \overset { n \rightarrow \infty } {} } {\sim}&e^a \text{ par continuité de la fonction exponentielle}
+(1+\frac x n)^n &=& e^{n\ln (1+x/n)}\\
+(1+\frac x n)^n &=& e^{n (x/n+o(1/n))} \text{ par développement limité}\\
+(1+\frac x n)^n &=& e^{x+o(1)}\\
+(1+\frac x n)^n &\underset{ \overset { n \rightarrow \infty } {} } {\sim}&e^x \text{ par continuité de la fonction exponentielle}
 \end{array}
 $$
-Donc $\lim\limits_{n \to \infty}(1+\frac a n)^n=e^a$. 
+Donc $\lim\limits_{n \to \infty}(1+\frac x n)^n=e^x$. 
 \item Démontrons que la suite $(h_n)_{n\in \mathbb{N}}$ converge simplement vers la fonction nulle $x \mapsto 0$ sur $\R ^+$.\\
-Soit $b\in \R ^+$ fixé.\\
-Si $b=0$, on a $b n^a e^{-nb}=0\Toninf 0$.\\
-Si $b\neq 0$, on a : $\lim\limits_{n \to \infty}b n^a e^{-nb}=0$ car :
+Soit $x\in \R ^+$ fixé.\\
+Si $x=0$, on a $x n^a e^{-nx}=0\Toninf 0$.\\
+Si $x\neq 0$, on a : $\lim\limits_{n \to \infty}x n^a e^{-nx}=0$ car :
 $$
 \begin{array}{rcl}
-n^a e^{-nb} &=& e^{a \ln n -nb}\\
-n^a e^{-nb} &=& e^{-nb(1-\frac{a \ln n}{nb})}\\
-n^a e^{-nb} &\underset{ \overset { n \rightarrow \infty } {} } {\sim}&e^{-nb}\Toninf 0.
+n^a e^{-nx} &=& e^{a \ln n -nx}\\
+n^a e^{-nx} &=& e^{-nx(1-\frac{a \ln n}{nx})}\\
+n^a e^{-nx} &\underset{ \overset { n \rightarrow \infty } {} } {\sim}&e^{-nx}\Toninf 0
 \end{array}
 $$ 
 \end{enumerate}
-\end{Ex}
 
+\end{Ex}
 
 \begin{NB}  La suite de fonctions $(f_n)_{n\in \mathbb{N}}$ est une suite de fonctions continues sur $[0,1]$ et pourtant sa limite simple $x \mapsto \begin{cases}0&{\text{si }}x\in[0,1[\\1&{\text{si } x=0}\end{cases}$ n'est pas continue sur $[0,1]$.
 \end{NB}
@@ -218,8 +193,8 @@ $$
 \end{Df}
 
 \begin{Ex} Démontrons que la série $\sum_n x^n$ converge simplement vers la fonction $\frac{1}{1-x}$ sur $]-1,1[$.\\
-Soit $a\in ]-1,1[$ fixé.\\
-On a $\sum_{k=0}^n a^k= \frac{1-a^{n+1}}{1-a}\Toninf  \frac{1}{1-a}$ car $|a|<1$. Donc la série converge simplement sur $]-1,1[$ et sa limite simple est la fonction $x\mapsto \frac{1}{1-x}$.
+Soit $x\in ]-1,1[$ fixé.\\
+On a $\sum_{k=0}^n x^k= \frac{1-x^{n+1}}{1-x}\Toninf  \frac{1}{1-x}$ car $|x|<1$. Donc la série converge simplement sur $]-1,1[$ et sa limite simple est la fonction $x\mapsto \frac{1}{1-x}$.
 \end{Ex}
 
 \begin{Prop}[Unicité de la limite simple]
@@ -228,9 +203,6 @@ Soit $f$ et $g$ deux fonctions de $I$ dans $\K  $.
 Si $\fn$ converge simplement sur $I$ vers $f$ et vers $g$
 alors $f = g$.
 \end{Prop}
-\begin{proof}
-Supposons par l'absurde que $f\neq g$. Il existe donc $x\in I$ tel que  $f(x)\neq g(x).$ D'après l'hypothèse de convergence simple, en particulier, la suite numérique $(f_n(x))_{n\in\N}$ converge. Cela implique d'après l'unicité de la limite d'une suite numérique $f(x)=g(x)$. D'où la contradiction.  
-\end{proof}
 %
 %
 \subsubsection{Convergence uniforme}
@@ -247,16 +219,12 @@ ou de façon équivalente, si la suite numérique $(\sup_{x\in I} \Abs{f_n(x) - f(x
 \begin{Prop}
 Si $\fn$ converge uniformément vers $f$, alors $\fn$ converge simplement vers $f$.
 \end{Prop}
-\begin{proof}
-Soit $a\in I$ fixé. On a :
-$$ \Abs{f_n(a) - f(a)}\leq   \sup_{x\in I} \Abs{f_n(x) - f(x)}  \overbrace{\tend[n\to+\infty ]0.}^{\text{convergence uniforme}}$$
-Donc la suite numérique $(f_n(a))_{n\in\N}$ converge vers $f(a)$. Donc  $\fn$ converge simplement vers $f$.
-\end{proof}
+
 \begin{Methode}[Prouver la convergence uniforme]
 On définit la limite simple, $f$, de la suite $\fn$ à l'aide de la convergence simple. Puis, on vérifie que le suite  $\fn$ converge uniformément vers cette limite $f$ par 
 \begin{enumerate}
-\item méthode 1 : une étude de fonction pour déterminer $\sup_{x\in I}\Abs{f_n(x) - f(x)}$
-\item méthode 2:  une majoration $\sup_{x\in I}\Abs{f_n(x) - f(x)}$ par une quantité indépendante de $x$ et qui tend vers 0.
+\item méthode 1 : une étude de fonction pour déterminer $\Abs{f_n(x) - f(x)}$
+\item méthode 2:  une majoration $\Abs{f_n(x) - f(x)}$ par une quantité indépendante de $x$ et qui tend vers 0.
 \end{enumerate}
 \end{Methode}
 
@@ -296,11 +264,6 @@ l'existence d'une suite réelle $(\epsilon_n)_{n\in \N   }$ telle que:
     la suite numérique $(\epsilon_n)$ tend vers $0$.
   \end{itemize}
 \end{Prop}
-\begin{proof}
-Cette égalité prouve l'équivalence :
- $$ \sup_{x\in I}\Abs{\sum_{k=0}^{n} f_n(x) - f(x)} = \sup_{x\in I}\Abs{\sum_{k=0}^{n} f_n(x) - \sum_{k=0}^{+\infty}f_n(x)}=\sup_{x\in I}\Abs{\sum_{k=n+1}^{\infty} f_n(x)}  $$ 
-\end{proof}
-
 \begin{Ex} Soit la série de fonctions $\sum \frac{(-1)^n}{x+n}$.\\
 La série de fonctions converge simplement sur $\R ^+$, car à $x\in\R ^+ $ fixé, la série numérique $\sum \frac{(-1)^n}{x+n}$ respecte le critère de convergence des séries alternées ($(\frac{1}{x+n})_{n\in\mathbb{N}}$ est une suite décroissante de limite 0). Pour la convergence uniforme, la valeur absolue du reste d'une série alternée est majorée par celle de son premier terme:
 $$\forall  x\in \R ^+,\Abs{R_n(x)} \leq  \Abs{\frac{1}{x+(n+1)}}\leq \frac{1}{n+1}\Toninf 0.$$
@@ -328,30 +291,24 @@ montrer l'existence d'une suite réelle $(\alpha_n)_{n\in \N   }$ telle que:
     la série numérique $\sum _n \alpha_n$ converge.
   \end{itemize}
 \end{Prop}
-\begin{proof}
-La série numérique $ \sum_n \sup_{x\in I} \Abs{f_n(x)}$ est une série à termes positifs dont le terme général est bornée par $\alpha_n$. Comme la sérié numérique $\sum _n \alpha_n$ converge, la série numérique $ \sum_n \sup_{x\in I} \Abs{f_n(x)}$ par règle de comparaison.
-\end{proof}
-
 
 \begin{Prop}
 La convergence normale entraîne la convergence uniforme (qui entraîne la convergence simple).
 \end{Prop}
-\begin{proof}
-Soit $n<N$.
-$$\forall  x\in I:\quad  \Abs{\sum_{k=n+1}^{N} f_n(x)}\leq  \sum_{k=n+1}^{N} \Abs{f_n(x)}   \leq  \sum_{k=n+1}^{N} u_n  \overbrace{\leq}^{SATP} \sum_{k=n+1}^{+\infty} u_n. $$ 
-Par passage à la limite, l'inégalité devient :
- $$\forall  x\in I:\quad  \Abs{\sum_{k=n+1}^{+\infty} f_n(x)}\leq  \sum_{k=n+1}^{+\infty} u_n. $$ 
-$(\sum_{k=n+1}^{+\infty} u_n)_{n\in\N}$ est le reste d'une série convergente donc converge vers 0. Ainsi la série $\Sfn$ converge absolument par le critère des restes. 
-\end{proof}
-\begin{Ex}La série de fonctions $\sum \frac{\sin(nx}{n^2}$ convergence uniformément sur $\R$ car la série de fonctions $\sum \frac{\sin(nx}{n^2}$ converge normalement.\\
-En effet, $\frac{\sin(nx}{n^2}\leq \frac{1}{n^2}$ et la série de Riemann $\sum \frac{1}{n^2}$ est convergente. 
+
+\begin{Ex}Démontrer que la série de fonctions $\sum x^n$ convergence uniformément sur $[0,a]$ avec $a<1$.\\
+Il suffit de démontrer qu'elle converge normalement.
+$$ \forall  n\in \N   , \forall  x\in [0,a], |x^n| \leq a^n.$$
+Comme la série géométrique $\sum a^n$ converge ($|a|<1$), la série de fonction converge normalement sur $[0,a]$, donc uniformément sur $[0,a]$. 
 \end{Ex}
 \begin{NB}La convergence uniforme n'implique pas la convergence normale. La série de fonctions $\sum \frac{(-1)^n}{x+n}$ converge uniformément sur $\mathbb{R}^+$ mais pas normalement. On a$$ \forall  n\in \N   , \sup_{x\in \mathbb{R}^+}\left| \frac{(-1)^n}{x+n}\right|=\frac{1}{n}.$$ La série harmonique $\sum \frac{1}{n}$ est divergente.
 \end{NB}
 
 %
 %
-\section{Régularité de la limite d'une suite/série de fonctions}
+\section{Propriétés}
+
+
 
 \subsection{Continuité}\label{sec:cont}
 \begin{Th}[Théorème de la permutation des limites]
@@ -457,18 +414,10 @@ On suppose que:
 Alors $f$ est continue (donc intégrable) sur $[a,b]$ et
 \[  \lim_\ninf \int_a^b f_n(t)dt = \int_a^b \lim_\ninf f_n(t)dt = \int_a^b f(t)dt. \]
 \end{Th}
-\begin{proof}
-\begin{align*}
-\Abs{\int_a^b f_n(t)dt -\int_a^b f(t)dt}=&\Abs{\int_a^b (f_n(t)-f(t))dt}\\
-\leq&\int_a^b\Abs{f_n(t)-f(t)}dt\\
-\leq &\sup_{x\in[a,b]}\Abs{f_n(t)-f(t)}\int_a^b dt=(b-a) \sup_{x\in[a,b]}\Abs{f_n(t)-f(t)}  \tend[n\to+\infty ]0.
-\end{align*} 
-\end{proof}
-
 \begin{NB}
 Si il n'y pas convergence uniforme, on ne peut pas permuter en générale limite et intégrale. \\
 Par exemple, on observe dans cette animation géogébra \url{https://www.geogebra.org/graphing/qwwbjxgv},
- \begin{center}\includegraphics[width=3cm]{contre_exemple_limite_integrale.png}\end{center} que la suite de fonctions $\fn$ converge simplement vers la fonction nulle sur $[0,1]$. L'intégrale de la fonction nulle sur $[0,1]$ est $0$. Comme l'intégrale de chaque fonctions $f_n$ est $\frac 1 2$, la limite des intégrales est $\frac 1 2$. L'égalité n'est donc pas vérifiée car $$ \lim_\ninf \int_0^1 f_n(t)dt =  \lim_\ninf \frac 1 2 = \frac 1 2 \neq 0  = \int_0^1 0dt= \int_0^1 \lim_\ninf f_n(t)dt.$$
+ \begin{center}\includegraphics[width=3cm]{contre_exemple_limite_integrale.png}\end{center} que la suite de fonctions $\fn$ converge simplement vers la fonction nulle sur $[0,1]$. L'intégrale de la fonction nulle sur $[0,1]$ est $0$. Comme l'intégrale de chaque fonctions $f_n$ est $\frac 1 2$, la limite des intégrales est $\frac 1 2$. L'égalité n'est donc pas vérifiée car $$ \lim_\ninf \int_0^1 f_n(t)dt =  \lim_\ninf \frac 1 2 = \frac 1 2 \neq 0  = \int_0^1 0dt= ?_0^1 \lim_\ninf f_n(t)dt.$$
 On peut vérifier que la suite de fonctions $\fn$ définie par :
 $$\forall n \in \mathbb{N}^* :\quad  \Fonction{f_n}{[0,1]}{\mathbb{R}}{x}{\begin{cases}2n^2x&\text{ si } 0\leq x < \frac{1}{2n}\\2n-2n^2x&\text{ si } \frac{1}{2n}\leq x < \frac{1}{n}  \\0&\text{ si } \frac{1}{n}\leq x \leq 0 \end{cases}}$$ converge et simplement vers la fonction nulle et que  $\int_0^1 f_n(t)dt = \frac 1 2$. 
 \end{NB}
@@ -484,19 +433,6 @@ On suppose que:
 Alors $f$ est continue sur $[a,b]$ (donc intégrable) et
 \[  \sum _{n=0}^{+\infty } \int_a^b f_n(t)dt = \int_a^b \sum _{n=0}^{+\infty } f_n(t)dt= \int_a^b f(t)dt.   \]
 \end{Th}
-
-\begin{proof}
-Le théorème de permutation de limite/intégrale  sur les suites nous donne :
-\[ \lim_{n\to +\infty}\int_a^b S_n(t)dt =\int_a^b\lim_{n\to +\infty} S_n(t) dt \]
-En substituant dans cette égalité  
-$$\lim_{n\to +\infty}\int_a^b S_n(t)dt=\lim_{n\to +\infty}\int_a^b\sum_{k=0}^n f_n(t)dt\overbrace{=}^{\text{somme finie}}\lim_{n\to +\infty}\sum_{k=0}^n \int_a^b f_n(t)dt=\sum _{k=0}^{+\infty } \int_a^b f_k(t)dt$$
-et 
-$$\int_a^b\lim_{n\to +\infty} S_n(t) dt =\int_a^b\lim_{n\to +\infty} \sum_{k=0}^n f_n(t) dt = \int_a^b \sum _{k=0}^{+\infty } f_k(t)dt$$
-on obtient le résultat. 
-\end{proof}
-
-
-
 \begin{Ex}[Série géométrique] La série $\sum x^n$ converge uniformément vers la fonction $x\mapsto \frac{1}{1-x}$ sur $[0,a]$ avec $0<a<1$.  Comme
 $$ \forall x \in [0,1[, \int_0^x \sum _{n=0}^{+\infty } t^n dt \overbrace{=}^{Th} \sum _{n=0}^{+\infty } \int_0^x t^n dt = \sum _{n=0}^{+\infty } \frac{x^{n+1}}{n+1},$$
 et
@@ -595,7 +531,7 @@ Alors $f$ est de classe $\CC p$ sur $I$ et
 \section{Approximations et développements (hors-programme)}
 Dans cette partie, on introduit des applications des notions de suites et séries de fonctions.    
 \subsection{Fonctions en escaliers}
-\begin{Df}[Fonctions en escalier] Une fonction réelle définie sur un intervalle [a,b] de R est dite \defi{en escalier} s'il existe des points $a=x_0<x_1<...<x_n=b$, tels que sur chaque segment $]x_i,x_{i+1}[$, la fonction soit constante, par exemple, 
+\begin{Df}[En escalier] Une fonction réelle définie sur un intervalle [a,b] de R est dite \defi{en escalier} s'il existe des points $a=x_0<x_1<...<x_n=b$, tels que sur chaque segment $]x_i,x_{i+1}[$, la fonction soit constante, par exemple, 
 \includegraphics[width=5cm]{escalier1.png}.\\
 L'ensemble des fonctions en escalier sur $[a,b]$ est un sous-espace vectoriel de l'espace vectoriel $\mathcal{F}([a,b],\mathbb{K})$.
 \end{Df}
@@ -619,7 +555,7 @@ $$ \int_a^b f(t)dt\underset{\text{par définition}}{=}\lim_{n\to\infty}\int_a^b f
 \begin{Th}[Approximation de Stone-Weierstrass]Soit $f$ une fonction continue sur $[a,b]$.\\
 Alors il existe une suite de fonctions polynomiales convergeant uniformément vers la fonction $f$.
 \end{Th}
-\begin{Df}[Développement en série entière (voir le chapitre)]
+\begin{Df}[Série entière (voir le chapitre)]
  Une \defi{série entière} réelle est une série de fonctions de la forme $\sum a_{n}x^{n}$ 
 où les coefficients $a_n$ forment une suite réelle. On dit qu'une fonction $f\in \mathcal{C}^\infty$ est développable en série entière en $0$ si il existe une série entière $\sum a_{n}x^{n}$ tel que $f:x\mapsto\sum a_{n}x^{n}$ au voisinage de $0$.  
 \end{Df}

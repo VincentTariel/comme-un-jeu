@@ -74,13 +74,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{tocdepth}{5}
 \begin{document}
-\dominitoc
+%\dominitoc
 %\tableofcontents
-\chapter{Réduction des endomorphismes/Matrices carrés}
-\minitoc
+\chapter{Réduction des endomorphismes/matrices carrés}
+%\minitoc
 
 
-\begin{intr} La réduction d'endomorphisme a pour objectif d'exprimer des matrices et des endomorphismes sous une forme plus simple, par exemple pour faciliter les calculs. 
+La réduction d'endomorphisme a pour objectif d'exprimer des matrices et des endomorphismes sous une forme plus simple, par exemple pour faciliter les calculs. 
 Réduire un endomorphisme $u\in\LE$, cela correspond à trouver une base de l'espace dans laquelle l'endomorphisme s'exprime simplement. C'est à dire c'est décomposer l'espace $E$ comme somme directe de sous-espaces stables par $u$,
 $E = \oplus     _{i=1}^n E_i$ où les $E_i$ sont stables par $u$. On peut donc définir  les endomorphismes $u_{|E_i}$ induits par $u$ sur $E_i$, soit :
  $$\Fonction{u_{|E_i}}{E_i }{E_i}{x}{u(x)}.$$
@@ -104,9 +104,9 @@ Le projecteur p (ou la projection) sur $E_1$ parallèlement à $E_2$ est défini pa
 $$\Fonction{p}{ E = E_1 \oplus E_2 }{ E}{\vec{x} = \vec{x_1} + \vec{x_2}}{\vec{x_1}}$$
 \textit{Nature géométrique} : pour tout $x\in E_1:\quad p(\vec{x})= 1.\vec{x}$ donc  $p_{|E_1}=1 \mathrm{Id}_{E_1}$ et  pour tout $x\in E_2:\quad p(\vec{x})= 0.\vec{x}$ donc  $p_{|E_2}=0 \mathrm{Id}_{E_2}$. La matrice de $p$ dans une base adaptée à $E_1 \oplus E_2$ s'écrit :
 $$[p]_\mathcal{B} =\begin{pmatrix}1.\mathrm{I}_r&0\\ 0 &0.\mathrm{I}_{n-r}\end{pmatrix}.$$
-\textit{Nature algébrique} : On a $p^2=p$, d'où $p^2-p=0$ et enfin $(p-1.\mathrm{Id}_E)(p-0.\mathrm{Id}_E)=0$. Le polynôme $Q=(X-1).(X-0)$ est un polynôme annulateur de l'endomorphisme $p$ car $Q(p)=0$. Comme $Q$ est scindé simple, on démontrera que de nouveau $p$ est diagonalisable dans une base $\mathcal{B} $ adaptée à $E_1 \oplus E_2$. \\  
+\textit{Nature algébrique} : On a $p^2=p$, d'où $p^2-p=0$ et enfin $(p-1.\mathrm{Id}_E)(p-0.\mathrm{Id}_E)=0$. Le polynôme $Q=(X-1).(X-0)$ est un polynôme annulateur de l'endomorphisme $p$ car $Q(p)=0$. Comme $Q$ est scindé simple, on démontrera que de nouveau $p$ est diagonalisable dans une base $\mathcal{B} $ adaptée à $E_1 \oplus E_2$.  
 
-\end{intr}
+
 \textit{Notations}
 \begin{itemize}
 \item $\K $ désigne un corps (ici $\R$ ou $\C$);
@@ -134,7 +134,7 @@ Soit $\phi:f\mapsto f'.$ L'espace vectoriel des fonctions $C^{\infty}$ est stabl
 $$[u]_{\mathcal{B}}= \begin{pmatrix}
 A & B \\ 0 & C
 \end{pmatrix}$$
-si et seulement si $F$ est stable par $u$. Dans ce cas $A=[u_F]_{\mathcal{B}'}$.
+si et seulement si $F$ est stable par $u$. Dans ce cas $A=[u_{|F}]_{\mathcal{B}'}$.
 \end{Prop}
 \begin{Prop}[Diagonalisation par blocs] Soit $E_1\oplus     E_2=E$ de dimension finie avec $E_1$ et $E_2$ stables par $u$. Alors la matrice de $u$ dans une base adaptée $\mathcal{B}=(\mathcal{B}_1,\mathcal{B}_2)$ à la décomposition $E_1\oplus     E_2=E$  a la forme diagonale par blocs
 $$[u]_{\mathcal{B}}= \begin{pmatrix}
@@ -157,7 +157,7 @@ A & 0 \\ 0 & B
 $$A=\frac{1}{3}\begin{pmatrix}2 & -1 & 2 \\ 2 &2&-1\\ -1&2&2\end{pmatrix}.$$ Soit $E_1=\mathrm{Vect}<\begin{pmatrix}1\\-1 \\0 \end{pmatrix},\begin{pmatrix}1\\0 \\-1 \end{pmatrix}>$ et $E_2=\mathrm{Vect}<\begin{pmatrix}1\\1 \\1 \end{pmatrix}>$.\\
 Pour la stabilité, on vérifie que $$A\begin{pmatrix}1\\-1 \\0 \end{pmatrix}=\begin{pmatrix}1\\0 \\-1 \end{pmatrix}\in E_1$$ et $$A\begin{pmatrix}1\\0 \\-1 \end{pmatrix}=\begin{pmatrix}0\\1 \\-1 \end{pmatrix}=-1\begin{pmatrix}1\\-1 \\0 \end{pmatrix} + 1\begin{pmatrix}1\\0 \\-1 \end{pmatrix}\in E_1.$$
 De plus, on a $A\begin{pmatrix}1\\1 \\1 \end{pmatrix}=\begin{pmatrix}1\\1 \\1 \end{pmatrix}\in E_2.$\\
-$A$ est semblable à la matrice $\begin{pmatrix}0 & -1 & 0 \\ 1 &1&0\\0&0&1\end{pmatrix}$ et la matrice de passage est $P=\begin{pmatrix}1 &1 & 1 \\ -1 &0&1\\0&-1&1\end{pmatrix}$
+$A$ est semblable à la matrice $\begin{pmatrix}0 & -1 & 0 \\ 1 &1&0\\0&0&1\end{pmatrix}$ et la matrice de passage est $P=\begin{pmatrix}1 &1 & 1 \\ -1 &0&1\\0&-1&1\end{pmatrix}$.
 \end{Ex}
 \subsection{D'une droite vectoriel : $u(\K \vec{x})\subset \K \vec{x}$ (vecteurs propres et valeurs propres: $u(\vec{x})=\lambda \vec{x}$)}
 \begin{Prop}[Caractérisation] Soit $u\in \LE$. Soit $\vec{x}\in E$.\\
@@ -515,8 +515,8 @@ Les conditions suivantes sont équivalentes:
 
 \begin{Cor}
 Soit $M\in \MnK$.
-Si $\chi_M$ est un polynôme scindé simple.
-Alors $M$ est diagonalisable.
+Si $\chi_M$ est un polynôme scindé simple,\\
+alors $M$ est diagonalisable.
 \end{Cor}
 
 
