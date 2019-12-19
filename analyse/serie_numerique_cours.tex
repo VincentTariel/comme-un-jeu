@@ -140,9 +140,8 @@ D'où une contradiction car $\lim_{n\to\infty}S_{n}\geq \frac 1 2 $ et $\lim_{n\t
 \section{Généralités}
 
 
-\begin{Df}
-
-  Soit $\SUI$ une suite numérique.
+\begin{Df}[Série numérique]
+  Soit $\SUI$ une suite numérique.\\
   La \defi{série numérique} de \defi{terme général} $u_n$ est la suite $(S_n)_{n\in\N}= (\sum_{k=0}^n u_k)_{n\in\N}$. En particulier on a $$S_0=u_0,\quad S_1=u_0+u_1,\quad S_2=u_0+u_1+u_2.$$
   $S_n$ s'appelle la \defi{somme partielle} d'ordre $n$ de la série $\SER$.
 \end{Df}
@@ -177,7 +176,7 @@ $$ \lim_{n\to\infty}R_n=0.$$
 \end{itemize}
 \end{NB}
 
-\begin{Ex}[série géométrique]
+\begin{Ex}[Série géométrique]
 Soit $\sum q^n$ la série géométrique.
 Pour $q\ne 1$, on a :
 \begin{align*}
@@ -200,7 +199,7 @@ Par exemple, la série $\sum \frac{1}{n(n+1)}=\sum\left(\frac{1}{n}-\frac{1}{n+1}
 
 \end{Ex}
 
-\begin{Prop}
+\begin{Prop}[Indépendance du rang]
 Pour tout $ n_0 \in \N$, les séries $\sum_{n\geq 0}u_n$ et  $\sum_{n\geq n_0}u_n$ sont de même nature,
 c'est-à-dire ou toutes deux convergentes ou toutes deux divergent.
 \end{Prop}
@@ -215,7 +214,7 @@ c'est-à-dire ou toutes deux convergentes ou toutes deux divergent.
 
 
 
-\begin{Prop}
+\begin{Prop}[Espace vectoriel]
 L'ensemble des séries convergentes est un espace vectoriel, c'est à dire si $\sum u_n$ et $\sum v_n$ convergent vers $S$ et $S'$, la série $\sum (a u_n + b v_n)$ converge vers $aS+bS'$
 pour toutes constantes réelle $a,b$.
 \end{Prop}
@@ -234,8 +233,8 @@ Comme contre-exemple, la série $\sum \frac{1}{n(n+1)}=\sum \left(\frac{1}{n}-\fr
 
 
 
-\begin{Prop}
-Soit $\SER$ une série numérique.
+\begin{Prop}[Grossièrement divergente]
+Soit $\SER$ une série numérique.\\
 Si la série converge, alors $ \lim_{n\to\infty}u_n= 0$.\\
 On dit que la série numérique $\SER$ est \defi{grossièrement divergente} si $u_n$ ne tend pas vers 0.
 \end{Prop}
@@ -297,7 +296,7 @@ Comme A est quelconque, cela signifie que $(S_n)$ tend vers l'infini.
 %\end{intr}
 
 
-\begin{Df}
+\begin{Df}[Série à termes positifs]
 Une \defi{série à termes positifs} est une série réelle $\SER$ telle que $$\forall n\in\N,\quad u_n\geq 0.$$
 \end{Df}
 \begin{Prop}
@@ -338,7 +337,7 @@ Les inégalités $$\quad 0\leq u_n\leq v_n$$  peuvent être vérifiées uniquement à 
 Étudions la nature de la  série $\sum e^{-n^2}$. On a  $\forall n\in\N : 0\leq e^{-n^2}\leq e^{-n}=(\frac 1 e)^n$. La série géométrique $\sum \left(\frac 1 e\right)^n$ est convergente car $|\left(\frac 1 e\right)|<1$, donc la série $\sum e^{-n^2}$ est convergente d'après la règle de comparaison. 
 \end{Ex}
 
-\begin{Prop}[Règle de comparaison] \label{prop:comp}
+\begin{Prop}[Règle du petit o et grand O] \label{prop:comp}
 Soit $\SER$ et $\sum v_n$ deux SATP.
 On suppose que $u_n = \GrandO_\ninf(v_n)$ (ou  $u_n = \PetitO_\ninf(v_n)$).
 Alors:
@@ -359,8 +358,8 @@ Comme la convergence ne dépend pas des premiers termes, la série $\sum u_n$ est 
 \begin{Ex}
 Étudions la nature de la  série $\sum \frac{1}{\sqrt{n}}$. On a  $\frac{1}{n}=\PetitO_\ninf(\frac{1}{\sqrt{n}})$. La série harmonique $\sum \frac 1 n$ est divergente  donc la série $\sum \frac{1}{\sqrt{n}}$ est divergente d'après la règle de comparaison. 
 \end{Ex}
-\begin{Prop}[Règle de comparaison]
-Soit $\SER$ et $\sum v_n$ deux SATP telles que \defi{$u_n \Sim_\ninf v_n$}.
+\begin{Prop}[Règle d'équivalence]
+Soit $\SER$ et $\sum v_n$ deux SATP telles que \defi{$u_n \Sim_\ninf v_n$}.\\
 Alors $\SER$ et $\sum v_n$ ont \defi{même nature}.
 \end{Prop}
 \begin{proof}
@@ -370,8 +369,7 @@ $u_n \Sim_\ninf v_n$ implique que $u_n= \GrandO_\ninf(v_n)$ et que $v_n= \GrandO
 Étudions la nature de la  série $\sum \frac{1}{\ln(1+n)}$. On a  $\frac{1}{\ln(1+n)}\Sim_\ninf \frac 1 n$. La série harmonique $\sum \frac 1 n$ est divergente  donc la série $\sum \frac{1}{\ln(1+n)}$ est divergente d'après la règle de comparaison. 
 \end{Ex} 
 
-\begin{Prop}[Règle de d'Alembert.]
-
+\begin{Prop}[Règle de d'Alembert]
 Soit une SATP $\sum u_n$.  On suppose que la suite $\left(\frac{u_{n+1}}{u_n}\right)$  est définie à partir d'un certain rang et a une limite $L$  quand  $n$ tend vers $+\infty$.\\
 Alors
 \begin{itemize}
@@ -394,20 +392,18 @@ La série géométrique $\sum_{n\geq n_0}  A^{n-n_0}$  diverge car $|A|>1$. Par règ
 Soit $a\in \R^+$. La série $\sum \frac{a^n}{n!}$ converge car d'après la règle de d'Alembert, on a :
 $$\frac{ \frac{a^{n+1}}{(n+1)!}}{\frac{a^{n}}{(n)!}}=\frac{a}{n+1}\xrightarrow[n \to +\infty]{}0.$$
 Dans le chapitre sur les séries entières, on définira la fonction exponentielle ainsi  $$\exp:x\to \sum_{n=0}^{+\infty} \frac{x^n}{n!}.$$
-
 \end{Ex}
 %
 %
 %
 \subsection{Comparaison série-intégrale}
-
 Les séries sont un procédé de sommation de grandeurs discrètes, l'intégrale de grandeurs continues. L'analogie formelle entre les deux domaines permet de faire passer des idées intéressantes de l'une à l'autre. On compare ces deux objets mathématiques à l'aide d'inégalités.\\
 \begin{tikzpicture}[scale=0.75]
-\tkzInit[xmax=8,ymax=4]
+\tkzInit[xmax=8,ymax=2]
 \tkzAxeXY[ticks=false]
 \tkzGrid
-\draw (1,1.5) node[above]{$\mathcal{C}_{x\to\frac 1 x }$} ; 
-\draw [domain=0.25:8,samples=200,color=red] plot (\x,{1/\x});  
+\draw (1,1.3) node[above]{$x\to\frac 1 x $} ; 
+\draw [domain=1:8,samples=200,color=red] plot (\x,{1/\x});  
 \tkzFct[color = black]{1./(x)}
 \tkzDrawRiemannSumSup[fill=green!60,
                      opacity=.2,
@@ -419,11 +415,11 @@ Les séries sont un procédé de sommation de grandeurs discrètes, l'intégrale de g
 \node[green!50!black] at (\x,{(1/(\x-0.5))+0.2}){\t}; 
 \end{tikzpicture}
 \begin{tikzpicture}[scale=0.75]
-\tkzInit[xmax=8,ymax=4]
+\tkzInit[xmax=8,ymax=2]
 \tkzAxeXY[ticks=false]
 \tkzGrid
-\draw (1,1.5) node[above]{$\mathcal{C}_{x\to\frac 1 x }$} ; 
-\draw [domain=0.25:8,samples=200,color=red] plot (\x,{1/\x});  
+\draw (1,1.3) node[above]{$x\to\frac 1 x $} ; 
+\draw [domain=1:8,samples=200,color=red] plot (\x,{1/\x});  
 \tkzFct[color = black]{1./(x)}
 \tkzDrawRiemannSumInf[fill=blue!60,
                      opacity=.2,
@@ -449,7 +445,8 @@ On peut affirmer que série $\sum f(n)$ converge si et seulement si la suite $\le
 
 \begin{Th}[Comparaison série-intégrale]
 Soit f continue sur $[n_0,+\infty[$, décroissante
-et positive sur cet intervalle. La série $\sum_{n\geq n_0}f(n)$ converge si et seulement si la suite $\left( \int_{n_0}^n f(x) dx \right)_{n\in\N}$ converge.
+et positive sur cet intervalle. \\
+La série $\sum_{n\geq n_0}f(n)$ converge si et seulement si la suite $\left( \int_{n_0}^n f(x) dx \right)_{n\in\N}$ converge.
 \end{Th}
 \begin{proof}
 Par décroissance de $f$, on a :
@@ -463,7 +460,7 @@ En somme ces inégalités depuis $n_0$ jusqu'à $N-1$, les intégrales se raccordent
 Supposons que la série $\sum_{n\geq n_0}f(n)$ converge. Comme $\int_1^N f(x)dx \leq \sum_{n=n_0+1}^{N}f(n)<+\infty$, la suite croissante $\left( \int_{n_0}^n f(x) dx \right)_{n\in\N}$ est  bornée donc convergente. \\
 Supposons que la série $\sum_{n\geq n_0}f(n)$ diverge. Comme elle est à termes positifs, elle diverge vers l'infini.  Comme $\sum_{n=n_0}^{N-1}f(n)\leq \int_1^N f(x)dx$, la suite croissante $\left( \int_{n_0}^n f(x) dx \right)_{n\in\N}$ n'est pas bornée donc divergente. 
 \end{proof}
-\begin{Prop}[séries de Riemann]
+\begin{Prop}[Séries de Riemann]
 La série $\sum \frac{1}{n^a}$ converge si et seulement si $a> 1$.
 \end{Prop}
 \begin{proof}
@@ -487,7 +484,6 @@ $$ \int_{1}^n \frac{1}{x} dx = \ln n  \xrightarrow[n\to \infty]{}+\infty .$$
 
 \section{Séries à termes de signe variable}
 \subsection{Absolument convergente}
-
 Nous passons maintenant à l'étude des séries qui ne sont pas à termes positifs. Pour expliquer le titre de cette section,
  il convient de remarquer que si le signe de $u_n$ est constant
 à partir d'un certain rang $n_0$, l'étude de la convergence de $\sum u_n$ se ramène à celle d'une
@@ -514,7 +510,7 @@ On a :
 $ \sum_{k=0}^n u_k= \sum_{k=0}^n (u^+_k-u^-_k) = \sum_{k=0}^n u_k^+ -  \sum_{k=0}^n u_k^-.$
 Une condition suffisante pour que la série $\sum u_n$ converge et que les deux SATP $\sum u_k^+$ et $\sum u_k^-$ convergent. 
 Compte tenu des inégalités $0\leq u_n^+ \leq |u_n| , \quad 0\leq u_n^- \leq |u_n|$, le
-théorème de comparaison des séries à termes positifs nous permet de conclure qu?une
+théorème de comparaison des séries à termes positifs nous permet de conclure qu'une
 condition suffisante pour la convergence de $\sum u_k^+$ et $\sum u_k^-$
 et donc aussi $\sum|u_n|$ converge. Nous venons ainsi d'établir le résultat le plus important pour
 la convergence d'une série à termes de signe variable.\\
@@ -535,11 +531,11 @@ La série de Riemann $\sum \frac{1}{n^2}$ est convergente donc la série $\sum \fr
 \end{Ex}
 \subsection{Série alternée}
 
-\begin{Df}
-Une série $\sum u_n$ est dite alternée si $u_n$ et $u_{n+1}$ sont de signes contraires, pour tout $n\in\N$.\\
+\begin{Df}[Alternée]
+Une série $\sum u_n$ est dite \defi{alternée} si $u_n$ et $u_{n+1}$ sont de signes contraires, pour tout $n\in\N$.\\
 On écrira cette série sous cette forme $\sum u_n =\sum (-1)^n a_n$ avec $(a_n)$ une suite de réels positifs. 
 \end{Df}
-\begin{Th}[critère spécial]
+\begin{Th}[Critère spécial]
 Soit $\sum (-1)^n a_n$ une série alternée. Si $(a_n)$ est une suite décroissante tendant vers $0$,\\
 Alors
 \begin{enumerate}

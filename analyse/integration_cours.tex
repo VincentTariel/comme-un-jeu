@@ -19,6 +19,7 @@
 \usepackage{longtable} 
 \usepackage{multicol}
 \usepackage{caption}
+\usepackage{pgfplots}
 \definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
 \sectionfont{\color{magenta}}
 \subsectionfont{\color{red}}
@@ -83,497 +84,828 @@
 \newcommand{\FIK}{\mathcal{F}(I,\K  )}
 \newcommand{\fn}{(f_n)_{n\in \N   }}
 \newcommand{\Sfn}{\sum _n f_n}
-
+\newcommand{\TTT}{]a,b]}
+\newcommand{\TTTT}{]a,b[}
 \begin{document}
 
-\chapter{Suites et séries de fonctions}
 
-Dans le chapitre sur les séries numériques, nous avons étudié la série de Riemann, $\sum _{n\geq 1}{\frac {1}{n^{\alpha }}}$ dépendant du paramètre. Si $\alpha=1$, la série de Riemann s'appelle série harmonique et diverge. Si $\alpha=2$, la série de Riemann converge et est égale $\frac{\pi^2}{6}$.  On peut définir la fonction zêta de Riemann en considérant le paramètre $\alpha$ comme la variable, $x$, de la fonction, c'est à dire :
-$$ \Fonction{\zeta}{]1,+\infty[}{\R }{x}{\sum _{n=1}^{\infty }\ {\frac {1}{n^{x}}}}.$$On a $\zeta(2)= \frac{\pi^2}{6}$. Ainsi définie comme la somme de la série, la fonction $\zeta$ est-elle continue, dérivable ? \\
-La première partie de ce cours définira les notions de suites et séries de fonctions  ainsi que les différents modes de convergence. La fonction limite de la convergence simple sera définie comme la limite point à point. Ainsi définie, la fonction limite n'est pas garantie d'être continue, dérivable, etc. C'est pourquoi, nous définirons une convergence plus forte appelée convergence uniforme afin de garantir des propriétés de continuités, de dérivabilité, de permutation de la limite et de l'intégrale. Les théorèmes associés à ces  propriétés constitueront la dernière partie de ce cours. \\   
-\textit{Notations} : 
-\begin{itemize}
-\item
-  $I$ désigne un intervalle de $\R $ non vide et non réduit à un point;
-\item
-  $\K  $ désigne $\R $ ou $\C    $;
-\item
-  $\K  ^I = \FIK$ désigne le $\K-$espace vectoriel des fonctions de $I$ dans $\K  $.
-\end{itemize}
 
-% -----------------------------------------------------------------------------
-
+\chapter{Intégrales généralisées}
+Ce chapitre a pour objectif d'étendre la notion d'intégrale sur un intervalle qui n'est pas nécessairement un
+segment, par exemple, $$\int_{1 }^{+\infty } \frac{1}{x^2} \,\mathrm dx = 1.$$
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+	   axis y line = middle,
+       axis x line = middle,
+       samples     = 200,
+       domain      = 0:1,
+       xmin = 0, xmax = 18,
+       ymin = 0, ymax = 1,
+]
+\addplot[domain=1:18,fill=blue!20] {1/x^2} node[pos=0.3,above] {$x\mapsto 1/x^2$}\closedcycle ;
+\end{axis}
+\end{tikzpicture}
+\end{center}
 \section{Généralités}
-\subsection{Définitions}
+L'intégrale impropre désigne l'intégrale d'une fonction sur un intervalle. Elle est définie comme une extension de l'intégrale usuelle sur un segment  par un passage à la limite sur les bornes d'intégration de l'intégrale.   
 
-\begin{Df}[Suite de fonctions]
-On appelle \defi{suite de fonctions} toute suite $\fn$ à valeurs dans $\FIK$.
-Autrement dit, une suite de fonctions est une suite $\fn$ dont les éléments sont des fonctions $f_n: I\to \K  $.
+\subsection{Définition}
+\begin{Df}[Intégrale impropre sur $[a,b[$]
+Soit $f$ une fonction continue par morceaux sur $[a,b [$ avec $b \in \R$ ou $b = +\infty$.\\
+Si $\int_a^t f(x) \,\mathrm dx$ admet une limite finie lorsque $t$ tend vers $b$, on dit que l'\defi{intégrale impropre} converge et on
+note $\int_a^b f(x) \,\mathrm dx$ cette limite. Sinon, on dit qu'elle diverge.
 \end{Df}
-\begin{Ex}Les suites $(f_n)_{n\in \N   }$, $(g_n)_{n\in \N   }$ et $(h_n)_{n\in \N   }$ sont définies par :
-$$ \Fonction{f_n}{[0,1]}{\R }{x}{x^n}, \Fonction{g_n}{\R }{\R }{x}{\left(1+\frac x n\right)^n},$$ $$\Fonction{h_n}{\R ^+}{\R }{x}{x n^a e^{-nx}}.$$ 
-\end{Ex}
-
-\begin{Df}[Série de fonctions]
-Soit $\fn$ une suite de fonctions de $I$ dans $\K  $.
-On pose \[ \Fonction{S_n}{I}{\K  }{x}{\sum _{k=0}^n f_k(x)} \]
-On appelle \defi{série de fonctions} de $I$ dans $\K$ de terme général $f_n$, noté  $\sum _n f_n$, la suite des \defi{sommes partielles} $(S_n)_{n\in \N   }$.
-\end{Df}
-\begin{Ex}la série géométrique : $\sum_n x^n $ 
-\end{Ex}
-
-
-%% -----------------------------------------------------------------------------
-\subsection{Modes de convergence}
-
-% -----------------------------------------------------------------------------
-\subsubsection{Convergence simple }
-La convergence simple permet de définir une fonction comme limite d'une suite de fonctions ou d'une série de fonctions.
-
-\begin{Df}[Convergence simple  $\fn$]
-Soit $\fn$ une suite de fonctions de $I$ dans $\K  $.
-On dit que la suite de fonctions $\fn$ \defi{converge simplement} vers $f$ sur $I$ si  
-\[  \forall x \in I, \text{ la suite numérique } (f_n(x))_{n\in \mathbb{N}} \text{ converge}, \] 
-c'est à dire que $\lim\limits_{x \to \infty}f_n(x)$ existe dans $\K  $, pour tout $x\in I$. Dans ce cas, on peut définir la fonction:
-$$
- \Fonction{f}{I}{\K  }{x}{\lim\limits_{n \to \infty}f_n(x)}.$$
- appelée \defi{limite simple} sur $I$ de la suite $(f_n)$.
-\end{Df} 
-
-\begin{Methode}[Prouver la convergence simple]
-Pour prouver que $\fn$ converge simplement vers $f$ sur $I$, il faut fixer la variable de de la fonction, \textbf{soit $x\in I$ fixé},  et chercher à prouver que la \textbf{suite numérique} $(f_n(x))_{n\in \N }$ converge vers $f(x)$. Il s'agit donc d'un problème de convergence d'une  suite numérique.
- \end{Methode}
-
 \begin{Ex}
-\begin{enumerate}
-\item  Démontrons que la suite $(f_n)_{n\in \mathbb{N}}$ converge simplement vers la fonction\newline$x \mapsto \begin{cases}0&{\text{si }}x\in[0,1[\\1&{\text{si } x=0}\end{cases} $ sur $[0,1]$.\\
-Soit $x\in [0,1]$ fixé.\\
-Si $x=1$, on a $x^n=1^n=1\Toninf 1$.\\
-Si $x\neq 1$, la suite numérique $(x^n)_{n\in \mathbb{N}}$ est la suite géométrique de raison $q=x$. Comme $|q|<1$, la suite   converge vers 0.
-\item Démontrons que la suite $(g_n)_{n\in \mathbb{N}}$ converge simplement vers la fonction $x \mapsto e^{x}$ sur $\R $.\\
-Soit $x\in \R $ fixé.\\
-Si $x=0$, on a $(1+\frac 0 n)^n=1\Toninf 1=e^0$.\\
-Si $x\neq0$, on a :
-$$
-\begin{array}{rcl}
-(1+\frac x n)^n &=& e^{n\ln (1+x/n)}\\
-(1+\frac x n)^n &=& e^{n (x/n+o(1/n))} \text{ par développement limité}\\
-(1+\frac x n)^n &=& e^{x+o(1)}\\
-(1+\frac x n)^n &\underset{ \overset { n \rightarrow \infty } {} } {\sim}&e^x \text{ par continuité de la fonction exponentielle}
-\end{array}
-$$
-Donc $\lim\limits_{n \to \infty}(1+\frac x n)^n=e^x$. 
-\item Démontrons que la suite $(h_n)_{n\in \mathbb{N}}$ converge simplement vers la fonction nulle $x \mapsto 0$ sur $\R ^+$.\\
-Soit $x\in \R ^+$ fixé.\\
-Si $x=0$, on a $x n^a e^{-nx}=0\Toninf 0$.\\
-Si $x\neq 0$, on a : $\lim\limits_{n \to \infty}x n^a e^{-nx}=0$ car :
-$$
-\begin{array}{rcl}
-n^a e^{-nx} &=& e^{a \ln n -nx}\\
-n^a e^{-nx} &=& e^{-nx(1-\frac{a \ln n}{nx})}\\
-n^a e^{-nx} &\underset{ \overset { n \rightarrow \infty } {} } {\sim}&e^{-nx}\Toninf 0
-\end{array}
-$$ 
-\end{enumerate}
-
+Soit l'intégrale $\int_1^{+\infty } \frac{1}{x^2}\,\mathrm dx$.\\
+La fonction $ x\mapsto  \frac{1}{x^2}$ est continue sur $[1,{+\infty }[$.  Soit $t\in [1,{+\infty }[$.\\
+On a  $\int_1^t \frac{1}{x^2}\,\mathrm dx=[-\frac 1 x]_1^t=1-\frac{1}{t}\tend[t\to+\infty ]1$. Donc l'intégrale est convergente et son intégrale impropre est égale à 1.
+\end{Ex}
+\begin{Prop}[Indépendance de la borne fermée]
+Soit $f$ une fonction continue par morceaux sur $[a,b [$ avec $b \in \R$ ou $b = +\infty$. Soit $c\in[a,b[$.\\
+$\int_a^b f(x) \,\mathrm dx$ et $\int_c^b f(x) \,\mathrm dx$ sont de même nature.
+\end{Prop}
+\begin{proof}
+Soit $t\in[a,b[$. On applique la relation de Chasles à l'intégrale sur un segment :
+$$ \int_a^t f(x) \,\mathrm dx = \int_a^c f(x) \,\mathrm dx+\int_c^t f(x) \,\mathrm dx=A+\int_c^t f(x) \,\mathrm dx.$$
+Par passage à la limite sur cette égalité, on obtient que $\int_a^b f(x) \,\mathrm dx$ et $\int_c^b f(x) \,\mathrm dx$ sont de même nature.
+\end{proof}
+\begin{Ex}
+$\int_5^{+\infty } \frac{1}{x^2}\,\mathrm dx$ converge car $\int_1^{+\infty } \frac{1}{x^2}\,\mathrm dx$ converge.
 \end{Ex}
 
-\begin{NB}  La suite de fonctions $(f_n)_{n\in \mathbb{N}}$ est une suite de fonctions continues sur $[0,1]$ et pourtant sa limite simple $x \mapsto \begin{cases}0&{\text{si }}x\in[0,1[\\1&{\text{si } x=0}\end{cases}$ n'est pas continue sur $[0,1]$.
+\begin{Df}[Intégrale impropre sur $\TTT$]
+Soit $f$ une fonction continue par morceaux  sur $]a,b]$ avec $a \in \R$ ou $a= -\infty$.\\
+Si $\int_t^b f(x) \,\mathrm dx$ admet une limite finie lorsque $t$ tend vers $a$, on dit que l'\defi{intégrale impropre} converge et on
+note $\int_a^b f(x) \,\mathrm dx$ cette limite. Sinon, on dit qu'elle diverge.
+\end{Df}
+\begin{Ex}
+Soit l'intégrale $\int_0^{1} \frac{1}{x}\,\mathrm dx$.\\
+La fonction $ x\mapsto  \frac{1}{x}$ est continue sur $]0,1]$.  Soit $t\in ]0,1]$.\\
+On a  $\int_t^1 \frac{1}{x}\,\mathrm dx=[\ln (x)]_t^1=-\ln(t)\tend[t\to 0 ]+\infty$. Donc l'intégrale est divergente.
+\end{Ex}
+\begin{Df}[Intégrale impropre sur $\TTTT$]
+Soit $f$ une fonction continue par morceaux  sur $]a,b[$ avec $a \in \R$ ou $a= -\infty$ et $b \in \R$ ou $b= +\infty$ .\\
+Si $\int_a^c f(x) \,\mathrm dx$ et $\int_c^b f(x) \,\mathrm dx$  convergent avec $c\in ]a,b[$, on dit que l'\defi{intégrale impropre} converge et on
+note $\int_a^b f(x) \,\mathrm dx$ cette limite. Sinon, on dit qu'elle diverge.
+\end{Df}
+\begin{Ex}
+Soit l'intégrale $\int_0^{+\infty } \frac{1}{\sqrt{x}}\,\mathrm dx$.\\
+La fonction $ x\mapsto  \frac{1}{x^2}$ est continue sur $]0,+\infty[$. \\
+\begin{itemize}
+\item $\int_0^{1 } \frac{1}{\sqrt{x}}\,\mathrm dx$\\  Soit $t\in ]0,1]$.\\
+On a  $\int_t^1 \frac{1}{\sqrt{x}}\,\mathrm dx=[2 \sqrt{x}]_t^1=2(1-\sqrt{t})\tend[t\to 0 ]2$. Donc l'intégrale est convergente.
+\item $\int_1^{+\infty } \frac{1}{\sqrt{x}}\,\mathrm dx$\\ Soit $t\in [1,{+\infty }[$.\\
+On a  $\int_1^t \frac{1}{\sqrt{x}}\,\mathrm dx=[2 \sqrt{x}]_1^t=2(\sqrt{t}-1)\tend[t\to +\infty ]+\infty $. Donc l'intégrale est divergente.
+\end{itemize}
+En conclusion,  l'intégrale $\int_0^{+\infty } \frac{1}{\sqrt{x}}\,\mathrm dx$ est divergente.
+\end{Ex}
+\begin{NB}
+Attention au passage à la limite! Pour prouver que $\int_{-\infty}^{+\infty}f(x)\,\mathrm dx$ converge, il ne suffit pas de calculer $\lim\limits_{t\to +\infty }\int_{-t}^t f(x)\,\mathrm dx$.\\
+En effet soit $\int_{-\infty}^{+\infty} {x}\,\mathrm dx.$, on a:
+\begin{enumerate}
+\item
+  $x\mapsto x$ est continue sur $]-\infty ,+\infty [$;
+\item
+  $\lim\limits_{t\to +\infty }\int_{-t}^t x\,\mathrm dx =\lim\limits_{t\to +\infty } [\frac{x^2}{2}]_t^t=0  $ existe et est nulle;
+\item
+  pourtant, l'intégrale $\int_{-\infty }^{+\infty } x\,\mathrm dx$ diverge car $\int_{0 }^{+\infty } x\,\mathrm dx$ est divergente.
+\end{enumerate}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+	   axis y line = middle,
+       axis x line = middle,
+       samples     = 200,
+       domain      = -1:1,
+       xmin = -1, xmax = 1,
+       ymin = -1, ymax = 1,
+]
+\addplot[domain=-1:1,fill=blue!20] {x} node[pos=0.3,above] {$x\mapsto x$}\closedcycle ;
+\end{axis}
+\end{tikzpicture}
+\end{center}
 \end{NB}
 
-\begin{Df}[Convergence simple  $\Sfn$]
-On dit que la série $\Sfn$ \defi{converge simplement} sur $I$
-si la suite de fonction $(S_n)_{n\in \N   }$ converge simplement sur $I$.\\
-Autrement dit, la série $\Sfn$ converge simplement sur $I$ £ssi.
-\[  \forall  x\in I, \text{la série numérique } \sum _n f_n(x) \text{ converge.}  \]
-Dans ce cas, la fonction :
-$$
-\Fonction{f}{I}{\K  }{x}{\sum_{n=0}^\infty f_n(x)}$$
- est appelé \defi{limite simple} sur $I$ de la série $\Sfn$.
-\end{Df}
-
-\begin{Ex} Démontrons que la série $\sum_n x^n$ converge simplement vers la fonction $\frac{1}{1-x}$ sur $]-1,1[$.\\
-Soit $x\in ]-1,1[$ fixé.\\
-On a $\sum_{k=0}^n x^k= \frac{1-x^{n+1}}{1-x}\Toninf  \frac{1}{1-x}$ car $|x|<1$. Donc la série converge simplement sur $]-1,1[$ et sa limite simple est la fonction $x\mapsto \frac{1}{1-x}$.
-\end{Ex}
-
-\begin{Prop}[Unicité de la limite simple]
-Soit $\fn$ une suite de fonctions de $I$ dans $\K  $.
-Soit $f$ et $g$ deux fonctions de $I$ dans $\K  $.
-Si $\fn$ converge simplement sur $I$ vers $f$ et vers $g$
-alors $f = g$.
+\begin{Prop}[Prolongeable par continuité]
+Si une fonction $f : [a,b [\to \R$ avec $b \in \R$ est continue sur $[a,b [$ et prolongeable par continuité en $b$,\\
+Alors l'intégrale $\int_{a}^{b}f(x)\,\mathrm dx$ converge et vaut $\int_{a}^{b}\tilde{f}(x)\,\mathrm dx$ où l'on a noté $\tilde{f}$ le prolongement de $f$. L'intégrale est faussement impropre.
 \end{Prop}
-%
-%
-\subsubsection{Convergence uniforme}
-La convergence uniforme est une convergence plus forte que la convergence simple permettant de garantir des propriétés de continuité, de dérivabilité, etc,  sur la fonction limité définie à l'aide de la convergence simple. 
-
-\begin{Df}[Convergence uniforme $\fn$]
-Soit $\fn$ une suite de fonctions de $I$ dans $\K  $, et soit $f \colon I \to\K  $.
-On dit que la suite de fonctions $\fn$ \defi{converge uniformément} vers $f$ sur $I$ si et seulement si
-\[ \forall  \epsilon>0 , \exists N\in \N , \forall  n\geq N ,\forall  x\in I, \abs{f_n(x) - f(x)} \leq  \epsilon, \]
-ou de façon équivalente, si la suite numérique $(\sup_{x\in I} \Abs{f_n(x) - f(x)})_{n\in\mathbb{N}}$ converge vers 0, c'est à dire:
-\[  \sup_{x\in I} \Abs{f_n(x) - f(x)}   \tend[n\to+\infty ]0.  \]
-\end{Df}
-
-\begin{Prop}
-Si $\fn$ converge uniformément vers $f$, alors $\fn$ converge simplement vers $f$.
-\end{Prop}
-
-\begin{Methode}[Prouver la convergence uniforme]
-On définit la limite simple, $f$, de la suite $\fn$ à l'aide de la convergence simple. Puis, on vérifie que le suite  $\fn$ converge uniformément vers cette limite $f$ par 
-\begin{enumerate}
-\item méthode 1 : une étude de fonction pour déterminer $\Abs{f_n(x) - f(x)}$
-\item méthode 2:  une majoration $\Abs{f_n(x) - f(x)}$ par une quantité indépendante de $x$ et qui tend vers 0.
-\end{enumerate}
-\end{Methode}
-
-
-\begin{Ex}[Méthode 1] Soit $$\Fonction{h_n}{\R ^+}{\R ^+}{x}{n^a x e^{-nx} }.$$\\
-L'animation geogebra \url{https://www.geogebra.org/graphing/bm5hggxd}, illustre la notion de convergence  pour   $a=0,5, a=1$ ou $a=1,5$. \\
-Pour ces trois valeurs de $a$, la suite de fonction $(h_n)_{n\in\mathbb{N}}$  converge simplement vers la fonction nulle sur l'intervalle $ \R ^+$.\\
-Pour la \textbf{convergence simple}, on fixe  $x$ (ici =0.3). On observe qu'à partir d'un certain rang de $n$, le point $x$  est à droite de la bosse, et que la suite numérique $(h_n(x))_{n\in\mathbb{N}}$ tend bien vers 0 quand $n$ tend vers $+\infty$ quelque soit les valeurs de $a$. La limite simple est la fonction nulle $h:x\to 0.$\\
-Pour la \textbf{convergence uniforme}, $x$ n'est plus fixé et appartient à l'intervalle $\R ^+$. $$\sup_{x\in \R ^+} \Abs{h_n(x) - h(x)}=\sup_{x\in \R ^+} \Abs{h_n(x)}$$ correspond à la hauteur de la bosse. On a convergence uniforme si et seulement si la hauteur tend vers $0$ quand quand $n$ tend vers $+\infty$. Pour $a=0,5$, la suite de fonctions $(h_n)_{n\in\mathbb{N}}$ converge uniformément car la bosse s'aplatit. En revanche, pour  $a=1$, la hauteur de la bosse reste constante et pour $a=1,5$, la hauteur tend vers  $+\infty$  quand $n$ tend vers $+\infty$. La suite de fonctions $(h_n)_{n\in\mathbb{N}}$ ne converge pas uniformément pour ces deux valeurs.\\
-\textit{Preuve :} pour étudier la convergence uniforme de la suite de fonctions $(h_n)$,  on étudie la suite numérique  $\left(\sup_{x\in  \R ^+} \Abs{h_n(x)}\right)_{n\in\N}$. Le $\sup$ correspond au maximum de de la fonction $h_n$. Comme $h_n$ est une fonction dérivable, on étudie le signe de sa dérivée. Soit $x\in  \R ^+$. 
-$${h'}_n(x)=n^a(e^{-nx}-nxe^{-nx})=n^ae^{-nx}(1-n).$$ D'où ${h'}_n(x)\geq 0 \Leftrightarrow  x\leq \frac 1 n.$  
-Donc $h_n$ atteint le maximum en $1/n$, d'où $$\sup_{x\in  \R ^+} \Abs{h_n(x) }=h_n(1/n)=n^{a-1}e^-1\Toninf 0 \Leftrightarrow  a<1.$$ Donc $(h_n)_{n\in\mathbb{N}}$ converge uniformément si et seulement si   $a<1.$
+\begin{Ex}
+L'intégrale $\int_{0}^{2\pi}\frac{\sin x}{x}\,\mathrm dx$ est convergente car la fonction $f:x\mapsto\frac{\sin x}{x}$ est continue sur $]0,2\pi]$ et plongeable par continuité en 0 en posant $\tilde{f}(0)=1$. 
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+	   axis y line = middle,
+       axis x line = middle,
+       samples     = 200,
+       domain      = 0:1,
+       xmin = 0, xmax = 6.28,
+       ymin = -1, ymax = 1,
+]
+\addplot[domain=0:6.28,fill=blue!20] {sin(deg(x))/x} node[pos=0.3,above] {$x\mapsto \sin(x)/x$}\closedcycle ;
+\end{axis}
+\end{tikzpicture}
+\end{center}
 \end{Ex}
-
-\begin{Ex}[Méthode 2]
-La suite de fonctions $(x\mapsto x^n)_{n\in \mathbb{N}}$ converge uniformément vers la fonction nulle $x\mapsto 0$ sur $[0,a]$ avec $0<a<1$ car :
-$$\forall n\in \N, \forall x\in[0,a]:\quad |x^n|\leq a^n$$ c'est à dire :
-$$ \forall n\in \N, \sup_{x\in[0,a]}|x^n|\leq a^n.$$
-Comme $a^n\tend[n\to+\infty]0$, on déduit que $\sup_{x\in[0,a]}|x^n| \tend[n\to+\infty]0$ et on conclut que la suite de fonctions $(x\mapsto x^n)_{n\in \mathbb{N}}$ converge uniformément vers la fonction nulle $x\mapsto 0$.
-\end{Ex}
-
-
-\begin{Df}[Convergence uniforme $\Sfn$]
-On dit que la série $\Sfn$ \defi{converge uniformément} sur $I$ si  la suite de fonction $(S_n)_{n\in \N   }$ converge uniformément sur $I$.
-\end{Df}
-\begin{Prop}[Critère du reste]
-Soit $\Sfn$ une série de fonction qui converge simplement vers $f$ sur $I$.
-Cette série converge uniformément vers $f$ sur $I$ si et seulement si
-la suite de fonctions $(R_n)$ converge uniformément vers $0$ sur $I$
-où \[ R_n(x) = \sum _{k>n} f_k(x). \]
-Ainsi, montrer que $\Sfn$ converge uniformément sur $I$ revient à montrer
-l'existence d'une suite réelle $(\epsilon_n)_{n\in \N   }$ telle que:
-  \begin{itemize}
-  \item
-    $\forall  n\in \N   $, $\forall  x\in I$, $\Abs{R_n(x)} \leq \epsilon_n$;
-  \item
-    la suite numérique $(\epsilon_n)$ tend vers $0$.
-  \end{itemize}
-\end{Prop}
-\begin{Ex} Soit la série de fonctions $\sum \frac{(-1)^n}{x+n}$.\\
-La série de fonctions converge simplement sur $\R ^+$, car à $x\in\R ^+ $ fixé, la série numérique $\sum \frac{(-1)^n}{x+n}$ respecte le critère de convergence des séries alternées ($(\frac{1}{x+n})_{n\in\mathbb{N}}$ est une suite décroissante de limite 0). Pour la convergence uniforme, la valeur absolue du reste d'une série alternée est majorée par celle de son premier terme:
-$$\forall  x\in \R ^+,\Abs{R_n(x)} \leq  \Abs{\frac{1}{x+(n+1)}}\leq \frac{1}{n+1}\Toninf 0.$$
-\end{Ex}
-% 
-% -----------------------------------------------------------------------------
-\subsubsection{Convergence normale}
-
-Uniquement pour les séries de fonctions, la convergence normale est une convergence plus forte que la convergence uniforme. Elle est avant tout un outil pour démontrer la convergence uniforme car démontrer qu'une série converge normalement est souvent évident.  
-
-\begin{Df}[Convergence normale $\Sfn$]
-Soit $\Sfn$ une série de fonctions bornées de $I$ dans $\K  $.
-On dit que la série de fonctions $\Sfn$ \defi{converge normalement} sur $I$
-si  la série numérique
-de terme général $u_n = \sup_{x\in I} \Abs{f_n(x)}$ converge.
-\end{Df}
-\begin{Prop}
-Soit $\Sfn$ une série de fonctions de $I$ dans $\K  $.
-Montrer que la série converge normalement sur $I$ revient à
-montrer l'existence d'une suite réelle $(\alpha_n)_{n\in \N   }$ telle que:
-  \begin{itemize}
-  \item
-    $\forall  n\in \N   $, $\forall  x\in I$, $\Abs{f_n(x)}\leq \alpha_n$;
-  \item
-    la série numérique $\sum _n \alpha_n$ converge.
-  \end{itemize}
-\end{Prop}
-
-\begin{Prop}
-La convergence normale entraîne la convergence uniforme (qui entraîne la convergence simple).
-\end{Prop}
-
-\begin{Ex}Démontrer que la série de fonctions $\sum x^n$ convergence uniformément sur $[0,a]$ avec $a<1$.\\
-Il suffit de démontrer qu'elle converge normalement.
-$$ \forall  n\in \N   , \forall  x\in [0,a], |x^n| \leq a^n.$$
-Comme la série géométrique $\sum a^n$ converge ($|a|<1$), la série de fonction converge normalement sur $[0,a]$, donc uniformément sur $[0,a]$. 
-\end{Ex}
-\begin{NB}La convergence uniforme n'implique pas la convergence normale. La série de fonctions $\sum \frac{(-1)^n}{x+n}$ converge uniformément sur $\mathbb{R}^+$ mais pas normalement. On a$$ \forall  n\in \N   , \sup_{x\in \mathbb{R}^+}\left| \frac{(-1)^n}{x+n}\right|=\frac{1}{n}.$$ La série harmonique $\sum \frac{1}{n}$ est divergente.
-\end{NB}
-
-%
-%
-\section{Propriétés}
-
-
-
-\subsection{Continuité}\label{sec:cont}
-\begin{Th}[Théorème de la permutation des limites]
-Soit $\fn$ une suite de fonctions de $I$ dans $\K  $.
-On suppose que:
-\begin{itemize}
-\item
-  $a$ est un point ou une extrémité de $I$ (éventuellement $±\infty$);
-\item
-  pour tout $n\in \N   $, $\lim\limits_{x\to a} f_n(x) = l_n$ existe et est finie;
-\item
-  $\fn$ converge uniformément vers $f$ sur $I$.
-\end{itemize}
-Alors:
-\begin{itemize}
-\item
-  la suite $(l_n)_{n\in \N   }$ converge. Notons $l$ sa limite;
-\item
-  $f$ admet une limite en $a$;
-\item
-  $\lim\limits_{x\to a} f(x) = l$, c'est à dire
-  \[ 
-      \lim_{x\to a} \; \lim_\ninf \; f_n(x) = \lim_\ninf \; \lim_{x\to a} \; f_n(x).
-   \]
-\end{itemize}
-\end{Th}
-%
-\begin{Th}[Théorème de permutation limite-somme]
-Soit $\Sfn$ une série de fonctions de $I$ dans $\K  $.
-On suppose que:
-\begin{itemize}
-\item
-  $a$ est une extrémité de $I$ (éventuellement $±\infty $);
-\item
-  pour tout $n\in \N   $, $\lim\limits_{x\to a} f_n(x) = l_n$ existe et est finie;
-\item
-  $\Sfn$ converge uniformément vers $f$ sur $I$.
-\end{itemize}
-Alors:
-\begin{itemize}
-\item
-  la série numérique $\sum _n l_n$ est absolument convergente;
-\item
-  $f$ admet une limite en $a$;
-\item
-  $\lim_a f = \sum _{n=0}^{+\infty } l_n$, c'est à dire
-  \[  \lim_{x \to a} \sum _{n=0}^{+\infty } f_n(x) = \sum _{n=0}^{+\infty } \lim_{x \to a} f_n(x).  \]
-\end{itemize}
-\end{Th}
-
-\begin{Ex} La série $\sum\frac {1}{n^{x}}$ converge uniformément sur $[a,+\infty[$ avec $a>1$. On a :
-$$\lim_{x\to \infty }\zeta(x)=\lim_{x\to \infty } \sum _{k=1}^{\infty} \frac {1}{k^{x}} = \lim_{x\to \infty }\lim_{n\to \infty } \sum _{k=1}^{n } \frac {1}{k^{x}}= \lim_{n\to \infty } \lim_{x\to \infty } \sum _{k=1}^{n } \frac {1}{k^{x}}  = \lim_{n\to \infty }  \sum _{k=1}^{n }\lim_{x\to \infty } \frac {1}{k^{x}}  =\lim_{n\to \infty } (1+0+\dots +0) =1.
-$$
-\end{Ex}
-
-\begin{Th}[Théorème de continuité de la limite]
-La limite uniforme d'une suite de fonctions continue est elle-même continue.\\
-Plus précisément, si
-\begin{itemize}
-\item
-  pour tout $n\in \N   $, $f_n$ est continue sur $I$,
-\item
-  $\fn$ converge uniformément vers $f$.
-\end{itemize}
-Alors $f$ est continue sur $I$.
+Par analogie sur les séries numériques,\\ si  $\lim\limits_{n\to \infty}u_n \neq 0$ alors $\sum u_n$ diverge,\\ a-t-on\\
+si $\lim\limits_{x\to \infty}f(x)\neq 0$  alors  $\int_{0}^{+\infty}f(x)\,\mathrm dx$ diverge ?\\
+ La réponse est oui à condition d'avoir une hypothèse plus forte. 
+\begin{Th}[Divergence grossière à l'infini]
+Soit $f : [a,+\infty \to \R$ continue.\\
+Si $f$ admet une limite non nulle en $\infty$ alors $\int_{0}^{+\infty}f(x)\,\mathrm dx$ diverge. On dit qu'elle \defi{diverge grossièrement}. 
 \end{Th}
 \begin{proof}
-Ce théorème est un corollaire du théorème de la double limite. Soit $a\in I$. On a :
-$$\lim_{x\to a} f(x)=\lim_{x\to a}\lim_\ninf \; f_n(x) \underset{\text{th double limite}}{=}\lim_\ninf \lim_{x\to a} \; f_n(x)\underset{f_n \text{ continue}}{=}\lim_\ninf f_n(a)= f(a).  $$
+La preuve anticipe les outils mis en place dans la section sur les fonctions positives.\\ 
+Comme $f$ admet une limite $l$ non nulle en $\infty$, il existe $A>0$ tel que $f(x)$ soit de signe constant pour tout $x>A$.  Comme $f(x)\underset{+\infty}{\sim} l$ et $\int_{A}^{+\infty}l\,\mathrm dx$ diverge,  $\int_{0}^{+\infty}f(x)\,\mathrm dx$ diverge.  
+\end{proof} 
+\begin{Ex}
+$\int_{0}^{+\infty}x\sin(1/x)\,\mathrm dx$ diverge grossièrement car $\lim\limits_{x\to+\infty}x\sin(1/x) =1 $.
+\end{Ex}
+
+\subsection{Intégrales de références}
+
+\begin{Prop}[Intégrales de Riemann]
+  \begin{enumerate}
+  \item
+    $\int_1^{+\infty } \frac{\,\mathrm dx}{x^\alpha}$ converge si et seulement si $\alpha>1$,
+  \item
+    $\int_0^1    \frac{\mathrm dx}{x^\alpha}$ converge si et seulement si $\alpha<1$.
+  \end{enumerate}
+\end{Prop}
+\begin{proof}
+$x\mapsto  \frac{1}{x^\alpha}$ est continue sur  $[1,+\infty[$.\\
+Soit $t\in [1,+\infty[$. On a 
+\begin{itemize}
+\item $\alpha\neq 1$
+$$\int_1^{t } \frac{\mathrm dx}{x^\alpha}= \left[\frac{x^{1-\alpha}}{1-\alpha}\right]_1^t=\frac{1}{1-\alpha}(t^{1-\alpha}-1) \tend[t\to +\infty ]\begin{cases}\frac{1}{\alpha-1} &\text{ si } \alpha>1\\ +\infty &\text{ si } \alpha<1 \end{cases}$$
+\item $\alpha= 1$
+$$\int_1^{t } \frac{\mathrm dx}{x}= \left[\ln(x)\right]_1^t=\ln(t)\tend[t\to +\infty ]+\infty $$
+\end{itemize}
+En conclusion $\int_1^{+\infty } \frac{\mathrm dx}{x^\alpha}$ converge si et seulement si $\alpha>1$.\\
+La démonstration est similaire pour $\int_0^1    \frac{\mathrm dx}{x^\alpha}$ converge si et seulement si $\alpha<1$.
 \end{proof}
-%
-\begin{NB}
-Par contraposition, le théorème précédent permet, dans certains exemples, de montrer la non-convergence uniforme. \\ 
-Par exemple, la suite de fonctions $(x\mapsto x^n)_{n\in \mathbb{N}}$ converge simplement sur $[0,1]$ vers  $x \mapsto \begin{cases}0&{\text{si }}x\in[0,1[\\1&{\text{si } x=0}\end{cases}$ mais ne converge pas uniformément  sur $[0,1]$ car chaque $x\mapsto x^n$ est continue et sa limite simple ne l'est pas.
-\end{NB}
-%% -----------------------------------------------------------------------------
-\begin{Th}[Théorème de continuité de la somme]
-Soit $\Sfn$ une série de fonctions de $I$ dans $\K  $.
-On suppose que:
-\begin{itemize}
-\item
-  pour tout $n\in \N   $, $f_n$ est continue sur $I$;
-\item
-  $\Sfn$ converge uniformément sur $I$.
-\end{itemize}
-Alors la somme $f = \sum _{n=0}^{+\infty } f_n$ est une fonction définie et continue sur $I$.
-\end{Th}
-\begin{NB}La notion de continuité est une notions \textbf{locale}. Cela signifie que pour montrer qu'une fonction $f$ est continue sur un intervalle $I$, il faut montrer que $f$ est continue en tout point $a$ de l'intervalle.\\
-Ainsi, dans les théorèmes sur la continuité , on peut remplacer l'hypothèse de convergence uniforme sur $I$ par la convergence uniforme sur tout segment $K$ inclus dans $I$.\\
-Par exemple, la série $\sum\frac {1}{n^{x}}$ ne converge pas uniformément sur $]1,+\infty[$ mais converge normalement donc uniformément sur  $[a,+\infty[$, pour tout $a>1$. Donc, la fonction limite,   $\zeta$ est continue $[a,+\infty[$, pour tout $a>1$ donc continue sur  $]1,+\infty[$.
-\end{NB}
-\subsection{Permutation avec une intégrale}\label{sec:perm-int}
-
-\begin{Th}[Théorème de permutation limite/intégrale]
-Soit $\fn$ une suite de fonctions de $I$ dans $\K  $.
-On suppose que:
-\begin{itemize}
-\item
-  pour tout $n\in \N   $, $f_n$ est continue sur le segment $[a,b]$;
-\item
-  $\fn$ converge uniformément vers $f$ sur $[a,b]$.
-\end{itemize}
-Alors $f$ est continue (donc intégrable) sur $[a,b]$ et
-\[  \lim_\ninf \int_a^b f_n(t)dt = \int_a^b \lim_\ninf f_n(t)dt = \int_a^b f(t)dt. \]
-\end{Th}
-\begin{NB}
-Si il n'y pas convergence uniforme, on ne peut pas permuter en générale limite et intégrale. \\
-Par exemple, on observe dans cette animation géogébra \url{https://www.geogebra.org/graphing/qwwbjxgv},
- \begin{center}\includegraphics[width=3cm]{contre_exemple_limite_integrale.png}\end{center} que la suite de fonctions $\fn$ converge simplement vers la fonction nulle sur $[0,1]$. L'intégrale de la fonction nulle sur $[0,1]$ est $0$. Comme l'intégrale de chaque fonctions $f_n$ est $\frac 1 2$, la limite des intégrales est $\frac 1 2$. L'égalité n'est donc pas vérifiée car $$ \lim_\ninf \int_0^1 f_n(t)dt =  \lim_\ninf \frac 1 2 = \frac 1 2 \neq 0  = \int_0^1 0dt= ?_0^1 \lim_\ninf f_n(t)dt.$$
-On peut vérifier que la suite de fonctions $\fn$ définie par :
-$$\forall n \in \mathbb{N}^* :\quad  \Fonction{f_n}{[0,1]}{\mathbb{R}}{x}{\begin{cases}2n^2x&\text{ si } 0\leq x < \frac{1}{2n}\\2n-2n^2x&\text{ si } \frac{1}{2n}\leq x < \frac{1}{n}  \\0&\text{ si } \frac{1}{n}\leq x \leq 0 \end{cases}}$$ converge et simplement vers la fonction nulle et que  $\int_0^1 f_n(t)dt = \frac 1 2$. 
-\end{NB}
-\begin{Th}[Théorème de permutation somme/intégrale]
-Soit $\Sfn$ une série de fonctions de $[a,b]$ dans $\K  $.
-On suppose que:
-\begin{itemize}
-\item
-  pour tout $n\in \N   $, $f_n$ est continue sur le segment $[a,b]$
-\item
-  la série de fonctions $\sum _n f_n$ converge uniformément sur $[a,b]$ vers $f$
-\end{itemize}
-Alors $f$ est continue sur $[a,b]$ (donc intégrable) et
-\[  \sum _{n=0}^{+\infty } \int_a^b f_n(t)dt = \int_a^b \sum _{n=0}^{+\infty } f_n(t)dt= \int_a^b f(t)dt.   \]
-\end{Th}
-\begin{Ex}[Série géométrique] La série $\sum x^n$ converge uniformément vers la fonction $x\mapsto \frac{1}{1-x}$ sur $[0,a]$ avec $0<a<1$.  Comme
-$$ \forall x \in [0,1[, \int_0^x \sum _{n=0}^{+\infty } t^n dt \overbrace{=}^{Th} \sum _{n=0}^{+\infty } \int_0^x t^n dt = \sum _{n=0}^{+\infty } \frac{x^{n+1}}{n+1},$$
-et
-$$\forall x \in [0,1[, \int_0^x \frac{1}{1-t} dt = -\ln(1-x),$$
-Par intégration de  
-$$\forall x \in [0,1[,   \frac{1}{1-x} = \sum _{n=0}^{+\infty } x^n,$$
-on obtient le développement en série entière de la fonction $x:\mapsto  \ln(1-x)$ :
-$$\forall x \in [0,1[,-\ln(1-x)=  \sum _{n=0}^{+\infty } \frac{x^{n+1}}{n+1}.$$
-\end{Ex}
-
-\subsection{Dérivabilité}\label{sec:deriv}
-%
-\begin{Th}[Dérivation de la limite]
-Soit $\fn$ une suite de fonctions de $I$ dans $\K  $.
-On suppose que:
-\begin{itemize}
-\item
-  pour tout $n\in \N   $, $f_n$ est de classe $\CC1$ sur $I$;
-\item
-  $\fn$ converge simplement vers $f$ sur $I$;
-\item
-  $(f'_n)_{n\in\N}$ converge uniformément vers $g$ sur $I$.
-\end{itemize}
-Alors:
-\begin{itemize}
-\item
-  $f$ est de classe $\CC1$ sur $I$;
-\item
-  $f' = g$ c'est à dire:
-$$\forall x \in I:\quad  \left(\lim_\ninf f_n(x) \right)'=\lim_\ninf f'_n(x)$$
-  
-  
-\end{itemize}
-\end{Th}
-\begin{Th}[Dérivation de la somme]
-Soit $\Sfn$ une série de fonctions de $I$ dans $\K  $. On suppose que:
-\begin{itemize}
-\item
-  pour tout $n\in \N   $, $f_n$ est de classe $\CC1$ sur $I$
-\item
-  $\sum _n f_n$ converge simplement sur $I$ vers $f$
-\item
-  $\sum _n f'_n$ converge uniformément sur $I$
-\end{itemize}
-
-Alors $f$ est de classe $\CC1$ sur $I$ et
-\[ \forall  x\in I :\quad \left(\sum _{n=0}^{+\infty } f_n(x)\right)' = \sum _{n=0}^{+\infty } f'_n(x). \]
-\end{Th}
-%
-\begin{Ex} La série $\sum x^n$ converge simplement vers la fonction $x\mapsto \frac{1}{1-x}$ sur $[-a,a]$ avec $0<a<1$.
-La série dérivée $\sum n x^{n-1}$ converge uniformément sur $[0,a]$ avec $0<a<1$ car elle converge normalement sur  $[-a,a]$. En effet,
-$$ \forall n\in \mathbb{N}^*, \sup_{x\in[-a,a]} |n x^{n-1}|=n a^{n-1},$$ 
-or la série $\sum n a^{n-1}$ converge en utilisant le critère de d'Alembert ($\lim \frac{(n+1)a^{n}}{n a^{n-1}}=a<1$). Donc la série  $\sum n x^{n-1}$ converge uniformément vers $f':x\mapsto \left(\frac{1}{1-x}\right)'=\frac{1}{(1-x)^2}$ sur $[-a,a]$. 
-\end{Ex}
-%
-%% -----------------------------------------------------------------------------
-\subsection{Généralisation}\label{sec:deriv2}
-
-\begin{Th}[Dérivation de la limite]
-Soit $\fn$ une suite de fonctions de $I$ dans $\K  $.
-On suppose que:
-\begin{itemize}
-\item
-  pour tout $n\in \N   $, $f_n$ est de classe $\CC{p}$ sur $I$, $p>1$;
-\item
-  pour tout $k\in \{0,\dots, p-1\}$,
-  la suite $(f^{(k)}_n)_{n\in\N}$ converge simplement vers $g_k$ sur $I$;
-\item
-  la suite $(f^{(p)}_n)_{n\in\N}$ converge uniformément vers $g_p$ sur $I$.
+\begin{Prop}[Exponentielle et logarithme]
+  \begin{itemize}
+  \item
+    $\int_0^{+\infty } e^{-\alpha x} \,\mathrm dx$ converge si et seulement si $\alpha>0$,
+  \item
+    $\int_0^1   \ln(x) \,\mathrm dx $ converge.
   \end{itemize}
-Alors:
+\end{Prop}
+\begin{proof}
+On a $\int_0^1   \ln(x) \,\mathrm dx$. \\
+La fonction $ x\mapsto \ln(x) $ est continue sur $]0,1]$. Soit $t\in ]0,1]$.\\
+$$\int_t^1   \ln(x) \,\mathrm dx \overbrace{=}^{\text{IPP avec }u(x)=\ln(x), v'(x)=1}[\ln(x)x]_t^1- \int_t^1   \frac 1 x x \,\mathrm dx= -\ln(x)x+(t-1)\tend[t\to +\infty ] -1.$$
+Donc $\int_0^1   \ln(x) \,\mathrm dx$ est convergente. 
+\end{proof}
+\subsection{Propriétés}
+\begin{Prop}[Linéarité]
+Soit $f$ et $g$ deux fonctions continues par morceaux de $[a,b[$ dans $\K$ et $\lambda,\mu\in\R$.\\
+ Si les intégrales $\int_a^b f(x)\,\mathrm dx$ et $\int_a^b g(x)\,\mathrm dx$ convergent, alors l'intégrale $\int_a^b (\lambda f(x) +\mu g(x))\,\mathrm dx$ converge et on a
+ $$\int_a^b (\lambda f(x) +\mu g(x))\,\mathrm dx=\lambda \int_a^b f(x)\,\mathrm dx +\mu \int_a^b g(x)\,\mathrm dx.$$
+\end{Prop}
+\begin{proof}
+Les fonctions $f$ et $g$ sont continues sur $[a,b[$. Soit $t\in [a,b[$.\\
+On a $$\int_a^t (\lambda f(x) +\mu g(x))\,\mathrm dx\overbrace{=}^{\text{linéarité sur un segment}}\lambda \int_a^t f(x)\,\mathrm dx +\mu \int_a^t g(x)\,\mathrm dx\tend[t\to b^-]\lambda \int_a^b f(x)\,\mathrm dx +\mu \int_a^b g(x)\,\mathrm dx.$$
+Donc l'intégrale $\int_a^b (\lambda f(x) +\mu g(x))\,\mathrm dx$ converge et l'égalité.
+\end{proof}
+\begin{Ex}
+On peut écrire
+$$ \int _{1}^{+\infty }\left({\frac {1}{x^{2}}}-{\rm {e}}^{-x}\right)\,\,\mathrm {d} x=\int _{1}^{+\infty }{\frac {1}{x^{2}}}\,\mathrm {d} x-\int _{1}^{+\infty }{\rm {e}}^{-x}\,\mathrm {d} x$$
+car les intégrales $\int _{1}^{+\infty }{\frac {1}{x^{2}}}\,\mathrm {d} x $ et  $\int _{1}^{+\infty }{\rm {e}}^{-x}\,\mathrm {d} x$  convergent.\\
+En revanche on ne peut pas écrire
+$$ \int _{1}^{+\infty }{\frac {1}{x(x+1)}}\,\mathrm {d} x=\int _{1}^{+\infty }\frac {1}{x}\,\mathrm {d} x-\int _{1}^{+\infty }\frac {1}{x+1}\,\mathrm {d} x.$$
+car l'intégrale $\int _{1}^{+\infty }\frac {1}{x}\,\mathrm {d} x$ diverge. \\
+Ici il faut intégrer sur le segment $[a, t ]$ avec $t\in [a,b [$ avant de passer à la limite. On a :
+$$ \int _{1}^{t }{\frac {1}{x(x+1)}}\,\mathrm {d} x=\int _{1}^{t }\frac {1}{x}\,\mathrm {d} x-\int _{1}^{t }\frac {1}{x+1}\,\mathrm {d} x=\ln(2)+\ln(\frac{x}{x+1})\tend[t\to +\infty]\ln(2).$$
+\end{Ex}
+\begin{Cor}[Cas complexe]
+Soit $f$  continue par morceaux de $[a,b[$ dans $\C$.\\
+$\int_a^b Re(f(x))\mathrm dx$  et $\int_a^b Im(f(x))\,\mathrm dx$ convergent si et seulement si $\int_a^b f(x)\,\mathrm dx$.\\
+Dans ce cas 
+$$ \int_a^b f(x)\,\mathrm dx = \int_a^b Re(f(x))\,\mathrm dx+ i \int_a^b Im(f(x))\,\mathrm dx.$$
+\end{Cor}
+\begin{Prop}[Relation de Chasles]
+Soit $f$ une fonction continue par morceaux de $]a,b[$ dans $\K$ telle que $\int_a^b f(x)\,\mathrm dx$ converge.\\
+Alors, pour tout $c\in ]a,b[$, on a $$ \int_a^b f(x)\,\mathrm dx =\int_a^c f(x)\,\mathrm dx+\int_c^b f(x)\,\mathrm dx.$$
+\end{Prop}
+\begin{Prop}[Positivité]
+Soit $f$ une fonction continue de $[a,b[$ dans $\K$ et positive telle que $\int_a^b f(x)\,\mathrm dx$ converge.\\
+Alors, $ \int_a^b f(x)\,\mathrm dx \geq 0.$\\
+De plus, si  $ \int_a^b f(x)\,\mathrm dx =0$ alors $f=0$, c'est à dire $f(x)=0,\forall x \in [a,b[$.
+\end{Prop}
+\begin{proof}
+De nouveau, il faut intégrer sur le segment $[a, t]$ avec $t\in [a,b [$  
+$$\int_a^t  f(x)\,\mathrm dx\overbrace{\geq}^{\text{positivité sur un segment}} 0$$
+puis le passage à la limite.
+\end{proof}
+\begin{Cor}[Croissance]
+Soit $f$ et $g$ deux fonctions continues par morceaux de $[a,b[$ telles que les intégrales $\int_a^b f(x)\,\mathrm dx$ et $\int_a^b g(x)\,\mathrm dx$ convergent.\\
+Si $\forall x\in [a,b[:\quad  f(x)\leq  g(x)$,
+Alors $\int_a^b f(x)\,\mathrm dx \leq  \int_a^b g(x)\,\mathrm dx$.
+\end{Cor}
+\begin{proof}
+Comme $g-f\geq 0$, du fait de la positivité et de la linéarité de l'intégrale, on  a  $\int_a^b f(x)\,\mathrm dx \leq  \int_a^b g(x)\,\mathrm dx$.
+\end{proof}
+\subsection{Calcul d'intégrale}
+\begin{Th}[Changement de variables]
+Soit $f:]a,b]\to \K $ une fonction continue par morceaux, $\phi:[\alpha,\beta[\to  [a,b[$ une bijection strictement croissante de classe $\CC1$.\\
+Alors l'intégrale
+$\int_\alpha^\beta(f(\phi(x))\phi'(x)\,\mathrm dx $ est convergente si et seulement si $\int_a^b f(x)\,\mathrm dx$ est convergente. En cas de convergence, on a l'égalité :
+$$\int_\alpha^\beta(f(\phi(x))\phi'(x)\,\mathrm dx =\int_a^b f(x)\,\mathrm dx$$
+\end{Th}
+\begin{proof}
+Supposons que $\int_a^b f(x)\,\mathrm dx$ converge.\\
+Soit $t\in[\alpha,\beta[.$ Par changement de variable sur le
+segment $[\alpha , t]$, 
+$$\int_\alpha^t(f(\phi(x))\phi'(x)\,\mathrm dx =\int_a^{\phi(t)} f(x)\,\mathrm dx.$$
+Comme $\phi$ est une bijection croissante, $\phi(t )\tend[t \to \beta] b$. Donc par passage à la limite, 
+$$\int_\alpha^t(f(\phi(x))\phi'(x)\,\mathrm dx\tend[t \to \beta ] \int_a^b f(x)\,\mathrm dx.$$
+Donc $\int_\alpha^\beta(f(\phi(x))\phi'(x)\,\mathrm dx $ converge et est égale à  $\int_a^b f(x)\,\mathrm dx$.
+Idem si l'on suppose que $\int_\alpha^\beta(f(\phi(x))\phi'(x)\,\mathrm dx$ converge.
+\end{proof}
+\begin{Ex}
+Calculons l'intégrale $\int_0^{+\infty}\frac{\ln x}{1+x^2}\,\mathrm dx$.\\
+On suppose que l'intégrale converge (voir la prochaine sous-section pour la démonstration).\\
+Le changement de variables $u=1/t$ donne :
+$$\int^{+\infty }_0 \frac{\ln x}{1+x^2}\,\mathrm dx=\int^{0}_{+\infty } \frac{-\ln u}{1+1/u^2}\frac{-1}{u^2}\,\mathrm du=-\int^{+\infty }_0 \frac{\ln u}{1+u^2}\,\mathrm du.$$
+On en déduit que $\int_0^{+\infty}\frac{\ln x}{1+x^2}\,\mathrm dx=0$.
+\end{Ex}
+
+\begin{Th}[Intégration par parties]
+Soit $u$ et $v$ deux fonctions $[a,b[ \to\K $ dérivables telles que $u'$ et $v'$ sont continues par morceaux. On suppose que $uv$ a une limite  en $b$.\\
+Alors les intégrales $\int_a^b u(x)v'(x)\,\mathrm dx $ et $\int_a^b u'(x)v(x)\,\mathrm dx $ sont de même nature.\\
+En cas de convergence, on a l'égalité :
+\[ \int_a^b u(x)v'(x)\,\mathrm dx = \left[u(x)v(x)\right]_a^b - \int_a^b u'(x)v(x)\,\mathrm dx \]
+où $\left[u(x)v(x)\right]_a^b = \lim\limits_{t \to b^-} \left[ u(x)v(x)\right]_a^t$.\\
+\end{Th}
+\begin{proof}
+Supposons que $\int_a^b u'(x)v(x)\,\mathrm dx $  converge.\\
+Soit $t\in[a,b[.$ Par intégration par parties sur le
+segment $[a ,t]$, 
+\[ \int_a^t u(x)v'(x)\,\mathrm dx = \left[u(x)v(x)\right]_a^t - \int_a^t u'(x)v(x)\,\mathrm dx \]
+Comme $uv$ a une limite  en $b$, par passage à la limite, $\int_a^b u(x)v'(x)\,\mathrm dx $ converge et est égale à  $\left[u(x)v(x)\right]_a^b - \int_a^b u'(x)v(x)\,\mathrm dx$.\\
+Idem$ \int_a^b u(x)v'(x)\,\mathrm dx $ converge.
+\end{proof}
+\section{Intégrale de fonctions réelles et positives : $f\geq 0$}
+\subsection{Croissance de la fonction intégrale}
+L'étude de la convergence d'une intégrale comme passage à la limite n'est pas toujours possible. Cependant lorsque $f$ est positive, certaines règles
+permettent d'étudier la nature de l'intégrale. L'étude est semblable à celle des séries numériques. 
+\begin{NB}
+Si $f$ est négative, on se ramène à positive avec $-f$.
+\end{NB}
+Les intégrales de fonctions positives jouent un rôle clé dans la théorie de l'intégration. Si elle diverge, alors la limite de l'intégrale sur un segment tend vers $+\infty$. 
+Les possibilités de divergence sont bien plus diverses pour une intégrale dont le signe de la fonction change une infinité de fois. 
+
+
+
+\begin{Prop}[Caractérisation de la majoration]
+Soit $f:[a,b[\to\R$ une fonction continue et positive.\\
+$\int_a^b f(x)\,\mathrm dx$ converge si seulement si la fonction $F:t\mapsto \int_a^t f(x)\,\mathrm dx$ est majorée, c'est à dire il existe $M > 0$ tel que : $\forall t \in [a,b [:\quad 
+F(t)\leq M$.\\
+De plus, si elle converge, son intégrale est égale à la borne supérieure
+de $F$.\\
+Et si elle diverge, elle diverge vers l'infinie.
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+	   axis y line = middle,
+       axis x line = middle,
+       samples     = 200,
+       domain      = 0:1,
+       xmin = 1, xmax = 6,
+       ymin = 0, ymax = 1,
+]
+\addplot[domain=1:6,fill=blue!20] {1/(x^2)} node[pos=0.3,above] {$f: x\mapsto 1/x^2$}\closedcycle ;
+\addplot[domain=1:6] {1-1/x} node[pos=0.3,above] {$F: x\mapsto \int_1^x f(t)\, \mathrm dt$};
+\addplot[domain=1:6] {1} node[pos=0.3,above] {$M$};
+\end{axis}
+\end{tikzpicture}\\
+$\int_a^b f(x)\,\mathrm dx$ converge car $F$ est majorée par 1.
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+	   axis y line = middle,
+       axis x line = middle,
+       samples     = 200,
+       domain      = 0:1,
+       xmin = 1, xmax = 6,
+       ymin = 0, ymax = 3,
+]
+\addplot[domain=1:6,fill=blue!20] {1/(x)} node[pos=0.3,above] {$f: x\mapsto 1/x$}\closedcycle ;
+\addplot[domain=1:6] {ln(x)} node[pos=0.3,above] {$F: x\mapsto \int_1^x f(t)\, \mathrm dt$};
+\end{axis}
+\end{tikzpicture}\\
+$\int_a^b f(x)\,\mathrm dx$ diverge vers $+\infty$ car $F$ n'est pas majorée.
+\end{center}
+\end{Prop}
+\begin{proof}
+$F$ est croissante car $F'(x)=f(x)\geq 0$. D'après le théorème de
+la limite monotone, $F$ admet une limite en $\infty$ qui est finie si et seulement si $F$ est majorée.
+\end{proof}
+\subsection{Règles de convergence}
+\begin{Th}[Règle de comparaison]
+Soit $f,g:[a,b[\to\R$ deux fonctions continues et positives tel que
+$$\forall x\in [a,b[: f(x)\leq g(x).$$ 
+Alors 
 \begin{itemize}
 \item
-  $f=g_0$ est de classe $\CC{p}$;
+  si l'intégrale $\int_a^b g(x)\,\mathrm dx$ converge, alors l'intégrale $\int_a^b f(x)\,\mathrm dx$ converge également, et alors 
+  $$  \int_a^b f(x)\,\mathrm dx \leq \int_a^b g(x)\,\mathrm dx,$$
 \item
- $\forall  k\in \{0,\dots, p\}$, $f^{(k)} = g_k$.
+  si l'intégrale $\int_a^b f(x)\,\mathrm dx$ diverge, alors l'intégrale $\int_a^b g(x)\,\mathrm dx$ diverge également.
 \end{itemize}
 \end{Th}
-\begin{Th}[Théorème de dérivation de la somme]
-Soit $\Sfn$ une série de fonctions de $I$ dans $\K  $.
-On suppose que:
+\begin{proof}
+Soit $t\in[a,b[$.
+$$ \int_a^t f(x)\,\mathrm dx\overbrace{\leq}^{\text{coissance sur un segment}}\int_a^t g(x)\,\mathrm dx\overbrace{\leq}^{\text{caracterisation majoration}}\int_a^b g(x)\,\mathrm dx.$$
+Donc la fonction $F:t\mapsto \int_a^t f(x)\,\mathrm dx$ est croissante et majorée donc admet une limite en l'infini. Par passage à la limite, on  obtient : 
+ $$  \int_a^b f(x)\,\mathrm dx \leq \int_a^b g(x)\,\mathrm dx.$$
+\end{proof}
+\begin{Ex}
+Quelle est la nature de $\int_1^{+\infty}\frac{\sin^2(x)}{x^2+\sqrt{x}}  \,\mathrm dx$ ?\\
+$x\mapsto \frac{\sin^2(x)}{x^2+\sqrt{x}}$ est continue et positive  sur $[1,+\infty[$. 
+On a  
+$$\forall t\in [1,+\infty[ :\quad  \frac{\sin^2(x)}{x^2+\sqrt{x}}\leq \frac{1}{x^2}.$$
+Comme l'intégrale de Riemann $\int_1^{+\infty}\frac{1}{x^2 }\,\mathrm dx$ converge, $\int_1^{+\infty}\frac{\sin^2(x)}{x^2+\sqrt{x}}  \,\mathrm dx$ converge.\\
+\end{Ex}
+\begin{Th}[Règle de petit 0 et grand O]
+Soit $f,g:[a,b[\to\R$ deux fonctions continues et positives tel que
+$$ f(x)=\underset{ \overset { x \rightarrow b } {} } {o}(g(x))\text{ ou  }f(x)=\underset{ \overset { x \rightarrow b } {} } {O}(g(x))$$ 
+Alors 
 \begin{itemize}
 \item
-  pour tout $n\in \N   $, $f_n$ est de classe $\CC{p}$, $p?1$
+  si l'intégrale $\int_a^b g(x)\,\mathrm dx$ converge, alors l'intégrale $\int_a^b f(x)\,\mathrm dx$ converge également,
 \item
-  pour tout $k\in \{0,\dots, p-1\}$, $\sum _n f_n^{(k)}$ converge simplement sur $I$
-\item
-  $f$ est la somme de la série $\Sfn$, c.-à-d. $f =\sum _{n=0}^{+\infty } f_n$
-\item
-  $\sum _n f_n^{(p)}$ converge uniformément sur $I$
+  si l'intégrale $\int_a^b f(x)\,\mathrm dx$ diverge, alors l'intégrale $\int_a^b g(x)\,\mathrm dx$ diverge également.
 \end{itemize}
-Alors $f$ est de classe $\CC p$ sur $I$ et
-\[ \forall  k\in  \{0,\dots, p\}, \forall  x\in I,\quad f^{(k)}(x) = \sum _{n=0}^{+\infty } f^{(k)}_n(x). \]
 \end{Th}
-%
-\section{Approximations et développements (hors-programme)}
-Dans cette partie, on introduit des applications des notions de suites et séries de fonctions.    
-\subsection{Fonctions en escaliers}
-\begin{Df}[En escalier] Une fonction réelle définie sur un intervalle [a,b] de R est dite \defi{en escalier} s'il existe des points $a=x_0<x_1<...<x_n=b$, tels que sur chaque segment $]x_i,x_{i+1}[$, la fonction soit constante, par exemple, 
-\includegraphics[width=5cm]{escalier1.png}.\\
-L'ensemble des fonctions en escalier sur $[a,b]$ est un sous-espace vectoriel de l'espace vectoriel $\mathcal{F}([a,b],\mathbb{K})$.
-\end{Df}
+\begin{proof}
+ Comme $ f(x)=\underset{ \overset { x \rightarrow b } {} } {o}(g(x))$, il existe $t\in[a,b[$ tel que $f(x)\leq g(x), \forall x\geq t.$ Comme $\int_t^b g(x)\,\mathrm dx$ converge, $\int_t^b f(x)\,\mathrm dx$ converge par règle de comparaison. Sur le segment $[a,t]$,  $ \int_a^t f(x)\,\mathrm dx$ converge également. Finalement,  $\int_a^b g(x)\,\mathrm dx$ converge par raccordement.
+\end{proof}
+\begin{Ex}
+Quelle est la nature de $\int_1^{+\infty}\frac{\ln(x)}{x^2}  \,\mathrm dx$ ?\\
+$x\mapsto \frac{\ln(x)}{x^2}$ est continue et positive  sur $[1,+\infty[$.
+On a  
+$$\frac{\ln(x)}{x^2} =\underset{ \overset { x \rightarrow +\infty} {} } {o}\left(\frac{1}{x^{3/2}}\right) $$
+Comme l'intégrale de Riemann $\int_1^{+\infty}\frac{1}{x^{3/2}}\,\mathrm dx$ converge, $\int_1^{+\infty}\frac{\ln(x)}{x^2} \,\mathrm dx$ converge par règle du petit o.
+\end{Ex}
+\begin{Th}[Règle de petit 0 et grand O]
+Soit $f,g:[a,b[\to\R$ deux fonctions continues et de signe constant au voisinage de $b$ tel que
+$$ f(x)\underset{ \overset { x \rightarrow b } {} } {\sim}g(x).$$ 
+Alors les intégrales $\int_a^b f(x)\,\mathrm dx$ et $\int_a^b g(x)\,\mathrm dx$ sont de même nature.
+\end{Th}
+\begin{proof}
+Supposons $f$ positive au voisinage de $b$. Comme $ f(x)\underset{ \overset { x \rightarrow b } {} } {\sim}g(x)$, il existe alors $t \in [a,b [$ 
+tel que tel que $$\forall x\in [t,b[: \quad  \frac{1}{2}f(x)\leq g(x)\leq \frac{3}{2}.$$
+On conclut par règle comparaison. Dans le cas négatif, la preuve est identique pour $-f$ et $-g$.
+\end{proof}
 
-\begin{Df}[Riemnan intégrable] Une fonction $f$ définie sur $[a,b]$ est Riemnan intégrable si il existe une suite de fonctions en escalier convergeant uniformément vers $f$. Dans ce cas, on définit l'intégrale de $f$ par :
-$$ \int_a^b f(t)dt\underset{\text{par définition}}{=}\lim_{n\to\infty}\int_a^b f_n(t)dt$$
-\end{Df}
-%\Para{Remarque} La définition est justifiée car deux suites en escalier convergeant uniformément vers la fonction $f$ ont la même limite de leur intégrale.  En imposant uniquement la convergence simple, ce n'est pas le cas. Par exemple, les suites $f_n)$ et $(g_n)$ définies par:
-% $$ \forall n \in \mathbb{N}^* :  g_n=0 \text{ et } \Fonction{f_n}{[0,1]}{\mathbb{R}}{x}{\begin{cases}n &\text{ si } x\in [1/n,2/n]\\0&\text{ sinon }\end{cases}}$$
-% convergent simplement vers la fonction nulle et pourtant $\lim_{n\to \infty}\int_0^1 f_n(t)dt=1\neq 0 = \lim_{n\to \infty} \int_0^1 g_n(t)dt$. 
-%\Para{Théorème d'approximation} Soit $f$ une fonction continue sur $[a,b]$.\\
-%Alors il existe une suite de fonctions en escalier  convergeant uniformément vers la fonction $f$.
-%\Para{Corollaire}L'ensemble des fonctions continues sur $[a,b]$ sont  Riemnan intégrable.
-%
-%
-%
-%
-%
-\subsection{Polynomial}
-%
-\begin{Th}[Approximation de Stone-Weierstrass]Soit $f$ une fonction continue sur $[a,b]$.\\
-Alors il existe une suite de fonctions polynomiales convergeant uniformément vers la fonction $f$.
-\end{Th}
-\begin{Df}[Série entière (voir le chapitre)]
- Une \defi{série entière} réelle est une série de fonctions de la forme $\sum a_{n}x^{n}$ 
-où les coefficients $a_n$ forment une suite réelle. On dit qu'une fonction $f\in \mathcal{C}^\infty$ est développable en série entière en $0$ si il existe une série entière $\sum a_{n}x^{n}$ tel que $f:x\mapsto\sum a_{n}x^{n}$ au voisinage de $0$.  
-\end{Df}
+\begin{Ex}
+Quelle est la nature de $\int_0^{1}\frac{\sin(\sqrt{x})}{x^2}  \,\mathrm dx$ ?\\
+$x\mapsto \frac{\sin(\sqrt{x})}{x}$ est continue et positive  sur $]0,1]$. On a \\
+$$ \frac{\sin(\sqrt{x})}{x^2} \underset{ \overset { x \rightarrow 0 } {} }{\sim}\frac{\sqrt{x}}{x^2}=\frac{1}{x^{3/2}}.$$
+Comme l'intégrale de Riemann $\int_0^1 \frac{1}{x^{3/2}}\,\mathrm dx$ diverge, $\int_0^{1}\frac{\sin(\sqrt{x})}{x^2}  \,\mathrm dx$ diverge par règle d'équivalent.
+\end{Ex}
 
 
-\subsection{Trigonométrique}
-\begin{Th}[Approximation de Stone-Weierstrass]
-Soit $f$ une fonction complexe, continue et 2$\pi$-périodique.\\
-Alors il existe une suite de fonctions polynômes trigonométrique  convergeant uniformément vers la fonction $f$.
+\subsection{Comparaison série-intégrale}
+Les séries sont un procédé de sommation de grandeurs discrètes, l'intégrale de grandeurs continues. L'analogie formelle entre les deux domaines permet de faire passer des idées intéressantes de l'une à l'autre. On compare ces deux objets mathématiques à l'aide d'inégalités.\\
+\begin{tikzpicture}[scale=0.75]
+\tkzInit[xmax=8,ymax=2]
+\tkzAxeXY[ticks=false]
+\tkzGrid
+\draw (1,1.3) node[above,color=red]{$x\mapsto\frac 1 x $} ; 
+\draw [domain=1:8,samples=200,color=red] plot (\x,{1/\x}); 
+\tkzFct[color = black]{1./(x)}
+\tkzDrawRiemannSumSup[fill=green!60,
+                     opacity=.2,
+                     color=green,
+                     line width=1pt,
+                     interval=1:8,
+                     number=7] 
+\foreach \x/\t in {1.5/$1$,2.5/$\frac12$,3.5/$\frac13$}
+\node[green!50!black] at (\x,{(1/(\x-0.5))+0.2}){\t}; 
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.75]
+\tkzInit[xmax=8,ymax=2]
+\tkzAxeXY[ticks=false]
+\tkzGrid
+\draw (1,1.3) node[above,color=red]{$x\mapsto \frac 1 x $} ; 
+\draw [domain=1:8,samples=200,color=red] plot (\x,{1/\x});  
+\tkzFct[color = black]{1./(x)}
+\tkzDrawRiemannSumInf[fill=blue!60,
+                     opacity=.2,
+                     color=blue,
+                     line width=1pt,
+                     interval=1:8,
+                     number=7] 
+\foreach \x/\t in {1.5/$\frac12$,2.5/$\frac13$,3.5/$\frac14$}
+\node[blue!50!black] at (\x,{(1/(\x+0.5))+0.2}){\t}; 
+\end{tikzpicture} \\
+L'aire entre $1$ et $n$ est:
+\begin{itemize}
+\item sous la courbe rouge   : $\int_1^N f(x)dx$,
+\item des rectangles verte  : $\sum_{n=1}^{N-1}f(n)$,
+\item  des rectangles bleues  : $\sum_{n=2}^{N}f(n)$.
+\end{itemize}
+Géométriquement, on a les inégalités :
+$$\sum_{n=1}^{N-1}f(n)\leq \int_1^N f(x)\,\mathrm dx \leq \sum_{n=2}^{N}f(n).$$
+Par passage à la limite, on a :
+$$\sum_{1}^{+\infty}f(n)\leq \int_1^{+\infty} f(x)\,\mathrm dx \leq \sum_{2}^{+\infty}f(n).$$
+On peut affirmer que série $\sum f(n)$ converge si et seulement si l'intégrale  $\int_a^{+\infty} f(x)\,\mathrm dx$ converge.
+\begin{Th}[Comparaison séries/intégrales]
+Soit $f$ une application continue, positive et décroissante sur $[a,+\infty[$.\\
+Alors la série $\sum_n f(n)$ et l'intégrale $\int_a^{+\infty} f(x)\,\mathrm dx$ sont de même nature.
 \end{Th}
-\begin{Th}[Développement en séries trigonométriques]
-Soit $f$ une fonction complexe, $\mathcal{C}^1$ et 2$\pi$-périodique. On définit la série 
-de polynôme trigonométrique par:
-$ P_n(x)=\sum _{k=-n}^{+n}  c_{k}(f) e^{ikx}$ avec $c_{k}(f)={\frac {1}{2\pi}}\int _{-\pi}^{\pi}f(t)e^{-ikx}\mathrm {d} t$, appelés coefficients de fourrier.\\
-Alors $(P_n)_{n\in\N}$ converge uniformément vers $f$.
+
+Une application directe de ce théorème nous donne de nouvelles séries de référence.
+\begin{Th}[Séries de Riemann]
+Soit $\alpha \in \R$.\\
+$\sum_n \frac{1}{n^\alpha}$ converge si et seulement si $\alpha > 1$.
 \end{Th}
-Une application est le calcul de $\zeta(2)$. Soit $f:x\mapsto 1-\frac{x^2}{\pi^2}$ sur $[-\pi,+\pi]$, $2\pi$-périodique. Après calculs des coefficients de fourrier, on obtient que:
-$$\forall x\in [-\pi,+\pi] :f(x)=  1-\frac{x^2}{\pi^2}=\frac{2}{3}-\frac{4}{\pi^2} \sum _{n=1}^{+\infty}(-1)^n \frac{\cos nx}{n^2}.$$
-Donc $f(\pi)=0=\frac{2}{3}-\frac{4}{\pi^2} \sum _{n=1}^{+\infty}\frac{1}{n^2}$, d'où $\zeta(2)=\sum _{n=1}^{+\infty}\frac{1}{n^2}=\frac{\pi^2}{6}$.
+\begin{proof}
+On a :\\
+\begin{itemize}
+\item $\alpha\leq 0$ : comme  $\lim\limits_{n\to\infty} \frac{1}{n^\alpha}\neq 0$, la série diverge grossièrement.
+\item $\alpha>0$ : la fonction $x\mapsto \frac{1}{x^\alpha}$ est continue, positive et décroissante sur $[1,+\infty[$, l'intégrale  $\int_1^{+\infty}\frac{1}{x^\alpha}  \,\mathrm dx$
+et la série $\sum_n \frac{1}{n^\alpha}$ sont de même nature. Donc la série converge si et seulement si   $\alpha > 1$.
+\end{itemize}
+\end{proof}
+\section{Intégrale de fonctions réelles de signe variable}
+\subsection{Absolument convergente}
+Nous passons maintenant à l'étude d'intégrale de fonctions réelles de signe variable. Pour expliquer le titre de cette section,
+ il convient de remarquer que si le signe de $f$ est constant
+à partir d'un certaine valeur $c$, l'étude de la convergence de $\int_a^b f(x)\,\mathrm dx$ se ramène à celle d'une
+intégrale de signe constant. En effet,  $\int_a^b f(x)\,\mathrm dx$ et $\int_c^b f(x)\,\mathrm dx$ sont de même nature.\\
+Ce que nous allons voir dans cette section n'est donc réellement nouveau que pour les intégrales de fonctions qui changent de signe
+une infinité de fois.\\
+Une première idée pour l'étude des intégrales de signe variable est de décomposer la fonction $f$ sur sa partie positive et négative $f = f^+-f^-$ où $$\forall x\in [a,b[:\quad f^+(x)=\max(f(x),0)\text{ et } f^-(x)=\max(-f(x),0).$$
+Soit $c\in [a,b[$. L'intégrale sur le segment $[a,c]$ est :
+$$ \int_a^v f(x)\,\mathrm dx= \int_a^c (f^+(x)-f^-(x))\,\mathrm dx = \int_a^c f^+(x)\,\mathrm dx -  \int_a^c f^-(x))\,\mathrm dx.$$
+Par passage à la limite, une condition suffisante pour que $\int_a^v f(x)\,\mathrm dx$ converge  et que les deux intégrales $\int_a^b f^+(x)\,\mathrm dx$  et $\int_a^b f^-(x)\,\mathrm dx$ convergent. \\
+Compte tenu des inégalités $$0\leq f^+ \leq |f| , \quad 0\leq f^- \leq |f|,$$ le
+théorème de comparaison des intégrales à fonctions positives nous permet de conclure qu'une
+condition suffisante pour la convergence de $\int_a^b f^+(x)\,\mathrm dx$ et $\int_a^b f^-(x)\,\mathrm dx$
+et donc aussi $\int_a^b |f(x)|\,\mathrm dx$ converge. Nous venons ainsi d'établir le résultat le plus important pour
+la convergence d'une intégrale de fonctions réelles de signe variable.
+\begin{Th}
+Si $\int_a^b |f(x)|\,\mathrm dx$ converge alors $\int_a^b f(x)\,\mathrm dx$ converge.
+\end{Th}
+\begin{Df}[Absolue convergence]
+Soit $f : [a,b [\to \R$ continue sur $[a,b[$.\\
+On dit que $\int_a^b f(x)\,\mathrm dx$ est \defi{absolument convergente} lorsque 
+$\int_a^b |f(x)|\,\mathrm dx$ converge.
+\end{Df}
+\begin{Ex} Démontrons que  $\int_1^{+\infty } \frac{\sin x}{x^2}\,\mathrm dx$ est absolument convergente. On a :
+$$\forall x \in [1,{+\infty }[ : \left| \frac{\sin x}{x^2}\right|\leq \frac{1}{x^2}.$$ 
+Comme  $\int_1^{+\infty}\frac{1}{x^2 }\,\mathrm dx$ est convergente par intégrale de Riemann, $\int_1^{+\infty}\frac{1}{x^2 + \sqrt{x}}\,\mathrm dx$ converge, donc $\int_1^{+\infty } \frac{\sin x}{x^2}\,\mathrm dx$ est absolument convergente.
+\end{Ex}
+\begin{Th}
+Une intégrale absolument convergente est convergente.
+\end{Th}
+\begin{Df}[Intégrable]
+Soit $f : I\to \R$ continue sur $I$.\\
+On dit que $f$ est \defi{intégrable} sur $I$ si 
+$\int_I f(x)\,\mathrm dx$ est absolument convergente.
+\end{Df}
+\begin{Prop}[Espace vectoriel]
+L'ensemble des fonctions continues et intégrables sur $I$ est un espace vectoriel.
+\end{Prop}
+\begin{Df}[semi-convergente]
+Une intégrale convergente mais non absolument convergente est dite \defi{semi-convergente}.
+\end{Df}
+\begin{Ex}[Intégrale de Dirichlet]
+L'intégrale $\int_0^{+\infty } \frac{\sin x}{x}\,\mathrm dx$ est semi-convergente.
+\begin{itemize}
+\item Non absolument convergente :\\
+$f : x \mapsto \frac{\sin x}{x}$ est continue sur $\mathbb R^+$ en la prolongeant par continuité en $0$ en posant $f (0) = 1$.\\
+On a :
+$$\forall n \in  \N:\quad \int_{n\pi}^{(n+1)\pi}\left|\frac{\sin x}{x}\right|\,\mathrm dx \overbrace{=}^{n\pi+u=t} \int_{0}^{\pi}\left|\frac{\sin u}{n\pi+u}\right|\,\mathrm du \geq \frac{1}{(n+1)\pi} \int_{0}^{\pi}\sin u\,\mathrm du =\frac{2}{(n+1)\pi}.$$
+D'où : 
+$$\forall p \in   \N :\quad \int_{0}^{p\pi}\left|\frac{\sin x}{x}\right|\,\mathrm dx  \geq \sum_{n=0}^{p-1}\frac{2}{(n+1)\pi}\overbrace{\To{p\to\infty}}^{\text{Série harmonique}}+\infty . $$
+\item Convergente :\\
+Par intégration par parties,  les fonctions $u : x \mapsto 1 - \cos x$ et $v : x \mapsto 1/x$ sont $C^1$ sur $\mathbb R^{+*}$ et le produit $u.v$ admet des limites finies en 0 et en $+\infty$, donc les intégrales $\int_{0}^{+\infty}u'(x)v(x)\,\mathrm dx$ et $\int_{0}^{+\infty}u(x)v'(x)\,\mathrm dx$ sont de même nature.\\
+Or $\int_0^{+\infty } \frac{\cos x-1}{x^2}\,\mathrm dx$ est absolument convergente sur $\mathbb R^{+*}$ par règle de comparaison. Donc l'intégrale  $\int_0^{+\infty } \frac{\sin x}{x} \,\mathrm dx$ converge également. 
+\end{itemize}
+\end{Ex}
+\begin{Prop}[Inégalité de la moyenne]
+Soit $f : [a,b [\to \R$ continue sur $\K$ telle que $\int_a^b f(x)\,\mathrm dx$ est \defi{absolument convergente}.
+\\
+Alors 
+$$\left| \int_a^b f(x)\,\mathrm dx \right| \leq  \int_a^b \left| f(x) \right| \,\mathrm dx.$$
+\end{Prop}
+\begin{proof}
+Comme $\int_a^b f(x)\,\mathrm dx$ est \defi{absolument convergente},  $\int_a^b f(x)\,\mathrm dx$ et  $\int_a^b -f(x)\,\mathrm dx$ sont convergentes. On a :
+$$\forall x \in [a,b[:\quad f(x)\leq |f(x)| \text{ et } -f(x)\leq |f(x)| $$
+On obtient l'inégalité car  $ \int_a^b f(x)\,\mathrm dx \leq  \int_a^b \left| f(x) \right| \,\mathrm dx.$ et $- \int_a^b f(x)\,\mathrm dx \leq  \int_a^b \left| f(x) \right| \,\mathrm dx.$.
+\end{proof}
+
+%
+%
+%
+%\subsection{Espace préhilbertien}
+%
+%\Para{Définition} Soit $\Fn fI\K $ et $\Fn gI\K $ continues. On dit que $f$ est  de carré intégrable si $\int_I |f|^2$ est convergente. Dans ce cas, on note  $\int_I |f|^2<+\infty$. L'ensemble des fonctions continues de carré intégrables sur $I$ est noté $\mathcal{L}^2(I)$.
+%
+%\Para{Exemple} La fonction $f$ définies sur $\mathbb{R}^{+*}$ par $f:t\mapsto \frac{1}{1+t}$ est continue et de carré intégrable sur $\mathbb{R}^{+*}$. Cependant elle est non intégrables sur $\mathbb{R}^{+*}$.\\
+% La fonction $g$ définies sur $]0,1]$ par $g:t\mapsto \frac{1}{\sqrt{t}}$ est continue et intégrables sur $]0,1]$. Cependant, elle n'est pas de carré intégrable $]0,1]$. Cependant elle est non 
+%
+%\Para{Proposition} $\mathcal{L}^2(I)$ est un espace vectoriel.
+%
+%\Para{Lemme} Soit $f, g \in \mathcal{L}^2(I) $.\\
+%Alors $fg$ est intégrable.
+%
+%
+%\Para{Définition}[Produit scalaire] L'application $$\Fonction{\langle .,. \rangle }{\mathcal{L}^2(I)\times \mathcal{L}^2(I) }{\mathbb{R}}{f,g}{\int_I fg}$$
+%est un produit scalaire sur l'espace vectoriel des fonctions continues de carré intégrable. 
+%
+%\Para{Définition}[Norme]La norme définie par ce produit scalaire est appelée \emph{norme de la convergence en moyenne quadratique} et noté $N_2$,
+%$$\forall f \in \mathcal{L}^2(I), N_2(f)=\sqrt{\PS{f}{f}}= \sqrt{\int_I f^2}.$$
+%
+%\Para{Proposition}[Inégalité de Cauchy-Schwartz] Soit $f, g \in \mathcal{L}^2(I) $.\\
+%Alors $$\left|\PS f g \right| \leq N_2(f)N_2(g)$$ $$|\int_I fg |\leq \sqrt{\int_I f^2}\sqrt{\int_I g^2}.$$
+%
+%
+%
+
+%
+
+%
+%
+%
+%\section{Annexe}
+%
+%\subsection{Intégration sur un segment}
+%
+%\subsubsection{Subdivisions}
+%
+%\Para{Définition}
+%
+%Soit $\IntF{a,b}?\R $ un segment.
+%Une \emph{subdivision} de $[a,b]$ est un $(n+1)$-uplet
+%$\nUplet\sigma 0n\in \R ^{n+1}$ tel que
+%\[a =\sigma _0 <\sigma _1 < \cdots <\sigma _n = b\]
+%
+%\Para{Définitions}
+%
+%Soit $f \colon \IntF{a,b} \to E$.
+%\begin{itemize}
+%\item $f$ est dite \emph{en escaliers} sur $\IntF{a,b}$
+%  si et seulement si il existe une subdivision $\nUplet\sigma 0n$ de $\IntF{a,b}$ telle que
+%  pour tout $k\in \Dcro{0,n-1}$,
+%  $f$ est constante sur $\intO{\sigma _k,\sigma _{k+1}}$.
+%\item $f$ est dite \emph{continue par morceaux} sur $\IntF{a,b}$
+%  si et seulement si il existe une subdivision $\nUplet\sigma 0n$ de $\IntF{a,b}$ telle que
+%  pour tout $k\in \Dcro{0,n-1}$,
+%  la restriction de $f$ à $\intO{\sigma _k,\sigma _{k+1}}$ est continue
+%  \emph{et se prolonge en une fonction continue sur $\intF{\sigma _k,\sigma _{k+1}}$}.
+%\item Plus généralement,
+%  $f$ est dire \emph{de classe $\CC k$ par morceaux} sur $\IntF{a,b}$
+%  si et seulement si il existe une subdivision $\nUplet\sigma 0n$ de $\IntF{a,b}$ telle que
+%  pour tout $k\in \Dcro{0,n-1}$,
+%  la restriction de $f$ à $\intO{\sigma _k,\sigma _{k+1}}$ est de classe $\CC k$
+%  \emph{et se prolonge en une fonction de classe $\CC k$ sur $\intF{\sigma _k,\sigma _{k+1}}$}.
+%\end{itemize}
+%
+%\Para{Théorème}
+%
+%Soit $f \colon [a,b] \to E$ continue par morceaux et $?> 0$.
+%Alors il existe $?\colon [a,b] \to E$ en escaliers
+%tel que $\forall x\in [a,b]\+ \Norm{f(x) -?(x)}\leq  ?$.
+%
+%\subsubsection{Intégration sur un segment (rappel première année)}
+%
+%\Para{Remarque}
+%
+%La construction de l'intégrale n'est pas fondamentale,
+%je renvoie donc au cours de première année.
+%On pourra toutefois noter que les propriétés suivantes
+%\emph{caractérisent} l'intégrale des fonctions continues par morceaux
+%sur un segment:
+%\begin{itemize}
+%\item Intégrale d'une fonction constante,
+%\item Relation de Chasles,
+%\item Inégalité de la moyenne,
+%\item Croissance.
+%\end{itemize}
+%
+%\subsubsection{Propriétés de l'intégrale}
+%
+%\Para{Proposition}[intégrale d'une fonction constante]
+%
+%Soit $f \colon I \to E$ une fonction, $(a,b)\in I^2$ où $a\leq  b$.
+%On suppose que
+%\[\exists C\in E\+\forall x\in \IntO{a,b}\+ f(x) = C.\]
+%Alors $f$ est continue par morceaux sur $\IntF{a,b}$ et \[\int_a^b f = (b-a)C.\]
+%
+%\Para{Proposition}[linéarité]
+%
+%Soit $f, g \colon I \to E$ deux fonctions continues par morceaux, $(a,b)\in I^2$ et $(\lambda ,\mu )\in \K ^2$.
+%Alors $\lambda f +\mu g \colon I \to E$ est continue par morceaux sur $I$ et
+%\[\int_a^b (\lambda f +\mu g) =\lambda \int_a^b f +\mu \int_a^b g.\]
+%
+%\Para{Proposition}[relation de Chasles]
+%
+%Soit $f \colon I \to E$ une fonction continue par morceaux et $(a,b,c)\in I^3$.
+%Alors \[\int_a^b f =\int_a^c f +\int_c^b f.\]
+%
+%\Para{Proposition}[inégalité de la moyenne]
+%
+%Soit $f \colon I \to E$ une fonction continue par morceaux,
+%$(a,b)\in I^2$ où $a\leq  b$.
+%Alors \[\left\| \int_a^b f(t) \D t \right\| \leq  \int_a^b \Norm{f(t)} \D t.\]
+%
+%\Para{Remarque}
+%
+%Si l'on enlève l'hypothèse $a\leq  b$, la conclusion s'écrit alors
+%\[\left\| \int_a^b f(t) \D t \right\| \leq  \left| \int_a^b \Norm{f(t)} \D t \right|.\]
+%
+%\Para{Proposition}[positivité]
+%
+%Soit $f \colon I \to \Rp$ une fonction continue par morceaux,
+%$(a,b)\in I^2$ où $a\leq  b$.
+%Alors \[\int_a^b f\geq  0.\]
+%
+%\Para{Proposition}[croissance]
+%
+%Soit $f, g \colon I \to\R $ deux fonctions continues par morceaux,
+%$(a,b)\in I^2$ où $a\leq  b$.
+%On suppose que
+%\[\forall x\in [a,b]\+ f(x)\leq  g(x).\]
+%Alors
+%\[\int_a^b f\leq  \int_a^b g.\]
+%
+%\Para{Théorème}[stricte positivité]
+%
+%Soit $f \colon I \to \Rp$ une fonction \emph{continue},
+%$(a,b)\in I^2$ où $a\leq  b$.
+%On suppose que
+%\[\int_a^b f = 0.\]
+%Alors $f$ est identiquement nulle sur $\IntF{a,b}$.
+%
+%\Para{Théorème}[inégalité de Cauchy-Schwarz]
+%
+%Soit $f, g \colon I \to\K $ deux fonctions continues par morceaux
+%et $(a,b)\in I^2$.
+%Alors
+%\[\left|\int_a^b f(t) g(t) \D t \right|\leq  
+%  ?{\int_a^b \Abs{f(t)}^2 \D t}
+%?{\int_a^b \Abs{g(t)}^2 \D t}.\]
+%Si l'on suppose en outre que $f$ et $g$ sont continues,
+%alors il y a égalité si et seulement si la famille $(f,g)$ est liée.
+%
+%\Para{Définition}
+%
+%Soit $f \colon [a,b] \to E$ continue par morceaux.
+%La \emph{valeur moyenne} de $f$ sur $[a,b]$ est $\frac{1}{b-a}\int_a^b f$.
+%
+%\subsubsection{Sommes de Riemann}
+%
+%\Para{Théorème}
+%
+%Soit $f \colon [a,b] \to E$ continue par morceaux.
+%Soit $(\sigma _n)_{n\in \N }$ une suite de subdivisions de $[a,b]$.
+%On note $\sigma _n$ la subdivision
+%\[a = ?_{n,1} < ?_{n,2} < \dots < ?_{n,m_n} = b.\]
+%On note $h_n$ le pas de la subdivision $\sigma _n$, c.-à-d.
+%\[h_n = \max_{1\leq  k<m_n} \Bigl( ?_{n,k+1} - ?_{n,k} \Bigr).\]
+%On suppose que $h_n \to 0$.
+%Alors
+%\[\frac{1}{m_n} \sum_{k=1}^{m_n} f(?_{n,k}) \Toninf \int_a^b f(t) \D t.\]
+%
+%\Para{Corollaire}
+%
+%Soit $f \colon [0,1] \to E$ continue par morceaux.
+%Alors
+%\[\frac{1}{n+1} \sum_{k=0}^{n} f\left(\frac{k}{n}\right) \Toninf \int_0^1 f.\]
+%
+%\subsubsection{Primitives}
+%
+%\Para{Définition}
+%
+%Soit $f \colon I \to E$. Une \emph{primitive} $F$ de $f$ sur $I$
+%est une fonction dérivable sur $I$ telle que $F' = f$.
+%
+%\Para{Proposition}
+%
+%Soit $f \colon I \to E$ une fonction admettant deux primitives $F$ et $G$.
+%Alors \[\exists C\in E\+\forall x\in I\+ F(x) - G(x) = C.\]
+%
+%Autrement dit, \emph{sur un intervalle}, deux primitives d'une
+%même fonctions diffèrent d'une constante.
+%
+%\Para{Théorème}
+%
+%Soit $f \colon I \to E$ une fonction continue par morceaux et $a\in I$.
+%On pose \[\Fonction{?}{I}{E}{x}{\int_a^x f(t) \D t.}\]
+%Alors $?$ est continue sur $I$.
+%De plus, si $f$ est continue en $x\in I$, alors
+%$?$ est dérivable en $x$ et $?'(x) = f(x)$.
+%
+%\Para{Corollaire}
+%
+%Toute fonction continue sur un intervalle admet des primitives sur
+%cet intervalle.
+%
+%\subsection{Fonctions continues par morceaux}
+%
+%\Para{Définition}
+%
+%Une \emph{subdivision} de $[a,b]$ est un $(n+1)$-uplet $\nUplet\sigma 0n\in \R ^{n+1}$ tel que:
+%\[ a = \sigma _0 < \sigma _1 < \sigma _2 < \cdots < \sigma _{n-1} < \sigma _n = b. \]
+%
+%\Para{Définition}
+%
+%Soit $\Fn{f}{[a,b]}{\K }$.
+%
+%On dit que $f$ est \emph{continue par morceaux} sur le segment $[a,b]$
+%£ssil. existe une subdivision $(\sigma _k)_{0\leq  k\leq  n}$ de $[a,b]$ telle que
+%pour tout $k\in \Dcro{0,n-1}$, en notant $f_k$ la restriction de $f$ à l'intervalle ouvert $\intO{\sigma _k,\sigma _{k+1}}$, on ait:
+%\begin{enumerate}
+%\item
+%  $f_k$ est continue sur l'intervalle ouvert $\intO{\sigma _k,\sigma _{k+1}}$,
+%\item
+%  $f_k$ se prolonge en une fonction continue, notée $\tilde f_k$ sur l'intervalle fermé $[\sigma _k,\sigma _{k+1}]$.
+%\end{enumerate}
+%
+%\Para{Définition}
+%
+%Soit $I$ un intervalle quelconque de $\R $.
+%On dit que $f$ est \emph{continue par morceaux sur $I$} si $f$ est continue par morceaux sur tout segment $K$ inclus dans $I$.
+%On peut noter que cela correspond à la définition précédente si $I$ est un segment.
+%
+%\Para{Proposition}
+%
+%Soit $\Fn{f}{I}{\K }$ une fonction continue.
+%Alors $f$ est continue par morceaux sur $I$.
+%
+%\Para{Proposition}
+%
+%L'ensemble $\mathcal{CM}(I,\K )$ des fonctions continues par morceaux de $I$ dans $\K $ est un sous-espace vectoriel de $\K ^I$.
+%
+%\Para{Proposition}
+%
+%Soit $\Fn{f}{I}{\K }$ une fonction continue par morceaux.
+%Alors $f$ est bornée sur tout segment $K?I$.
+%
+%\Para{Définition}
+%
+%Soit $\Fn{f}{[a,b]}{\K }$ une fonction continue par morceaux.
+%Soit $a =\sigma _0 <\sigma _1 < \dots <\sigma _n = b$ une subdivision adaptée.
+%Pour $k\in \Dcro{0,n-1}$, on note $\tilde f_k$ l'unique fonction continue $[\sigma _k,\sigma _{k+1}] \to \K $ dont la restriction à l'ouvert $\intO{\sigma _k,\sigma _{k+1}}$ est égale à $f$.
+%Par définition, l'intégrale de $f$ sur $[a,b]$ vaut
+%\[ \int_a^b f =\sum_{k=0}^{n-1}\int_{\sigma _k}^{\sigma _{k+1}} \tilde f_k. \]
+%
+%On pose également $\int_b^a f = -\int_a^b f$.
+%
+%\Para{Proposition}[propriétés de l'intégrale]
+%
+%\begin{enumerate}
+%\item
+%  \emph{Linéarité}
+%
+%  Soit $f$ et $g$ deux fonctions continues par morceaux de $[a,b]$ dans $\K $.
+%  Soit $(\lambda ,\mu )\in \K ^2$.
+%  Alors $\int_a^b (\lambda f+\mu g) = \lambda \int_a^b f + \mu \int_a^b g$.
+%\item
+%  \emph{Relation de Chasles}
+%
+%  Soit $\Fn{f}{I}{\K }$ continue par morceaux et $(a,b,c)\in I^3$.
+%  Alors $\int_a^c f = \int_a^b f + \int_b^c f$.
+%\item
+%  \emph{Positivité}
+%
+%  Soit $\Fn{f}{[a,b]}{\Rp}$ continue par morceaux.
+%  Alors $\int_a^b f \geq  0$.
+%\item
+%  \emph{Stricte positivité}
+%
+%  Soit $\Fn{f}{[a,b]}{\Rp}$ une fonction \emph{continue}.
+%  Si $\int_a^b f = 0$, alors $f = \tilde0$.
+%\item
+%  \emph{Croissance}
+%
+%  Soit $f, g \colon [a,b] \to \R $ continues par morceaux.
+%  On suppose $\forall x\in \intO{a,b}$, $f(x)\leq  g(x)$.
+%  Alors $\int_a^b f \leq  \int_a^b g$.
+%\item
+%  \emph{Inégalité de la moyenne}
+%
+%  Soit $\Fn{f}{[a,b]}{\K }$ continue par morceaux.
+%  Alors $\left| \int_a^b f \right| \leq  \int_a^b \Abs{f}$.
+%\end{enumerate}
+%
+%\Para{Remarque}
+%
+%La stricte positivité n'est pas valable pour les fonctions continues par morceaux. On a cependant ce résultat:
+%
+%\Para{Proposition}
+%
+%Soit $\Fn{f}{[a,b]}{\Rp}$ une fonction \emph{continue par morceaux}.
+%Si $\int_a^b f = 0$, alors $\Ensemble{x\in [a,b]}{f(x)?0}$ est un ensemble fini.
 \end{document}
 
