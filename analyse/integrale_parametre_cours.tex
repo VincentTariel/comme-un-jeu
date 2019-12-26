@@ -1,0 +1,403 @@
+\documentclass[a4paper]{book}
+\usepackage{t1enc}
+\usepackage[latin1]{inputenc}
+\usepackage[french]{minitoc}
+ \usepackage{amsmath}
+\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
+\usepackage[francais]{babel}
+\usepackage{amsmath}
+\usepackage{TikZ}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tkz-fct}   
+\usepackage{a4wide,jlq2eams} 
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{slashbox}
+\usepackage{thmbox}
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{longtable} 
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{pgfplots}
+\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
+\sectionfont{\color{magenta}}
+\subsectionfont{\color{red}}
+\subsubsectionfont{\color{red}}
+\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}}
+
+\setlength{\shadowsize}{1.5pt}
+ 
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth} 
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\fancypagestyle{plain}{%
+   \fancyhead{} % get rid of headers
+   \renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+\setcounter{minitocdepth}{3}
+
+
+\renewcommand{\thesection}{\Roman{section}} 
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\thmboxoptions{S,bodystyle=\itshape\noindent}
+\newtheorem[L]{Lem}{Lemme}[section]
+\newtheorem[L]{Th}[Lem]{Théorème}
+\newtheorem[L]{Cor}[Lem]{Corollaire}
+\newtheorem[L]{Prop}[Lem]{Proposition}
+
+\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
+\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
+\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
+\newtheorem[S,bodystyle=\upshape\noindent]{Methode}{Méthode}
+\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
+
+
+
+\newcommand\SUI{(u_n)_{n\in\N}}
+\newcommand\SER{ \sum u_n}
+\newcommand\CC[1]{C^{#1}}
+\newcommand{\sumni}{\sum_{n=0}^{+\infty}}
+\newcommand\Sanxn{ \sum_n a_n x^n}
+\newcommand\Sanzn{ \sum_n a_n z^n}
+\newcommand\Sbnzn{ \sum_n b_n z^n}
+\newcommand\Scnzn{ \sum_n c_n z^n}
+\def\abs#1{\mathopen|{#1}\mathclose|}
+\def\Abs#1{\left|{#1}\right|}
+\newcommand{\Rpinf}{\R \cup \{+\infty\}}
+\newcommand\DS{\displaystyle}
+\newcommand\To[1]{\xrightarrow[#1]{}}
+\newcommand\Toninf{\To{\ninf}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\newcommand{\FIK}{\mathcal{F}(I,\K  )}
+\newcommand{\fn}{(f_n)_{n\in \N   }}
+\newcommand{\Sfn}{\sum _n f_n}
+\newcommand{\TTT}{]a,b]}
+\newcommand{\TTTT}{]a,b[}
+\begin{document}
+
+
+
+\chapter{Intégrale à paramètre}
+Une intégrale  à paramètre est une fonction d'une variable entière ou
+réelle, définie à partir d'une fonction de deux variables ? la variable d'intégration et le paramètre ? par intégration sur un ensemble fixe par rapport à la variable d'intégration :
+$$F(x)=\int_J f(x,t)\mathrm dt.$$
+On dit que la fonction $F$ est une intégrale dépendant du paramètre $x$. On définit ainsi une fonction $F$ dont on veut découvrir les propriétés à partir
+de celles de $f$.\\ 
+En première partie, nous verrons le cas où le paramètre est un entier ($u_n=F(n)=\int_J f(n,t)\mathrm dt=\int_J f_n(t)\mathrm dt$). Le cours sur les suites et séries de fonctions nous a fourni un théorème pour permuter la limite et l'intégrale $$\lim_{n\to \infty}\int_J f_n(t)\mathrm dt=\int_J \lim_{n\to \infty}f_n(t)\mathrm dt$$ si la suite de fonctions convergent uniformément sur $J$ et si $J$ est un segment. Que peut on dire lorsque $J$ est un intervalle quelconque ? Lorsqu'il y a convergence simple et non plus uniforme ?
+Notre but est  de donner des théorèmes plus généraux.\\
+En seconde partie,  nous verrons le cas où le paramètre est un réelle et nous introduirons des théorèmes pour démontrer la continuité de la fonction $F$  et la permutation de la dérivée et  l'intégrale $(\frac{dF}{dx}(x)=\int_J \frac{\partial f}{\partial x }(x,t) \mathrm dt)$  sur $J$ un intervalle quelconque.
+
+
+
+
+
+
+\section{Intégrale à paramètre entier : $ u_n =F(n)= \int_J f_n(t)\mathrm dt.$}
+\subsection{Permutation limite-intégrale ou série-intégrale: cas segment et convergence uniforme}
+\textit{Rappel du cours sur les suites et séries de fonctions.}
+\begin{Th}[Permutation limite/intégrale]
+Soit $\fn$ une suite de fonctions de $[a,b]$ dans $\K$.
+On suppose que:
+\begin{itemize}
+\item
+  pour tout $n\in \N $, $f_n$ est continue sur le segment $[a,b]$;
+\item
+  $\fn$ converge uniformément vers $f$ sur $[a,b]$.
+\end{itemize}
+
+Alors $f$ est continue (donc intégrable) sur $[a,b]$ et
+\[  \lim_\ninf \int_a^b f_n(t)\mathrm dt = \int_a^b \lim_\ninf f_n(t)\mathrm dt = \int_a^b f(t)\mathrm dt.  \]
+\end{Th}
+\begin{Th}[Permutation somme/intégrale]
+Soit $\Sfn$ une série de fonctions de $[a,b]$ dans $\K$.
+On suppose que:
+\begin{itemize}
+\item
+  pour tout $n\in \N $, $f_n$ est continue sur le segment $[a,b]$
+\item
+  la série de fonctions $\sum_n f_n$ converge uniformément sur $[a,b]$ vers $f$
+\end{itemize}
+Alors $f$ est continue sur $[a,b]$ (donc intégrable) et
+\[ \sum_{n=0}^{+\infty} \int_a^b f_n(t)\mathrm dt = \int_a^b \sum_{n=0}^{+\infty} f_n(t)\mathrm dt= \int_a^b f(t)\mathrm dt.   \]
+\end{Th}
+\subsection{Permutation limite-intégrale ou série-intégrale : cas  intervalle ouvert et convergence simple}
+\begin{Th}[Convergence dominée] Soit $\fn$ une suite de fonctions continues par morceaux de $J$ dans $\K$, et $f,\phi:J\to\K$ continues par morceaux avec $\phi $ positive. On suppose que
+\begin{enumerate}
+\item \textbf{Convergence simple de $(f_n)$ vers $f$} : pour tout $t\in J$, la suite numérique $(f_n(t))$ converge vers $f(t)$;
+\item \textbf{Hypothèse de domination} : pour tout $t\in J$ et tout $n\geq 1, |f_n(t)|\leq\phi (t)$,  ;
+\item \textbf{Intégrabilité de la fonction dominante} :  la fonction $\phi $ est intégrable sur $J$.
+\end{enumerate}
+Alors toutes les fonctions $f_n$ et $f$ sont intégrables sur $J$, et on a :
+$$\lim_{n\to +\infty}\int_J |f_n(t)-f(t)| \mathrm dt=0.$$
+En particulier, 
+$$\lim_{n\to +\infty}\int_J f_n(t)\mathrm dt= \int_J \lim_{n\to +\infty} f_n(t)\mathrm dt=\int_J f(t)\mathrm dt$$.
+\end{Th}
+\begin{NB}
+Le théorème précédent est valable sur un intervalle quelconque qui peut aussi être un segment.\\
+L'hypothèse de convergence uniforme est remplacée par une autre hypothèse, l'"hypothèse de domination". Il s'agit de
+fournir une fonction $\phi$ (continue par morceaux et intégrable sur $J$) majorant toutes les fonctions $f_n$. Ceci signifie que l'on
+doit majorer chaque $|f_n(t)|$ par une expression \textbf{dépendante de $t$ et indépendante de $n$} et qui soit une fonction de $t$
+intégrable sur $J$. 
+\end{NB}
+
+\begin{Ex}
+Déterminer la limite, lorsque $n$ tend vers $+\infty$, de la  suite suivante :
+$$u_n=\int_1^{+\infty}\frac{dt}{1+t^n}.$$
+\begin{enumerate}
+\item \textit{Convergence simple sur $]1,+\infty[$:}\\ 
+Soit $t>1$ fixé.\\
+La suite numérique $(\frac{1}{1+t^n})_{n\in\mathbb{N}}$ converge vers 0. Donc la suite de fonctions $(x\mapsto(\frac{1}{1+t^n}))_{n\in\mathbb{N}}$ converge simplement vers la fonction nulle $x\mapsto 0$.
+\item \textit{Hypothèse de domination :}\\ 
+Pour $n\geq 2$ et $t\geq  1$, on a
+$$\left|\frac{1}{1+t^n}\right| \leq \frac{1}{1+t^2}\leq \frac{1}{t^2}=\phi(t).$$.
+\item \textit{Intégrabilité de la fonction dominante :}\\
+$\int_1^{+\infty}\frac{dt}{t^2}$ converge et donc intégrable sur $]1,+\infty[$.
+\end{enumerate}
+Les hypothèses du théorème de convergence dominée sont vérifiées. On en déduit que :
+$$\lim_{n\to +\infty}u_n=\lim_{n\to +\infty} \int_1^{+\infty}\frac{dt}{1+t^n} \underset{\text{convergence dominée}}{=}\int_1^{+\infty}\lim_{n\to +\infty} \frac{1}{1+t^n}dt= \int_1^{+\infty} 0 dt=0.$$
+\end{Ex}
+\begin{Ex}[Wallis]
+Déterminer la limite, lorsque $n$ tend vers $+\infty$, de la  suite suivante :
+$$W_n=\int_0^{\pi/2}\sin^n t \, \mathrm dt.$$
+Soit $f_n:t\mapsto \sin^n t$.
+\begin{enumerate}
+\item \textit{Convergence simple sur $[0,\pi/2]$:}\\ 
+Soit $t\in[0,\pi/2]$ fixé.\\
+La suite géométrique $(\sin^n t)_{n\in\mathbb{N}}$ converge vers 0 si $t\neq \pi/2$ et $1$ si $t= \pi/2$ . Donc la suite de fonctions $(f_n)_{n\in\mathbb{N}}$ converge simplement vers la fonction $f:t\mapsto \begin{cases} 0\text{ si } t\neq \pi/2\\1\text{ si }t=\pi/2 \end{cases}  $ qui est continue par morceaux sur $[0,\pi/2]$.
+\item \textit{Hypothèse de domination :}\\ 
+Pour $n\geq 1$ et $t\in [0,\pi/2] $, on a
+$$\left|f_n(t)\right| \leq 1=\phi(t).$$.
+\item \textit{Intégrabilité de la fonction dominante :}\\
+$\int_0^{\pi/2}1 \mathrm dt $ converge et donc intégrable sur $[0,\pi/2]$.
+\end{enumerate}
+Les hypothèses du théorème de convergence dominée sont vérifiées. On en déduit que :
+$$\lim_{n\to +\infty}W_n\underset{\text{convergence dominée}}{=}\int_0^{\pi/2}\lim_{n\to +\infty} \sin^n t\, \mathrm dt= \int_0^{\pi/2} 0\, \mathrm dt=0.$$
+\end{Ex}
+
+
+
+\begin{Th}[Intégration terme à terme] Soit $\Sfn$ une série de fonctions continues par morceaux de $J$ dans $\K$, et $f:J\to\K$ continue par morceaux. On suppose que
+\begin{enumerate}
+\item \textbf{Convergence simple de $\Sfn$ vers $f$}: pour tout $t\in J$, la suite numérique $\sum_n f_n(t)$ converge vers $f(t)$;
+\item \textbf{Hypothèse de domination} : la série numérique $\sum_n \int_J|f_n(t)|dt$ converge.
+\end{enumerate} 
+Alors f est intégrable sur $J$, et on a :
+$$\sum_{n=0}^{+\infty} \int_J f_n(t)\mathrm dt = \int_J \sum_{n=0}^{+\infty} f_n(t)\mathrm dt= \int_J f(t)\mathrm dt.$$
+\end{Th}
+
+\begin{Ex} Démontrer que $\sum_{n=0}^{+\infty}\int_0^1 t^{2n}(1-t)\mathrm dt=\ln(2)$.
+\begin{enumerate}
+\item \textit{Convergence simple sur $[0,1[$:}\\ 
+La série géométrique $\sum_n t^{2n}$ converge simplement vers $t\mapsto \frac{1}{1-t^2}.$ Donc la  série $(1-t)\sum_n t^{2n}$ converge simplement vers $t\mapsto \frac{1}{1-t}.$.
+\item \textit{Hypothèse de domination :}\\ 
+On a $\int_0^1 t^{2n}(1-t) \mathrm dt = [\frac{t^{2n+1}}{2n+1}-\frac{t^{2n+2}}{2n+2}]_0^1=\frac{1}{2n+1}-\frac{1}{2n+2}=\frac{1}{(2n+1)(2n+2)}\sim_{+\infty}\frac{1}{4n^2}$. Comme  la série de Riemann $\sum_n \frac{1}{n^2}$ converge, la série $\sum_n \int_0^1 t^{2n}(1-t) \mathrm dt$ converge par règle d'équivalence sur les séries à termes positifs.
+\end{enumerate}
+Les hypothèses du théorème d'intégration terme à terme sont vérifiées. On en déduit que :
+$$\sum_{n=0}^{+\infty}\int_0^1 t^{2n}(1-t)\mathrm dt=\int_0^1 \sum_{n=0}^{+\infty} t^{2n}(1-t)\mathrm dt=\int_0^1 \frac{1}{1+t}\mathrm dt=\ln(2).$$
+\end{Ex}
+%% -----------------------------------------------------------------------------
+\section{Intégrale à paramètre réelle : $F(x) = \int_J f(x,t) \mathrm dt$ }
+\textit{Contexte :}\\
+ Soit $I$ et $J$ deux intervalles (non vides) de $\R$ et
+\[ \Fonction{f}{I×J}\K{(x,t)}{f(x,t).} \]
+On s'intéresse à la fonction $F$ définie sur $I$ par
+\[ F(x) = \int_J f(x,t) \mathrm dt. \]
+
+\subsection{Domaine de définition}
+\begin{Prop} La fonction $F$ est définie sur $I$ si,
+$\forall x\in \mathbb{R}$ fixé, l'intégrale $\int_J f(x,t) \mathrm dt $ converge. 
+\end{Prop}
+\begin{Ex}Démontrer que $F:x\mapsto \int_{0}^{+\infty} e^{-xt^2} \mathrm dt$ est définie sur $\mathbb{R}^{+*}$.\\
+Soit $x\in \mathbb{R}^{+*}$ fixé. La fonction $t\mapsto e^{-tx}$ est continue et positive sur $[0,+\infty[$.\\
+En $+\infty$, on a : $$e^{-xt^2}={\underset {\overset {x\rightarrow \infty }{}}{o}}(\frac{1}{t^2}).$$
+Comme $\int_{1}^{+\infty} \frac{1}{t^2}\mathrm dt$ converge, par théorème de comparaison, $\int_{1}^{+\infty}e^{-tx} \mathrm dt$ converge. Par raccordement, $\int_{0}^{+\infty} e^{-xt^2} \mathrm dt$ converge, donc $F$ est bien définie sur  $\mathbb{R}$.
+\end{Ex}
+\subsection{Continuité}
+
+\begin{Th}[continuité sous le signe $\int$]
+On suppose:
+\begin{enumerate}
+\item
+  $f$ est continue par rapport à $x$, c.-à-d.
+  \begin{itemize}
+  \item
+    pour tout $t\in J$ fixé, la fonction $x \mapsto f(x,t)$ est continue sur $I$.
+  \end{itemize}
+\item
+  $f$ est continue par morceaux par rapport à $t$, c.-à-d.
+  \begin{itemize}
+  \item
+    pour tout $x\in I$ fixé, la fonction $t \mapsto f(x,t)$ est continue par morceaux sur $J$.
+  \end{itemize}
+\item
+  \emph{Hypothèse de domination:}
+  Il existe une fonction $\phi$ telle que
+  \begin{itemize}
+  \item
+    pour tout $(x,t)\in I×J$, on a $\Abs{f(x,t)}\leq\phi (t)$,
+  \item
+    $\phi $ est continue par morceaux et intégrable sur $J$.
+  \end{itemize}
+\end{enumerate}
+Alors:
+\begin{itemize}
+\item
+  La fonction $F \colon x \mapsto \int_J f(x,t) \mathrm dt$ est définie et continue sur $I$.
+\end{itemize}
+\end{Th}
+\begin{Ex}Démontrer que $F:x\mapsto \int_{0}^{+\infty} e^{-xt^2} \mathrm dt$ est continue sur $[a,b]$ avec $b>a>0$.\\
+\begin{enumerate}
+\item \textit{Continuité :}\\ 
+Soit $x\in [a,b]$ fixé. La fonction $t\mapsto e^{-xt^2}$ est continue  sur $[0,+\infty[$.\\
+Soit $t\in [0,+\infty[$ fixé. La fonction $x\mapsto e^{-xt^2}$ est continue  sur  $[a,b]$.
+\item  \textit{Domination :}\\
+On a :
+$$\forall x\in [a,b], \forall t\in [0,+\infty[: \quad  \Abs{e^{-xt^2}}\leq e^{-at}.$$
+$t\mapsto e^{-at}$ est intégrable sur $[0,+\infty[$.\\
+\end{enumerate}
+Les hypothèses de théorème de continuité sous le signe $\int$ sont vérifiées donc la fonction $F$ est continue sur $[a,b]$.
+\end{Ex}
+\begin{Th}[continuité sous le signe $\int$ version locale]
+On peut remplacer l'hypothèse de domination par:
+\begin{itemize}
+\item
+  \emph{Hypothèse de domination locale:}
+  Pour tout segment $K$ inclus dans $I$,
+  il existe une fonction $\phi_K \colon J \to \R$ telle que
+
+  \begin{itemize}
+  \item
+    pour tout $(x,t)\in K×J$, on a $\Abs{f(x,t)}\leq\phi _K(t)$,
+  \item
+    $\phi _K$ est continue par morceaux et intégrable sur $J$.
+  \end{itemize}
+\end{itemize}
+\end{Th}
+\begin{Ex}
+Démontrer que $F:x\mapsto \int_{0}^{+\infty} e^{-xt^2}\mathrm dt$ est continue sur $]0,+\infty[$.\\
+On a démontré que $F$  est continue pour tout segment $[a,b]$ inclus dans $]0,+\infty[$. Donc $F$ est continue sur $]0,+\infty[$. 
+\end{Ex}
+%% -----------------------------------------------------------------------------
+\subsection{Dérivabilité}
+\begin{Th}[Dérivation sous le signe $\int$]
+On suppose:
+\begin{enumerate}
+\item
+   pour tout $x\in I$ fixé, la fonction $t \mapsto f(x,t)$
+    est continue par morceaux et intégrable sur $J$.
+\item $f$ admet une dérivé partielle, $\frac{\partial f}{\partial x} (x,t)$ vérifiant les hypothèses de théorème continuité sous le signe $\int$ 
+\end{enumerate}
+Alors:
+\begin{itemize}
+\item
+  La fonction $F \colon x \mapsto \int_J f(x,t) \mathrm dt$ est définie et de classe $\mathcal{C}^1$ sur $I$.
+\item
+  Pour tout $x\in I$, on a \[  F'(x) = \int_J \frac{\partial f}{\partial x} (x,t) \mathrm dt. \]
+\end{itemize}
+\end{Th}
+\begin{Ex}
+On pose, pour $a>0$, $F(x)=\int^{+\infty}_{-\infty}e^{-itx}e^{-at^2}dt$ la transformée de Fourier de la Gaussienne.
+Démontrer que $F$ est de classe $\mathcal{C}^1$ sur $\R$ et vérifie, pour tout $x\in\R, F'(x)=\frac{-x}{2a}F(x).$. Déterminer l'expression de $F$.\\
+\begin{enumerate}
+\item   pour tout $x\in \R$ fixé, la fonction $t \mapsto e^{-itx}e^{-at^2}$
+    est continue par morceaux et intégrable sur $J$ car $|e^{-itx}e^{?at^2}|\leq e^{-at^2}$ et $\int^{+\infty}_{-\infty}e^{-at^2}dt$ converge.
+\item $f$ admet une dérivé partielle, $\frac{\partial f}{\partial x} (x,t)=-ite^{-itx}e^{-at^2}$ vérifiant les hypothèses de théorème continuité sous le signe $\int$, soit :
+\begin{enumerate}
+\item \textit{Continuité :}\\ 
+Soit $x\in \R$ fixé. La fonction $t\mapsto -ite^{-itx}e^{-at^2}$ est continue  sur $\R$.\\
+Soit $t\in \R$ fixé. La fonction $x\mapsto -ite^{-itx}e^{-at^2}$ est continue  sur  $\R$.
+\item  \textit{Domination :}\\
+On a :
+$$\forall x\in \R, \forall t\in \R: \quad  \Abs{-ite^{-itx}e^{-at^2}}\leq |t|e^{-at^2}.$$
+$t\mapsto |t|e^{-at^2}$ est intégrable sur $\R$.\\
+\end{enumerate}
+\end{enumerate} 
+Les hypothèses de théorème de dérivation sous le signe $\int$ sont vérifiées donc F est de classe $\mathcal{C}^1$ sur $\R$ et vérifie,
+$$F'(x)=\int^{+\infty}_{-\infty} \frac{\partial f}{\partial x} (x,t) \mathrm dt =\int^{+\infty}_{-\infty} -ite^{-itx}e^{-at^2}\mathrm dt.$$
+Une intégration par parties permet de se ramener à 
+$$F'(x)=\left[\frac{i}{2a}e^{-itx}e^{-at^2} \right]_{-\infty}^{+\infty}- \int^{+\infty}_{-\infty}\frac{i}{2a}e^{-at^2} (-ixe^{-itx} \mathrm dt.$$
+Soit
+$$F'(x)=\frac{-x}{2a}F(x).$$
+On résout l'équation différentielle vérifiée par F : $F(x)=F(0)e^{-x^2/4a}$. De plus,
+$F(0)=\int^{+\infty}_{-\infty}e^{-at^2}dt=\int^{+\infty}_{-\infty}e^{-u^2} \frac{\mathrm du}{\sqrt{a}}= \sqrt{\frac \pi a}$.\\
+Finalement $F(x)= \sqrt{\frac \pi a} e^{-x^2/4a}$.
+\end{Ex}
+
+\begin{Th}[continuité sous le signe $\int$ version locale]
+On peut remplacer l'hypothèse de domination par:
+\begin{itemize}
+\item
+  \emph{Hypothèse de domination locale:}
+  Pour tout segment $K$ inclus dans $I$,
+  il existe une fonction $\phi_K \colon J \to \R$ telle que
+
+  \begin{itemize}
+  \item
+    pour tout $(x,t)\in K×J$, on a $\Abs{\frac{\partial f}{\partial x} (x,t)}\leq\phi _K(t)$,
+  \item
+    $\phi _K$ est continue par morceaux et intégrable sur $J$.
+  \end{itemize}
+\end{itemize}
+\end{Th}
+
+\begin{Th}[Extension aux fonctions de classe $\mathcal{C}^p$]
+On suppose:
+\begin{enumerate}
+\item
+  $f$ est de classe $\mathcal{C}^p$ par rapport à $x$, c.-à-d.
+  \begin{itemize}
+  \item
+    pour tout $t\in J$ fixé, la fonction $x \mapsto f(x,t)$ est de classe $\mathcal{C}^p$ sur $I$.
+  \end{itemize}
+\item
+  pour tout $0\leq k<p$,
+ $\frac{\partial^k f}{\partial x^k}$ est continue par morceaux
+ et intégrable par rapport à $t$, c.-à-d.
+
+  \begin{itemize}
+  \item
+    pour tout $k\in \{0,\dots,p-1\}$ et pour tout $x\in I$ fixés,
+    la fonction $t \mapsto \frac{\partial^k f}{\partial x^k} (x,t)$
+    est continue par morceaux et intégrable sur $J$.
+  \end{itemize}
+\item
+  $\frac{\partial^p f}{\partial x^p}$ est continue par morceaux par rapport à $t$, c.-à-d.
+  \begin{itemize}
+  \item
+    pour tout $x\in I$ fixé, la fonction $t \mapsto \frac{\partial^p f}{\partial x^p} (x,t)$
+    est continue par morceaux sur $J$.
+  \end{itemize}
+\item
+  \emph{Hypothèse de domination:}
+  Il existe une fonction $\phi$ telle que
+  \begin{itemize}
+  \item
+    pour tout $(x,t)\in I×J$, on a $\left| \frac{\partial^p f}{\partial x^p} (x,t) \right| \leq \phi (t)$,
+  \item
+    $\phi $ est continue par morceaux et intégrable sur $J$.
+  \end{itemize}
+\end{enumerate}
+Alors:
+\begin{itemize}
+\item
+  La fonction $F \colon x \mapsto \int_J f(x,t) \mathrm dt$ est définie et de classe $\CC p$ sur $I$.
+\item
+  Pour tout $k\in \{0,\dots,p\}$, pour tout $x\in I$,
+  on a \[ F^{(k)}(x) = \int_J \frac{\partial^k f}{\partial x^k}(x,t) \mathrm dt. \]
+\end{itemize}
+\end{Th}
+\end{document}
+
