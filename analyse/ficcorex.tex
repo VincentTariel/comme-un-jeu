@@ -1,292 +1,226 @@
-\begin{Soln}{1}
-On prend dans chaque cas $z \neq 0$. et on revient à la règle de d'Alembert des séries numériques :
-
-
-\begin{enumerate}
-\item %$\sum\limits \frac{{n^2 + 1}}{{3^n }  z^n }$
-	Pour tout $n \in \N$ : $a_n = \frac{ n^2 + 1 }{ 3^n } > 0$ et :
-
-		\hspace{0.7cm} $\frac{ a_{n+1} }{ a_n } |z| = \frac{ \frac{ (n+1)^2 + 1 }{ 3^{n+1} } }{ \frac{n^2 + 1}{ 3^n }  } |z|$
-
-		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \frac{ (n+1)^2 + 1 }{ 3 (n^2 + 1) } |z| $
-
-		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } \underset{ n \to + \infty }{\sim} \frac{ n^2 }{ 3  n^2}|z| $
-				
-	Donc :
-	
-		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } |z| = |z| \frac{1}{3}$
-		
-	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = 3$.
-			
-
-\item %$\sum\limits \mathrm{e}^{ - n^2 } z^n $
-	Pour tout $n \in \N$ : $a_n = \mathrm{e}^{ - n^2 } > 0$ et :
-
-		\hspace{0.7cm} $\frac{ a_{n+1} }{ a_n } |z| = \frac{ \mathrm{e}^{ - (n+1)^2 }  }{  \mathrm{e}^{ - n^2 } } |z|$
-
-		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \mathrm{e}^{ - 2n - 1 }|z|$
-		
-	Donc :
-	
-		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } |z| = 0$
-		
-	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = + \infty$.
-	
-	
-\item %$\sum\limits \frac{ \ln n }{ n^2 }z^{2n} $
-	Pour tout $n \in \N \backslash \{ 0 ; 1 \}$ : $a_n = \frac{ \ln n }{ n^2 } > 0$ et :
-
- 	\hspace{0.7cm} $\frac{ a_{n+1}|z|^{2(n+1)}}{ a_n|z|^{2n} }  = \frac{ \frac{ \ln (n+1) }{ (n+1)^2 } }{ \frac{ \ln n }{ n^2 }  } |z|^2$
-
-		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \frac{ n^2  \ln(n+1) }{ (n+1)^2 \ln n } |z|^2$
-
-		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } \underset{ n \to + \infty }{\sim} |z|^2 $
-		
-	Donc :
-	
-		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } |z| = 1 |z|^2$
-		
-	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = \sqrt{\frac{1}{1}}$.
-
-
-\item %$ \sum\limits  \frac{n^n }{n!}z^{3n} $
-%
-
-Pour tout $n \in \N^*$ : $u_n = \frac{n^n }{n!} |z|^{3n}> 0$ et :
-
-		\hspace{0.7cm} $\frac{ u_{n+1} }{ u_n } = \left( \frac{n+1}{n}\right)^n |z|^3$
-
-		\hspace{0.7cm} $\phantom{ \frac{ u_{n+1} }{ u_n } } = \mathrm{e}^{n \ln \left( 1+\frac{1}{n} \right) } |z|^3$
-
-		\hspace{0.7cm} $\phantom{ \frac{ u_{n+1} }{ u_n } } \underset{ n \to + \infty }{=} \mathrm{e}^{n   \left( \frac{1}{n} +  \circ \left( \frac{1}{n} \right) \right) } |z|^3$
-		
-	Donc :
-	
-		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ u_{n+1} }{ u_n } = \mathrm{e} \times |z|^3$
-		
-	D'après la règle de D'Alembert la série CV pour $ \mathrm{e} \times |z|^3 < 1$ soit $|z| < \frac{1}{\sqrt[3]{\mathrm{e}}}$, et diverge pour $r > \frac{1}{\sqrt[3]{\mathrm{e}}}$.	
-
-\smallskip
-
-On en déduit d'après la caractérisation du rayon de CV que $R_a = 	\frac{1}{\sqrt[3]{\mathrm{e}}}$.
-	
-	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \ln \left( 1 + \frac{ 1 }{ n } \right)$
-	Pour tout $n \in \N$ : $a_n = \ln \left( 1 + \frac{ 1 }{ n } \right) > 0$ et :
-
-		\hspace{0.7cm} $\frac{ a_{n+1} }{ a_n } |z| = \frac{ \ln \left( 1 + \frac{ 1 }{ n+1 } \right) }{ \ln \left( 1 + \frac{ 1 }{ n } \right)  } |z|$
-
-		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } \underset{ n \to + \infty }{\sim} \frac{ \frac{1}{n+1} }{ \frac{1}{n} } |z|$
-				
-	Donc :
-	
-		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } = 1 \times |z|$
-		
-	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = 1$.	
-		
-
-	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \frac{ \mathrm{i}^n n^2 }{ n^2 + 1 }$
-Les coefficients ne sont pas réels (et pas positifs), on travaille alors avec les modules.
-	
-	Pour tout $n \in \N$ : $|a_n| = \frac{ n^2 }{ n^2 + 1 } > 0$ et :
-
-		\hspace{0.7cm} \dots (à vous, c'est facile avec les équivalents)
-				
-	Donc :
-	
-		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ |a_{n+1}| }{ |a_n| } |z| = |z|$
-		
-	D'après la règle de D'Alembert le rayon de CV de $\sum\limits |a_n| z^{n} $ vaut :
-	%µ$1$, or $\sum\limits |a_n| z^{n} $ et $\sum\limits a_n z^{n}$ ont le même rayon de CV, donc :
-	 $R_a = 1$, .
-			
-	
-	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \frac{1}{ n \binom{2n}{n} }$
-	Pour tout $n \in \N$ : $a_n = \frac{1}{ n \binom{2n}{n} } > 0$ et :
-
-		\hspace{0.7cm} $\frac{ a_{n+1} }{ a_n } |z| = \frac{ \frac{ 1 }{ n \binom{2n+2}{n+1} } }{  \frac{1}{ n \binom{2n}{n} }  } |z|$
-
-		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \frac{ n \times (2n)! \times ((n+1)!)^2 }{ (n+1) \times (2n+2)! \times (n!)^2  } |z|$
-
-		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \frac{ n }{ 2 (2n+1) } |z|$
-				
-	Donc :
-	
-		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } = \frac{|z|}{4}$
-		
-	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = 4$.
-
-
-
-	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \tan \left( \frac{2n \pi}{3} \right)$
-On analyse les valeurs de $a_n$, avec la $\pi$-périodicité de tan :
-
-\hspace{0.7cm} $\forall n \in \N$, $a_{n+3} = a_n$
-
-Donc $a_n$ ne prend que trois valeurs : pour tout $p \in \N$,
-$\begin{cases}
-a_{3p} & = a_0 = 0 \\
-a_{3p+1} & = a_1 = - \sqrt{3} \\
-a_{3p+2} & = a_2 = \sqrt{3} \\
-\end{cases}$.
-
-Point de critère de D'Alembert possible directement (indirectement oui)... mais si on a bien compris ce qu'est un rayon de CV c'est rapide :
-
-On déduit des valeurs d'une part que $a_n \underset{n \to + \infty}{\nrightarrow} 0$ donc $\sum\limits a_n 1^{n} $ diverge grossièrement, d'où $R_a \leqslant 1$ avec la caractérisation du rayon de CV.
-
-Et d'autre part que  $(|a_n| 1^{n}) $ est bornée, donc que $R_a \geqslant 1$ avec la définition du rayon de CV.
-
-Finalement : $R_a = 1$
-
-
-	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \begin{cases} a_{2n} &= a^n \\ a_{2n+1}= & b^n \end{cases}$ où $0<a<b$
-Le règle de D'Alembert n'est pas exploitable directement ici.
-
-On revient à la définition du rayon de CV. et on utilise les suites extraites des termes d'indices pairs et impairs.
-
-Soit $r > 0$, la suite $(a_n r^n)$ est bornée équivaut à $(a_{2n} r^{2n})$ et $(a_{2n+1} r^{2n+1})$ sont bornées.
-
-\begin{itemize}
-	\item $a_{2n} r^{2n} = (a r^2)^n$ donc $(a_{2n} r^{2n})$ est une suite géométrique de raison $a r^2$,
-	
-	elle est bornée lorsque $a r^2 \leqslant 1 \Longleftrightarrow r \leqslant \frac{1}{\sqrt{a}}$.
-
-	\item $a_{2n+1} r^{2n+1} = r \times (b r^2)^n$ donc $(a_{2n+1} r^{2n+1})$ est une suite géométrique de raison $b r^2$,
-	
-	elle est bornée lorsque $b r^2 \leqslant 1 \Longleftrightarrow r \leqslant \frac{1}{\sqrt{b}}$.
-	
-	\item Et de plus  :  $0<a<b \Rightarrow  \frac{1}{\sqrt{b}} <  \frac{1}{\sqrt{a}}$
-\end{itemize}
-
-Donc $(a_n r^n)$ est bornée lorsque $r \leqslant \frac{1}{\sqrt{b}}$, le rayon de CV est $R_a = \frac{1}{\sqrt{b}}$.
-  \end{enumerate}
-\end{Soln}
-\begin{Soln}{2}
-\end{Soln}
 \begin{Soln}{3}
-\renewcommand {\theenumi}{\alph{enumi}}
-  	\begin{enumerate}
-    \item %$ \sum\limits_{n \geqslant 0} {\frac{{n - 1}}{{n!}}x^n } $
-    \begin{itemize}
-    	\item Rayon de CV $R = + \infty$ (utiliser la règle de D'Alembert \dots)
-    	
-    	\item Pour tout $x \in \R$ :
-
-L'égalité est bien valable car chacune des séries du membre de droite a aussi $+ \infty$ pour rayon de CV
-    	
-\hspace{0.7cm} $ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n =
-\sum\limits_{n = 0}^{ + \infty } {\frac{{n}}{{n!}}x^n }  - \sum\limits_{n = 0}^{ + \infty } {\frac{{1}}{{n!}}x^n } $
-    	
-\hspace{0.7cm} $\phantom{ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n  } =
-\sum\limits_{n = 1}^{ + \infty } \frac{{n}}{{n!}}x^n  - \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
-
-\hspace{0.7cm} $\phantom{ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n  } =
-x \sum\limits_{n = 1}^{ + \infty } \frac{1}{ (n-1)! }x^{n-1}  - \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
-
-\hspace{0.7cm} $\phantom{ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n  } =
-\sum\limits_{n = 0}^{ + \infty } \frac{1}{ n! }x^{n}  - \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
-
-\hspace{0.7cm} $\phantom{ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n  } = x \mathrm{e}^x  -  \mathrm{e}^x $
-    \end{itemize}
-
-
-    \item %$ \sum\limits_{n \geqslant 0} \frac{(n + 1)(n - 2)}{n!}x^n  $
-    \begin{itemize}
-    	\item Rayon de CV $R = + \infty$ (utiliser la règle de D'Alembert \dots)
-    	
-    	\item Pour tout $x \in \R$ : sachant que $(n+1)(n-2) = n^2 - n - 2 = n(n-1) - 2$
-
-L'égalité est bien valable car chacune des séries du membre de droite a aussi $+ \infty$ pour rayon de CV
-    	
-\hspace{0.7cm} $\sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n  =
-\sum\limits_{n = 0}^{ + \infty } \frac{ n(n-1) }{ n! }x^n   - 2 \sum\limits_{n = 0}^{ + \infty } \frac{ 1 }{ n!} x^n  $
-    	
-\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n   } =
-\sum\limits_{n = 2}^{ + \infty } \frac{ n(n-1) }{ n! } x^n  - 2 \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
-
-\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n   } =
-x^2 \sum\limits_{n = 2}^{ + \infty } \frac{ 1 }{ (n-2) ! } x^{n-2}  - 2 \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
-
-\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n   } =
-x^2 \sum\limits_{n = 0}^{ + \infty } \frac{ 1 }{ n! } x^n  - 2 \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
-
-\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n   } =
-x^2 \mathrm{e}^x  -  2 \mathrm{e}^x $
-    \end{itemize}
-
-
-
-	\item %$ \sum\limits_{n \geqslant 2} \frac{x^n }{n(n - 1)} $
-    \begin{itemize}
-    	\item Rayon de CV $R = 1$ (utiliser la règle de D'Alembert \dots)
-    	
-    	\item Pour tout $x \in ]-1 ; 1[$ : sachant que par décomposition en éléments simples $\frac{1}{n(n-1)} = \frac{1}{n-1} - \frac{1}{n}$
-    	
-    	 L'égalité est bien valable car chacune des séries du membre de droite a aussi $1$ pour rayon de CV
-    	
-\hspace{0.7cm} $\sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n(n - 1)}  =
-\sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n - 1} -  \sum\limits_{n = 2}^{ + \infty } \frac{ x^n }{ n }$
-    	
-\hspace{0.7cm} $\phantom{  \sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n(n - 1)}  }=
-x \sum\limits_{n = 2}^{ + \infty } \frac{x^{n-1} }{n - 1} -  \sum\limits_{n = 1}^{ + \infty } \frac{ x^n }{ n } + x$
-
-\hspace{0.7cm} $\phantom{  \sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n(n - 1)}  }=
-x \sum\limits_{n = 1}^{ + \infty } \frac{x^{n}}{n} -  \sum\limits_{n = 1}^{ + \infty } \frac{ x^n }{ n } + x$
-
-\hspace{0.7cm} $\phantom{  \sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n(n - 1)}  }=
-- x \ln(1-x)   +  \ln(1-x) + x $
-    \end{itemize}	
-
-	\item %$ \sum\limits_{n \geqslant 0} \frac{3n }{n+2} x^n$
-    \begin{itemize}
-    	\item Rayon de CV $R = 1$ (utiliser la règle de D'Alembert \dots)
-    	
-    	\item Pour tout $x \in ]-1 ; 1[$ : sachant que par décomposition en éléments simples $\frac{3n}{n+2} = 3\left( 1 - 2 \frac{1}{n+2} \right)$
-
-  L'égalité ci-dessous est vraie car chacune des séries du membre de droite a aussi $1$ pour rayon de CV
-    	
-\hspace{0.7cm} $\sum\limits_{n = 0}^{ + \infty } \frac{3n }{n+2}   =
-3 \left( \sum\limits_{n = 0}^{ + \infty } x^n  -  2 \sum\limits_{n = 0}^{ + \infty } \frac{ x^n }{ n+2 } \right)$
-
-Soit $x=0$ et dans ce cas la somme est nulle, soit $x \neq 0$ et on peut factoriser par $x$ :
-
-\hspace{0.7cm} $\sum\limits_{n = 0}^{ + \infty } \frac{3n }{n+2}   =
-3 \left( \sum\limits_{n = 0}^{ + \infty } x^n  -  \frac{2}{x^2} \sum\limits_{n = 0}^{ + \infty } \frac{ x^{n+2} }{ n+2 } \right)$
-    	
-\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty }  \frac{3n }{n+2}   }  =
-3 \left( \sum\limits_{n = 0}^{ + \infty } x^n  -  \frac{2}{x^2} \sum\limits_{ n = 2 }^{ + \infty } \frac{ x^{n} }{ n }  \right)$
-
-\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty }  \frac{3n }{n+2}   }  =
-3 \left( \sum\limits_{n = 0}^{ + \infty } x^n  -  \frac{2}{x^2} \sum\limits_{ n = 1 }^{ + \infty } \frac{ x^{n} }{ n } + -  \frac{2}{x^2} x   \right)$
-
-\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty }  \frac{3n }{n+2}   }  =
-3 \left(  \frac{1}{1-x}  + \frac{2}{x^2} \ln(1-x) +  \frac{2}{x}   \right)$
-    \end{itemize}		
-	
-	\item %$ \sum\limits_{n \geqslant 0} \frac{x^{4n} }{ (4n)! } $	
-	Il faut le voir mais on a immédiatement $R = + \infty$ par linéarité avec :
-	
-	\hspace{0.7cm}$ \sum\limits_{n \geqslant 0} \frac{x^{4n} }{ (4n)! } = \tfrac{1}{2} \left( \mathrm{ch}(x) + \cos(x) \right)$
-	
- \end{enumerate}
-\end{Soln}
-\begin{Soln}{4}
-\end{Soln}
-\begin{Soln}{5}
-\end{Soln}
-\begin{Soln}{6}
 \begin{enumerate}
-\item $R=1$. En effet, $\frac {|x|^{n}}{(n+1)(n-2)}\sim {\frac {|x|^{n}}{n^{2}}}$. Donc si $|x|\leq 1$, la série est absolument convergente (par comparaison avec la série de Riemann convergente $\sum _{n\geq 1}{\frac {1}{n^{2}}}$) tandis que si $|x|>1$ , $\frac {|x|^{n}}{n^{2}}\to +\infty $ et la série diverge grossièrement.
-\item On peut naturellement dériver la fonction sur son ouvert de convergence, soit ici $ ]-R,R[$.
-$$xS(x)=\sum _{n=3}^{\infty }{\frac {x^{n+1}}{(n+1)(n-2)}}.$$
-On a donc $(xS)'(x)=\sum _{n=3}^{\infty }{\frac {x^{n}}{n-2}}=x^{2}\sum _{k\geq 1}^{\infty }{\frac {x^{k}}{k}}=-x^{2}\ln(1-x)$.
-Une intégration par parties, suivie d'une intégration de fraction rationnelle, permet d'en déduire
-$xS(x)$, puis
-$$S(x)={\frac {1}{3}}\left({\frac {1-x^{3}}{x}}\ln(1-x)+1+{\frac {x}{2}}+{\frac {x^{2}}{3}}\right).$$
-(Une autre méthode aboutissant à ce résultat est d'écrire :
-$$3S(x)=\sum _{n=3}^{\infty }\left({\frac {x^{n}}{n-2}}-{\frac {x^{n}}{n+1}}\right)={\frac {x^{3}}{1}}+{\frac {x^{4}}{2}}+{\frac {x^{5}}{3}}+{\frac {x^{3}-1}{x}}\sum _{n\geq 4}{\frac {x^{n}}{n}}=x^{3}+{\frac {x^{4}}{2}}+{\frac {x^{5}}{3}}+{\frac {1-x^{3}}{x}}\left(\ln(1-x)+x+{\frac {x^{2}}{2}}+{\frac {x^{3}}{3}}\right).$$
-\item Par continuité, $S(-1)={\frac {1}{3}}\left({\frac {2}{-1}}\ln 2+1-{\frac {1}{2}}+{\frac {(-1)^{2}}{3}}\right)={\frac {5}{18}}-{\frac {2}{3}}\ln 2$ et $S(1)={\frac {1}{3}}\left(0+1+{\frac {1}{2}}+{\frac {1^{2}}{3}}\right)={\frac {11}{18}}.$
+\item %Sur $\R, \, E_1 :   x'+ x= \cos t + \sin t$.
+
+	\begin{enumerate}
+	\item Résolvons l'équation homogène $(H) : \; x' = - x$ , associée à $(E)$.
+		\begin{itemize}
+
+			\item Posons $a(t) = -1$, $a$ est définie et continue sur $\R$.
+
+%On cherche une primitive $A$ de $a$ sur l'intervalle $\R$ :
+%\hspace{0.7cm} $a(x) = -\frac{1}{2} \times \frac{2x}{1+x^2}$ on reconnait une forme $\frac{u'}{u}$ avec $u(x)=1+x^2$.
+%Donc une primitive est :
+
+				\hspace{0.7cm} $A(t) =  - t$ primitive de $a$ sur $\R$
+
+			\item La solution générale de $(H)$ est  :
+
+				%\hspace{0.7cm} $x_0 = C \mathrm{e}^{ \frac{1}{2} \ln(1+x^2)}$ où $C \in \R$	
+
+				\hspace{0.7cm} $x_0 = C  \mathrm{e}^{-t} $ où $C \in \R$	
+		\end{itemize}
+
+
+	\item Par superposition des solutions, il suffit de trouver une solution particulière à $x'+ x= \cos t $ d'une part et  à $x'+ x= \sin t$ d'autre part, pour déterminer une solution particulière à $(E)$.
+
+	De plus par linéarité, il suffit de trouver une solution particulière à $x' + x = \mathrm{e}^{\mathrm{i} t}$ pour trouver les solutions particulières ci-dessus.
+
+
+	\item Déterminons une solution particulière à $x' + x = \mathrm{e}^{\mathrm{i} t}$ par la méthode de la variation de la constante.
+
+	Posons $\lambda \in \mathcal{D}(\R ,\R)$ et cherchons une solution sous la forme :
+
+		\hspace{0.7cm} $x_{1} = \lambda(t) \mathrm{e}^{-t}$  \hspace{0.5cm} $x_{1}$ est dérivable comme produit de fonctions dérivables et :
+
+		\hspace{0.7cm} $x'_{1} = \lambda'  \mathrm{e}^{-t} - \lambda   \mathrm{e}^{-t}$
+
+	Donc :
+
+\hspace{0.7cm} $x_{1} \text{ solution }
+\Longleftrightarrow
+x'_{1} + x_{1} = \mathrm{e}^{\mathrm{i} t}$
+
+\hspace{0.7cm} $\phantom{x_{1} \text{ solution } }
+\Longleftrightarrow
+ \lambda'  \mathrm{e}^{-t} - \lambda   \mathrm{e}^{-t}  +
+  \lambda   \mathrm{e}^{-t} = \mathrm{e}^{\mathrm{i} t}$
+
+\hspace{0.7cm} $\phantom{x_{1} \text{ solution } }
+\Longleftrightarrow
+ \lambda'  \mathrm{e}^{-t} =  \mathrm{e}^{\mathrm{i} t}$
+
+		  \hspace{0.7cm} $\phantom{x_{1} \text{ solution }  } \Longleftrightarrow
+ \lambda' = \mathrm{e}^{ (1+\mathrm{i}) t}$
+
+		 Donc : $\lambda = \tfrac{1}{1+\mathrm{i}}  \mathrm{e}^{ (1+\mathrm{i}) t}$ convient et une solution particulière est :
+
+  		\hspace{0.7cm} $x_{1} =  \tfrac{1}{1+\mathrm{i}}  \mathrm{e}^{ \mathrm{i} t}$
+
+    	\hspace{0.7cm} $\phantom{ x_{1} } =  \tfrac{1- \mathrm{i}}{2}  \mathrm{e}^{ \mathrm{i} t}$
+
+    	\hspace{0.7cm} $\phantom{ x_{1} } =  \tfrac{\cos t + \sin t}{2} +  \mathrm{i} \tfrac{- \cos t + \sin t}{2}$
+
+
+	\item Solutions particulières à :
+		\begin{itemize}
+    		\item $x' + x = \cos t$ : $\mathcal{R}e ( x_1 ) =  \tfrac{\cos t + \sin t}{2}$
+
+    		\item $x' + x = \sin t$ : $\mathcal{I}m ( x_1 ) =  \tfrac{- \cos t + \sin t}{2}$
+    	\end{itemize}
+
+
+	\item Solution générale de $(E)$ :
+
+    		\hspace{0.7cm} $x = C \mathrm{e}^{- t}  + \tfrac{\cos t + \sin t}{2} + \tfrac{- \cos t + \sin t}{2}$   où $C \in \R$.
+
+    		\hspace{0.7cm} $x = C \mathrm{e}^{- t}  + \sin t$   où $C \in \R$.
+
+	\item Résolution du problème de Cauchx :
+
+    	\hspace{0.7cm} $x(0)=2 \Longleftrightarrow C + 0 = 2$
+
+	    \hspace{0.7cm} $\phantom{x(0)=2} \Longleftrightarrow C = 2$
+
+	Donc la solution au problème de Cauchy est  :
+
+       \hspace{0.7cm} $x = 2\mathrm{e}^{- t}  +  \sin t$
+	\end{enumerate}
+
+Vous avez la méthode et une rédaction (trop) détaillée\dots pour la suite je vous donne les résultats.
+
+
+
+\item %Sur $\R, \, E_2 :  x'-2t x= \mathrm{sh} t   -   2  t   \mathrm{ch} t$.
+
+	\begin{enumerate}
+		\item Solution générale de l'équation homogène associée $(H) : \, x' = 2t x$ :
+
+			\hspace{0.7cm} $x_0 = C  \mathrm{e}^{t^2} $ où $C \in \R$	
+
+		\item Solution particulière  de $(E_2)$ : (il faut le \og voir  \fg{} à la forme de l'équation)
+
+			\hspace{0.7cm} $x_1 = \mathrm{ch} t$
+
+		\item Solution générale de $(E)$ :
+
+		    \hspace{0.7cm} $x = C \mathrm{e}^{t^2}  +\mathrm{ch} t$   où $C \in \R$.
+	\end{enumerate}
+
+
+\item %Sur $\R^*_+ , \, E_3 tx'+(t-1)x= t^2$.
+
+	\begin{enumerate}
+		\item On normalise, c'est possible sur $\R^*_+$ :
+		
+			\hspace{0.7cm} $x'+ \frac{t-1}{t} x= t$
+	
+		\item Solution générale de l'équation homogène associée $(H) : \, x' = - \frac{t-1}{t} x$ :
+
+			\hspace{0.7cm} $x_0 = C t  \mathrm{e}^{-t} $ où $C \in \R$	
+
+		\item Solution particulière  de $(E_3)$ :
+
+			\hspace{0.7cm} $x_1 = t$
+
+		\item Solution générale de $(E)$ :
+
+		    \hspace{0.7cm} $x = C t  \mathrm{e}^{-t}  + t$   où $C \in \R$.
+	\end{enumerate}
 \end{enumerate}
 \end{Soln}
-\begin{Soln}{8}
-La série entière diverge en $z=1$ et converge en $z=-1$  (par le critère de convergence des séries alternées) donc $ R=1$.
+\begin{Soln}{13}
+Résoudre les équations différentielles suivantes  :
+\begin{enumerate}
+\item %Sur $\R, \, E_1 : x''+2x'-3x = 11   \mathrm{e}^{2t}      $ % ???? \dfrac{1}{\mathrm{e}^{2t}+1}$
+	\begin{enumerate}
+		\item  \'Equation différentielle homogène associée :  \, $ (H) \,x'' + 2x' - 3x = 0 $
+
+			polynôme caractéristique associé : $x^2  + 2x - 3 = 0$.
+			
+			Discriminant : $\Delta = 16 > 0$
+
+			Racines du polynôme : $x_1 = 1$ et $x_2 =  - 3$.
+
+			La solution générale de $(H)$ est :
+			
+			\hspace{0.7cm} $x_H = A \mathrm{e}^{t} + B  \mathrm{e}^{-3t}$, avec $A,B \in \R$.
+
+		\item Détermination une solution particulière à $(E)$, comme $2$ n'est pas racine du polynôme caractéristique on la cherche sous la forme $x_1 = C \mathrm{e}^{2t}$ où $C \in \R$, qui est deux fois dérivables sur $\R$ :
+		
+			\hspace{0.7cm} $x'_1 = 2C \mathrm{e}^{2t}$
+
+			\hspace{0.7cm} $x''_1 = 4C \mathrm{e}^{2t}$
+			
+		\hspace{0.7cm} $x_{1} \text{ solution de } (E) \Longleftrightarrow x''_{1} +2 x'_1 - 3x_{1} = 11\mathrm{e}^{2x}$
+
+		\hspace{0.7cm} $\phantom{x_{1} \text{ solution de } (E)} \Longleftrightarrow  \dots$
+		
+		\hspace{0.7cm} $\phantom{x_{1} \text{ solution de } (E)} \Longleftrightarrow C=\tfrac{11}{5}$
+		
+		\hspace{0.7cm} $x_{1} = \tfrac{11}{5} \mathrm{e}^{2t} $ solution de $(E)$.
+		
+		\item Solution générale de $(E)$ :
+		
+		\hspace{0.7cm} $x = A \mathrm{e}^{t} + B  \mathrm{e}^{-3t} + \tfrac{11}{5} \mathrm{e}^{2t} $, avec $A,B \in \R$.	
+	\end{enumerate}
+
+\item % Sur $[0 ; \pi[, \, E_2 : x''+x=  \cos t                   $  %\dfrac{1}{\cos t}$
+	\begin{enumerate}
+		\item  \'Equation différentielle homogène associée :  \, $ (H) \,x'' + x = 0 $
+
+			\dots
+
+			La solution générale de $(H)$ est :
+			
+			\hspace{0.7cm} $x_H = A \cos t + B  \sin t $, avec $A,B \in \R$.
+
+		\item On détermine une solution particulière à $(\tilde{E}) x''+x=  \mathrm{e}^{\mathrm{i}t}$ et une solution particulière de $(E)$ sera, par linéarité, la partie réelle de la solution trouvée.
+		
+Attention, comme $\mathrm{i}$ est racine simple du polynôme caractéristique on la cherche sous la forme $x_1 = C t \mathrm{e}^{\mathrm{i}  t}$ avec $C \in \R$, qui est deux fois dérivables sur $\R$ :
+		
+		\dots
+		
+		\hspace{0.7cm} $x_{1} = \tfrac{\mathrm{i}}{2} t \mathrm{e}^{\mathrm{i} t} $ solution de $(\tilde{E})$.
+
+		\dots
+		
+		\hspace{0.7cm} $x_{2} = -\tfrac{ t }{2} \sin t $ solution de $( E )$.		
+		
+		\item Solution générale de $(E)$ :
+		
+		\hspace{0.7cm} $x =  A \cos t + B  \sin t - \tfrac{ t }{2} \sin t $, avec $A,B \in \R$.	
+	\end{enumerate}
+
+\item %Sur $\R, \, E_3 : x''-2x'+x = \mathrm{ch} t$
+	\begin{enumerate}
+		\item  \'Equation différentielle homogène associée :  \, $ (H) \,x'' -2x' + x = 0 $
+
+			\dots
+
+			La solution générale de $(H)$ est :
+			
+			\hspace{0.7cm} $x_H = A  \mathrm{e}^{t} + B t  \mathrm{e}^{-t}$, avec $A,B \in \R$.
+
+		\item On détermine une solution particulière $x_1$ à $(E_1)  x''-2x'+x =  \mathrm{e}^{ t }$, puis $x_2$ à $(E_2)  x''-2x'+x =  \mathrm{e}^{ -t }$ et une solution particulière de $(E)$ sera, par superposition, $\frac{x_1 + x_2}{2}$.
+		
+Attention, comme $1$ est racine double du polynôme caractéristique on cherche $x_1$ sous la forme $x_1 = C t^2 \mathrm{e}^{ t}$ avec $C \in \R$, qui est deux fois dérivables sur $\R$ :
+		
+		\dots
+		
+		\hspace{0.7cm} $x_{1} = \tfrac{ 1 }{2} t^2 \mathrm{e}^{ t} $ solution de $(E_1)$.
+
+		\dots
+		
+		\hspace{0.7cm} $x_{2} = \tfrac{ 1 }{4}  \mathrm{e}^{ -t} $ solution de $( E_2 )$.		
+
+		\dots
+		
+		\hspace{0.7cm} $x_{3} = \tfrac{ 1 }{4} t^2 \mathrm{e}^{ t}  + \tfrac{ 1 }{8}  \mathrm{e}^{ -t} $ solution de $( E_2 )$.	
+		
+		\item Solution générale de $(E)$ :
+		
+		\hspace{0.7cm} $x =   A  \mathrm{e}^{t} + B t  \mathrm{e}^{-t} +  \tfrac{ 1 }{4} t^2 \mathrm{e}^{ t}  + \tfrac{ 1 }{8}  \mathrm{e}^{ -t}$, avec $A,B \in \R$.	
+	\end{enumerate}
+\end{enumerate}
 \end{Soln}

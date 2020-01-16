@@ -93,16 +93,16 @@
 \chapter{Intégrale à paramètre}
 Une intégrale  à paramètre est une fonction d'une variable entière ou
 réelle, définie par intégration d'une fonction de deux variables, la variable d'intégration et le paramètre, :
-$$F(x)=\int_J f(x,t)\mathrm dt.$$
+$$F(x)=\int_J f(x,t)\,\mathrm dt.$$
 On dit que la fonction $F$ est une intégrale dépendant du paramètre $x$. On définit ainsi une fonction $F$ dont on veut découvrir les propriétés à partir
 de celles de $f$.\\ 
-En première partie, nous verrons le cas où le paramètre est un entier $$u_n=F(n)=\int_J f(n,t)\mathrm dt=\int_J f_n(t)\mathrm dt.$$ Le cours sur les suites et séries de fonctions nous a fourni un théorème pour permuter la limite et l'intégrale $$\lim_{n\to \infty}\int_J f_n(t)\mathrm dt=\int_J \lim_{n\to \infty}f_n(t)\mathrm dt$$ si la suite de fonctions convergent uniformément sur $J$ et si $J$ est un segment. Que peut on dire lorsque $J$ est un intervalle quelconque ? Lorsqu'il y a convergence simple et non plus uniforme ?
+En première partie, nous verrons le cas où le paramètre est un entier $$u_n=F(n)=\int_J f(n,t)\,\mathrm dt=\int_J f_n(t)\,\mathrm dt.$$ Le cours sur les suites et séries de fonctions nous a fourni un théorème pour permuter la limite et l'intégrale $$\lim_{n\to \infty}\int_J f_n(t)\,\mathrm dt=\int_J \lim_{n\to \infty}f_n(t)\,\mathrm dt$$ si la suite de fonctions convergent uniformément sur $J$ et si $J$ est un segment. Que peut on dire lorsque $J$ est un intervalle quelconque ? Lorsqu'il y a convergence simple et non plus uniforme ?
 Notre but est  de donner des théorèmes plus généraux.\\
 En seconde partie,  nous verrons le cas où le paramètre est un réelle et nous introduirons des théorèmes la permutation de la limite et de l'intégrale 
 $$\lim_{x\to x_0}\int_J f(x,t)\, \mathrm dt=\int_J \lim_{x\to x_0} f(x,t)\, \mathrm dt,$$
 et la permutation de la dérivée et  l'intégrale 
-$$\frac{d}{dx} \int_J f(x,t)\mathrm dt = \int_J \frac{\partial f}{\partial x }(x,t) \mathrm dt,$$ 
-sur in intervalle $J$ quelconque. 
+$$\frac{d}{dx} \int_J f(x,t)\,\mathrm dt = \int_J \frac{\partial f}{\partial x }(x,t) \,\mathrm dt,$$ 
+sur un intervalle $J$ quelconque. 
 
 
 
@@ -144,9 +144,7 @@ Alors $f$ est continue sur $[a,b]$ (donc intégrable) et
 \item \textbf{Intégrabilité de la fonction dominante} :  la fonction $\phi $ est intégrable sur $J$.
 \end{enumerate}
 Alors toutes les fonctions $f_n$ et $f$ sont intégrables sur $J$, et on a :
-$$\lim_{n\to +\infty}\int_J |f_n(t)-f(t)| \mathrm dt=0.$$
-En particulier, 
-$$\lim_{n\to +\infty}\int_J f_n(t)\mathrm dt= \int_J \lim_{n\to +\infty} f_n(t)\mathrm dt=\int_J f(t)\mathrm dt$$.
+$$\lim_{n\to +\infty}\int_J f_n(t)\,\mathrm dt= \int_J \lim_{n\to +\infty} f_n(t)\,\mathrm dt=\int_J f(t)\,\mathrm dt$$.
 \end{Th}
 \begin{NB}
 Le théorème précédent est valable sur un intervalle quelconque qui peut aussi être un segment.\\
@@ -171,7 +169,7 @@ $$\left|\frac{1}{1+t^n}\right| \leq \frac{1}{1+t^2}\leq \frac{1}{t^2}=\phi(t).$$
 $\int_1^{+\infty}\frac{dt}{t^2}$ converge et donc intégrable sur $[1,+\infty[$.
 \end{enumerate}
 Les hypothèses du théorème de convergence dominée sont vérifiées. On en déduit que :
-$$\lim_{n\to +\infty}u_n=\lim_{n\to +\infty} \int_1^{+\infty}\frac{dt}{1+t^n} \underset{\text{convergence dominée}}{=}\int_1^{+\infty}\lim_{n\to +\infty} \frac{1}{1+t^n}dt= \int_1^{+\infty} 0 dt=0.$$
+$$\lim_{n\to +\infty}u_n=\lim_{n\to +\infty} \int_1^{+\infty}\frac{dt}{1+t^n} \underset{\text{convergence dominée}}{=}\int_1^{+\infty}\lim_{n\to +\infty} \frac{1}{1+t^n}\,dt= \int_1^{+\infty} 0\, dt=0.$$
 \end{Ex}
 \begin{Ex}[Wallis]
 Déterminer la limite, lorsque $n$ tend vers $+\infty$, de la  suite suivante :
@@ -289,6 +287,7 @@ $t\mapsto e^{-at}$ est intégrable sur $[0,+\infty[$.\\
 \end{enumerate}
 Les hypothèses de théorème de continuité sous le signe $\int$ sont vérifiées donc la fonction $F$ est continue sur $[a,b]$.
 \end{Ex}
+Dans certains cas, il n'est pas possible de "dominer" la fonction $f$ sur l'intervalle $I$ tout entier. On peut cependant se contenter de vérifier l'hypothèse de domination sur tout segment $K$ inclus dans $I$, le théorème précédent s'applique encore.
 \begin{Th}[continuité sous le signe $\int$ version locale]
 On peut remplacer l'hypothèse de domination par:
 \begin{itemize}
@@ -296,7 +295,6 @@ On peut remplacer l'hypothèse de domination par:
   \textbf{Hypothèse de domination locale:}
   Pour tout segment $K$ inclus dans $I$,
   il existe une fonction $\phi_K \colon J \to \R$ telle que
-
   \begin{itemize}
   \item
     pour tout $(x,t)\in K×J$, on a $\Abs{f(x,t)}\leq\phi _K(t)$,
@@ -309,6 +307,25 @@ On peut remplacer l'hypothèse de domination par:
 Démontrer que $F:x\mapsto \int_{0}^{+\infty} e^{-xt^2}\mathrm dt$ est continue sur $]0,+\infty[$.\\
 On a démontré que $F$  est continue pour tout segment $[a,b]$ inclus dans $]0,+\infty[$. Donc $F$ est continue sur $]0,+\infty[$. 
 \end{Ex}
+Si l'intervalle d'intégration est un segment $[c,b]$, l'hypothèse de domination est
+automatique sur tout segment $[a ,b ] \subset I$ en posant $\phi(t)=M=\sup_{(x,t)\in[a,b]\times[c,d]}|f(x,t)|$ avec $f$ continue (voir cours sur les fonctions de plusieurs variables).
+\begin{Ex}
+Démontrer que $F:x\mapsto \int_{0}^{1}\frac{ e^{xt}}{1+t^2}\,\mathrm dt$ est continue sur $\R$.\\
+Soit $[a,b]\subset \R$.
+\begin{enumerate}
+\item \textit{Continuité:}\\ 
+Soit $x\in [a,b]$ fixé. La fonction $t\mapsto \frac{ e^{xt}}{1+t^2}$ est continue  sur $[0,1]$.\\
+Soit $t\in [0,1]$ fixé. La fonction $x\mapsto \frac{ e^{xt}}{1+t^2}$ est continue  sur  $[a,b]$.
+\item  \textit{Domination:}\\
+On a :
+$$\forall x\in [a,b], \forall t\in [0,1]: \quad  \Abs{\frac{ e^{xt}}{1+t^2}}\leq M=\sup_{(x,t)\in[a,b]\times[0,1]}|\frac{ e^{xt}}{1+t^2}| .$$
+$t\mapsto M$ est intégrable sur $[0,1]$.\\
+\end{enumerate}
+Les hypothèses de théorème de continuité sous le signe $\int$ sont vérifiées donc la fonction $F$ est continue sur $[a,b]$.
+On a démontré que $F$  est continue pour tout segment $[a,b]$ inclus dans $\R$. Donc $F$ est continue sur $\R$. 
+\end{Ex}
+
+
 %% -----------------------------------------------------------------------------
 \subsection{Dérivabilité}
 \begin{Th}[Dérivation sous le signe $\int$]
