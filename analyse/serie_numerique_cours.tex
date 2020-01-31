@@ -71,14 +71,14 @@
 
 En mathématiques, la notion de série permet de généraliser la notion de somme finie.
 
-\'Etant donnée une suite de terme général $u_n$, étudier la série de terme général $(u_n)$ c'est étudier la suite obtenue en prenant la somme des premiers termes de la suite $(u_n)$, autrement dit la suite $(S_n)$ définie par :
+\'Etant donnée une suite de terme général $u_n$, étudier la série de terme général $u_n$ c'est étudier la suite obtenue en prenant la somme des premiers termes de la suite $(u_n)$, autrement dit la suite $(S_n)$ définie par :
 $$ S_{n}=u_{0}+u_{1}+\cdots +u_{n}=\sum _{k=0}^{n}u_{k}.$$
 
 Peut-on donner un sens à la somme de tous les termes d'une suite infinie de nombres
 réels : 
 $$
 \lim_{n\to\infty}S_n= u_{0}+u_{1}+u_{3}+u_{4}+\cdots =\lim_{n\to\infty}\sum _{k=0}^{n}u_{n} ?$$ 
-Peut-on effectuer permuter les termes de la suite ou les regrouper certains d'entre eux sans modifier ni la convergence ni la somme de la série ?
+Peut-on  permuter les termes de la suite ou opérer des regroupement sans modifier ni la convergence ni la somme de la série ?
 
 \begin{Ex}[Partager un carré]
 Peut-on partager un carré en une infinité de
@@ -106,6 +106,7 @@ rectangles de façon à enlever à chaque étape la moitié de l'aire restante ? La f
 \end{center}
 En prenant comme unité d'aire, l'aire du carré de départ, on en déduit la relation :
 $$ 1 =\frac{1}{2}+ \frac{1}{4}+\frac{1}{8}+\frac{1}{16}+\frac{1}{32}+\dots= \lim_{n\to\infty}\sum_{k=1}^n 2^{-k}.$$ 
+La somme de tous les termes de la suite $(2^{-n})_{n\in\N^*}$ converge et est égale à 1.
 \end{Ex}
 \begin{Ex}[Somme harmonique]
 La somme harmonique est la somme des inverses des entiers naturels non nuls qui est donc égale à
@@ -118,7 +119,8 @@ et la limite est donc supérieur à une somme infini de $1/2$ donc la limite est l
 \end{center}
 d'où
 $$ H_{n}=1+{\frac {1}{2}}+{\frac {1}{3}}+{\frac {1}{4}}+\cdots +{\frac {1}{n}}\geq\int_1^{n+1}\frac 1 x dx=\ln(n+1).$$
-Comme  $\lim\limits_{n\to\infty}\ln(n+1)=+\infty$, la suite $(H_n)$ diverge.
+Comme  $\lim\limits_{n\to\infty}\ln(n+1)=+\infty$, la suite $(H_n)$ diverge.\\
+La somme de tous les termes de la suite $(1/n)_{n\in\N}$ diverge vers l'infini.
 \end{Ex}
 \begin{Ex}[Non commutativité des sommes infinies]
 On considère cette somme
