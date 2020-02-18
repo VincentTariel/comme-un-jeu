@@ -1,0 +1,537 @@
+\documentclass[a4paper]{book}
+\usepackage{t1enc}
+\usepackage[latin1]{inputenc}
+\usepackage[french]{minitoc}
+ \usepackage{amsmath}
+\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
+\usepackage[francais]{babel}
+\usepackage{amsmath}
+\usepackage{TikZ}
+\usepackage{tkz-fct}   
+\usepackage{a4wide,jlq2eams} 
+\usepackage{graphicx}
+\usepackage[colorlinks = true,urlcolor  = blue]{hyperref}
+\usepackage{thmbox}
+\usepackage{changepage}
+\usepackage{xcolor}
+\usepackage{sectsty}
+ \usepackage{enumitem}
+\usepackage{eurosym}
+\usetikzlibrary{angles}
+\usetikzlibrary{quotes}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
+\sectionfont{\color{magenta}}
+\subsectionfont{\color{red}}
+\subsubsectionfont{\color{red}}
+\setlength{\shadowsize}{1.5pt}
+\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}} 
+ 
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth} 
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\fancypagestyle{plain}{%
+   \fancyhead{} % get rid of headers
+   \renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+\setcounter{minitocdepth}{3}
+
+
+\renewcommand{\thesection}{\Roman{section}} 
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\thmboxoptions{S,bodystyle=\itshape\noindent}
+\newtheorem[L]{Lem}{Lemme}[section]
+\newtheorem[L]{Th}[Lem]{Théorème}
+\newtheorem[L]{Cor}[Lem]{Corollaire}
+\newtheorem[L]{Prop}[Lem]{Proposition}
+
+\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
+\newtheorem[S,bodystyle=\upshape\noindent]{DfTh}{Définition-Théorème}
+\newtheorem[S,bodystyle=\upshape\noindent]{DfProp}{Définition-Proposition}
+\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
+\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
+\newtheorem[S,bodystyle=\upshape\noindent]{Meth}{Méthode}
+\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
+
+
+\newcommand\SUI{(u_n)_{n\in\N}}
+\newcommand\SER{ \sum u_n}
+\newcommand\myop{ \bigtriangleup}
+\def\pa#1{({#1})}
+\newcommand\Matrix[3]{\mathrm{#1}_{#2}\pa{#3}}
+\def\sEnsemble#1#2{\mathopen\{#1\mid#2\mathclose\}}
+\newcommand{\myunit}{1 cm}
+\tikzset{
+    node style sp/.style={draw,circle,minimum size=\myunit},
+    node style ge/.style={circle,minimum size=\myunit},
+    arrow style mul/.style={draw,sloped,midway,fill=white},
+    arrow style plus/.style={midway,sloped,fill=white},
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{tocdepth}{5}
+\begin{document}
+%\dominitoc
+%\tableofcontents
+\chapter{Espaces préhilbertiens réels}
+
+
+
+En algèbre linéaire, un espace préhilbertien réel est un espace vectoriel réel avec une structure supplémentaire appelée produit scalaire. Cette structure supplémentaire associe chaque couple de vecteurs à une quantité scalaire connue sous le nom de produit scalaire des vecteurs. Le produit scalaire permet l'introduction rigoureuse de notions géométriques intuitives telles que la longueur d'un vecteur ou l'angle entre deux vecteurs. Il permet de définir la notion d'orthogonalité entre vecteurs (produit scalaire nul). Les espaces préhilbertiens réels généralisent les espaces euclidiens aux espaces vectoriels de toute dimension (éventuellement infinie), et sont étudiés en analyse fonctionnelle.\\
+Un produit scalaire induit naturellement une norme associée  donc un espace préhilbertien réel est également un espace vectoriel normé.
+%\minitoc
+
+% -----------------------------------------------------------------------------
+% -----------------------------------------------------------------------------
+\section{Produit scalaire et norme}
+\subsection{Produit scalaire}
+\begin{Df}[Produit scalaire]
+Soit $E$ un $\R$-espace vectoriel de dimension finie ou infinie.
+Un \defi{produit scalaire} sur $E$ est une forme bilinéaire symétrique définie positive sur $E$.
+Autrement dit, un \defi{produit scalaire} sur $E$ est une application $\varphi:E^2\to \R$
+\begin{itemize}
+\item \emph{bilinéaire} :
+  $\forall \vec{x},\vec{y},\vec{z}\in E, \forall \lambda ,\mu \in \R$
+  $$ \varphi (\lambda \vec{x}+\mu \vec{y},\vec{z}) = \lambda \varphi (\vec{x},\vec{z}) + \mu \varphi (\vec{y},\vec{z})\text{ par rapport à la première variable}, $$
+  $$ \varphi (\vec{x},\lambda \vec{y}+\mu \vec{z}) = \lambda \varphi (\vec{x},\vec{y}) + \mu \varphi (\vec{x},\vec{z})\text{ par rapport à la seconde variable}. $$
+\item \emph{symétrique} : $\forall \vec{x},\vec{y}\in E, \quad  \varphi (\vec{y},\vec{x}) = \varphi (\vec{x},\vec{y}).$
+\item \emph{définie} : $\forall \vec{x}\in E, \quad \varphi (\vec{x},\vec{x})=0 \Longrightarrow \vec{x} = \vec{0}_E$,
+\item \emph{positive} : $\forall \vec{x}\in E,\quad \varphi (\vec{x},\vec{x})\geq 0.$ 
+\end{itemize}
+\end{Df}
+Il suffit de vérifier la linéarité à gauche et la symétrie pour justifier la bilinéarité.
+\begin{NB}
+A ce stade, les notions de norme et d'angle ne sont pas définies. Le produit scalaire est définie indépendamment d'une relation du type   $\langle \vec{x}, \vec{y} \rangle = \|\vec{x}\|\|\vec{y}\| \cos(\vec{x}, \vec{y})$. En réalité, dans la théorie des espaces préhilbertiens réels, la définition du produit scalaire est première et les notion de norme et d'angle viennent après.\\
+Norme : $\|\vec{x}\|=\sqrt{\langle \vec{x}, \vec{x} \rangle}$.\\
+Angle : $\theta=\arccos{\frac{\langle \vec{x}, \vec{y} \rangle}{\|\vec{x}\|\|\vec{y}\| }}$
+\begin{center}
+        \begin{tikzpicture}[very thick]
+          \draw[-latex] (0,0) -- (3,0)  node[above]{$\vec{x}$};
+          \draw[-latex] (0,0) -- (1, 3)  node[ right]{$\vec{y}$};
+			\draw (3,0) coordinate (a) -- (0,0) coordinate (b) -- (1,3) coordinate (c)  pic["$\theta=\arccos{\frac{\langle \vec{x}, \vec{y} \rangle}{\|\vec{x}\|\|\vec{y}\| }}$", draw=orange, <->, angle eccentricity=1.2, angle radius=2cm]
+    {angle=a--b--c};
+        \end{tikzpicture}
+\end{center}
+\end{NB} 
+\begin{Df}[Espace préhilbertien réel]
+Un \defi{espace préhilbertien réel}  est un $\R $-espace vectoriel $E$ muni d'un produit scalaire.\\
+On note le produit scalaire généralement $\langle \vec{x}, \vec{y} \rangle$, $\langle \vec{x} \mid \vec{y} \rangle$, $(\vec{x},\vec{y})$, $(\vec{x}\mid \vec{y})$ ou encore $\vec{x}.\vec{y}$.\\
+Un espace préhilbertien réel de dimension finie est appelé \defi{espace euclidien}.
+\end{Df}
+\begin{DfProp}[Produit scalaire canonique sur $\R^n$]
+Le \defi{produit scalaire canonique} est défini par  
+$$\forall \vec{x} = ( x_1, \dots, x_n),\vec{y} =( y_1, \dots, y_n) \in\R^n :\quad \PS{\vec{x}}{\vec{y}} =\sum_{i=1}^n x_i \, y_i.  $$
+Si on pose $X=\begin{pmatrix}
+x_1\\ \vdots \\ x_n 
+\end{pmatrix}$ et $Y=\begin{pmatrix}
+y_1\\ \vdots \\ y_n 
+\end{pmatrix}$, on a $\PS{\vec{x}}{\vec{y}}=\transposee{X}Y.$
+\end{DfProp}
+Ainsi défini, nous retrouvons le produit scalaire usuel défini dans le plan $\R^2$. Par exemple si $\vec{x} = ( x_1, x_2),\vec{y} =( y_1, y_2)$, on a  $\PS{\vec{x}}{\vec{y}} =x_1 y_1+x_2 y_2$.
+\begin{proof}
+\begin{itemize}
+\item \emph{symétrique} : $\PS{\vec{x}}{\vec{y}}=\transposee{X}Y  \overbrace{=}^{\text{matrice carré de taille 1}} \transposee{(\transposee{X}Y)} = \transposee{Y}X =\PS{\vec{y}}{\vec{x}}.$
+\item \emph{bilinéaire} : par symétrie la linéarité par rapport à la seconde variable suffit,   $$\PS{\vec{x}}{\lambda \vec{y}_1+\mu \vec{y}_2}=\transposee{X}(\lambda Y_1+\mu Y_2)  =\lambda \transposee{X} Y_1+\mu \transposee{X} Y_2=\lambda \PS{\vec{x}}{\vec{y}_1}+\mu \PS{\vec{x}}{\vec{y}_2}  .$$
+\item \emph{positive}: $\PS{\vec{x}}{\vec{x}}=\sum_{i=1}^n x_i^2 \geq 0.$
+\item \emph{définie}: $\PS{\vec{x}}{\vec{x}}=\sum_{i=1}^n \overbrace{x_i^2}^{\geq 0} = 0$, alors  $x_i=0$ pour tout i, soit $\vec{x}=\vec{0}_{\R^n}$.
+\end{itemize}
+\end{proof}
+\begin{Ex}[Non unicité du produit scalaire]
+L'application $(X,Y)\to\transposee{X}\begin{pmatrix}
+2&1 \\1&2
+\end{pmatrix}Y$  est un produit scalaire sur $\R^2$ distinct du produit scalaire canonique.
+\begin{itemize}
+\item \emph{symétrique} : $\transposee{X}\begin{pmatrix}
+2&1 \\1&2
+\end{pmatrix}Y  \overbrace{=}^{\text{matrice carré de taille 1}} \transposee{(\transposee{X}\begin{pmatrix}
+2&1 \\1&2
+\end{pmatrix}Y)} =\transposee{Y}\transposee{\begin{pmatrix}
+2&1 \\1&2
+\end{pmatrix}}X = \transposee{Y}\begin{pmatrix}
+2&1 \\1&2
+\end{pmatrix}X .$
+\item \emph{bilinéaire} : par symétrie la linéarité par rapport à la seconde variable suffit,   $$\transposee{X}\begin{pmatrix}
+2&1 \\1&2
+\end{pmatrix}(\lambda Y_1+\mu Y_2)  =\lambda \transposee{X}\begin{pmatrix}
+2&1 \\1&2
+\end{pmatrix} Y_1+\mu \transposee{X}\begin{pmatrix}
+2&1 \\1&2
+\end{pmatrix} Y_2.$$
+\item \emph{positive}: $\transposee{X}\begin{pmatrix}
+2&1 \\1&2
+\end{pmatrix}X=2x_1^2+2x_1x_2+2x_2^2=x_1^2+x_2^2 +(x_1+x_2)^2\geq 0 .$
+\item \emph{définie}: $\transposee{X}\begin{pmatrix}
+2&1 \\1&2
+\end{pmatrix}X= x_1^2+x_2^2 +(x_1+x_2)^2 = 0$, alors  $x_1=x_2=0$ , soit $X=\begin{pmatrix}
+0 \\0
+\end{pmatrix}$.
+\end{itemize}
+\end{Ex}
+\begin{Ex}[Sur les fonctions continues]
+L'application $(f,g)\to \int_0^1 f(t)g(t)\,\mathrm{dt} $ est un produit scalaire sur  $\mathcal{C}([0,1],\R )$.\\
+Symétrie, bilinéaire et positivité évidentes.\\Pour définie, 
+$\PS{f}{f}=\int_0^1 f^2(t)\,\mathrm{dt}=0$ implique que $f^2(t)=0$ pour tout $t\in[0,1]$ car $f^2$ est une fonction continue et positive. Donc $f=0$.
+\end{Ex}
+\begin{Ex}[Sur les polynômes]
+L'application $(P,Q)\to \sum_{k=0}^n  P(k)Q(k) $ est un produit scalaire sur  $\R_n[X]$.\\
+Symétrie, bilinéaire et positivité évidentes.\\Pour définie, 
+$\PS{P}{P}=\sum_{k=0}^n  P^2(k)$ implique que $P$ admet $n+1$ racines donc $P=0$ car $\deg P \leq n$.
+\end{Ex}
+\begin{Ex}[Sur les matrices carrés]
+L'application $(A,B)\to \Tr (\transposee{A}B)$ est un produit scalaire sur  $\Mn{\R}$.
+\begin{itemize}
+\item \emph{symétrique} : $\PS{A}{B} =\Tr (\transposee{A}B)  \overbrace{=}^{\Tr (\transposee{M})=\Tr (M) }\Tr (\transposee{(\transposee{A}B)})= \Tr (\transposee{B}A) =\PS{B}{A}$
+\item \emph{bilinéaire} : par symétrie la linéarité par rapport à la seconde variable suffit,   $$\PS{A}{\lambda B_1+\mu  B_2 }= \Tr (\transposee{A}(\lambda B_1+\mu  B_2))=\lambda\Tr (\transposee{A}B_1)+\mu\Tr (\transposee{A}B_2)= \lambda\PS{A}{ B_1} +\mu  \PS{A}{B_2 }.$$
+\item \emph{positive}: Rappels : coefficient d'un produit de matrice $(AB)_{i j}=\sum_{k=1}^n a_{i k}b_{k j}$ et trace $\Tr (C)=\sum_{k=1}^{n}c_{kk}$.\\
+On a $$\PS{A}{A}=\Tr (\transposee{A}A) = \sum_{j=1}^{n}  (\transposee{A} A)_{j j} =\sum_{j=1}^{n} \sum_{i=1}^{n}a_{i j} a_{i j}=\sum_{j=1}^{n} \sum_{i=1}^{n} a^2_{i j}\geq 0$$
+\item \emph{définie}: $\sum_{j=1}^{n} \sum_{i=1}^{n} a^2_{i j}=0$ implique que  $a_{i j}=0$ pour tout $i,j\in \Intf{1}{n}$, donc $A=0$.
+\end{itemize}
+\end{Ex}
+\subsection{Norme associée à une produit scalaire}
+\begin{Df}
+Soit $(E,\PS{.}{.})$ un espace préhilbertien réel.\\
+On appelle \defi{norme associée} l'application $\norme{.}: E\to \R $ définie par 
+$$ \forall \vec{x}\in E:\quad  \norme{\vec{x}} =\sqrt{\PS{\vec{x}}{\vec{x}}}.$$
+On appelle \defi{distance} de $\vec{x}$ à $\vec{y}$ le réel positif $d(\vec{x},\vec{y}) =\norme{\vec{x}-\vec{y}} $.\\ 
+Le vecteur $\vec{x}$ est dit \defi{unitaire} si $\norme{\vec{x}}=1.$
+\end{Df}
+\begin{NB}
+Si $\vec{x}\neq \vec{0}$, le vecteur $\frac{\vec{x}}{\norme{\vec{x}}}$ est unitaire.
+\end{NB}
+\begin{Prop}[Identités remarquables de la norme associée]
+Soit $(E,\PS{.}{.})$ un espace préhilbertien réel et $\vec{x},\vec{y}\in E$.
+On a
+\begin{itemize}
+\item $\norme{\vec{x}+\vec{y}}^2 = \norme{\vec{x}}^2 + \norme{\vec{y}}^2 + 2\PS{\vec{x}}{\vec{y}}$
+\item $\norme{\vec{x}-\vec{y}}^2 = \norme{\vec{x}}^2 - \norme{\vec{y}}^2 + 2\PS{\vec{x}}{\vec{y}}$
+\item \defi{identité du parallélogramme}:
+  $\norme{\vec{x}+\vec{y}}^2 + \norme{\vec{x}-\vec{y}}^2 = 2\bigl( \norme{\vec{x}}^2 + \norme{\vec{y}}^2 \bigr)$
+\item \defi{identité de polarisation}:
+  $\PS{\vec{x}}{\vec{y}} = \frac14 \bigl( \norme{\vec{x}+\vec{y}}^2 - \norme{\vec{x}-\vec{y}}^2 \bigr)$.
+\end{itemize}
+L'identité du parallélogramme signifie que, dans un parallélogramme, la somme des carrés des longueurs des diagonales est égale à la somme des carrés des longueurs des côtés.
+\begin{center}
+        \begin{tikzpicture}[very thick]
+          \draw[-latex] (0,0) -- (3,0)  node[pos=0.8,,above]{$\vec{x}$};
+          \draw[-latex] (0,0) -- (1, 3)  node[pos=0.8, left]{$\vec{y}$};
+          \draw[-latex] (0,0) -- (4, 3)  node[pos=0.8, right]{$\vec{x}+\vec{y}$};
+          \draw[-latex] (3,0) -- (1, 3)  node[pos=0.8, right]{$\vec{y}-\vec{x}$};
+			\draw[-] (1,3) -- (4, 3)  ;
+			\draw[-] (3,0) -- (4, 3)  ;
+        \end{tikzpicture}
+\end{center}
+\end{Prop}
+\begin{proof}
+Pour la première identité, on a :
+$$\norme{\vec{x}+\vec{y}}^2 = \PS{\vec{x}+\vec{y}}{\vec{x}+\vec{y}}\overbrace{=}^{\text{distributivité}}\PS{\vec{x}}{\vec{x}}+\PS{\vec{x}}{\vec{y}}+\PS{\vec{y}}{\vec{x}}+\PS{\vec{y}}{\vec{y}}\overbrace{=}^{\text{symétrie}}\norme{\vec{x}}^2 + \norme{\vec{y}}^2 + 2\PS{\vec{x}}{\vec{y}}.$$
+La démonstration de la suivante est similaire. Les deux dernières identités sont des combinaisons des deux premières (+ et -). 
+\end{proof}
+
+\begin{Th}[Inégalité de Cauchy-Schwarz]
+Soit $(E,\PS{.}{.})$ un espace préhilbertien réel.\\
+Alors pour tout $\vec{x},\vec{y}\in E$, on a :
+\[ | \PS{\vec{x}}{\vec{y}} | \leq  \norme{\vec{x}}\cdot \norme{\vec{y}}. \]
+De plus, on a égalité si et seulement si $\vec{x}$ et $\vec{y}$ sont liés.
+\end{Th}
+\begin{proof}
+Voir \url{https://www.youtube.com/watch?v=0AVLW1bTpLw}.\\
+Dans $\R^2$, la démonstration est directe car $\PS{\vec{x}}{\vec{y}}=\norme{\vec{x}}\cdot \norme{\vec{y}}\cos(\theta)$  et $|\cos(\theta)|\leq 1$.
+\begin{center}
+        \begin{tikzpicture}[very thick]
+          \draw[-latex] (0,0) -- (3,0)  node[above]{$\vec{x}$};
+          \draw[-latex] (0,0) -- (1, 3)  node[ right]{$\vec{y}$};
+			\draw (3,0) coordinate (a) -- (0,0) coordinate (b) -- (1,3) coordinate (c)  pic["$\theta$", draw=orange, <->, angle eccentricity=1.2, angle radius=2cm]
+    {angle=a--b--c};
+        \end{tikzpicture}
+\end{center}
+Dans le cas générale, lorsque $\vec{y} =  \vec{0}$, l'énoncé est clairement vrai, par conséquent on supposera $\vec{y}$ non nul.
+\begin{itemize}
+\item \textit{Inégalité} Posons, pour tout réel $t$, $P(t)=\norme{\vec{x}+t\vec{y}}^{2}$. Par construction, la fonction $P$ est  positive ou nulle. On a :
+$$P(t)= \PS{\vec{x}+t\vec{y}}{\vec{x}+t\vec{y}}\overbrace{=}^{\text{bilinéarité}} \norme{\vec{x}}^2 +2t\PS{\vec{x}}{\vec{y}} +t^2  \norme{\vec{y}}^2$$
+Comme $\vec{y}$ est non nul, $\norme{\vec{y}}^2$ est non nul également.  $P$ est donc une fonction polynomiale du second degré. $P$ étant positive ou nulle, son discriminant est négatif ou nul  :
+$$4\PS{ \vec{x}}{\vec{y}}^{2}-4\norme{\vec{x}}^{2}\norme{\vec{y}}^{2}\leq 0 $$
+Comme $t\to\sqrt{t}$ est croissante, on obtient l'inégalité de Cauchy-Schwarz
+\[ | \PS{\vec{x}}{\vec{y}} | \leq  \norme{\vec{x}}\cdot \norme{\vec{y}}. \]
+\item \textit{Égalité} Si $(\vec{x}, \vec{y})$ est une famille liée alors, il existe $\lambda\in\ R$ tel que $\vec{x} = \lambda\vec{y}$. On a:
+$$|\PS{\vec{x}}{\vec{y}}|=|\PS{\lambda\vec{y}}{\vec{y}}|=|\lambda| \norme{\vec{y}}^{2}=\norme{\vec{x}}\norme{\vec{y}}.$$
+Réciproquement, si $|\PS{\vec{x}}{\vec{y}} = \norme{\vec{x}}\norme{\vec{y}}$ alors le discriminant ci-dessus est nul donc $P$ admet une racine réelle (double) $t$, et pour ce $t$ on a
+$$ \norme{\vec{x}+t\vec{y}}^{2}=0\overbrace{\Longrightarrow}^{\text{définie}} \vec{x}+t\vec{y} =\vec{0}.$$
+Donc $(\vec{x}, \vec{y})$ est une famille liée.
+\end{itemize} 
+\end{proof}
+\begin{Ex}
+Pour tout $x_1,\dots,x_n\in \R:\quad \left(\sum_{i=1}^n x_i\right)^2\leq n \sum_{i=1}^n x_i$ avec égalité si et seulement si $x_1=\dots=x_n$.\\
+Il suffit d'appliquer l'inégalité de Cauchy-Schwarz  aux vecteurs $(x_1,\dots,x_n)$ et $(1,\dots,1)$ de $ \R^n$ muni du produit scalaire canonique.   
+\end{Ex}
+\begin{Ex}
+Pour tout $f\in \mathcal{C}([0,1],\R ):\quad |\int_0^1f(t)\,\mathrm{dt}|\leq \sqrt{\int_0^1f^2(t)\,\mathrm{dt}}   $.\\
+Il suffit d'appliquer l'inégalité de Cauchy-Schwarz  aux vecteurs $f$ et $x\to 1$ de $ \mathcal{C}([0,1],\R ) $ muni du produit scalaire   $\PS{f}{g}= \int_0^1 f(t)g(t)\,\mathrm{dt}.$
+\end{Ex}
+
+
+
+
+\begin{Cor}[Norme sur $E$]
+Soit $(E,\PS{.}{.})$ un espace préhilbertien réel.\\
+Alors la norme associée $\norme{.}$ est une \defi{norme} sur $E$, c'est-à-dire vérifie ces propriétés :
+\begin{itemize}
+\item \textit{Homogène :} $\norme{\lambda \vec{x}}=|\lambda|\norme{\vec{x}}.$ 
+\item \textit{Définie :} $\norme{\vec{x}}=0\Longrightarrow \vec{x} =0.$
+\item \text{Inégalité triangulaire :}  $\norme{\vec{x}+\vec{y}}\leq \norme{\vec{x}}+\norme{\vec{y}}.$
+\end{itemize}
+\end{Cor}
+Cette norme fournit une structure d'espace vectoriel normé sur $E$. On peut donc parler de convergence sur $E$, de topologie sur $E$, etc.
+\begin{proof}
+\begin{itemize}
+\item \textit{Homogène :} $\norme{\lambda \vec{x}}=\sqrt{\PS{\lambda \vec{x}}{\lambda \vec{x}}}=|\lambda|\sqrt{\PS{ \vec{x}}{\vec{x}}}=|\lambda|\norme{\vec{x}}.$ 
+\item \textit{Définie :} $\norme{\vec{x}}=\sqrt{\PS{ \vec{x}}{\vec{x}}}=0\Longrightarrow \PS{ \vec{x}}{\vec{x}} =0\Longrightarrow \vec{x} =0$
+\item \text{Inégalité triangulaire :} $$\norme{\vec{x}+\vec{y}}^2=\norme{\vec{x}}^2+2\PS{\vec{x},\vec{y}} + \norme{\vec{y}}^2\overbrace{\leq}^{\text{Inégalité de Cauchy-Schwarz}}\norme{\vec{x}}^2+2\norme{\vec{x}} \norme{\vec{y}} + \norme{\vec{y}}^2 =(\norme{\vec{x}}+\norme{\vec{y}})^2.$$
+Comme $t\to\sqrt{t}$ est croissante, on obtient l'inégalité : $\norme{\vec{x}+\vec{y}}\leq \norme{\vec{x}}+\norme{\vec{y}}.$
+\end{itemize}
+\end{proof}
+\section{Orthogonalité}
+On considère un un espace préhilbertien réel $(E,\PS{.}{.})$.
+
+%
+%% -----------------------------------------------------------------------------
+\subsection{Vecteurs orthogonaux}
+
+\begin{Df}[Vecteurs orthogonaux]
+Soit $\vec{x},\vec{y}\in E$.\\
+On dit que les vecteurs $\vec{x}$ et $\vec{y}$ sont \emph{orthogonaux} si $\PS{\vec{x}}{\vec{y}} = 0$.\\
+On note $\vec{x} \perp \vec{y}$.
+\end{Df}
+%
+%\Para{Définitions}
+%Soit $\mathcal{F} = (\vec{x}_1,\dots,\vec{x}_n)$ une famille de vecteurs de $E$.
+%\begin{itemize}
+%\item La famille $\mathcal{F}$ est \emph{orthogonale}
+%  si et seulement si pour tout $(i,j)\in \ccro{1,n}^2$ tels que $i?j$,
+%  on a $\PS{\vec{x}_i}{\vec{x}_j} = 0$.
+%\item La famille $\mathcal{F}$ est \emph{orthonormale} (ou \emph{orthonormée})
+%  si et seulement si elle est orthogonale et pour tout $i\in \ccro{1,n}$,
+%  on a $\Norm{\vec{x}_i} = 1$.
+%\item La famille $\mathcal{F}$ est une \emph{base orthonormale}
+%  (ou \emph{base orthonormale})
+%  si et seulement si c'est une base et une famille orthonormale.
+%\end{itemize}
+%
+%\Para{Proposition}
+%\begin{enumerate}
+%\item Une famille orthogonale dont tous les éléments sont non nuls est libre.
+%\item Une famille orthonormale est libre.
+%\item La famille $(\vec{x}_1,\dots,\vec{x}_n)$ est orthonormale si et seulement si
+%  $\forall (i,j)\in \ccro{1,n}^2$, $\PS{\vec{x}_i}{\vec{x}_j} = ?_{i,j}$.
+%\item Une base orthonormale est une famille orthonormale qui est également génératrice.
+%\end{enumerate}
+%
+%\Para{Théorème}[Pythagore]
+%Soit $(\vec{x}_1,\dots,\vec{x}_n)$ une famille orthogonale de vecteurs de $E$.
+%Alors \[ \left\| ?_{i=1}^n \vec{x}_i \right\|^2 = ?_{i=1}^n \Norm{\vec{x}_i}^2. \]
+%
+%\Para{Théorème}[réciproque de Pythagore]
+%Soit $(\vec{x},\vec{y})\in E^2$.
+%Si $\Norm{\vec{x}+\vec{y}}^2 = \Norm{\vec{x}}^2 + \Norm{\vec{y}}^2$,
+%alors $\vec{x}$ et $\vec{y}$ sont orthogonaux.
+%
+%\Para{Théorème}[procédé de Gram-Schmidt]
+%Soit $(\vec{x}_1,\dots,\vec{x}_p)$ une famille \emph{libre} de vecteurs de $E$.
+%Alors il existe une \emph{unique} famille $(\vec{e}_1,\dots,\vec{e}_p)$  de vecteurs de $E$
+%telle que
+%\begin{itemize}
+%\item la famille $(\vec{e}_1,\dots,\vec{e}_p)$ est orthonormée,
+%\item pour tout $n\in \ccro{1,p}$, \[ \Vect (\vec{x}_1,\dots,\vec{x}_n) = \Vect (\vec{e}_1,\dots,\vec{e}_n), \]
+%\item pour tout $n\in \ccro{1,p}$, $\PS{\vec{x}_n}{\vec{e}_n} > 0$.
+%\end{itemize}
+%De plus, on peut la calculer avec les formules suivantes:
+%\begin{itemize}
+%\item $\vec{e}_1 = \frac{\vec{x}_1}{\Norm{\vec{x}_1}}$;
+%\item pour $n\in \ccro{2,p}$, on note
+%  \[ \vec{e'}_n = \vec{x}_n - ?_{k=1}^{n-1} \PS{\vec{e}_k}{\vec{x}_n} \vec{e}_k; \]
+%	\[\vec{e}_n = \frac{\vec{e'}_n}{\Norm{\vec{e'}_n}}.\]
+%\end{itemize}
+%
+%
+%
+%\Para{Proposition}[Bessel-Parseval en dimension finie]
+%Si $(\vec{e}_1,\dots,\vec{e}_n)$ une base orthonormale de $E$,
+%alors pour tout $\vec{x}\in E$, on a
+%\[ \vec{x} = ?_{k=1}^n \PS{\vec{e}_k}{\vec{x}} \vec{e_k} \quad\text{et}\quad \Norm{\vec{x}}^2 = ?_{k=1}^n \PS{\vec{e}_k}{\vec{x}}^2. \]
+%
+%\Para{Théorème}[inégalité de Bessel]
+%Soit $\mathcal{F} = (\vec{e}_n)_{n\in ?}$ une famille orthonormée et $\vec{x}\in E$.
+%Alors la série de terme général $\PS{\vec{e}_n}{\vec{x}}^2$ converge et
+%\[ ?_{n=0}^{+?} \PS{\vec{e}_n}{\vec{x}}^2 ? \Norm{\vec{x}}^2. \]
+%De plus, si l'on suppose que $\Vect(\mathcal{F})$ est dense dans $E$,
+%on a alors l'égalité (dite de Parseval).
+%
+%% -----------------------------------------------------------------------------
+%\subsection{Sous-espaces orthogonaux}
+%
+%\Para{Définitions}
+%Soit $F$ et $G$ deux sous-espaces vectoriels et $\vec{x}\in E$.
+%\begin{itemize}
+%\item \emph{$\vec{x}$ est orthogonal à $F$}
+%  si et seulement si $\vec{x}$ est orthogonal à tout vecteur de $F$.
+%  On note alors $\vec{x} \orth F$.
+%\item \emph{$F$ est orthogonal à $G$}
+%  si et seulement si pour tout $(\vec{x},\vec{y})\in F×G$, on a $\vec{x} \orth \vec{y}$.
+%  On note alors $F \orth G$.
+%\end{itemize}
+%
+%\Para{Définition}
+%Soit $A?E$.
+%On définit \emph{l'orthogonal de $A$}, noté $\Orth A$,
+%comme étant $\Ensemble{\vec{x}\in E}{\vec{x} \orth A}$.
+%Autrement dit,
+%\[ \forall \vec{x}\in E\+ \Big( \vec{x}\in \Orth A \iff \forall a\in A\+ \PS{a}{\vec{x}} = 0 \Big). \]
+%
+%\Para{Proposition}
+%Soit $A?E$.
+%Alors:
+%\begin{itemize}
+%\item $\Orth A$ est un sous-espace vectoriel de $E$;
+%\item $\Orth A = \Orth{\Vect(A)}$;
+%\item $\vec{x} \orth A$ si et seulement si $\vec{x}\in \Orth A$.
+%\end{itemize}
+%
+%\Para{Proposition}
+%Soit $\Uplet{F_1}{F_n}$ des sous-espaces vectoriels de $E$ deux à deux orthogonaux.
+%Alors ils sont en somme directe.
+%
+%\Para{Définition}
+%Soit $\Uplet{F_1}{F_n}$ des sous-espaces vectoriels de $E$ deux à deux orthogonaux.
+%On dit qu'ils sont en \emph{somme directe orthogonale} et l'on note leur somme
+%\[ ?_{k=1}^n F_k = ?_{k=1}^{\substack{n\\?}} F_k. \]
+%De plus, si cette somme vaut $E$, on dit qu'ils sont \emph{supplémentaires orthogonaux}.
+%
+%\Para{Théorème}
+%Soit $F$ un sous-espace vectoriel \emph{de dimension finie} de $E$.
+%Alors $E = F ? F^{?}$ et $F^{??} = F$.
+%
+%\Para{Remarques}
+%\begin{enumerate}
+%\item On ne fait pas d'hypothèse sur la dimension de $E$.
+%\item Si l'on ne suppose plus que $F$ est de dimension finie, on a seulement $F?\Orth F?E$ et $F^{??}?F$,
+%  et ces deux inclusions peuvent être strictes.
+%\end{enumerate}
+%
+%\Para{Corollaire}
+%Tout hyperplan de $E$ est de la forme $\Orth{\Acco{\vec{x}}}$
+%pour un $\vec{x}\in E?\acco{0_E}$.
+%
+%% -----------------------------------------------------------------------------
+%\subsection{Projection orthogonale}
+%
+%\Para{Notation}
+%Dans ce paragraphe, $F$ désignera toujours
+%un sous-espace vectoriel de $E$ tel que $E = F ? \Orth F$;
+%c'est toujours le cas si $F$ est de dimension finie.
+%
+%\Para{Définition}
+%On appelle \emph{projection orthogonale} sur $F$ la projection, notée $p_F$, sur $F$ parallèlement à $\Orth F$.
+%
+%Autrement dit, si
+%\[ \vec{x} = \underbrace{\vec{y}}_{\vphantom{\Orth F}\in F} + \underbrace{\vphantom{\vec{y}}\vec{z}}_{\in \Orth F}, \]
+%alors $p_F(\vec{x}) = \vec{y}$.
+%
+%\Para{Théorème}
+%Soit $(\vec{x},\vec{y})\in E^2$. £LCSSE.
+%\begin{enumerate}
+%\item $\vec{y} = p_F(\vec{x})$.
+%\item $\vec{y}\in F$ et $\vec{x} - \vec{y}\in \Orth F$.
+%\item $\vec{y}\in F$ et $\forall \vec{z}\in F\+ \Norm{\vec{x} - \vec{z}}?\Norm{\vec{x} - \vec{y}}$.
+%\end{enumerate}
+%
+%\Para{Corollaires}
+%Soit $\vec{x}\in E$.
+%\begin{enumerate}
+%\item Pour tout $\vec{y}\in F$, on a $\Norm{\vec{x}-\vec{y}}?\Norm{\vec{x}-p_F(\vec{x})}$
+%  avec égalité si et seulement si $\vec{y} = p_F(\vec{x})$.
+%\item La fonction $\Fonction{f}{F}{\R }{\vec{y}}{d(\vec{x},\vec{y}) = \Norm{\vec{x}-\vec{y}}}$
+%  atteint son minimum en un unique point $\vec{y} = p_F(\vec{x})$.
+%\item $\inf_{\vec{y}\in F} \Norm{\vec{x} - \vec{y}} = \Norm{\vec{x} - p_F(\vec{x})}$.
+%\item $d(\vec{x},F) = d(\vec{x},p_F(\vec{x})) = \Norm{\vec{x} - p_F(\vec{x})}$.
+%\end{enumerate}
+%
+%\Para{Proposition}
+%On suppose que $F$ est de dimension finie.
+%Soit $(\vec{e}_1,\dots,\vec{e}_n)$ une base orthonormale de $F$.
+%Alors, pour tout $\vec{x}\in E$, la projection orthogonale de $\vec{x}$ sur $F$ est donnée par la formule
+%\[ p_F(\vec{x}) = ?_{k=1}^n \PS{\vec{e}_k}{\vec{x}} \vec{e}_k. \]
+%
+%
+%
+%
+%
+%\Para{Exemple}
+%
+%Soit $E=\mathbb R^3$ muni de son produit scalaire canonique et de la base canonique $\mathcal B=(\vec{e}_1,\vec{e}_2)$. On considère $F$ le sous-espace vectoriel défini par l'équation 
+%$$\left\{
+%\begin{array}{rcl}
+%x_1+x_2&=&0
+%\end{array}
+%\right.
+%$$
+%\begin{enumerate}
+%\item \textit{Déterminer une base orthonormale de $F$}. On commence par trouver une base de $F$. On en déduit que $(\vec{e}_1-\vec{e}_2)$ est une base de $F$. Ce vecteur est déjà une famille orthogonal, il suffit de les normaliser. Si on pose $\vec{u}_1=\frac{1}{\sqrt 2} (\vec{e}_1+\vec{e}_2)$, alors $(\vec{u}_1)$ est une base orthonormale de $F$.
+%\item \textit{Déterminer la matrice dans $\mathcal B$ de la projection orthogonale $p_G$ sur $F$.} On calcul $p_G(\vec{e}_1)$ et $p_G(\vec{e}_2)$ par la formule $p_F(\vec{e}_i)=\PS{\vec{e}_i}{\vec{u}_1}\vec{u}_1$. On obtient :
+%$$[p_F]_{\mathcal{B}}=\frac{1}{2}\begin{pmatrix}
+%1 & -1\\
+%-1 & 1
+%\end{pmatrix}
+%$$
+%\item \textit{Déterminer la distance de $\vec{x}=(x_1,x_2)$ à $G$.} On a  $[p_F(\vec{x})]_{\mathcal{B}} = [p_F]_{\mathcal{B}}\times \begin{pmatrix}
+%x_1\\
+%x_2
+%\end{pmatrix}= \begin{pmatrix}
+%\frac{x_1 -x_2}{2} \\
+%\frac{-x_1 +x2 }{2}
+%\end{pmatrix}$. D'où $p_F(\vec{x})=(\frac{x_1 -x_2}{2},
+%\frac{-x_1 +x2 }{2})$. Puis $\vec{x} - p_F(\vec{x})= (\frac{x_1 +x_2}{2},\frac{x_1 +x_2}{2})$. Soit $||\vec{x} - p_F(\vec{x})||=\frac{1}{\sqrt{2}}(x1+x2)$ 
+%\end{enumerate}
+%\Para{Remarque}[calcul pratique]
+%On suppose que $F$ est de dimension finie.
+%Soit $\B = (\vec{u}_1,\dots,\vec{u}_n)$ une base de $F$ et $\vec{x}\in E$.
+%Pour calculer $p_F(\vec{x})$, on a en général deux méthodes:
+%\begin{enumerate}
+%\item On orthonormalise $\B$
+%  puis on applique ensuite la formule de la proposition précédente.
+%  Le problème est que les calculs de l'orthonormalisation sont souvent peu agréables.
+%\item On note $p_F(\vec{x}) =?_{j=1}^n?_j \vec{u}_j$
+%  et on écrit
+%  $\forall i\in \Dcro{1,n}$, $\PS{\vec{u}_i}{p_F(\vec{x})-\vec{x}} = 0$.
+%  Cela fournit un système de $n$ équations linéaires à $n$ inconnues:
+%  \[ \rule{-1\labelwidth}{0pt}
+%    \left\{ \begin{array}{c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c}
+%      ?_1 \PS{\vec{u}_1}{\vec{u}_1} & {}+{} & ?_2 \PS{\vec{u}_1}{\vec{u}_2} & {}+{} & \cdots & {}+{} & ?_n \PS{\vec{u}_1}{\vec{u}_n} & {}={} & \PS{\vec{u}_1}{\vec{x}} \\
+%      ?_1 \PS{\vec{u}_2}{\vec{u}_1} & {}+{} & ?_2 \PS{\vec{u}_2}{\vec{u}_2} & {}+{} & \cdots & {}+{} & ?_n \PS{\vec{u}_2}{\vec{u}_n} & {}={} & \PS{\vec{u}_2}{\vec{x}} \\
+%      \cdots            &       & \cdots            &       & \cdots &       & \cdots            &       & \cdots      \\
+%      ?_1 \PS{\vec{u}_n}{\vec{u}_1} & {}+{} & ?_2 \PS{\vec{u}_n}{\vec{u}_2} & {}+{} & \cdots & {}+{} & ?_n \PS{\vec{u}_n}{\vec{u}_n} & {}={} & \PS{\vec{u}_n}{\vec{x}}
+%  \end{array} \right. \]
+%  Ce système est nécessairement de Cramer.
+%  Il ne reste plus qu'à le résoudre, ce qui nous donne $\nUplet?1n$ et donc $p_F(\vec{x})$.
+%\end{enumerate}
+%
+%
+%
+%\Para{Définition}
+%On appelle \emph{symétrie orthogonale} par rapport à $F$
+%la symétrie, notée $s_F$, par rapport à $F$ et parallèlement à $\Orth F$.
+%Autrement dit, si
+%$\vec{x} = \vec{y} + \vec{z}$ où $\vec{y}\in F$ et $\vec{z}\in \Orth F$,
+%alors $s_F(\vec{x}) = \vec{y} - \vec{z}$.
+%
+%\Para{Proposition}
+%Avec les mêmes notations, $s_F = 2p_F - \Id_E$ et $s_F\circ s_F = \Id_E$ 
+%\Para{Définition}
+%Une \emph{réflexion} est une symétrie orthogonale par rapport à un hyperplan.
+%
+
+\end{document}
