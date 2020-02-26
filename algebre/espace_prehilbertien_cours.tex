@@ -716,7 +716,7 @@ avec $ \vec{u}=\sum_{i=1}^n \phi(\vec{e_i})\vec{e_i}$.
 
 
 \subsection{Représentations des hyperplans}
-\begin{Df}
+\begin{Df}[Vecteur normal]
 Soit $H$ un hyperplan d'un espace euclidien $ E$. On appelle \defi{vecteur normal à $ H$} tout vecteur non nul orthogonal à $ H$.
 \end{Df}
 
@@ -730,10 +730,13 @@ $$H=\left\{\vec{x}=\sum_{i=1}^n x_i \vec{e_i} \in E:   \sum_{i=1}^n u_i x_i=0 \r
 Réciproquement si 
 $$H=\left\{\vec{x}=\sum_{i=1}^n x_i \vec{e_i} \in E:   \sum_{i=1}^n u_i x_i=0 \right\}$$
 Alors  $\vec{u}=\sum_{i=1}^n u_i \vec{e_i}$ est un vecteur normal à $H$.\\
-En d'autres termes, il existe  $\vec{u}\in E$ tel que  :
+En d'autres termes, il existe  $\vec{u}\in E$ non nul tel que  :
 $$H=\left\{\vec{x}\in E:   \PS{\vec{u}}{\vec{x}}=0 \right\}.$$
-Ou bien encore, il existe $\phi \in E^*$ tel que :
+Ou bien encore, il existe $\phi \in E^*$ non nul tel que :
 $$H=\ker \phi.$$ 
 \end{Prop}
+
+
+%TODO APPLICATION APPROXIMATION SERIE DE FOURRIER
 
 \end{document}
