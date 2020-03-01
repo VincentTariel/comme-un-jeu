@@ -1,5 +1,6 @@
 \documentclass[a4paper]{book}
 \usepackage{t1enc}
+\usepackage{mathrsfs}
 \usepackage[latin1]{inputenc}
 \usepackage[french]{minitoc}
  \usepackage{amsmath}
@@ -222,19 +223,19 @@ Une matrice ou un endomorphisme de déterminant 1 ou -1 n'est pas nécessairement 
 \begin{Df}[Rotation et groupe spéciale orthogonale]
 Une matrice orthogonale [resp. isométrie] est \defi{direct(e)} si son déterminant est 1, indirect(e) si son déterminant est -1.\\
 Une isométrie vectorielle directe est également appelée \defi{rotation}.\\
-On note $\SnR$ l'ensemble des matrices orthogonales directes de $\MnR$ et $\SE$ l'ensemble des rotations de E.
+On note $\SOnR$ l'ensemble des matrices orthogonales directes de $\MnR$ et $\SOE$ l'ensemble des rotations de $E$.
 \end{Df}
 \begin{Ex}
 $\begin{pmatrix}0 &1\\-1&0\end{pmatrix}\in \mathcal{SO}_2(\R)$.
 \end{Ex}
 \begin{Prop}[Groupe]
-$\SnR$ [resp. $\SE$ ] est un groupe, sous-groupe de $\OnR$ [resp. $\OrE$)] appelé \defi{groupe
-spécial orthogonal} de $\MnR$ [resp. E]
+$\SOnR$ [resp. $\SOE$ ] est un groupe, sous-groupe de $\OnR$ [resp. $\OrE$)] appelé \defi{groupe
+spécial orthogonal} de $\MnR$ [resp. $E$].
 \end{Prop}
 \begin{proof}
 \begin{itemize}
-\item \textit{Non vide} : $I_n\in \SnR$.
-\item \textit{Stabilité} :  Soit $S_1,S_2\in \SnR$. $$\det (S_1 S_2^{-1})=\det S_1 \det S_2^{-1}=\det S_1 \det S_2=1.$$
+\item \textit{Non vide} : $I_n\in \SOnR$.
+\item \textit{Stabilité} :  Soit $S_1,S_2\in \SOnR$. $$\det (S_1 S_2^{-1})=\det S_1 \det S_2^{-1}=\det S_1 \det S_2=1.$$
 \end{itemize}
 \end{proof}
 \subsection{Symétrie orthogonale}
@@ -333,9 +334,9 @@ $\theta$ s'appelle \defi{l'angle de la rotation}, il est défini modulo $2\pi$.
 Soit $P$ la matrice de passage de la BOND $\mathcal{B}$ à une base BOND $\mathcal{B}'$. Comme $P$ appartient $\mathcal{SO}_2(\R)$, il existe $\theta'$ tel que $P=R_{\theta'}$. La  matrice de $r_{\theta}$ dans la base $\mathcal{B}'$  est : $R_{\theta'}^{-1}R_{\theta}R_{\theta'}=R_{-\theta'}R_{\theta}R_{\theta'}=R_{-\theta'+\theta+\theta'}=R_{\theta}.$
 \end{proof}
 \begin{Prop}[Expression complexe d'une rotation]
-Soit $r_\theta$ la rotation d'angle $\theta \in \R$. Pour $\vec{x} \in  \mathcal{P}$, on note $z$ l'affixe de $M$ et $z?$ celle de $r_\theta(\vec{x})$.\\
+Soit $r_\theta$ la rotation d'angle $\theta \in \R$. Pour $\vec{x} \in  \mathcal{P}$, on note $z$ l'affixe de $M$ et $z'$ celle de $r_\theta(\vec{x})$.\\
 On a :
-$$z? = e^{i\theta} z.$$
+$$z' = e^{i\theta} z.$$
 \end{Prop}
 \begin{proof}
 Soit $(x,y)$ les coordonnées du vecteur $\vec{x}$. D'une part, on a :
@@ -343,216 +344,242 @@ $$
 [r_\theta(\vec{x})]_{\mathcal{B}}=\begin{pmatrix} \cos \theta &-\sin \theta \\ \sin \theta &  \cos \theta \end{pmatrix}=\begin{pmatrix} x&y \end{pmatrix}=\begin{pmatrix}\cos \theta x -\sin \theta y  \\ \sin \theta x + \cos \theta y \end{pmatrix} 
 $$
 d'autre part, 
-$$z? = e^{i\theta} z=e^{i\theta}(x+iy)=(\cos \theta x -\sin \theta y) +i(\sin \theta x + \cos \theta y).$$
+$$z' = e^{i\theta} z=e^{i\theta}(x+iy)=(\cos \theta x -\sin \theta y) +i(\sin \theta x + \cos \theta y).$$
 On conclut en identifiant la partie réel et imaginaire aux cordonnées de $[r_\theta(\vec{x})]_{\mathcal{B}}$.
 \end{proof}
-%
-%PROPOSITION 9 ()
-%c) Réflexions
-%La it réflexion d?axe D (droite de P ) est la symétrie orthogonale par rapport à D.
-%DÉFINITION 11 (Reflexion)
-%Soit B = (~?,~?) une BON de P . L?endomorphisme dont la matrice dans B est S? =
-%µcos? sin? sin? ?cos?¶ est la réflexion d?axe la droite d?angle polaire ?2 dans B.
+\begin{Df}[Reflexion]
+La \defi{reflexion} d'axe $D$ est la symétrie orthogonal par rapport à $D$. 
+\end{Df}
 
-\begin{DfProp}[Angle géométrique]
-Soit $(\vec{x},\vec{y})\in E^2$ deux vecteurs non nuls.\\
-Alors il existe un unique $\theta  \in [0,\pi]$ tel que
-\[ \PS{\vec{x}}{\vec{y}} = \norme{\vec{x}} \norme{\vec{y}} \cos\theta  , \]
-et ce $\theta  $ s'appelle l'\defi{angle géométrique} entre les vecteurs $\vec{x}$ et $\vec{y}$.
-\end{DfProp}
+\begin{Prop}[Représentation matricielle]
+Soit $\mathcal{B}$  une  BOND de $\mathcal{P}$.\\
+L'endomorphisme dont la matrice dans $\mathcal{B}$ est $S_\theta = \begin{pmatrix} \cos \theta &\sin \theta \\ \sin \theta &  -\cos \theta \end{pmatrix}$ est la \defi{réflexion} d'axe la droite d'angle polaire $\frac \theta 2$ dans $\mathcal{B}$.
+\end{Prop}
+%TODO FAIRE UNE FIGURE ET LA DEMO
+\subsection{Isométrie vectorielle dans un espace de dimension 3}
+\begin{Th}[Réduction]
+Soit $E$ un espace euclidien de dimension $3$et $u \in OrE$. Il existe une BOND de $E$ dans
+laquelle $u$ a pour matrice :
+\begin{enumerate}
+\item $\begin{pmatrix}1&0&0\\0& \cos \theta &-\sin \theta \\0& \sin \theta &  \cos \theta \end{pmatrix}$ si $\det u=1$
+\item $\begin{pmatrix}-1&0&0\\0& \cos \theta &-\sin \theta \\0& \sin \theta &  \cos \theta \end{pmatrix}$ si $\det u=-1$
+\end{enumerate}
+avec le cas particulier $\theta = 0 [2\pi]$ :$\begin{pmatrix}-1&0&0\\0& 1 &0 \\0& 0 &  1 \end{pmatrix}$, matrice de réflexion (symétrie orthogonale par rapport à un plan).
+\end{Th}
+\begin{proof}
+Soit $\chi_u$ le polynôme caractéristique de $u$. $\chi_u$ est de degré 3 donc la limite en plus l'infini est de signe opposé à la limite en moins l'infini. D'après  le théorème des valeurs intermédiaires, il existe une racine réelle $\lambda$.\\
+Soit $\vec{x}$ un vecteur propre associée à cette valeur propre. par définition, an a  $u(\vec{x})=\lambda\vec{x}$, d'où  $\norme{u(\vec{x})}=|\lambda| \norme{\vec{x}}$. Comme $u$ est une isométrie vectorielle  $\norme{u(\vec{x})}= \norme{\vec{x}}$. Par conséquent $|\lambda|=1$.\\
+Considérons le supplémentaire orthogonal de la droite $Vect(\vec{x})$. Ce supplémentaire
+est stable sous $u $. En effet soit $\vec{y}$ un élément du supplémentaire. Montrons que $u(\vec{y})\in Vect(\vec{x})^{\perp}.$ 
+Soit $\mathcal{B}$ une BON adaptée à $Vect(\vec{x})\oplus Vect(\vec{x})^{\perp}=E.$
+On a :
+$$[u]_{\mathcal{B}} = \begin{pmatrix}
+\pm 1 & 0 &0\\
+0 & \cos \theta &-\epsilon\sin \theta \\
+0 & \sin \theta & \epsilon\cos \theta
+\end{pmatrix}\text{ avec }\epsilon\in\{-1,1\}.$$
+Si $\epsilon=1$, on a le premier cas du théorème. 
+Si $\epsilon=-1$, la matrice de la restriction de $u$ au sous espace $Vect(\vec{x})^{\perp}$ est une matrice de symétrie orthogonale par rapport à une droite $Vect(\vec{y})$. Soit $\vec{x}$ un vecteur orthogonal à cette droite dans le plan $Vect(\vec{x})^{\perp}$. La matrice de $u$ dans la base $(\vec{x},\vec{y},\vec{z})$ (qui est orthogonale et que nous prenons orthonormée) est donc de la forme
+$$[u]_{(\vec{x},\vec{y},\vec{z})} = \begin{pmatrix}
+\pm 1 & 0 &0\\
+0 & 1 &0 \\
+0 & 0 & -1
+\end{pmatrix}.$$
+qui a permutation des vecteurs de base près est du type voulu.
+\end{proof}
+\begin{Df}[Rotation]
+        \begin{minipage}[c]{0.45\linewidth}{
+La \defi{rotation}, $r_{\vec{x},\theta}$, d'axe $\vec{x}$ et d'angle $\theta$ est l'endomorphisme de $\R^3$ défini par :
+\begin{itemize}
+\item $r_{\vec{x},\theta}(\vec{x})=\vec{x}$
+\item la restriction de 
+$f$ au plan $vect \vec{x}^{\perp}$ orienté par
+$\vec{x}$ est la rotation (plane) d'angle $\theta$. 
+\end{itemize}}
+\end{minipage}
+    \begin{minipage}[c]{0.45\linewidth}{
+\begin{tikzpicture}
+\draw [->,>=latex] (0,0) --++(0,4) node [right] {z};
+\draw [->,>=latex] (0,0) --++(-2,-2) node [right] {x};
+\draw [->,>=latex] (0,0) --++(4,0) node [below] {y};
+\draw [->,>=latex] (0,0) --++(0,1) node [right] {};
+\draw [->,>=latex] (0,0) --++(-0.5,-0.5) node [right] {};
+\draw [->,>=latex] (0,0) --++(1,0) node [below] {};
+\node (O) at (0,0) [below] {O};
+\draw [->,>=latex,color=blue] (0,0) -- (2,2.5) node [left,near end] {$ \vec{x}$};
+\begin{scope} [shift={(2,2.5)},rotate=-25]
+\draw ellipse (1cm and 0.5cm);
+\end{scope}
+\draw  (2,2.5) -- (2.5,1.9);
+\draw  (2,2.5) -- (1.4,2.35);
+\draw [->,>=latex,color=green!40!black] (0,0) -- (2.5,1.9) node [right,near end] {$ r_{\vec{x},\theta}( \vec{y}) $};
+\draw [->,>=latex,color=green!40!black] (0,0) -- (1.4,2.35) node [left,near end] {$ \vec{y}$};
+\node (i) at (-0.2,-0.1) [left] {$\scriptstyle \vec{i}$};
+\node (j) at (0.6,0) [above] {$\scriptstyle \vec{j}$};
+\node (k) at (0,0.5) [left] {$\scriptstyle \vec{k}$};
+\node (k) at (1.9,1.9) [color=blue] {$\theta$}; 
+\end{tikzpicture}}
+    \end{minipage}
+    \end{Df}
 
+Étude pratique d'une rotation $r$ : détermination du couple axe-angle ($\vec{x},\theta)$.
+\begin{enumerate}
+\item axe : choisir un vecteur non nul $\vec{x}$ appartenant à $\ker (r-Id_E)$
+\item rotation :
+\begin{itemize}
+\item La trace étant un invariant de similitude, $\tr
+r
+= 1+2\cos \theta$ ce qui fournit $\cos \theta$
+\item la signe de $\sin \theta$ est le même que $\det (\vec{x},\vec{y},r(\vec{y}))$  où
+$\vec{y}$ est un vecteur non colinéaire à $\vec{x}$.  En
+effet : $\det (\vec{x},\vec{y},r(\vec{y})) =\det \begin{pmatrix}
+1 & x_1& x_1\\
+0 & x_2 & x_2\cos \theta - x_3\sin \theta\\
+0 & x_3 &  x_2\sin \theta + x_3\cos \theta
+\end{pmatrix}=(x_2^2+x_3^2)\sin \theta.$ 
+\end{itemize} 
+\end{enumerate}
+\begin{Ex}
+Caractériser l'endomorphisme $f$ de $\R^3$ dont la matrice dans la base canonique est
+$$A= \frac 1 3 \begin{pmatrix}
+2&2&-1\\
+1&2&2\\
+-2&-1&2
+\end{pmatrix}.$$
+\begin{itemize}
+\item rotation vectoriel : les colonnes de $A$ forment une base orthonormée donc $f$ endomorphisme orthogonal. De plus  $\det(A)=1$, $f$ est  une rotation.
+\item axe :  on obtient $\Ker(A-I_3)=Vect(1,1,1).$ Posons $\vec{x}=(1,1,1)$. 
+\item angle :
+\begin{itemize}
+\item  $\tr(A)=2$, et donc $\cos ? =\frac 1 2$, soit $?=\pm \frac \pi 3[2?]$. Pour déterminer le signe de $\theta$, on pose $\vec{y}=(1,?1,0)$ non colinéaire  $\vec{x}$. $f(\vec{y})=(1,0,-1)$ et $\det (\vec{x},\vec{y},r(\vec{y}))=3>0$. ce qui signifie $\theta?\in]0,\pi[ modulo 2\pi.$ On en déduit donc que $f$ est la rotation d'axe dirigé par $(1,1,1)$ et d'angle $\frac \pi 3$.
+\end{itemize}
+\end{itemize}
+\end{Ex}
 
-%% -----------------------------------------------------------------------------
-%\subsection{Classification des isométries du plan}
-%
-%\Para{Contexte}
-%On se place dans le cadre d'un espace euclidien orienté $E$ de dimension $2$.
-%
-%\Para{Lemme}
-%Soit $M\in \mathrm{O}_2^+(\R )$.
-%Alors il existe $\theta  \in \R $, unique modulo $2?$, tel que
-%\[ M = R_\theta   = \Matrix{\cos \theta  ,-\sin\theta  ;\sin\theta  ,\cos\theta  }. \]
-%De plus, $R_\theta  R_{\theta  '} = R_{\theta  +\theta  '}$.
-%
-%\Para{Théorème}
-%Soit $f\in \mathcal{O}^+(E)$.
-%Alors il existe un $\theta  \in \R $, unique modulo $2?$, tel que
-%pour toute base orthonormale directe $\B$ de $E$, on ait $\Mat_\B(f) = R_\theta  $.
-%On dit que $f$ est la \emph{rotation d'angle $\theta  $}.
-%De plus, si $x\in E$ vérifie $\Norm x = 1$,
-%alors $\cos\theta  = \PS{x}{f(x)}$ et $\sin\theta  = \det(x,f(x))$.
-%
-%\Para{Théorème}
-%Soit $f\in \mathcal{O}^-(E)$.
-%Alors pour toute base orthonormale directe $\B$ de $E$,
-%il existe $\theta  \in \R $, unique modulo $2?$, tel que
-%\[ \Mat_\B(f) = \Matrix{\cos\theta  ,\sin\theta  ;\sin\theta  ,-\cos\theta  }. \]
-%De plus, $f$ est la réflexion d'axe le vecteur de coordonnées $\Matrix{\cos(\theta  /2);\sin(\theta  /2)}$.
-%
-%% -----------------------------------------------------------------------------
-%\subsection{Produit mixte, produit vectoriel}
-%
-%\Para{Contexte}
-%On se place dans le cadre d'un espace euclidien orienté $E$
-%de dimension $3$.
-%
-%\Para{Proposition}
-%Soit $\B_1$ et $\B_2$ deux bases orthonormées directes de $E$.
-%Alors $\det_{\B_1} = \det_{\B_2}$,
-%£cad.
-%\[ \forall (x,\vec{y},\vec{z})\in E^3\+ \det_{\B_1}(x,\vec{y},\vec{z}) = \det_{\B_2}(x,\vec{y},\vec{z}). \]
-%
-%\Para{Définition}
-%Soit $(x,\vec{y},\vec{z})\in E^3$.
-%On définit le \emph{produit mixte} des trois vecteurs $x$, $\vec{y}$ et $\vec{z}$ par
-%\[ \Pmixte{\vec{x}}{\vec{y}}{\vec{z}} = \det_\B(x,\vec{y},\vec{z}) \]
-%pour une base orthonormée directe $\B$ quelconque.
-%
-%\Para{Proposition-Définition}
-%Soit $(u,v)\in E^2$.
-%Alors il existe un unique vecteur $w\in E$ tel que
-%\[ \forall x\in E, \quad \Pmixte uvx = \PS{w}{x}. \]
-%Le vecteur $w$, que l'on note $u \wedge v$, s'appelle le \emph{produit vectoriel} de $u$ et $v$.
-%
-%\Para{Remarque}
-%Le produit vectoriel est donc entièrement caractérisé par la formule
-%\[ \forall (x,\vec{y},\vec{z})\in E^3\+ \Pmixte{\vec{x}}{\vec{y}}{\vec{z}} = \PS{x \wedge \vec{y}}{\vec{z}}. \]
-%
-%\Para{Proposition}
-%Si $(u,v,w)\in E^2$ et $(\lambda ,\mu )\in \R ^2$, on a:
-%\begin{itemize}
-%\item $(\lambda u+\mu v) \wedge w = \lambda (u \wedge w) + \mu (v \wedge w)$;
-%\item $u \wedge (\lambda v+\mu w) = \lambda (u \wedge v) + \mu (u \wedge w)$;
-%\item $u \wedge u = 0$;
-%\item $u \wedge v = - (v \wedge u)$;
-%\item $u \wedge v\in \Orth{\Vect(u,v)}$;
-%\item $u \wedge v = 0$ si et seulement si $u$ et $v$ sont liés;
-%\item si $(u,v)$ est libre,
-%  alors $(u,v,u \wedge v)$ est une base directe de $E$;
-%\item si $(u,v)$ est orthonormée,
-%  alors $(u,v,u \wedge v)$ est une base orthonormée directe de $E$;
-%\item $u \wedge (v \wedge w) = \PS{u}{w}{v} - \PS{u}{v}{w}$.
-%  Il s'agit de la \emph{formule du double produit vectoriel};
-%\item si $\theta  $ est l'angle $(u,v)$,
-%  alors
-%  $\PS uv = \Norm u \Norm v \cos\theta  $
-%  et
-%  $\Norm{u \wedge v} = \Norm u \Norm v \, \Abs{\sin\theta  }$.
-%\end{itemize}
-%
-%% -----------------------------------------------------------------------------
-%\subsection{Classification des isométries de l'espace}
-%
-%\Para{Contexte}
-%On se place dans le cadre d'un espace euclidien orienté $E$ de dimension $3$.
-%
-%\Para{Proposition-Définition}
-%Soit $f\in \mathcal{O}^+(E)$.
-%Alors il existe une base orthonormée directe $\B = (u_1,u_2,u_3)$
-%telle que
-%\[ \Mat_\B(f) = \Matrix{1,0,0;0,\cos\theta  ,-\sin\theta  ;0,\sin\theta  ,\cos\theta  } = \Matrix{1,;,R_\theta  }. \]
-%On dit que $f$ est la rotation d'axe $u_1$ et d'angle $\theta  $.
-%De plus,
-%\begin{itemize}
-%\item $\Tr f = 1+2\cos\theta  $,
-%  ce qui permet de déterminer $\theta  $ au signe près;
-%\item si la famille $(u_1,v)$ est libre,
-%  alors $\Signe(\sin\theta  ) = \Signe \Pmixte{u_1}{v}{f(v)}$.
-%\end{itemize}
-%
-%\Para{Proposition}
-%Soit $f\in \mathcal{O}^-(E)$.
-%Alors il existe une base orthonormée directe $\B = (u_1,u_2,u_3)$
-%telle que
-%\[ \Mat_\B(f) = \Matrix{-1,0,0;0,\cos\theta  ,-\sin\theta  ;0,\sin\theta  ,\cos\theta  } = \Matrix{-1,;,R_\theta  }. \]
-%$f$ est la composée commutative de la rotation d'axe $u_1$ et d'angle $\theta  $
-%et de la réflexion par rapport au plan $\Orth{\Vect(u_1)}$.
-%De plus,
-%\begin{itemize}
-%\item $\Tr f = -1+2\cos\theta  $,
-%  ce qui permet de déterminer $\theta  $ au signe près;
-%\item si la famille $(u_1,v)$ est libre,
-%  alors $\Signe(\sin\theta  ) = \Signe \Pmixte{u_1}{v}{f(v)}$.
-%\end{itemize}
 
 
 %% -----------------------------------------------------------------------------
-%\subsection{Matrices symétriques et endomorphismes symétriques}
-%\subsubsection{Matrices symétriques}
-%\Para{Définition} Une matrice \emph{symétrique}, $S$, est une matrice carrée qui est égale à sa propre transposée, soit $\T S=S$. 
-%\Para{Notation} $\SnR$ est l'ensemble des matrices symétriques de taille n.
-%\Para{Exemples}La matrice suivante est  symétrique :
-%$$\begin{pmatrix}2&4&6\\4&0&10\\6&10&12\end{pmatrix}$$
-%Toute matrice diagonale est symétrique.\\
-%Soit $X\in \M{M}{n,1}{\R}$. Alors $X\T X$ est symétrique.\\
-%Soit $A\in \mathcal{M}_{n}(\mathbb{R})$. Alors $\T A A$ est symétrique.
-%
-%\textit{Interprétation matricielle de la projection orthogonale} : Soit $p \in \mathcal{L}(E)$ un projecteur ($p ? p = p$) et $\B$ une base orthonormale de $E$. Alors $p$ est une projection orthogonale si et seulement
-%si $[p]_{\B}$ est une matrice symétrique.
-%
-%\textit{Calcul différentielle} : soit f une fonction de classe $\mathcal {C}^{2}(\mathbb{R}^2,\mathbb{R})$. Sa matrice hessienne $\begin{pmatrix}\frac {\partial ^{2}f}{\partial x_{1}^{2}}&\frac {\partial ^{2}f}{\partial x_{1}\partial x_{2}}\\\frac {\partial ^{2}f}{\partial x_{2}\partial x_{1}}&\frac {\partial ^{2}f}{\partial x_{2}^{2}}\end{pmatrix}$ est symétrique.
-%
-%\textit{Probabilité} : La matrice de covariance d'un vecteur de $2$ variables aléatoires $\vec {X}=\begin{pmatrix}X_{1}\\X_{2}\end{pmatrix}$ définie par:\\
-%$\operatorname {Var} ({\vec {X}})={\begin{pmatrix}\operatorname {Var} (X_{1})&\operatorname {Cov} (X_{1},X_{2})\\\operatorname {Cov} (X_{2},X_{1}) &  \operatorname {Var} (X_{2}) \end{pmatrix}}$ est symétrique.
-%\Para{Proposition} $\SnR$ est un sous espace vectoriel de $\MnR$. 
-%\Para{Proposition} $\MnR  = \SnR  \oplus \M{A}{n}{\R}.$ $((E_{i,i})_{1\leq i \leq n},(E_{i,j}+E_{j,i})_{1\leq i<j \leq n})$ est une base de $\SnR$. 
-%\Para{Définition} Une matrice symétrique, $S$, est \emph{positive} si $\forall X\in  \M{M}{n,1}{\R} : \T X S X \geq 0.$
-%\Para{Définition} Une matrice symétrique, $S$, est \emph{définie} si $\forall X\in \M{M}{n,1}{\R} : \T X S X = 0 \Rightarrow X = 0.$
-%\Para{Proposition} Muni du produit scalaire usuel sur $\M{M}{n,1}{\R}$,  une matrice $S$ est symétrique si et seulement si :
-%$$\forall X,Y\in  \M{M}{n,1}{\R}, \quad  \PS{SX}{Y}=\PS{X}{SY}$$.
-%\Para{Proposition}Soit $S$ une matrice symétrique, définie et positive.\\
-%Alors $\Fonction{(.|.)}{\M{M}{n,1}{\R}\times\M{M}{n,1}{\R}}{\mathbb{R}}{(X,Y)}{\T X S Y}$ est un produit scalaire.
-%
-%\Para{Proposition (interprétation matricielle du produit scalaire)} Soit $(E,\PS{.}{.})$ un espace euclidien. Soit $\B=(\vec{e}_1,\dots,\vec{e}_n)$ une base quelconque de $E$.\\
-%Alors
-%$$\forall \vec{x},\vec{y}\in E, \PS{\vec{x}}{\vec{y}}=\T[\vec{x}]_{\B}\times S \times [\vec{y}]_{\B} \text{ avec } S=\begin{pmatrix}\PS{\vec{e}_1}{\vec{e}_1}&\PS{\vec{e}_1}{\vec{e}_2}&\cdots &\PS{\vec{e}_1}{\vec{e}_n}\\ \PS{\vec{e}_2}{\vec{e}_1}&\PS{\vec{e}_2}{\vec{e}_2}&\cdots &\PS{\vec{e}_2}{\vec{e}_n}\\\vdots &\vdots &\ddots &\vdots \\\PS{\vec{e}_n}{\vec{e}_1}&\PS{\vec{e}_n}{\vec{e}_2}&\cdots &\PS{\vec{e}_n}{\vec{e}_n}\end{pmatrix}$$
-%Ainsi définie, $S$ est une matrice symétrique définie et positive. 
-%
-%
-%\Para{Lemmes techniques}
-%Soit $S\in \SnR$. Soit $F$ un sous-espace vectoriel stable par $S$.
-%Alors
-%\begin{enumerate}
-%\item les sous-espaces propres de $S$ sont deux à deux orthogonaux.
-%\item $\Orth F$ est stable par $S$.
-%\item $\Sp_?(S)?\R $.
-%\item  $\Sp u??$.
-%\end{enumerate}
-%
-%\Para{Théorème}[théorème spectral, version matricielle]
-%Soit $S\in \SnR$.
-%Alors il existe $P\in \OnR$ et $D\in \DnR$ (matrice diagonale)
-%tels que $S = P D P^{-1} = P D \T P$.
-%
-%\subsubsection{Endomorphismes symétriques}
-%
-%\Para{Définition}
-%Soit $u\in \LE$.
-%On dit que $u$ est un endomorphisme \emph{symétrique} (ou \emph{autoadjoint}) si et seulement si $\forall (\vec{x},\vec{y})\in E^2$, $\PS{u(\vec{x})}{\vec{y}} = \PS{\vec{x}}{u(\vec{y})}$.
-%On note $\SE$ l'ensemble des endomorphismes symétriques de $E$.
-%Il s'agit d'un sous-espace vectoriel de $\LE$.
-%
-%\Para{Proposition}
-%Soit $u\in \LE$.
-%Les conditions suivantes sont équivalentes:
-%\begin{enumerate}[label=\roman*.]
-%\item $u$ est un endomorphisme symétrique;
-%\item pour toute base orthonormale $\B$ de $E$,
-%  $[u]_\B$ est une matrice symétrique;
-%\item il existe une base orthonormale $\B$ de $E$
-%  telle que $[u]_\B$ est une matrice symétrique.
-%\end{enumerate}
-%
-%\Para{Théorème}[théorème spectral]
-%Soit $u$ un endomorphisme symétrique de $E$.
-%Alors $u$ est \emph{diagonalisable en base orthonormale}, £cad. qu'il existe
-%une base orthonormale $\B$ telle que $\Mat_\B(u)$ soit diagonale.
-%De plus, les sous-espaces propres de $u$ sont supplémentaires orthogonaux, £cad.
-%\[ E = \mathop{?}^?_{\lambda \in \Sp u} E_\lambda  \]
-%où $E_\lambda  = \Ker(u-\lambda \Id_E)$.
-%
-%
-%
+\section{Endomorphismes symétriques et Matrices symétriques}
+\subsection{Généralités}
+\begin{Df}[Endomorphismes symétriques]
+Soit $u\in \LE$.\\
+On dit que $u$ est un endomorphisme \defi{symétrique} (ou \emph{autoadjoint}) si 
+$$\forall \vec{x},\vec{y}\in E:\quad \PS{u(\vec{x})}{\vec{y}} = \PS{\vec{x}}{u(\vec{y})}.$$
+On note $\SE$ l'ensemble des endomorphismes symétriques de $E$.\\
+Il s'agit d'un sous-espace vectoriel de $\LE$.
+\end{Df}
+\begin{Df}[Matrices symétriques]
+Une matrice \defi{symétrique}, $S$, est une matrice carrée qui est égale à sa propre transposée, soit $\transposee{S}=S$.\\
+On note $\SnR$ est l'ensemble des matrices symétriques de taille $n$.\\
+Il s'agit d'un sous-espace vectoriel de $\MnR$ et $\dim \SnR=  \frac{n(n+1)}{2}$.
+\end{Df}
+
+
+
+\begin{Ex}La matrice suivante est  symétrique :
+$$\begin{pmatrix}2&4&6\\4&0&10\\6&10&12\end{pmatrix}$$
+Toute matrice diagonale est symétrique.\\
+Soit $X\in \R^n$. Alors $X  \transposee{X}$ est symétrique.\\
+Soit $A\in \MnR$. Alors $\transposee{A} A$ est symétrique.\\
+\end{Ex}
+\begin{Ex}[Matrice hessienne]
+Soit $f$ une fonction de classe $\mathcal {C}^{2}(\mathbb{R}^2,\mathbb{R})$. Sa matrice hessienne $$\begin{pmatrix}\frac {\partial ^{2}f}{\partial x_{1}^{2}}&\frac {\partial ^{2}f}{\partial x_{1}\partial x_{2}}\\\frac {\partial ^{2}f}{\partial x_{2}\partial x_{1}}&\frac {\partial ^{2}f}{\partial x_{2}^{2}}\end{pmatrix}$$ est symétrique.
+\end{Ex}
+
+\begin{Ex}[Matrice de covariance]La matrice de covariance du vecteur aléatoire $\vec {X}=\begin{pmatrix}X_{1}\\X_{2}\end{pmatrix}$ définie par:
+$$\operatorname {Var} ({\vec {X}})={\begin{pmatrix}\operatorname {Var} (X_{1})&\operatorname {Cov} (X_{1},X_{2})\\\operatorname {Cov} (X_{2},X_{1}) &  \operatorname {Var} (X_{2}) \end{pmatrix}}$$ est symétrique.
+\end{Ex}
+\begin{Prop}[Endomorphisme symétrique et matrice symétrique]
+Soit $u\in \LE$.\\
+Les conditions suivantes sont équivalentes:
+\begin{enumerate}[label=\roman*.]
+\item $u$ est un endomorphisme symétrique;
+\item pour toute base orthonormale $\mathcal{B}$ de $E$,
+  $[u]_\mathcal{B}$ est une matrice symétrique;
+\item il existe une base orthonormale $\mathcal{B}$ de $E$
+  telle que $[u]_\mathcal{B}$ est une matrice symétrique.
+\end{enumerate}
+\end{Prop}
+\begin{Prop} Muni du produit scalaire canonique sur $\R^n$,  une matrice $S$ est symétrique si et seulement si :
+$$\forall X,Y\in  \R^n, \quad  \PS{SX}{Y}=\PS{X}{SY}.$$
+\end{Prop}
+\begin{Df}[Matrices antisymétriques]
+Une matrice \defi{antisymétrique}, $A$, est une matrice carrée qui est égale à l'opposée de sa propre transposée, soit $\transposee{A}=-A$.\\
+On note $\AnR$ est l'ensemble des matrices antisymétriques de taille $n$.\\
+Il s'agit d'un sous-espace vectoriel de $\MnR$ et $\dim \AnR=  \frac{n(n-1)}{2}$.
+\end{Df}
+\begin{Prop}[Supplémentaires orthogonaux]
+$\AnR$ et $SnR$ sont des supplémentaires orthogonaux par rapport au produit scalaire  $(A,B)\mapsto \tr(\transposee{A}B)$.\\
+La décomposition d'une matrice $M$ selon cette somme directe est : 
+$$M= \frac{M+\transposee{M}}{2}+ \frac{M-\transposee{M}}{2}.$$
+\end{Prop}
+
+\subsection{Produit scalaire}
+\begin{Df}[Positive]
+Une matrice symétrique, $S$, est \defi{positive} si $$\forall X\in  \R^n :\quad \transposee X S X \geq 0.$$
+\end{Df}
+\begin{Df}[Définie]
+Une matrice symétrique, $S$, est \defi{définie} si $$\forall X\in \R^n :\quad \transposee X S X = 0 \Rightarrow X = 0.$$
+\end{Df}
+\begin{Prop}[Produit scalaire associée à une matrice symétrique positive et définie]
+Soit $S$ une matrice symétrique, définie et positive.\\
+Alors $\Fonction{\PS{}{}}{\R^n\times \R^n }{\mathbb{R}}{(X,Y)}{\transposee{X} S Y}$ est un produit scalaire.
+\end{Prop}
+\begin{Prop}[Expression d'une produit scalaire associée à l'aide une matrice symétrique positive et définie]
+Soit $(E,\PS{.}{.})$ un espace euclidien. Soit $\mathcal{B}=(\vec{e}_1,\dots,\vec{e}_n)$ une base quelconque de $E$.\\
+Alors
+$$\forall \vec{x},\vec{y}\in E, \PS{\vec{x}}{\vec{y}}=\transposee{[\vec{x}]_{\mathcal{B}}}\times S \times [\vec{y}]_{\mathcal{B}} \text{ avec } S=\begin{pmatrix}\PS{\vec{e}_1}{\vec{e}_1}&\PS{\vec{e}_1}{\vec{e}_2}&\cdots &\PS{\vec{e}_1}{\vec{e}_n}\\ \PS{\vec{e}_2}{\vec{e}_1}&\PS{\vec{e}_2}{\vec{e}_2}&\cdots &\PS{\vec{e}_2}{\vec{e}_n}\\\vdots &\vdots &\ddots &\vdots \\\PS{\vec{e}_n}{\vec{e}_1}&\PS{\vec{e}_n}{\vec{e}_2}&\cdots &\PS{\vec{e}_n}{\vec{e}_n}\end{pmatrix}.$$
+Ainsi définie, $S$ est une matrice symétrique définie et positive. 
+\end{Prop}
+
+
+\subsection{Diagonalisation}
+
+\begin{Lem}[Stabilité et orthogonal]
+Soit $u$ un endomorphisme symétrique de $E$. Soit $F$ sous espace vectoriel stable par
+$u$.\\
+Alors son orthogonal $F^{\perp}$ est également stable par $u$.
+\end{Lem}
+
+\begin{Lem}[Sous espace propres orthogonaux]
+Soit $u$ un endomorphisme symétrique de $E$.\\
+Alors les sous-espaces propres de $S$ sont deux à deux orthogonaux.
+\end{Lem}
+
+\begin{Th}[Théorème spectral (endomorphisme symétrique)]
+Tout endomorphisme symétrique est diagonalisable dans une base orthonormale et ses valeurs propres sont toutes réelles.
+\end{Th}
+\begin{proof}
+Soit $u$ un endomorphisme symétrique et \\
+On montre d'abord qu'il  existe au moins une valeur propre réelle, puis on restreint $u$ par récurrence sur la dimension de l'espace :
+\begin{itemize}
+\item Tant que $u$ est un endomorphisme  de dimension non nulle 
+\begin{itemize}
+\item Existence d'une valeur propre réel : soit $S$ la matrice de $u$ dans une base quelconque. Il existe $\lambda$ une racine a priori complexe de son polynôme caractéristique et $X$ un vecteur propre complexe non nulle telle que $AX=\lambda X$.\\
+Alors
+$$ \begin{cases} \transposee{(SX)}\overline{X}=\lambda \transposee{X}\overline{X}\\
+\transposee{(SX)}\overline{X}=\transposee{X}\transposee{S}\overline{X}=\transposee{X}S\overline{X}=\transposee{X}\overline{SX}=\transposee{X}\overline{\lambda X}=\overline{\lambda}\transposee{X}\overline{X} \\
+\end{cases} $$
+Comme  $\transposee{X}\overline{X}\neq 0$, $\lambda=\overline{\lambda}$, donc $\lambda$ est réel.
+\item Soit $E_\lambda$ l'espace propre associée à la valeur propre $\lambda$. On a $E_\lambda\oplus E^{\perp}_\lambda=E$. D'après le lemme,   $E^{\perp}_\lambda$ est stable par $u$. Alors $u$ devient la restriction de $u$ à $E^{\perp}_\lambda$.
+\end{itemize}
+\end{itemize}
+
+
+\end{proof}
+\begin{Th}[Théorème spectral (matrice symétrique)]
+Soit $S$ une matrice symétrique réelle.\\
+Alors il existe une matrice $P$ orthogonale  et une matrice $D$ diagonale dont tous les coefficients sont réels, telles que la matrice A est égale à $PDP^{-1}=PD\transposee{P}$.
+\end{Th}
+
+
+
+\begin{Prop}[Caractérisation de la projection orthogonale]
+Soit $p \in \LE$ un projecteur et $s$ une symétrie.\\
+ Alors $p$ est une projection orthogonale si et seulement si $p$ est un endomorphisme symétrique.\\
+  Alors $s$ est une symétrie orthogonale si et seulement si $s$ est un endomorphisme symétrique.
+\end{Prop}
+
 
 
 \end{document}

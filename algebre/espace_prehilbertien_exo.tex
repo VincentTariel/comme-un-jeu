@@ -1,0 +1,253 @@
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{mathrsfs}
+\usepackage{amsfonts,amsmath,amssymb,graphicx}
+\usepackage[francais]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{answers}
+\usepackage{a4wide,jlq2eams} 
+\usepackage{multicol}
+%---- Dimensions des marges ---
+\setlength{\paperwidth}{21cm} 
+\setlength{\paperheight}{29.7cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\oddsidemargin}{0cm} 
+\setlength{\topmargin}{-2.5cm}
+\setlength{\headsep}{0.7cm} 
+\setlength{\headheight}{1cm}
+\setlength{\textheight}{25cm} 
+\setlength{\textwidth}{17cm}
+
+
+
+
+%---- Structure Exercice -----
+\newtheorem{Exc}{Exercice}
+\Newassociation{correction}{Soln}{mycor}
+\Newassociation{indication}{Indi}{myind}
+%\newcommand{\precorrection}{~{\bf \footnotesize [Exercice corrig\'e]}}
+%\newcommand{\preindication}{~{\bf \footnotesize [Indication]}}
+\renewcommand{\Solnlabel}[1]{\bf \emph{Correction #1}}
+\renewcommand{\Indilabel}[1]{\bf \emph{Indication #1}}
+
+\def\exo#1{\futurelet\testchar\MaybeOptArgmyexoo}
+\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
+                        \else \let\next\NoOptArgmyexoo \fi \next}
+\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
+\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
+
+\newcommand{\finexo}{\end{Exc}}
+\newcommand{\flag}[1]{}
+
+\newtheorem{question}{Question}
+
+
+
+%---- Style de l'entete -----                     % -> à personnaliser <-
+\setlength{\parindent}{0cm}
+\newcommand{\entete}[1]
+{
+{\noindent
+  \textsf{Feuille d'exercices}            % Université
+}
+\hrule
+\hrule
+\begin{center} 
+\textbf{\textsf{\Large 
+     Espace préhilbertien réel     % TITRE
+}}
+\end{center}
+\hrule
+}
+
+
+\begin{document}
+
+%--- Gestion des corrections ---
+ \Opensolutionfile{mycor}[ficcorex]
+ \Opensolutionfile{myind}[ficind]
+ \entete{\'Enoncés}
+
+
+
+
+%% -----------------------------------------------------------------------------
+\section*{Produit scalaire}
+ \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*]
+
+Vérifier que $\PS..$ est un produit scalaire sur $E$ dans les cas suivants.
+\begin{enumerate}
+\item $E = \MnR$
+  et $\PS AB = \tr{ \transposee{A}B}$.\\
+\item $E = \mathcal{C}([-1,1],\R)$
+  et $PS fg = \int_{-1}^1 \frac{f(t)g(t)}{\sqrt{1-t^2}}\,\mathrm{dt}$.
+\item $E = \{f:\R\to \R\text{ continues}: f^2 \text{ intégrable sur }\R\}$
+  et $\PS fg = \int_\R fg$.
+\item $E = \R[X]$
+  et $ \PS PQ =\int_0^1 P(t)Q(t)\,\mathrm{dt}$.
+\item $E = \R[X]$
+  et $\PS PQ =\sum_{n=0}^{+\infty} \frac{P(n)Q(n)}{2^n}$.
+\end{enumerate}
+\finexo
+ \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*]
+
+Soit $n\in\N^*$ fixé, $E = \R_n[X]$ et $F = \{P\in E :P(0)=P(1)=0\}$.
+Pour $(P,Q)\in E$, on pose \[ \phi(P,Q) = -\int_0^1 (PQ''+P''Q). \]
+\begin{enumerate}
+\item Vérifier que $F$ est un espace vectoriel.
+\item Donner une base et la dimension de $F$.
+\item $\phi$ définit-il un produit scalaire sur $E$? sur $F$?
+\end{enumerate}
+\finexo
+
+ \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*]
+Soit $E$ l'ensemble des suites réelles $(u_n)_{n\in\N}$ telles que la série de terme général $u_n^2$ converge.
+Pour $u$ et $v$ dans $E$, on pose
+\[ \PS uv = \sum_{n=0}^{+\infty} u_n v_n. \]
+\begin{enumerate}
+\item Montrer que $E$ est un espace vectoriel. On le note usuellement $l^2$.
+\item Montrer que $\PS uv$ existe.
+\item Montrer qu'il s'agit d'un produit scalaire.
+\end{enumerate}
+\finexo
+ \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Applications de l'inégalité de Cauchy-Schwarz]
+
+Soient $x_1,\dots,x_n\in\R$.
+\begin{enumerate}
+\item Démontrer que 
+$$\left(\sum_{k=1}^n x_k\right)^2\leq n\sum_{k=1}^n x_k^2$$
+et étudier les cas d'égalité.
+\item On suppose en outre que $x_k>0$ pour chaque $k\in\{1,\dots,n\}$ et que $x_1+\dots+x_n=1$.
+Démontrer que 
+$$\sum_{k=1}^n \frac 1{x_k}\geq n^2$$
+et étudier les cas d'égalité.
+\end{enumerate}
+\finexo
+
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Applications de l'inégalité de Cauchy-Schwarz]
+Soit $E=\mathcal C([a,b],\mathbb R^*)$. Déterminer $\inf_{f\in E}\left(\int_a^b f\times \int_a^b \frac 1f\right)$. Cette borne inférieure est-elle atteinte?
+\finexo
+
+\section*{Orthogonalité}
+ \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*]
+
+Soit $(E,\PS.. )$ un espace euclidien et $\mathcal{B} =(\vec{e_1},\dots,\vec{e_n})$ une BON de $E$.
+On pose \[ \Fonction{\phi}{\LE\times\LE}{\R}{(u,v)}{\sum_{i=1}^n \PS{u(\vec{e_i})}{v(\vec{e_i})}} \]
+Montrer que $\phi$ est un produit scalaire sur $\LE$,
+et déterminer une base orthonormale pour ce produit scalaire.
+\finexo
+ \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Matrice symétrique]
+Soit $\mathcal{E} = \MnR$ muni du produit scalaire usuel 
+$\PS AB = \Tr\bigl(\transposee{A} B\bigr)$.\\
+Montrer que $ \SnR$ et $\AnR$ sont supplémentaires orthogonaux,
+  où $\SnR$ désigne l'ensemble des matrices symétriques
+  et $\AnR$ l'ensemble des matrices antisymétriques.
+\finexo
+ \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Polynômes de Legendre]
+On munit le $\R$-espace vectoriel $E = \mathcal{C}([-1,1],\R)$
+du produit scalaire usuel défini par
+\[ \forall(f,g)\in E^2 :\quad \PS fg = \int_{-1}^1 f(t) g(t) \mathrm{dt}. \]
+On pose pour tout $n\in\N$,
+\[ L_n(X) = \frac{1}{2^n n!}?\frac{\mathrm{d}^n}{\mathrm{d}X^n} \Big[ (X^2-1)^n \Big] \]
+Les polynômes $(L_n(X))_{n\in\N}$ s'appellent \textbf{polynômes de Legendre}.
+On pourra introduire $H_n(X) = (X^2-1)^n$.
+\begin{enumerate}
+\item Montrer que $L_n$ est un polynôme de degré $n$
+  dont on précisera le coefficient dominant.
+\item En utilisant la formule de Leibniz, calculer $L_n(1)$ et $L_n(-1)$.
+\item Avec une intégration par parties multiple, calculer $\PS{L_n}{L_n}$.
+\item Calculer $\PS{Q}{L_n}$ lorsque $Q$ est un polynôme de $\R_{n-1}[X]$.
+\item En déduire $\PS{L_n}{L_m}$ lorsque $n?m$.
+\item Comparer $(L_n)_{n\in\N}$ à l'orthonormalisée de la base canonique.
+\end{enumerate}
+\finexo
+ \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Polynômes de Tchebychev]
+Soit $E = \R[X]$.\\
+On pose, pour $(P,Q)\in E^2$,
+\[ \PS PQ = \frac 2 \pi \int_{-1}^1\sqrt{1-t^2} \, P(t) Q(t) \mathrm{dt} \]\begin{enumerate}
+\item Montrer que $\PS..$ est bien un produit scalaire sur $E$.
+\item Soit $n\in\N$. Montrer qu'il existe un unique polynôme $U_n$
+  tel que
+  \[ \forall \theta\in R:\quad  \sin\bigl( (n+1)\theta\bigr) = \sin(\theta) U_n(\cos \theta). \]
+
+  Les polynômes $\bigl(U_n(X)\bigr)_{n\in \N}$ s'appellent
+ \textbf{ polynômes de Tchebychev de seconde espèce}.
+\item Comparer $(U_n)_{n\in\N}$ à l'orthonormalisée de la base canonique.
+\end{enumerate}
+\finexo
+\section*{Projection orthogonale}
+ \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Orthonormalisation de Schmidt]
+Dans $\mathbb R^3$ muni du produit scalaire canonique, orthonormaliser en suivant le procédé de Schmidt la base suivante :
+$$u=(1,0,1),\ v=(1,1,1),\ w=(-1,-1,0).$$
+\finexo
+ \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Trouver une base orthonormale]
+
+Déterminer une base orthonormale de $\mathbb R_2[X]$ muni du produit scalaire 
+$$\langle P,Q\rangle=\int_{-1}^1 P(t)Q(t)dt.$$
+\finexo
+ \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Projection orthogonale dans $\mathbb R^4$]
+Soit $E=\mathbb R^4$ muni de son produit scalaire canonique et de la base canonique $\mathcal B=(e_1,e_2,e_3,e_4)$. On considère $G$ le sous-espace vectoriel défini par les équations 
+$$\left\{
+\begin{array}{rcl}
+x_1+x_2&=&0\\
+x_3+x_4&=&0.
+\end{array}
+\right.
+$$
+\begin{enumerate}
+\item Déterminer une base orthonormale de $G$.
+\item Déterminer la matrice dans $\mathcal B$ de la projection orthogonale $p_G$ sur $G$.
+\item Soit $x=(x_1,x_2,x_3,x_4)$ un élément de $E$. Déterminer la distance de $x$ à $G$.
+\end{enumerate}
+\finexo
+
+
+ \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Matrice symétrique]
+Soit $\mathcal{E} = \MnR$ muni du produit scalaire usuel
+$\PS AB = \Tr\bigl(\transposee{ A} B\bigr)$.
+\begin{enumerate}
+\item Montrer que $\mathcal{S}$ et $\mathcal{A}$ sont supplémentaires orthogonaux,
+  où $\mathcal{S}$ désigne l'ensemble des matrices symétriques
+  et $\mathcal{A}$ l'ensemble des matrices antisymétriques.
+\item Montrer que
+  \[ \forall A\in\mathcal{E} :\quad \Tr A \leq \sqrt{n\Tr(\transposee{A} A)}. \]
+  Étudier le cas d'égalité.
+\item Pour $A\in\mathcal{E}$, on pose
+  \[ \Fonction{f_A}{\mathcal{S}}{\R}{S}{\sum_{i=1}^n \sum_{j=1}^n (a_{i,j} - s_{i,j})^2} \]
+  Déterminer le minimum de $f_A$ et la matrice qui réalise ce minimum.
+\end{enumerate}
+\finexo
+ \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Optimum]
+Déterminer $(a,b,c,d)\in\R^4$ tels que l'intégrale
+\[ \int_{-\pi/2}^{\pi/2} \Big( \sin x - ax^3 - bx^2 - cx - d \Big)^2 \mathrm{dx} \]
+soit minimale.
+\finexo
+
+%
+%
+
+%--- Fin des exercices ---
+%------------------------------------------------------
+%------------------------------------------------------
+
+%--- Gestion des corrections ---
+% \ \newpage
+% \setcounter{page}{1}
+% \entete{Indications}
+%
+% \Closesolutionfile{myind}
+% \Readsolutionfile{myind}
+
+ \ \newpage
+ \setcounter{page}{1}
+ \entete{Corrections}
+
+ \Closesolutionfile{mycor}
+ \Readsolutionfile{mycor}
+
+\end{document}
+\endinput
+
+
+
+
