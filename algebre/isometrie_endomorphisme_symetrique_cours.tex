@@ -84,7 +84,7 @@
 %\tableofcontents
 \chapter{Endomorphismes remarquables d'un espace euclidien}
 
-Dans un espace euclidien E l'objectif est  d'étudier les transformations de $E$ qui préservent le produit scalaire. Ainsi on cherche à remplacer
+Dans un espace euclidien $E$, l'objectif est  d'étudier les transformations de $E$ qui préservent le produit scalaire. Ainsi on cherche à remplacer
 les notions de base, équation linéaire, forme linéaire, transposition etc. par les notions
 pertinentes en géométrie euclidienne à savoir, respectivement, de base orthonormée,
 de vecteurs normaux, de produit scalaire etc.\\
@@ -94,14 +94,14 @@ Les applications de ces transformations sont multiples :
 \item en physique,  résoudre de nombreuses équations aux dérivées partielles comme celle de la corde vibrante ou exprimer le moment d'inertie d'un solide,
 \item en apprentissage automatique, calibrer un modèle de régression à l'aide de la méthode des moindres carrés ou étudier un échantillon en réduisant la dimension à l'aide de l'analyse en composantes principales.
 \end{itemize} 
-Dans ce chapitre, $(E,\PS{}{})$ désigne un espace Euclidien de dimension $n\in \N^*$. 
+Dans ce chapitre, $(E,\PS{}{})$ désigne un espace euclidien de dimension $n\in \N^*$. 
 \section{Isométrie vectorielle et matrice orthogonale}
 \subsection{Isométrie vectorielle}
 \begin{Df}[Isométrie vectorielle]
-On appelle \defi{isométrie vectorielle ou automorphisme orthogonal de E} tout endomorphisme préservant le produit scalaire, i.e. $u$ est orthogonal si
+On appelle \defi{isométrie vectorielle ou automorphisme orthogonal de E} tout endomorphisme préservant le produit scalaire, i.e. si
 $$ \forall \vec{x},\vec{y}\in E:\quad \PS{u(\vec{x})}{ u(\vec{y})} =\PS{\vec{x}}{\vec{y}}. $$ 
-On appelle groupe orthogonal l'ensemble de ces endomorphismes et on le note
-$\OrE$.
+On appelle \defi{groupe orthogonal} l'ensemble de ces endomorphismes et on le note
+\defi{$\OrE$}.
 \end{Df}
 \begin{Prop}[Conservation de la norme]
 $u$ est une isométrie vectorielle si et seulement si 
@@ -142,19 +142,19 @@ $\OrE$ est un groupe, sous groupe de $\GLE$.
 \begin{proof}
 $\OrE$ est un sous groupe de $\GLE$.
 \begin{itemize}
-\item \textit{$\OrE\subset \GLE$} Soit $u\in \OrE$ Comme $u$ est un endomorphisme en dimension finie, il suffit de montrer que $\Ker u=\{\vec{0_E}\}$.\\
-Soit $\vec{x}\in  \Ker u$. Comme $\norme{u( \vec{x})}\overbrace{=}^{u\in\OrE }\norme{\vec{x})}$ et $u( \vec{x})=0$, on a $\norme{\vec{x})}=0$, soit $\vec{x}=\vec{0_E}$.
+\item \textit{$\OrE\subset \GLE$} Soit $u\in \OrE$ Comme $u$ est un endomorphisme en dimension finie, il suffit de montrer que $u$ est injective, $\Ker u=\{\vec{0_E}\}$.\\
+Soit $\vec{x}\in  \Ker u$. Comme $\norme{u( \vec{x})}\overbrace{=}^{u\in\OrE }\norme{\vec{x}}$ et $u( \vec{x})=0$, on a $\norme{\vec{x}}=0$, soit $\vec{x}=\vec{0_E}$ car une norme est définie.
 \item \textit{Non vide :} $Id_E\in \OrE$
 \item \textit{Stabilité composition :} Soit $u,v \in \OrE$. Soit $\vec{x}\in  E$. La norme est conservée car :
 $$ \norme{u(v(\vec{x}))}\overbrace{=}^{u\in \OrE}\norme{v(\vec{x})}\overbrace{=}^{v\in \OrE}\norme{\vec{x}}.$$
-\item \textit{Stabilité inversion :}Soit $u \in \OrE$. Comme $u$ est un automorphisme, $u^{-1}$ l'est aussi. De plus, la norme est conservée car : 
+\item \textit{Stabilité inversion :} Soit $u \in \OrE$. Comme $u$ est un automorphisme, $u^{-1}$ l'est aussi. De plus, la norme est conservée car : 
 $$ \norme{\vec{x}} = \norme{u( u^{-1}(\vec{x}))}\overbrace{=}^{u\in\OrE }\norme{u^{-1}(\vec{x})}.$$
 \end{itemize}
 \end{proof}
 \subsection{Matrice orthogonale}
 \begin{Df}[Matrice orthogonale]
 Une matrice carrée $M \in \MnR$ est dit \defi{orthogonal} si $$\transposee{M} M = I_n.$$
-On note $\OnR$ est l'ensemble des matrices orthogonales de taille n.\\
+On note \defi{$\OnR$} l'ensemble des matrices orthogonales de taille $n$.\\
 Comme $\transposee{M} M = I_n$, la matrice $M$ est inversible d'inverse $\transposee{M}$ et on a aussi $ M \transposee{M}= I_n.$
 \end{Df}
 
@@ -171,7 +171,22 @@ $$
 $O \in \OnR$ est  orthogonal si et seulement si la famille des colonnes de $O$ (ou les lignes) est une base orthonormale de l'espace euclidien canonique $\R^n$.
 \end{Prop}
 \begin{proof}
-Soit $C_1,\dots,C_n$ les colonnes de la matrice $O$. Le coefficient d'indice $i,j$ de la matrice $\transposee{O} O$ est famille $\transposee{C_i}C_j=\PS{C_i}{C_j}$. Comme  $\transposee{O} O=I_n$, $\PS{C_i}{C_j}=\delta_{ij}$, donc $(C_1,\dots,C_n)$ une famille orthonormale de $\R^n$. Du fait de l'égalité $ O\transposee{O}=I_n$, on a le même résultat sur les lignes.
+Soit $C_1,\dots,C_n$ les colonnes de la matrice $O$.
+\begin{align*}
+O \in \OnR\text{  est  orthogonal } \Leftrightarrow&  \transposee{M} M =\begin{pmatrix}
+\transposee{C_1}\\\vdots\\\transposee{C_n}
+\end{pmatrix} \begin{pmatrix}
+C_1&\dots&C_n
+\end{pmatrix}=\begin{pmatrix}
+\transposee{C_1}C_1 &\dots&\transposee{C_1}C_n\\
+\vdots &&\vdots\\
+\transposee{C_n}C_1&\dots&\transposee{C_n}C_n\\
+\end{pmatrix} =  I_n\\
+ \Leftrightarrow& \forall i,j\in\ccro{1}{n} :\quad \transposee{C_i}C_j=\delta_{ij}\\
+\Leftrightarrow& \forall i,j\in\ccro{1}{n} :\quad \PS{C_i}{C_j}=\delta_{ij}\\
+\Leftrightarrow& (C_1,\dots,C_n)\text{ est une base orthonormale de l'espace euclidien canonique } \R^n
+\end{align*} 
+Du fait de l'égalité $ O\transposee{O}=I_n$, on a le même résultat sur les lignes.
 \end{proof} 
 \begin{Ex}
 Il est facile de vérifier qu'une matrice de permutation est une matrice orthogonal car ses vecteurs colonnes forment une famille orthonormale. 
@@ -235,7 +250,7 @@ spécial orthogonal} de $\MnR$ [resp. $E$].
 \begin{proof}
 \begin{itemize}
 \item \textit{Non vide} : $I_n\in \SOnR$.
-\item \textit{Stabilité} :  Soit $S_1,S_2\in \SOnR$. $$\det (S_1 S_2^{-1})=\det S_1 \det S_2^{-1}=\det S_1 \det S_2=1.$$
+\item \textit{Stabilité} :  Soit $S_1,S_2\in \SOnR$. $$\det (S_1 S_2^{-1})=\det S_1 \det S_2^{-1}=\frac{\det S_1}{ \det S_2}=1.$$
 \end{itemize}
 \end{proof}
 \subsection{Symétrie orthogonale}
@@ -358,7 +373,7 @@ L'endomorphisme dont la matrice dans $\mathcal{B}$ est $S_\theta = \begin{pmatri
 %TODO FAIRE UNE FIGURE ET LA DEMO
 \subsection{Isométrie vectorielle dans un espace de dimension 3}
 \begin{Th}[Réduction]
-Soit $E$ un espace euclidien de dimension $3$et $u \in OrE$. Il existe une BOND de $E$ dans
+Soit $E$ un espace euclidien de dimension $3$ et $u \in \OrE$. Il existe une BOND de $E$ dans
 laquelle $u$ a pour matrice :
 \begin{enumerate}
 \item $\begin{pmatrix}1&0&0\\0& \cos \theta &-\sin \theta \\0& \sin \theta &  \cos \theta \end{pmatrix}$ si $\det u=1$
@@ -442,16 +457,16 @@ effet : $\det (\vec{x},\vec{y},r(\vec{y})) =\det \begin{pmatrix}
 \begin{Ex}
 Caractériser l'endomorphisme $f$ de $\R^3$ dont la matrice dans la base canonique est
 $$A= \frac 1 3 \begin{pmatrix}
+2&-1&2\\
 2&2&-1\\
-1&2&2\\
--2&-1&2
+-1&2&2
 \end{pmatrix}.$$
 \begin{itemize}
 \item rotation vectoriel : les colonnes de $A$ forment une base orthonormée donc $f$ endomorphisme orthogonal. De plus  $\det(A)=1$, $f$ est  une rotation.
 \item axe :  on obtient $\Ker(A-I_3)=Vect(1,1,1).$ Posons $\vec{x}=(1,1,1)$. 
 \item angle :
 \begin{itemize}
-\item  $\tr(A)=2$, et donc $\cos ? =\frac 1 2$, soit $?=\pm \frac \pi 3[2?]$. Pour déterminer le signe de $\theta$, on pose $\vec{y}=(1,?1,0)$ non colinéaire  $\vec{x}$. $f(\vec{y})=(1,0,-1)$ et $\det (\vec{x},\vec{y},r(\vec{y}))=3>0$. ce qui signifie $\theta?\in]0,\pi[ modulo 2\pi.$ On en déduit donc que $f$ est la rotation d'axe dirigé par $(1,1,1)$ et d'angle $\frac \pi 3$.
+\item  $\tr(A)=2$, et donc $\cos \theta =\frac 1 2$, soit $\theta=\pm \frac \pi 3[2\pi]$. Pour déterminer le signe de $\theta$, on pose $\vec{y}=(1,-1,0)$ non colinéaire  $\vec{x}$. $f(\vec{y})=(1,0,-1)$ et $\det (\vec{x},\vec{y},r(\vec{y}))=3>0$. ce qui signifie $\theta\theta\in]0,\pi[ modulo 2\pi.$ On en déduit donc que $f$ est la rotation d'axe dirigé par $(1,1,1)$ et d'angle $\frac \pi 3$.
 \end{itemize}
 \end{itemize}
 \end{Ex}
