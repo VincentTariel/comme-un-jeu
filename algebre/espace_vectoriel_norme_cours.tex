@@ -1,0 +1,599 @@
+\documentclass[a4paper]{book}
+\usepackage{t1enc}
+\usepackage{mathrsfs}
+\usepackage[latin1]{inputenc}
+\usepackage[french]{minitoc}
+ \usepackage{amsmath}
+\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
+\usepackage[francais]{babel}
+\usepackage{amsmath}
+\usepackage{TikZ}
+\usepackage{tkz-fct}   
+\usepackage{a4wide,jlq2eams} 
+\usepackage{graphicx}
+\usepackage[colorlinks = true,urlcolor  = blue]{hyperref}
+\usepackage{thmbox}
+\usepackage{changepage}
+\usepackage{xcolor}
+\usepackage{sectsty}
+ \usepackage{enumitem}
+\usepackage{eurosym}
+\usepackage{caption}  
+\usepackage{wrapfig}
+\usetikzlibrary{angles}
+\usetikzlibrary{quotes}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
+\sectionfont{\color{magenta}}
+\subsectionfont{\color{red}}
+\subsubsectionfont{\color{red}}
+\setlength{\shadowsize}{1.5pt}
+\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}} 
+ 
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth} 
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\fancypagestyle{plain}{%
+   \fancyhead{} % get rid of headers
+   \renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+\setcounter{minitocdepth}{3}
+
+
+\renewcommand{\thesection}{\Roman{section}} 
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\thmboxoptions{S,bodystyle=\itshape\noindent}
+\newtheorem[L]{Lem}{Lemme}[section]
+\newtheorem[L]{Th}[Lem]{Théorème}
+\newtheorem[L]{Cor}[Lem]{Corollaire}
+\newtheorem[L]{Prop}[Lem]{Proposition}
+
+\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
+\newtheorem[S,bodystyle=\upshape\noindent]{DfTh}{Définition-Théorème}
+\newtheorem[S,bodystyle=\upshape\noindent]{DfProp}{Définition-Proposition}
+\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
+\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
+\newtheorem[S,bodystyle=\upshape\noindent]{Meth}{Méthode}
+\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
+
+
+\newcommand\SUI{(u_n)_{n\in\N}}
+\newcommand\SER{ \sum u_n}
+\newcommand\myop{ \bigtriangleup}
+\def\pa#1{({#1})}
+\newcommand\Matrix[3]{\mathrm{#1}_{#2}\pa{#3}}
+\def\sEnsemble#1#2{\mathopen\{#1\mid#2\mathclose\}}
+\newcommand{\myunit}{1 cm}
+\tikzset{
+    node style sp/.style={draw,circle,minimum size=\myunit},
+    node style ge/.style={circle,minimum size=\myunit},
+    arrow style mul/.style={draw,sloped,midway,fill=white},
+    arrow style plus/.style={midway,sloped,fill=white},
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{tocdepth}{5}
+\begin{document}
+%\dominitoc
+%\tableofcontents
+\chapter{Espace vectoriel normé}
+
+La chronologie adoptée pour écrire ce cours complet n'est pas logique. Pour une cohérence mathématiques, il faudrait étudier d'abord ce chapitre avant les chapitres d'analyse ou d'algèbre. \\
+Cependant, ce chapitre "Topologie" décourage de nombreux élèves dès le début d'année car il est abstrait. C'est pourquoi d'un point de vue  pédagogique, il est étudier à la fin.\\
+Les résultats de la topologie de première année sont  :  la définition de la convergence
+d'une suite réelle, la notion d'intervalle ouvert (notion qui intervient dans le théorème de Rolles ou fermé (notion qui intervient 
+théorème "si $f$ est continue sur un intervalle fermé borné, à valeurs dans $\R$, alors f admet un minimum et un maximum »).\\
+Le problème est de généraliser les notions de topologie sur la droite des réels à d'autres ensembles, par exemples les points du plan, les polynômes, les fonctions continues...  Quelle serait la définition d'un intervalle ouvert dans le plan ?  Cette topologie nous permettra de définir formellement la notion de convergence. Dans le cadre de ce cours, on limite l'abstraction à une topologie définie à partir d'une norme. Une norme est un objet mathématique donnant du sens à la notion de "longueur".\\
+Dans tout le chapitre, $\K$ désigne $\R$ ou $\C$.
+
+
+% -----------------------------------------------------------------------------
+\section{Espace vectoriel normé}
+
+\subsection{Norme}
+\subsubsection{Généralités}
+
+\begin{Df}[Norme]
+Soit $E$ un $\K$-espace vectoriel.\\
+Une \defi{norme} sur $E$ est une application $N:E\to\R$ vérifiant les axiomes suivants.
+%Pour tous $(x,y)\in E^2$ et pour tout $\lambda  \in \K $:
+\begin{enumerate}
+\item \defi{positivité :} $\forall \vec{x}\in E:\quad N(\vec{x})\geq 0$
+\item \defi{séparation :} $\forall \vec{x}\in E:\quad N(\vec{x}) = 0 \implies \vec{x} = \vec{0_E}$
+\item \defi{homogénéité :} $\forall \vec{x}\in E,\forall\lambda\in\K:\quad N(\lambda  \vec{x}) = |\lambda| N(\vec{x})$
+\item \defi{inégalité triangulaire :} $\forall \vec{x},\vec{y}\in E:\quad N(\vec{x}+\vec{y}) \leq  N(\vec{x}) + N(\vec{y})$
+\end{enumerate}
+On note fréquemment $\norme{\vec{x}}$ au lieu de $N(\vec{x})$.
+\end{Df}
+\begin{NB}
+Une conséquence des axiomes précédent est que $N(\vec{0}) = 0$ (en appliquant 3) avec $\lambda= 0$.\\
+        \begin{minipage}[c]{0.45\linewidth}{
+Le nom d'inégalité triangulaire vient du fait que dans un triangle $ABC$ on a nécessairement $$AC \leq AB + BC.$$}
+\end{minipage}
+    \begin{minipage}[c]{0.45\linewidth}{
+\begin{tikzpicture}[scale=1]%,cap=round,>=latex]
+   \coordinate [label=left:$A$] (A) at (-2cm,-1.cm);
+   \coordinate [label=right:$C$] (C) at (2.2cm,-1.0cm);
+   \coordinate [label=above:$B$] (B) at (1cm,1.0cm);
+   \draw (A) -- node[sloped,above] {$AB$} (B) -- node[sloped,above,] {$BC$} (C) -- node[below] {$AC$} (A);
+\end{tikzpicture}}
+    \end{minipage}
+\end{NB}
+\begin{Df}[Espace vectoriel normé]
+Un \defi{espace vectoriel normé} est un couple $(E,N)$ où $E$ est un espace vectoriel et $N$ un norme sur $E$.
+On note parfois $E$ au lieu de $(E,N)$ si le choix de la norme est clair d'après le contexte.
+\end{Df}
+\begin{Prop}[Inégalité triangulaire inversée]
+Soit $E$ un espace vectoriel, $N$ une norme sur $E$. On a :
+$$\vec{x},\vec{y}\in E: |N(\vec{x}) - N(\vec{y})|\leq N(\vec{x}-\vec{y}).$$
+\end{Prop}
+\begin{proof}
+Soit $\vec{x},\vec{y}\in E$. On a $$N(\vec{x})=N(\vec{x}-\vec{y}+\vec{y})\overbrace{\leq}^{\text{inégalité triangulaire}} N(\vec{x}-\vec{y})+N(\vec{y}).$$
+Ainsi $N(\vec{x})-N(\vec{y})\leq N(\vec{x}-\vec{y}).$ En permutant $\vec{x}$ et $\vec{y}$, on obtient $N(\vec{y})-N(\vec{x})\leq N(\vec{x}-\vec{y}).$ Finalement $|N(\vec{x}) - N(\vec{y})|\leq N(\vec{x}-\vec{y}).$
+\end{proof}
+\begin{Ex}[Trois normes sur $\K^n$]
+Pour $\vec{x} =(x_1,\dots,x_n)\in \K^n$, on pose
+\begin{enumerate}
+\item $\norme{\vec{x}}_1 = \sum_{k=1}^n |x_k|$
+\item $\norme{\vec{x}}_2 = \sqrt{\sum_{k=1}^n |x_k|^2}$
+\item $\norme{\vec{x}}_\infty = \max\Big(|x_1|,\dots,|x_n|\Big)$
+\end{enumerate}
+\end{Ex}
+\begin{Ex}[Trois normes sur les espaces de fonctions]
+\begin{itemize}
+\item Soit $\mathcal{B}(I, \K)$ l'espace des fonctions bornées sur l'intervalle I de $\R$ à valeurs dans $\K$.  Pour $f \in  \mathcal{B}(I, \K)$, on pose :
+$$\norme{f}_\infty=\sup_{x\in I}|f(x)|.$$
+$\norme{\,}_\infty$ est une norme sur $\mathcal{B}(I, \K)$ appelée \defi{norme de la convergence uniforme.}
+\item Soit $L_1(I, \K)$ l'espace des fonctions continues et intégrables sur l'intervalle $I$ de $\R$ à valeurs dans $\K$. Pour $f \in L_1(I, \K)$, on pose :
+$$\norme{f}_1=\int_I|f(x)|\,\mathrm{dx}.$$
+$\norme{\,}_1$ est une norme sur $L_1(I, \K)$ appelée \defi{norme de la convergence en moyenne.}
+\item Soit $L_2(I, \K)$ l'espace des fonctions continues de carré intégrables sur l'intervalle $I$ de $\R$ à valeurs dans $\K$. Pour $f \in L_2(I, \K)$, on pose :
+$$\norme{f}_1=\int_I|f(x)|\,\mathrm{dx}.$$
+$\norme{\,}_2$ est une norme sur $L_2(I, \K)$ appelée \defi{norme de la convergence quadratique.}
+Comme l'ensemble des fonctions continues sur un segment $[a,b]$ à valeurs dans $\K$, $\mathcal{C}([a,b],\K)$ est une partie des ensembles $\mathcal{B}(I, \K)$, $L_1(I, \K)$ et $L_2(I, \K)$, $\norme{\,}_\infty$, $\norme{\,}_1$ et $\norme{\,}_2$ sont trois normes de $\mathcal{C}([a,b],\K)$.
+\end{itemize}
+\end{Ex}
+
+%\Para{Exemples}
+%
+%
+%
+%
+%
+
+%
+
+
+%\subsection{Distance}
+%
+%\Para{Définition}
+%
+%Soit $\En$ un espace vectoriel normé.
+%La \emph{distance associée} à $\normee$ est l'application $\Fn{d}{E×E}{\R }$ définie par:
+%$\forall (\vec{x},y)\in E^2$, $d(\vec{x},y) = \norme{\vec{x}-y}$.
+%
+%\Para{Remarque}[HP]
+%
+%De façon générale, on appelle \emph{distance} sur un ensemble $E$
+%une application $\Fn{d}{E^2}{\R }$ vérifiant les axiomes suivants:
+%pour tous $(\vec{x},y,z)\in E^3$:
+%\begin{enumerate}
+%\item \emph{positivité:} $d(\vec{x},y) \geq  0$
+%\item \emph{symétrie:} $d(\vec{x},y) = d(y,\vec{x})$
+%\item \emph{séparation:} $d(\vec{x},y) = 0 \implies \vec{x} = y$
+%\item \emph{inégalité triangulaire:} $d(\vec{x},y) ? d(\vec{x},z) + d(z,y)$
+%\end{enumerate}
+%
+%Si $d$ est une distance sur $E$, on dit que $(E,d)$ est un \emph{espace métrique}.
+%
+%\subsection{Boules, sphères}
+%
+%\Para{Définitions}
+%
+%Soit $\En$ un espace vectoriel normé.\begin{itemize}
+%\item La \emph{boule ouverte} de centre $a\in E$ et de rayon $r\in \R $ est $B(a,r) = \Ensemble{\vec{x}\in E}{d(\vec{x},a)<r}$.
+%\item La \emph{boule fermée} de centre $a\in E$ et de rayon $r\in \R $ est $B_f(a,r) = \Ensemble{\vec{x}\in E}{d(\vec{x},a)?r}$.
+%\item La \emph{sphère} de centre $a\in E$ et de rayon $r\in \R $ est $S(a,r) = \Ensemble{\vec{x}\in E}{d(\vec{x},a)=r} = B_f(a,r) ?B(a,r)$.
+%\end{itemize}
+%
+%\Para{Exemple}
+%
+%On prend $E = \R ^2$.
+%
+%Tracer les sphères unité pour les normes $\normee_1$, $\normee_2$ et $\normee_?$.
+%
+%\subsection{Parties convexes}
+%
+%\Para{Définition}
+%
+%Soit $\En$ un espace vectoriel et $A$ une partie de $E$.
+%On dit que $A$ est une \emph{partie convexe}, ou plus simplement que $A$ est \emph{convexe}, si et seulement si $\forall (x,y)\in A^2$, $\forall \lambda  \in [0,1]$, $\lambda  x + (1-\lambda  )y\in A$.
+%
+%\Para{Proposition}
+%
+%Soit $\En$ un espace vectoriel normé, $a\in E$ et $r\in \R $.
+%Les boules $B(a,r)$ et $B_f(a,r)$ sont convexes.
+%
+%\subsection{Parties bornées, applications bornées}
+%
+%\Para{Définition}
+%
+%Soit $\En$ un espace vectoriel normé et $A$ une partie de $E$.
+%On dit que $A$ est une partie \emph{bornée} de $E$ si et seulement si $?M\geq 0$, $\forall x\in A$, $\norme{x}?M$.
+%
+%\Para{Définition}
+%
+%Soit $(E,\normee_E)$ et $(F,\normee_F)$ deux espaces vectoriels normés et $A\subset E$.
+%Soit $\Fn{f}{A}{F}$.
+%On dit que $f$ est une application \emph{bornée} si et seulement si la partie $f(A)$ est bornée, c.-à-d. si et seulement si $?M\geq 0$, $\forall x\in A$, $\norme{f(x)}_F?M$.
+%
+%
+%% -----------------------------------------------------------------------------
+%\section{Topologie}
+%
+%\subsection{Ouverts et fermés}
+%
+%\Para{Définitions}
+%
+%Soit $\En$ un espace vectoriel normé.\begin{itemize}
+%\item Une \emph{partie ouverte} de $E$, ou plus simplement un \emph{ouvert} de $E$, est une partie $U$ de $E$ telle que $\forall x\in U$, $?r>0$, $B(x,r)\subset U$.
+%\item Une \emph{partie fermée} de $E$, ou plus simplement un \emph{fermé} de $E$, est une partie $F$ de $E$ telle que $E?F$ est un ouvert de $E$.
+%\end{itemize}
+%
+%\Para{Proposition}
+%
+%Soit $\En$ un espace vectoriel normé. Soit $a\in E$ et $r\in \R $. Alors:\begin{itemize}
+%\item la boule ouverte $B(a,r)$ est une partie ouverte de $E$;
+%\item la boule fermée $B_f(a,r)$ est une partie fermée de $E$.
+%\end{itemize}
+%
+%\Para{Proposition}[propriétés des ouverts]
+%
+%Soit $\En$ un espace vectoriel normé.\begin{itemize}
+%\item $?$ et $E$ sont des ouverts.
+%\item \emph{stabilité par union quelconque}:
+%  Si $\forall i\in I$, $U_i$ est un ouvert de $E$, alors $?_{i\in I} U_i$ est un ouvert de $E$.
+%\item \emph{stabilité par intersection finie}:
+%  Si $U_1, \dots, U_n$ sont des ouverts de $E$, alors $?_{i=1}^n U_i$ est un ouvert de $E$.
+%\end{itemize}
+%
+%\Para{Proposition}[propriétés des fermés]
+%
+%Soit $\En$ un espace vectoriel normé.\begin{itemize}
+%\item $?$ et $E$ sont des fermés.
+%\item \emph{stabilité par intersection quelconque}:
+%  Si $\forall i\in I$, $F_i$ est un fermé de $E$, alors $?_{i\in I} F_i$ est un fermé de $E$.
+%\item \emph{stabilité par union finie}:
+%  Si $F_1, \cdots, F_n$ sont des fermés de $E$, alors $?_{i=1}^n F_i$ est un fermé de $E$.
+%\end{itemize}
+%
+%\Para{Proposition}
+%
+%Soit $E$ un espace vectoriel \emph{de dimension finie}.
+%Alors la topologie de $E$ ne dépend pas du choix de la norme sur $E$.
+%
+%Autrement dit, si $A\subset E$, le caractère ouvert (ou fermé) de $A$ ne dépend pas du choix de la norme sur $E$.
+%
+%\subsection{Point intérieur, point adhérent}
+%
+%\Para{Proposition-Définition}
+%
+%Soit $\En$ un espace vectoriel normé, $A$ une partie de $E$ et $x\in E$.
+%Les conditions suivantes sont équivalentes:\begin{enumerate}
+%\item il existe un ouvert $U$ de $E$ tel que $x\in U$ et $U\subset A$;
+%\item $?r > 0$, $B(x,r)\subset A$;
+%\item pour toute suite $\U$ à valeurs dans $E$ convergent vers $x$, on a $u_n\in A$ à partir d'un certain rang.
+%\end{enumerate}
+%
+%On dit que $x$ est un \emph{point intérieur} à $A$ lorsque ces conditions sont vérifiées.
+%
+%\Para{Proposition-Définition}
+%
+%Soit $\En$ un espace vectoriel normé, $A$ une partie de $E$ et $x\in E$.
+%Les conditions suivantes sont équivalentes:\begin{enumerate}
+%\item pour tout ouvert $U$ de $E$ tel que $x\in U$, on a $U?A??$;
+%\item $\forall r>0$, $B(x,r)?A ??$;
+%\item $\forall \epsilon>0$, $?a\in A$, $\norme{x-a}?\epsilon$;
+%\item il existe une suite $\U$ à valeurs \emph{dans $A$} telle que $u_n \to x$.
+%\end{enumerate}
+%
+%On dit que $x$ est un \emph{point adhérent} à $A$ lorsque ces conditions sont vérifiées.
+%
+%\subsection{Intérieur, adhérence, frontière}
+%
+%\Para{Définitions}
+%
+%Soit $\En$ un espace vectoriel normé, $A$ une partie de $E$.\begin{itemize}
+%\item L'ensemble des points intérieurs de $A$ s'appelle l'\emph{intérieur} de $A$,
+%  et on le note $\Int{A}$
+%\item L'ensemble des points adhérents à $A$ s'appelle l'\emph{adhérence} de $A$,
+%  et on le note $\Adh{A}$.
+%\item L'adhérence de $A$ privée de l'intérieur de $A$ s'appelle la \emph{frontière} de $A$ et on le note $\mathrm{Fr}(A) = ?A = \Adh{A}?\Int{A}$.
+%\end{itemize}
+%
+%\Para{Proposition}
+%\begin{itemize}
+%\item si $A \subset  B$, alors $\Int A \subset  \Int B$ et $\Adh A \subset  \Adh B$;
+%\item on a toujours $\Int{A} \subset  A \subset  \Adh{A}$;
+%\item $\Int{A}$ est un ouvert, $\Adh{A}$ est un fermé;
+%\item $A = \Int{A}$ si et seulement si $A$ est un ouvert;
+%\item $A = \Adh{A}$ si et seulement si $A$ est un fermé.
+%\end{itemize}
+%
+%\subsection{Densité}
+%
+%\Para{Proposition-Définition}
+%
+%Soit $\En$ un espace vectoriel normé et $A$ une partie de $E$.
+%Les conditions suivantes sont équivalentes:\begin{enumerate}
+%\item pour tout ouvert $U$ non vide de $E$, on a $U?A??$;
+%\item $\forall x\in E$, $\forall r > 0$, $B(x,r)?A??$;
+%\item tout point de $E$ est adhérent à $A$;
+%\item $\Adh{A} = E$;
+%\item pour tout $x\in E$, il existe une suite $\U$ à valeurs \emph{dans $A$} telle que $u_n \to x$.
+%\end{enumerate}
+%
+%On dit que $A$ est une partie \emph{dense} de $E$ lorsque ces conditions sont vérifiées.
+%
+%
+%
+%
+%
+%% -----------------------------------------------------------------------------
+%\section{Applications dans un espace vectoriel normé}
+%% -----------------------------------------------------------------------------
+%\subsection{Limite d'une suites}
+%
+%\Para{Définitions}
+%
+%Soit $\En$ un espace vectoriel normé.\begin{itemize}
+%\item Une \emph{suite à valeurs dans $E$} est une application $\Fn{u}{\N }{E}$.
+%  On note fréquemment $u_n$ au lieu de $u(n)$ et $\U$ au lieu de $u$.
+%\item Soit $\U$ une suite à valeurs dans $E$ et $l\in E$.
+%  On dit que la suite $\U$ \emph{converge} vers $l$ si et seulement si
+%  \[\forall \epsilon> 0\+?n_0\in \N \+\forall n\geq n_0\+ \norme{u_n -l}?\epsilon\]
+%  $l$ est nécessairement unique et s'appelle \emph{la limite} de la suite $\U$.
+%  On note $\lim\limits_{\ninf}^{\normee} u_n = l$, ou encore $u_n \xrightarrow[\ninf]{\normee}l$.
+%\end{itemize}
+%
+%\Para{Remarque}
+%
+%Soit $\En$ un espace vectoriel normé, $\U$ une suite à valeurs dans $E$ et $l\in E$.
+%Alors $u_n \xrightarrow{\normee}l$ si et seulement si $\norme{u_n - l} \to 0$.
+%
+%\Para{Définitions}
+%\begin{enumerate}
+%\item Une suite $\U$ à valeurs dans un espace vectoriel normé $\En$ est dite \emph{convergente} si et seulement si il existe $l\in E$
+%  tel que $\U$ converge vers $l$.
+%\item Elle est dite \emph{divergente} dans le cas contraire.
+%\end{enumerate}
+%
+%\Para{Définition (HP)}
+%
+%Soit $E$ un £ev., $N$ et $N'$ deux normes sur $E$.
+%On dit que $N$ et $N'$ sont \emph{équivalentes} £ssil. existe deux constantes strictement positives $\alpha $ et $?$
+%telles que \[ \forall x\in E \+ \alpha N(x) ? N'(x) ? ?N(x). \]
+%
+%\Para{Propriétés (HP)}
+%
+%\begin{itemize}
+%\item Il s'agit d'une relation d'équivalence, £cad.
+%  \begin{itemize}
+%  \item toute norme est équivalente à elle-même;
+%  \item si $N$ est équivalente à $N'$, alors $N'$ est équivalente à $N$;
+%  \item deux normes équivalentes à une même troisième sont équivalentes entre elles.
+%  \end{itemize}
+%\item Si $N$ et $N'$ sont deux normes équivalentes,
+%  alors pour toute suite $(u_n)$ à valeurs dans $E$ et pour tout vecteur $l\in E$, on a
+%  \[ u_n \xrightarrow{N} l  \iff u_n \xrightarrow{N'} l. \]
+%\end{itemize}
+%
+%\Para{Théorème (HP)}
+%
+%Si $E$ est de dimension finie, toutes les normes sur $E$ sont équivalentes.
+%
+%\Para{Corollaire fondamental}
+%
+%Si $E$ est de dimension finie, le choix de la norme n'influe pas sur la convergence d'une suite, ni sur sa limite.
+%On pourra donc écrire $u_n \to l$, sans préciser la norme choisie.
+%
+%\Para{Proposition}
+%
+%En dimension finie, la convergence d'une suite de vecteurs est équivalente à la convergence des suites coordonnées.
+%Plus précisément, soit:
+%\begin{enumerate}
+%\item $\En$ un $\K $-espace vectoriel normé de dimension finie
+%\item $\B = \nUplet e1p$ une base de $E$
+%\item $(u_n)_{n\in \N }$ une suite à valeurs dans $E$
+%\item $\Uplet{(u^1_n)_{n\in \N }}{(u^p_n)_{n\in \N }}$ des suites numériques telles que:
+%  $\forall n\in \N $, $u_n = u^1_n e_1 + u^2_n e_2 + \cdots + u^p_n e_p$
+%\item $l = l^1 e_1 + l^2 e_2 + \cdots + l^p e_p$ où $l\in E$ et $(\Uplet{l^1}{l^p})\in \K ^p$.
+%\end{enumerate}
+%Alors \[ u_n \to l \iff \forall k\in \Dcro{1,p} \+ u^k_n \tol^k. \]
+%
+%\Para{Proposition}[opérations algébriques sur les limites]
+%
+%Soit $\En$ un $\K $-espace vectoriel normé.
+%Soit $\U$ et $??$ deux suites à valeurs dans $E$
+%et $(\lambda  _n)_{n\in \N }$ une suite à valeurs dans $\K $.\begin{itemize}
+%\item Si $u_n \to l$ et $v_n \to l'$, alors $u_n + v_n \to l+l'$.
+%\item Si $\lambda  _n \to \alpha $ et $u_n \to l$, alors $\lambda  _n u_n \to \alpha l$.
+%\end{itemize}
+%
+%\Para{Définitions}[relations de comparaison entre suites]
+%
+%Soit $\En$ un $\K $-espace vectoriel normé.
+%Soit $\U$ une suite à valeurs dans $E$ et $(\alpha _n)_{n\in \N }$ une suite numérique à valeurs dans $\K $.\begin{enumerate}
+%\item On dit que $u_n = O(\alpha _n)$ si et seulement si $\norme{u_n} = O(\alpha _n)$ si et seulement si $?N\in \N $, $?K\in \Rp$, $\forall n\geq N$, $\norme{u_n} ? K\Abs{\alpha _n}$.
+%  On dit alors que $\U$ est \emph{dominée} par $(\alpha _n)_{n\in \N }$.
+%\item On dit que $u_n = o(\alpha _n)$ si et seulement si $\norme{u_n} = o(\alpha _n)$ si et seulement si $\forall \epsilon>0$, $?N\in \N $, $\forall n\geq N$, $\norme{u_n} ? \epsilon\Abs{\alpha _n}$.
+%  On dit alors que $\U$ est \emph{négligeable} devant $(\alpha _n)_{n\in \N }$.
+%\end{enumerate}
+%\subsection{Limite d'une application}
+%
+%\Para{Définition}
+%
+%Soit $(E,\normee_E)$ et $(F,\normee_F)$ deux espaces vectoriels normés, $A$ une partie de $E$, $\Fn{f}{A}{F}$, $a\in E$ un point adhérent à $A$ et $l\in F$.
+%On dit que $f$ admet $l$ pour \emph{limite} en $a$ si et seulement si
+%$\forall \epsilon> 0$, $??>0$, $\forall x\in A$, $\norme{x-a}_E??\implies \norme{f(x)-l}_F?\epsilon$.
+%On écrit alors $\lim_{x \to a} f(x) = \lim_a f = l$.
+%
+%\Para{Remarque}
+%
+%On peut comme d'habitude étendre la définition de la limite dans les cas suivants:\begin{itemize}
+%\item si $E = \R $ et $a = ±?$;
+%\item si $F = \R $ et $l= ±?$.
+%\end{itemize}
+%
+%\Para{Théorème}[critère séquentiel des limites]
+%
+%Soit $E$ et $F$ deux espaces vectoriels normés et $A\subset E$.
+%Soit $\Fn{f}{A}{F}$, $a$ un point adhérent à $A$ et $b\in F$.
+%Les conditions suivantes sont équivalentes:\begin{enumerate}
+%\item $\lim_a f = b$
+%\item Toute suite à valeur dans $A$ telle que $u_n \to a$ vérifie $f(u_n) \to b$
+%\end{enumerate}
+%
+%\Para{Proposition}[limite et coordonnées]
+%
+%Soit $(E,\normee_E)$ et $(F,\normee_F)$ deux espaces vectoriels normés, $A$ une partie de $E$, $\Fn{f}{A}{F}$, $a\in E$ un point adhérent à $A$ et $l\in F$.
+%On suppose que:\begin{itemize}
+%\item \emph{$F$ est de dimension finie} et $\B = \nUplet e1p$ une base de $F$.
+%\item $\forall x\in A$, $f(x) = \sum_{k=1}^p f_k(x) e_k$ où $\Fn{f_k}{A}{\K }$.
+%\item $l= \sum_{k=1}^p l_k e_k$ où $\nUpletl1p \in \K ^p$.
+%\end{itemize}
+%
+%Alors $\lim_{x \to a} f(x) = l$ si et seulement si $\forall k\in \Dcro{1,p}\+ \lim_{x \to a} f_k(x) =l_k$.
+%
+%\Para{Proposition}[limite d'une composée]
+%
+%Soit $E$, $F$, $G$ trois espaces vectoriels normés, $A\subset E$ et $B\subset F$.
+%Soit $\Fn{f}{A}{F}$ et $\Fn{g}{B}{G}$.
+%On suppose:\begin{itemize}
+%\item $f(A)\subset B$ de sorte que la composée $\Fn{g?f}{A}{G}$ existe;
+%\item $a$ est un point adhérent à $A$ et $\lim_a f = b$;
+%\item $b$ est un point adhérent à $B$ et $\lim_b g = l$.
+%\end{itemize}
+%
+%Alors $\lim_a g?f = l$.
+%
+%\Para{Proposition}[opérations algébriques sur les limites]
+%
+%Soit $E$ et $F$ deux espaces vectoriels normés et $A\subset E$.
+%Soit $\Fn{f}{A}{F}$, $g \colon A \to F$ et $k \colon A \to\K $.
+%Soit $a$ un point adhérent à $A$.\begin{itemize}
+%\item Si $\lim_a f =l$ et $\lim_a g =l'$, alors $\lim_a (f+g) = l+l'$.
+%\item Si $\lim_a k =\alpha $ et $\lim_a f =l$, alors $\lim_a (kf) = \alpha l$.
+%\end{itemize}
+%
+%\subsection{Continuité}
+%
+%\Para{Définition}
+%
+%Soit $E$ et $F$ deux espaces vectoriels normés et $A\subset E$.
+%Soit $\Fn{f}{A}{F}$.
+%On dit que $f$ est \emph{continue en $a\in A$} si et seulement si $\lim_a f = f(a)$, c.-à-d. si et seulement si
+%\begin{multline*}
+%  \forall \epsilon>0 \+ ??>0 \+ \forall x\in A \+ \\
+%  \norme{x-a}_E??\implies \norme{f(x)-f(a)}_F?\epsilon.
+%\end{multline*}
+%On dit que $f$ est \emph{continue} si et seulement si elle est continue en tout point de $A$.
+%
+%\Para{Définition}[Prolongement par continuité]
+%Soit $E$ et $F$ deux espaces vectoriels normés et $A\subset E$. Soit $a\in E$ un point adhérent à $A$ n'appartenant pas à $A$.\\
+%Soit $\Fn{f}{A}{F}$ continue sur $A$.  $f$ admet une limite $l$ en $a$. Alors le prolongement par continuité de $f$  en $a$ est la fonction $g$ définie sur $A\cup\{a\}$ par
+%$$\Fonction{g}{A\cup\{a\}}{F}{x}{\begin{cases}f(x),&{\mbox{si }}x\neq a\\l ,&{\mbox{si }}x=a.\end{cases}}$$
+%
+%
+%
+%
+%\Para{Proposition}[continuité et coordonnées]
+%
+%Soit $E$ et $F$ deux espaces vectoriels normés et $A\subset E$.
+%Soit $\Fn{f}{A}{F}$ et $a\in A$.
+%On suppose que:\begin{itemize}
+%\item $F$ est de dimension finie et $\mathcal{B} = \nUplet e1p$ une base de $F$;
+%\item $\forall x\in A$, $f(x) =\sum_{k=1}^p f_k(x) e_k$ où $f_k \colon A \to\K $.
+%\end{itemize}
+%
+%Alors $f$ est continue en $a$ si et seulement si les fonctions $\Uplet{f_1}{f_p}$ sont toutes continues en $a$.
+%
+%\Para{Proposition}[propriétés des fonctions continues]
+%\begin{itemize}
+%\item La composée de deux fonctions continues est continue.
+%\item La restriction d'une fonction continue est continue.
+%\end{itemize}
+%
+%\Para{Théorème}
+%
+%Soit $E$ et $F$ deux espaces vectoriels normés et $\Fn{f}{E}{F}$ une fonction continue.
+%Soit $A\subset F$ une partie de $F$\begin{itemize}
+%\item Si $A$ est un ouvert de $F$, alors $f^{-1}(A)$ est un ouvert de $E$.
+%\item Si $A$ est un fermé de $F$, alors $f^{-1}(A)$ est un fermé de $E$.
+%\end{itemize}
+%
+%\Para{Corollaire}
+%
+%Soit $E$ un espaces vectoriels normés et $\Fn{f}{E}{\R }$ une fonction continue.\begin{itemize}
+%\item $\Ensemble{x\in E}{f(x)>0}$ est un ouvert de $E$.
+%\item $\Ensemble{x\in E}{f(x)=0}$ est un fermé de $E$.
+%\item $\Ensemble{x\in E}{f(x)\geq 0}$ est un fermé de $E$.
+%\end{itemize}
+%
+%\subsection{Applications lipschitziennes}
+%
+%\Para{Définition}
+%
+%Soit $(E, \normee_E)$ et $(F, \normee_F)$ deux $\K $-espaces vectoriels normés et $A\subset E$.
+%Soit $\Fn{f}{A}{F}$.\begin{itemize}
+%\item Soit $k\in \Rp$. L'application $f$ est dite \emph{$k$-lipschitzienne} si et seulement si $\forall (x,y)\in A^2$, $\norme{f(x)-f(y)}_F?k \norme{x-y}_E$.
+%\item L'application $f$ est dite \emph{lipschitzienne}, ou vérifie la \emph{propriété de Lipschitz}, si et seulement si il existe $k\in \Rp$ telle que $f$ soit $k$-lipschitzienne.
+%\end{itemize}
+%
+%\Para{Proposition}
+%
+%La composée de deux applications lipschitzienne l'est également.
+%
+%\Para{Proposition}
+%
+%Toute application lipschitzienne est continue.
+%La réciproque est fausse.
+%
+%\subsection{Applications linéaires}
+%
+%\Para{Proposition}[continuité des applications linéaires]
+%
+%Soit $E$ un espace vectoriel normé de dimension finie, $F$ un espace vectoriel normé et $\Fn{f}{E}{F}$ \emph{linéaire}.
+%Alors $f$ est lipschitzienne (et donc continue).
+%
+%\Para{Proposition}[continuité des applications multilinéaire]
+%
+%Toute application multilinéaire dont l'ensemble de départ est un espace vectoriel normé de dimension finie est continue.
+%
+%\subsection{Compacité}
+%
+%\Para{Définition}
+%
+%Soit $E$ un espace vectoriel normé de dimension finie.
+%On dit qu'une partie $A$ de $E$ est \emph{compacte} si et seulement si elle est fermée et bornée
+%
+%\Para{Théorème}
+%
+%Soit $E$ et $F$ deux espaces vectoriels normés de dimensions finies, $A\subset E$ et $\Fn{f}{A}{F}$ une fonction \emph{continue}.
+%Si $K\subset A$ est une partie compacte de $E$,
+%alors $f(K)$ est une partie compacte de $F$.
+%
+%\Para{Corollaire important}
+%
+%Soit $E$ un espace vectoriel normé de dimension finie, $A$ une partie fermée et bornée de $E$ et $\Fn{f}{A}{\R }$ une fonction continue.
+%Alors $f$ est bornée et ses bornes sont atteintes.
+
+
+
+\end{document}
