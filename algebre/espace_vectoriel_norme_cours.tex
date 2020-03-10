@@ -21,6 +21,7 @@
 \usepackage{caption}  
 \usepackage{wrapfig}
 \usetikzlibrary{angles}
+\usepackage{pgfplots}
 \usetikzlibrary{quotes}
 \usetikzlibrary{matrix,arrows,decorations.pathmorphing}
 \definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
@@ -82,14 +83,19 @@
 \begin{document}
 %\dominitoc
 %\tableofcontents
-\chapter{Espace vectoriel normé}
+\chapter{Topologie des espaces vectoriels normés}
 
+Ce cours présente les grands concepts à l'origine de la topologie et de l'analyse fonctionnelle.
+L'étymologie du mot "topologie" est éloquente. En effet, en Grec, topos signifie lieu tandis que
+logos signifie étude. Ce domaine des Mathématiques s'intéresse donc à l'étude des lieux, appelés en général espaces et
+aux propriétés qui les caractérisent.\\
 La chronologie adoptée pour écrire ce cours complet n'est pas logique. Pour une cohérence mathématiques, il faudrait étudier d'abord ce chapitre avant les chapitres d'analyse ou d'algèbre. \\
-Cependant, ce chapitre "Topologie" décourage de nombreux élèves dès le début d'année car il est abstrait. C'est pourquoi d'un point de vue  pédagogique, il est étudier à la fin.\\
+Cependant, ce chapitre décourage de nombreux élèves dès le début d'année du fait de son caractère abstrait. C'est pourquoi d'un point de vue  pédagogique, il est étudier à la fin.\\
 Les résultats de la topologie de première année sont  :  la définition de la convergence
-d'une suite réelle, la notion d'intervalle ouvert (notion qui intervient dans le théorème de Rolles ou fermé (notion qui intervient 
+d'une suite réelle, la notion d'intervalle ouvert (notion qui intervient dans le théorème de Rolles) ou d'intervalle fermé (notion qui intervient 
 théorème "si $f$ est continue sur un intervalle fermé borné, à valeurs dans $\R$, alors f admet un minimum et un maximum »).\\
-Le problème est de généraliser les notions de topologie sur la droite des réels à d'autres ensembles, par exemples les points du plan, les polynômes, les fonctions continues...  Quelle serait la définition d'un intervalle ouvert dans le plan ?  Cette topologie nous permettra de définir formellement la notion de convergence. Dans le cadre de ce cours, on limite l'abstraction à une topologie définie à partir d'une norme. Une norme est un objet mathématique donnant du sens à la notion de "longueur".\\
+Le problème est de généraliser les notions de topologie sur la droite des réels à d'autres ensembles, par exemples les points du plan, les polynômes, les fonctions continues...  Quelle serait la définition d'un intervalle ouvert dans le plan ? \\
+Dans le cadre de ce cours, on limite l'abstraction à une topologie définie à partir d'une norme. Une norme est un objet mathématique donnant du sens à la notion de "longueur".\\
 Dans tout le chapitre, $\K$ désigne $\R$ ou $\C$.
 
 
@@ -97,19 +103,19 @@ Dans tout le chapitre, $\K$ désigne $\R$ ou $\C$.
 \section{Espace vectoriel normé}
 
 \subsection{Norme}
-\subsubsection{Généralités}
-
+En géométrie, la norme est une extension de la valeur absolue des nombres aux vecteurs. Elle permet de mesurer la longueur commune à toutes les représentations d'un vecteur.
 \begin{Df}[Norme]
 Soit $E$ un $\K$-espace vectoriel.\\
 Une \defi{norme} sur $E$ est une application $N:E\to\R$ vérifiant les axiomes suivants.
 %Pour tous $(x,y)\in E^2$ et pour tout $\lambda  \in \K $:
 \begin{enumerate}
 \item \defi{positivité :} $\forall \vec{x}\in E:\quad N(\vec{x})\geq 0$
-\item \defi{séparation :} $\forall \vec{x}\in E:\quad N(\vec{x}) = 0 \implies \vec{x} = \vec{0_E}$
+\item \defi{définie :} $\forall \vec{x}\in E:\quad N(\vec{x}) = 0 \implies \vec{x} = \vec{0_E}$
 \item \defi{homogénéité :} $\forall \vec{x}\in E,\forall\lambda\in\K:\quad N(\lambda  \vec{x}) = |\lambda| N(\vec{x})$
 \item \defi{inégalité triangulaire :} $\forall \vec{x},\vec{y}\in E:\quad N(\vec{x}+\vec{y}) \leq  N(\vec{x}) + N(\vec{y})$
 \end{enumerate}
-On note fréquemment $\norme{\vec{x}}$ au lieu de $N(\vec{x})$.
+On note fréquemment $\norme{\vec{x}}$ au lieu de $N(\vec{x})$.\\
+La norme d'un vecteur correspond à sa "longueur".
 \end{Df}
 \begin{NB}
 Une conséquence des axiomes précédent est que $N(\vec{0}) = 0$ (en appliquant 3) avec $\lambda= 0$.\\
@@ -144,7 +150,29 @@ Pour $\vec{x} =(x_1,\dots,x_n)\in \K^n$, on pose
 \item $\norme{\vec{x}}_2 = \sqrt{\sum_{k=1}^n |x_k|^2}$
 \item $\norme{\vec{x}}_\infty = \max\Big(|x_1|,\dots,|x_n|\Big)$
 \end{enumerate}
+Démontrons que $\norme{\,}_\infty$ est une norme sur $\K^n$. \\
+\begin{itemize}
+\item \textit{positivité :} le plus grand élément d'un nombre fini de réels positifs est lui-même un réel positif. 
+\item \textit{définie :} Soit $\vec{x}=(x_1,\dots,x_n)\in \K^n$ tel que $\norme{\vec{x}}_\infty=0$. On a :
+ $$\forall i\in \ccro{1}{n} :\quad  0\leq |x_i|\leq \norme{\vec{x}}_\infty=0.$$ Donc pour tout $i\in\ccro{1}{n},x_i=0$, soit  $\vec{x}=\vec{0}$.
+\item \textit{homogénéité :} Soit $\vec{x}=(x_1,\dots,x_n)\in \K^n$ et $\lambda\in\K$.  Si $\lambda$ est nul, l'égalité cherchée est immédiate. On suppose $\lambda$ non nul.
+On a :
+$$\forall i\in \ccro{1}{n} : |\lambda x_i| = |\lambda| |x_i|\leq |\lambda| \norme{\vec{x}}_\infty.$$ Comme tous les termes sont majorés par une même constante, on en déduit que  $  \norme{\lambda\vec{x}}_\infty \leq |\lambda| \norme{\vec{x}}_\infty$.\\
+On a aussi :
+$$\norme{\vec{x}}_\infty=\norme{\frac{1}{\lambda}\lambda\vec{x}}_\infty\leq \frac{1}{|\lambda|} \norme{\lambda\vec{x}}_\infty.$$
+ et on obtient ainsi une deuxième inégalité, puis l'égalité voulue. 
+\item \textit{inégalité triangulaire :} Soit $\vec{x}=(x_1,\dots,x_n),vec{y}=(y_1,\dots,y_n)\in \K^n$.
+$$\forall i\in \ccro{1}{n} :\quad  0\leq |x_i+y_i|\leq |x_i|+|y_i|\leq \norme{\vec{x}}_\infty +\norme{\vec{y}}_\infty .$$ Comme tous les termes sont majorés par une même constante, on en déduit que  $  \norme{\vec{x}+\vec{y}}_\infty \leq  \norme{\vec{x}}_\infty+\norme{\vec{y}}_\infty$.
+\end{itemize}  
+
 \end{Ex}
+\begin{Prop}[Norme hilbertienne]
+Soit $(E,\PS{}{})$ est un espace prehilbertien réel.
+La \defi{norme associée} définie par 
+$$ \forall \vec{x}\in E:\quad  \norme{\vec{x}} =\sqrt{\PS{\vec{x}}{\vec{x}}}.$$
+est une norme sur $E$. 
+\end{Prop}
+
 \begin{Ex}[Trois normes sur les espaces de fonctions]
 \begin{itemize}
 \item Soit $\mathcal{B}(I, \K)$ l'espace des fonctions bornées sur l'intervalle I de $\R$ à valeurs dans $\K$.  Pour $f \in  \mathcal{B}(I, \K)$, on pose :
@@ -160,83 +188,353 @@ Comme l'ensemble des fonctions continues sur un segment $[a,b]$ à valeurs dans $
 \end{itemize}
 \end{Ex}
 
-%\Para{Exemples}
-%
-%
-%
-%
-%
 
-%
+\begin{Th}[Norme équivalente en dimension finie]
+Soit $E$ un espace vectoriel de dimension finie.\\
+Soit $N_1$ et $N_2$ deux normes sur $E$.\\
+Alors il existe deux réels strictement positifs $\alpha, \beta$ tel que 
+$$\forall \vec{x}\in E : \alpha N_1(\vec{x})\leq N_2(\vec{x})\leq \beta N_1(\vec{x}).$$ 
+\end{Th}
+\begin{Ex}[$\R^n$]  
+Pour les normes $\norme{\,}_\infty$ et $\norme{\,}_1$, on peut déterminer les constantes $\alpha, \beta$. On a  $$\forall \vec{x}\in E :  \norme{\vec{x}}_\infty\leq \norme{\vec{x}}_1 \leq n \norme{\vec{x}}_\infty.$$
+En effet, soit $\vec{x}=(x_1,\dots,x_n)\in \R^n$, d'une part :
+$$\norme{\vec{x}}_1=\sum_{i=1}^n |x_i|\leq \sum_{i=1}^n \norme{\vec{x}}_\infty=n\norme{\vec{x}}_\infty$$
+et d'autre part, soit $i_0$ l'indice tel que $\norme{\vec{x}}_\infty = |x_{i_0}|$,
+$$\norme{\vec{x}}_\infty=|x_{i_0}|\leq \sum_{i=1}^n |x_i| =  \norme{\vec{x}}_1.$$
+\end{Ex}
+\subsection{Distance}
+\begin{minipage}[c]{0.6\linewidth}{
+Une distance est une application qui formalise l'idée intuitive de distance, c'est-à-dire la longueur qui sépare deux vecteurs.}
+\end{minipage}
+    \begin{minipage}[c]{0.4\linewidth}{
+\begin{tikzpicture}
+   \coordinate [label=above:$\vec{x}$] (A) at (6,2);
+   \coordinate   (0) at (0,0);
+   \coordinate [label=above:$\vec{y}$] (B) at (2,-1);
+   \draw[->] (0) -- node[sloped,above] {$\norme{\vec{x}}$} (A);
+   \draw[->] (0) -- node[sloped,above] {$\norme{\vec{y}}$} (B);
+   \draw[->] (B) -- node[sloped,above] {$d(\vec{x},\vec{y})=\norme{\vec{x}-\vec{y}}$} (A);
+\end{tikzpicture}}
+    \end{minipage}
+\begin{Df}
+Soit $(E,\norme{\,})$ un espace vectoriel normé.\\
+Pour tout $\vec{x},\vec{y}\in E$, la \defi{distance} de $\vec{x}$ à $\vec{y}$ est : 
+$$d(\vec{x},\vec{y}) = \norme{\vec{x}-\vec{y}}.$$
+\end{Df}
+
+\begin{NB}[Distance]
+La notion de distance permet de définir la notion de convergence d'une suite $(\vec{x_n})_{n\in\N}$ vers $\vec{x}$. La convergence est l'idée que les éléments de la suite s'approche de plus en plus $\vec{x}$ quand $n$ augmente, c'est à dire que la distance entre $\vec{x_n}$ et $\vec{x}$ tend vers zero quand $n$ tend vers l'infini, soit $d(\vec{x_n},\vec{x})\tend[n\to\infty]0.$ 
+\end{NB}
+\begin{Prop}
+Ainsi définie, la distance vérifient les propriétés suivantes :
+\begin{enumerate}
+\item \defi{positivité :} $\forall \vec{x},\vec{y}\in E:\quad  d(\vec{x},\vec{y}) \geq  0$
+\item \defi{symétrie :} $\forall \vec{x},\vec{y}\in E:\quad d(\vec{x},\vec{y}) = d(\vec{y},\vec{x})$
+\item \defi{séparation :} $\forall \vec{x},\vec{y}\in E:\quad  d(\vec{x},\vec{y}) = 0 \Rightarrow \vec{x} = \vec{y}$
+\item \defi{inégalité triangulaire :} $\forall \vec{x},\vec{y},\vec{z}\in E:\quad  d(\vec{x},\vec{y}) \leq d(\vec{x},\vec{z}) + d(\vec{z},\vec{y})$
+\end{enumerate}
+\end{Prop}
+\begin{NB}
+La notion de distance est une notion mathématique qui est normalement définie à partir de cette liste de propriétés. La distance définie à partir d'un norme est un cas particulier de distance. 
+\end{NB}
+\subsection{Boules}
+\begin{Df}[Boule ouverte, boule fermé, sphère]
+Soit $(E,\norme{\,})$ un espace vectoriel normé.
+\begin{itemize}
+\item La \defi{boule ouverte} de centre $\vec{a}\in E$ et de rayon $r\in \R $ est $$B(\vec{a},r) = \{\vec{x}\in E:\quad \norme{\vec{x}-\vec{a}}<r\}.$$
+\item La \defi{boule fermée} de centre $a\in E$ et de rayon $r\in \R $ est $$B_f(\vec{a},r) = \{\vec{x}\in E:\quad \norme{\vec{x}-\vec{a}}\leq r\}.$$
+\item La \defi{sphère} de centre $\vec{a}\in E$ et de rayon $r\in \R $ est $$S(\vec{a},r) = \{\vec{x}\in E:\quad \norme{\vec{x}-\vec{a}}=r\}.$$
+\end{itemize}
+La \defi{boule unité ouverte}  est $B_f(\vec{0}, 1)$. La \defi{sphère unité} est l'ensemble des vecteurs de $E$ de
+norme 1 ou encore l'ensemble des vecteurs unitaires de $E$.
+\end{Df}
+\begin{Ex}[Sphère unité dans $\R^2$]
+Notons respectivement $S_1$, $S_2$, $S_{\infty}$ et $S_{\frac 1 2}$ les sphères unités de $\R^2$  muni de respectivement des normes $\norme{\,}_1,\norme{\,}_2,\norme{\,}_\infty,\norme{\,}_\frac{1}{2}$. \\
+On identifie les coordonnées d'un vecteur avec les coordonnées d'un point du plan.
+Le dessin des sphères est : \\
+\begin{tikzpicture}
+   \foreach \i in {0,...,3}{
+     \begin{scope}[xshift=\i*3cm]
+      \draw [->] (-1.2,0)--(1.2,0);
+      \draw [->] (0,-1.2)--(0,1.2);
+    \end{scope}
+   }
+   \begin{scope}[draw=blue,]
+     \draw [] (-1,0)--(0,1)--(1,0)--(0,-1)--cycle;
+     \draw [](3,0) circle (0.88cm);
+     \draw [xshift=6cm] (-.66,-.66) rectangle (.66,.66);
+     \begin{scope}[xshift=9cm]
+       \draw [domain=0:90,samples=100,smooth,variable=\t] plot({-1*cos(\t)^(3)},{1*sin(\t)^(3)});
+       \draw [domain=0:90,samples=100,smooth,variable=\t] plot({-1*cos(\t)^(3)},{-1*sin(\t)^(3)});
+       \draw [domain=0:90,samples=100,smooth,variable=\t] plot({1*cos(\t)^(3)},{-1*sin(\t)^(3)});
+       \draw [domain=0:90,samples=100,smooth,variable=\t] plot({1*cos(\t)^(3)},{1*sin(\t)^(3)});
+     \end{scope}
+   \end{scope}
+   \foreach \i [count=\j from 0] in {1,2,\infty,\frac{1}{2}} \scoped [xshift=\j*3cm] { \node [anchor=mid west,color=blue] at (-0.25,-1.5) {$S_\i$}; };
+\end{tikzpicture}.
+\end{Ex}
+\begin{Prop}[Boule ouverte est ouverte]
+    \begin{minipage}[c]{0.4\linewidth}{
+Soit $(E,\norme{\,})$ un espace vectoriel normé. Soit $B(\vec{x},r)$ une boule ouverte.\\
+Alors $$\forall\vec{x}\in B(\vec{x},r),\exists r'>0:\quad B(\vec{x'},r')\subset B(\vec{x},r).$$
+}
+\end{minipage} 
+    \begin{minipage}[c]{0.4\linewidth}{\hspace*{0.2\linewidth}
+    \begin{tikzpicture}[domain=0:4] 
+\draw [black,fill=blue!20]  (0,0) circle (2) (0,0)node[above]{ $\vec{x}$ } --(0:2)node[pos=0.5,above]{ $r$ };
+\draw [black,fill=red!20]  (-1.1,-0.4) circle (0.7) (-1.1,-0.4)node[above]{ $\vec{x'}$ } --(-0.4,-0.4)node[pos=0.5,above]{ $r'$ };
+\end{tikzpicture}\begin{tiny}
+Identification coordonnées d'un vecteur avec coordonnées d'un point
+\end{tiny}
+
+}
+\end{minipage} 
+\end{Prop} 
+\begin{proof}
+Soit $B(\vec{x},r)$ une boule ouverte.\\
+Soit $\vec{x'}\in B(\vec{x},r)$. \\
+On choisit un $r'$ tel que $0< r' < r -\norme{\vec{x}-\vec{x'}}$.\\
+Soit $\vec{y}\in B(\vec{x'},r')$. On a $\norme{\vec{x}-\vec{y}}=\norme{(\vec{x}-\vec{x'})+(\vec{x'}-\vec{y})}\leq \norme{\vec{x}-\vec{x'}} + \norme{\vec{x'}-\vec{y}}<r.$ Donc $B(\vec{x'},r')\subset B(\vec{x},r).$
+\end{proof}
+\subsection{Partie convexe}
+\begin{Df}[Partie Convexe]
+    \begin{minipage}[c]{0.4\linewidth}{
+Soit $E$ un espace vectoriel et $A$ une partie de $E$.\\
+On dit que $A$ est une \defi{partie convexe}, ou plus simplement que $A$ est \defi{convexe}, si  pour tous $\vec{x}$ et $\vec{y}$ de $A$, le segment $[\vec{x}, \vec{y}]$ est tout entier contenu dans $A$, c'est à dire
+$$\vec{x},\vec{y}\in A, \forall \lambda  \in [0,1]:\quad \lambda  \vec{x} + (1-\lambda)\vec{y}\in A.$$
+}
+\end{minipage} 
+    \begin{minipage}[c]{0.6\linewidth}{
+\begin{tikzpicture}[bullet/.style={circle,fill,inner sep=1.5pt,node contents={}}]
+
+ \draw[black,fill=blue!20] (0,0) to[out=105,in=0] ++ (-0.75,1) to[out=180,in=105] ++ (-1.5,-3) node[above right]{$A$} to[out=-75,in=180] ++ (1.25,-1) to[out=0,in=-75] cycle;
+ \draw (-1.8 ,-0.5) node[bullet,label=left:$\vec{x}$,alias=PC]--(-0.4,-2) node[bullet,label=right:$\vec{y}$];
+\end{tikzpicture}
+\begin{tikzpicture}[bullet/.style={circle,fill,inner sep=1.5pt,node contents={}}]
+\pgfmathsetmacro{\myslope}{atan2(2,-4.5)}
+\draw[fill=blue!20] (2,1) to[out=\myslope,in=0] ++ (-2,0.5)  to[out=180,in=90] ++ (-1,-0.5)
+ to[out=-90,in=90] ++ (2,-2) to[out=-90,in=90] ++ (-3,-1)
+ to[out=-90,in=180]node[above right]{$B$} ++(4,-1) to[out=0,in=\myslope+180] cycle;
+  \draw (0 ,1.25) node[bullet,label=right:$\vec{x}$,alias=PC]--(-0.4,-2) node[bullet,label=right:$\vec{y}$];
+\end{tikzpicture}
+\captionof*{figure}{$A$ convexe. $B$ non convexe.}
+}
+\end{minipage} 
+\end{Df}
+\begin{Prop}[Convexité des boules]
+    \begin{minipage}[c]{0.6\linewidth}{
+Soit $(E,\norme{\,})$ un espace vectoriel normé.\\
+Les boules ouvertes et fermés  sont convexes.}
+\end{minipage} 
+    \begin{minipage}[c]{0.3\linewidth}{
+    \begin{tikzpicture}[bullet/.style={circle,fill,inner sep=1.5pt,node contents={}}]
+\draw [black,fill=blue!20]  (0,0) circle (1.5) (0,0)node[above]{ $\vec{a}$ } --(0:1.5)node[pos=0.5,above]{ $r$ };
+\draw (-0.9 ,-0.5) node[bullet,label=left:$\vec{x}$]--(0.8,-0.2) node[bullet,label=right:$\vec{y}$];
+\end{tikzpicture}
+}
+\end{minipage} 
+\end{Prop}
+\begin{proof}
+Soit $B(\vec{a},r)$ une boule ouverte.\\
+Soit $\vec{x},\vec{y}\in B(\vec{a},r).$ Soit $\lambda\in[0,1]$. On a :
+$$ \norme{(\lambda \vec{x} + (1-\lambda)\vec{y})-\vec{a}   }=\norme{(\lambda(\vec{x}-\vec{a}) + (1-\lambda)(\vec{y}-\vec{a})   }\leq |\lambda|\norme{\vec{x}-\vec{a}}+|1-\lambda|\norme{\vec{y}-\vec{a}}\leq |\lambda|r+|1-\lambda|r\overbrace{\leq}^{\lambda\in[0,1]} r.$$
+\end{proof}
+\begin{Ex}
+Les sous espaces vectoriels sont des convexes.
+\end{Ex}
+\section{Suite vectorielle}
+Dans cette partie, $(E,\norme{\,})$ désigne un espace vectoriel normé, et ($(u_n)_{n\in\N}$ une suite d'éléments de $E$.
+\subsection{Définition}
+\begin{Df}[Suite vectorielle]
+Soit $E$ un espace vectoriel. Une \defi{suite vectorielle} est une application $\vec{x}:\N \to E$.\\
+On note fréquemment le \defi{terme} $\vec{x_n}$ au lieu de $\vec{x}(n)$ pour représenter l'indexation par les entiers naturels.   Aussi, on note $(\vec{x_n})_{n\in\N}$ au lieu de $u$.
+\end{Df}
+\begin{Ex}[Suite de fonctions]
+\begin{tikzpicture}
+   \begin{axis}[
+       axis y line = middle,
+       axis x line = middle,
+       samples     = 200,
+       domain      = 0:1,
+       xmin = 0, xmax = 1,
+       ymin = 0, ymax = 1,
+       unbounded coords=jump
+     ]
+     \addplot[green, thick, mark=none] {x}node[pos=0.5, left] {$f_1:x\to x$};
+     \addplot[blue, thick, mark=none] {x^2}node[pos=0.4, left] {$f_2:x\to x^2$};
+     \addplot[yellow, thick, mark=none] {x^3}node[pos=0.3,left] {$f_3:x\to x^3$};    
+     \addplot[pink, thick, mark=none] {x^4}node[pos=0.2,above] {$f_4:x\to 5x^4$};
+   \end{axis}
+\end{tikzpicture}
+\captionof*{figure}{Représentation graphique des premier termes de la suite $(f_n:x\to x^n)_{n\in \N   }$}
+\end{Ex}
 
 
-%\subsection{Distance}
-%
-%\Para{Définition}
-%
-%Soit $\En$ un espace vectoriel normé.
-%La \emph{distance associée} à $\normee$ est l'application $\Fn{d}{E×E}{\R }$ définie par:
-%$\forall (\vec{x},y)\in E^2$, $d(\vec{x},y) = \norme{\vec{x}-y}$.
-%
-%\Para{Remarque}[HP]
-%
-%De façon générale, on appelle \emph{distance} sur un ensemble $E$
-%une application $\Fn{d}{E^2}{\R }$ vérifiant les axiomes suivants:
-%pour tous $(\vec{x},y,z)\in E^3$:
-%\begin{enumerate}
-%\item \emph{positivité:} $d(\vec{x},y) \geq  0$
-%\item \emph{symétrie:} $d(\vec{x},y) = d(y,\vec{x})$
-%\item \emph{séparation:} $d(\vec{x},y) = 0 \implies \vec{x} = y$
-%\item \emph{inégalité triangulaire:} $d(\vec{x},y) ? d(\vec{x},z) + d(z,y)$
-%\end{enumerate}
-%
-%Si $d$ est une distance sur $E$, on dit que $(E,d)$ est un \emph{espace métrique}.
-%
-%\subsection{Boules, sphères}
-%
-%\Para{Définitions}
-%
-%Soit $\En$ un espace vectoriel normé.\begin{itemize}
-%\item La \emph{boule ouverte} de centre $a\in E$ et de rayon $r\in \R $ est $B(a,r) = \Ensemble{\vec{x}\in E}{d(\vec{x},a)<r}$.
-%\item La \emph{boule fermée} de centre $a\in E$ et de rayon $r\in \R $ est $B_f(a,r) = \Ensemble{\vec{x}\in E}{d(\vec{x},a)?r}$.
-%\item La \emph{sphère} de centre $a\in E$ et de rayon $r\in \R $ est $S(a,r) = \Ensemble{\vec{x}\in E}{d(\vec{x},a)=r} = B_f(a,r) ?B(a,r)$.
-%\end{itemize}
-%
-%\Para{Exemple}
-%
-%On prend $E = \R ^2$.
-%
-%Tracer les sphères unité pour les normes $\normee_1$, $\normee_2$ et $\normee_?$.
-%
-%\subsection{Parties convexes}
-%
-%\Para{Définition}
-%
-%Soit $\En$ un espace vectoriel et $A$ une partie de $E$.
-%On dit que $A$ est une \emph{partie convexe}, ou plus simplement que $A$ est \emph{convexe}, si et seulement si $\forall (x,y)\in A^2$, $\forall \lambda  \in [0,1]$, $\lambda  x + (1-\lambda  )y\in A$.
-%
-%\Para{Proposition}
-%
-%Soit $\En$ un espace vectoriel normé, $a\in E$ et $r\in \R $.
-%Les boules $B(a,r)$ et $B_f(a,r)$ sont convexes.
-%
-%\subsection{Parties bornées, applications bornées}
-%
-%\Para{Définition}
-%
-%Soit $\En$ un espace vectoriel normé et $A$ une partie de $E$.
-%On dit que $A$ est une partie \emph{bornée} de $E$ si et seulement si $?M\geq 0$, $\forall x\in A$, $\norme{x}?M$.
-%
-%\Para{Définition}
-%
-%Soit $(E,\normee_E)$ et $(F,\normee_F)$ deux espaces vectoriels normés et $A\subset E$.
-%Soit $\Fn{f}{A}{F}$.
-%On dit que $f$ est une application \emph{bornée} si et seulement si la partie $f(A)$ est bornée, c.-à-d. si et seulement si $?M\geq 0$, $\forall x\in A$, $\norme{f(x)}_F?M$.
-%
+\subsection{Suite bornée}
+\begin{Df}[Suite bornée]
+On dit que la suite $(\vec{x_n})_{n\in\N}$ est \defi{bornée} si il existe réel positif $M$ tel que :
+$$\forall n \in \N:\quad \norme{\vec{x_n}}\leq M.$$
+\end{Df}
+\begin{NB}[Dépendance de la norme en dimension infinie]
+La notion de suite bornée est définie à partir d'une norme. Si on change de norme (et donc on change d'espace vectoriel
+normé), il est possible que la suite considérée ne soit plus bornée.\\
+En effet, soit la suite $(f_n)_{n\in\N}$ d'éléments $\mathcal{C}([0,1],\K)$ définie par $f_n:x\to (n+1)x^n.$\\
+On a :
+\begin{itemize}
+\item $\norme{f_n}_{1}=\int_0^1  |(n+1)x^n|\,\mathrm{dx}=1$, donc la suite  $(f_n)_{n\in\N}$ est une suite bornée de l'espace vectoriel normée $(\mathcal{C}([0,1],\K), \norme{\,}_1)$.
+\item On a $\norme{f_n}_{\infty}=\sup_{x\in[0,1]}|(n+1)x^n|=(n+1)$. Puisque $\norme{f_n}_{\infty}\tend[n\to\infty]\infty$, la suite  $(f_n)_{n\in\N}$ n'est pas une suite bornée de l'espace vectoriel normée $(\mathcal{C}([0,1],\K), \norme{\,}_\infty)$.
+\end{itemize}
+\end{NB}
+
+
+
+
+
+
+\subsection{Suite convergente}
+\begin{Df}[Convergence]
+On dit que la suite $(\vec{x_n})_{n\in\N}$ \defi{converge} vers $\vec{l}$ au sens de $\norme{\,}$ si la suite réelle $(\norme{\vec{x_n}-\vec{l}})_{n\in\N}$ converge vers 0, c'est à dire, quelque soit le rayon $\epsilon$, à partir d'un certain rang, tous les termes de la suite appartiennent à boule ouverte $B(\vec{x},\epsilon)$, ce qui donne avec des quantificateurs :
+$$\forall  \epsilon > 0, \exists n_0 \in \N, \forall n\geq n_0 :\quad \norme{\vec{x_n} - \vec{l}}< \epsilon).$$
+On dit alors que $\vec{l}$ est \defi{limite} de la suite $(\vec{x_n})_{n\in\N}$ pour la norme $\norme{\,}$.\\ 
+Dans le cas contraire, la suite $(\vec{x_n})_{n\in\N}$ \defi{diverge}.
+\end{Df}
+\begin{DfTh}[Unicité de la limite]
+Si $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ au sens de $\norme{\,}$, $\vec{l}$ est unique pour cette norme.\\
+Dans ce cas, on peut dire que $\vec{l}$ est \defi{la limite} de $\vec{x_n}$ quand $n$ tend vers $+\infty$ et
+on écrit  $\vec{l}=\lim\limits_{n\to\infty}\vec{x_n}$.
+\end{DfTh}
+\begin{proof}
+Raisonnons par l'absurde : supposons que $(\vec{x_n})_{n\in\N}$ admette deux limites $\vec{l}$ et $\vec{l'}$ distinctes pour la norme $\norme{\,}$.\\
+\begin{center}
+\begin{tikzpicture}[scale=0.75,bullet/.style={circle,fill,inner sep=1.5pt,node contents={}}]
+\draw [black,fill=blue!20]  (0,0) circle (2) (0,0)node[bullet,label=above:$\vec{l}$] --(2,0)node[pos=0.5,above]{ $\frac{\norme{\vec{l}-\vec{l'}}}{3}$ } ;
+\draw [black,fill=blue!20]  (6,0)node[bullet,label=above:$\vec{l'}$] circle (2)  (6,0) --(8,0)node[pos=0.5,above]{ $\frac{\norme{\vec{l}-\vec{l'}}}{3}$ } ;
+\end{tikzpicture}
+\captionof{figure}{A partir d'un certain rang, tous les termes de la suite doivent appartenir aux deux boules ouvertes ce qui est impossible car l'intersection de ces deux boules est vide.}
+\end{center}
+On pose $\epsilon=\frac{\norme{\vec{l}-\vec{l'}}}{3}\overbrace{>}^{\vec{l}\neq \vec{l'}}0$. Comme $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ et $\vec{l'}$, il existe $N$ [resp. $N'$] tel que à partir de ce rang, le termes appartiennent à la boule $B(\vec{l},\frac{\norme{l-l'}}{3})$ [resp. $B(\vec{l'},\frac{\norme{l-l'}}{3})$], c'est à dire,
+$$\forall n \geq N:\quad  \norme{\vec{x_n} - \vec{l}} <  \frac{\norme{\vec{l}-\vec{l'}}}{3}$$
+et  
+$$\forall n \geq N':\quad \norme{\vec{x_n} - \vec{l'}} <  \frac{\norme{\vec{l}-\vec{l'}}}{3}.$$
+Soit $N''=\max(N,N')$. On a :
+$$\norme{\vec{l} - \vec{l'}}=\norme{(\vec{l} - u_{N''})+ (u_{N''}- \vec{l'})}\leq \norme{\vec{l} - u_{N''}}+ \norme{u_{N''}- \vec{l'}}< \frac{\norme{\vec{l}-\vec{l'}}}{3}+\frac{\norme{\vec{l}-\vec{l'}}}{3}=\frac{2\norme{\vec{l}-\vec{l'}}}{3}.$$ 
+Comme $\norme{\vec{l}-\vec{l'}} \neq 0$, on obtient $1< \frac{2}{3}$ ce qui est impossible.
+\end{proof}
+\begin{NB}[Dépendance de la norme en dimension infinie]
+La notion de convergence est définie à partir d'une norme. Si on change de norme (et donc on change d'espace vectoriel
+normé), il est possible que la suite considérée ne converge plus.\\
+En effet, soit la suite $(f_n)_{n\in\N}$ d'éléments $\mathcal{C}([0,1],\K)$ définie par $f_n:x\to x^n.$
+On a :
+\begin{itemize}
+\item $\norme{f_n}_{1}=\int_0^1  |x^n|\,\mathrm{dx}=\frac{1}{n+1}$, donc la suite  $(f_n)_{n\in\N}$ converge vers la fonction nulle dans l'espace vectoriel normé $(\mathcal{C}([0,1],\K), \norme{\,}_{1})$.
+\item $\norme{f_n}_{\infty}=\sup_{x\in[0,1]}|x^n|=1$, donc la suite  $(f_n)_{n\in\N}$ ne converge pas vers la fonction nulle dans l'espace vectoriel normé $(\mathcal{C}([0,1],\K), \norme{\,}_{\infty})$.
+\end{itemize}
+\end{NB}
+\begin{Prop}[Bornée si convergente]
+Si la suite $(\vec{x_n})_{n\in\N}$ converge pour la norme $\norme{\,}$,\\
+Alors la suite $(\vec{x_n})_{n\in\N}$ est bornée pour la même norme $\norme{\,}$.
+\end{Prop}
+\begin{proof}
+On suppose que $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$.\\
+En particulier pour $\epsilon=1$, il existe $N\in\N$ tel que :
+$$\forall n\geq N:\norme{\vec{x_n}-\vec{l}}<1.$$
+ Comme $\norme{\vec{x_n}}-\norme{\vec{l}} \leq \norme{\vec{x_n}-\vec{l}}$, on a 
+$$\forall n\geq N:\norme{\vec{x_n}}<1+\norme{\vec{l}}.$$
+En posant $M=\max(\norme{\vec{x_0}},\dots,\norme{\vec{x_{N-1}}},1+\norme{\vec{l}} )$, on obtient :
+$$\forall n\in N:\norme{\vec{x_n}}<M.$$
+Donc $(\vec{x_n})_{n\in\N}$ est bornée.
+\end{proof}
+\begin{NB}
+La réciproque de ce proposition est fausse. La suite $((-1)^n)_{n\in\N}$ est bornée mais non convergente.
+\end{NB}
+\begin{Prop}[Structure d'espace vectoriel]
+Soit $(\vec{x_n})_{n\in\N}$ et $(\vec{y_n})_{n\in\N}$ et $\lambda , \mu \in\K$.\\
+Si  $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ pour la norme $\norme{\,}$ et  $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l'}$ pour la norme $\norme{\,}$,\\
+Alors $(\lambda\vec{x_n}+\mu\vec{y_n} )_{n\in\N}$ converge vers $\lambda\vec{l}+\mu\vec{l'}$  pour la norme $\norme{\,}$.\\
+Ainsi, l'ensemble des suites convergentes est un espace vectoriel. 
+\end{Prop}
+\begin{proof}
+En bref $$\norme{\lambda\vec{x_n}+\mu\vec{y_n}  -\lambda\vec{l}+\mu\vec{l'} } =\norme{\lambda(\vec{x_n}-\vec{l}) +\mu(\vec{y_n}-\vec{l'}) }\leq |\lambda|\norme{\vec{x_n}-\vec{l}} +|\mu|\norme{\vec{y_n}-\vec{l'}}\tend[n\to\infty] 0.$$
+\end{proof}
+\begin{Prop}[Suite extraite]
+Si $(\vec{x_n})_{n\in\N}$ est une suite convergente vers $\vec{l}$,\\
+Alors toute suite extraite $(\vec{x_{\phi(n)}})_{n\in\N}$ converge vers $\vec{l}$. 
+\end{Prop}
+\begin{proof}
+Soit $\phi$ une fonction strictement croissante de $\N$ dans $\N$.
+On suppose $(\vec{x_n})_{n\in\N}$ convergente vers $\vec{l}$.\\
+Soit $\epsilon>0$. Il existe $N\in\N$ telle que :
+$$\forall n\geq N:\quad \norme{\vec{x_n}-\vec{l}}<\epsilon.$$
+Comme $\forall n\in\N: \phi(n)\geq n$, si $n>N$ alors $\phi(n)>N$, donc    
+$$\forall n\geq N:\quad \norme{\vec{x_{\phi(n)}}-\vec{l}}<\epsilon.$$
+Ainsi, $(\vec{x_{\phi(n)}})_{n\in\N}$ converge vers $\vec{l}$. 
+\end{proof}
+\subsection{En dimension finie}
+\begin{Th}[Indépendance de la norme en dimension finie]
+On suppose que $E$ est de dimension finie. Soient $N$ et $N'$ deux normes sur $E$. Soit $(\vec{x_n})_{n\in\N}$ une suite d'éléments de $E$.\\
+$(\vec{x_n})_{n\in\N}$ est bornée pour la norme $N$ si et seulement si $(\vec{x_n})_{n\in\N}$ est bornée pour la norme $N'$.\\
+$(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ pour la norme $N$ si et seulement si $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ pour la norme $N'$.
+\end{Th}
+\begin{proof}
+Comme $E$ un espace vectoriel de dimension finie, il existe deux réels strictement positifs tels que $\alpha N \leq  N'  \leq \beta N$.
+\begin{itemize}
+\item 
+On suppose la suite $(\vec{x_n})_{n\in\N}$
+bornée pour la norme $N$. Il existe donc $M \in \R^{+}$ tel que $\forall n\in \N,  N(\vec{x_n})\leq M$. Soit $n\in\N$. On a :
+$N'(\vec{x_n})\leq  \beta N(\vec{x_n})\leq \beta M$.
+Donc, $(\vec{x_n})_{n\in\N}$
+bornée pour la norme $N'$.\\
+En permutant les rôles de $N$ et $N'$, on obtient la réciproque.
+\item 
+On suppose que la suite $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ pour la norme $N$.\\
+Soit $\epsilon>0$. Comme  la suite $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ pour la norme $N$, il existe $N\in\N$ tel que
+$$\forall n \geq N:\quad  N(\vec{x_n} - \vec{l} <  \frac{\epsilon}{\beta}$$
+et donc la suite $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ pour la norme $N'$.\\
+En permutant les rôles de $N$ et $N'$, on obtient la réciproque.
+\end{itemize}
+\end{proof}
+\begin{NB}
+Dorénavant, on n'aura donc plus besoin de préciser "pour la norme $N$" lorsqu'on parlera de
+convergence, de limite ou de suite bornée dans un espace vectoriel de dimension finie. 
+\end{NB}
+\begin{DfProp}[Norme infinie attachée à une base en dimension finie]
+On suppose que $E$ est de dimension finie muni d'une base $\mathcal{B} = (\vec{e_1}, \dots, \vec{e_p})$.\\
+La \defi{norme infinie attachée à la base $\mathcal{B}$}, notée $\norme{\,}_\infty$, est  définie par :
+$$\forall \vec{x}=\sum_{i=i}^p x_i\vec{e_i} \in  E:\quad \norme{\vec{x}}_\infty=\max_{1\leq i\leq p}|x_i|.$$ 
+\end{DfProp}
+\begin{proof}
+Elle est formellement identique à celle qui établit que $\norme{\,}_{\infty}$ est une norme dans $\K^n$.
+\end{proof}
+\begin{Prop}[liens entre suite et suites coordonnées dans une base de l'espace]
+On suppose que $E$ est de dimension finie muni d'une base $\mathcal{B} = (\vec{e_1}, \dots, \vec{e_p})$.\\
+Soit $(\vec{x_n})_{n\in\N}$ une suite d'éléments de $E$ telle que : 
+$$\forall  n\in\N : \quad \vec{x_n} = \sum_{i=1}^p x_{i,n} \vec{e_i}.$$
+Alors la suite $(\vec{x_n})_{n\in\N}$ converge dans $E$ si et seulement si les $n$ suites coordonnées $(x_{i,n})_{n\in\N}$ convergent dans $\K$.\\
+Dans ce cas, on a $\lim\limits_{n\to\infty} \vec{x_n} = \sum_{i=1}^p (\lim\limits_{n\to\infty}x_{i,n}) \vec{e_i}.$\\
+De même pour la notion de bornée.
+\end{Prop}
+\begin{proof}
+\begin{itemize}
+\item $\Longrightarrow$ : On suppose que la suite $(\vec{x_n})_{n\in\N}$ convergeant vers  $\vec{l}=\sum_{i=1}^n l_i \vec{e_i}.$ Comme la notion de convergence ne dépend pas la norme, on choisit la convergence suivant la norme $\norme{\,}_\infty$ dans la base $\mathcal{B}$. On a alors :
+$$\forall \epsilon >0,\exists N\in \N, \forall n\geq N:\quad \norme{\vec{x_n}-\vec{l}}=\max_{1 \leq i \leq p }|x_{i,n}-l_i|<\epsilon \text{ et donc }\forall i\in\ccro{1}{p}|x_{i,n}|<\epsilon.$$
+Donc toutes les suites $(x_{i,n})_{n\in\N}$ convergent respectivement vers $l_i$.
+\item $\Longleftarrow$ : On suppose les suites $(x_{i,n})_{n\in\N}$ convergent respectivement vers $l_i$. On a :
+$$\forall \epsilon >0, \forall i\in\ccro{1}{p},\exists N_i\in \N, \forall n\geq N_i:\quad |x_{n,i}-l_i|<\epsilon.$$
+En posant $N_m=\max(N_1,\dots,N_p)$, on a   $\forall i\in\ccro{1}{p}, \forall n\geq N:\quad |x_{n,i}-l_i|<\epsilon$, donc $\norme{\vec{x_n}-\vec{l}}=\max_{1 \leq i \leq p }|x_{i,n}-l_i|<\epsilon$ avec $\vec{l}=\sum_{i=1}^n l_i \vec{e_i}$.
+\end{itemize}
+\end{proof}
+\begin{Ex}[Convergence de matrices]
+La suite de matrices $\left(\begin{pmatrix}
+\frac{\ln(n)}{n}& (1+\frac{1}{n})^n\\ \sum_{k=1}^{n}\frac{1}{k^2}&0
+\end{pmatrix}\right)_{n\in\N}$ converge et a pour limite $\begin{pmatrix}
+0& e\\ \frac{\pi^2}{6}&0
+\end{pmatrix}$ car $\lim\limits_{n\to\infty}\frac{\ln(n)}{n}=0$, $\lim\limits_{n\to\infty}(1+\frac{1}{n})^n=e$ et $\sum_{k=1}^{\infty}\frac{1}{k^2}=\frac{\pi^2}{6}$.
+\end{Ex}
+
 %
 %% -----------------------------------------------------------------------------
-%\section{Topologie}
-%
+\section{Topologie d'un espace vectoriel normé de dimension finie}
+
 %\subsection{Ouverts et fermés}
 %
 %\Para{Définitions}
