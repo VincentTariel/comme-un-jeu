@@ -273,29 +273,9 @@ Le dessin des sphères est : \\
    \foreach \i [count=\j from 0] in {1,2,\infty,\frac{1}{2}} \scoped [xshift=\j*3cm] { \node [anchor=mid west,color=blue] at (-0.25,-1.5) {$S_\i$}; };
 \end{tikzpicture}.
 \end{Ex}
-\begin{Prop}[Boule ouverte est ouverte]
-    \begin{minipage}[c]{0.4\linewidth}{
-Soit $(E,\norme{\,})$ un espace vectoriel normé. Soit $B(\vec{x},r)$ une boule ouverte.\\
-Alors $$\forall\vec{x}\in B(\vec{x},r),\exists r'>0:\quad B(\vec{x'},r')\subset B(\vec{x},r).$$
-}
-\end{minipage} 
-    \begin{minipage}[c]{0.4\linewidth}{\hspace*{0.2\linewidth}
-    \begin{tikzpicture}[domain=0:4] 
-\draw [black,fill=blue!20]  (0,0) circle (2) (0,0)node[above]{ $\vec{x}$ } --(0:2)node[pos=0.5,above]{ $r$ };
-\draw [black,fill=red!20]  (-1.1,-0.4) circle (0.7) (-1.1,-0.4)node[above]{ $\vec{x'}$ } --(-0.4,-0.4)node[pos=0.5,above]{ $r'$ };
-\end{tikzpicture}\begin{tiny}
-Identification coordonnées d'un vecteur avec coordonnées d'un point
-\end{tiny}
-
-}
-\end{minipage} 
-\end{Prop} 
-\begin{proof}
-Soit $B(\vec{x},r)$ une boule ouverte.\\
-Soit $\vec{x'}\in B(\vec{x},r)$. \\
-On choisit un $r'$ tel que $0< r' < r -\norme{\vec{x}-\vec{x'}}$.\\
-Soit $\vec{y}\in B(\vec{x'},r')$. On a $\norme{\vec{x}-\vec{y}}=\norme{(\vec{x}-\vec{x'})+(\vec{x'}-\vec{y})}\leq \norme{\vec{x}-\vec{x'}} + \norme{\vec{x'}-\vec{y}}<r.$ Donc $B(\vec{x'},r')\subset B(\vec{x},r).$
-\end{proof}
+\begin{NB}Attention aux "faux-amis" !  On parle de boule ouverte associée à une norme,
+bien qu'en général, une boule n'ait rien de rond. En effet, si l'on considère par exemple la norme $\norme{\,}_\infty$, la  la boule unité ouverte est un carré.
+\end{NB}
 \subsection{Partie convexe}
 \begin{Df}[Partie Convexe]
     \begin{minipage}[c]{0.4\linewidth}{
@@ -392,12 +372,35 @@ On a :
 
 
 \subsection{Suite convergente}
-\begin{Df}[Convergence]
-On dit que la suite $(\vec{x_n})_{n\in\N}$ \defi{converge} vers $\vec{l}$ au sens de $\norme{\,}$ si la suite réelle $(\norme{\vec{x_n}-\vec{l}})_{n\in\N}$ converge vers 0, c'est à dire, quelque soit le rayon $\epsilon$, à partir d'un certain rang, tous les termes de la suite appartiennent à boule ouverte $B(\vec{x},\epsilon)$, ce qui donne avec des quantificateurs :
-$$\forall  \epsilon > 0, \exists n_0 \in \N, \forall n\geq n_0 :\quad \norme{\vec{x_n} - \vec{l}}< \epsilon).$$
-On dit alors que $\vec{l}$ est \defi{limite} de la suite $(\vec{x_n})_{n\in\N}$ pour la norme $\norme{\,}$.\\ 
-Dans le cas contraire, la suite $(\vec{x_n})_{n\in\N}$ \defi{diverge}.
+De manière intuitive, la suite admet pour limite $\vec{l}$ (converge vers $\vec{l}$) quand les termes de la suite se rapprochent  vers cet élément limite, $\vec{l}$,  quand les indices deviennent très grands. Une définition plus rigoureuse est 
+\begin{itemize}  
+\item "se rapprochent"; quelque soit la rayon, noté $\epsilon$, les termes appartiennent à la boule centrée en $\vec{l}$ et de rayon $\epsilon$,
+\item  "quand les indices deviennent très grands" : il existe un rang $N$ telle que cette propriété est vraie pour tous les indices à partir de ce rang. 
+\end{itemize} 
+\begin{center}
+\begin{tikzpicture}[scale=0.75,bullet/.style={circle,fill,inner sep=1.5pt,node contents={}}]
+\draw [black,fill=blue!20]  (0,0) circle (2);
+\draw (0,0)node[bullet,label=above:$\vec{l}$] --(2,0)node[pos=0.5,above]{ $\epsilon$} ; 
+\draw (1,1)node[bullet,label=above:$\vec{x_N}$]; 
+\draw (-0.7,-0.5)node[bullet,label=above:$\vec{x_{N+1}}$];
+\draw (-1.5,1)node[bullet,label=above:$\vec{x_{N+2}}$];
+\draw (1.5,-1)node[bullet,label=above:$\vec{x_{N+n}}$];
+\draw (-3,0.7)node[bullet,label=above:$\vec{x_{0}}$];
+\draw (4,-1)node[bullet,label=above:$\vec{x_{1}}$];
+\draw (5,2) node[bullet,label=above:$\vec{x_{2}}$];
+\end{tikzpicture}
+\captionof*{figure}{Exemple de suite dans $\R^2$. Quelque soit le rayon $\epsilon$, à partir d'un certain rang, tous les termes de la suite doivent appartenir à la boule $B(\vec{l},\epsilon)$,}
+\end{center}
+
+\begin{Df}[Convergence et limite]
+On dit que la suite $(\vec{x_n})_{n\in\N}$ admet pour \defi{limite} $\vec{l}$ au sens de $\norme{\,}$ si :
+$$\forall  \epsilon > 0,\overbrace{\exists N \in \N, \forall n\geq N :}^{\text{A partir du rang N}}\quad\overbrace{ \norme{\vec{x_n} - \vec{l}}< \epsilon)}^{x_n\in B(\vec{l},\epsilon)}.$$
+On dit que la suite $(\vec{x_n})_{n\in\N}$ \defi{converge} vers  $\vec{l}$.\\ 
+Dans le cas contraire, la suite $(\vec{x_n})_{n\in\N}$ \defi{diverge}.\\
 \end{Df}
+\begin{Prop}
+La suite $(\vec{x_n})_{n\in\N}$ \defi{converge} vers  $\vec{l}$ si et seulement si la suite réelle $(\norme{\vec{x_n}-\vec{l}})_{n\in\N}$ converge vers 0.
+\end{Prop}
 \begin{DfTh}[Unicité de la limite]
 Si $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ au sens de $\norme{\,}$, $\vec{l}$ est unique pour cette norme.\\
 Dans ce cas, on peut dire que $\vec{l}$ est \defi{la limite} de $\vec{x_n}$ quand $n$ tend vers $+\infty$ et
@@ -505,7 +508,7 @@ $$\forall \vec{x}=\sum_{i=i}^p x_i\vec{e_i} \in  E:\quad \norme{\vec{x}}_\infty=
 \begin{proof}
 Elle est formellement identique à celle qui établit que $\norme{\,}_{\infty}$ est une norme dans $\K^n$.
 \end{proof}
-\begin{Prop}[liens entre suite et suites coordonnées dans une base de l'espace]
+\begin{Prop}[Convergence composante par composante]
 On suppose que $E$ est de dimension finie muni d'une base $\mathcal{B} = (\vec{e_1}, \dots, \vec{e_p})$.\\
 Soit $(\vec{x_n})_{n\in\N}$ une suite d'éléments de $E$ telle que : 
 $$\forall  n\in\N : \quad \vec{x_n} = \sum_{i=1}^p x_{i,n} \vec{e_i}.$$
@@ -534,364 +537,383 @@ La suite de matrices $\left(\begin{pmatrix}
 %
 %% -----------------------------------------------------------------------------
 \section{Topologie d'un espace vectoriel normé de dimension finie}
-
-%\subsection{Ouverts et fermés}
-%
-%\Para{Définitions}
-%
-%Soit $\En$ un espace vectoriel normé.\begin{itemize}
-%\item Une \emph{partie ouverte} de $E$, ou plus simplement un \emph{ouvert} de $E$, est une partie $U$ de $E$ telle que $\forall x\in U$, $?r>0$, $B(x,r)\subset U$.
-%\item Une \emph{partie fermée} de $E$, ou plus simplement un \emph{fermé} de $E$, est une partie $F$ de $E$ telle que $E?F$ est un ouvert de $E$.
-%\end{itemize}
-%
-%\Para{Proposition}
-%
-%Soit $\En$ un espace vectoriel normé. Soit $a\in E$ et $r\in \R $. Alors:\begin{itemize}
-%\item la boule ouverte $B(a,r)$ est une partie ouverte de $E$;
-%\item la boule fermée $B_f(a,r)$ est une partie fermée de $E$.
-%\end{itemize}
-%
-%\Para{Proposition}[propriétés des ouverts]
-%
-%Soit $\En$ un espace vectoriel normé.\begin{itemize}
-%\item $?$ et $E$ sont des ouverts.
-%\item \emph{stabilité par union quelconque}:
-%  Si $\forall i\in I$, $U_i$ est un ouvert de $E$, alors $?_{i\in I} U_i$ est un ouvert de $E$.
-%\item \emph{stabilité par intersection finie}:
-%  Si $U_1, \dots, U_n$ sont des ouverts de $E$, alors $?_{i=1}^n U_i$ est un ouvert de $E$.
-%\end{itemize}
-%
-%\Para{Proposition}[propriétés des fermés]
-%
-%Soit $\En$ un espace vectoriel normé.\begin{itemize}
-%\item $?$ et $E$ sont des fermés.
-%\item \emph{stabilité par intersection quelconque}:
-%  Si $\forall i\in I$, $F_i$ est un fermé de $E$, alors $?_{i\in I} F_i$ est un fermé de $E$.
-%\item \emph{stabilité par union finie}:
-%  Si $F_1, \cdots, F_n$ sont des fermés de $E$, alors $?_{i=1}^n F_i$ est un fermé de $E$.
-%\end{itemize}
-%
-%\Para{Proposition}
-%
-%Soit $E$ un espace vectoriel \emph{de dimension finie}.
-%Alors la topologie de $E$ ne dépend pas du choix de la norme sur $E$.
-%
-%Autrement dit, si $A\subset E$, le caractère ouvert (ou fermé) de $A$ ne dépend pas du choix de la norme sur $E$.
-%
-%\subsection{Point intérieur, point adhérent}
-%
-%\Para{Proposition-Définition}
-%
-%Soit $\En$ un espace vectoriel normé, $A$ une partie de $E$ et $x\in E$.
-%Les conditions suivantes sont équivalentes:\begin{enumerate}
-%\item il existe un ouvert $U$ de $E$ tel que $x\in U$ et $U\subset A$;
-%\item $?r > 0$, $B(x,r)\subset A$;
-%\item pour toute suite $\U$ à valeurs dans $E$ convergent vers $x$, on a $u_n\in A$ à partir d'un certain rang.
-%\end{enumerate}
-%
-%On dit que $x$ est un \emph{point intérieur} à $A$ lorsque ces conditions sont vérifiées.
-%
-%\Para{Proposition-Définition}
-%
-%Soit $\En$ un espace vectoriel normé, $A$ une partie de $E$ et $x\in E$.
-%Les conditions suivantes sont équivalentes:\begin{enumerate}
-%\item pour tout ouvert $U$ de $E$ tel que $x\in U$, on a $U?A??$;
-%\item $\forall r>0$, $B(x,r)?A ??$;
-%\item $\forall \epsilon>0$, $?a\in A$, $\norme{x-a}?\epsilon$;
-%\item il existe une suite $\U$ à valeurs \emph{dans $A$} telle que $u_n \to x$.
-%\end{enumerate}
-%
-%On dit que $x$ est un \emph{point adhérent} à $A$ lorsque ces conditions sont vérifiées.
-%
-%\subsection{Intérieur, adhérence, frontière}
-%
-%\Para{Définitions}
-%
-%Soit $\En$ un espace vectoriel normé, $A$ une partie de $E$.\begin{itemize}
-%\item L'ensemble des points intérieurs de $A$ s'appelle l'\emph{intérieur} de $A$,
-%  et on le note $\Int{A}$
-%\item L'ensemble des points adhérents à $A$ s'appelle l'\emph{adhérence} de $A$,
-%  et on le note $\Adh{A}$.
-%\item L'adhérence de $A$ privée de l'intérieur de $A$ s'appelle la \emph{frontière} de $A$ et on le note $\mathrm{Fr}(A) = ?A = \Adh{A}?\Int{A}$.
-%\end{itemize}
-%
-%\Para{Proposition}
-%\begin{itemize}
-%\item si $A \subset  B$, alors $\Int A \subset  \Int B$ et $\Adh A \subset  \Adh B$;
-%\item on a toujours $\Int{A} \subset  A \subset  \Adh{A}$;
-%\item $\Int{A}$ est un ouvert, $\Adh{A}$ est un fermé;
-%\item $A = \Int{A}$ si et seulement si $A$ est un ouvert;
-%\item $A = \Adh{A}$ si et seulement si $A$ est un fermé.
-%\end{itemize}
-%
-%\subsection{Densité}
-%
-%\Para{Proposition-Définition}
-%
-%Soit $\En$ un espace vectoriel normé et $A$ une partie de $E$.
-%Les conditions suivantes sont équivalentes:\begin{enumerate}
-%\item pour tout ouvert $U$ non vide de $E$, on a $U?A??$;
-%\item $\forall x\in E$, $\forall r > 0$, $B(x,r)?A??$;
-%\item tout point de $E$ est adhérent à $A$;
-%\item $\Adh{A} = E$;
-%\item pour tout $x\in E$, il existe une suite $\U$ à valeurs \emph{dans $A$} telle que $u_n \to x$.
-%\end{enumerate}
-%
-%On dit que $A$ est une partie \emph{dense} de $E$ lorsque ces conditions sont vérifiées.
-%
-%
-%
-%
-%
-%% -----------------------------------------------------------------------------
-%\section{Applications dans un espace vectoriel normé}
-%% -----------------------------------------------------------------------------
-%\subsection{Limite d'une suites}
-%
-%\Para{Définitions}
-%
-%Soit $\En$ un espace vectoriel normé.\begin{itemize}
-%\item Une \emph{suite à valeurs dans $E$} est une application $\Fn{u}{\N }{E}$.
-%  On note fréquemment $u_n$ au lieu de $u(n)$ et $\U$ au lieu de $u$.
-%\item Soit $\U$ une suite à valeurs dans $E$ et $l\in E$.
-%  On dit que la suite $\U$ \emph{converge} vers $l$ si et seulement si
-%  \[\forall \epsilon> 0\+?n_0\in \N \+\forall n\geq n_0\+ \norme{u_n -l}?\epsilon\]
-%  $l$ est nécessairement unique et s'appelle \emph{la limite} de la suite $\U$.
-%  On note $\lim\limits_{\ninf}^{\normee} u_n = l$, ou encore $u_n \xrightarrow[\ninf]{\normee}l$.
-%\end{itemize}
-%
-%\Para{Remarque}
-%
-%Soit $\En$ un espace vectoriel normé, $\U$ une suite à valeurs dans $E$ et $l\in E$.
-%Alors $u_n \xrightarrow{\normee}l$ si et seulement si $\norme{u_n - l} \to 0$.
-%
-%\Para{Définitions}
-%\begin{enumerate}
-%\item Une suite $\U$ à valeurs dans un espace vectoriel normé $\En$ est dite \emph{convergente} si et seulement si il existe $l\in E$
-%  tel que $\U$ converge vers $l$.
-%\item Elle est dite \emph{divergente} dans le cas contraire.
-%\end{enumerate}
-%
-%\Para{Définition (HP)}
-%
-%Soit $E$ un £ev., $N$ et $N'$ deux normes sur $E$.
-%On dit que $N$ et $N'$ sont \emph{équivalentes} £ssil. existe deux constantes strictement positives $\alpha $ et $?$
-%telles que \[ \forall x\in E \+ \alpha N(x) ? N'(x) ? ?N(x). \]
-%
-%\Para{Propriétés (HP)}
-%
-%\begin{itemize}
-%\item Il s'agit d'une relation d'équivalence, £cad.
-%  \begin{itemize}
-%  \item toute norme est équivalente à elle-même;
-%  \item si $N$ est équivalente à $N'$, alors $N'$ est équivalente à $N$;
-%  \item deux normes équivalentes à une même troisième sont équivalentes entre elles.
-%  \end{itemize}
-%\item Si $N$ et $N'$ sont deux normes équivalentes,
-%  alors pour toute suite $(u_n)$ à valeurs dans $E$ et pour tout vecteur $l\in E$, on a
-%  \[ u_n \xrightarrow{N} l  \iff u_n \xrightarrow{N'} l. \]
-%\end{itemize}
-%
-%\Para{Théorème (HP)}
-%
-%Si $E$ est de dimension finie, toutes les normes sur $E$ sont équivalentes.
-%
-%\Para{Corollaire fondamental}
-%
-%Si $E$ est de dimension finie, le choix de la norme n'influe pas sur la convergence d'une suite, ni sur sa limite.
-%On pourra donc écrire $u_n \to l$, sans préciser la norme choisie.
-%
-%\Para{Proposition}
-%
-%En dimension finie, la convergence d'une suite de vecteurs est équivalente à la convergence des suites coordonnées.
-%Plus précisément, soit:
-%\begin{enumerate}
-%\item $\En$ un $\K $-espace vectoriel normé de dimension finie
-%\item $\B = \nUplet e1p$ une base de $E$
-%\item $(u_n)_{n\in \N }$ une suite à valeurs dans $E$
-%\item $\Uplet{(u^1_n)_{n\in \N }}{(u^p_n)_{n\in \N }}$ des suites numériques telles que:
-%  $\forall n\in \N $, $u_n = u^1_n e_1 + u^2_n e_2 + \cdots + u^p_n e_p$
-%\item $l = l^1 e_1 + l^2 e_2 + \cdots + l^p e_p$ où $l\in E$ et $(\Uplet{l^1}{l^p})\in \K ^p$.
-%\end{enumerate}
-%Alors \[ u_n \to l \iff \forall k\in \Dcro{1,p} \+ u^k_n \tol^k. \]
-%
-%\Para{Proposition}[opérations algébriques sur les limites]
-%
-%Soit $\En$ un $\K $-espace vectoriel normé.
-%Soit $\U$ et $??$ deux suites à valeurs dans $E$
-%et $(\lambda  _n)_{n\in \N }$ une suite à valeurs dans $\K $.\begin{itemize}
-%\item Si $u_n \to l$ et $v_n \to l'$, alors $u_n + v_n \to l+l'$.
-%\item Si $\lambda  _n \to \alpha $ et $u_n \to l$, alors $\lambda  _n u_n \to \alpha l$.
-%\end{itemize}
-%
-%\Para{Définitions}[relations de comparaison entre suites]
-%
-%Soit $\En$ un $\K $-espace vectoriel normé.
-%Soit $\U$ une suite à valeurs dans $E$ et $(\alpha _n)_{n\in \N }$ une suite numérique à valeurs dans $\K $.\begin{enumerate}
-%\item On dit que $u_n = O(\alpha _n)$ si et seulement si $\norme{u_n} = O(\alpha _n)$ si et seulement si $?N\in \N $, $?K\in \Rp$, $\forall n\geq N$, $\norme{u_n} ? K\Abs{\alpha _n}$.
-%  On dit alors que $\U$ est \emph{dominée} par $(\alpha _n)_{n\in \N }$.
-%\item On dit que $u_n = o(\alpha _n)$ si et seulement si $\norme{u_n} = o(\alpha _n)$ si et seulement si $\forall \epsilon>0$, $?N\in \N $, $\forall n\geq N$, $\norme{u_n} ? \epsilon\Abs{\alpha _n}$.
-%  On dit alors que $\U$ est \emph{négligeable} devant $(\alpha _n)_{n\in \N }$.
-%\end{enumerate}
-%\subsection{Limite d'une application}
-%
-%\Para{Définition}
-%
-%Soit $(E,\normee_E)$ et $(F,\normee_F)$ deux espaces vectoriels normés, $A$ une partie de $E$, $\Fn{f}{A}{F}$, $a\in E$ un point adhérent à $A$ et $l\in F$.
-%On dit que $f$ admet $l$ pour \emph{limite} en $a$ si et seulement si
-%$\forall \epsilon> 0$, $??>0$, $\forall x\in A$, $\norme{x-a}_E??\implies \norme{f(x)-l}_F?\epsilon$.
-%On écrit alors $\lim_{x \to a} f(x) = \lim_a f = l$.
-%
-%\Para{Remarque}
-%
-%On peut comme d'habitude étendre la définition de la limite dans les cas suivants:\begin{itemize}
-%\item si $E = \R $ et $a = ±?$;
-%\item si $F = \R $ et $l= ±?$.
-%\end{itemize}
-%
-%\Para{Théorème}[critère séquentiel des limites]
-%
-%Soit $E$ et $F$ deux espaces vectoriels normés et $A\subset E$.
-%Soit $\Fn{f}{A}{F}$, $a$ un point adhérent à $A$ et $b\in F$.
-%Les conditions suivantes sont équivalentes:\begin{enumerate}
-%\item $\lim_a f = b$
-%\item Toute suite à valeur dans $A$ telle que $u_n \to a$ vérifie $f(u_n) \to b$
-%\end{enumerate}
-%
-%\Para{Proposition}[limite et coordonnées]
-%
-%Soit $(E,\normee_E)$ et $(F,\normee_F)$ deux espaces vectoriels normés, $A$ une partie de $E$, $\Fn{f}{A}{F}$, $a\in E$ un point adhérent à $A$ et $l\in F$.
-%On suppose que:\begin{itemize}
-%\item \emph{$F$ est de dimension finie} et $\B = \nUplet e1p$ une base de $F$.
-%\item $\forall x\in A$, $f(x) = \sum_{k=1}^p f_k(x) e_k$ où $\Fn{f_k}{A}{\K }$.
-%\item $l= \sum_{k=1}^p l_k e_k$ où $\nUpletl1p \in \K ^p$.
-%\end{itemize}
-%
-%Alors $\lim_{x \to a} f(x) = l$ si et seulement si $\forall k\in \Dcro{1,p}\+ \lim_{x \to a} f_k(x) =l_k$.
-%
-%\Para{Proposition}[limite d'une composée]
-%
-%Soit $E$, $F$, $G$ trois espaces vectoriels normés, $A\subset E$ et $B\subset F$.
-%Soit $\Fn{f}{A}{F}$ et $\Fn{g}{B}{G}$.
-%On suppose:\begin{itemize}
-%\item $f(A)\subset B$ de sorte que la composée $\Fn{g?f}{A}{G}$ existe;
-%\item $a$ est un point adhérent à $A$ et $\lim_a f = b$;
-%\item $b$ est un point adhérent à $B$ et $\lim_b g = l$.
-%\end{itemize}
-%
-%Alors $\lim_a g?f = l$.
-%
-%\Para{Proposition}[opérations algébriques sur les limites]
-%
-%Soit $E$ et $F$ deux espaces vectoriels normés et $A\subset E$.
-%Soit $\Fn{f}{A}{F}$, $g \colon A \to F$ et $k \colon A \to\K $.
-%Soit $a$ un point adhérent à $A$.\begin{itemize}
-%\item Si $\lim_a f =l$ et $\lim_a g =l'$, alors $\lim_a (f+g) = l+l'$.
-%\item Si $\lim_a k =\alpha $ et $\lim_a f =l$, alors $\lim_a (kf) = \alpha l$.
-%\end{itemize}
-%
-%\subsection{Continuité}
-%
-%\Para{Définition}
-%
-%Soit $E$ et $F$ deux espaces vectoriels normés et $A\subset E$.
-%Soit $\Fn{f}{A}{F}$.
-%On dit que $f$ est \emph{continue en $a\in A$} si et seulement si $\lim_a f = f(a)$, c.-à-d. si et seulement si
-%\begin{multline*}
-%  \forall \epsilon>0 \+ ??>0 \+ \forall x\in A \+ \\
-%  \norme{x-a}_E??\implies \norme{f(x)-f(a)}_F?\epsilon.
-%\end{multline*}
-%On dit que $f$ est \emph{continue} si et seulement si elle est continue en tout point de $A$.
-%
-%\Para{Définition}[Prolongement par continuité]
-%Soit $E$ et $F$ deux espaces vectoriels normés et $A\subset E$. Soit $a\in E$ un point adhérent à $A$ n'appartenant pas à $A$.\\
-%Soit $\Fn{f}{A}{F}$ continue sur $A$.  $f$ admet une limite $l$ en $a$. Alors le prolongement par continuité de $f$  en $a$ est la fonction $g$ définie sur $A\cup\{a\}$ par
-%$$\Fonction{g}{A\cup\{a\}}{F}{x}{\begin{cases}f(x),&{\mbox{si }}x\neq a\\l ,&{\mbox{si }}x=a.\end{cases}}$$
-%
-%
-%
-%
-%\Para{Proposition}[continuité et coordonnées]
-%
-%Soit $E$ et $F$ deux espaces vectoriels normés et $A\subset E$.
-%Soit $\Fn{f}{A}{F}$ et $a\in A$.
-%On suppose que:\begin{itemize}
-%\item $F$ est de dimension finie et $\mathcal{B} = \nUplet e1p$ une base de $F$;
-%\item $\forall x\in A$, $f(x) =\sum_{k=1}^p f_k(x) e_k$ où $f_k \colon A \to\K $.
-%\end{itemize}
-%
-%Alors $f$ est continue en $a$ si et seulement si les fonctions $\Uplet{f_1}{f_p}$ sont toutes continues en $a$.
-%
-%\Para{Proposition}[propriétés des fonctions continues]
-%\begin{itemize}
-%\item La composée de deux fonctions continues est continue.
-%\item La restriction d'une fonction continue est continue.
-%\end{itemize}
-%
-%\Para{Théorème}
-%
-%Soit $E$ et $F$ deux espaces vectoriels normés et $\Fn{f}{E}{F}$ une fonction continue.
-%Soit $A\subset F$ une partie de $F$\begin{itemize}
-%\item Si $A$ est un ouvert de $F$, alors $f^{-1}(A)$ est un ouvert de $E$.
-%\item Si $A$ est un fermé de $F$, alors $f^{-1}(A)$ est un fermé de $E$.
-%\end{itemize}
-%
-%\Para{Corollaire}
-%
-%Soit $E$ un espaces vectoriels normés et $\Fn{f}{E}{\R }$ une fonction continue.\begin{itemize}
-%\item $\Ensemble{x\in E}{f(x)>0}$ est un ouvert de $E$.
-%\item $\Ensemble{x\in E}{f(x)=0}$ est un fermé de $E$.
-%\item $\Ensemble{x\in E}{f(x)\geq 0}$ est un fermé de $E$.
-%\end{itemize}
-%
-%\subsection{Applications lipschitziennes}
-%
-%\Para{Définition}
-%
-%Soit $(E, \normee_E)$ et $(F, \normee_F)$ deux $\K $-espaces vectoriels normés et $A\subset E$.
-%Soit $\Fn{f}{A}{F}$.\begin{itemize}
-%\item Soit $k\in \Rp$. L'application $f$ est dite \emph{$k$-lipschitzienne} si et seulement si $\forall (x,y)\in A^2$, $\norme{f(x)-f(y)}_F?k \norme{x-y}_E$.
-%\item L'application $f$ est dite \emph{lipschitzienne}, ou vérifie la \emph{propriété de Lipschitz}, si et seulement si il existe $k\in \Rp$ telle que $f$ soit $k$-lipschitzienne.
-%\end{itemize}
-%
-%\Para{Proposition}
-%
-%La composée de deux applications lipschitzienne l'est également.
-%
-%\Para{Proposition}
-%
-%Toute application lipschitzienne est continue.
-%La réciproque est fausse.
-%
-%\subsection{Applications linéaires}
-%
-%\Para{Proposition}[continuité des applications linéaires]
-%
-%Soit $E$ un espace vectoriel normé de dimension finie, $F$ un espace vectoriel normé et $\Fn{f}{E}{F}$ \emph{linéaire}.
-%Alors $f$ est lipschitzienne (et donc continue).
-%
-%\Para{Proposition}[continuité des applications multilinéaire]
-%
-%Toute application multilinéaire dont l'ensemble de départ est un espace vectoriel normé de dimension finie est continue.
-%
-%\subsection{Compacité}
-%
-%\Para{Définition}
-%
-%Soit $E$ un espace vectoriel normé de dimension finie.
-%On dit qu'une partie $A$ de $E$ est \emph{compacte} si et seulement si elle est fermée et bornée
-%
-%\Para{Théorème}
-%
-%Soit $E$ et $F$ deux espaces vectoriels normés de dimensions finies, $A\subset E$ et $\Fn{f}{A}{F}$ une fonction \emph{continue}.
-%Si $K\subset A$ est une partie compacte de $E$,
-%alors $f(K)$ est une partie compacte de $F$.
-%
-%\Para{Corollaire important}
-%
-%Soit $E$ un espace vectoriel normé de dimension finie, $A$ une partie fermée et bornée de $E$ et $\Fn{f}{A}{\R }$ une fonction continue.
-%Alors $f$ est bornée et ses bornes sont atteintes.
+Un espace vectoriel $E$ de dimension finie peut toujours être identifié à $\K^n$ en identifiant les coordonnées d'un vecteur dans une base de $E$ et les coordonnées dans la base canonique de $\K^n$. Tous les énoncés ci-dessous concernant $\K^n$ s'étendent ipso facto à un tel $E$ muni de la topologie transportée par cette identification. On ne précisera pas "pour la norme $N$" car  la topologie de $\K^n$ ne dépend pas du choix de la norme sur $\K^n$. 
+\subsection{Ouverts et fermés}
+\begin{Df}[Ouvert et fermé]
+\begin{itemize}
+\item Une \defi{partie ouverte} de $\K^n$, ou plus simplement un \defi{ouvert} de $\K^n$, est une partie $U$ de $\K^n$ telle que $\forall x\in U, \exists r>0, B(x,r)\subset U$.
+\item Une \defi{partie fermée} de $\K^n$, ou plus simplement un \defi{fermé} de $\K^n$, est une partie $F$ de $\K^n$ telle que le complémentaire de $\K^n$ dans $F$, $\K^n\setminus F$ est un ouvert de $\K^n$.
+\end{itemize}
+\end{Df}
+\begin{Prop}
+\begin{itemize}
+\item La boule ouverte est une partie ouverte de $\K^n$.
+\item La boule fermée  est une partie fermée de $\K^n$.
+\end{itemize}
+\end{Prop}
+\begin{proof}$,$\\
+\begin{minipage}[c]{0.6\linewidth}{
+Soit $B(\vec{x},r)$ une boule ouverte.\\
+Soit $\vec{x'}\in B(\vec{x},r)$. \\
+On choisit un $r'$ tel que $0< r' < r -\norme{\vec{x}-\vec{x'}}$.\\
+Soit $\vec{y}\in B(\vec{x'},r')$. On a $\norme{\vec{x}-\vec{y}}=\norme{(\vec{x}-\vec{x'})+(\vec{x'}-\vec{y})}\leq \norme{\vec{x}-\vec{x'}} + \norme{\vec{x'}-\vec{y}}<r.$ Donc $B(\vec{x'},r')\subset B(\vec{x},r).$
+}
+\end{minipage} 
+    \begin{minipage}[c]{0.4\linewidth}{\hspace*{0.2\linewidth}
+    \begin{tikzpicture}
+\draw [black,fill=blue!20]  (0,0) circle (2) (0,0)node[above]{ $\vec{x}$ } --(0:2)node[pos=0.5,above]{ $r$ };
+\draw [black,fill=red!20]  (-1.1,-0.4) circle (0.7) (-1.1,-0.4)node[above]{ $\vec{x'}$ } --(-0.4,-0.4)node[pos=0.5,above]{ $r'$ };
+\end{tikzpicture}\begin{tiny}
+Identification coordonnées d'un vecteur avec coordonnées d'un point
+\end{tiny}
+}
+\end{minipage} 
+\end{proof}
+\begin{Ex}[Intervalle ouvert]
+Un intervalle ouvert $]a,b[$ de $\R$ est un ouvert de $\R$ car $]a,b[=B(\frac{a+b}{2},\frac{b-a}{2})$.
+\end{Ex}
+\begin{Ex}[Singleton fermé]
+\begin{minipage}[c]{0.6\linewidth}{
+Les singletons sont des fermés.\\ 
+Soit $\vec{x}\in \K^n$.\\
+Soit $\vec{y}\in K^n\setminus \{\vec{x}\}$. On pose $r=\frac{\norme{\vec{x}-\vec{y}}}{2}$.
+$\vec{x}\notin B(\vec{y},r)$ car $\norme{\vec{x}-\vec{y}}\geq r$. On a $B(\vec{y},r)\subset K^n\setminus \{\vec{x}\}$.\\
+Ainsi $K^n\setminus \{\vec{x}\}$ est un ouvert donc  $\{\vec{x}\}$ est un fermé.
+}
+\end{minipage} 
+    \begin{minipage}[c]{0.4\linewidth}{\hspace*{0.2\linewidth}
+\begin{tikzpicture}[scale=2] 
+\draw [fill=black]  (0,0)node[above]{ $\vec{x}$ } circle (0.05);
+\draw [black,fill=blue!20]  (1,1) circle (0.7) (1,1) --(1.7,1)node[pos=0.5,above]{ $\frac{\norme{\vec{x}-\vec{y}}}{2}$ } ;
+\draw [fill=black]  (1,1)node[above]{ $\vec{y}$ } circle (0.05);
+\end{tikzpicture}\\\begin{tiny}
+Identification coordonnées d'un vecteur avec coordonnées d'un point
+\end{tiny}
+}
+\end{minipage} 
+\end{Ex}
+\begin{Prop}[Propriétés des ouverts]
+\begin{itemize}
+\item $\emptyset$ et $\K^n$ sont des ouverts et des fermés.
+\item \emph{stabilité par union quelconque}:
+  Si $\forall i\in I$, $U_i$ est un ouvert de $\K^n$, alors $\cup_{i\in I} U_i$ est un ouvert de $\K^n$.
+\item \emph{stabilité par intersection finie}:
+  Si $U_1, \dots, U_n$ sont des ouverts de $\K^n$, alors $\cap_{i=1}^n U_i$ est un ouvert de $\K^n$.
+\end{itemize}
+\end{Prop}
+\begin{proof}
+\begin{itemize}
+\item \emph{stabilité par union quelconque}:
+  Soit $(U_i)_{i\in I}$ une famille d'ouverts de $\K^n$.\\
+  Soit $\vec{x}\in\cup_{i\in I} U_i$. Il existe un indice $i\in I$ tel que $\vec{x}\in U_i$.\\
+  Comme $U_i$ est un ouvert, il existe $r>$ tel que $B(\vec{x},r)\subset U_i$.\\
+  Comme  $U_i\subset \cup_{j\in I} U_j$, $B(\vec{x},r)\subset\cup_{j\in I} U_j$.
+\item \emph{stabilité par intersection finie}:
+  Soit $(U_i)_{1\leq i\leq n}$ une famille finie d'ouverts de $\K^n$.\\
+ Soit $\vec{x}\in\cap_{i\in I} U_i$. Pour tout indice $i\in \ccro{1}{n}$, $\vec{x}\in U_i$.\\
+  Comme $U_i$ est un ouvert, il existe $r_i>$ tel que $B(\vec{x},r_i)\subset U_i$.\\
+  Soit $r=\min(r_1,\dots,r_n)$. Donc, pour tout indice $i\in \ccro{1}{n}$, $B(\vec{x},r)\subset B(\vec{x},r_i)\subset U_i$.\\
+  Ainsi $B(\vec{x},r)\subset \cap_{i=1}^n U_i$ et $\cap_{i=1}^n U_i$ est un ouvert. 
+\end{itemize}
+\end{proof}
+\begin{NB} La propriété de stabilité par une intersection non finie est fausse.\\
+Considérons la famille dénombrable d'ouverts $(A_n)_{n\in\N^*}$ définie par : $A_n =]-\frac 1 n ,\frac 1 n[$. 
+Il est ici tout à fait évident que $(A_n)_{n\in\N^*}$ est une famille d'ouvert. On a :
+$$\cap_{n\in\N^*}]-\frac 1 n ,\frac 1 n[=\{0\}.$$
+le singleton $\{0\}$ est un fermé ce qui montre que l'intersection dénombrable d'une famille d'ouverts n'est
+pas nécessairement un ouvert.
+\end{NB}
+\begin{Ex}[Dans $\R$]
+$]0,+\infty[$ est un ouvert car union d'ouverts $\cup_{n\in \N^*}]0,n[$ et et plus généralement les intervalles de la forme $]a,+\infty[$ ou $]-\infty,a[$ sont des ouvert de $\R$.
+\end{Ex}
+\begin{Ex}[Dans $\R^2$]
+$]0,+\infty[$ est un ouvert car union d'ouverts $\cup_{n\in \N^*}]0,n[$ et et plus généralement les intervalles de la forme $]a,+\infty[$ ou $]-\infty,a[$ sont des ouvert de $\R$.
+\end{Ex}
 
 
+\begin{Th}[Caractérisation séquentielle des fermés]
+Soit $F$ une partie non vide de $\K^n$.\\
+F est fermée si et seulement si pour toute suite convergente $(\vec{x_n})_{n\in\N}$
+d'éléments de F, $\lim\limits_{n\to\infty}\vec{x_n}$  est un élément de $F$.
+\end{Th}
+\begin{proof}
+Soit $F$  une partie non vide de $\K^n$.\\
+\begin{itemize}
+\item $\Longrightarrow$ :   Soit $F$ est un fermé  de $\K^n$. Soit $(\vec{x_n})_{n\in\N}$ une suite d'éléments de $F$  convergeant vers $\vec{l}$.
+Supposons par l'absurde que $\vec{l}\notin F$, c'est à dire que    $\vec{l}$ appartient au complémentaire du fermé $F$, $\K^n\setminus F$, qui est donc ouvert. Il existe alors une boule ouverte $B$ de centre $\vec{l}$  et de rayon $r > 0$ inclue dans $\K^n\setminus F$.  Aucun élément de la suite appartient à cette boule.\\ 
+Comme la suite converge vers  $\vec{l}$, à partir d'un certain rang, tous les termes de la suite appartiennent à cette boule ouverte.\\
+ D'où la contradiction. 
+\item  $\Longleftarrow$ : par contreproposition, soit $F$ une partie non fermé de $\K^n$. Donc la complémentaire de $F$, $\K^n\setminus F$, n'est par un ouvert. Il existe alors un élément $\vec{l}$ de $\K^n\setminus F$ telle que toute boule ouverte de centre $\vec{l}$ contient un élément qui n'est pas dans $\K^n\setminus F$ et qui est donc dans $F$. En particulier, on peut construire une suite $(\vec{x_n})_{n\in\N}$ d'éléments de $F$  tel que $\vec{x_n}\in B(\vec{l},\frac 1 n )$. 
+Cette suite $(\vec{x_n})_{n\in\N}$ d'éléments de $F$ converge vers $\vec{l}\notin F$.
+\end{itemize}
+\end{proof}
+\begin{Ex}
+$A=\{(x,y)\in \R^2:xy=1\}$ est un fermé.\\
+Soit $(x_n,y_n)_{n\in\N}$ une suite d'éléments de $A$ qui converge vers $(x,y)\in \R^2$. Les deux suites coordonnées $(x_n)_{n\in\N}$ et $(y_n)_{n\in\N}$ convergent vers $x$ et $y$ respectivement. Pour tout $n \in \N: x_ny_n=1$, par passage à la limite, on a : $\lim\limits_{n\to\infty}(x_ny_n)=\lim\limits_{n\to\infty}(1)=1$. Comme les deux suites coordonnées convergent, 
+ $\lim\limits_{n\to\infty}(x_ny_n)=\lim\limits_{n\to\infty}x_n\lim\limits_{n\to\infty}y_n=xy=1$. Ainsi la limite appartient à $A$.
+D'après la caractérisation séquentielle des fermé, A est fermé.
+\end{Ex}
+\begin{Ex}[Matrice symétrique]
+L'ensemble des matrices symétriques $\SnR=\{M\in\MnR:\transposee{M=M}\}$ est un fermé.\\
+Soit $(S_p=(s^p_{i j})_{1\leq i,j\leq n} )_{p\in\N}$ une suite d'éléments de $\SnR$ qui converge vers $M=(m_{ij})_{1\leq i,j\leq n}\in \MnR$.\\
+Comme $S_n$ est symétrique, $s^p_{i j}=s^p_{j i}$. Comme les suite coordonnées convergent, par passage à la limite on a $m_{ij}=\lim\limits_{p\to\infty}(s^p_{i j})=\lim\limits_{p\to\infty}(s^p_{j i})=m_{ji}$. Ainsi $M$ est symétrique.\\ 
+D'après la caractérisation séquentielle des fermé, $\SnR$ est fermé.
+\end{Ex}
+\subsection{Point intérieur, point adhérent}
+\begin{Df}[Intérieur]
+Soit $A$ une partie de $\K^n$.\\
+$\vec{x}$ est \defi{intérieur} à $A$ si $$\exists  r > 0, B (\vec{x}, r) \subset A.$$
+L'\defi{intérieur de $A$}, notée $\stackrel {\ \circ }{A}$, est l'ensemble des points intérieurs à $A$.\\
+$\stackrel {\ \circ }{A}$ est le plus grand (au sens de l'inclusion) ouvert de $E$ contenu dans $A$.
+\end{Df}
+\begin{Ex}
+L'intérieur de $[0,+\infty[$ est $]0,1[$.\\
+L'intérieur de $\Q$ dans $\R$ est $\emptyset$ car  toute boule ouverte de $\R$ centrée sur un rationnel contient au moins un irrationnel.
+\end{Ex}
+\begin{Df}[Adhérent]
+Soit $A$ une partie de $\K^n$.\\
+$\vec{x}$ est \defi{adhérent} à $A$ si $$\exists  r > 0, B (\vec{x}, r) \cap A\neq \emptyset .$$
+L'\defi{adhérence de $A$}, notée $\overline {A}$, est l'ensemble des points intérieurs à $A$.\\
+$\overline {A}$ est le plus petit (au sens de l'inclusion) fermé de $\K^n$ contenant  $A$.
+\end{Df}
+\begin{Ex}
+L'adhérence de de $]0,1[$ est $[0,1]$.\\
+L'adhérence de $\Q$ dans $\R$ est $\R$ car  toute boule ouverte de $\R$ contient au moins un rationnel.
+\end{Ex}
+\begin{Prop}
+Soit $A$ une partie de $\K^n$.\\
+$\vec{x}$ est adhérent à $A$ si et seulement si il existe une suite $(\vec{x_n})_{n\in\N}$
+d'éléments de $A$, convergente, de limite $\vec{x}$.
+\end{Prop}
+\begin{proof}
+\begin{itemize}
+\item $\Rightarrow :$ Soit $\vec{x}$ un point adhérent. On peut donc construire la suite $(\vec{x_n})_{n\in\N}$ tel que $\vec{x_n}\in B (\vec{x}, \frac{1}{n+1} )$. Cette suite converge vers $\vec{x}$. 
+\item $\Leftarrow :$ Soit une suite $(\vec{x_n})_{n\in\N}$ d'éléments de $A$, convergente, de limite $\vec{x}$. Donc, quelque soit $r>0$, à partir d'un certain rang, tous le termes de la suite appartiennent à  $B (\vec{x}, r)$, donc $B (\vec{x}, r) \cap A\neq \emptyset$ car $(\vec{x_n})_{n\in\N}$ est une suite d'éléments de $A$.
+\end{itemize}
+\end{proof}
+\begin{Df}[Dense]
+$A$ est \defi{dense} dans $\K^n$ si $\overline {A}=\K^n$
+\end{Df}
+Une partie dense est une partie permettant d'approcher tous les éléments de l'espace englobant.
+\begin{Ex}
+$\Q$ est dense dans $\R$.
+\end{Ex}
+\begin{Df}[Frontière]
+La \defi{frontière} de $A$ est $\overline {A}\setminus \stackrel {\ \circ }{A}.$
+\end{Df}
+\begin{Ex}
+La frontière de $[0,1[$ est $ \{0,1\}$. 
+\end{Ex}
+\section{Étude locale d'une application - continuité}
+\subsection{Limite}
+%\begin{minipage}[c]{0.45\linewidth}{
+De manière intuitive, une fonction admet pour limite $\vec{l}$ en $\vec{a}$ quand $f(\vec{x})$ se rapproche  de $\vec{l}$,  quand  la variable $\vec{x}$ se rapproche de $\vec{a}$. Une définition plus rigoureuse est 
+\begin{itemize}  
+\item "$f(\vec{x})$ se rapproche de $\vec{l}$"; pour tout rayon $\epsilon$, $f(\vec{x})$ appartient à la boule centrée en $\vec{l}$ et de rayon $\epsilon$
+\item  "la variable $\vec{x}$ se rapproche de $\vec{a}$" : il existe un rayon $\delta$ telle cette propriété est vraie pour tous $\vec{x}$ appartenant à la boule centrée en $\vec{a}$ et de rayon $\delta$. 
+\end{itemize} 
+%}
+%\end{minipage} \hfill
+%    \begin{minipage}[r]{0.5\linewidth}{
+%\hspace*{0.1\linewidth}
+\begin{center} 
+\begin{tikzpicture}[scale=1.1,bullet/.style={circle,fill,inner sep=1.5pt,node contents={}}]
+\draw (-5,0) rectangle (-1,4) node[above right] at (-5,0) {$E$};
+\draw (1,0) rectangle (5,4)node[above right] at (1,0) {$F$};
+
+\draw [black,fill=blue!20]  (-3,2) circle (0.8);
+\draw [black,fill=blue!20]  (2.5,2) circle (1);
+\draw [black,fill=red!20]  (2.4,1.8) circle (0.4);
+\draw (-3.3,1.5)node[bullet,label=above:$\vec{x}$] --(2.2,1.6)node[bullet,label=above:$f(\vec{x})$] ; 
+
+\draw (-3,2)node[bullet,label=above:$\vec{a}$] --(-2.2,2)node[pos=0.5,above]{ $\delta$} ; 
+\draw (2.5,2)node[bullet,label=above:$\vec{l}$] --(3.5,2)node[pos=0.5,above]{ $\epsilon$} ; 
+
+
+\draw (-3,2.8) -- (2.4,2.2)node[pos=0.5,above]{ $f$};
+\draw (-3,1.2) -- (2.4,1.4);
+\end{tikzpicture}\\
+ Exemple d'une application de $f:E\to F$. Quelque soit le rayon $\epsilon$, il existe un rayon $\delta$, telle que $f(B(\vec{a},\delta))\subset B(\vec{l},\epsilon)$.
+ \end{center}
+%}
+%\end{minipage} 
+\begin{Df}[Limite]
+Soit $A$ une partie non vide de $E$, $\vec{a}$ un point de $E$ adhérent à $A$, $f : A \to F$ et $\vec{l} \in F$.\\
+$f$ admet $\vec{l}$ pour \defi{limite} au point $\vec{a}$ si
+$$\forall \epsilon >0,  \exists \delta > 0,   \overbrace{\forall \vec{x} \in A: \quad  \norme{\vec{x} - \vec{a}}_E < \delta}^{\vec{x}\in B(\vec{a},\delta)\cap A}   \Rightarrow \overbrace{\norme{f (\vec{x}) - \vec{l}} < \epsilon.}^{f(\vec{x})\in B(\vec{l},\epsilon)}$$
+Lorsqu'un tel $\vec{l}$ existe il est unique ; on dit alors que $\vec{l}$ est \defi{la limite de $f$ en $\vec{a}$} et l'on note :
+$$\lim_{\vec{x}\to\vec{a} } f(\vec{x})= \vec{l}.$$
+\end{Df}
+\begin{Ex}
+Soit $\Fonction{f}{\R\setminus \{0\}}{\R}{x}{\frac{\sin x }{x}} $.\\
+ $0$ est adhérent à $\R\setminus \{0\}$ et la fonction admet $1$ pour limite en $0$ du fait du développement limité à l'ordre 1 en 0 de la fonction sinus ($\sin x = x + o(x)$, d'où $\frac{\sin x}{x} = 1 + o(1)$).
+\end{Ex}
+\begin{NB}
+\begin{itemize}
+\item Si une suite converge, alors sa limite est unique.
+\item Si une suite converge, alors elle est bornée.
+\item Si une suite converge, alors toute suite extraite converge.
+\end{itemize}
+\end{NB}
+
+%\begin{Ex}
+%Soit $\Fonction{f}{\R\setminus \{0\}}{\R}{x}{\frac{\sin x }{x}} $.\\
+% $0$ est adhérent à $\R\setminus \{0\}$ et la fonction admet $1$ pour limite en $0$.   
+%\end{Ex}
+
+\begin{Th}[Caractérisation séquentielle]
+Une fonction $f$ admet $\vec{l}$ pour limite au point $\vec{a}$ si et seulement si, pour tout suite $(\vec{x_n})_{n\in\N}$  telle que $\lim\limits_{n\to\infty}\vec{x_n}=\vec{a}$ alors $\lim\limits_{n\to\infty}f(\vec{x_n})=\vec{l}$.
+\end{Th}
+\begin{NB}
+Ce théorème permet de lier la notion de limite de fonction à celle de limite d'une suite.\\
+Cette caractérisation peut surtout être utile pour prouver qu'une fonction n'admet pas de limite. \\
+Soit $\Fonction{f}{\R^2\setminus \{(0,0)\}}{\R}{(x,y)}{\frac{x y }{x^2+y^2}} $.\\
+Soit $u_n=(\frac 1 n,0)$ et $v_n=(\frac 1 n,\frac 1 n)$. 
+On a $\lim\limits_{n\to\infty}u_n=\lim\limits_{n\to\infty}v_n=(0,0)$ mais $\lim\limits_{n\to\infty}f(u_n)=\lim\limits_{n\to\infty}0=0$ et $\lim\limits_{n\to\infty}f(v_n)=\lim\limits_{n\to\infty}\frac{1}{2}=\frac{1}{2}.$ Donc $f$ n'admet pas de limite en $(0,0)$.
+\end{NB}
+\begin{Prop}[Limite composante par composante]
+Soit $E$ et $F$ deux espaces vectoriels normés avec $F$ de dimension finie munie d'une base $\mathcal{B}=(\vec{e_1},\dots, \vec{e_p})$.\\
+Soit $f:A\to F$ avec $A\subset E$. Soit $\vec{a}$ un point adhérent à $A$.
+On note  $(f_1, \dots, f_p)$ les fonctions composantes de $f $dans la base
+$\mathcal{B}$, c'est-à-dire : $$f=f_1\vec{e_1}+\dots + f_p\vec{e_p}.$$
+$f$ admet une limite en $\vec{a}$ si et seulement si les fonctions composantes $(f_1, \dots, f_p)$ admettent des limites en $\vec{a}$.\\
+Dans ce cas, $$\lim_{\vec{x}\to\vec{a} } f(\vec{x})= \lim_{\vec{x}\to\vec{a} } f_1(\vec{x})\vec{e_1}+\dots+\lim_{\vec{x}\to\vec{a} } f_p(\vec{x})\vec{e_p}.$$
+\end{Prop}
+\subsection{Continuité}
+
+En mathématiques, une fonction continue est une fonction qui n'a pas de changements brusques de valeur, appelés discontinuités. Pour une fonction de variable réelle, ces discontinuités sont la nécessité de lever le crayon pour tracer le graphe en ces points. La discontinuité donc la continuité est une \textbf{propriété locale} de la fonction.\\
+En première approche, une définition rigoureuse de la continuité est donnée en termes d'idée de limite. Une fonction $f$ de la variable $\vec{x}$ est dite continue au point $\vec{a}$ , si la limite de $f(\vec{x})$, lorsque $\vec{x}$ s'approche de ce point $\vec{a}$, est égale à la valeur $f(\vec{a})$; et deuxièmement, la fonction (dans son ensemble) est dite continue sur $A$, si elle est continue en tout point de $A$.
+
+\begin{Df}[Continuité]
+Soit $E$ et $F$ deux espaces vectoriels normés et $A\subset E$.\\
+Soit $f:A\to F$.\\
+On dit que $f$ est \defi{continue en $\vec{a}\in A$} si $\lim\limits_{\vec{x}\to\vec{a} } f(\vec{x})= f(\vec{a})$.\\
+On dit que $f$ est \defi{continue} si elle est continue en tout point de $A$.
+\end{Df}
+\begin{Df}[Opérations sur les fonctions continues]
+Soit $E$, $F$ et $G$ trois espaces vectoriels normés et $A\subset E, B\subset F$.
+\begin{itemize}
+\item \textit{Combinaison linéaire} :  soit $f:A\to F$ et $g:A\to F$ et $\lambda,\mu\in\K$.\\
+Si $f$ et $g$ sont continues en $\vec{a}\in A$ (ou continues sur $A$),\\
+Alors $\lambda.f + \mu.g$ est continue en $\vec{a}$ (ou sur $A$).
+\item\textit{Multiplication} :  soit $f:A\to F$ et $g:A\to F$.\\
+Si $f$ et $g$ sont continues en $\vec{a}\in A$ (ou continues sur $A$),\\
+Alors $f \times g$ est continue en $\vec{a}$ (ou sur $A$).
+\item\textit{Division} :  soit $f:A\to F$ et $g:A\to F$.\\
+Si $f$ et $g$ sont continues en $\vec{a}\in A$ (ou continues sur $A$) et $g$ ne s'annule pas en $\vec{a}$,\\
+Alors $\frac{f}{g}$ est continue en $\vec{a}$ (ou sur $A$).
+\item\textit{Composition} :  soit $f:A\to B$, $g:B\to G$.\\
+Si $f$ est continues en $\vec{a}\in A$ et $g$ est continue en $f(\vec{a})$,\\
+Alors $g\circ f$ est continue en $\vec{a}$.
+\end{itemize}
+\end{Df}
+\begin{Prop}[Continuité et coordonnées]
+Soit $E$ et $F$ deux espaces vectoriels normés avec $F$ de dimension finie avec $\mathcal{B}=(\vec{e_1},\dots, \vec{e_p})$ une base de $F$.\\
+Soit $f:A\to F$ avec $A\subset E$.
+On note  $(f_1, \dots, f_p)$ les fonctions composantes de $f $dans la base
+$\mathcal{B}$, c'est-à-dire : $$f=f_1\vec{e_1}+\dots + f_p\vec{e_p}.$$
+$f$ est continue en $\vec{a}\in A$ si et seulement si les fonctions $(f_1, \dots, f_p)$ sont toutes continues en $\vec{a}\in A$.
+\end{Prop}
+
+
+
+\begin{Ex}[Fonction polynomiale]
+\begin{itemize}
+\item La fonction $f:(x,y)\mapsto xy$ est continue sur $\R^2$ car $p_1:(x,y)\mapsto x $ et $p_2:(x,y)\mapsto y $ sont continues et $f$ est le produit de $p_1$ et $p_2$ ($f(x,y)=(p_1\times p_2)(x,y)=p_1(x,y)\times p_2(x,y) = x y$). 
+\item La fonction polynôme à plusieurs variables $P:(x_1,\dots,x_n)\mapsto \sum\limits_{k_{1},\ldots ,k_{n}\in \{0,\ldots ,d_{j}\}}a_{k_{1},\ldots ,k_{n},j}x_{1}^{k_{1}}\ldots x_{n}^{k_{n}}$ est continues comme somme de produits de fonctions continues. 
+\end{itemize}
+Applications :
+\begin{itemize}
+\item La fonction déterminant $\Det[]:M \mapsto \Det[] M $ est continue car le déterminant est polynomial en les coordonnées.
+\item La fonction polynôme caractéristique $\chi:M \mapsto \Det[](XI_n-M) $ est continue comme composée de fonctions continues $g:M\mapsto XI_n-M$ et de fonction déterminant. La fonction $$g:\begin{pmatrix}a_{1,1}&a_{1,2}&\cdots &a_{1,n}\\a_{2,1}&a_{2,2}&\cdots &a_{2,n}\\\vdots &\vdots &\ddots &\vdots \\a_{n,1}&a_{n,2}&\cdots &a_{n,n}\\\end{pmatrix} \mapsto \begin{pmatrix}X-a_{1,1}&a_{1,2}&\cdots &a_{1,n}\\a_{2,1}&X-a_{2,2}&\cdots &a_{2,n}\\\vdots &\vdots &\ddots &\vdots \\a_{n,1}&a_{n,2}&\cdots &X-a_{n,n}\\\end{pmatrix}$$ est continue car les fonctions coordonnées $g_{i j}:\begin{pmatrix}a_{1,1}&a_{1,2}&\cdots &a_{1,n}\\a_{2,1}&a_{2,2}&\cdots &a_{2,n}\\\vdots &\vdots &\ddots &\vdots \\a_{n,1}&a_{n,2}&\cdots &a_{n,n}\\\end{pmatrix}\mapsto X\delta_{i,j}-a_{i j}$ sont continues.
+\end{itemize}
+\end{Ex}
+
+\begin{DfProp}[Prolongement par continuité]
+Soit $E$ et $F$ deux espaces vectoriels normés et $A\subset E$. Soit $\vec{a}\in E$ un point adhérent à $A$ n'appartenant pas à $A$.\\
+Soit $f:A\to F$ continue sur $A$ et $f$ admet une limite $\vec{l}$ en $\vec{a}$.\\
+Alors le \defi{prolongement par continuité} de $f$  en $\vec{a}$ est la fonction $g$ définie sur $A\cup\{\vec{a}\}$ par
+$$\Fonction{g}{A\cup\{\vec{a}\}}{F}{\vec{x}}{\begin{cases}f(\vec{x}),&{\mbox{si }}\vec{x}\neq \vec{a}\\\vec{l} ,&{\mbox{si }}\vec{x}=\vec{a}.\end{cases}}$$
+\end{DfProp}
+\begin{Ex}
+La fonction $x\mapsto \frac{\sin x}{x}$ est continue sur $\R\setminus \{0\}$ et admet une limite en 0. Donc elle est prolongeable par continuité en 0.
+\end{Ex}
+\subsection{Fonctions lipschitziennes}
+Une fonction lipschitzienne est une application possédant une certaine propriété de régularité qui est plus forte que la continuité. Intuitivement, c'est une fonction qui est limitée dans sa manière d'évoluer
+\begin{Df}[Fonctions lipschitziennes]
+Soit $(E,\norme{}_E)$ et $(F,\norme{}_F)$ deux espaces vectoriels normés et $A\subset E$. Soit $f:A\to F$.Soit $k>0$. L'application $f$ est dite \defi{$k$-lipschitzienne} si 
+$$\forall x,y\in A,\quad\norme{f(x)-f(y)}_F\leq k \norme{x-y}_E.$$
+L'application $f$ est dite \defi{lipschitzienne} si il existe $k>0$ telle que $f$ soit $k$-lipschitzienne.
+\end{Df}
+\begin{Prop}[Continuité des fonctions lipschitziennes]
+Soit $f:A\to F$ une fonction lipschitzienne.\\
+Alors $f$ est continue. 
+\end{Prop}
+\begin{proof}
+Soit $k>0$ tel que $f$ est $k$-lipschitzienne.\\
+Soit $ \vec{a} \in E$ et soit $\epsilon > 0$.
+On pose $\delta=\frac{\epsilon}{k}$.\\
+Soit $\vec{x}\in E$ tel que  $\norme{\vec{x}-\vec{a}}_E\leq\delta$.
+Comme  $f$ est $k$-lipschitzienne, on a $\norme{f(\vec{x})-f(\vec{a})}_F\leq k \norme{\vec{x}-\vec{a}}_E \leq k \delta=\epsilon$. $f$ est continue en $ \vec{a}$. Ainsi $f$ est continue. 
+\end{proof}
+
+\begin{Ex}[Continuité des applications linéaires et multilinéaires d'un espace vectoriel de dimension finie]
+Soit $f:E \to F$ une application linéaire telle que $E$ est de \textbf{dimension finie}. Soit $(\vec{e_1},\dots,\vec{e_n})$ une base  de $E$.\\
+Soit $\vec{a}=\sum_{i=1}^n a_i \vec{e_i}\in E$ et $\vec{x}=\sum_{i=1}^n x_i \vec{e_i}\in E$.\\
+On a :
+\begin{align*}
+\norme{f(\vec{x})-f(\vec{a})}_\infty&\overbrace{=}^{\text{Linéarité}}\norme{ \sum_{i=1}^n (x_i-a_i)f(\vec{e_i})}_{\infty}\\
+&\overbrace{\leq }^{\text{Inégalité triangulaire}}\sum_{i=1}^n |x_i-a_i| \norme{ f(\vec{e_i})}_{\infty}\\
+&\leq \sup_{i\in\ccro{1}{n} } |x_i-a_i| \sum_{i=1}^n \norme{ f(\vec{e_i})}_{\infty}\\
+&\leq M \norme{ \vec{x}-\vec{a})}_{\infty}\text{ avec }M=\sum_{i=1}^n \norme{ f(\vec{e_i})}_{\infty}\\
+\end{align*} 
+Donc $f$ est lipschitzienne. Ainsi les fonctions linéaires sont continues.\\
+Plus généralement, si $E_1,\dots, E_p$ sont des espaces vectoriels de dimension finie, toute
+application p-linéaire f de l'espace produit $\prod_{k=1}^p E_k$ dans un espace vectoriel normé $F$ est lipschitzienne donc continue.\\
+Quelques exemples :
+\begin{itemize}
+\item $(\lambda, \vec{x})\mapsto \lambda.\vec{x}$ est continue sur $\K × E$.
+\item $(\vec{x}, \vec{y}) \mapsto \PS{\vec{x}}{\vec{y}}$ est continue sur $E × E$, si $E$ est un espace vectoriel euclidien.
+\item $(u, v) \mapsto u \circ v$ est continue sur $\LE × \LE$. 
+\item $(A, B)\mapsto A × B$ est continue sur $MnK × MnK$.
+\item de nouveau le déterminant est continu car l'application déterminant est une forme n-linéaire.
+\end{itemize}
+\end{Ex}
+
+\subsection{Continuité et topologie}
+\begin{Th}[Caractérisation topologique de la continuité (admis)]
+Soit $E$ et $F$ deux espaces vectoriels normés et $f:E\to F$ une fonction.
+\begin{itemize}
+\item $f$ est continue si et seulement si pour tout ouvert $A$ de  $F$, alors $f^{-1}(A)$ est un ouvert de $E$.
+\item $f$ est continue si et seulement si pour tout fermé $A$ de  $F$, alors $f^{-1}(A)$ est un fermé de $E$.
+\end{itemize}
+\end{Th}
+\begin{Cor}[]
+Soit $E$ un espace vectoriel normé et $f:E\to \R$ une fonction continue.
+Alors :
+\begin{itemize}
+\item les ensembles $\{x \in E, f (x) > 0 \}, \{x \in E, f (x) < 0 \}$ et $\{x \in E, f (x)\neq 0 \}$ sont des ouverts de E,
+\item les ensembles $\{x \in E, f (x) \geq 0 \}, \{x \in E, f (x) \leq 0 \}$ et $\{x \in E, f (x)= 0 \}$ sont des fermés de E. 
+\end{itemize}
+\end{Cor}
+\begin{proof}
+Comme $f$ est continue et $]0,+\infty[$ est un ouvert, $\{x \in E, f (x) > 0 \}=f^{-1}(]0,+\infty[)$ est un ouvert. De même pour les autres ensembles.
+\end{proof}
+\begin{Ex}[$\GLnK$ ouvert]
+Comme $M$ est inversible si et seulement si $\Det[](M)\neq 0$, on a   $\GLnK=\Det[]^{-1}(\R\setminus \{0\})$.\\  
+Comme l'application déterminant est continue et $\R\setminus \{0\}$ est un ouvert, $\GLnK$ est un ouvert. 
+\end{Ex}
+
+
+\begin{Th}[Borne atteinte]
+Soit $E$ un espace vectoriel normé de dimension finie, $A$ une partie fermée et bornée de $E$ et $f:A\to\R$ une fonction continue.\\
+Alors $f$ est bornée et ses bornes sont atteintes.
+\end{Th}
+\begin{Ex}
+Si $K$ est une partie fermée, bornée, non vide de $E$ et $\vec{x} \in E$, alors
+$$\exists \vec{a}  \in K:  d (x, K) = \norme{\vec{x} - \vec{a}}_E.$$
+En effet, $f : y \mapsto \norme{\vec{x} - \vec{y}}_E$ est 1-lipschitzienne donc continue sur $K$ : elle atteint sa borne inférieure sur
+K, qui n'est autre que $d (x, K)$.
+\end{Ex}
 
 \end{document}
