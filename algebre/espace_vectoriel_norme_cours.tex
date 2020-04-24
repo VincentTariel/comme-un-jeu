@@ -143,6 +143,13 @@ $$\vec{x},\vec{y}\in E: |N(\vec{x}) - N(\vec{y})|\leq N(\vec{x}-\vec{y}).$$
 Soit $\vec{x},\vec{y}\in E$. On a $$N(\vec{x})=N(\vec{x}-\vec{y}+\vec{y})\overbrace{\leq}^{\text{inégalité triangulaire}} N(\vec{x}-\vec{y})+N(\vec{y}).$$
 Ainsi $N(\vec{x})-N(\vec{y})\leq N(\vec{x}-\vec{y}).$ En permutant $\vec{x}$ et $\vec{y}$, on obtient $N(\vec{y})-N(\vec{x})\leq N(\vec{x}-\vec{y}).$ Finalement $|N(\vec{x}) - N(\vec{y})|\leq N(\vec{x}-\vec{y}).$
 \end{proof}
+\begin{Prop}[Norme hilbertienne]
+Soit $(E,\PS{}{})$ est un espace prehilbertien réel.
+La \defi{norme associée} définie par 
+$$ \forall \vec{x}\in E:\quad  \norme{\vec{x}} =\sqrt{\PS{\vec{x}}{\vec{x}}}.$$
+est une norme sur $E$. 
+\end{Prop}
+
 \begin{Ex}[Trois normes sur $\K^n$]
 Pour $\vec{x} =(x_1,\dots,x_n)\in \K^n$, on pose
 \begin{enumerate}
@@ -166,12 +173,7 @@ $$\forall i\in \ccro{1}{n} :\quad  0\leq |x_i+y_i|\leq |x_i|+|y_i|\leq \norme{\v
 \end{itemize}  
 
 \end{Ex}
-\begin{Prop}[Norme hilbertienne]
-Soit $(E,\PS{}{})$ est un espace prehilbertien réel.
-La \defi{norme associée} définie par 
-$$ \forall \vec{x}\in E:\quad  \norme{\vec{x}} =\sqrt{\PS{\vec{x}}{\vec{x}}}.$$
-est une norme sur $E$. 
-\end{Prop}
+
 
 \begin{Ex}[Trois normes sur les espaces de fonctions]
 \begin{itemize}
@@ -182,7 +184,7 @@ $\norme{\,}_\infty$ est une norme sur $\mathcal{B}(I, \K)$ appelée \defi{norme d
 $$\norme{f}_1=\int_I|f(x)|\,\mathrm{dx}.$$
 $\norme{\,}_1$ est une norme sur $L_1(I, \K)$ appelée \defi{norme de la convergence en moyenne.}
 \item Soit $L_2(I, \K)$ l'espace des fonctions continues de carré intégrables sur l'intervalle $I$ de $\R$ à valeurs dans $\K$. Pour $f \in L_2(I, \K)$, on pose :
-$$\norme{f}_1=\int_I|f(x)|\,\mathrm{dx}.$$
+$$\norme{f}_1=\sqrt{\int_I f^2(x)}\,\mathrm{dx}.$$
 $\norme{\,}_2$ est une norme sur $L_2(I, \K)$ appelée \defi{norme de la convergence quadratique.}
 Comme l'ensemble des fonctions continues sur un segment $[a,b]$ à valeurs dans $\K$, $\mathcal{C}([a,b],\K)$ est une partie des ensembles $\mathcal{B}(I, \K)$, $L_1(I, \K)$ et $L_2(I, \K)$, $\norme{\,}_\infty$, $\norme{\,}_1$ et $\norme{\,}_2$ sont trois normes de $\mathcal{C}([a,b],\K)$.
 \end{itemize}
@@ -237,12 +239,23 @@ Ainsi définie, la distance vérifient les propriétés suivantes :
 \begin{NB}
 La notion de distance est une notion mathématique qui est normalement définie à partir de cette liste de propriétés. La distance définie à partir d'un norme est un cas particulier de distance. 
 \end{NB}
+\begin{Df}[Distance à une partie]
+Soit $A$ partie non vide de $E$ et $\vec{x}\in E$.\\
+La \defi{distance d'un point à une partie non vide} appelé distance de $x$ à $A$ est le réel positif ou nul
+$$d (\vec{x}, A) = \inf_{\vec{a} \in A}  \norme{\vec{x} - \vec{a}}.$$
+\end{Df}
+\begin{Df}[Distance à une partie]
+Soit $A$ partie non vide de $E$ et $\vec{x}\in E$.\\
+La \defi{distance d'un point à une partie non vide} appelé distance de $x$ à $A$ est le réel positif ou nul
+$$d (\vec{x}, A) = \inf_{\vec{a} \in A}  \norme{\vec{x} - \vec{a}}.$$
+\end{Df}
+
 \subsection{Boules}
 \begin{Df}[Boule ouverte, boule fermé, sphère]
 Soit $(E,\norme{\,})$ un espace vectoriel normé.
 \begin{itemize}
 \item La \defi{boule ouverte} de centre $\vec{a}\in E$ et de rayon $r\in \R $ est $$B(\vec{a},r) = \{\vec{x}\in E:\quad \norme{\vec{x}-\vec{a}}<r\}.$$
-\item La \defi{boule fermée} de centre $a\in E$ et de rayon $r\in \R $ est $$B_f(\vec{a},r) = \{\vec{x}\in E:\quad \norme{\vec{x}-\vec{a}}\leq r\}.$$
+\item La \defi{boule fermée} de centre $\vec{a}\in E$ et de rayon $r\in \R $ est $$B_f(\vec{a},r) = \{\vec{x}\in E:\quad \norme{\vec{x}-\vec{a}}\leq r\}.$$
 \item La \defi{sphère} de centre $\vec{a}\in E$ et de rayon $r\in \R $ est $$S(\vec{a},r) = \{\vec{x}\in E:\quad \norme{\vec{x}-\vec{a}}=r\}.$$
 \end{itemize}
 La \defi{boule unité ouverte}  est $B_f(\vec{0}, 1)$. La \defi{sphère unité} est l'ensemble des vecteurs de $E$ de
@@ -281,7 +294,7 @@ bien qu'en général, une boule n'ait rien de rond. En effet, si l'on considère pa
     \begin{minipage}[c]{0.4\linewidth}{
 Soit $E$ un espace vectoriel et $A$ une partie de $E$.\\
 On dit que $A$ est une \defi{partie convexe}, ou plus simplement que $A$ est \defi{convexe}, si  pour tous $\vec{x}$ et $\vec{y}$ de $A$, le segment $[\vec{x}, \vec{y}]$ est tout entier contenu dans $A$, c'est à dire
-$$\vec{x},\vec{y}\in A, \forall \lambda  \in [0,1]:\quad \lambda  \vec{x} + (1-\lambda)\vec{y}\in A.$$
+$$\forall \vec{x},\vec{y}\in A, \forall \lambda  \in [0,1]:\quad \lambda  \vec{x} + (1-\lambda)\vec{y}\in A.$$
 }
 \end{minipage} 
     \begin{minipage}[c]{0.6\linewidth}{
@@ -317,18 +330,19 @@ Les boules ouvertes et fermés  sont convexes.}
 \begin{proof}
 Soit $B(\vec{a},r)$ une boule ouverte.\\
 Soit $\vec{x},\vec{y}\in B(\vec{a},r).$ Soit $\lambda\in[0,1]$. On a :
-$$ \norme{(\lambda \vec{x} + (1-\lambda)\vec{y})-\vec{a}   }=\norme{(\lambda(\vec{x}-\vec{a}) + (1-\lambda)(\vec{y}-\vec{a})   }\leq |\lambda|\norme{\vec{x}-\vec{a}}+|1-\lambda|\norme{\vec{y}-\vec{a}}\leq |\lambda|r+|1-\lambda|r\overbrace{\leq}^{\lambda\in[0,1]} r.$$
+$$ \norme{(\lambda \vec{x} + (1-\lambda)\vec{y})-\vec{a}   }=\norme{(\lambda(\vec{x}-\vec{a}) + (1-\lambda)(\vec{y}-\vec{a})   }\leq |\lambda|\norme{\vec{x}-\vec{a}}+|1-\lambda|\norme{\vec{y}-\vec{a}}< |\lambda|r+|1-\lambda|r\overbrace{=}^{\lambda\in[0,1]} r.$$
 \end{proof}
 \begin{Ex}
 Les sous espaces vectoriels sont des convexes.
 \end{Ex}
 \section{Suite vectorielle}
-Dans cette partie, $(E,\norme{\,})$ désigne un espace vectoriel normé, et ($(u_n)_{n\in\N}$ une suite d'éléments de $E$.
+Dans cette partie, $(E,\norme{\,})$ désigne un espace vectoriel normé.
 \subsection{Définition}
 \begin{Df}[Suite vectorielle]
-Soit $E$ un espace vectoriel. Une \defi{suite vectorielle} est une application $\vec{x}:\N \to E$.\\
-On note fréquemment le \defi{terme} $\vec{x_n}$ au lieu de $\vec{x}(n)$ pour représenter l'indexation par les entiers naturels.   Aussi, on note $(\vec{x_n})_{n\in\N}$ au lieu de $u$.
+Une \defi{suite vectorielle} est une application $\vec{x}:\N \to E$.\\
+On note fréquemment le \defi{terme} $\vec{x_n}$ au lieu de $\vec{x}(n)$ pour représenter l'indexation par les entiers naturels.   Aussi, on note $(\vec{x_n})_{n\in\N}$ au lieu de $\vec{x}$.
 \end{Df}
+\newpage
 \begin{Ex}[Suite de fonctions]
 \begin{tikzpicture}
    \begin{axis}[
@@ -346,7 +360,7 @@ On note fréquemment le \defi{terme} $\vec{x_n}$ au lieu de $\vec{x}(n)$ pour rep
      \addplot[pink, thick, mark=none] {x^4}node[pos=0.2,above] {$f_4:x\to 5x^4$};
    \end{axis}
 \end{tikzpicture}
-\captionof*{figure}{Représentation graphique des premier termes de la suite $(f_n:x\to x^n)_{n\in \N   }$}
+\captionof*{figure}{Représentation graphique des premier termes de la suite de fonctions $(f_n:x\to x^n)_{n\in \N   }$}
 \end{Ex}
 
 
@@ -358,7 +372,7 @@ $$\forall n \in \N:\quad \norme{\vec{x_n}}\leq M.$$
 \begin{NB}[Dépendance de la norme en dimension infinie]
 La notion de suite bornée est définie à partir d'une norme. Si on change de norme (et donc on change d'espace vectoriel
 normé), il est possible que la suite considérée ne soit plus bornée.\\
-En effet, soit la suite $(f_n)_{n\in\N}$ d'éléments $\mathcal{C}([0,1],\K)$ définie par $f_n:x\to (n+1)x^n.$\\
+En effet, soit la suite $(f_n)_{n\in\N}$ d'éléments $\mathcal{C}([0,1],\K)$ définie par $f_n:x\mapsto (n+1)x^n.$\\
 On a :
 \begin{itemize}
 \item $\norme{f_n}_{1}=\int_0^1  |(n+1)x^n|\,\mathrm{dx}=1$, donc la suite  $(f_n)_{n\in\N}$ est une suite bornée de l'espace vectoriel normée $(\mathcal{C}([0,1],\K), \norme{\,}_1)$.
@@ -389,7 +403,7 @@ De manière intuitive, la suite admet pour limite $\vec{l}$ (converge vers $\vec{
 \draw (4,-1)node[bullet,label=above:$\vec{x_{1}}$];
 \draw (5,2) node[bullet,label=above:$\vec{x_{2}}$];
 \end{tikzpicture}
-\captionof*{figure}{Exemple de suite dans $\R^2$. Quelque soit le rayon $\epsilon$, à partir d'un certain rang, tous les termes de la suite doivent appartenir à la boule $B(\vec{l},\epsilon)$,}
+\captionof*{figure}{Exemple de suite dans $\R^2$. Quelque soit le rayon $\epsilon$, à partir d'un certain rang $N$, tous les termes de la suite doivent appartenir à la boule $B(\vec{l},\epsilon)$,}
 \end{center}
 
 \begin{Df}[Convergence et limite]
@@ -410,8 +424,10 @@ on écrit  $\vec{l}=\lim\limits_{n\to\infty}\vec{x_n}$.
 Raisonnons par l'absurde : supposons que $(\vec{x_n})_{n\in\N}$ admette deux limites $\vec{l}$ et $\vec{l'}$ distinctes pour la norme $\norme{\,}$.\\
 \begin{center}
 \begin{tikzpicture}[scale=0.75,bullet/.style={circle,fill,inner sep=1.5pt,node contents={}}]
-\draw [black,fill=blue!20]  (0,0) circle (2) (0,0)node[bullet,label=above:$\vec{l}$] --(2,0)node[pos=0.5,above]{ $\frac{\norme{\vec{l}-\vec{l'}}}{3}$ } ;
-\draw [black,fill=blue!20]  (6,0)node[bullet,label=above:$\vec{l'}$] circle (2)  (6,0) --(8,0)node[pos=0.5,above]{ $\frac{\norme{\vec{l}-\vec{l'}}}{3}$ } ;
+\draw [black,fill=blue!20]  (0,0) circle (2);
+\draw [black] (0,0)node[bullet,label=above:$\vec{l}$] --(2,0)node[pos=0.5,above]{ $\frac{\norme{\vec{l}-\vec{l'}}}{3}$ } ;
+\draw [black,fill=blue!20]  (6,0) circle (2);
+ \draw [black]  (6,0)node[bullet,label=above:$\vec{l'}$] --(8,0)node[pos=0.5,above]{ $\frac{\norme{\vec{l}-\vec{l'}}}{3}$ } ;
 \end{tikzpicture}
 \captionof{figure}{A partir d'un certain rang, tous les termes de la suite doivent appartenir aux deux boules ouvertes ce qui est impossible car l'intersection de ces deux boules est vide.}
 \end{center}
@@ -491,7 +507,9 @@ En permutant les rôles de $N$ et $N'$, on obtient la réciproque.
 \item 
 On suppose que la suite $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ pour la norme $N$.\\
 Soit $\epsilon>0$. Comme  la suite $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ pour la norme $N$, il existe $N\in\N$ tel que
-$$\forall n \geq N:\quad  N(\vec{x_n} - \vec{l} <  \frac{\epsilon}{\beta}$$
+$$\forall n \geq N:\quad  N(\vec{x_n} - \vec{l}) < \frac{\epsilon}{\beta}.$$
+Comme $N'(\vec{x_n})\leq  \beta N(\vec{x_n})$, on a 
+$$\forall n \geq N:\quad  N'(\vec{x_n} - \vec{l}) < \beta \frac{\epsilon}{\beta}=\epsilon$$
 et donc la suite $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ pour la norme $N'$.\\
 En permutant les rôles de $N$ et $N'$, on obtient la réciproque.
 \end{itemize}
@@ -512,7 +530,7 @@ Elle est formellement identique à celle qui établit que $\norme{\,}_{\infty}$ es
 On suppose que $E$ est de dimension finie muni d'une base $\mathcal{B} = (\vec{e_1}, \dots, \vec{e_p})$.\\
 Soit $(\vec{x_n})_{n\in\N}$ une suite d'éléments de $E$ telle que : 
 $$\forall  n\in\N : \quad \vec{x_n} = \sum_{i=1}^p x_{i,n} \vec{e_i}.$$
-Alors la suite $(\vec{x_n})_{n\in\N}$ converge dans $E$ si et seulement si les $n$ suites coordonnées $(x_{i,n})_{n\in\N}$ convergent dans $\K$.\\
+Alors la suite $(\vec{x_n})_{n\in\N}$ converge dans $E$ si et seulement si les $p$ suites coordonnées $(x_{i,n})_{n\in\N}$ convergent dans $\K$.\\
 Dans ce cas, on a $\lim\limits_{n\to\infty} \vec{x_n} = \sum_{i=1}^p (\lim\limits_{n\to\infty}x_{i,n}) \vec{e_i}.$\\
 De même pour la notion de bornée.
 \end{Prop}
@@ -537,15 +555,77 @@ La suite de matrices $\left(\begin{pmatrix}
 %
 %% -----------------------------------------------------------------------------
 \section{Topologie d'un espace vectoriel normé de dimension finie}
-Un espace vectoriel $E$ de dimension finie peut toujours être identifié à $\K^n$ en identifiant les coordonnées d'un vecteur dans une base de $E$ et les coordonnées dans la base canonique de $\K^n$. Tous les énoncés ci-dessous concernant $\K^n$ s'étendent ipso facto à un tel $E$ muni de la topologie transportée par cette identification. On ne précisera pas "pour la norme $N$" car  la topologie de $\K^n$ ne dépend pas du choix de la norme sur $\K^n$. 
+Un espace vectoriel $E$ de dimension finie peut toujours être identifié à $\K^n$ en identifiant les coordonnées d'un vecteur dans une base de $E$ et les coordonnées dans la base canonique de $\K^n$. Tous les énoncés ci-dessous concernant $\K^n$ s'étendent donc à un tel $E$ muni de la topologie transportée par cette identification. On ne précisera pas "pour la norme $N$" car  la topologie de $\K^n$ ne dépend pas du choix de la norme sur $\K^n$. 
+
+\subsection{Point intérieur, point adhérent}
+Un point est à l'intérieur d'une partie $A$ si tous les points autour de celui-ci sont encore dans $A$ à condition de ne pas trop s'éloigner.
+\begin{Df}[Intérieur]
+Soit $A$ une partie de $\K^n$.\\
+$\vec{x}$ est \defi{intérieur} à $A$ si $$\exists  r > 0, B (\vec{x}, r) \subset A.$$
+L'\defi{intérieur de $A$}, notée $\stackrel {\ \circ }{A}$, est l'ensemble des points intérieurs à $A$.\\
+%$\stackrel {\ \circ }{A}$ est le plus grand (au sens de l'inclusion) ouvert de $E$ contenu dans $A$.
+\end{Df}
+\begin{Ex}
+L'intérieur de $[0,1[$ est $]0,1[$.\\
+L'intérieur de  $A  =\Big\{(x,y)\in\R^2\ |\ 0\leq x<5 \Big\}$ est  
+$A  =\Big\{(x,y)\in\R^2\ |\ 0< x<5 \Big\}$.\\
+L'intérieur de $\Q$ dans $\R$ est $\emptyset$ car  toute boule ouverte de $\R$ centrée sur un rationnel contient au moins un irrationnel.
+\end{Ex}
+\begin{Df}[Adhérent]
+Soit $A$ une partie de $\K^n$.\\
+$\vec{x}$ est \defi{adhérent} à $A$ si $$\exists  r > 0, B (\vec{x}, r) \cap A\neq \emptyset .$$
+L'\defi{adhérence de $A$}, notée $\overline {A}$, est l'ensemble des points adhérents à $A$.\\
+%$\overline {A}$ est le plus petit (au sens de l'inclusion) fermé de $\K^n$ contenant  $A$.
+\end{Df}
+\begin{Ex}
+L'adhérence de de $]0,1[$ est $[0,1]$.\\
+L'adhérence de  $A  =\Big\{(x,y)\in\R^2\ |\ 0\leq x<5 \Big\}$ est  
+$A  =\Big\{(x,y)\in\R^2\ |\ 0\leq x\leq5 \Big\}$.\\
+L'adhérence de $\Q$ dans $\R$ est $\R$ car  toute boule ouverte de $\R$ contient au moins un rationnel.
+\end{Ex}
+\begin{Prop}
+Soit $A$ une partie de $\K^n$.\\
+$\vec{x}$ est adhérent à $A$ si et seulement si il existe une suite $(\vec{x_n})_{n\in\N}$
+d'éléments de $A$, convergente, de limite $\vec{x}$.
+\end{Prop}
+\begin{proof}
+\begin{itemize}
+\item $\Rightarrow :$ Soit $\vec{x}$ un point adhérent. On peut donc construire la suite $(\vec{x_n})_{n\in\N}$ tel que $\vec{x_n}\in B (\vec{x}, \frac{1}{n+1} )$. Cette suite converge vers $\vec{x}$. 
+\item $\Leftarrow :$ Soit une suite $(\vec{x_n})_{n\in\N}$ d'éléments de $A$, convergente, de limite $\vec{x}$. Donc, quelque soit $r>0$, à partir d'un certain rang, tous le termes de la suite appartiennent à  $B (\vec{x}, r)$, donc $B (\vec{x}, r) \cap A\neq \emptyset$ car $(\vec{x_n})_{n\in\N}$ est une suite d'éléments de $A$.
+\end{itemize}
+\end{proof}
+Une partie dense est une partie permettant d'approcher tous les éléments de l'espace englobant.
+\begin{Df}[Dense]
+$A$ est \defi{dense} dans $\K^n$ si $\overline {A}=\K^n$
+\end{Df}
+\begin{Ex}
+$\Q$ est dense dans $\R$.
+\end{Ex}
+\begin{Df}[Frontière]
+La \defi{frontière} de $A$ est $\overline {A}\setminus \stackrel {\ \circ }{A}.$
+\end{Df}
+\begin{Ex}
+La frontière de $[0,1[$ est $ \{0,1\}$.\\
+La frontière  de  $A  =\Big\{(x,y)\in\R^2\ |\ 0\leq x<5 \Big\}$ est  
+$A  =\Big\{(x,y)\in\R^2\ |\ x=0\text{ ou } x=5  \Big\}$.\\ 
+La frontière  $\Q$ dans $\R$ est $\R$.
+\end{Ex}
+
 \subsection{Ouverts et fermés}
+
+Un ouvert $A$ est une partie de $E$ qui présente la propriété caractéristique suivante : en choisissant comme origine un point quelconque de ce sous-ensemble, tous les points autour de celui-ci sont encore dans $A$ à condition de ne pas trop s'éloigner. C'est à dire si tous ses points sont à l'intérieur de lui-même. 
 \begin{Df}[Ouvert et fermé]
 \begin{itemize}
-\item Une \defi{partie ouverte} de $\K^n$, ou plus simplement un \defi{ouvert} de $\K^n$, est une partie $U$ de $\K^n$ telle que $\forall x\in U, \exists r>0, B(x,r)\subset U$.
-\item Une \defi{partie fermée} de $\K^n$, ou plus simplement un \defi{fermé} de $\K^n$, est une partie $F$ de $\K^n$ telle que le complémentaire de $\K^n$ dans $F$, $\K^n\setminus F$ est un ouvert de $\K^n$.
+\item Une \defi{partie ouverte} de $\K^n$, ou plus simplement un \defi{ouvert} de $\K^n$, est une partie $A$ de $\K^n$ telle que $$\forall \vec{x}\in A, \exists r>0:\quad B(\vec{x},r)\subset U,$$
+c'est à dire  $\stackrel {\ \circ }{A}=A.$
+\item Une \defi{partie fermée} de $\K^n$, ou plus simplement un \defi{fermé} de $\K^n$, est une partie $F$ de $\K^n$ telle que le complémentaire de $\K^n$ dans $F$, $\K^n\setminus F$, est un ouvert de $\K^n$.
 \end{itemize}
+Par convention, l'ensemble vide $\emptyset$ et $\K^n$ sont à la fois ouverts et fermées dans $\K^n$.
 \end{Df}
-\begin{Prop}
+%\begin{Ex}
+%L'ensemble $]0,1[$ est un ouvert de $\R$.
+%\end{Ex}
+\begin{Prop}[Boule ouverte]
 \begin{itemize}
 \item La boule ouverte est une partie ouverte de $\K^n$.
 \item La boule fermée  est une partie fermée de $\K^n$.
@@ -561,10 +641,12 @@ Soit $\vec{y}\in B(\vec{x'},r')$. On a $\norme{\vec{x}-\vec{y}}=\norme{(\vec{x}-
 \end{minipage} 
     \begin{minipage}[c]{0.4\linewidth}{\hspace*{0.2\linewidth}
     \begin{tikzpicture}
-\draw [black,fill=blue!20]  (0,0) circle (2) (0,0)node[above]{ $\vec{x}$ } --(0:2)node[pos=0.5,above]{ $r$ };
-\draw [black,fill=red!20]  (-1.1,-0.4) circle (0.7) (-1.1,-0.4)node[above]{ $\vec{x'}$ } --(-0.4,-0.4)node[pos=0.5,above]{ $r'$ };
+\draw [black,fill=blue!20]  (0,0) circle (2);
+\draw [black] (0,0)node[above]{ $\vec{x}$ } --(0:2)node[pos=0.5,above]{ $r$ };
+\draw [black,fill=red!20]  (-1.1,-0.4) circle (0.7);
+\draw [black] (-1.1,-0.4)node[above]{ $\vec{x'}$ } --(-0.4,-0.4)node[pos=0.5,above]{ $r'$ };
 \end{tikzpicture}\begin{tiny}
-Identification coordonnées d'un vecteur avec coordonnées d'un point
+%Identification coordonnées d'un vecteur avec coordonnées d'un point
 \end{tiny}
 }
 \end{minipage} 
@@ -584,10 +666,11 @@ Ainsi $K^n\setminus \{\vec{x}\}$ est un ouvert donc  $\{\vec{x}\}$ est un fermé.
     \begin{minipage}[c]{0.4\linewidth}{\hspace*{0.2\linewidth}
 \begin{tikzpicture}[scale=2] 
 \draw [fill=black]  (0,0)node[above]{ $\vec{x}$ } circle (0.05);
-\draw [black,fill=blue!20]  (1,1) circle (0.7) (1,1) --(1.7,1)node[pos=0.5,above]{ $\frac{\norme{\vec{x}-\vec{y}}}{2}$ } ;
+\draw [black,fill=blue!20]  (1,1) circle (0.7);
+\draw [black] (1,1) --(1.7,1)node[pos=0.5,above]{ $\frac{\norme{\vec{x}-\vec{y}}}{2}$ } ;
 \draw [fill=black]  (1,1)node[above]{ $\vec{y}$ } circle (0.05);
 \end{tikzpicture}\\\begin{tiny}
-Identification coordonnées d'un vecteur avec coordonnées d'un point
+%Identification coordonnées d'un vecteur avec coordonnées d'un point
 \end{tiny}
 }
 \end{minipage} 
@@ -620,13 +703,10 @@ Identification coordonnées d'un vecteur avec coordonnées d'un point
 Considérons la famille dénombrable d'ouverts $(A_n)_{n\in\N^*}$ définie par : $A_n =]-\frac 1 n ,\frac 1 n[$. 
 Il est ici tout à fait évident que $(A_n)_{n\in\N^*}$ est une famille d'ouvert. On a :
 $$\cap_{n\in\N^*}]-\frac 1 n ,\frac 1 n[=\{0\}.$$
-le singleton $\{0\}$ est un fermé ce qui montre que l'intersection dénombrable d'une famille d'ouverts n'est
+Le singleton $\{0\}$ n'est pas un ouvert ce qui montre que l'intersection dénombrable d'une famille d'ouverts n'est
 pas nécessairement un ouvert.
 \end{NB}
 \begin{Ex}[Dans $\R$]
-$]0,+\infty[$ est un ouvert car union d'ouverts $\cup_{n\in \N^*}]0,n[$ et et plus généralement les intervalles de la forme $]a,+\infty[$ ou $]-\infty,a[$ sont des ouvert de $\R$.
-\end{Ex}
-\begin{Ex}[Dans $\R^2$]
 $]0,+\infty[$ est un ouvert car union d'ouverts $\cup_{n\in \N^*}]0,n[$ et et plus généralement les intervalles de la forme $]a,+\infty[$ ou $]-\infty,a[$ sont des ouvert de $\R$.
 \end{Ex}
 
@@ -634,7 +714,7 @@ $]0,+\infty[$ est un ouvert car union d'ouverts $\cup_{n\in \N^*}]0,n[$ et et pl
 \begin{Th}[Caractérisation séquentielle des fermés]
 Soit $F$ une partie non vide de $\K^n$.\\
 F est fermée si et seulement si pour toute suite convergente $(\vec{x_n})_{n\in\N}$
-d'éléments de F, $\lim\limits_{n\to\infty}\vec{x_n}$  est un élément de $F$.
+d'éléments de F, la limite, $\lim\limits_{n\to\infty}\vec{x_n}$,  est un élément de $F$.
 \end{Th}
 \begin{proof}
 Soit $F$  une partie non vide de $\K^n$.\\
@@ -659,51 +739,44 @@ Soit $(S_p=(s^p_{i j})_{1\leq i,j\leq n} )_{p\in\N}$ une suite d'éléments de $\S
 Comme $S_n$ est symétrique, $s^p_{i j}=s^p_{j i}$. Comme les suite coordonnées convergent, par passage à la limite on a $m_{ij}=\lim\limits_{p\to\infty}(s^p_{i j})=\lim\limits_{p\to\infty}(s^p_{j i})=m_{ji}$. Ainsi $M$ est symétrique.\\ 
 D'après la caractérisation séquentielle des fermé, $\SnR$ est fermé.
 \end{Ex}
-\subsection{Point intérieur, point adhérent}
-\begin{Df}[Intérieur]
-Soit $A$ une partie de $\K^n$.\\
-$\vec{x}$ est \defi{intérieur} à $A$ si $$\exists  r > 0, B (\vec{x}, r) \subset A.$$
-L'\defi{intérieur de $A$}, notée $\stackrel {\ \circ }{A}$, est l'ensemble des points intérieurs à $A$.\\
-$\stackrel {\ \circ }{A}$ est le plus grand (au sens de l'inclusion) ouvert de $E$ contenu dans $A$.
+\begin{Df}[Bornée et compact]
+Une partie $A$ de $\K^n$ est dite \defi{bornée} s'il existe une boule ouvert $B$ qui le contient.\\
+Il est dit \defi{compact} si cette partie est fermée et bornée. 
 \end{Df}
 \begin{Ex}
-L'intérieur de $[0,+\infty[$ est $]0,1[$.\\
-L'intérieur de $\Q$ dans $\R$ est $\emptyset$ car  toute boule ouverte de $\R$ centrée sur un rationnel contient au moins un irrationnel.
+Les droites, demi-droites et demi-plans sont fermées non bornées dans le plan $\R^2$ ou dans l'espace $\R^3$. De même, les plans sont fermés non bornés dans $\R^3$.\\
+Toute boule ouverte de $\R^n$ est ouverte et bornée. Toute boule fermée est compacte.\\
+L'ensemble $A=\{(x,y)\in\R^2: 0\leq x \leq 1\text{ et }0\leq y\leq x^2\}$ est un compact.\\
+\begin{tikzpicture}
+   \begin{axis}[
+       axis y line = middle,
+       axis x line = middle,
+       samples     = 200,
+       domain      = 0:1,
+       xmin = 0, xmax = 1,
+       ymin = 0, ymax = 1,
+       unbounded coords=jump
+     ]
+     \addplot[domain=0:1,blue] {x^2}node[pos=0.5] {$\mathcal{C}_{x\to x^2}$};
+         \addplot[domain=-0:1,blue,fill=blue, 
+                    fill opacity=0.05] {x^2}\closedcycle ;
+        \addplot [thick,color=blue]coordinates {
+            (1, 1) 
+            (1, 0)
+            (0, 0)  }; 
+   \end{axis}
+
+\end{tikzpicture}
+
 \end{Ex}
-\begin{Df}[Adhérent]
-Soit $A$ une partie de $\K^n$.\\
-$\vec{x}$ est \defi{adhérent} à $A$ si $$\exists  r > 0, B (\vec{x}, r) \cap A\neq \emptyset .$$
-L'\defi{adhérence de $A$}, notée $\overline {A}$, est l'ensemble des points intérieurs à $A$.\\
-$\overline {A}$ est le plus petit (au sens de l'inclusion) fermé de $\K^n$ contenant  $A$.
-\end{Df}
+\begin{Th}[Bolzano-Weierstrass]
+Une partie $A$ de $\K^n$ est compact  si et seulement si toute suite d'éléments de $A$ admet une sous-suite qui converge vers un élément de X.
+\end{Th}
 \begin{Ex}
-L'adhérence de de $]0,1[$ est $[0,1]$.\\
-L'adhérence de $\Q$ dans $\R$ est $\R$ car  toute boule ouverte de $\R$ contient au moins un rationnel.
+La suite $(\sin n)_{n\in\N}$ est à valeurs dans le compact $[-1,1]$. Donc il existe une sous-suite convergente.\\
+Un résultat plus fort faisant appel à la théorie des groupes est que pour toute valeur de $[-1,1]$, il existe une sous-suite convergeant vers cette valeur.   
 \end{Ex}
-\begin{Prop}
-Soit $A$ une partie de $\K^n$.\\
-$\vec{x}$ est adhérent à $A$ si et seulement si il existe une suite $(\vec{x_n})_{n\in\N}$
-d'éléments de $A$, convergente, de limite $\vec{x}$.
-\end{Prop}
-\begin{proof}
-\begin{itemize}
-\item $\Rightarrow :$ Soit $\vec{x}$ un point adhérent. On peut donc construire la suite $(\vec{x_n})_{n\in\N}$ tel que $\vec{x_n}\in B (\vec{x}, \frac{1}{n+1} )$. Cette suite converge vers $\vec{x}$. 
-\item $\Leftarrow :$ Soit une suite $(\vec{x_n})_{n\in\N}$ d'éléments de $A$, convergente, de limite $\vec{x}$. Donc, quelque soit $r>0$, à partir d'un certain rang, tous le termes de la suite appartiennent à  $B (\vec{x}, r)$, donc $B (\vec{x}, r) \cap A\neq \emptyset$ car $(\vec{x_n})_{n\in\N}$ est une suite d'éléments de $A$.
-\end{itemize}
-\end{proof}
-\begin{Df}[Dense]
-$A$ est \defi{dense} dans $\K^n$ si $\overline {A}=\K^n$
-\end{Df}
-Une partie dense est une partie permettant d'approcher tous les éléments de l'espace englobant.
-\begin{Ex}
-$\Q$ est dense dans $\R$.
-\end{Ex}
-\begin{Df}[Frontière]
-La \defi{frontière} de $A$ est $\overline {A}\setminus \stackrel {\ \circ }{A}.$
-\end{Df}
-\begin{Ex}
-La frontière de $[0,1[$ est $ \{0,1\}$. 
-\end{Ex}
+
 \section{Étude locale d'une application - continuité}
 \subsection{Limite}
 %\begin{minipage}[c]{0.45\linewidth}{
@@ -814,7 +887,9 @@ On note  $(f_1, \dots, f_p)$ les fonctions composantes de $f $dans la base
 $\mathcal{B}$, c'est-à-dire : $$f=f_1\vec{e_1}+\dots + f_p\vec{e_p}.$$
 $f$ est continue en $\vec{a}\in A$ si et seulement si les fonctions $(f_1, \dots, f_p)$ sont toutes continues en $\vec{a}\in A$.
 \end{Prop}
-
+\begin{Ex}[Transposée]
+L'application transposée $\transposee{}:\begin{pmatrix}a_{1,1}&a_{1,2}&\cdots &a_{1,p}\\a_{2,1}&a_{2,2}&\cdots &a_{2,p}\\\vdots &\vdots &\ddots &\vdots \\a_{n,1}&a_{n,2}&\cdots &a_{n,p}\\\end{pmatrix} \mapsto\begin{pmatrix}a_{1,1}&a_{2,1}&\cdots &a_{n,1}\\a_{1,2}&a_{2,2}&\cdots &a_{n,2}\\\vdots &\vdots &\ddots &\vdots \\a_{1,p}&a_{2,p}&\cdots &a_{n,p}\\\end{pmatrix}$ est continue car les fonctions coordonnées $\transposee{}_{i j}:\begin{pmatrix}a_{1,1}&a_{1,2}&\cdots &a_{1,n}\\a_{2,1}&a_{2,2}&\cdots &a_{2,n}\\\vdots &\vdots &\ddots &\vdots \\a_{n,1}&a_{n,2}&\cdots &a_{n,n}\\\end{pmatrix}\mapsto a_{j i}$ sont continues.
+\end{Ex}
 
 
 \begin{Ex}[Fonction polynomiale]
@@ -875,7 +950,7 @@ Quelques exemples :
 \item $(\lambda, \vec{x})\mapsto \lambda.\vec{x}$ est continue sur $\K × E$.
 \item $(\vec{x}, \vec{y}) \mapsto \PS{\vec{x}}{\vec{y}}$ est continue sur $E × E$, si $E$ est un espace vectoriel euclidien.
 \item $(u, v) \mapsto u \circ v$ est continue sur $\LE × \LE$. 
-\item $(A, B)\mapsto A × B$ est continue sur $MnK × MnK$.
+\item $(A, B)\mapsto A × B$ est continue sur $\MnK × \MnK$.
 \item de nouveau le déterminant est continu car l'application déterminant est une forme n-linéaire.
 \end{itemize}
 \end{Ex}
@@ -903,17 +978,23 @@ Comme $f$ est continue et $]0,+\infty[$ est un ouvert, $\{x \in E, f (x) > 0 \}=
 Comme $M$ est inversible si et seulement si $\Det[](M)\neq 0$, on a   $\GLnK=\Det[]^{-1}(\R\setminus \{0\})$.\\  
 Comme l'application déterminant est continue et $\R\setminus \{0\}$ est un ouvert, $\GLnK$ est un ouvert. 
 \end{Ex}
-
+\begin{Ex}[$\OnR$ fermé]
+L'application $f:M\mapsto \transposee{M}M $ est continue.\\
+$O$ est une matrice orthogonal si et seulement si $\transposee{O}O=I_n$, donc $\OnR=f^{-1}(\{I_n\})$.\\
+Finalement   $\OnR$ est un fermé car  le singleton $\{I_n\}$ est un fermé. 
+\end{Ex}
 
 \begin{Th}[Borne atteinte]
-Soit $E$ un espace vectoriel normé de dimension finie, $A$ une partie fermée et bornée de $E$ et $f:A\to\R$ une fonction continue.\\
+Soit $E$ un espace vectoriel normé de dimension finie, $A$ un compact (une partie fermée et bornée) de $E$ et $f:A\to\R$ une fonction continue.\\
 Alors $f$ est bornée et ses bornes sont atteintes.
 \end{Th}
 \begin{Ex}
 Si $K$ est une partie fermée, bornée, non vide de $E$ et $\vec{x} \in E$, alors
 $$\exists \vec{a}  \in K:  d (x, K) = \norme{\vec{x} - \vec{a}}_E.$$
-En effet, $f : y \mapsto \norme{\vec{x} - \vec{y}}_E$ est 1-lipschitzienne donc continue sur $K$ : elle atteint sa borne inférieure sur
-K, qui n'est autre que $d (x, K)$.
+En effet, $f : y \mapsto \norme{\vec{x} - \vec{y}}_E$ est 1-lipschitzienne car 
+$$\left|\norme{\vec{x} - \vec{y_2}}_E -\norme{\vec{x} - \vec{y_1}}_E\right| \overbrace{\leq}^{\text{Inégalité triangulaire inversée}} \norme{(\vec{y_2} - \vec{x})  + (\vec{x} - \vec{y_1})}_E=\norme{\vec{y_2} - \vec{y_1}},$$
+donc continue sur $K$ : elle atteint sa borne inférieure sur
+$K$, qui n'est autre que $d (x, K)$.
 \end{Ex}
 
 \end{document}
