@@ -1,226 +1,132 @@
+\begin{Soln}{1}
+    \begin{enumerate}
+    \item on a : $$\frac{u_{n+1}}{u_n} =\frac{n+1}{3n}\tend[n\to\infty]\frac{1}{3}$$ D'après le critère de d'Alembert, la série est convergente.
+        \item $\sum \frac{n}{n^3+1}$ est une série à termes positifs. On a :
+$$\frac{n}{n^3+1}\Sim_{n\to\infty}\frac{1}{n^2}.$$
+Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \frac{n}{n^3+1}$ est convergente par règle de comparaison.
+        \item $\sum \frac{\sqrt n}{n^2+\sqrt n}$ est une série à termes positifs. On a :
+$$\frac{\sqrt n}{n^2+\sqrt n} =\frac{\sqrt n}{n^2(1 +\sqrt n /n^2)}  \Sim_{n\to\infty}\frac{1}{n^{3/2}}.$$
+Comme la série de Riemann $\sum \frac{1}{n^{3/2}}$ est convergente, la série $\sum \frac{n}{n^3+1}$ est convergente par règle d'équivalence.
+\item Comme  $ n\sin(1/n)\Sim_{n\to\infty} 1$, le terme générale de série ne converge pas vers 0, donc la série diverge grossièrement.
+\item $\sum \frac{1}{\sqrt{n}}\ln\left(1+\frac{1}{\sqrt{n}}\right)$ est une série à termes positifs. On a :
+$$\frac{1}{\sqrt{n}}\ln\left(1+\frac{1}{\sqrt{n}}\right)   \Sim_{n\to\infty}\frac{1}{n}.$$
+Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum \frac{1}{\sqrt{n}}\ln\left(1+\frac{1}{\sqrt{n}}\right)$  est divergente par règle d'équivalence.
+\item $\sum \frac{\sqrt n}{n^2+\sqrt n}$ est une série à termes positifs. On a :
+$$\frac{\sqrt {n+1}-\sqrt{n}}{n} =\frac{\sqrt{n}(\sqrt {1+1/n}-1)}{n}  \Sim_{n\to\infty}\frac{\sqrt{n}(\frac{1}{2n})}{n}\Sim_{n\to\infty}\frac{1}{2n^{3/2}}   .$$
+Comme la série de Riemann $\sum \frac{1}{n^{3/2}}$ est convergente, la série $\sum \frac{n}{n^3+1}$ est convergente par règle d'équivalence.
+ \item $\sum \frac{(-1)^n +n}{n^2+1}$ est une série à termes positifs. On a :
+$$\frac{(-1)^n +n}{n^2+1}   \Sim_{n\to\infty}\frac{1}{n}.$$
+Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum \frac{(-1)^n +n}{n^2+1}$  est divergente par règle d'équivalence.
+ \item
+
+
+
+  $\sum \ln\left(\frac{n^2+n+1}{n^2+n-1}\right)$ est une série à termes positifs.
+\begin{itemize}
+\item Version courte :
+$$u_n=\ln\left(1+\frac{1}{n}+\frac{1}{n^2}\right)-\ln\left(1+\frac{1}{n}-\frac{1}{n^2}\right)\underset{n\rightarrow+\infty}{=}\left(\frac{1}{n}+O\left(\frac{1}{n^2}\right)\right)-\left(\frac{1}{n}+O\left(\frac{1}{n^2}\right)\right)=O\left(\frac{1}{n^2}\right).$$
+\item Version longue :
+$$u_n=\ln\left(1+\frac{1}{n}+\frac{1}{n^2}\right)-\ln\left(1+\frac{1}{n}-\frac{1}{n^2}\right)$$
+$$u_n=\left(\frac{1}{n}+\frac{1}{n^2}\right)-\frac{\left(\frac{1}{n}+\frac{1}{n^2}\right)^2}{2}-\left(\left(\frac{1}{n}-\frac{1}{n^2}\right)-\frac{\left(\frac{1}{n}-\frac{1}{n^2 }\right)^2}{2}\right)+ o\left(\frac{1}{n^2}\right)$$
+$$u_n=\left(\frac{1}{n}+\frac{1}{n^2}\right)-\frac{\left(\frac{1}{n}+\frac{1}{n^2}\right)^2}{2}-\left(\left(\frac{1}{n}-\frac{1}{n^2}\right)-\frac{\left(\frac{1}{n}-\frac{1}{n^2 }\right)^2}{2}\right)+ o\left(\frac{1}{n^2}\right)$$
+$$ u_n= \frac{2}{n^2} +o\left(\frac{1}{n^2}\right) \Sim_{n\to\infty}\frac{2}{n^2}$$
+\end{itemize}
+
+Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \ln\left(\frac{n^2+n+1}{n^2+n-1}\right)$ converge par règle de comparaison.
+    \end{enumerate}
+\end{Soln}
+\begin{Soln}{2}
+    \begin{enumerate}
+        \item $\sum \frac{1}{n+(-1)^n\sqrt{n}}$ est une série à termes positifs. On a :
+$$\frac{1}{n+(-1)^n\sqrt{n}} = \frac{1}{n(1+(-1)^n\sqrt{n}/n)}\Sim_{n\to\infty}\frac{1}{n}.$$
+Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum \frac{1}{n+(-1)^n\sqrt{n}}$ est divergente par règle de comparaison.
+        \item $\sum \left(\frac{n+3}{2n+1}\right)^{\ln n}$ est une série à termes positifs. On a :
+$$\left(\frac{n+3}{2n+1}\right)^{\ln n} =e^{\ln(n)\ln\left(\frac{n+3}{2n+1}\right) } \Sim_{n\to\infty}e^{\ln(n)\ln\left(\frac{1}{2}\right) }\Sim_{n\to\infty}\frac{1}{n^{\ln 2}} .$$
+Comme la série de Riemann $\sum \frac{1}{n^{\ln 2}}$ est divergente, la série $\sum \left(\frac{n+3}{2n+1}\right)^{\ln n}$ est divergente par règle de comparaison.
+\item $\sum\frac{1}{\ln(n)\ln(\ch n)}$ est une série à termes positifs. On a :
+$$\ln(\ch(n)) = \ln\left(  \frac{e^n+e^{-n}}{2}\right)\Sim_{n\to\infty}\ln(e^n/2  )\Sim_{n\to\infty}n-2\Sim_{n\to\infty}n.$$
+Étudions la nature de la série $\sum \frac{1}{\ln(n)n}$ à l'aide d'une comparaison série intégrale.\\
+La fonction $x\rightarrow x\ln x$ est continue, croissante et strictement positive sur $]1,+\infty[$ (produit de deux fonctions strictement positives et croissantes sur $]1,+\infty[$). Par suite, la fonction $x\rightarrow\frac{1}{x\ln x}$ est continue, décroissante sur $]1,+\infty[$ et de limite 0 en l'infini. Les hypothèses étant vérifiée, la série $\sum \frac{1}{\ln(n)n}$ est de même nature que la suite $\left(\int_{2}^n \frac{1}{x\ln x}dx\right)=\left(\ln(\ln(n))-2\right)$. Cette suite diverge donc la série aussi.\\
+Enfin par théorème de comparaison, la série $\sum\frac{1}{\ln(n)\ln(\ch n)}$ diverge.
+\item On a :
+$$ e-\left(1+\frac{1}{n}\right)^n=e-e^{n\ln(1+\frac{1}{n})}=e-e^{n(\frac{1}{n}-\frac{1}{2n^2}+O(\frac{1}{n^2}))}=e(1-e^{-\frac{1}{2n}+O(\frac{1}{n})})\Sim_{n\to\infty}\frac{e}{2n}  $$
+Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum e-\left(1+\frac{1}{n}\right)^n$ est divergente par règle de comparaison.
+    \end{enumerate}
+\end{Soln}
 \begin{Soln}{3}
+    \begin{enumerate}
+        \item $\sum \frac{\sin(\frac 1 n)}{n}$ est une série à termes positifs (SATP). On a :
+$$\frac{\sin(\frac 1 n)}{n}\Sim_{n\to\infty}\frac{\frac 1 n}{n}=\frac{1}{n^2}.$$
+Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \frac{\sin(\frac 1 n)}{n}$ est convergente par règle de comparaison.
+	   \item 	Étudions la nature de SATP $\sum \frac{|\sin(n)+\cos(n)|}{n^2}$. On a :
+	   $$\frac{|\sin(n)+\cos(n)|}{n^2} \leq \frac{2}{n^2}.$$
+	   Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \frac{|\sin(n)+\cos(n)|}{n^2}$ est convergente par règle de comparaison. La série
+	   $\sum \frac{\sin(n)+\cos(n)}{n^2}$ est absolument convergente donc convergente.
+	   \item  $\sum\frac{|\sin(n)|+|\cos(n)|}{n}$ est une STAP. On a :
+ 	   $$\frac{|\sin(n)|+|\cos(n)|}{n} \geq \frac{|\sin(n)|^2+|\cos(n)|^2}{n}= \frac{1}{n}.$$
+	   Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum\frac{|\sin(n)|+|\cos(n)|}{n}$  est divergente par règle de comparaison.
+	   \item 	$\sum\frac{(n!)^2}{2n!}$ est une SATP. On a :
+ $$\frac{u_{n+1}}{u_n}=\frac{\frac{((n+1)!)^2}{2(n+1)!}}{\frac{(n!)^2}{2n!}}=\frac{((n+1)!)^2}{(n!)^2}\frac{2n!}{(2(n+1))!}=\frac{(n+1)^2}{(2n+1)(2n+2)}\to_{n\to\infty}\frac 1 4.$$	
+D'après la règle de d'Alembert ($\frac 1 4 <1$), la série $\sum\frac{(n!)^2}{2n!}$ est convergente.
+	    \item  On a $u_n=a_{n+1}-a_n$  avec $a_n = (\ln(n))^2$. $\sum (\ln(n+1))^2-(\ln(n))^2$ est une série télescopique. Sa somme partielle est égale :
+	    $$S_n =  (\ln(n+1))^2 - (\ln(1))^2=(\ln(n+1))^2\to_{n\to\infty} +\infty.$$
+	    Donc la série diverge.
+	    \item 	$\sum\frac{\ln(n)}{n^2}$ est une SATP. On a :
+	    $$\frac{\ln(n)}{n^2}=o\left(\frac{1}{n^{3/2}}\right)\text{ car }\lim\limits_{n\to+\infty}\frac{\frac{\ln(n)}{n^2}}{\frac{1}{n^{3/2}}}=\lim\limits_{n\to+\infty}\frac{\ln(n)}{n^{1/2}}=0$$
+	    Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente ($\frac{3}{2}>1$), la série $\sum\frac{\ln(n)}{n^2}$ est convergente par règle de comparaison.
+    \end{enumerate}
+\end{Soln}
+\begin{Soln}{4}
+    \begin{enumerate}
+        \item Voir la démonstration sur la comparaison série-intégrale. On a :
+$$ \int_{1}^{n+1}\frac{1}{x}dx=\ln(n+1) \leq H_n \leq 1 + \int_{1}^{n}\frac{1}{x}dx=1 + \ln(n)$$.
+\item On divise ces inégalités par $\ln(n)$ :
+$$1 + \ln(1+1/n) \leq H_n/\ln(n) \leq 1+1/\ln(n).$$
+Les deux extrémités tendent vers 1 donc   $H_n \Sim_{n\to\infty} \ln(n).$
+\item $v_{n}-v_{n-1}=H_n-H_{n-1}-  \ln(n) + \ln(n-1)= \frac{1}{n}+\ln\left(1-\frac 1n\right).$
+\item On a $\ln(1-x)\leq -x$. D'où $x+\ln(1-x)\leq 0$. Ainsi $(v_n)$ est décroissante car $v_{n}-v_{n-1}\leq 0$.
+\item D'après l'inégalité de la question 1 on $0\geq \ln(n+1)-\ln(n)\leq H_n - \ln(n)$. La suite $(v_n)=(H_n-\ln(n))$ est minorée et décroissante donc convergente.
+  \end{enumerate}
+
+\end{Soln}
+\begin{Soln}{5}
+Sans l'outil des séries entières, on bricole :
+\begin{align*}
+\frac{1}{3}S&=\sum_{n=0}^{+\infty}\frac{n+1}{3^{n+1}}=\sum_{n=1}^{+\infty}\frac{n}{3^{n}}=\sum_{n=1}^{+\infty}\frac{n+1}{3^{n}}-\sum_{n=1}^{+\infty}\frac{1}{3^{n}}\\
+ &=(S-1)-\frac{1}{3}\frac{1}{1-\frac{1}{3}}=S-\frac{3}{2}.
+\end{align*}
+On en déduit que $S=\frac{9}{4}.$
+\end{Soln}
+\begin{Soln}{6}
 \begin{enumerate}
-\item %Sur $\R, \, E_1 :   x'+ x= \cos t + \sin t$.
-
-	\begin{enumerate}
-	\item Résolvons l'équation homogène $(H) : \; x' = - x$ , associée à $(E)$.
-		\begin{itemize}
-
-			\item Posons $a(t) = -1$, $a$ est définie et continue sur $\R$.
-
-%On cherche une primitive $A$ de $a$ sur l'intervalle $\R$ :
-%\hspace{0.7cm} $a(x) = -\frac{1}{2} \times \frac{2x}{1+x^2}$ on reconnait une forme $\frac{u'}{u}$ avec $u(x)=1+x^2$.
-%Donc une primitive est :
-
-				\hspace{0.7cm} $A(t) =  - t$ primitive de $a$ sur $\R$
-
-			\item La solution générale de $(H)$ est  :
-
-				%\hspace{0.7cm} $x_0 = C \mathrm{e}^{ \frac{1}{2} \ln(1+x^2)}$ où $C \in \R$	
-
-				\hspace{0.7cm} $x_0 = C  \mathrm{e}^{-t} $ où $C \in \R$	
-		\end{itemize}
-
-
-	\item Par superposition des solutions, il suffit de trouver une solution particulière à $x'+ x= \cos t $ d'une part et  à $x'+ x= \sin t$ d'autre part, pour déterminer une solution particulière à $(E)$.
-
-	De plus par linéarité, il suffit de trouver une solution particulière à $x' + x = \mathrm{e}^{\mathrm{i} t}$ pour trouver les solutions particulières ci-dessus.
-
-
-	\item Déterminons une solution particulière à $x' + x = \mathrm{e}^{\mathrm{i} t}$ par la méthode de la variation de la constante.
-
-	Posons $\lambda \in \mathcal{D}(\R ,\R)$ et cherchons une solution sous la forme :
-
-		\hspace{0.7cm} $x_{1} = \lambda(t) \mathrm{e}^{-t}$  \hspace{0.5cm} $x_{1}$ est dérivable comme produit de fonctions dérivables et :
-
-		\hspace{0.7cm} $x'_{1} = \lambda'  \mathrm{e}^{-t} - \lambda   \mathrm{e}^{-t}$
-
-	Donc :
-
-\hspace{0.7cm} $x_{1} \text{ solution }
-\Longleftrightarrow
-x'_{1} + x_{1} = \mathrm{e}^{\mathrm{i} t}$
-
-\hspace{0.7cm} $\phantom{x_{1} \text{ solution } }
-\Longleftrightarrow
- \lambda'  \mathrm{e}^{-t} - \lambda   \mathrm{e}^{-t}  +
-  \lambda   \mathrm{e}^{-t} = \mathrm{e}^{\mathrm{i} t}$
-
-\hspace{0.7cm} $\phantom{x_{1} \text{ solution } }
-\Longleftrightarrow
- \lambda'  \mathrm{e}^{-t} =  \mathrm{e}^{\mathrm{i} t}$
-
-		  \hspace{0.7cm} $\phantom{x_{1} \text{ solution }  } \Longleftrightarrow
- \lambda' = \mathrm{e}^{ (1+\mathrm{i}) t}$
-
-		 Donc : $\lambda = \tfrac{1}{1+\mathrm{i}}  \mathrm{e}^{ (1+\mathrm{i}) t}$ convient et une solution particulière est :
-
-  		\hspace{0.7cm} $x_{1} =  \tfrac{1}{1+\mathrm{i}}  \mathrm{e}^{ \mathrm{i} t}$
-
-    	\hspace{0.7cm} $\phantom{ x_{1} } =  \tfrac{1- \mathrm{i}}{2}  \mathrm{e}^{ \mathrm{i} t}$
-
-    	\hspace{0.7cm} $\phantom{ x_{1} } =  \tfrac{\cos t + \sin t}{2} +  \mathrm{i} \tfrac{- \cos t + \sin t}{2}$
-
-
-	\item Solutions particulières à :
-		\begin{itemize}
-    		\item $x' + x = \cos t$ : $\mathcal{R}e ( x_1 ) =  \tfrac{\cos t + \sin t}{2}$
-
-    		\item $x' + x = \sin t$ : $\mathcal{I}m ( x_1 ) =  \tfrac{- \cos t + \sin t}{2}$
-    	\end{itemize}
-
-
-	\item Solution générale de $(E)$ :
-
-    		\hspace{0.7cm} $x = C \mathrm{e}^{- t}  + \tfrac{\cos t + \sin t}{2} + \tfrac{- \cos t + \sin t}{2}$   où $C \in \R$.
-
-    		\hspace{0.7cm} $x = C \mathrm{e}^{- t}  + \sin t$   où $C \in \R$.
-
-	\item Résolution du problème de Cauchx :
-
-    	\hspace{0.7cm} $x(0)=2 \Longleftrightarrow C + 0 = 2$
-
-	    \hspace{0.7cm} $\phantom{x(0)=2} \Longleftrightarrow C = 2$
-
-	Donc la solution au problème de Cauchy est  :
-
-       \hspace{0.7cm} $x = 2\mathrm{e}^{- t}  +  \sin t$
-	\end{enumerate}
-
-Vous avez la méthode et une rédaction (trop) détaillée\dots pour la suite je vous donne les résultats.
-
-
-
-\item %Sur $\R, \, E_2 :  x'-2t x= \mathrm{sh} t   -   2  t   \mathrm{ch} t$.
-
-	\begin{enumerate}
-		\item Solution générale de l'équation homogène associée $(H) : \, x' = 2t x$ :
-
-			\hspace{0.7cm} $x_0 = C  \mathrm{e}^{t^2} $ où $C \in \R$	
-
-		\item Solution particulière  de $(E_2)$ : (il faut le \og voir  \fg{} à la forme de l'équation)
-
-			\hspace{0.7cm} $x_1 = \mathrm{ch} t$
-
-		\item Solution générale de $(E)$ :
-
-		    \hspace{0.7cm} $x = C \mathrm{e}^{t^2}  +\mathrm{ch} t$   où $C \in \R$.
-	\end{enumerate}
-
-
-\item %Sur $\R^*_+ , \, E_3 tx'+(t-1)x= t^2$.
-
-	\begin{enumerate}
-		\item On normalise, c'est possible sur $\R^*_+$ :
-		
-			\hspace{0.7cm} $x'+ \frac{t-1}{t} x= t$
-	
-		\item Solution générale de l'équation homogène associée $(H) : \, x' = - \frac{t-1}{t} x$ :
-
-			\hspace{0.7cm} $x_0 = C t  \mathrm{e}^{-t} $ où $C \in \R$	
-
-		\item Solution particulière  de $(E_3)$ :
-
-			\hspace{0.7cm} $x_1 = t$
-
-		\item Solution générale de $(E)$ :
-
-		    \hspace{0.7cm} $x = C t  \mathrm{e}^{-t}  + t$   où $C \in \R$.
-	\end{enumerate}
+\item On a : $|u_n|\leq \frac{1}{n^2}$, donc la série converge absolument.
+\item La série est alternée, et la suite $(\ln(n)/n$ est décroissante  à partir d'un certain rang et  converge vers 0. Donc par application du critère des séries alternées, la série converge.
+\item On a $cos(n^2 \pi)=(?1)^n$. La suite $(1/\ln(n)n$ est décroissante et  converge vers 0.  Donc la série converge par application du critère des séries alternées.
 \end{enumerate}
 \end{Soln}
-\begin{Soln}{13}
-Résoudre les équations différentielles suivantes  :
-\begin{enumerate}
-\item %Sur $\R, \, E_1 : x''+2x'-3x = 11   \mathrm{e}^{2t}      $ % ???? \dfrac{1}{\mathrm{e}^{2t}+1}$
-	\begin{enumerate}
-		\item  \'Equation différentielle homogène associée :  \, $ (H) \,x'' + 2x' - 3x = 0 $
+\begin{Soln}{7}
+Le terme général $\sum_{k=0}^n\frac{(-1) ^k}{3^k(n-k)!}$  est le produit de Cauchy de la suite $\left( \left(-\frac{1}{3}\right)^n \right)$ et de la suite  $(\frac{1}{n!})$.\\
+Les deux séries  $\sum -\left(\frac{1}{3}\right)^n $ et $\sum \frac{1}{n!}$ sont absolument convergente donc la série produit de Cauchy est absolument convergente.\\
 
-			polynôme caractéristique associé : $x^2  + 2x - 3 = 0$.
-			
-			Discriminant : $\Delta = 16 > 0$
 
-			Racines du polynôme : $x_1 = 1$ et $x_2 =  - 3$.
-
-			La solution générale de $(H)$ est :
-			
-			\hspace{0.7cm} $x_H = A \mathrm{e}^{t} + B  \mathrm{e}^{-3t}$, avec $A,B \in \R$.
-
-		\item Détermination une solution particulière à $(E)$, comme $2$ n'est pas racine du polynôme caractéristique on la cherche sous la forme $x_1 = C \mathrm{e}^{2t}$ où $C \in \R$, qui est deux fois dérivables sur $\R$ :
-		
-			\hspace{0.7cm} $x'_1 = 2C \mathrm{e}^{2t}$
-
-			\hspace{0.7cm} $x''_1 = 4C \mathrm{e}^{2t}$
-			
-		\hspace{0.7cm} $x_{1} \text{ solution de } (E) \Longleftrightarrow x''_{1} +2 x'_1 - 3x_{1} = 11\mathrm{e}^{2x}$
-
-		\hspace{0.7cm} $\phantom{x_{1} \text{ solution de } (E)} \Longleftrightarrow  \dots$
-		
-		\hspace{0.7cm} $\phantom{x_{1} \text{ solution de } (E)} \Longleftrightarrow C=\tfrac{11}{5}$
-		
-		\hspace{0.7cm} $x_{1} = \tfrac{11}{5} \mathrm{e}^{2t} $ solution de $(E)$.
-		
-		\item Solution générale de $(E)$ :
-		
-		\hspace{0.7cm} $x = A \mathrm{e}^{t} + B  \mathrm{e}^{-3t} + \tfrac{11}{5} \mathrm{e}^{2t} $, avec $A,B \in \R$.	
-	\end{enumerate}
-
-\item % Sur $[0 ; \pi[, \, E_2 : x''+x=  \cos t                   $  %\dfrac{1}{\cos t}$
-	\begin{enumerate}
-		\item  \'Equation différentielle homogène associée :  \, $ (H) \,x'' + x = 0 $
-
-			\dots
-
-			La solution générale de $(H)$ est :
-			
-			\hspace{0.7cm} $x_H = A \cos t + B  \sin t $, avec $A,B \in \R$.
-
-		\item On détermine une solution particulière à $(\tilde{E}) x''+x=  \mathrm{e}^{\mathrm{i}t}$ et une solution particulière de $(E)$ sera, par linéarité, la partie réelle de la solution trouvée.
-		
-Attention, comme $\mathrm{i}$ est racine simple du polynôme caractéristique on la cherche sous la forme $x_1 = C t \mathrm{e}^{\mathrm{i}  t}$ avec $C \in \R$, qui est deux fois dérivables sur $\R$ :
-		
-		\dots
-		
-		\hspace{0.7cm} $x_{1} = \tfrac{\mathrm{i}}{2} t \mathrm{e}^{\mathrm{i} t} $ solution de $(\tilde{E})$.
-
-		\dots
-		
-		\hspace{0.7cm} $x_{2} = -\tfrac{ t }{2} \sin t $ solution de $( E )$.		
-		
-		\item Solution générale de $(E)$ :
-		
-		\hspace{0.7cm} $x =  A \cos t + B  \sin t - \tfrac{ t }{2} \sin t $, avec $A,B \in \R$.	
-	\end{enumerate}
-
-\item %Sur $\R, \, E_3 : x''-2x'+x = \mathrm{ch} t$
-	\begin{enumerate}
-		\item  \'Equation différentielle homogène associée :  \, $ (H) \,x'' -2x' + x = 0 $
-
-			\dots
-
-			La solution générale de $(H)$ est :
-			
-			\hspace{0.7cm} $x_H = A  \mathrm{e}^{t} + B t  \mathrm{e}^{-t}$, avec $A,B \in \R$.
-
-		\item On détermine une solution particulière $x_1$ à $(E_1)  x''-2x'+x =  \mathrm{e}^{ t }$, puis $x_2$ à $(E_2)  x''-2x'+x =  \mathrm{e}^{ -t }$ et une solution particulière de $(E)$ sera, par superposition, $\frac{x_1 + x_2}{2}$.
-		
-Attention, comme $1$ est racine double du polynôme caractéristique on cherche $x_1$ sous la forme $x_1 = C t^2 \mathrm{e}^{ t}$ avec $C \in \R$, qui est deux fois dérivables sur $\R$ :
-		
-		\dots
-		
-		\hspace{0.7cm} $x_{1} = \tfrac{ 1 }{2} t^2 \mathrm{e}^{ t} $ solution de $(E_1)$.
-
-		\dots
-		
-		\hspace{0.7cm} $x_{2} = \tfrac{ 1 }{4}  \mathrm{e}^{ -t} $ solution de $( E_2 )$.		
-
-		\dots
-		
-		\hspace{0.7cm} $x_{3} = \tfrac{ 1 }{4} t^2 \mathrm{e}^{ t}  + \tfrac{ 1 }{8}  \mathrm{e}^{ -t} $ solution de $( E_2 )$.	
-		
-		\item Solution générale de $(E)$ :
-		
-		\hspace{0.7cm} $x =   A  \mathrm{e}^{t} + B t  \mathrm{e}^{-t} +  \tfrac{ 1 }{4} t^2 \mathrm{e}^{ t}  + \tfrac{ 1 }{8}  \mathrm{e}^{ -t}$, avec $A,B \in \R$.	
-	\end{enumerate}
-\end{enumerate}
+De plus, sa somme est égale au produit des deux sommes, soit :
+$$\sum_{n=0}^{+\infty}u_n = \sum_{n=0}^{+\infty} \left(-\frac{1}{3}\right)^n\times\sum_{n=0}^{+\infty} \frac{1}{n!}=\frac{1}{1+\frac{1}{3}}e^1=\frac{4e}{3}.$$
+\end{Soln}
+\begin{Soln}{8}
+En développement l'inégalité $(|a|-|b|)^2\geq 0$, on obtient $|a||b|\leq \frac{1}{2}(a^2+b^2)$. Donc:
+$$|u_nv_n|\leq  \frac{1}{2}(u_n^2+v_n^2).$$
+Les séries $\sum u_n ^2$ et $\sum v_n ^2$ sont convergentes donc la série $\sum \frac{1}{2}(u_n^2+v_n^2)$ est convergente. Par critère de comparaison, la série $\sum |u_nv_n| $ est convergente. Donc la série $\sum u_nv_n $ est absolument convergente.\\
+C'est une application directe du théorème précédent en prenant $u_n=\sqrt{a_n}$ et $v_n=\frac{1}{n}$.
+\end{Soln}
+\begin{Soln}{9}
+Puisque la série  $\sum u_n$ converge, on a:
+$$ u_n \xrightarrow[n\to\infty]{}0.$$
+A partir d'un certain rang $N$, on a  $0 \leq u_n \leq 1 ,\forall n\geq N.$
+Multiplions cette inégalité par $u_n$, on a :
+$$0 \leq u_n^2 \leq u_n ,\forall n\geq N.$$
+Comme la série $\sum u_n$ est convergente, la série $\sum_{n\geq N} u_n$ est convergente par critère par comparaison. Donc la série $\sum u_n$  est convergente.
+\end{Soln}
+\begin{Soln}{10}
+On a $\ln(\prod_{k=0}^n (1+u_k))=\sum_{k=0}^n \ln( (1+u_k))$.
+Comme la série $\sum u_n$ converge, on a $u_n\xrightarrow[n\to\infty]{}0$ d'où $\ln(1+u_n)\Sim_{n\to\infty}u_n$. La série à  termes positifs  $\sum \ln (1+u_n)$ est convergente car $\sum u_n$ est convergente. Comme la fonction $\ln$ est continue, la suite $\left(\prod_{k=0}^n (1+u_k)\right)$ est convergente.
 \end{Soln}

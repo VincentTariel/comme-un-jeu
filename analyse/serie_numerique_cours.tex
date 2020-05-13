@@ -69,17 +69,14 @@
 \chapter{Série numérique}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-En mathématiques, la notion de série permet de généraliser la notion de somme finie.
-
-\'Etant donnée une suite de terme général $u_n$, étudier la série de terme général $u_n$ c'est étudier la suite obtenue en prenant la somme des premiers termes de la suite $(u_n)$, autrement dit la suite $(S_n)$ définie par :
+En mathématiques, la notion de série permet de généraliser la notion de somme finie.\\
+\'Etant donnée une suite  $(u_n)_{n\in\N}$, étudier la série de terme général $u_n$ c'est étudier la suite $(S_n)_{n\in\N}$ obtenue en prenant la somme des premiers termes de la suite $(u_n)_{n\in\N}$, c'est à dire :
 $$ S_{n}=u_{0}+u_{1}+\cdots +u_{n}=\sum _{k=0}^{n}u_{k}.$$
-
 Peut-on donner un sens à la somme de tous les termes d'une suite infinie de nombres
 réels : 
 $$
 \lim_{n\to\infty}S_n= u_{0}+u_{1}+u_{3}+u_{4}+\cdots =\lim_{n\to\infty}\sum _{k=0}^{n}u_{n} ?$$ 
 Peut-on  permuter les termes de la suite ou opérer des regroupement sans modifier ni la convergence ni la somme de la série ?
-
 \begin{Ex}[Partager un carré]
 Peut-on partager un carré en une infinité de
 rectangles de façon à enlever à chaque étape la moitié de l'aire restante ? La figure ci-dessous montre une solution.
@@ -135,17 +132,16 @@ En réorganisant les termes, on obtient :
 					     &=0
 	\end{align*}
 D'où une contradiction car $\lim_{n\to\infty}S_{n}\geq \frac 1 2 $ et $\lim_{n\to\infty}S_{n}=0$.
-
 \end{Ex}
-
+\newpage
 
 \section{Généralités}
 
 
 \begin{Df}[Série numérique]
-  Soit $\SUI$ une suite numérique.\\
-  La \defi{série numérique} de \defi{terme général} $u_n$ est la suite $(S_n)_{n\in\N}= (\sum_{k=0}^n u_k)_{n\in\N}$. En particulier on a $$S_0=u_0,\quad S_1=u_0+u_1,\quad S_2=u_0+u_1+u_2.$$
-  $S_n$ s'appelle la \defi{somme partielle} d'ordre $n$ de la série $\SER$.
+Soit $\SUI$ une suite numérique.\\
+On appelle suite des \defi{somme partielle} donnée par pour tout $n\in\N$, $S_n=u_0+u_1+\dots+u_n=\sum _{k=0}^{n}u_{k}$.\\
+La suite   $(S_n)_{n\in\N}$ est appelée \defi{série numérique} de \defi{terme général} et noté $\SER$.
 \end{Df}
 \begin{Ex}
 La somme partielle de  la série harmonique $\sum \frac 1 n$ est  égale à $S_n=1+\frac 1 2 +\frac 1 3+\cdots +\frac 1 n$. 
@@ -198,7 +194,6 @@ On a \begin{align*}
 S_n &= (a_1 - a_0)+ (a_2 - a_1)+\cdots+(a_{n+1} - a_n)\\&=a_{n+1}-a_0.\end{align*}
 Donc la série $\SER$ télescopiques converge si et seulement si la suite $(a_n)_{n\in\N}$ converge. Si la série converge, sa limite est  $\lim\limits_{n\to\infty}a_n-a_0$.\\
 Par exemple, la série $\sum \frac{1}{n(n+1)}=\sum\left(\frac{1}{n}-\frac{1}{n+1}\right)$ converge vers $1$. 
-
 \end{Ex}
 
 \begin{Prop}[Indépendance du rang]
@@ -209,7 +204,7 @@ c'est-à-dire ou toutes deux convergentes ou toutes deux divergent.
 \begin{align*}
 \sum_{n\geq 0}u_n \text{ converge}\Leftrightarrow &\forall \epsilon \in \R^{+*}, \exists N\in N, \forall n \geq N:  |\sum_{k=0}^{n}u_k-\sum_{k=0}^{\infty} u_k|\leq \epsilon\\
 \Leftrightarrow &\forall \epsilon \in \R^{+*}, \exists N\in N, \forall n \geq N:  |\sum_{k=n_0}^{n}u_k-(\sum_{k=0}^{\infty} u_k-\sum_{k=0}^{n_0-1}u_k)|\leq \epsilon\\
-\Leftrightarrow &\sum_{n\geq n_0}u_n \text{ converge}
+\Leftrightarrow &\sum_{n\geq n_0}u_n \text{ converge.}
 \end{align*}  
 \end{proof}
 
@@ -217,8 +212,7 @@ c'est-à-dire ou toutes deux convergentes ou toutes deux divergent.
 
 
 \begin{Prop}[Espace vectoriel]
-L'ensemble des séries convergentes est un espace vectoriel, c'est à dire si $\sum u_n$ et $\sum v_n$ convergent vers $S$ et $S'$, la série $\sum (a u_n + b v_n)$ converge vers $aS+bS'$
-pour toutes constantes réelle $a,b$.
+L'ensemble des séries convergentes est un espace vectoriel, c'est à dire si $\sum u_n$ et $\sum v_n$ convergent vers $S$ et $S'$, la série $\sum (a u_n + b v_n)$ converge pour toutes constantes réelle $a,b$. De plus, dans ce cas, le somme est  $aS+bS'$.
 \end{Prop}
 \begin{proof}
 Voir le cours sur les suites. 
@@ -289,11 +283,11 @@ Pour un escalier infini représentant une série à termes positifs, il y a que deu
 \begin{itemize}
 \item ou bien l'escalier est plafonné, autrement dit il existe une altitude $M$
 qu'il ne peut jamais franchir (mathématiquement, $M$ est un majorant de l'ensemble
-de toutes les valeurs de la suite $(S_n):  \forall n \in \N, S_n \leq M)$ ;
+de toutes les valeurs de la suite $(S_n)_{n\in\N}:  \forall n \in \N, S_n \leq M)$ ;
 \item ou bien il n'est pas plafonné et finit donc par dépasser toute altitude fixée à l'avance.
-Dans le deuxième cas, comme la suite $(S_n)$ est croissante, pour chaque altitude $A$
+Dans le deuxième cas, comme la suite $(S_n)_{n\in\N}$ est croissante, pour chaque altitude $A$
 fixée, à partir d'un certain rang $n_0$, $S_{n}\geq A$ pour tous les indices suivants.
-Comme A est quelconque, cela signifie que $(S_n)$ tend vers l'infini.
+Comme A est quelconque, cela signifie que $(S_n)_{n\in\N}$ tend vers l'infini.
 \end{itemize}
 %\end{intr}
 
@@ -301,14 +295,14 @@ Comme A est quelconque, cela signifie que $(S_n)$ tend vers l'infini.
 \begin{Df}[Série à termes positifs]
 Une \defi{série à termes positifs} est une série réelle $\SER$ telle que $$\forall n\in\N,\quad u_n\geq 0.$$
 \end{Df}
-\begin{Prop}
+\begin{Prop}[Adaptation du théorème de la limite monotone]
 Une SATP converge si et seulement si la suite de ses sommes partielles est majorée.\\
 De plus, si elle converge, sa somme est égale à la borne supérieure
 des sommes partielles.\\
 De plus, si elle diverge, elle diverge vers l'infinie. 
 \end{Prop}
 \begin{proof}
-Comme $S_{n+1}-S_n=u_{n+1}\geq 0$, la suite $(S_n)$ est croissante. Une suite croissante converge si set seulement si la suite est majorée. De plus, si elle converge, sa somme est égale à la borne supérieure.
+Comme $S_{n+1}-S_n=u_{n+1}\geq 0$, la suite $(S_n)_{n\in\N}$ est croissante. Une suite croissante converge si set seulement si la suite est majorée. De plus, si elle converge, sa somme est égale à la borne supérieure.
 \end{proof}
 
 \subsection{Règles de convergence}
@@ -316,7 +310,7 @@ Comme $S_{n+1}-S_n=u_{n+1}\geq 0$, la suite $(S_n)$ est croissante. Une suite cr
 
 \begin{Prop}[Règle de comparaison]
 \label{prop:satp}
-Soit $(u_n)$ et $(u_n)$ deux suites réelles tel que $$\forall n\in\N,\quad 0\leq u_n\leq v_n.$$
+Soit $(u_n)_{n\in\N}$ et $(u_n)_{n\in\N}$ deux suites réelles tel que $$\forall n\in\N,\quad 0\leq u_n\leq v_n.$$
 \begin{itemize}
 \item
   Si $\sum v_n$ converge, alors $\SER$ converge également.
@@ -325,18 +319,18 @@ Soit $(u_n)$ et $(u_n)$ deux suites réelles tel que $$\forall n\in\N,\quad 0\leq
 \end{itemize}
 \end{Prop}
 \begin{proof}
-Soit $(u_n)$ et $(u_n)$ deux suites réelles tel que $\forall n\in\N,\quad 0\leq u_n\leq v_n.$
+Soit $(u_n)_{n\in\N}$ et $(u_n)_{n\in\N}$ deux suites réelles tel que $\forall n\in\N,\quad 0\leq u_n\leq v_n.$
 Soit  $\sum v_n$ convergente. 
-$\sum u_n$ est une SATP.  Comme 
-$$\forall n \in \N : \quad \sum_{k=0}^n u_n\leq  \sum_{k=0}^n v_n \leq  \sum_{k=0}^{+\infty} v_n<+\infty,$$
-la suite des sommes partielles $(\sum_{k=0}^n u_n)$ est bornée. D'après la proposition précédente,  $\sum u_n$ est convergente. Idem pour la divergence.
+$\sum u_n$ est une SATP.  On a : 
+$$\forall n \in \N : \quad \sum_{k=0}^n u_n\leq  \sum_{k=0}^n v_n \overbrace{\leq}^{\text{théorème de limité monotome}}  \sum_{k=0}^{+\infty} v_n<+\infty.$$
+Comme la suite des sommes partielles est bornée, d'après la proposition précédente,  $\sum u_n$ est convergente. Idem pour la divergence.
 \end{proof}
 
 \begin{NB}
 Les inégalités $$\quad 0\leq u_n\leq v_n$$  peuvent être vérifiées uniquement à partir d'un certain rang car la convergence ou la divergence d'une série ne dépendent pas des premiers termes. 
 \end{NB}
 \begin{Ex}
-Étudions la nature de la  série $\sum e^{-n^2}$. On a  $\forall n\in\N : 0\leq e^{-n^2}\leq e^{-n}=(\frac 1 e)^n$. La série géométrique $\sum \left(\frac 1 e\right)^n$ est convergente car $|\left(\frac 1 e\right)|<1$, donc la série $\sum e^{-n^2}$ est convergente d'après la règle de comparaison. 
+Étudions la nature de la  série $\sum e^{-n^2}$ à termes positifs. On a  $\forall n\in\N : 0\leq e^{-n^2}\leq e^{-n}=(\frac 1 e)^n$. Comme la série géométrique $\sum \left(\frac 1 e\right)^n$ est convergente car $|\left(\frac 1 e\right)|<1$, la série $\sum e^{-n^2}$ est convergente d'après la règle de comparaison. 
 \end{Ex}
 
 \begin{Prop}[Règle du petit o et grand O] \label{prop:comp}
@@ -351,34 +345,38 @@ Alors:
 \end{itemize}
 \end{Prop} 
 \begin{proof}
-Soit $(u_n)$ et $(u_n)$ deux suites réelles tel que $u_n = \GrandO_\ninf(v_n)$. Cela signifie qu'il existe 
-$ M\in \R^+,\quad \exists N>0,\quad \forall n\geq N : u_n\leq M v_n.$\\
+On suppose $\sum v_n$ converge.\\
+On a  $(u_n)$ et $(u_n)$ deux suites réelles positives tel que $u_n = \GrandO_\ninf(v_n)$. Cela signifie qu'il existe 
+$ M\in \R^+,\forall n\geq N :\quad  u_n\leq M v_n.$\\
 On a :
-$$\forall n \in \N :	\sum_{k=N}^n u_n\leq \sum_{n=N+1}^n(M v_n) \leq M\sum_{n=N+1}^{+\infty} v_n<+\infty$$
-Comme la convergence ne dépend pas des premiers termes, la série $\sum u_n$ est convergente. 
+$$\forall n \in \N :	\sum_{k=0}^n u_k\leq \sum_{k=0}^n(M v_k) \leq M\sum_{k=0}^n v_k\overbrace{\leq}^{\text{théorème de limité monotome}} M\sum_{k=0}^{\infty} v_k $$
+Donc la suite des sommes partielles est bornée, donc la série $\sum u_n$ est convergente. 
 \end{proof}
 \begin{Ex}
-Étudions la nature de la  série $\sum \frac{1}{\sqrt{n}}$. On a  $\frac{1}{n}=\PetitO_\ninf(\frac{1}{\sqrt{n}})$. La série harmonique $\sum \frac 1 n$ est divergente  donc la série $\sum \frac{1}{\sqrt{n}}$ est divergente d'après la règle de comparaison. 
+Étudions la nature de la  série $\sum \frac{1}{\sqrt{n}}$ à termes positifs. On a  $\frac{1}{n}=\PetitO_\ninf(\frac{1}{\sqrt{n}})$. Comme la série harmonique $\sum \frac 1 n$ est divergente, la série $\sum \frac{1}{\sqrt{n}}$ est divergente d'après la règle de comparaison. 
 \end{Ex}
 \begin{Prop}[Règle d'équivalence]
-Soit $\SER$ et $\sum v_n$ deux SATP telles que \defi{$u_n \Sim_\ninf v_n$}.\\
-Alors $\SER$ et $\sum v_n$ ont \defi{même nature}.
+Soit $\SER$ et $\sum v_n$ deux SATP telles que $u_n \Sim_\ninf v_n$.\\
+Alors $\SER$ et $\sum v_n$ sont de même nature.
 \end{Prop}
 \begin{proof}
 $u_n \Sim_\ninf v_n$ implique que $u_n= \GrandO_\ninf(v_n)$ et que $v_n= \GrandO_\ninf(u_n)$. On conclut à l'aide de la proposition~\ref{prop:comp}.
 \end{proof}
 \begin{Ex}
-Étudions la nature de la  série $\sum \frac{1}{\ln(1+n)}$. On a  $\frac{1}{\ln(1+n)}\Sim_\ninf \frac 1 n$. La série harmonique $\sum \frac 1 n$ est divergente  donc la série $\sum \frac{1}{\ln(1+n)}$ est divergente d'après la règle de comparaison. 
+Étudions la nature de la  série $\sum \frac{1}{\ln(1+n)}$ à termes positifs. On a  $\frac{1}{\ln(1+n)}\Sim_\ninf \frac 1 n$. Comme la série harmonique $\sum \frac 1 n$ est divergente,   la série $\sum \frac{1}{\ln(1+n)}$ est divergente d'après la règle d'équivalence. 
 \end{Ex} 
 
 \begin{Prop}[Règle de d'Alembert]
-Soit une SATP $\sum u_n$.  On suppose que la suite $\left(\frac{u_{n+1}}{u_n}\right)$  est définie à partir d'un certain rang et a une limite $L$  quand  $n$ tend vers $+\infty$.\\
+Soit une SATP $\sum u_n$.  On suppose que la suite $\left(\frac{u_{n+1}}{u_n}\right)_{n\in\N}$  est définie à partir d'un certain rang et admet une limite $L$  quand  $n$ tend vers $+\infty$.\\
 Alors
 \begin{itemize}
 \item si $L<1$, la série $\sum u_n$ est convergente,
 \item si $L>1$, la série $\sum u_n$ est divergente.
 \end{itemize}
 \end{Prop}
+\begin{NB}
+Si $L=1$, on ne pas conclure. En effet, on a $L=1$ pour la série $\sum \frac{1}{n}$ et $\sum \frac{1}{n^2}$ et pourtant la première diverge et la seconde converge.   
+\end{NB}
 
 \begin{proof}
 Supposons   $L<1$. Soit $L\leq A\leq 1$.  A partir d'un certain rang $n_0$,  on a 
@@ -395,6 +393,9 @@ Soit $a\in \R^+$. La série $\sum \frac{a^n}{n!}$ converge car d'après la règle d
 $$\frac{ \frac{a^{n+1}}{(n+1)!}}{\frac{a^{n}}{(n)!}}=\frac{a}{n+1}\xrightarrow[n \to +\infty]{}0.$$
 Dans le chapitre sur les séries entières, on définira la fonction exponentielle ainsi  $$\exp:x\to \sum_{n=0}^{+\infty} \frac{x^n}{n!}.$$
 \end{Ex}
+
+
+
 %
 %
 %
@@ -441,33 +442,38 @@ L'aire entre $1$ et $n$ est:
 Géométriquement, on a les inégalités :
 $$\sum_{n=1}^{N-1}f(n)\leq \int_1^N f(x)dx \leq \sum_{n=2}^{N}f(n).$$
 Par passage à la limite, on a :
-$$\sum_{1}^{+\infty}f(n)\leq \int_1^{+\infty} f(x)dx \leq \sum_{2}^{+\infty}f(n).$$
-On peut affirmer que série $\sum f(n)$ converge si et seulement si la suite $\left( \int_1^n f(x) dx \right)_n$ converge.
+$$\sum_{n=1}^{+\infty}f(n)\leq \int_1^{+\infty} f(x)dx \leq \sum_{n=2}^{+\infty}f(n).$$
+On peut affirmer que série $\sum f(n)$ converge si et seulement si la suite $\left( \int_1^n f(x) dx \right)_{n\in\N}$ converge.
 
 
 \begin{Th}[Comparaison série-intégrale]
-Soit f continue sur $[n_0,+\infty[$, décroissante
+Soit f continue sur $[1,+\infty[$, décroissante
 et positive sur cet intervalle. \\
-La série $\sum_{n\geq n_0}f(n)$ converge si et seulement si la suite $\left( \int_{n_0}^n f(x) dx \right)_{n\in\N}$ converge.
+La série $\sum_{n\geq 1} f(n)$ converge si et seulement si la suite $\left( \int_{1}^n f(x) dx \right)_{n\in\N}$ converge.
 \end{Th}
 \begin{proof}
 Par décroissance de $f$, on a :
-$$\forall n\geq n_0,\quad \forall x\in [n,n+1]:\quad f(n)\leq f(x) \leq f(n+1)$$
-
-$$\forall n\geq n_0 : \quad \int_n^{n+1}f(n)dx\leq \int_n^{n+1}f(x)dx \leq \int_n^{n+1}f(n+1)dx$$
-$$\forall n\geq n_0 : \quad f(n)\int_n^{n+1}dx\leq \int_n^{n+1}f(x)dx \leq f(n+1)\int_n^{n+1}dx$$
-$$\forall n\geq n_0 : \quad f(n)\leq \int_n^{n+1}f(x)dx \leq f(n+1)$$
-En somme ces inégalités depuis $n_0$ jusqu'à $N-1$, les intégrales se raccordent et l'on obtient : 
- $$\sum_{n=n_0}^{N-1}f(n)\leq \int_1^N f(x)dx \leq \sum_{n=n_0+1}^{N}f(n).$$
-Supposons que la série $\sum_{n\geq n_0}f(n)$ converge. Comme $\int_1^N f(x)dx \leq \sum_{n=n_0+1}^{N}f(n)<+\infty$, la suite croissante $\left( \int_{n_0}^n f(x) dx \right)_{n\in\N}$ est  bornée donc convergente. \\
-Supposons que la série $\sum_{n\geq n_0}f(n)$ diverge. Comme elle est à termes positifs, elle diverge vers l'infini.  Comme $\sum_{n=n_0}^{N-1}f(n)\leq \int_1^N f(x)dx$, la suite croissante $\left( \int_{n_0}^n f(x) dx \right)_{n\in\N}$ n'est pas bornée donc divergente. 
+$$\forall n> 0,\quad \forall x\in [n,n+1]:\quad f(n+1)\leq f(x) \leq f(n)$$
+On intègre : 
+$$\forall n> 0 : \quad \int_n^{n+1}f(n+1)dx\leq \int_n^{n+1}f(x)\,dx \leq \int_n^{n+1}f(n)dx$$
+$$\forall n>0 : \quad f(n+1)\int_n^{n+1}dx\leq \int_n^{n+1}f(x)\,dx \leq f(n)\int_n^{n}dx$$
+$$\forall n> 0 : \quad f(n+1)\leq \int_n^{n+1}f(x)\,dx \leq f(n)$$
+En sommant ces inégalités depuis $1$ jusqu'à $N-1$, les intégrales se raccordent et l'on obtient : 
+ $$\sum_{n=2}^{N}f(n)\leq \int_1^N f(x)\,dx \leq \sum_{n=1}^{N-1}f(n).$$
+Supposons que la série $\sum_{n\geq 1} f(n)$ converge. Comme $\int_1^N f(x)dx \leq \sum_{n=1}^{N-1}f(n)<+\infty$, la suite croissante $\left( \int_{1}^n f(x)\, dx \right)_{n\in\N}$ est  bornée donc convergente. \\
+Supposons que la série $\sum_{n\geq 1}f(n)$ diverge. Comme elle est à termes positifs, elle diverge vers l'infini.  Comme $\sum_{n=2}^{N}f(n)\leq \int_1^N\, f(x)dx$, la suite croissante $\left( \int_{n_0}^n f(x) dx \right)_{n\in\N}$ n'est pas bornée donc divergente. 
 \end{proof}
+\begin{Th}[Comparaison série-intégrale (version intégrale impropre)]
+Soit f continue sur $[1,+\infty[$, décroissante
+et positive sur cet intervalle. \\
+La série $\sum_{n\geq 1} f(n)$ et l'intégrale $\int_{1}^\infty f(x) dx$ sont de même nature.
+\end{Th}
 \begin{Prop}[Séries de Riemann]
 La série $\sum \frac{1}{n^a}$ converge si et seulement si $a> 1$.
 \end{Prop}
 \begin{proof}
-Pour $a\leq 0$, le terme général de la série ne tend pas vers 0 en l'infini donc la série est grossièrement divergente.\\
-Pour $a>0$, on applique le théorème de la comparaison série intégrale avec la fonction $f:x\to\frac{1}{x^a}$ décroissante et continue sur $[1,+\infty[$.\\
+Pour $a\leq 0$, le terme général de la série ne tend pas vers 0 en l'infini donc la série diverge grossièrement.\\
+Pour $a>0$, on applique le théorème de la comparaison série-intégrale avec la fonction $f:x\to\frac{1}{x^a}$ décroissante et continue sur $[1,+\infty[$.\\
 De plus si $a\neq 1$, on a   :
 $$ \int_{1}^n \frac{1}{x^a} dx =
 \left[\frac{1}{(-a+1)x^{a-1} }\right]_1^n=\frac{1}{-a+1}\left(\frac{1}{n^{a-1}}-1\right) \xrightarrow[n\to \infty]{}\begin{cases}
@@ -476,12 +482,11 @@ $$ \int_{1}^n \frac{1}{x^a} dx =
 \end{cases}.$$ 
 De plus si $a= 1$, on a   :
 $$ \int_{1}^n \frac{1}{x} dx = \ln n  \xrightarrow[n\to \infty]{}+\infty .$$ 
-
+En conclusion, la série $\sum \frac{1}{n^a}$ converge si et seulement si $a> 1$.
 %$$ \int_{1}^n f(x) dx =\begin{cases}
 %\left[\frac{1}{(-a+1)x^{a-1} }\right]_1^n=\frac{1}{-a+1}\left(\frac{1}{n^{a-1}}-1\right) \text{ si }a\neq 1 \t\\
 %\left[\ln x\right]_1^n=\ln n  \text{ si }a=1
 %\end{cases}$$ 
-
 \end{proof}
 
 \section{Séries à termes de signe variable}
@@ -526,34 +531,34 @@ La série est dite \defi{absolument convergente} si la série $\sum |u_n|$ converg
 Le théorème précédent s'énonce ainsi : "toute série absolument convergente est convergente".
 \end{Df}
 \begin{Ex}
-La  série $\sum \frac{\sin n }{n^2}$ est convergente.\\
-Pour le justifier, nous allons montrer qu'elle est absolument convergente. On a :
+Nature de la série $\sum \frac{\sin n }{n^2}$.\\
+ On a :
 $$\forall n \in\N^+:\quad \frac{|\sin n| }{n^2}\leq \frac{1}{n^2}$$
-La série de Riemann $\sum \frac{1}{n^2}$ est convergente donc la série $\sum \frac{|\sin n| }{n^2}$ est convergent par règle de comparaison.
+Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \frac{\sin n }{n^2}$ est absolument convergent par règle de comparaison donc convergente.
 \end{Ex}
 \subsection{Série alternée}
 
 \begin{Df}[Alternée]
 Une série $\sum u_n$ est dite \defi{alternée} si $u_n$ et $u_{n+1}$ sont de signes contraires, pour tout $n\in\N$.\\
-On écrira cette série sous cette forme $\sum u_n =\sum (-1)^n a_n$ avec $(a_n)$ une suite de réels positifs. 
+On écrira cette série sous cette forme $\sum u_n =\sum (-1)^n a_n$ avec $(a_n)_{n\in\N}$ une suite de réels positifs. 
 \end{Df}
 \begin{Th}[Critère spécial]
-Soit $\sum (-1)^n a_n$ une série alternée. Si $(a_n)$ est une suite décroissante tendant vers $0$,\\
+Soit $\sum (-1)^n a_n$ une série alternée. Si  $(a_n)_{n\in\N}$ est une suite décroissante tendant vers $0$,\\
 Alors
 \begin{enumerate}
 \item  $\sum (-1)^n a_n$ converge,
-\item  les deux sommes partielles consécutives encadrent la somme : $$\forall n\in \N : \quad  S_{2n}\leq S \leq S_{2n+1},$$
+\item  les deux sommes partielles consécutives encadrent la somme : $$\forall n\in \N : \quad  S_{2n+1}\leq S \leq S_{2n},$$
 \item  la reste est borné par le terme générale de la série: $$\forall n\in \N : \quad  |R_n|\leq a_{n+1}.$$
 \end{enumerate}
 \end{Th}
 \begin{proof}
-Montrons que les suites des sommes partielles paires et impaires  $(S_{2n})$ et $(S_{2n+1})$ sont adjacentes :
+Montrons que les suites des sommes partielles paires et impaires  $(S_{2n})_{n\in\N}$ et $(S_{2n+1})_{n\in\N}$ sont adjacentes :
 \begin{enumerate}
-\item croissance de $(S_{2n+1})$ : on a $S_{2(n+1)+1}-S_{2n)+1}=a_{2n+2}-a_{2n+3}\geq 0$ car $(a_n)$ est une suite décroissante,
-\item décroissance de $(S_{2n})$ : on a $S_{2(n+1)}-S_{2n)}=-a_{2n+1}+a_{2n+2}\leq 0$ car $(a_n)$ est une suite décroissante,
-\item $S_{2n+1}-S_{2n}=-a_{n+1}\xrightarrow[n \to +\infty]{} 0$ car $(a_n)$ tend vers 0.
+\item \textit{décroissance de $(S_{2n})_{n\in\N}$} : on a $$S_{2(n+1)}-S_{2n}=\sum_{k=0}^{2n+2}(-1)^n a_n -\sum_{k=0}^{2n}(-1)^n a_n =   -a_{2n+1}+a_{2n+2}\leq 0$$ car $(a_n)_{n\in\N}$ est une suite décroissante positive,
+\item \textit{croissance de $(S_{2n+1})_{n\in\N}$} : de même avec $S_{2(n+1)+1}-S_{2n+1}=  a_{2n+2}-a_{2n+3}\geq 0$,
+\item \textit{limite} : $S_{2n+1}-S_{2n}=-a_{n+1}\xrightarrow[n \to +\infty]{} 0$ car $(a_n)$ tend vers 0.
 \end{enumerate}
-Donc, les suites d'indices pairs et impairs $(S_{2n})$ et $(S_{2n+1})$ convergent vers une même limite $S$. Ainsi, la suite $(S_{n})$ converge vers cette même limite.\\
+Donc, les suites d'indices pairs et impairs $(S_{2n})_{n\in\N}$ et $(S_{2n+1})_{n\in\N}$ convergent vers une même limite $S$. Ainsi, la suite $(S_{n})_{n\in\N}$ converge vers cette même limite.\\
 De plus, on   $S_{2n+1}\leq S \leq S_{2n}$ pour tout $n\in\N$.\\
 Pour borné le reste, on part de l'inégalité précédente :
 \begin{align*}

@@ -6,13 +6,13 @@ $$\ln(n+1)\leq H_n\leq 1+\ln(n).$$
 \item En déduire un équivalent de $H_n$.
 \item On pose pour $n\geq 1$, $v_n=H_n-\ln(n)$. Vérifier que $v_{n}-v_{n-1}=\frac 1n+\ln\left(1-\frac 1n\right)$.
 \item \'Etudier la monotonie de $(v_n)$.
-\item En déduire que la suite $(H_n-\ln(n+1))$ est convergente.
+\item En déduire que la suite $(H_n-\ln(n))$ est convergente.
 \end{enumerate}
           
 \begin{correction}
     \begin{enumerate}
         \item Voir la démonstration sur la comparaison série-intégrale. On a :
-$$ \int_{1}^{n+1}\frac{1}{x}dx=\ln(n+1) \leq H_n \leq 1 + \int_{1}^{n}\frac{1}{x}dx=1  \ln(n)$$.
+$$ \int_{1}^{n+1}\frac{1}{x}dx=\ln(n+1) \leq H_n \leq 1 + \int_{1}^{n}\frac{1}{x}dx=1 + \ln(n)$$.
 \item On divise ces inégalités par $\ln(n)$ :
 $$1 + \ln(1+1/n) \leq H_n/\ln(n) \leq 1+1/\ln(n).$$
 Les deux extrémités tendent vers 1 donc   $H_n \Sim_{n\to\infty} \ln(n).$

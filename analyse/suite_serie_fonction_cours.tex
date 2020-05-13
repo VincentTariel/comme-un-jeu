@@ -20,6 +20,7 @@
 \usepackage{multicol}
 \usepackage{caption}
 \usepackage{pgfplots}
+\usepackage{tikz,tkz-tab}
 \definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
 \sectionfont{\color{magenta}}
 \subsectionfont{\color{red}}
@@ -65,10 +66,10 @@
 \newcommand\SER{ \sum u_n}
 \newcommand\CC[1]{C^{#1}}
 \newcommand{\sumni}{\sum_{n=0}^{+\infty}}
-\newcommand\Sanxn{ \sum_n a_n x^n}
-\newcommand\Sanzn{ \sum_n a_n z^n}
-\newcommand\Sbnzn{ \sum_n b_n z^n}
-\newcommand\Scnzn{ \sum_n c_n z^n}
+\newcommand\Sanxn{ \sum a_n x^n}
+\newcommand\Sanzn{ \sum a_n z^n}
+\newcommand\Sbnzn{ \sum b_n z^n}
+\newcommand\Scnzn{ \sum c_n z^n}
 \def\abs#1{\mathopen|{#1}\mathclose|}
 \def\Abs#1{\left|{#1}\right|}
 \newcommand{\Rpinf}{\R \cup \{+\infty\}}
@@ -83,7 +84,7 @@
 
 \newcommand{\FIK}{\mathcal{F}(I,\K  )}
 \newcommand{\fn}{(f_n)_{n\in \N   }}
-\newcommand{\Sfn}{\sum _n f_n}
+\newcommand{\Sfn}{\sum f_n}
 
 \begin{document}
 
@@ -99,7 +100,7 @@ La première partie de ce cours définira les notions de suites et séries de fonct
 \item
   $\K  $ désigne $\R $ ou $\C    $;
 \item
-  $\K  ^I = \FIK$ désigne le $\K-$espace vectoriel des fonctions de $I$ dans $\K  $.
+  $\FIK$ désigne le $\K-$espace vectoriel des fonctions de $I$ dans $\K  $.
 \end{itemize}
 
 % -----------------------------------------------------------------------------
@@ -111,8 +112,8 @@ La première partie de ce cours définira les notions de suites et séries de fonct
 On appelle \defi{suite de fonctions} toute suite $\fn$ à valeurs dans $\FIK$.
 Autrement dit, une suite de fonctions est une suite $\fn$ dont les éléments sont des fonctions $f_n: I\to \K  $.
 \end{Df}
-\begin{Ex}Les suites $(f_n)_{n\in \N   }$, $(g_n)_{n\in \N   }$ et $(h_n)_{n\in \N   }$ sont définies par :
-$$ \Fonction{f_n}{[0,1]}{\R }{x}{x^n}, \Fonction{g_n}{\R }{\R }{x}{\left(1+\frac x n\right)^n},$$ $$\Fonction{h_n}{\R ^+}{\R }{x}{x n^a e^{-nx}}.$$ 
+\begin{Ex}\label{ex:1}Soit les suites $(f_n)_{n\in \N   }$, $(g_n)_{n\in \N^*   }$ et $(h_n)_{n\in \N   }$ définies par :
+$$ \Fonction{f_n}{[0,1]}{\R }{x}{x^n},\quad \Fonction{g_n}{\R }{\R }{x}{\left(1+\frac x n\right)^n},\quad\Fonction{h_n}{\R ^+}{\R }{x}{x n^a e^{-nx}}.$$ 
 \end{Ex}
 
 \begin{Df}[Série de fonctions]
@@ -120,7 +121,7 @@ Soit $\fn$ une suite de fonctions de $I$ dans $\K  $.
 On pose \[ \Fonction{S_n}{I}{\K  }{x}{\sum _{k=0}^n f_k(x)} \]
 On appelle \defi{série de fonctions} de $I$ dans $\K$ de terme général $f_n$, noté  $\sum _n f_n$, la suite des \defi{sommes partielles} $(S_n)_{n\in \N   }$.
 \end{Df}
-\begin{Ex}la série géométrique : $\sum_n x^n $ 
+\begin{Ex}[Série géométrique]La série géométrique : $\sum x^n $ 
 \end{Ex}
 
 
@@ -135,15 +136,19 @@ La convergence simple permet de définir une fonction comme limite d'une suite de
 Soit $\fn$ une suite de fonctions de $I$ dans $\K  $.
 On dit que la suite de fonctions $\fn$ \defi{converge simplement} vers $f$ sur $I$ si  
 \[  \forall x \in I, \text{ la suite numérique } (f_n(x))_{n\in \mathbb{N}} \text{ converge}, \] 
-c'est à dire que $\lim\limits_{x \to \infty}f_n(x)$ existe dans $\K  $, pour tout $x\in I$. Dans ce cas, on peut définir la fonction:
+c'est à dire que $\lim\limits_{n \to \infty}f_n(x)$ existe dans $\K  $, pour tout $x\in I$. Dans ce cas, on peut définir la fonction:
 $$
  \Fonction{f}{I}{\K  }{x}{\lim\limits_{n \to \infty}f_n(x)}.$$
- appelée \defi{limite simple} sur $I$ de la suite $(f_n)$.
+ appelée \defi{limite simple} sur $I$ de la suite $(f_n)_{n\in \N   }$.
 \end{Df} 
 
 \begin{Methode}[Prouver la convergence simple]
-Pour prouver que $\fn$ converge simplement vers $f$ sur $I$, il faut fixer la variable de de la fonction, \textbf{soit $a\in I$ fixé},  et chercher à prouver que la \textbf{suite numérique} $(f_n(a))_{n\in \N }$ converge vers $f(a)$. Il s'agit donc d'un problème de convergence d'une  suite numérique.\\
-L'exemple ci dessous représente la convergence simple pour la suite $(f_n:x\to x^n)_{n\in \N   }$. 
+        \begin{minipage}[c]{0.45\linewidth}{
+Pour prouver que $\fn$ converge simplement vers $f$ sur $I$, il faut fixer la variable de  la fonction, \textbf{Fixons $a\in I$},  et chercher à prouver que la \textbf{suite numérique} $(f_n(a))_{n\in \N }$ converge vers $f(a)$. Il s'agit donc d'un problème de convergence d'une  suite numérique.\\
+L'exemple ci dessous représente la convergence simple pour la suite $(f_n:x\to x^n)_{n\in \N }$. On fixe $a$ et on étudie la convergence de la suite $(f_n(a))_{n\in \N }$. 
+}
+\end{minipage}
+    \begin{minipage}[c]{0.45\linewidth}{
 \begin{tikzpicture}
    \begin{axis}[
        axis y line = middle,
@@ -165,40 +170,49 @@ L'exemple ci dessous représente la convergence simple pour la suite $(f_n:x\to x
      \addplot[pink,mark=*] coordinates {(.8,.134)}node[left] {$(a,f_9(a))$};   
    \end{axis}
 \end{tikzpicture}
-
-
+}
+    \end{minipage}
  \end{Methode}
 
 \begin{Ex}
+Démontrons la convergence simples des suites de fonctions de l'exemple \ref{ex:1}.
 \begin{enumerate}
-\item  Démontrons que la suite $(f_n)_{n\in \mathbb{N}}$ converge simplement vers la fonction\newline$x \mapsto \begin{cases}0&{\text{si }}x\in[0,1[\\1&{\text{si } x=0}\end{cases} $ sur $[0,1]$.\\
-Soit $a\in [0,1]$ fixé.\\
-Si $a=1$, on a $a^n=1^n=1\Toninf 1$.\\
-Si $a\neq 1$, la suite numérique $(a^n)_{n\in \mathbb{N}}$ est la suite géométrique de raison $q=a$. Comme $|a|<1$, la suite   converge vers 0.
-\item Démontrons que la suite $(g_n)_{n\in \mathbb{N}}$ converge simplement vers la fonction $x \mapsto e^{x}$ sur $\R $.\\
-Soit $a\in \R $ fixé.\\
-Si $a=0$, on a $(1+\frac 0 n)^n=1\Toninf 1=e^0$.\\
-Si $a\neq0$, on a :
+\item 
+Fixons $a\in [0,1]$.\\
+\begin{itemize}
+\item Si $a=1$, on a $a^n=1^n=1\Toninf 1$.
+\item Si $a\neq 1$, la suite numérique $(a^n)_{n\in \mathbb{N}}$ est la suite géométrique de raison $q=a$. Comme $|a|<1$, la suite   converge vers 0. 
+\end{itemize}
+En conclusion, la suite de fonctions $(f_n)_{n\in \mathbb{N}}$ converge simplement vers la fonction limite $x \mapsto \begin{cases}0&{\text{si }}x\in[0,1[\\1&{\text{si } x=0}\end{cases} $ sur $[0,1]$.
+\item 
+Fixons $a\in \R $.
+\begin{itemize}
+\item Si $a=0$, on a $(1+\frac 0 n)^n=1\Toninf 1=e^0$.
+\item Si $a\neq0$, on a :
 $$
 \begin{array}{rcl}
 (1+\frac a n)^n &=& e^{n\ln (1+a/n)}\\
-(1+\frac a n)^n &=& e^{n (a/n+o(1/n))} \text{ par développement limité}\\
+(1+\frac a n)^n &=& e^{n (a/n+o(1/n))}\\
 (1+\frac a n)^n &=& e^{a+o(1)}\\
-(1+\frac a n)^n &\underset{ \overset { n \rightarrow \infty } {} } {\sim}&e^a \text{ par continuité de la fonction exponentielle}
 \end{array}
 $$
-Donc $\lim\limits_{n \to \infty}(1+\frac a n)^n=e^a$. 
-\item Démontrons que la suite $(h_n)_{n\in \mathbb{N}}$ converge simplement vers la fonction nulle $x \mapsto 0$ sur $\R ^+$.\\
-Soit $b\in \R ^+$ fixé.\\
-Si $b=0$, on a $b n^a e^{-nb}=0\Toninf 0$.\\
-Si $b\neq 0$, on a : $\lim\limits_{n \to \infty}b n^a e^{-nb}=0$ car :
-$$
-\begin{array}{rcl}
-n^a e^{-nb} &=& e^{a \ln n -nb}\\
-n^a e^{-nb} &=& e^{-nb(1-\frac{a \ln n}{nb})}\\
-n^a e^{-nb} &\underset{ \overset { n \rightarrow \infty } {} } {\sim}&e^{-nb}\Toninf 0.
-\end{array}
-$$ 
+Donc $\lim\limits_{n \to \infty}(1+\frac a n)^n=e^a$ car la fonction exponentielle est continue. 
+\end{itemize}
+En conclusion, la suite $(g_n)_{n\in \mathbb{N}}$ converge simplement vers la fonction $x \mapsto e^{x}$ sur $\R $.
+\item 
+Fixons $b\in \R ^+$.
+\begin{itemize}
+\item  Si $b=0$, on a $b n^a e^{-nb}=0\Toninf 0$.
+\item Si $b\neq 0$, on a : $\lim\limits_{n \to \infty}b n^a e^{-nb}=0$ par croissance comparée.
+%$$
+%\begin{array}{rcl}
+%n^a e^{-nb} &=& e^{a \ln n -nb}\\
+%n^a e^{-nb} &=& e^{-nb(1-\frac{a \ln n}{nb})}\\
+%n^a e^{-nb} &\underset{ \overset { n \rightarrow \infty } {} } {\sim}&e^{-nb}\Toninf 0.
+%\end{array}
+%$$ 
+\end{itemize}
+En conclusion,  la suite $(h_n)_{n\in \mathbb{N}}$ converge simplement vers la fonction nulle $x \mapsto 0$ sur $\R ^+$.
 \end{enumerate}
 \end{Ex}
 
@@ -208,8 +222,8 @@ $$
 
 \begin{Df}[Convergence simple  $\Sfn$]
 On dit que la série $\Sfn$ \defi{converge simplement} sur $I$
-si la suite de fonction $(S_n)_{n\in \N   }$ converge simplement sur $I$.\\
-Autrement dit, la série $\Sfn$ converge simplement sur $I$ £ssi.
+si la suite de fonctions $(S_n)_{n\in \N   }$ converge simplement sur $I$.\\
+Autrement dit, la série $\Sfn$ converge simplement sur $I$ si
 \[  \forall  x\in I, \text{la série numérique } \sum _n f_n(x) \text{ converge.}  \]
 Dans ce cas, la fonction :
 $$
@@ -217,8 +231,8 @@ $$
  est appelé \defi{limite simple} sur $I$ de la série $\Sfn$.
 \end{Df}
 
-\begin{Ex} Démontrons que la série $\sum_n x^n$ converge simplement vers la fonction $\frac{1}{1-x}$ sur $]-1,1[$.\\
-Soit $a\in ]-1,1[$ fixé.\\
+\begin{Ex}[Série géométrique] Soit la série de fonctions $\sum x^n$.\\
+Fixons $a\in ]-1,1[$.\\
 On a $\sum_{k=0}^n a^k= \frac{1-a^{n+1}}{1-a}\Toninf  \frac{1}{1-a}$ car $|a|<1$. Donc la série converge simplement sur $]-1,1[$ et sa limite simple est la fonction $x\mapsto \frac{1}{1-x}$.
 \end{Ex}
 
@@ -238,7 +252,7 @@ La convergence uniforme est une convergence plus forte que la convergence simple
 
 \begin{Df}[Convergence uniforme $\fn$]
 Soit $\fn$ une suite de fonctions de $I$ dans $\K  $, et soit $f \colon I \to\K  $.
-On dit que la suite de fonctions $\fn$ \defi{converge uniformément} vers $f$ sur $I$ si et seulement si
+On dit que la suite de fonctions $\fn$ \defi{converge uniformément} vers $f$ sur $I$ si 
 \[ \forall  \epsilon>0 , \exists N\in \N , \forall  n\geq N ,\forall  x\in I, \abs{f_n(x) - f(x)} \leq  \epsilon, \]
 ou de façon équivalente, si la suite numérique $(\sup_{x\in I} \Abs{f_n(x) - f(x)})_{n\in\mathbb{N}}$ converge vers 0, c'est à dire:
 \[  \sup_{x\in I} \Abs{f_n(x) - f(x)}   \tend[n\to+\infty ]0.  \]
@@ -248,34 +262,43 @@ ou de façon équivalente, si la suite numérique $(\sup_{x\in I} \Abs{f_n(x) - f(x
 Si $\fn$ converge uniformément vers $f$, alors $\fn$ converge simplement vers $f$.
 \end{Prop}
 \begin{proof}
-Soit $a\in I$ fixé. On a :
+Fixons $a\in I$. On a :
 $$ \Abs{f_n(a) - f(a)}\leq   \sup_{x\in I} \Abs{f_n(x) - f(x)}  \overbrace{\tend[n\to+\infty ]0.}^{\text{convergence uniforme}}$$
 Donc la suite numérique $(f_n(a))_{n\in\N}$ converge vers $f(a)$. Donc  $\fn$ converge simplement vers $f$.
 \end{proof}
 \begin{Methode}[Prouver la convergence uniforme]
-On définit la limite simple, $f$, de la suite $\fn$ à l'aide de la convergence simple. Puis, on vérifie que le suite  $\fn$ converge uniformément vers cette limite $f$ par 
+On définit la limite simple, $f$, de la suite $\fn$ à l'aide de la convergence simple car si la limite de convergence uniforme existe, elle est égale à celle de la convergence simple. Puis, on vérifie que le suite  $\fn$ converge uniformément vers cette limite $f$ par 
 \begin{enumerate}
-\item méthode 1 : une étude de fonction pour déterminer $\sup_{x\in I}\Abs{f_n(x) - f(x)}$
-\item méthode 2:  une majoration $\sup_{x\in I}\Abs{f_n(x) - f(x)}$ par une quantité indépendante de $x$ et qui tend vers 0.
+\item\textit{ méthode 1} : une étude de fonction pour déterminer $\sup_{x\in I}\Abs{f_n(x) - f(x)}$
+\item\textit{ méthode 2} :  une majoration $\sup_{x\in I}\Abs{f_n(x) - f(x)}$ par une quantité indépendante de $x$ et qui tend vers 0.
 \end{enumerate}
 \end{Methode}
 
 
 \begin{Ex}[Méthode 1] Soit $$\Fonction{h_n}{\R ^+}{\R ^+}{x}{n^a x e^{-nx} }.$$\\
-L'animation geogebra \url{https://www.geogebra.org/graphing/bm5hggxd}, illustre la notion de convergence  pour   $a=0,5, a=1$ ou $a=1,5$. \\
-Pour ces trois valeurs de $a$, la suite de fonction $(h_n)_{n\in\mathbb{N}}$  converge simplement vers la fonction nulle sur l'intervalle $ \R ^+$.\\
-Pour la \textbf{convergence simple}, on fixe  $x$ (ici =0.3). On observe qu'à partir d'un certain rang de $n$, le point $x$  est à droite de la bosse, et que la suite numérique $(h_n(x))_{n\in\mathbb{N}}$ tend bien vers 0 quand $n$ tend vers $+\infty$ quelque soit les valeurs de $a$. La limite simple est la fonction nulle $h:x\to 0.$\\
-Pour la \textbf{convergence uniforme}, $x$ n'est plus fixé et appartient à l'intervalle $\R ^+$. $$\sup_{x\in \R ^+} \Abs{h_n(x) - h(x)}=\sup_{x\in \R ^+} \Abs{h_n(x)}$$ correspond à la hauteur de la bosse. On a convergence uniforme si et seulement si la hauteur tend vers $0$ quand quand $n$ tend vers $+\infty$. Pour $a=0,5$, la suite de fonctions $(h_n)_{n\in\mathbb{N}}$ converge uniformément car la bosse s'aplatit. En revanche, pour  $a=1$, la hauteur de la bosse reste constante et pour $a=1,5$, la hauteur tend vers  $+\infty$  quand $n$ tend vers $+\infty$. La suite de fonctions $(h_n)_{n\in\mathbb{N}}$ ne converge pas uniformément pour ces deux valeurs.\\
-\textit{Preuve :} pour étudier la convergence uniforme de la suite de fonctions $(h_n)$,  on étudie la suite numérique  $\left(\sup_{x\in  \R ^+} \Abs{h_n(x)}\right)_{n\in\N}$. Le $\sup$ correspond au maximum de de la fonction $h_n$. Comme $h_n$ est une fonction dérivable, on étudie le signe de sa dérivée. Soit $x\in  \R ^+$. 
+\begin{itemize}
+\item \textit{Conjecture :} l'animation geogebra \url{https://www.geogebra.org/graphing/bm5hggxd}, illustre la notion de convergence  pour   $a=0,5, a=1$ ou $a=1,5$. \\
+Pour la \textbf{convergence simple}, on fixe  $x$ (ici =0.3). On observe qu'à partir d'un certain rang de $n$, le point $x$  est à droite de la bosse quelque soit la valeur de $a$. Donc la suite numérique $(h_n(x))_{n\in\mathbb{N}}$ tend bien vers 0 quand $n$ tend vers $+\infty$ quelque soit les valeurs de $a$. La limite simple est la fonction nulle $h:x\to 0.$\\
+Pour la \textbf{convergence uniforme}, $x$ n'est plus fixé et appartient à l'intervalle $\R ^+$. $$\sup_{x\in \R ^+} \Abs{h_n(x) - h(x)}=\sup_{x\in \R ^+} \Abs{h_n(x)}$$ correspond à la hauteur de la bosse. On a convergence uniforme si et seulement si la hauteur tend vers $0$ quand quand $n$ tend vers $+\infty$. Pour $a=0,5$, la suite de fonctions $(h_n)_{n\in\mathbb{N}}$ converge uniformément car la bosse s'aplatit. En revanche, pour  $a=1$, la hauteur de la bosse reste constante et pour $a=1,5$, la hauteur tend vers  $+\infty$  quand $n$ tend vers $+\infty$. La suite de fonctions $(h_n)_{n\in\mathbb{N}}$ ne converge pas uniformément pour ces deux dernières valeurs. On conjecture que la convergence est uniforme si et seulement si $a<1$.
+\item \textit{Preuve :} pour étudier la convergence uniforme de la suite de fonctions $(h_n)$,  on étudie la suite numérique  $\left(\sup_{x\in  \R ^+} \Abs{h_n(x)}\right)_{n\in\N}$. Comme $h_n$ est une fonction dérivable, on étudie le signe de sa dérivée. Soit $x\in  \R ^+$. 
 $${h'}_n(x)=n^a(e^{-nx}-nxe^{-nx})=n^ae^{-nx}(1-n).$$ D'où ${h'}_n(x)\geq 0 \Leftrightarrow  x\leq \frac 1 n.$  
-Donc $h_n$ atteint le maximum en $1/n$, d'où $$\sup_{x\in  \R ^+} \Abs{h_n(x) }=h_n(1/n)=n^{a-1}e^-1\Toninf 0 \Leftrightarrow  a<1.$$ Donc $(h_n)_{n\in\mathbb{N}}$ converge uniformément si et seulement si   $a<1.$
+\begin{center}
+\begin{tikzpicture}
+   \tkzTabInit{$x$ / 1 , Signe de $h'_n(x)$ / 1, Variations $h_n$ / 1.5}{$0$, $\dfrac{1}{n}$, $+\infty$}
+   \tkzTabLine{, +, z, -, }
+   \tkzTabVar{-/ 0, +/ $h_n\left(\dfrac{1}{n}\right)$, -/ 0}
+\end{tikzpicture}
+\end{center}
+$|h_n|$ atteint son maximum en $1/n$, d'où $$\sup_{x\in  \R ^+} \Abs{h_n(x) }=h_n(1/n)=n^{a-1}e^{-1}\Toninf\begin{cases} 0 &\text{ si }  a<1\\e^{-1} &\text{ si }  a=1\\+\infty &\text{ si }  a>1 \end{cases}.$$ Donc $(h_n)_{n\in\mathbb{N}}$ converge uniformément si et seulement si   $a<1.$
+\end{itemize}
 \end{Ex}
 
 \begin{Ex}[Méthode 2]
-La suite de fonctions $(x\mapsto x^n)_{n\in \mathbb{N}}$ converge uniformément vers la fonction nulle $x\mapsto 0$ sur $[0,a]$ avec $0<a<1$ car :
+Soit la suite de fonctions $(f_n:x\mapsto x^n)_{n\in \mathbb{N}}$ convergeant simplement vers la fonction nulle $x\mapsto 0$ sur $[0,a]$ avec $0<a<1$. On a :
 $$\forall n\in \N, \forall x\in[0,a]:\quad |x^n|\leq a^n$$ c'est à dire :
 $$ \forall n\in \N, \sup_{x\in[0,a]}|x^n|\leq a^n.$$
-Comme $a^n\tend[n\to+\infty]0$, on déduit que $\sup_{x\in[0,a]}|x^n| \tend[n\to+\infty]0$ et on conclut que la suite de fonctions $(x\mapsto x^n)_{n\in \mathbb{N}}$ converge uniformément vers la fonction nulle $x\mapsto 0$.
+Comme $a^n\tend[n\to+\infty]0$, on déduit que $\sup_{x\in[0,a]}|x^n| \tend[n\to+\infty]0$ par théorème de comparaison. \\
+En conclusion, la suite de fonctions $(x\mapsto x^n)_{n\in \mathbb{N}}$ converge uniformément vers la fonction nulle $x\mapsto 0$ sur $[0,a]$ .
 \end{Ex}
 
 
@@ -283,7 +306,7 @@ Comme $a^n\tend[n\to+\infty]0$, on déduit que $\sup_{x\in[0,a]}|x^n| \tend[n\to+
 On dit que la série $\Sfn$ \defi{converge uniformément} sur $I$ si  la suite de fonction $(S_n)_{n\in \N   }$ converge uniformément sur $I$.
 \end{Df}
 \begin{Prop}[Critère du reste]
-Soit $\Sfn$ une série de fonction qui converge simplement vers $f$ sur $I$.
+Soit $\Sfn$ une série de fonction qui converge simplement vers $f$ sur $I$.\\
 Cette série converge uniformément vers $f$ sur $I$ si et seulement si
 la suite de fonctions $(R_n)$ converge uniformément vers $0$ sur $I$
 où \[ R_n(x) = \sum _{k>n} f_k(x). \]
@@ -302,7 +325,7 @@ Cette égalité prouve l'équivalence :
 \end{proof}
 
 \begin{Ex} Soit la série de fonctions $\sum \frac{(-1)^n}{x+n}$.\\
-La série de fonctions converge simplement sur $\R ^+$, car à $x\in\R ^+ $ fixé, la série numérique $\sum \frac{(-1)^n}{x+n}$ respecte le critère de convergence des séries alternées ($(\frac{1}{x+n})_{n\in\mathbb{N}}$ est une suite décroissante de limite 0). Pour la convergence uniforme, la valeur absolue du reste d'une série alternée est majorée par celle de son premier terme:
+La série de fonctions converge simplement sur $\R^+$, car à $x\in\R^+ $ fixé, la série numérique $\sum \frac{(-1)^n}{x+n}$ respecte le critère de convergence des séries alternées : $(\frac{1}{x+n})_{n\in\mathbb{N}}$ est une suite décroissante de limite 0. Pour la convergence uniforme, la valeur absolue du reste d'une série alternée est majorée par celle de son premier terme:
 $$\forall  x\in \R ^+,\Abs{R_n(x)} \leq  \Abs{\frac{1}{x+(n+1)}}\leq \frac{1}{n+1}\Toninf 0.$$
 \end{Ex}
 % 
@@ -325,11 +348,11 @@ montrer l'existence d'une suite réelle $(\alpha_n)_{n\in \N   }$ telle que:
   \item
     $\forall  n\in \N   $, $\forall  x\in I$, $\Abs{f_n(x)}\leq \alpha_n$;
   \item
-    la série numérique $\sum _n \alpha_n$ converge.
+    la série numérique $\sum \alpha_n$ converge.
   \end{itemize}
 \end{Prop}
 \begin{proof}
-La série numérique $ \sum_n \sup_{x\in I} \Abs{f_n(x)}$ est une série à termes positifs dont le terme général est bornée par $\alpha_n$. Comme la sérié numérique $\sum _n \alpha_n$ converge, la série numérique $ \sum_n \sup_{x\in I} \Abs{f_n(x)}$ par règle de comparaison.
+La série numérique $ \sum \sup_{x\in I} \Abs{f_n(x)}$ est une série à termes positifs dont le terme général est bornée par $\alpha_n$. Comme la sérié numérique $\sum \alpha_n$ converge, la série numérique $ \sum \sup_{x\in I} \Abs{f_n(x)}$ par règle de comparaison.
 \end{proof}
 
 
@@ -338,19 +361,19 @@ La convergence normale entraîne la convergence uniforme (qui entraîne la converg
 \end{Prop}
 \begin{proof}
 Soit $n<N$.
-$$\forall  x\in I:\quad  \Abs{\sum_{k=n+1}^{N} f_n(x)}\leq  \sum_{k=n+1}^{N} \Abs{f_n(x)}   \leq  \sum_{k=n+1}^{N} u_n  \overbrace{\leq}^{SATP} \sum_{k=n+1}^{+\infty} u_n. $$ 
+$$\forall  x\in I:\quad  \Abs{\sum_{k=n+1}^{N} f_n(x)}\leq  \sum_{k=n+1}^{N} \Abs{f_n(x)}   \leq  \sum_{k=n+1}^{N} \sup_{x\in I} \Abs{f_n(x)}  \overbrace{\leq}^{\text{Série à termes positifs}} \sum_{k=n+1}^{+\infty} \sup_{x\in I} \Abs{f_n(x)}. $$ 
 Par passage à la limite, l'inégalité devient :
- $$\forall  x\in I:\quad  \Abs{\sum_{k=n+1}^{+\infty} f_n(x)}\leq  \sum_{k=n+1}^{+\infty} u_n. $$ 
-$(\sum_{k=n+1}^{+\infty} u_n)_{n\in\N}$ est le reste d'une série convergente donc converge vers 0. Ainsi la série $\Sfn$ converge absolument par le critère des restes. 
+ $$\forall  x\in I:\quad  \Abs{\sum_{k=n+1}^{+\infty} f_n(x)}\leq  \sum_{k=n+1}^{+\infty} \sup_{x\in I} \Abs{f_n(x)} . $$ 
+Comme la série converge normalement, la série $\sum \sup_{x\in I} \Abs{f_n(x)}$ converge et son reste $(\sum_{k=n+1}^{+\infty}  \sup_{x\in I} \Abs{f_n(x)} )_{n\in\N}$ converge vers 0. Ainsi la série $\Sfn$ converge absolument par le critère des restes. 
 \end{proof}
-\begin{Ex}La série de fonctions $\sum \frac{\sin(nx}{n^2}$ convergence uniformément sur $\R$ car la série de fonctions $\sum \frac{\sin(nx}{n^2}$ converge normalement.\\
-En effet, $\frac{\sin(nx}{n^2}\leq \frac{1}{n^2}$ et la série de Riemann $\sum \frac{1}{n^2}$ est convergente. 
+\begin{Ex}Soit la série de fonctions $\sum \frac{\sin(nx)}{n^2}$.\\
+On a :
+$$\forall n\in\N^* :\quad \left|\frac{\sin(nx)}{n^2}\right|\leq \frac{1}{n^2}.$$
+Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente,  la série de fonctions $\sum \frac{\sin(nx)}{n^2}$ converge normalement donc uniformément.
 \end{Ex}
 \begin{NB}La convergence uniforme n'implique pas la convergence normale. La série de fonctions $\sum \frac{(-1)^n}{x+n}$ converge uniformément sur $\mathbb{R}^+$ mais pas normalement. On a$$ \forall  n\in \N   , \sup_{x\in \mathbb{R}^+}\left| \frac{(-1)^n}{x+n}\right|=\frac{1}{n}.$$ La série harmonique $\sum \frac{1}{n}$ est divergente.
 \end{NB}
 
-%
-%
 \section{Régularité de la limite d'une suite/série de fonctions}
 
 \subsection{Continuité}\label{sec:cont}
