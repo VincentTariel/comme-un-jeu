@@ -1,0 +1,152 @@
+\documentclass{yann}
+\usepackage[most]{tcolorbox}
+
+\newcommand{\FIK}{\mathcal{F}(I,𝕂)}
+\newcommand{\fn}{(f_n)_{n∈ℕ}}
+\newcommand{\Sfn}{∑_n f_n}
+
+\begin{document}
+
+\title{Suites et séries de fonctions : feuille d'exercices}
+\maketitle
+\Exercice[Domaine de définition]
+Soit $\zeta(x)=\sum_{n=1}^\infty \frac{1}{n^x}$ et $\mu(x)=\sum_{n=1}^\infty \frac{(-1)^n}{n^x}$.\\
+Déterminer le domaine de définition de la fonction $\zeta$, appelé fonction de Rienman et de la fonction $\mu$. 
+% voir h prepa analalyse dans le cours
+
+
+
+\Exercice[Convergence simple]
+Soit $(f_n), (g_n)$ et $h_n$, les suites de fonctions définies par   $\forall n \in \mathbb{N}^* : f_n: x\mapsto x^n,\quad g_n: x\mapsto (1+\frac x n)^n,\quad h_n:x\mapsto x n^a e^{-nx}$.
+Démontrer que ces fonctions converge simplement sur l'intervalle $[0,1]$ et déterminer la limite. 
+
+\Exercice[Convergence uniforme]
+Soit la suite de fonctions $(f_n)$ définie par : 
+$$\Fonction{f_n}{\mathbb{R}^+}{\mathbb{R}}{x}{x^2e^{-nx}}, \quad \forall n \in \mathbb{N}.$$
+Étudier la convergence de cette suite de fonctions. 
+% voir h prepa analalyse dans le cours
+\Exercice[Vrai/Faux]
+Soit $(f_n)$ une suite de fonctions qui converge simplement vers une fonction $f$ sur un intervalle $I$. Dire si les assertions suivantes sont vraies ou fausses :
+\begin{enumerate}
+\item Si les $f_n$ sont croissantes, alors $f$ aussi.
+\item Si les $f_n$ sont strictement croissantes, alors $f$ aussi.
+\item Si les $f_n$ sont périodiques de période $T$, alors $f$ aussi.
+\item Si les $f_n$ sont continues en $a$, alors $f$ aussi.
+\end{enumerate}
+Reprendre l'exercice en remplaçant la convergence simple par la convergence uniforme.
+
+
+% Exercice 1775
+\Exercice[\'Etude de convergence simple et uniforme détaillée]
+Pour $x\in\mathbb R$, on pose $f_n(x)=1+x+\dots+x^{n-1}$.
+\begin{enumerate}
+\item \'Etudier la convergence simple de la suite de fonctions $(f_n)$. On note $f(x)$ la limite de la suite $(f_n(x))$ lorsque cette limite existe.
+\item On pose, pour $x\in ]-1,1[$, $\varphi_n(x)=f(x)-f_n(x)$. Vérifier que 
+$$\varphi_n(x)=\frac{x^n}{1-x}.$$
+\item Quelle est la limite de $\varphi_n$ en $1$? En déduire que la convergence n'est pas uniforme sur $]-1,1[$. 
+\item Soit $a\in ]0,1[$. Démontrer que $(f_n)$ converge uniformément vers $f$ sur $[-a,a]$.
+\end{enumerate}
+
+
+% Exercice 1776
+\Exercice[Convergence uniforme sur un intervalle plus petit...]
+On pose, pour $n\geq 1$ et $x\in ]0,1]$, $f_n(x)=nx^n\ln(x)$ et $f_n(0)=0$.
+\begin{enumerate}
+\item Démontrer que $(f_n)$ converge simplement sur $[0,1]$ vers une fonction $f$ que l'on précisera. On note ensuite $g=f-f_n$.
+\item \'Etudier les variations de $g$. 
+\item En déduire que la convergence de $(f_n)$ vers $f$ n'est pas uniforme sur $[0,1]$.
+\item Soit $a\in ]0,1]$. En remarquant qu'il existe $n_0\in\mathbb N$ tel que $e^{-1/n}\geq a$ pour tout $n\geq n_0$, démontrer que la suite $(f_n)$ converge uniformément vers $f$ sur $[0,a]$.
+\end{enumerate}
+
+
+
+
+
+\Exercice[Avec paramètre]
+Soit $a\geq 0$. On définit la suite de fonctions $(f_n)$ sur $[0,1]$ par $f_n(x)=n^a x^n(1-x)$.
+Montrer que la suite $(f_n)$ converge simplement vers 0 sur $[0,1]$, mais que la convergence est uniforme si et seulement si
+$a<1.$
+
+
+\Exercice[Convergence uniforme et fonctions bornées]
+Soit $(f_n)$ une suite de fonctions \emph{bornées}, $f_n:\mathbb R\to\mathbb R$.
+On suppose que la suite $(f_n)$ converge uniformément vers $f$. Montrer que $f$ est
+bornée. Le résultat persiste-t-il si on suppose uniquement la convergence simple?
+
+
+\Exercice[Convergence simple et fonctions décroissantes]
+Soit $(f_n)$ une suite de fonctions décroissantes définies sur $[0,1]$ telle que $(f_n)$ converge simplement vers la fonction nulle. Montrer que la convergence est en fait uniforme.
+
+
+
+
+\Exercice[Exemples et contre-exemples]
+Pour $x\geq 0$, on pose $u_n(x)=\frac{x}{n^2+x^2}.$
+\begin{enumerate}
+\item Montrer que la série $\sum_{n=1}^{+\infty}u_n$ converge simplement sur $\mathbb R_+$.
+\item  Montrer que la série $\sum_{n=1}^{+\infty}u_n$ converge uniformémement sur tout intervalle $[0,A]$,
+avec $A>0$.
+\item Vérifier que, pour tout $n\in\mathbb N$, $\sum_{k=n+1}^{2n}\frac{n}{n^2+k^2}\geq\frac 15$.
+\item En déduire que la série $\sum_{n\geq 1}u_n$ ne converge pas uniformément sur $\mathbb R_+$.
+\item Montrer que la série $\sum_{n=1}^{+\infty}(-1)^n u_n$ converge uniformément sur $\mathbb R_+$.
+\item Montrer que la série $\sum_{n=1}^{+\infty}(-1)^n u_n$ converge normalement sur tout intervalle $[0,A]$,
+avec $A>0$.
+\item Montrer que la série $\sum_{n=1}^{+\infty}(-1)^n u_n$ ne converge pas normalement sur $\mathbb R_+$.
+\end{enumerate}
+
+
+\Exercice[Série alternée]
+On considère la série de fonctions $S(x)=\sum_{n=1}^{+\infty}\frac{(-1)^n}{x+n}$. 
+\begin{enumerate}
+\item Prouver que $S$ est définie sur $I=]-1,+\infty[$.
+\item Prouver que $S$ est continue sur $I$.
+\item Prouver que $S$ est dérivable sur $I$, calculer sa dérivée et en déduire que $S$ est croissante sur $I$.
+\item Quelle est la limite de $S$ en $-1$? en $+\infty$?
+\end{enumerate}
+
+
+
+\Exercice[Convergence normale]
+Soit $\zeta(x)=\sum_{n=1}^\infty \frac{1}{n^x}$.\\
+Démontrer que la fonction $zeta$ converge normalement sur tout intervalle $[a,\infty[$ avec $a>1$.\\
+En déduire la continuité de la fonction  $\zeta$ sur $]1,\infty[$.\\
+Donner la limite $\lim\limits_{x\to \infty}\zeta(x)$.
+ 
+ 
+ \Exercice[Equivalent Série-Intégrale]
+On considère la série de fonctions $\sum f_n$, où pour tout $n>0$, $\Fonction{f_n}{\mathbb{R}^{+*}}{\mathbb{R}}{x}{\frac{1}{\sh (nx)}}$. 
+\begin{enumerate}
+\item Donner le domaine de définition de la fonction $f(x)=\sum_{n=0}^{\infty} f_n(x)$.
+\item Démontrer que la fonction $f$ est continue sur $]0,+\infty[$.
+\item Donner un équivalent de $0$ de $f$. 
+\end{enumerate}
+
+%page 113 H-prépa analyse
+
+
+ \Exercice[Convergence suite de fonctions]
+On considère la suite de fonctions $(f_n)$, où pour tout $n>0$, $\Fonction{f_n}{[0,1]}{\mathbb{R}}{x}{x^n(1-x)^n}$.  
+\begin{enumerate}
+\item Donner le domaine de définition de la fonction $f(x)=\lim_{n\to\infty} f_n(x)$.
+\item Démontrer que la suite de fonctions $f_n$ converge uniformément sur $[0,1]$.
+\end{enumerate}
+
+
+
+ \Exercice[Convergence suite de fonctions]
+On considère la suite de fonctions $\sum f_n$, où pour tout $n>1$, $\Fonction{f_n}{[0,1]}{\mathbb{R}}{x}{\frac{xe^{-nx}}{\ln n}}$.  
+\begin{enumerate}
+\item Donner le domaine de définition de la fonction $f(x)=\sum_{n=2}^\infty f_n(x)$.
+\item Démontrer que la fonction $f$ est continue sur $\mathbb{R}^{+*}$.
+\item Démontrer que la fonction $f$ est continue sur $\mathbb{R}^{+}$.
+\end{enumerate}
+
+
+ \Exercice[Espérance et variance de loi géométrique]
+Soit $X$, une variable aléatoire suivant une loi géométrique de paramètre p, $\mathcal{G}(p)$,c'est à dire  $$\forall k \in \mathbb{N}^*:\mathbb{P}(X=k)=(1-p)^{k-1}p.$$
+\begin{enumerate}
+\item Calculer l'espérance de $X$
+\item Calculer la variance de $X$
+\end{enumerate}
+
+\end{document}
