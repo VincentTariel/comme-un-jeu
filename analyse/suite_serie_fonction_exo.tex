@@ -1,152 +1,234 @@
-\documentclass{yann}
-\usepackage[most]{tcolorbox}
 
-\newcommand{\FIK}{\mathcal{F}(I,ð•‚)}
-\newcommand{\fn}{(f_n)_{nâˆˆâ„•}}
-\newcommand{\Sfn}{âˆ‘_n f_n}
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsfonts,amsmath,amssymb,graphicx}
+\usepackage[francais]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{answers}
+\usepackage{a4wide,jlq2eams} 
+\usepackage{multicol}
+%---- Dimensions des marges ---
+\setlength{\paperwidth}{21cm} 
+\setlength{\paperheight}{29.7cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\oddsidemargin}{0cm} 
+\setlength{\topmargin}{-2.5cm}
+\setlength{\headsep}{0.7cm} 
+\setlength{\headheight}{1cm}
+\setlength{\textheight}{25cm} 
+\setlength{\textwidth}{17cm}
+
+
+
+
+%---- Structure Exercice -----
+\newtheorem{Exc}{Exercice}
+\Newassociation{correction}{Soln}{mycor}
+\Newassociation{indication}{Indi}{myind}
+%\newcommand{\precorrection}{~{\bf \footnotesize [Exercice corrig\'e]}}
+%\newcommand{\preindication}{~{\bf \footnotesize [Indication]}}
+\renewcommand{\Solnlabel}[1]{\bf \emph{Correction #1}}
+\renewcommand{\Indilabel}[1]{\bf \emph{Indication #1}}
+
+\def\exo#1{\futurelet\testchar\MaybeOptArgmyexoo}
+\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
+                        \else \let\next\NoOptArgmyexoo \fi \next}
+\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
+\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
+
+\newcommand{\finexo}{\end{Exc}}
+\newcommand{\flag}[1]{}
+
+\newtheorem{question}{Question}
+
+
+
+%---- Style de l'entete -----                     % -> à personnaliser <-
+\setlength{\parindent}{0cm}
+\newcommand{\entete}[1]
+{
+{\noindent
+  \textsf{Feuille d'exercices}            % Université
+}
+\hrule
+\hrule
+\begin{center} 
+\textbf{\textsf{\Large 
+     Suites et séries de fonctions     % TITRE
+}}
+\end{center}
+\hrule
+}
+
 
 \begin{document}
 
-\title{Suites et sÃ©ries de fonctions : feuille d'exercices}
-\maketitle
-\Exercice[Domaine de dÃ©finition]
+%%--- Gestion des corrections ---
+ \Opensolutionfile{mycor}[ficcorex]
+ \Opensolutionfile{myind}[ficind]
+ \entete{\'Enoncés}
+% 
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Domaine de définition]
 Soit $\zeta(x)=\sum_{n=1}^\infty \frac{1}{n^x}$ et $\mu(x)=\sum_{n=1}^\infty \frac{(-1)^n}{n^x}$.\\
-DÃ©terminer le domaine de dÃ©finition de la fonction $\zeta$, appelÃ© fonction de Rienman et de la fonction $\mu$. 
+Déterminer le domaine de définition de la fonction $\zeta$, appelé fonction de Rienman et de la fonction $\mu$. 
 % voir h prepa analalyse dans le cours
-
-
-
-\Exercice[Convergence simple]
-Soit $(f_n), (g_n)$ et $h_n$, les suites de fonctions dÃ©finies par   $\forall n \in \mathbb{N}^* : f_n: x\mapsto x^n,\quad g_n: x\mapsto (1+\frac x n)^n,\quad h_n:x\mapsto x n^a e^{-nx}$.
-DÃ©montrer que ces fonctions converge simplement sur l'intervalle $[0,1]$ et dÃ©terminer la limite. 
-
-\Exercice[Convergence uniforme]
-Soit la suite de fonctions $(f_n)$ dÃ©finie par : 
+\finexo
+%
+%
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Convergence uniforme]
+Soit la suite de fonctions $(f_n)_{n\in\N}$ définie par : 
 $$\Fonction{f_n}{\mathbb{R}^+}{\mathbb{R}}{x}{x^2e^{-nx}}, \quad \forall n \in \mathbb{N}.$$
-Ã‰tudier la convergence de cette suite de fonctions. 
+Étudier la convergence de cette suite de fonctions. 
+\finexo
 % voir h prepa analalyse dans le cours
-\Exercice[Vrai/Faux]
-Soit $(f_n)$ une suite de fonctions qui converge simplement vers une fonction $f$ sur un intervalle $I$. Dire si les assertions suivantes sont vraies ou fausses :
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Vrai/Faux]
+Soit $(f_n)_{n\in\N}$ une suite de fonctions qui converge simplement vers une fonction $f$ sur un intervalle $I$. Dire si les assertions suivantes sont vraies ou fausses et le prouver :
 \begin{enumerate}
 \item Si les $f_n$ sont croissantes, alors $f$ aussi.
 \item Si les $f_n$ sont strictement croissantes, alors $f$ aussi.
-\item Si les $f_n$ sont pÃ©riodiques de pÃ©riode $T$, alors $f$ aussi.
+\item Si les $f_n$ sont périodiques de période $T$, alors $f$ aussi.
 \item Si les $f_n$ sont continues en $a$, alors $f$ aussi.
 \end{enumerate}
-Reprendre l'exercice en remplaÃ§ant la convergence simple par la convergence uniforme.
-
-
-% Exercice 1775
-\Exercice[\'Etude de convergence simple et uniforme dÃ©taillÃ©e]
+Reprendre l'exercice en remplaçant la convergence simple par la convergence uniforme.
+\finexo
+%
+%% Exercice 1775
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[\'Etude de convergence simple et uniforme détaillée]
 Pour $x\in\mathbb R$, on pose $f_n(x)=1+x+\dots+x^{n-1}$.
 \begin{enumerate}
-\item \'Etudier la convergence simple de la suite de fonctions $(f_n)$. On note $f(x)$ la limite de la suite $(f_n(x))$ lorsque cette limite existe.
-\item On pose, pour $x\in ]-1,1[$, $\varphi_n(x)=f(x)-f_n(x)$. VÃ©rifier que 
+\item \'Etudier la convergence simple de la suite de fonctions $(f_n)_{n\in\N}$. On note $f(x)$ la limite de la suite $(f_n(x))$ lorsque cette limite existe.
+\item On pose, pour $x\in ]-1,1[$, $\varphi_n(x)=f(x)-f_n(x)$. Vérifier que 
 $$\varphi_n(x)=\frac{x^n}{1-x}.$$
-\item Quelle est la limite de $\varphi_n$ en $1$? En dÃ©duire que la convergence n'est pas uniforme sur $]-1,1[$. 
-\item Soit $a\in ]0,1[$. DÃ©montrer que $(f_n)$ converge uniformÃ©ment vers $f$ sur $[-a,a]$.
+\item Quelle est la limite de $\varphi_n$ en $1$? En déduire que la convergence n'est pas uniforme sur $]-1,1[$. 
+\item Soit $a\in ]0,1[$. Démontrer que $(f_n)_{n\in\N}$ converge uniformément vers $f$ sur $[-a,a]$.
 \end{enumerate}
-
-
+\finexo
+%
 % Exercice 1776
-\Exercice[Convergence uniforme sur un intervalle plus petit...]
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Convergence uniforme sur un intervalle plus petit...]
 On pose, pour $n\geq 1$ et $x\in ]0,1]$, $f_n(x)=nx^n\ln(x)$ et $f_n(0)=0$.
 \begin{enumerate}
-\item DÃ©montrer que $(f_n)$ converge simplement sur $[0,1]$ vers une fonction $f$ que l'on prÃ©cisera. On note ensuite $g=f-f_n$.
+\item Démontrer que $(f_n)_{n\in\N}$ converge simplement sur $[0,1]$ vers une fonction $f$ que l'on précisera. On note ensuite $g=f-f_n$.
 \item \'Etudier les variations de $g$. 
-\item En dÃ©duire que la convergence de $(f_n)$ vers $f$ n'est pas uniforme sur $[0,1]$.
-\item Soit $a\in ]0,1]$. En remarquant qu'il existe $n_0\in\mathbb N$ tel que $e^{-1/n}\geq a$ pour tout $n\geq n_0$, dÃ©montrer que la suite $(f_n)$ converge uniformÃ©ment vers $f$ sur $[0,a]$.
+\item En déduire que la convergence de $(f_n)_{n\in\N}$ vers $f$ n'est pas uniforme sur $[0,1]$.
+\item Soit $a\in ]0,1]$. En remarquant qu'il existe $n_0\in\mathbb N$ tel que $e^{-1/n}\geq a$ pour tout $n\geq n_0$, démontrer que la suite $(f_n)_{n\in\N}$ converge uniformément vers $f$ sur $[0,a]$.
 \end{enumerate}
+\finexo
 
 
 
 
-
-\Exercice[Avec paramÃ¨tre]
-Soit $a\geq 0$. On dÃ©finit la suite de fonctions $(f_n)$ sur $[0,1]$ par $f_n(x)=n^a x^n(1-x)$.
-Montrer que la suite $(f_n)$ converge simplement vers 0 sur $[0,1]$, mais que la convergence est uniforme si et seulement si
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Avec paramètre]
+Soit $a\geq 0$. On définit la suite de fonctions $(f_n)_{n\in\N}$ sur $[0,1]$ par $f_n(x)=n^a x^n(1-x)$.
+Montrer que la suite $(f_n)_{n\in\N}$ converge simplement vers 0 sur $[0,1]$, mais que la convergence est uniforme si et seulement si
 $a<1.$
+\finexo
+
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Convergence uniforme et fonctions bornées]
+Soit $(f_n)_{n\in\N}$ une suite de fonctions \emph{bornées}, $f_n:\mathbb R\to\mathbb R$.
+On suppose que la suite $(f_n)_{n\in\N}$ converge uniformément vers $f$. Montrer que $f$ est
+bornée. Le résultat persiste-t-il si on suppose uniquement la convergence simple?
+\finexo
+
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Convergence simple et fonctions décroissantes]
+Soit $(f_n)_{n\in\N}$ une suite de fonctions décroissantes définies sur $[0,1]$ telle que $(f_n)_{n\in\N}$ converge simplement vers la fonction nulle. Montrer que la convergence est en fait uniforme.
+\finexo
 
 
-\Exercice[Convergence uniforme et fonctions bornÃ©es]
-Soit $(f_n)$ une suite de fonctions \emph{bornÃ©es}, $f_n:\mathbb R\to\mathbb R$.
-On suppose que la suite $(f_n)$ converge uniformÃ©ment vers $f$. Montrer que $f$ est
-bornÃ©e. Le rÃ©sultat persiste-t-il si on suppose uniquement la convergence simple?
 
-
-\Exercice[Convergence simple et fonctions dÃ©croissantes]
-Soit $(f_n)$ une suite de fonctions dÃ©croissantes dÃ©finies sur $[0,1]$ telle que $(f_n)$ converge simplement vers la fonction nulle. Montrer que la convergence est en fait uniforme.
-
-
-
-
-\Exercice[Exemples et contre-exemples]
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Exemples et contre-exemples]
 Pour $x\geq 0$, on pose $u_n(x)=\frac{x}{n^2+x^2}.$
 \begin{enumerate}
-\item Montrer que la sÃ©rie $\sum_{n=1}^{+\infty}u_n$ converge simplement sur $\mathbb R_+$.
-\item  Montrer que la sÃ©rie $\sum_{n=1}^{+\infty}u_n$ converge uniformÃ©mement sur tout intervalle $[0,A]$,
+\item Montrer que la série $\sum_{n=1}^{+\infty}u_n$ converge simplement sur $\mathbb R_+$.
+\item  Montrer que la série $\sum_{n=1}^{+\infty}u_n$ converge uniformément sur tout intervalle $[0,A]$,
 avec $A>0$.
-\item VÃ©rifier que, pour tout $n\in\mathbb N$, $\sum_{k=n+1}^{2n}\frac{n}{n^2+k^2}\geq\frac 15$.
-\item En dÃ©duire que la sÃ©rie $\sum_{n\geq 1}u_n$ ne converge pas uniformÃ©ment sur $\mathbb R_+$.
-\item Montrer que la sÃ©rie $\sum_{n=1}^{+\infty}(-1)^n u_n$ converge uniformÃ©ment sur $\mathbb R_+$.
-\item Montrer que la sÃ©rie $\sum_{n=1}^{+\infty}(-1)^n u_n$ converge normalement sur tout intervalle $[0,A]$,
+\item Vérifier que, pour tout $n\in\mathbb N$, $\sum_{k=n+1}^{2n}\frac{n}{n^2+k^2}\geq\frac 15$.
+\item En déduire que la série $\sum_{n\geq 1}u_n$ ne converge pas uniformément sur $\mathbb R_+$.
+\item Montrer que la série $\sum_{n=1}^{+\infty}(-1)^n u_n$ converge uniformément sur $\mathbb R_+$.
+\item Montrer que la série $\sum_{n=1}^{+\infty}(-1)^n u_n$ converge normalement sur tout intervalle $[0,A]$,
 avec $A>0$.
-\item Montrer que la sÃ©rie $\sum_{n=1}^{+\infty}(-1)^n u_n$ ne converge pas normalement sur $\mathbb R_+$.
+\item Montrer que la série $\sum_{n=1}^{+\infty}(-1)^n u_n$ ne converge pas normalement sur $\mathbb R_+$.
 \end{enumerate}
+\finexo
 
-
-\Exercice[SÃ©rie alternÃ©e]
-On considÃ¨re la sÃ©rie de fonctions $S(x)=\sum_{n=1}^{+\infty}\frac{(-1)^n}{x+n}$. 
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Série alternée]
+On considère la série de fonctions $S(x)=\sum_{n=1}^{+\infty}\frac{(-1)^n}{x+n}$. 
 \begin{enumerate}
-\item Prouver que $S$ est dÃ©finie sur $I=]-1,+\infty[$.
+\item Prouver que $S$ est définie sur $I=]-1,+\infty[$.
 \item Prouver que $S$ est continue sur $I$.
-\item Prouver que $S$ est dÃ©rivable sur $I$, calculer sa dÃ©rivÃ©e et en dÃ©duire que $S$ est croissante sur $I$.
+\item Prouver que $S$ est dérivable sur $I$, calculer sa dérivée et en déduire que $S$ est croissante sur $I$.
 \item Quelle est la limite de $S$ en $-1$? en $+\infty$?
 \end{enumerate}
+\finexo
 
 
-
-\Exercice[Convergence normale]
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Convergence normale]
 Soit $\zeta(x)=\sum_{n=1}^\infty \frac{1}{n^x}$.\\
-DÃ©montrer que la fonction $zeta$ converge normalement sur tout intervalle $[a,\infty[$ avec $a>1$.\\
-En dÃ©duire la continuitÃ© de la fonction  $\zeta$ sur $]1,\infty[$.\\
+Démontrer que la fonction $zeta$ converge normalement sur tout intervalle $[a,\infty[$ avec $a>1$.\\
+En déduire la continuité de la fonction  $\zeta$ sur $]1,\infty[$.\\
 Donner la limite $\lim\limits_{x\to \infty}\zeta(x)$.
+ \finexo
  
- 
- \Exercice[Equivalent SÃ©rie-IntÃ©grale]
-On considÃ¨re la sÃ©rie de fonctions $\sum f_n$, oÃ¹ pour tout $n>0$, $\Fonction{f_n}{\mathbb{R}^{+*}}{\mathbb{R}}{x}{\frac{1}{\sh (nx)}}$. 
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Equivalent Série-Intégrale]
+On considère la série de fonctions $\sum f_n$, où pour tout $n>0$, $\Fonction{f_n}{\mathbb{R}^{+*}}{\mathbb{R}}{x}{\frac{1}{\sh (nx)}}$. 
 \begin{enumerate}
-\item Donner le domaine de dÃ©finition de la fonction $f(x)=\sum_{n=0}^{\infty} f_n(x)$.
-\item DÃ©montrer que la fonction $f$ est continue sur $]0,+\infty[$.
-\item Donner un Ã©quivalent de $0$ de $f$. 
+\item Donner le domaine de définition de la fonction $f(x)=\sum_{n=0}^{\infty} f_n(x)$.
+\item Démontrer que la fonction $f$ est continue sur $]0,+\infty[$.
+\item Donner un équivalent de $0$ de $f$. 
 \end{enumerate}
 
-%page 113 H-prÃ©pa analyse
+%page 113 H-prépa analyse
+\finexo
 
-
- \Exercice[Convergence suite de fonctions]
-On considÃ¨re la suite de fonctions $(f_n)$, oÃ¹ pour tout $n>0$, $\Fonction{f_n}{[0,1]}{\mathbb{R}}{x}{x^n(1-x)^n}$.  
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Convergence suite de fonctions]
+On considère la suite de fonctions $(f_n)_{n\in\N}$, où pour tout $n>0$, $\Fonction{f_n}{[0,1]}{\mathbb{R}}{x}{x^n(1-x)^n}$.  
 \begin{enumerate}
-\item Donner le domaine de dÃ©finition de la fonction $f(x)=\lim_{n\to\infty} f_n(x)$.
-\item DÃ©montrer que la suite de fonctions $f_n$ converge uniformÃ©ment sur $[0,1]$.
+\item Donner le domaine de définition de la fonction $f(x)=\lim_{n\to\infty} f_n(x)$.
+\item Démontrer que la suite de fonctions $f_n$ converge uniformément sur $[0,1]$.
 \end{enumerate}
+\finexo
 
 
-
- \Exercice[Convergence suite de fonctions]
-On considÃ¨re la suite de fonctions $\sum f_n$, oÃ¹ pour tout $n>1$, $\Fonction{f_n}{[0,1]}{\mathbb{R}}{x}{\frac{xe^{-nx}}{\ln n}}$.  
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Convergence suite de fonctions]
+On considère la suite de fonctions $\sum f_n$, où pour tout $n>1$, $\Fonction{f_n}{[0,1]}{\mathbb{R}}{x}{\frac{xe^{-nx}}{\ln n}}$.  
 \begin{enumerate}
-\item Donner le domaine de dÃ©finition de la fonction $f(x)=\sum_{n=2}^\infty f_n(x)$.
-\item DÃ©montrer que la fonction $f$ est continue sur $\mathbb{R}^{+*}$.
-\item DÃ©montrer que la fonction $f$ est continue sur $\mathbb{R}^{+}$.
+\item Donner le domaine de définition de la fonction $f(x)=\sum_{n=2}^\infty f_n(x)$.
+\item Démontrer que la fonction $f$ est continue sur $\mathbb{R}^{+*}$.
+\item Démontrer que la fonction $f$ est continue sur $\mathbb{R}^{+}$.
 \end{enumerate}
+\finexo
 
-
- \Exercice[EspÃ©rance et variance de loi gÃ©omÃ©trique]
-Soit $X$, une variable alÃ©atoire suivant une loi gÃ©omÃ©trique de paramÃ¨tre p, $\mathcal{G}(p)$,c'est Ã  dire  $$\forall k \in \mathbb{N}^*:\mathbb{P}(X=k)=(1-p)^{k-1}p.$$
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Espérance et variance de loi géométrique]
+Soit $X$, une variable aléatoire suivant une loi géométrique de paramètre p, $\mathcal{G}(p)$,c'est à dire  $$\forall k \in \mathbb{N}^*:\mathbb{P}(X=k)=(1-p)^{k-1}p.$$
 \begin{enumerate}
-\item Calculer l'espÃ©rance de $X$
+\item Calculer l'espérance de $X$
 \item Calculer la variance de $X$
 \end{enumerate}
+\finexo
+
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Devoir Maison]
+CCP mp 2017 sujet 1 mathématique. Le problème est sur le série trigonométrique. 
+\finexo
+
+
+%--- Fin des exercices ---
+%------------------------------------------------------
+%------------------------------------------------------
+
+%--- Gestion des corrections ---
+% \ \newpage
+% \setcounter{page}{1}
+% \entete{Indications}
+%
+% \Closesolutionfile{myind}
+% \Readsolutionfile{myind}
+
+ \ \newpage
+ \setcounter{page}{1}
+ \entete{Corrections}
+
+ \Closesolutionfile{mycor}
+ \Readsolutionfile{mycor}
 
 \end{document}
+\endinput
+

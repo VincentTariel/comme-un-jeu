@@ -96,9 +96,9 @@ La première partie de ce cours définira les notions de suites et séries de fonct
 \textit{Notations} : 
 \begin{itemize}
 \item
-  $I$ désigne un intervalle de $\R $ non vide et non réduit à un point;
+  $I$ désigne un intervalle de $\R $ non vide et non réduit à un point
 \item
-  $\K  $ désigne $\R $ ou $\C    $;
+  $\K  $ désigne $\R $ ou $\C    $
 \item
   $\FIK$ désigne le $\K-$espace vectoriel des fonctions de $I$ dans $\K  $.
 \end{itemize}
@@ -118,12 +118,13 @@ $$ \Fonction{f_n}{[0,1]}{\R }{x}{x^n},\quad \Fonction{g_n}{\R }{\R }{x}{\left(1+
 
 \begin{Df}[Série de fonctions]
 Soit $\fn$ une suite de fonctions de $I$ dans $\K  $.
-On pose \[ \Fonction{S_n}{I}{\K  }{x}{\sum _{k=0}^n f_k(x)} \]
+On pose \[ \Fonction{S_n}{I}{\K  }{x}{\sum _{k=0}^n f_k(x)}.\]
 On appelle \defi{série de fonctions} de $I$ dans $\K$ de terme général $f_n$, noté  $\sum _n f_n$, la suite des \defi{sommes partielles} $(S_n)_{n\in \N   }$.
 \end{Df}
-\begin{Ex}[Série géométrique]La série géométrique : $\sum x^n $ 
+\begin{Ex}[Série entière]Les séries de la forme $\sum a_n x^n $  où $(a_n)_{n\in\N}$ est une suite réelle ou complexe. Par exemple, la série géométrique $\sum x^n$.
 \end{Ex}
-
+\begin{Ex}[Série trigonométrique]Les séries de la forme $\sum a_n  \cos (nx) $ et $\sum b_n  \sin (nx) $ où $(a_n)_{n\in\N}$ et $(a_n)_{n\in\N}$ suites réelles ou complexes.
+\end{Ex}
 
 %% -----------------------------------------------------------------------------
 \subsection{Modes de convergence}
@@ -133,12 +134,12 @@ On appelle \defi{série de fonctions} de $I$ dans $\K$ de terme général $f_n$, no
 La convergence simple permet de définir une fonction comme limite d'une suite de fonctions ou d'une série de fonctions.
 
 \begin{Df}[Convergence simple  $\fn$]
-Soit $\fn$ une suite de fonctions de $I$ dans $\K  $.
+Soit $\fn$ une suite de fonctions de $I$ dans $\K  $.\\
 On dit que la suite de fonctions $\fn$ \defi{converge simplement} vers $f$ sur $I$ si  
 \[  \forall x \in I, \text{ la suite numérique } (f_n(x))_{n\in \mathbb{N}} \text{ converge}, \] 
 c'est à dire que $\lim\limits_{n \to \infty}f_n(x)$ existe dans $\K  $, pour tout $x\in I$. Dans ce cas, on peut définir la fonction:
 $$
- \Fonction{f}{I}{\K  }{x}{\lim\limits_{n \to \infty}f_n(x)}.$$
+ \Fonction{f}{I}{\K  }{x}{\lim\limits_{n \to \infty}f_n(x)},$$
  appelée \defi{limite simple} sur $I$ de la suite $(f_n)_{n\in \N   }$.
 \end{Df} 
 
@@ -233,7 +234,8 @@ $$
 
 \begin{Ex}[Série géométrique] Soit la série de fonctions $\sum x^n$.\\
 Fixons $a\in ]-1,1[$.\\
-On a $\sum_{k=0}^n a^k= \frac{1-a^{n+1}}{1-a}\Toninf  \frac{1}{1-a}$ car $|a|<1$. Donc la série converge simplement sur $]-1,1[$ et sa limite simple est la fonction $x\mapsto \frac{1}{1-x}$.
+On a $\sum_{k=0}^n a^k= \frac{1-a^{n+1}}{1-a}\Toninf  \frac{1}{1-a}$ car $|a|<1$. \\
+En conclusion,  la série  $\sum x^n$ converge simplement sur $]-1,1[$ vers la limite simple $x\mapsto \frac{1}{1-x}$.
 \end{Ex}
 
 \begin{Prop}[Unicité de la limite simple]
@@ -267,7 +269,7 @@ $$ \Abs{f_n(a) - f(a)}\leq   \sup_{x\in I} \Abs{f_n(x) - f(x)}  \overbrace{\tend
 Donc la suite numérique $(f_n(a))_{n\in\N}$ converge vers $f(a)$. Donc  $\fn$ converge simplement vers $f$.
 \end{proof}
 \begin{Methode}[Prouver la convergence uniforme]
-On définit la limite simple, $f$, de la suite $\fn$ à l'aide de la convergence simple car si la limite de convergence uniforme existe, elle est égale à celle de la convergence simple. Puis, on vérifie que le suite  $\fn$ converge uniformément vers cette limite $f$ par 
+On définit la limite simple, $f$, de la suite $\fn$ à l'aide de la convergence simple. Puis, on vérifie que le suite  $\fn$ converge uniformément vers cette limite $f$ car si la limite de convergence uniforme existe, elle est égale à celle de la convergence simple par 
 \begin{enumerate}
 \item\textit{ méthode 1} : une étude de fonction pour déterminer $\sup_{x\in I}\Abs{f_n(x) - f(x)}$
 \item\textit{ méthode 2} :  une majoration $\sup_{x\in I}\Abs{f_n(x) - f(x)}$ par une quantité indépendante de $x$ et qui tend vers 0.
@@ -391,9 +393,7 @@ On suppose que:
 Alors:
 \begin{itemize}
 \item
-  la suite $(l_n)_{n\in \N   }$ converge. Notons $l$ sa limite;
-\item
-  $f$ admet une limite en $a$;
+  la suite $(l_n)_{n\in \N   }$ converge. Notons $l$ sa limite.
 \item
   $\lim\limits_{x\to a} f(x) = l$, c'est à dire
   \[ 
@@ -401,6 +401,34 @@ Alors:
    \]
 \end{itemize}
 \end{Th}
+\begin{proof}[Hors programme (utilisation du critère de Cauchy)]
+On a :
+\begin{itemize}
+\item \textit{$(l_n)_{n\in\N}$ suite de Cauchy :} Soit $ \varepsilon >0$. \\
+Comme $\fn$ converge uniformément vers $f$, il existe $N$ tel que,
+$$\forall n>N:\quad \sup_{x\in I } \vert f_{n}(x)-f(x)\vert\leq\varepsilon.$$ 
+Soit $x\in I$, $n>N$ et $k\in \N$.
+$$\vert f_{n+k}(x)-f_n(x)\vert \leq \vert f_{n+k}(x)-f(x) \vert + \vert f_{n}(x)-f(x) \vert\leq \sup_{x\in I } \vert f_{n+k}(x)-f(x)\vert +\sup_{x\in I } \vert f_{n}(x)-f(x)\vert\leq 2\varepsilon $$ 
+Dans cette inégalité, prenons la limite quand $ x$ tend vers $ a$, 
+$$\displaystyle \vert l_{n+k}-l_n\vert\leqslant 2\varepsilon.$$
+En conclusion, $(l_n)_{n\in\N}$ est une suite de Cauchy. Comme $\K$ est complet, $(l_n)_{n\in\N}$ converge vers une limite $l$.
+  \item \textit{$\lim\limits_{x\to a} f(x) = l$ : } Soit $ \varepsilon >0$. \\
+  
+  
+\end{itemize}
+
+%Fixons  
+%Donc pour tout $ n>n_0$, pour tout $ k\geqslant 0$, et pour tout $ x\in I$,
+%$$\displaystyle \vert f_{n+k}(x)-f_n(x)\vert<\varepsilon$$
+%Dans cette inégalité, prenons la limite quand $ x$ tend vers $ a$ : pour tout $ n>n_0$, pour tout $ k\geqslant 0$ :
+%
+%La suite $ (l_n)_{n\in\mathbb{N}}$ est une suite de Cauchy, donc elle converge. Soit $ l$ sa limite. Nous devons montrer que $ f(x)$ tend vers $ l$ quand $ x$ tend vers $ a$.
+%$$\displaystyle \vert f(x)-l\vert\leqslant \vert f(x)-f_n(x)\vert+\vert f_n(x)-l_n\vert+\vert l_n-l\vert\;.$$
+%Il existe $ n_0$ tel que pour tout $ n>n_0$, $ \vert l_n-l\vert<\varepsilon /3$. Il existe $ n_1$ tel que pour tout $ n>n_1$ et pour tout $ x\in I$, $ \vert f(x)-f_n(x)\vert<\varepsilon /3$. Fixons alors $ n_2\geqslant \max\{n_0,n_1\}$. La fonction $ f_{n_2}(x)$ converge vers $ l_{n_2}$, donc il existe $ \eta$ tel que pour tout $ x\in ]a-\eta,a+\eta[$, $ \vert f_{n_2}(x)-l_{n_2}\vert<\varepsilon /3$. Au bilan, pour tout $ x\in ]a-\eta,a+\eta[$ :
+%$$\displaystyle \vert f(x)-l\vert\leqslant \frac{\varepsilon }{3}+\frac{\varepsilon }{3}+\frac{\varepsilon }{3}=\varepsilon \;.$$
+%Je ne sais pas prouver sans les suites de Cauchy/
+\end{proof}
+
 %
 \begin{Th}[Théorème de permutation limite-somme]
 Soit $\Sfn$ une série de fonctions de $I$ dans $\K  $.
