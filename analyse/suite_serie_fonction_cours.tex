@@ -401,35 +401,23 @@ Alors:
    \]
 \end{itemize}
 \end{Th}
-\begin{proof}[Hors programme (utilisation du critère de Cauchy)]
-On a :
-\begin{itemize}
-\item \textit{$(l_n)_{n\in\N}$ suite de Cauchy :} Soit $ \varepsilon >0$. \\
-Comme $\fn$ converge uniformément vers $f$, il existe $N$ tel que,
-$$\forall n>N:\quad \sup_{x\in I } \vert f_{n}(x)-f(x)\vert\leq\varepsilon.$$ 
-Soit $x\in I$, $n>N$ et $k\in \N$.
-$$\vert f_{n+k}(x)-f_n(x)\vert \leq \vert f_{n+k}(x)-f(x) \vert + \vert f_{n}(x)-f(x) \vert\leq \sup_{x\in I } \vert f_{n+k}(x)-f(x)\vert +\sup_{x\in I } \vert f_{n}(x)-f(x)\vert\leq 2\varepsilon $$ 
-Dans cette inégalité, prenons la limite quand $ x$ tend vers $ a$, 
-$$\displaystyle \vert l_{n+k}-l_n\vert\leqslant 2\varepsilon.$$
-En conclusion, $(l_n)_{n\in\N}$ est une suite de Cauchy. Comme $\K$ est complet, $(l_n)_{n\in\N}$ converge vers une limite $l$.
-  \item \textit{$\lim\limits_{x\to a} f(x) = l$ : } Soit $ \varepsilon >0$. \\
-  
-  
-\end{itemize}
+%\begin{proof}[Hors programme (utilisation du critère de Cauchy)]
+%On a :
+%\begin{itemize}
+%\item \textit{$(l_n)_{n\in\N}$ suite de Cauchy :} Soit $ \varepsilon >0$. \\
+%Comme $\fn$ converge uniformément vers $f$, il existe $N$ tel que,
+%$$\forall n>N:\quad \sup_{x\in I } \vert f_{n}(x)-f(x)\vert\leq\varepsilon.$$ 
+%Soit $x\in I$, $n>N$ et $k\in \N$.
+%$$\vert f_{n+k}(x)-f_n(x)\vert \leq \vert f_{n+k}(x)-f(x) \vert + \vert f_{n}(x)-f(x) \vert\leq \sup_{x\in I } \vert f_{n+k}(x)-f(x)\vert +\sup_{x\in I } \vert f_{n}(x)-f(x)\vert\leq 2\varepsilon $$ 
+%Dans cette inégalité, prenons la limite quand $ x$ tend vers $ a$, 
+%$$\displaystyle \vert l_{n+k}-l_n\vert\leqslant 2\varepsilon.$$
+%En conclusion, $(l_n)_{n\in\N}$ est une suite de Cauchy. Comme $\K$ est complet, $(l_n)_{n\in\N}$ converge vers une limite $l$.
+%  \item \textit{$\lim\limits_{x\to a} f(x) = l$ : } Soit $ \varepsilon >0$. \\
+%  $$\vert f(x)-l\vert \leq  \vert f(x)- l\vert $$ 
+%  
+%\end{itemize}
+%\end{proof}
 
-%Fixons  
-%Donc pour tout $ n>n_0$, pour tout $ k\geqslant 0$, et pour tout $ x\in I$,
-%$$\displaystyle \vert f_{n+k}(x)-f_n(x)\vert<\varepsilon$$
-%Dans cette inégalité, prenons la limite quand $ x$ tend vers $ a$ : pour tout $ n>n_0$, pour tout $ k\geqslant 0$ :
-%
-%La suite $ (l_n)_{n\in\mathbb{N}}$ est une suite de Cauchy, donc elle converge. Soit $ l$ sa limite. Nous devons montrer que $ f(x)$ tend vers $ l$ quand $ x$ tend vers $ a$.
-%$$\displaystyle \vert f(x)-l\vert\leqslant \vert f(x)-f_n(x)\vert+\vert f_n(x)-l_n\vert+\vert l_n-l\vert\;.$$
-%Il existe $ n_0$ tel que pour tout $ n>n_0$, $ \vert l_n-l\vert<\varepsilon /3$. Il existe $ n_1$ tel que pour tout $ n>n_1$ et pour tout $ x\in I$, $ \vert f(x)-f_n(x)\vert<\varepsilon /3$. Fixons alors $ n_2\geqslant \max\{n_0,n_1\}$. La fonction $ f_{n_2}(x)$ converge vers $ l_{n_2}$, donc il existe $ \eta$ tel que pour tout $ x\in ]a-\eta,a+\eta[$, $ \vert f_{n_2}(x)-l_{n_2}\vert<\varepsilon /3$. Au bilan, pour tout $ x\in ]a-\eta,a+\eta[$ :
-%$$\displaystyle \vert f(x)-l\vert\leqslant \frac{\varepsilon }{3}+\frac{\varepsilon }{3}+\frac{\varepsilon }{3}=\varepsilon \;.$$
-%Je ne sais pas prouver sans les suites de Cauchy/
-\end{proof}
-
-%
 \begin{Th}[Théorème de permutation limite-somme]
 Soit $\Sfn$ une série de fonctions de $I$ dans $\K  $.
 On suppose que:
