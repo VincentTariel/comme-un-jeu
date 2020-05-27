@@ -118,8 +118,10 @@ note $\int_a^b f(x) \,\mathrm dx$ cette limite. Sinon, on dit qu'elle diverge.
 \end{Df}
 \begin{Ex}
 Soit l'intégrale $\int_1^{+\infty } \frac{1}{x^2}\,\mathrm dx$.\\
-La fonction $ x\mapsto  \frac{1}{x^2}$ est continue sur $[1,{+\infty }[$.  Soit $t\in [1,{+\infty }[$.\\
-On a  $\int_1^t \frac{1}{x^2}\,\mathrm dx=[-\frac 1 x]_1^t=1-\frac{1}{t}\tend[t\to+\infty ]1$. Donc l'intégrale est convergente et son intégrale impropre est égale à 1.
+La fonction $ x\mapsto  \frac{1}{x^2}$ est continue sur $[1,{+\infty }[$.\\ 
+Soit $t\in [1,{+\infty }[$.\\
+On a  $\int_1^t \frac{1}{x^2}\,\mathrm dx=[-\frac 1 x]_1^t=1-\frac{1}{t}\tend[t\to+\infty ]1$.\\
+L'intégrale est convergente et son intégrale impropre est égale à 1.
 \end{Ex}
 \begin{Prop}[Indépendance de la borne fermée]
 Soit $f$ une fonction continue par morceaux sur $[a,b [$ avec $b \in \R$ ou $b = +\infty$. Soit $c\in[a,b[$.\\
@@ -153,21 +155,22 @@ note $\int_a^b f(x) \,\mathrm dx$ cette limite. Sinon, on dit qu'elle diverge.
 Soit l'intégrale $\int_0^{+\infty } \frac{1}{\sqrt{x}}\,\mathrm dx$.\\
 La fonction $ x\mapsto  \frac{1}{x^2}$ est continue sur $]0,+\infty[$. \\
 \begin{itemize}
-\item $\int_0^{1 } \frac{1}{\sqrt{x}}\,\mathrm dx$\\  Soit $t\in ]0,1]$.\\
-On a  $\int_t^1 \frac{1}{\sqrt{x}}\,\mathrm dx=[2 \sqrt{x}]_t^1=2(1-\sqrt{t})\tend[t\to 0 ]2$. Donc l'intégrale est convergente.
-\item $\int_1^{+\infty } \frac{1}{\sqrt{x}}\,\mathrm dx$\\ Soit $t\in [1,{+\infty }[$.\\
-On a  $\int_1^t \frac{1}{\sqrt{x}}\,\mathrm dx=[2 \sqrt{x}]_1^t=2(\sqrt{t}-1)\tend[t\to +\infty ]+\infty $. Donc l'intégrale est divergente.
+\item \textit{En 0 :}   Soit $t\in ]0,1]$.\\
+On a  $\int_t^1 \frac{1}{\sqrt{x}}\,\mathrm dx=[2 \sqrt{x}]_t^1=2(1-\sqrt{t})\tend[t\to 0 ]2$.\\Donc l'intégrale $\int_0^1  \frac{1}{\sqrt{x}}\,\mathrm dx$  est convergente.
+\item \textit{En $+\infty$ :} Soit $t\in [1,{+\infty }[$.\\
+On a  $\int_1^t \frac{1}{\sqrt{x}}\,\mathrm dx=[2 \sqrt{x}]_1^t=2(\sqrt{t}-1)\tend[t\to +\infty ]+\infty $.\\Donc l'intégrale $\int_1^{+\infty } \frac{1}{\sqrt{x}}\,\mathrm dx$ est divergente.
 \end{itemize}
 En conclusion,  l'intégrale $\int_0^{+\infty } \frac{1}{\sqrt{x}}\,\mathrm dx$ est divergente.
 \end{Ex}
 \begin{NB}
 Attention au passage à la limite! Pour prouver que $\int_{-\infty}^{+\infty}f(x)\,\mathrm dx$ converge, il ne suffit pas de calculer $\lim\limits_{t\to +\infty }\int_{-t}^t f(x)\,\mathrm dx$.\\
-En effet soit $\int_{-\infty}^{+\infty} {x}\,\mathrm dx.$, on a:
+En effet soit $\int_{-\infty}^{+\infty} {x}\,\mathrm dx.$\\
+On a:
 \begin{enumerate}
 \item
-  $x\mapsto x$ est continue sur $]-\infty ,+\infty [$;
+  $x\mapsto x$ est continue sur $]-\infty ,+\infty [$,
 \item
-  $\lim\limits_{t\to +\infty }\int_{-t}^t x\,\mathrm dx =\lim\limits_{t\to +\infty } [\frac{x^2}{2}]_t^t=0  $ existe et est nulle;
+  $\lim\limits_{t\to +\infty }\int_{-t}^t x\,\mathrm dx =\lim\limits_{t\to +\infty } [\frac{x^2}{2}]_t^t=0  $ existe et est nulle,
 \item
   pourtant, l'intégrale $\int_{-\infty }^{+\infty } x\,\mathrm dx$ diverge car $\int_{0 }^{+\infty } x\,\mathrm dx$ est divergente.
 \end{enumerate}
@@ -191,6 +194,15 @@ En effet soit $\int_{-\infty}^{+\infty} {x}\,\mathrm dx.$, on a:
 Si une fonction $f : [a,b [\to \R$ avec $b \in \R$ est continue sur $[a,b [$ et prolongeable par continuité en $b$,\\
 Alors l'intégrale $\int_{a}^{b}f(x)\,\mathrm dx$ converge et vaut $\int_{a}^{b}\tilde{f}(x)\,\mathrm dx$ où l'on a noté $\tilde{f}$ le prolongement de $f$. L'intégrale est faussement impropre.
 \end{Prop}
+\begin{proof}
+Soit $f$ une  fonction continue sur $[a,b[$ prolongeable par continuité en $b$. On note $\tilde{f}$ le prolongement de $f$.\\
+Comme $\tilde{f}$ est continue sur $[a,b]$, $\tilde{f}$ admet une primitive $\Phi$ sur $[a, b]$. Soit $t \in [a, b[$.
+\begin{align*}
+\int_{a}^{t}f(x)\,\mathrm dx&=\int_{a}^{t}\tilde{f}(x)\,\mathrm dx& \text{ car }\forall x \in [a,b[:f(x)=\tilde{f}(x)\\
+\int_{a}^{t}f(x)\,\mathrm dx&=\Phi(t)- \Phi(a)\tend[t\to b ]\Phi(b)- \Phi(a)=\int_{a}^{b}\tilde{f}(x)\,\mathrm dx &\text{ car }\Phi  \text{ est continue sur }[a,b]\\
+\end{align*}
+L'intégrale  $\int_{a}^{b}f(x)\,\mathrm dx$ converge de limite  $\int_{a}^{b}\tilde{f}(x)\,\mathrm dx$.
+\end{proof}
 \begin{Ex}
 L'intégrale $\int_{0}^{2\pi}\frac{\sin x}{x}\,\mathrm dx$ est convergente car la fonction $f:x\mapsto\frac{\sin x}{x}$ est continue sur $]0,2\pi]$ et plongeable par continuité en 0 en posant $\tilde{f}(0)=1$. 
 \begin{center}
@@ -208,11 +220,11 @@ L'intégrale $\int_{0}^{2\pi}\frac{\sin x}{x}\,\mathrm dx$ est convergente car la
 \end{tikzpicture}
 \end{center}
 \end{Ex}
-Par analogie sur les séries numériques,\\ si  $\lim\limits_{n\to \infty}u_n \neq 0$ alors $\sum u_n$ diverge,\\ a-t-on\\
+Par analogie sur les séries numériques, si  $\lim\limits_{n\to \infty}u_n \neq 0$ alors $\sum u_n$ diverge, a-t-on
 si $\lim\limits_{x\to \infty}f(x)\neq 0$  alors  $\int_{0}^{+\infty}f(x)\,\mathrm dx$ diverge ?\\
  La réponse est oui à condition d'avoir une hypothèse plus forte. 
 \begin{Th}[Divergence grossière à l'infini]
-Soit $f : [a,+\infty \to \R$ continue.\\
+Soit $f : [a,+\infty[ \to \R$ continue.\\
 Si $f$ admet une limite non nulle en $\infty$ alors $\int_{0}^{+\infty}f(x)\,\mathrm dx$ diverge. On dit qu'elle \defi{diverge grossièrement}. 
 \end{Th}
 \begin{proof}
@@ -256,7 +268,7 @@ La démonstration est similaire pour $\int_0^1    \frac{\mathrm dx}{x^\alpha}$ co
 \begin{proof}
 On a $\int_0^1   \ln(x) \,\mathrm dx$. \\
 La fonction $ x\mapsto \ln(x) $ est continue sur $]0,1]$. Soit $t\in ]0,1]$.\\
-$$\int_t^1   \ln(x) \,\mathrm dx \overbrace{=}^{\text{IPP avec }u(x)=\ln(x), v'(x)=1}[\ln(x)x]_t^1- \int_t^1   \frac 1 x x \,\mathrm dx= -\ln(x)x+(t-1)\tend[t\to +\infty ] -1.$$
+$$\int_t^1   \ln(x) \,\mathrm dx \overbrace{=}^{\text{IPP avec }u(x)=\ln(x), v'(x)=1}[\ln(x)x]_t^1- \int_t^1   \frac 1 x x \,\mathrm dx= -\ln(t)t+(t-1)\tend[t\to 0 ] -1\text{ par croissance comparée}.$$
 Donc $\int_0^1   \ln(x) \,\mathrm dx$ est convergente. 
 \end{proof}
 \subsection{Propriétés}
@@ -278,7 +290,7 @@ En revanche on ne peut pas écrire
 $$ \int _{1}^{+\infty }{\frac {1}{x(x+1)}}\,\mathrm {d} x=\int _{1}^{+\infty }\frac {1}{x}\,\mathrm {d} x-\int _{1}^{+\infty }\frac {1}{x+1}\,\mathrm {d} x.$$
 car l'intégrale $\int _{1}^{+\infty }\frac {1}{x}\,\mathrm {d} x$ diverge. \\
 Ici il faut intégrer sur le segment $[a, t ]$ avec $t\in [a,b [$ avant de passer à la limite. On a :
-$$ \int _{1}^{t }{\frac {1}{x(x+1)}}\,\mathrm {d} x=\int _{1}^{t }\frac {1}{x}\,\mathrm {d} x-\int _{1}^{t }\frac {1}{x+1}\,\mathrm {d} x=\ln(2)+\ln(\frac{x}{x+1})\tend[t\to +\infty]\ln(2).$$
+$$ \int _{1}^{t }{\frac {1}{x(x+1)}}\,\mathrm {d} x=\int _{1}^{t }\frac {1}{x}\,\mathrm {d} x-\int _{1}^{t }\frac {1}{x+1}\,\mathrm {d} x=\ln(2)+\ln\left(\frac{t}{1+t}\right)=\ln(2)-\ln\left(1+\frac 1 t\right)\tend[t\to +\infty]\ln(2).$$
 \end{Ex}
 \begin{Cor}[Cas complexe]
 Soit $f$  continue par morceaux de $[a,b[$ dans $\C$.\\
@@ -312,18 +324,18 @@ Comme $g-f\geq 0$, du fait de la positivité et de la linéarité de l'intégrale, o
 \begin{Th}[Changement de variables]
 Soit $f:]a,b]\to \K $ une fonction continue par morceaux, $\phi:[\alpha,\beta[\to  [a,b[$ une bijection strictement croissante de classe $\CC1$.\\
 Alors l'intégrale
-$\int_\alpha^\beta(f(\phi(x))\phi'(x)\,\mathrm dx $ est convergente si et seulement si $\int_a^b f(x)\,\mathrm dx$ est convergente. En cas de convergence, on a l'égalité :
-$$\int_\alpha^\beta(f(\phi(x))\phi'(x)\,\mathrm dx =\int_a^b f(x)\,\mathrm dx$$
+$\int_\alpha^\beta f(\phi(x))\phi'(x)\,\mathrm dx $ est convergente si et seulement si $\int_a^b f(x)\,\mathrm dx$ est convergente. En cas de convergence, on a l'égalité :
+$$\int_\alpha^\beta f(\phi(x))\phi'(x)\,\mathrm dx =\int_a^b f(x)\,\mathrm dx$$
 \end{Th}
 \begin{proof}
 Supposons que $\int_a^b f(x)\,\mathrm dx$ converge.\\
 Soit $t\in[\alpha,\beta[.$ Par changement de variable sur le
 segment $[\alpha , t]$, 
-$$\int_\alpha^t(f(\phi(x))\phi'(x)\,\mathrm dx =\int_a^{\phi(t)} f(x)\,\mathrm dx.$$
+$$\int_\alpha^t f(\phi(x))\phi'(x)\,\mathrm dx =\int_a^{\phi(t)} f(x)\,\mathrm dx.$$
 Comme $\phi$ est une bijection croissante, $\phi(t )\tend[t \to \beta] b$. Donc par passage à la limite, 
-$$\int_\alpha^t(f(\phi(x))\phi'(x)\,\mathrm dx\tend[t \to \beta ] \int_a^b f(x)\,\mathrm dx.$$
-Donc $\int_\alpha^\beta(f(\phi(x))\phi'(x)\,\mathrm dx $ converge et est égale à  $\int_a^b f(x)\,\mathrm dx$.
-Idem si l'on suppose que $\int_\alpha^\beta(f(\phi(x))\phi'(x)\,\mathrm dx$ converge.
+$$\int_\alpha^t f(\phi(x))\phi'(x)\,\mathrm dx\tend[t \to \beta ] \int_a^b f(x)\,\mathrm dx.$$
+Donc $\int_\alpha^\beta f(\phi(x))\phi'(x)\,\mathrm dx $ converge et est égale à  $\int_a^b f(x)\,\mathrm dx$.
+Idem si l'on suppose que $\int_\alpha^\beta f(\phi(x))\phi'(x)\,\mathrm dx$ converge.
 \end{proof}
 \begin{Ex}
 Calculons l'intégrale $\int_0^{+\infty}\frac{\ln x}{1+x^2}\,\mathrm dx$.\\
@@ -420,7 +432,7 @@ Alors
 \end{Th}
 \begin{proof}
 Soit $t\in[a,b[$.
-$$ \int_a^t f(x)\,\mathrm dx\overbrace{\leq}^{\text{coissance sur un segment}}\int_a^t g(x)\,\mathrm dx\overbrace{\leq}^{\text{caracterisation majoration}}\int_a^b g(x)\,\mathrm dx.$$
+$$ \int_a^t f(x)\,\mathrm dx\overbrace{\leq}^{\text{coissance sur un segment}}\int_a^t g(x)\,\mathrm dx\overbrace{\leq}^{\text{Majoration du théorème de la limite monotome}}\int_a^b g(x)\,\mathrm dx.$$
 Donc la fonction $F:t\mapsto \int_a^t f(x)\,\mathrm dx$ est croissante et majorée donc admet une limite en l'infini. Par passage à la limite, on  obtient : 
  $$  \int_a^b f(x)\,\mathrm dx \leq \int_a^b g(x)\,\mathrm dx.$$
 \end{proof}
@@ -443,7 +455,7 @@ Alors
 \end{itemize}
 \end{Th}
 \begin{proof}
- Comme $ f(x)=\underset{ \overset { x \rightarrow b } {} } {o}(g(x))$, il existe $t\in[a,b[$ tel que $f(x)\leq g(x), \forall x\geq t.$ Comme $\int_t^b g(x)\,\mathrm dx$ converge, $\int_t^b f(x)\,\mathrm dx$ converge par règle de comparaison. Sur le segment $[a,t]$,  $ \int_a^t f(x)\,\mathrm dx$ converge également. Finalement,  $\int_a^b g(x)\,\mathrm dx$ converge par raccordement.
+ Comme $ f(x)=\underset{ \overset { x \rightarrow b } {} } {o}(g(x))$, il existe $t\in[a,b[$ tel que $f(x)\leq g(x), \forall x\geq t.$ Comme $\int_t^b g(x)\,\mathrm dx$ converge, $\int_t^b f(x)\,\mathrm dx$ converge par règle de comparaison. $\int_a^b f(x)\,\mathrm dx$ converge par raccordement.
 \end{proof}
 \begin{Ex}
 Quelle est la nature de $\int_1^{+\infty}\frac{\ln(x)}{x^2}  \,\mathrm dx$ ?\\
@@ -452,15 +464,16 @@ On a
 $$\frac{\ln(x)}{x^2} =\underset{ \overset { x \rightarrow +\infty} {} } {o}\left(\frac{1}{x^{3/2}}\right) $$
 Comme l'intégrale de Riemann $\int_1^{+\infty}\frac{1}{x^{3/2}}\,\mathrm dx$ converge, $\int_1^{+\infty}\frac{\ln(x)}{x^2} \,\mathrm dx$ converge par règle du petit o.
 \end{Ex}
-\begin{Th}[Règle de petit 0 et grand O]
+\begin{Th}[Règle de l'équivalent]
 Soit $f,g:[a,b[\to\R$ deux fonctions continues et de signe constant au voisinage de $b$ tel que
 $$ f(x)\underset{ \overset { x \rightarrow b } {} } {\sim}g(x).$$ 
 Alors les intégrales $\int_a^b f(x)\,\mathrm dx$ et $\int_a^b g(x)\,\mathrm dx$ sont de même nature.
 \end{Th}
 \begin{proof}
 Supposons $f$ positive au voisinage de $b$. Comme $ f(x)\underset{ \overset { x \rightarrow b } {} } {\sim}g(x)$, il existe alors $t \in [a,b [$ 
-tel que tel que $$\forall x\in [t,b[: \quad  \frac{1}{2}f(x)\leq g(x)\leq \frac{3}{2}.$$
-On conclut par règle comparaison. Dans le cas négatif, la preuve est identique pour $-f$ et $-g$.
+tel que tel que $$\forall x\in [t,b[: \quad  \frac{1}{2}f(x)\leq g(x)\leq \frac{3}{2}f(x).$$
+On conclut par application de la règle de comparaison.\\
+Dans le cas négatif, la preuve est identique pour $-f$ et $-g$.
 \end{proof}
 
 \begin{Ex}
@@ -512,13 +525,12 @@ L'aire entre $1$ et $n$ est:
 \item  des rectangles bleues  : $\sum_{n=2}^{N}f(n)$.
 \end{itemize}
 Géométriquement, on a les inégalités :
-$$\sum_{n=1}^{N-1}f(n)\leq \int_1^N f(x)\,\mathrm dx \leq \sum_{n=2}^{N}f(n).$$
-Par passage à la limite, on a :
-$$\sum_{1}^{+\infty}f(n)\leq \int_1^{+\infty} f(x)\,\mathrm dx \leq \sum_{2}^{+\infty}f(n).$$
-On peut affirmer que série $\sum f(n)$ converge si et seulement si l'intégrale  $\int_a^{+\infty} f(x)\,\mathrm dx$ converge.
+$$\sum_{n=2}^{N}f(n) \leq \int_1^N f(x)\,\mathrm dx \leq \sum_{n=1}^{N-1}f(n).$$
+Si $\sum f(n)$ diverge alors $t\mapsto \int_1^t f(x)\,\mathrm dx$ n'est pas majorée. Comme $t\mapsto \int_1^t f(x)\,\mathrm dx$ est croissante,  $\int_a^{+\infty} f(x)\,\mathrm dx$ converge. Idem si $\sum f(n)$ diverge.\\
+En conclusion, la série $\sum f(n)$ converge si et seulement si l'intégrale  $\int_a^{+\infty} f(x)\,\mathrm dx$ converge.
 \begin{Th}[Comparaison séries/intégrales]
 Soit $f$ une application continue, positive et décroissante sur $[a,+\infty[$.\\
-Alors la série $\sum_n f(n)$ et l'intégrale $\int_a^{+\infty} f(x)\,\mathrm dx$ sont de même nature.
+Alors la série $\sum_{n\geq a} f(n)$ et l'intégrale $\int_a^{+\infty} f(x)\,\mathrm dx$ sont de même nature.
 \end{Th}
 
 Une application directe de ce théorème nous donne de nouvelles séries de référence.
@@ -543,6 +555,46 @@ intégrale de signe constant. En effet,  $\int_a^b f(x)\,\mathrm dx$ et $\int_c^b
 Ce que nous allons voir dans cette section n'est donc réellement nouveau que pour les intégrales de fonctions qui changent de signe
 une infinité de fois.\\
 Une première idée pour l'étude des intégrales de signe variable est de décomposer la fonction $f$ sur sa partie positive et négative $f = f^+-f^-$ où $$\forall x\in [a,b[:\quad f^+(x)=\max(f(x),0)\text{ et } f^-(x)=\max(-f(x),0).$$
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+\begin{axis}[
+	   axis y line = middle,
+       axis x line = middle,
+       samples     = 200,
+       domain      = 0:1,
+       xmin = 0, xmax = 1.5,
+       ymin = -1, ymax = 1,
+]
+\addplot[domain=0:1.5] {1-(x^2)} node[pos=0.3,above] {$f$} ;
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.5]
+\begin{axis}[
+	   axis y line = middle,
+       axis x line = middle,
+       samples     = 200,
+       domain      = 0:1,
+       xmin = 0, xmax = 1.5,
+       ymin = -1, ymax = 1,
+]
+\addplot[domain=0:1,color = red] {1-(x^2)} node[pos=0.3,above] {$f^+$} ;
+\addplot[domain=1:1.5,color = red] {0)}  ;
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.5]
+\begin{axis}[
+	   axis y line = middle,
+       axis x line = middle,
+       samples     = 200,
+       domain      = 0:1,
+       xmin = 0, xmax = 1.5,
+       ymin = -1, ymax = 1,
+]
+\addplot[domain=1:1.5,color = blue] {-1+(x^2)} node[pos=0.3,above] {$f^-$} ;
+\addplot[domain=0:1,color = blue] {0)}  ;
+\end{axis}
+\end{tikzpicture}
+\end{center}
 Soit $c\in [a,b[$. L'intégrale sur le segment $[a,c]$ est :
 $$ \int_a^v f(x)\,\mathrm dx= \int_a^c (f^+(x)-f^-(x))\,\mathrm dx = \int_a^c f^+(x)\,\mathrm dx -  \int_a^c f^-(x))\,\mathrm dx.$$
 Par passage à la limite, une condition suffisante pour que $\int_a^v f(x)\,\mathrm dx$ converge  et que les deux intégrales $\int_a^b f^+(x)\,\mathrm dx$  et $\int_a^b f^-(x)\,\mathrm dx$ convergent. \\
@@ -561,7 +613,7 @@ $\int_a^b |f(x)|\,\mathrm dx$ converge.
 \end{Df}
 \begin{Ex} Démontrons que  $\int_1^{+\infty } \frac{\sin x}{x^2}\,\mathrm dx$ est absolument convergente. On a :
 $$\forall x \in [1,{+\infty }[ : \left| \frac{\sin x}{x^2}\right|\leq \frac{1}{x^2}.$$ 
-Comme  $\int_1^{+\infty}\frac{1}{x^2 }\,\mathrm dx$ est convergente par intégrale de Riemann, $\int_1^{+\infty}\frac{1}{x^2 + \sqrt{x}}\,\mathrm dx$ converge, donc $\int_1^{+\infty } \frac{\sin x}{x^2}\,\mathrm dx$ est absolument convergente.
+Comme  $\int_1^{+\infty}\frac{1}{x^2 }\,\mathrm dx$ est convergente par intégrale de Riemann, l'intégrale $\int_1^{+\infty } \frac{\sin x}{x^2}\,\mathrm dx$ est absolument convergente.
 \end{Ex}
 \begin{Th}
 Une intégrale absolument convergente est convergente.
@@ -583,7 +635,7 @@ L'intégrale $\int_0^{+\infty } \frac{\sin x}{x}\,\mathrm dx$ est semi-convergent
 \item Non absolument convergente :\\
 $f : x \mapsto \frac{\sin x}{x}$ est continue sur $\mathbb R^+$ en la prolongeant par continuité en $0$ en posant $f (0) = 1$.\\
 On a :
-$$\forall n \in  \N:\quad \int_{n\pi}^{(n+1)\pi}\left|\frac{\sin x}{x}\right|\,\mathrm dx \overbrace{=}^{n\pi+u=t} \int_{0}^{\pi}\left|\frac{\sin u}{n\pi+u}\right|\,\mathrm du \geq \frac{1}{(n+1)\pi} \int_{0}^{\pi}\sin u\,\mathrm du =\frac{2}{(n+1)\pi}.$$
+$$\forall n \in  \N:\quad \int_{n\pi}^{(n+1)\pi}\left|\frac{\sin x}{x}\right|\,\mathrm dx \geq \inf_{x\in [n\pi,(n+1)\pi] }\frac{1}{|x|}\times  \int_{n\pi}^{(n+1)\pi} |\sin x|  \,\mathrm dx  =\frac{1}{(n+1)\pi}\times 2.$$
 D'où : 
 $$\forall p \in   \N :\quad \int_{0}^{p\pi}\left|\frac{\sin x}{x}\right|\,\mathrm dx  \geq \sum_{n=0}^{p-1}\frac{2}{(n+1)\pi}\overbrace{\To{p\to\infty}}^{\text{Série harmonique}}+\infty . $$
 \item Convergente :\\

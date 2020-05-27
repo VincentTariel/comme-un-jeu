@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?> 
+<?xml-stylesheet href="integration_cours.css" type="text/css"?> 
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="216.97536pt" height="183.99663pt" viewBox="-21.77628 -15.44275 216.97536 183.99663 "> 
+<g transform="translate(0, 168.55388 ) scale(1,-1) translate(0,15.44275 )"> 
+      <g stroke="#000" fill="#000">
+ <g stroke-width="0.4">
+ <g stroke-width="0.2">
+ <g stroke="#808080" fill="#808080">
+ <path d=" M 54.16641 -2.13402 L 54.16641 2.13402 M 108.33282 -2.13402 L 108.33282 2.13402 M 162.49924 -2.13402 L 162.49924 2.13402  " fill="none"/>
+ </g>
+ </g>
+ <g stroke-width="0.2">
+ <g stroke="#808080" fill="#808080">
+ <path d=" M -2.13417 32.3999 L 2.13417 32.3999 M -2.13417 64.7998 L 2.13417 64.7998 M -2.13417 97.1997 L 2.13417 97.1997 M -2.13417 129.59961 L 2.13417 129.59961 M -2.13417 161.99951 L 2.13417 161.99951  " fill="none"/>
+ </g>
+ </g>
+ <path d=" M 0.0 0.0 L 192.99911 0.0  " fill="none"/>
+ <g transform="translate(192.99911,0.0)">
+ <path d=" M 1.99997 0.0 L -1.19998 1.59998 L 0.0 0.0 L -1.19998 -1.59998  " stroke="none"/>
+  </g>
+ <path d=" M 0.0 0.0 L 0.0 159.99954  " fill="none"/>
+ <g transform="matrix(0.0,1.0,-1.0,0.0,0.0,159.99954)">
+ <path d=" M 1.99997 0.0 L -1.19998 1.59998 L 0.0 0.0 L -1.19998 -1.59998  " stroke="none"/>
+  </g>
+ <g transform="translate(51.66641,-12.1106)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmr" font-size="10">5</tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(103.33281,-12.1106)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(5.00002,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmr" font-size="10">10</tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(157.49922,-12.1106)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(5.00002,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmr" font-size="10">15</tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(-18.44412,29.17769)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(6.3889,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmr" font-size="10">0</tspan><tspan font-family="cmmi" font-size="10">.</tspan><tspan font-family="cmr" font-size="10">2</tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(-18.44412,61.57759)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(6.3889,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmr" font-size="10">0</tspan><tspan font-family="cmmi" font-size="10">.</tspan><tspan font-family="cmr" font-size="10">4</tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(-18.44412,93.9775)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(6.3889,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmr" font-size="10">0</tspan><tspan font-family="cmmi" font-size="10">.</tspan><tspan font-family="cmr" font-size="10">6</tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(-18.44412,126.3774)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(6.3889,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmr" font-size="10">0</tspan><tspan font-family="cmmi" font-size="10">.</tspan><tspan font-family="cmr" font-size="10">8</tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(-10.66632,158.7773)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmr" font-size="10">1</tspan> </g> </g>
+ </text> 
+</g>
+ </g>
+ <clipPath id="pgfcp1"><path d=" M 0.0 0.0 L 194.99908 0.0 L 194.99908 161.99951 L 0.0 161.99951 Z  "/> </clipPath>
+ <g clip-path="url(#pgfcp1)">
+ <g fill="#ccf">
+ <path d=" M 10.83328 161.99951 L 11.75873 137.50356 L 12.68416 118.17055 L 13.6096 102.64612 L 14.53505 89.99072 L 15.4605 79.54176 L 16.38593 70.80836 L 17.31137 63.44225 L 18.23682 57.16476 L 19.16225 51.77666 L 20.0877 47.11755 L 21.01315 43.05946 L 21.93858 39.50195 L 22.86403 36.36888 L 23.78947 33.59383 L 24.71492 31.12659 L 25.64035 28.91852 L 26.5658 26.93889 L 27.49124 25.1569 L 28.41669 23.545 L 29.34213 22.08054 L 30.26758 20.75212 L 31.19301 19.54037 L 32.11845 18.43068 L 33.0439 17.4117 L 33.96933 16.47534 L 34.89478 15.61351 L 35.82022 14.81744 L 36.74568 14.08083 L 37.67111 13.39735 L 38.59656 12.76247 L 39.522 12.17166 L 40.44743 11.62119 L 41.37288 11.10701 L 42.29832 10.62619 L 43.22375 10.1763 L 44.1492 9.75415 L 45.07465 9.35773 L 46.0001 8.98497 L 46.92554 8.63408 L 47.85098 8.30312 L 48.77643 7.99127 L 49.70186 7.69626 L 50.6273 7.41779 L 51.55275 7.15372 L 52.4782 6.90361 L 53.40363 6.66643 L 54.32909 6.44109 L 55.25453 6.22725 L 56.17996 6.02377 L 57.10541 5.83035 L 58.03085 5.64568 L 58.95628 5.4699 L 59.88173 5.30208 L 60.80717 5.14185 L 61.7326 4.98877 L 62.65805 4.84265 L 63.58351 4.70251 L 64.50896 4.56854 L 65.43439 4.4404 L 66.35983 4.31744 L 67.28528 4.19951 L 68.21071 4.08627 L 69.13615 3.97758 L 70.0616 3.87325 L 70.98703 3.77295 L 71.91249 3.6764 L 72.83794 3.58344 L 73.76338 3.49432 L 74.68881 3.4083 L 75.61426 3.3252 L 76.5397 3.24532 L 77.46513 3.16823 L 78.39058 3.09387 L 79.31602 3.02208 L 80.24149 2.95274 L 81.16692 2.886 L 82.09236 2.82121 L 83.0178 2.75868 L 83.94324 2.69809 L 84.86868 2.63945 L 85.79413 2.58292 L 86.71956 2.528 L 87.645 2.47517 L 88.57045 2.42351 L 89.49591 2.37378 L 90.42134 2.32532 L 91.34679 2.27835 L 92.27223 2.23282 L 93.19766 2.18892 L 94.12311 2.14616 L 95.04855 2.10454 L 95.97398 2.06401 L 96.89943 2.02466 L 97.82489 1.9866 L 98.75032 1.94966 L 99.67577 1.91353 L 100.60121 1.8787 L 101.52666 1.84451 L 102.45209 1.81146 L 103.37753 1.77908 L 104.30298 1.74763 L 105.22841 1.71704 L 106.15387 1.68706 L 107.07932 1.65823 L 108.00475 1.63002 L 108.93019 1.60223 L 109.85562 1.5754 L 110.78105 1.54916 L 111.70648 1.5236 L 112.63191 1.49867 L 113.55734 1.47433 L 114.48277 1.4506 L 115.4082 1.42743 L 116.33363 1.4048 L 117.25906 1.38274 L 118.1845 1.36116 L 119.10992 1.34009 L 120.03535 1.3195 L 120.96078 1.29938 L 121.88622 1.27972 L 122.81166 1.26053 L 123.73709 1.24171 L 124.66252 1.22334 L 125.58795 1.2054 L 126.51338 1.18785 L 127.43881 1.17064 L 128.36424 1.15381 L 129.28967 1.13737 L 130.2151 1.12125 L 131.14053 1.10548 L 132.06596 1.09006 L 132.9914 1.07494 L 133.91682 1.06012 L 134.84225 1.04564 L 135.76768 1.03142 L 136.69312 1.01753 L 137.61855 1.00386 L 138.54398 0.9905 L 139.4694 0.97739 L 140.39484 0.96455 L 141.32028 0.95198 L 142.24571 0.93962 L 143.17114 0.9275 L 144.09657 0.91563 L 145.022 0.90398 L 145.94743 0.89255 L 146.87286 0.88133 L 147.7983 0.87033 L 148.72372 0.85956 L 149.64915 0.84892 L 150.57458 0.83855 L 151.50002 0.82834 L 152.42545 0.8183 L 153.35088 0.80846 L 154.2763 0.79877 L 155.20174 0.78928 L 156.12717 0.77995 L 157.0526 0.77078 L 157.97803 0.7618 L 158.90346 0.75294 L 159.82889 0.74423 L 160.75433 0.7357 L 161.67976 0.72731 L 162.6052 0.71906 L 163.53062 0.71094 L 164.45605 0.70296 L 165.38148 0.69511 L 166.30692 0.68741 L 167.23235 0.67982 L 168.15778 0.67235 L 169.0832 0.66501 L 170.00864 0.65779 L 170.93407 0.6507 L 171.8595 0.6437 L 172.78493 0.63683 L 173.71036 0.63007 L 174.63579 0.62341 L 175.56122 0.61684 L 176.48665 0.61038 L 177.41208 0.60403 L 178.33751 0.59778 L 179.26295 0.59161 L 180.18839 0.58557 L 181.11382 0.5796 L 182.03925 0.57373 L 182.96468 0.56792 L 183.8901 0.56223 L 184.81554 0.55663 L 185.74097 0.55109 L 186.6664 0.54562 L 187.59183 0.54025 L 188.51726 0.53496 L 189.44269 0.52975 L 190.36812 0.52461 L 191.29355 0.51956 L 192.21898 0.51457 L 193.14441 0.50963 L 194.06984 0.50478 L 194.99527 0.50002 L 194.99527 0.0 L 10.83328 0.0 Z  " />
+ <g transform="translate(38.55348,10.71187)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(25.18747,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">x</tspan><img 
+src="integration_cours1x.png" alt="&#x21A6;&#x2192;"  class="mapsto" ><tspan font-family="cmr" font-size="10">1</tspan><tspan font-family="cmmi" font-size="10">&#x2215;x</tspan><tspan baseline-shift="sub"><tspan font-family="cmr" font-size="10">sp</tspan><tspan font-family="cmr" font-size="10">2</tspan></tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ 
+                                                                 </g> 
+</svg> 
