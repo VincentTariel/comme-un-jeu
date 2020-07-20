@@ -130,32 +130,7 @@ Définitions
 
 Représentation ligne de niveaux graphes voirs cours page 29 http://math.univ-lyon1.fr/~pujo/analyse3.pdf     
      
-\begin{tikzpicture}[scale=0.5]
-    \begin{axis}
-    \addplot3[patch,patch refines=3,
-		shader=faceted interp,
-		patch type=biquadratic] 
-    table[z expr=ln(1+x^2+y^2)]
-    {
-        x  y
-        -10 -10
-        10  -10
-        10  10
-        -2 2
-        0  -2
-        2  0
-        0  2
-        -2 0
-        0  0
-    };
-    \end{axis}
-\end{tikzpicture}    
-Continuité  
 
-
-defi
-quelques representations voir cours pujo
-continuité technique voir cours maths france
 
 
 
