@@ -213,13 +213,13 @@ Il y a $n$ façons de tirer la première boule, puis $n$ façons de tirer la second
 \draw  (2,-1)  -- (3.8,-1) node[right]{$2  \hspace{1cm}  (3,2)$};
 \draw  (2,-1)  -- (3.8,-1.3) node[right]{$3  \hspace{1cm}  (3,3)$};
 \end{tikzpicture}\\
-Diagramme en arbre d'un tirage avec ordre et avec remise  dans une urne de 2 boules en tirant 2 fois.
+Diagramme en arbre d'un tirage avec ordre et avec remise  dans une urne de 3 boules en tirant 2 boules.
 \end{center}
 
 \end{proof}
 
 
-\begin{Cor}Soit $E$  de cardinal $n$.\\ Alors $card(E^p)=n^p$.
+\begin{Cor}[Cardinal d'un produit cartésien]Soit $E$  de cardinal $n$.\\ Alors $card(E^p)=n^p$.
 \end{Cor}
 
 
@@ -290,11 +290,12 @@ Alors le cardinal de l'ensemble des applications injectives de $E$ dans $F$  est
 \end{Cor}
 \begin{Ex}Pour 3 boules, on a $6=3.2.1$ manières \includegraphics[scale=0.1]{permutation_bille.png}
 \end{Ex}
-\begin{Prop}
-Tout classement ordonné de $n$ éléments distincts est une permutation de ces $n$
-éléments. Soit une bijection de l'ensemble $E$ des $n$
-éléments sur lui-même.  Lorsque l'ensemble $E = \{1,\ldots , n \}$, on note $S_n$ l'ensemble des permutations. On a $\operatorname{Card}(S_n)=n!$ Cet ensemble possède une structure de groupe, on l'appelle groupe symétrique.
-\end{Prop}
+\begin{DfProp}[Permutation (cas n=p)]
+Tout classement ordonné de $n$ éléments distincts correspondant à un triage avec ordre de toutes les boules est une \defi{permutation} de ces $n$
+éléments. \\
+Lorsque l'ensemble $E = \Intf{1}{n}$, on note \defi{$S_n$} l'ensemble des permutations, soit l'ensemble des bijections de $E$ sur lui même. Cet ensemble possède une structure de groupe, on l'appelle \defi{groupe symétrique}.\\
+On a $\operatorname{Card}(S_n)=n!$.
+\end{DfProp}
 \begin{Ex} Par exemple la liste $(1,3,2,5,4)$ est la permutation $\sigma$ telle que $\sigma(1)=1, \sigma(2)=3, \sigma(3)=2, \sigma(4)=5 \text{ et }\sigma(5)=4$ que l'on peut écrire   
 $\sigma =\begin{pmatrix}
 1 & 2 & 3 & 4 & 5 \\
@@ -306,8 +307,10 @@ $\sigma =\begin{pmatrix}
 \includegraphics[width=0.5\textwidth]{bd_combinatoire.png}
 \end{center}
 
-\begin{Prop}\label{propcomb} Le nombre de tirages différents sans remise et sans ordre dans une urne $n$ boules en tirant $p$ boules avec $p\leq n$  est appelé coefficient binomial, noté $\begin{pmatrix}n\\p\end{pmatrix}$, et on a $$\begin{pmatrix}n\\p\end{pmatrix}=\frac{n!}{p!(n-p)!}.$$ Il s'appelle aussi le nombre de combinaisons de $p$ boules parmi $n$ boules, $p$ parmi $n$. Pour $p>n$, on pose $\begin{pmatrix}n\\p\end{pmatrix}=0$ 
-\end{Prop}
+\begin{DfProp}[Combinaison]\label{propcomb} 
+Un tirage sans remise et sans ordre dans une urne $n$ boules en tirant $p$ boules avec $p\leq n$  est appelé \defi{combinaison}. Le nombre de combinaisons est égale au  coefficient binomial, $\begin{pmatrix}n\\p\end{pmatrix}$, tel que $$\begin{pmatrix}n\\p\end{pmatrix}=\frac{n!}{p!(n-p)!}.$$ 
+Pour $p>n$, on pose $\begin{pmatrix}n\\p\end{pmatrix}=0$ 
+\end{DfProp}
 \begin{proof}Avec le principe de double-comptage, on dénombre le nombre d'arrangements de deux façons différentes. L'un d'après la proposition~\ref{proparran}, on a $A_p^n=\frac{n!}{(n-p)!}$, et l'autre on commence par choisir une combinaison de $p$ boules parmi $n$ ($\begin{pmatrix}n\\p\end{pmatrix}$ configurations possibles
 de choisir) et on l'ordonne par permutation des boules pour obtenir tous les
 arrangements simples ($p!$ configurations possibles
@@ -315,12 +318,12 @@ de les ordonner), soit d'après le principe de décomposition $p!\begin{pmatrix}n\
 \end{proof}
 \begin{Ex} Le nombre de tirages au Loto (5 numéros parmi 49) est  $\begin{pmatrix}49\\5\end{pmatrix}=1 906 884$.
 \end{Ex}
-\begin{Ex} Le nombre d'anagrammes $0001111$ est $\begin{pmatrix}7\\3\end{pmatrix}$. Pour chaque anagramme, les positions des 1 dans le mot correspond au résultat d'un tirage sans remise et sans ordre dans une urne numérotée de  $7$ boules en tirant $3$ boules. 
+\begin{Ex} Le nombre d'anagrammes $00111$ est $\begin{pmatrix}5\\3\end{pmatrix}$. Un anagramme est une combinaison où les positions des 1 dans le mot correspond au résultat d'un tirage sans remise et sans ordre dans une urne numérotée de  $5$ boules en tirant $3$ boules. Par exemple, l'anagramme  $01101$ correspond au tirage $\{2,3,5\}$.
 \end{Ex}
-\begin{Cor}
+\begin{Cor}[Nombre de parties $p$ éléments d'un ensemble]
 Le nombre de configurations de sous-ensemble à $p$ éléments d'un ensemble à $n$ éléments est $\begin{pmatrix}n\\p\end{pmatrix}$.
 \end{Cor}
-\begin{proof}Soit $E=\{1,\dots,n\}$. Soit $A=\{i_1,i_2,i_p\}$ un sous-ensemble de p éléments de $E$. L'ensemble $A$ correspond bien à un tirage sans ordre et sans remise dans une urne $n$ boules en tirant $p$ boules. CQFD. 
+\begin{proof}Soit $E=\Intf{1}{n}$. Soit $A=\{i_1,i_2,\dots,i_p\}$ un sous-ensemble de p éléments de $E$. L'ensemble $A$ correspond bien à un tirage sans ordre et sans remise dans une urne $n$ boules en tirant $p$ boules. CQFD. 
 \end{proof}
 
 
@@ -335,37 +338,50 @@ Le nombre de configurations de sous-ensemble à $p$ éléments d'un ensemble à $n$ 
 \end{enumerate}
 \end{Prop}
 \begin{proof}
-Argumentation combinatoires :
+Argumentation combinatoire :
 \begin{enumerate}
 \item une urne à $n$ boules a un unique tirage à zéro boule, l'ensemble vide $\emptyset$, et un unique tirage de n boule, lui-même
-\item une urne de $n$ boules a $n$ tirage à une boule (tirage de la première boule, puis tirage de la seconde boule etc)
-\item choisir $p$ boules parmi $n$ revient à sélectionner les
-%$n - k$ boules qu'on ne choisira pas.
-\item Dénombrons par principe de double-comptage l'ensemble des combinaison de $p$ boules parmi $n$. D'abord, la proposition~\ref{propcomb} nous donne $\begin{pmatrix}n\\p\end{pmatrix}$.\\
-Puis on recherche le nombre d'anagrammes comportant $p$ zéro et $(n-p)$ 1. On sépare en deux cas sur la dernière lettre du mot :
+\item une urne de $n$ boules a $n$ tirages à une boule pour la première boule
+\item choisir $p$ boules parmi $n$ revient à sélectionner les $n - k$ boules qu'on ne choisira pas.
+\item Dénombrons par principe de double-comptage l'ensemble des combinaisons de $p$ boules parmi $n$. D'abord, la proposition~\ref{propcomb} nous donne $\begin{pmatrix}n\\p\end{pmatrix}$.\\
+Puis on recherche le nombre d'anagrammes comportant $p$ 0 et $(n-p)$ 1. On sépare en deux cas sur la dernière lettre du mot :
 \begin{itemize}
 \item \textit{égale à 0} : les anagrammes de la forme $\overbrace{*\dots*}^{n-1 \text{ lettres}}0$ doivent comporter $p-1$ zéro parmi $n-1$ lettres pour être un anagramme de  $p$ zéro parmi $n$ lettres. Son cardinal est   $\begin{pmatrix}n-1\\p-1\end{pmatrix}$,
 \item \textit{égale à 1} : les anagrammes de la forme $\overbrace{*\dots*}^{n-1 \text{ lettres}}1$ doivent comporter $p$ zéro parmi $n-1$ lettres pour être un anagramme de  $p$ zéro parmi $n$ lettres. Son cardinal est   $\begin{pmatrix}n-1\\p\end{pmatrix}$,
 \end{itemize}   
-Au total on a donc $\begin{pmatrix}n-1\\p-1\end{pmatrix}+\begin{pmatrix}n-1\\p\end{pmatrix}$
-des combinaison de $p$ boules parmi $n$ d'où le résultat.\\
-Dis autrement, on sépare en deux cas : ceux contenant la boule $n$ qui sont l'ensemble des combinaison de $p-1$ boules parmi $n-1$  au nombre $\begin{pmatrix}n-1\\p-1\end{pmatrix}$ et ceux ne contenant pas la boule $n$  qui sont l'ensemble des combinaison de $p$ boules parmi $n-1$  au nombre $\begin{pmatrix}n-1\\p\end{pmatrix}$. Au total on a donc $\begin{pmatrix}n-1\\p-1\end{pmatrix}+\begin{pmatrix}n-1\\p\end{pmatrix}$
-des combinaison de $p$ boules parmi $n$ d'où le résultat.
+Au total on a donc $\begin{pmatrix}n-1\\p-1\end{pmatrix}+\begin{pmatrix}n-1\\p\end{pmatrix}$ d'anagrammes, soit le nombre 
+de combinaisons de $p$ boules parmi $n$ d'où le résultat.\\
+%Dis autrement, on sépare en deux cas : ceux contenant la boule $n$ qui sont l'ensemble des combinaison de $p-1$ boules parmi $n-1$  au nombre $\begin{pmatrix}n-1\\p-1\end{pmatrix}$ et ceux ne contenant pas la boule $n$  qui sont l'ensemble des combinaison de $p$ boules parmi $n-1$  au nombre $\begin{pmatrix}n-1\\p\end{pmatrix}$. Au total on a donc $\begin{pmatrix}n-1\\p-1\end{pmatrix}+\begin{pmatrix}n-1\\p\end{pmatrix}$
+%des combinaison de $p$ boules parmi $n$ d'où le résultat.
 \end{enumerate}
-La formule de Pascal nous permet ensuite de construire le triangle de Pascal. La case située dans la p-ième colonne de la n-ième ligne contient le coefficient binomial.
-\includegraphics[width=0.25\textwidth]{tr_pascale.png}
+La formule de Pascal nous permet de construire le triangle de Pascal.
+\begin{center}
+\begin{tabular}{c|ccccccc}
+\multicolumn{1}{l}{$n$} &&&&&&&\\\cline{1-1} 
+0 &1&&&&&&\\
+1 &1&1&&&&&\\
+2 &1&2&1&&&&\\
+3 &1&3&3&1&&&\\
+4 &1&4&6&4&1&&\\
+5 &1&5&10&10&5&1&\\
+6 &1&6&15&20&15&6&1\\\hline
+\multicolumn{1}{l}{} &0&1&2&3&4&5&6\\\cline{2-8}
+\multicolumn{1}{l}{} &\multicolumn{7}{c}{$p$}
+\end{tabular}
+\end{center}
 \end{proof}
 
 
-\begin{Prop} Formule du binôme de Newton. Soit $x, y$ des nombres réels et $n > 1$ un
-entier. Alors :
+\begin{Prop}[Formule du binôme de Newton] Soit $x, y$ des nombres réels et $n > 1$ un
+entier. \\
+Alors :
 \[
 (x+y)^n= \sum_{p=0}^n \begin{pmatrix}n\\p\end{pmatrix} x^p y^{n-p}
 \]
 \end{Prop}
 \begin{proof} Lorsqu'on développe $(x+y).(x+y) \dots (x+y)$, pour trouver le coefficient
-devant $x^p y^{n-p}$, parmi les $n$ termes $(x + y)$, il faut en choisir $p$ pour lesquels on garde le $x$ et
-qui vont donner un terme $x^p$, et les $n - p$ autres termes pour lesquels on sélectionne $y$ (et qui
+devant $x^p y^{n-p}$, parmi les $n$ facteurs $(x + y)$, il faut en choisir $p$ pour lesquels on garde le $x$ et
+qui vont donner un terme $x^p$, et les $n - p$ autres facteurs pour lesquels on sélectionne $y$ (et qui
 sont fixés par le choix des $p$ premiers) vont donner le terme $y^{n-p}$. Le résultat s'ensuit.
 \end{proof}
 
