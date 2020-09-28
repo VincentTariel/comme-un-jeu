@@ -55,10 +55,22 @@ On note $X(\Omega)=\{X(\omega):\omega \in \Omega \}$ l'ensemble des images de la
 Comme $\Omega$ est fini, $X(\Omega)$ est aussi finie. On s'autorise désormais à écrire l'ensemble des images sous la forme $X (\Omega) = \{x_1,x_2,\dots,x_n\}$.
 \end{Df}
 \begin{NB}
-Malgré son nom, une variable aléatoire n'est pas une variable (c'est une fonction) et elle n'est pas aléatoire.
+\begin{itemize}
+\item Malgré son nom, une variable aléatoire n'est pas une variable (c'est une fonction) et elle n'est pas aléatoire.
+\item Il est toujours possible de quantifier les valeurs prises par une variable aléatoire. Par exemple si $X$ représente le sexe de l'enfant à la naissance, on posera le label 1 pour le sexe féminin et le label 0 pour le sexe masculin et dans ce cas $X(\Omega)=\{0,1\}$.
+\item Dans ce cours l'espace de probabilité  est finie et la variable aléatoire  réelle, on écrira "Soit $X$ une variable aléatoire" au lieu de "Soit $X$ une variable aléatoire réelle sur un espace probabilisé fini $(\Omega,\mathcal{P}(\Omega),P)$."
+\end{itemize}
 \end{NB}
+\begin{Ex}[Variable aléatoire indicatrice de $A$]
+Soit $A$ un événement de $\Omega$.\\
+La variable aléatoire indicatrice de $A$, noté $1_A$,  est une fonction  explicitant l'appartenance ou non à un événement $A$ 
+de toute issue de $\Omega$ :
+$$\Fonction{1_A}{\Omega}{\{0,1\}}{\omega}{\begin{cases}1&\text{si }\omega\in A \\0&\text{si }\omega\notin A
+\end{cases}}.$$
+\end{Ex}
+
 \begin{Df}[Événements associés à une variable aléatoire]
-Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé fini et $X$ une variable aléatoire réelle sur cette espace.\\
+Soit $X$ une variable aléatoire.\\
 Pour tout $A\subset \R$, on définit l'événement $\{ X \in A \}$ comme étant
 \[ X^{-1}(A) = \{\omega\in\Omega :   X(\omega )\in A\}. \]
 Dans le cadre de ce chapitre, nous aurons recours aux notations suivantes, pour $x \in \R$ et $A \subset \R$ :
@@ -71,8 +83,9 @@ Dans le cadre de ce chapitre, nous aurons recours aux notations suivantes, pour 
 (X > x ) =& X^{-1}(]x,+\infty[) = \{\omega \in \Omega | X (\omega) > x \}\\
 \end{align*}
 \end{Df}
-
-
+\begin{NB}
+Dans les démonstrations, sans perte de généralité, on considérera uniquement les parties de $X(\Omega)$ et non de $\R$ pour les rendre plus lisibles.
+\end{NB}
 \begin{Ex}[Jeu]
 Par exemple, l'ensemble des issues donnant une somme à 7 est :
 $$\{S=7\}= S^{-1}(\{7\})=\{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\}.$$
@@ -80,7 +93,7 @@ et l'ensemble des issues donnant une somme à 2 ou 12 est :
 $$\{S\in \{2,12\}\}= S^{-1}(\{2,12\})=\{(1,1),(6,6)\}.$$
 \end{Ex}
 \begin{Prop}
-Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé fini et $X$ une variable aléatoire réelle sur cette espace.\\
+Soit $X$ une variable aléatoire.\\
 L'ensemble $(X=x_i)_{1\leq i\leq n}$ forme un système complet d'événements de $\Omega$.
 \begin{center}
 \begin{tikzpicture}[scale=0.75]
@@ -101,7 +114,7 @@ L'ensemble $(X=x_i)_{1\leq i\leq n}$ forme un système complet d'événements de $\
 
 \subsection{Loi de probabilité}
 \begin{DfProp}[Loi d'une variable aléatoire]
-Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé fini et $X$ une variable aléatoire réelle sur cette espace.\\
+Soit $X$ une variable aléatoire.\\
 L'application
 \[ \Fonction{P_X}{\mathcal{P}(X(\Omega))}{[0,1]}{A}{P(X^{-1}(A))} \]
 est une probabilité sur $X(\Omega)$, appelée \defi{loi de la variable $X$}.
@@ -174,14 +187,14 @@ $$ \forall i \in \Intf{1}{n}:\quad  P( X = x_i ) = p_i.$$
 \end{Th}
 \begin{proof}
 Soit $\Omega=\{x_1,\dots,x_n\}$ et $P$ la probabilité définie sur $(\Omega,\mathcal{P}(\Omega))$ par :
-$$P(\{x_i\})=p_i,\quad\forall i \in\Intf{1}{n}.$$
+$$\forall i \in\Intf{1}{n}:\quad P(\{x_i\})=p_i.$$
 Soit $X$ l'application identité. On vérifie que   $P( X = x_i )=P(\{x_i\})=p_i$, pour tout $i\in \Intf{1}{n}.$ 
 \end{proof}
 \begin{NB}
 Ce théorème permet de définir une variable aléatoire par sa loi de probabilité sans avoir à étudier l'expérience aléatoire sous-jacente, c'est à dire définir l'espace de probabilité $(\Omega,\mathcal{P}(\Omega),P)$ et la fonction de la variable aléatoire. Par exemple, on modélise l'expérience aléatoire d'un lancer de dé en posant : la variable aléatoire $X$ représente le chiffre du dé avec $p_1=p_2=p_3=p_4=p_5=p_6=\frac{1}{6}$.    
 \end{NB}
 \begin{DfProp}[Fonction d'une variable aléatoire]
-Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé fini et $X$ une variable aléatoire réelle sur cette espace.\\
+Soit $X$ une variable aléatoire.\\
 Soit $f:\R\to \R$ une application quelconque.\\
 L'application \defi{$f\circ  X$}
 \[ \Fonction{f\circ  X}{\Omega}{\R}{\omega}{f(X(\omega))} \]
@@ -220,33 +233,35 @@ $P(G(S)=k)$ & $\frac{6}{36}=P(S=7)$ & $\frac{2}{36}=P(S=2)+P(S=12)$& $\frac{28}{
 
 \subsection{Vecteurs aléatoires}
 \begin{DfProp}[Loi conjointe]
-Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé fini et $X,Y$ deux variables aléatoires réelles sur cette espace.\\
+Soit $X,Y$ deux variables aléatoires.\\
 On note  $(X,Y)$ le \defi{couple de variables aléatoires} prenant ses valeurs dans $\R^2$.\\
 La \defi{loi conjointe} du couple $(X,Y)$ est déterminé par  :
 \begin{enumerate}
 \item $X(\Omega)\times Y(\Omega)=\{x_1,\dots,x_n\}\times \{y_1,\dots,y_m\} $, les valeurs prises par le couple
-\item $\forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\}:\quad P(X=x_i\cap Y=y_j).$
+\item $\forall (i,j)\in  \Intf{1}{n}\times \Intf{1}{m}:\quad P(X=x_i\cap Y=y_j).$
 \end{enumerate}
 On note $p_{i,j}=P(X=x_i\cap Y=y_j)$.\\
-Les événements $((X=x_i)\cap (y=y_j))_{\forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\}}$ forment un système complet d'événements de $\Omega$. En particulier, on a : 
+Les événements $((X=x_i)\cap (Y=y_j))_{\forall (i,j)\in \Intf{1}{n}\times \Intf{1}{m}}$ forment un système complet d'événements de $\Omega$. En particulier, on a : 
 $$\sum_{i=1}^n \sum_{j=1}^mP(X=x_i\cap Y=y_j)=\sum_{i=1}^n \sum_{j=1}^m p_{i,j}=1.$$ 
 \end{DfProp}
 \begin{proof}
+Démontrons que la loi conjointe est déterminée par $$\forall (i,j)\in  \Intf{1}{n}\times \Intf{1}{m}:\quad P(X=x_i\cap Y=y_j).$$
 Soit $(A,B)\subset X(\Omega)\times Y(\Omega)$. Il existe $I\subset\Intf{1}{n}$ et $J\subset\Intf{1}{m}$ tel que $A=\{x_i:i\in I\}$ et $B=\{y_j:j\in J\}$.\\ On a :
-$$P((X,Y)\in (A,B))= P( X\in A\cap Y\in B )= P(\bigcup_{i\in I} (X=x_i)\cap  \bigcup_{j\in J} (Y=y_j) )=P(\bigcup_{i\in I,j\in J} (X=x_i)\cap (Y=y_j) ) \overbrace{=}^{ (\{(X=x_i)\cap (Y=y_j)\})_{i\in I,j\in J }\text{ disjoints}}\sum_{i\in I,j\in J}P(X=x_i\cap Y=y_j).$$ 
-  
+$$P((X,Y)\in (A,B))= P( X\in A\cap Y\in B )= P\left(\left(\bigcup_{i\in I} (X=x_i)\right)\cap  \left(\bigcup_{j\in J} (Y=y_j)\right)\right)=P(\bigcup_{i\in I,j\in J} (X=x_i)\cap (Y=y_j) )$$.
+Comme  $(\{(X=x_i)\cap (Y=y_j)\})_{i\in I,j\in J }$ est une famille d'ensembles  disjoints. On a 
+$$P((X,Y)\in (A,B))= P( X\in A\cap Y\in B )= \sum_{i\in I,j\in J}P(X=x_i\cap Y=y_j).$$   
 \end{proof}
 
 \begin{Df}[Lois marginales]
-Soit $X,Y$ deux variables aléatoires réelles définies sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
+Soit $(X,Y)$ un couple de variables aléatoires.\\
 La loi de $X$ appelé \defi{première loi marginale} et la loi de $Y$ \defi{second loi marginale} du couple.
 \end{Df}
 \begin{Prop}[Relations]
-Soit $X,Y$ deux variables aléatoires réelles définies sur $(\Omega,\mathcal{P}(\Omega),P)$. On a :
-$$\forall i\in \{1,\dots,n\}: \quad P(X=x_i)=\sum_{j=1}^{m }P((X=x_i)\cap (Y=y_j))$$
+Soit $(X,Y)$ un couple de variables aléatoires.\\
+ On a :
+$$\forall i\in  \Intf{1}{n}: \quad P(X=x_i)=\sum_{j=1}^{m }P((X=x_i)\cap (Y=y_j))$$
 et 
-$$\forall j\in \{1,\dots,m\}: \quad P(Y=y_j)=\sum_{i=1}^{n }P((X=x_i)\cap (Y=y_j)).$$ 
-
+$$\forall j\in  \Intf{1}{m}: \quad P(Y=y_j)=\sum_{i=1}^{n }P((X=x_i)\cap (Y=y_j)).$$ 
 \begin{center}
 \begin{tabular}{|c|ccccc|c|c}
 \cline{1-7}
@@ -261,26 +276,51 @@ $P(Y=y_j)$& $P(Y=y_1)$&$\dots$&$P(Y=y_j)$&$\dots$&$P(Y=y_m)$&1\\\cline{1-7}
 \end{tabular}
 \end{center} 
 \end{Prop}
+\begin{proof}
+Comme les événements $( (Y=y_j))_{\forall j\in\Intf{1}{m}}$ forment un système complet d'événements de $\Omega$, d'après la proposition \ref{prop:sce} on a 
+$$\forall i\in  \Intf{1}{n}: \quad P(X=x_i)=\sum_{j=1}^{m }P((X=x_i)\cap (Y=y_j))$$ .
+\end{proof}
 
 
 \begin{Ex}
- On tire deux nombres au hasard dans $\{-1,1\}$. On note $X$ leur somme, et $Y$ leur produit. On cherche à déterminer la loi conjointe de $(X,Y)$. L'univers est $\{-1;1\}^2$, que $X$ prend ses valeurs dans $\{-2,0,2\}$ et $Y$ dans $\{-1,1\}$. Les variables aléatoires étant discrètes, il suffit de déterminer toutes les probabilités $P(X=x\text{  et }Y=y$) pour tout couple $(x,y)\in \{-1;1\}^2$. On a :
+On tire deux nombres au hasard dans $\{-1,1\}$. On note $X$ leur somme, et $Y$ leur produit. On cherche à déterminer la loi conjointe de $(X,Y)$.\\
+L'espace de probabilité est  est $(\{-1;1\}^2,\mathcal{P}(\{-1;1\}^2),P)$ avec $P$ la probabilité uniforme. Pour tout $\omega=(r,b)\in\Omega$, on a $X(r,b)=r+b$ et $Y(r,b)=r.b$. Sous forme de tableau, on a :
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\backslashbox{$r$}{$b$} & -1& 1 \\\hline
+-1 &-2& 0 \\\hline
+1 & 0& 2 \\\hline
+\multicolumn{3}{c}{Définition de $X$}
+\end{tabular}
+\end{center}  
+ \begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\backslashbox{$r$}{$b$} & -1& 1 \\\hline
+-1 &1& -1 \\\hline
+1 & -1&1 \\\hline
+\multicolumn{3}{c}{Définition de $Y$}
+\end{tabular}
+\end{center}  
+$X$ prend ses valeurs dans $\{-2,0,2\}$ et $Y$ dans $\{-1,1\}$.\\
+ Les variables aléatoires étant finies, il suffit de déterminer toutes les probabilités $P(X=x\text{  et }Y=y$) pour tout couple $(x,y)\in \{-2,0,2\}\times\{-1,1\}$. On a :
  \begin{itemize}
- \item $P(X=2, Y=1)=1/4$(correspond au cas on on tire 1 et 1).
- \item $P(X=2, Y=-1)=0.$
-\item  $P(X=0, Y=1)=0.$
-\item  $P(X=0, Y=-1)=1/2.$
-\item $P(X=-2, Y=1)=1/4.$
-\item $P(X=-2, Y=-1)=0.$
+ \item $P(X=2, Y=1)=P( \{(1,1)\})\overbrace{=}^{\text{equiprobabilité}} \frac{1}{4}.$
+ \item $P(X=2, Y=-1)=P( \emptyset)= 0.$
+\item  $P(X=0, Y=1)=P( \emptyset)= 0.$
+\item  $P(X=0, Y=-1)=P( \{(1,-1),(-1,1)\})=\frac{2}{4}=\frac 1 2.$
+\item $P(X=-2, Y=1)=P( \{(-1,-1)\})=\frac{1}{4}.$
+\item $P(X=-2, Y=-1)=P( \emptyset)= 0.$
  \end{itemize}
-
+La loi de probabilité conjointe $(X,Y)$ est donc déterminée par :
 \begin{center}
 \begin{tabular}{|c|c|c|c|}
 \hline
 \backslashbox{$X$}{$Y$} & -1& 1 & $P(X=x)$\\\hline
--2 & 1/4& 0 & 1/4\\\hline
-0 & 0& 1/2 & 1/2\\\hline
-2 & 1/4& 0 & 1/4\\\hline
+-2 & 0& 1/4 & 1/4\\\hline
+0 & 1/2 &0 & 1/2\\\hline
+2 & 0& 1/4 & 1/4\\\hline
 $P(Y=y)$&1/2&1/2&1 \\\hline
 \end{tabular}
 \end{center} 
@@ -300,7 +340,7 @@ Total&7&17&24 \\\hline
 On tire au hasard un élève dans la classe.\\
 $X$ représente l'age de l'élève.\\
 $Y$ représente le genre de l'élève avec la label 0 pour une fille et le label 1 pour un garçon.\\
-La loi de probabilité conjointe $(X,Y)$ est déterminé par :
+La loi de probabilité conjointe $(X,Y)$ est déterminée par :
  \begin{center}
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -316,25 +356,25 @@ $P(Y=y)$&7/24&17/24&1 \\\hline
 
 %% -----------------------------------------------------------------------------
 \subsection{Indépendance et lois conditionnelles}
-\begin{Df}[Lois conditionnelles]
-Soit $(X,Y)$ un couple de variables aléatoires sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
+\begin{DfProp}[Lois conditionnelles]
+Soit $(X,Y)$ un couple de variables aléatoires.\\
 \begin{enumerate}
 \item On appelle \defi{loi conditionnelle} de $X$ sachant $(Y = y_j )$ pour $P(Y = y_j )\neq 0$, la probabilité définie par  :
-$$\forall i\in \{1,\dots,n\}:\quad  P_{Y=y_j}(X=x_i)=\frac{P(X=x_i\cap Y=y_j) } {P(Y=y_i)}$$ 
+$$\forall i\in \Intf{1}{n}:\quad  P_{Y=y_j}(X=x_i)=\frac{P(X=x_i\cap Y=y_j) } {P(Y=y_i)}$$ 
 \item On appelle \defi{loi conditionnelle} de $Y$ sachant $(X = x_i )$ pour $P(X = x_i )\neq 0$, la probabilité définie par  :
-$$\forall j\in \{1,\dots,m\}:\quad  P_{X=x_i}(Y=y_j)=\frac{P(X=x_i\cap Y=y_j) } {P(X=x_i)}$$ 
+$$\forall j\in \Intf{1}{m}:\quad  P_{X=x_i}(Y=y_j)=\frac{P(X=x_i\cap Y=y_j) } {P(X=x_i)}$$ 
 \end{enumerate}
-\end{Df}
+\end{DfProp}
 
 \begin{NB}
 Les lois marginales et les lois conditionnelles déterminent la loi conjointe :
-$$\forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\}:\quad P(X=x_i\cap Y=y_j)=P_{X=x_i}(Y=y_j)P(X=x_i)$$
-$$\forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\}:\quad P(X=x_i\cap Y=y_j)=P_{Y=y_j}(X=x_i)P(Y=y_j)$$
+$$\forall (i,j)\in  \Intf{1}{n}\times \Intf{1}{m}:\quad P(X=x_i\cap Y=y_j)=P_{X=x_i}(Y=y_j)P(X=x_i)$$
+$$\forall (i,j)\in  \Intf{1}{n}\times \Intf{1}{m}:\quad P(X=x_i\cap Y=y_j)=P_{Y=y_j}(X=x_i)P(Y=y_j)$$
 \end{NB}
 \begin{Df}[Indépendance]
-Soit $(X,Y)$ un couple de variables aléatoires sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
+Soit $(X,Y)$ un couple de variables aléatoires.\\
 On dit que $X$ et $Y$ sont \defi{indépendantes} si 
-$$ \forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\}:\quad P(X=x_i\cap Y=y_j):\quad P( (X=x_i)\cap (Y=y_j) ) = P(X=x_i) P(Y=y_j).$$
+$$ \forall (i,j)\in  \Intf{1}{n}\times \Intf{1}{m}:\quad P( (X=x_i)\cap (Y=y_j) ) = P(X=x_i) P(Y=y_j).$$
 \end{Df}
 \begin{NB} Dans la modélisation d'une expérience aléatoire, l'hypothèse d'indépendance des variables aléatoires est souvent une donnée de l'expérience et 
 non pas une propriété à vérifier. Par exemple, la modélisation de l'expérience du jeter de deux dés serait :
@@ -346,7 +386,7 @@ non pas une propriété à vérifier. Par exemple, la modélisation de l'expérience d
 \end{itemize}
 \end{NB}
 \begin{Th}
-Soit $(X,Y)$ un couple de variables aléatoires sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
+Soit $(X,Y)$ un couple de variables aléatoires.\\
 Si $X$ et $Y$ sont indépendantes, il en va de même pour les variables aléatoires $f(X)$ et $g(Y)$
 où $f:\R\to \R$ et $g:\R\to \R $ sont deux applications quelconques.
 \end{Th}
@@ -358,9 +398,9 @@ où $f:\R\to \R$ et $g:\R\to \R $ sont deux applications quelconques.
 \subsection{Espérance}
 L'espérance mathématique d'une variable aléatoire réelle est la moyenne pondérée par les probabilités d'apparition de chaque valeur. Le théorème de la loi forte des grands nombres démontrera que l'espérance est la valeur que l'on s'attend à trouver, en moyenne, si l'on répète un grand nombre de fois la même expérience aléatoire.
 \begin{Df}[Espérance d'une variable aléatoire]
-Soit $X$ une valeur aléatoire réelle.\\
-L'\defi{espérance de $X$} est
-\[ E(X) = \sum_{\forall i\in \{1,\dots,n\} } x_i P(X=x_i) \]
+Soit $X$ une variable aléatoire.\\
+L'\defi{espérance} de $X$ est
+\[ E(X) = \sum_{\forall i\in  \Intf{1}{n} } x_i P(X=x_i) \]
 \end{Df} 
 \begin{Ex}[Somme de deux dés]
 Reprenons l'exemple du lancer de deux dés en notant $S$ la somme des chiffres obtenus. 
@@ -370,10 +410,15 @@ $$E(S ) = \sum_{s\in S (\Omega)} sP(S = s)=  2.\frac{1}{36}+3.\frac{2}{36}+4.\fr
 
 
 \begin{Th}[Formule de transfert]
-Si $X$ est une variable aléatoire réelle
- et $f:\R\to \R$, alors
-\[ E(f(X)) =  \sum_{\forall i\in \{1,\dots,n\} }  f(x_i) P(X=x_i). \]
+Soit $X$ une variable aléatoire et  $f:\R\to \R$.\\
+On a
+\[ E(f(X)) =  \sum_{\forall i\in  \Intf{1}{n} }  f(x_i) P(X=x_i). \]
 \end{Th}
+\begin{proof}
+$$ E(f(X)) = \sum_{\forall j\in  \Intf{1}{m }}  y_j P(f(X)=y_i)= \sum_{\forall j\in  \Intf{1}{m }}  y_j  \sum_{\forall i\in\Intf{1}{n} :f(x_i)=y_j }P(X=x_i)= \sum_{\forall j\in  \Intf{1}{m }}    \sum_{\forall i\in\Intf{1}{n} :f(x_i)=y_j }y_j P(X=x_i).$$ 
+D'où
+$$ E(f(X)) = \sum_{\forall j\in  \Intf{1}{m }}    \sum_{\forall i\in\Intf{1}{n}:f(x_i)=y_j }f(x_i) P(X=x_i)=\sum_{\forall i\in\Intf{1}{n} }f(x_i) P(X=x_i).$$ 
+\end{proof}
 
 \begin{NB}
 La formule de transfert permet de  calculer $E(f(X))$ sans avoir à déterminer la loi de $f(X)$.\\
@@ -382,18 +427,6 @@ Dans l'exemple du jeu, l'espérance de la variable aléatoire $G(X)$ représente le
 En conclusion, ce jeu n'est pas favorable au joueur.
 \end{NB}
 
-%\begin{proof}
-%Soit $X(\Omega)=\{x_1,x_2,\dots,x_n\}$ les valeurs prises par la variables aléatoires.\\
-%Les événements $X^{-1}(x_1),\dots,X^{-1}(x_n)$ est un système complet d'événements. On a :
-%\begin{align*}
-% E(X) &= \sum_{\omega\in\Omega} X(\omega) P(\{\omega\})\\
-% &= \sum_{\omega\in \cup_{i=1}^{n}X^{-1}(x_i)} X(\omega) P(\{\omega\})\\
-%  &= \sum_{x\in \{x_1,x_2,\dots,x_n\} } \sum_{\omega \in X^{-1}(x)} X(\omega) P(\{\omega\})\\
-%    &= \sum_{x\in \{x_1,x_2,\dots,x_n\} } \sum_{\omega \in X^{-1}(x)} x P(\{\omega\})\\
-%    &= \sum_{x\in \{x_1,x_2,\dots,x_n\} }  x \sum_{\omega \in X^{-1}(x)} P(\{\omega\})\\
-%      &= \sum_{x\in X(\Omega) }  x P(X=x)
-%\end{align*} 
-%\end{proof}
 
 \begin{Th}
 Soit $X$ et $Y$ deux variables aléatoires indépendantes.\\
@@ -402,16 +435,14 @@ Alors \[ E(XY) = E(X) E(Y). \]
 \begin{proof}
 On applique le théorème de transfert à la variable aléatoire $f(X,Y)=XY$ d'où
 \begin{align*}
- E(XY) &= \sum_{ \forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\} } x_i y_j P(X=x_i\cap Y=y_j )\\
-       &\overbrace{=}^{\text{indépendance} } \sum_{  \forall (i,j)\in \{1,\dots,n\}\times \{1,\dots,m\} } x_i y_j P(X=x_i) P(Y=y_j)\\
+ E(XY) &= \sum_{ \forall (i,j)\in  \Intf{1}{n}\times \Intf{1}{m}} x_i y_j P(X=x_i\cap Y=y_j )\\
+       &\overbrace{=}^{\text{indépendance} } \sum_{  \forall (i,j)\in  \Intf{1}{n}\times \Intf{1}{m}} x_i y_j P(X=x_i) P(Y=y_j)\\
        &= \sum_{ i=0 }^n  \sum_{j=0}^m  x_i y_j P(X=x_i) P(Y=y_j)\\
        &= \sum_{ i=0 }^n  x_i P(X=x_i) \sum_{j=0}^m y_j  P(Y=y_j) \\
        &= E(X)E(Y).
 \end{align*} 
 \end{proof}
-\begin{Df}[Centrée]
-Une variable aléatoire est dite \defi{centrée} si son espérance est nulle.
-\end{Df}
+
 
 \begin{Prop}[propriétés de l'espérance]
 Soit $X$ et $Y$ deux variables aléatoires réelles et $(a,b)\in\R^2$.
@@ -419,105 +450,161 @@ Soit $X$ et $Y$ deux variables aléatoires réelles et $(a,b)\in\R^2$.
 \item
   $E(a) = a$.
 \item
-  $E(aX+bY) = aE(X)+bE(Y)$.
+ \textit{linéarité} :  $E(aX+bY) = aE(X)+bE(Y)$.
 \item
   Si $P(X\geq 0)=1$, alors $E(X)\geq 0$.
 \item
   Si $P(X\leq Y)=1$, alors $E(X)\leq E(Y)$.
 \end{itemize}
 \end{Prop}
-\begin{Ex}[Centrée une variable aléatoire]
-Soit $X$ une variable aléatoire.\\
-Alors la variable aléatoire $Y=X-E(X)$ est centrée car $E(Y)=E(X-E(X))=E(X)-E(E(X))=E(X)-E(X)=0$
-\end{Ex}
 
+\begin{Df}[Centrée]
+Une variable aléatoire est dite \defi{centrée} si son espérance est nulle.
+\end{Df}
+\begin{Ex}[Centrer une variable aléatoire]
+Soit $X$ une variable aléatoire.\\
+La variable aléatoire $Y=X-E(X)$ est centrée car $E(Y)=E(X-E(X))=E(X)-E(E(X))=E(X)-E(X)=0$
+\end{Ex}
+\begin{proof}
+\begin{itemize}
+\item Dans l'expression $E(a)$,  $a$ est la variable aléatoire  définie par $\omega\mapsto a$  d'où $E(a )=\overbrace{a}^{\in\R}P(a=\overbrace{a}^{\in\R})=\overbrace{a}^{\in\R}.$\\
+\item On applique le théorème de transfert à la variable aléatoire $f(X,Y)=aX+bY$ d'où
+\begin{align*}
+ E(aX+bY) &= \sum_{ \forall i\in  \Intf{1}{n}}\sum_{ \forall j\in  \Intf{1}{m}} (ax_i+b y_j) P(X=x_i\cap Y=y_j )\\
+       &=  a\sum_{ \forall i\in  \Intf{1}{n}}x_i\sum_{ \forall j\in  \Intf{1}{m}} P(X=x_i\cap Y=y_j )+b\sum_{ \forall j\in  \Intf{1}{m}} y_j \sum_{ \forall i\in  \Intf{1}{n}}P(X=x_i\cap Y=y_j )
+ \\
+       &=  a\sum_{ \forall i\in  \Intf{1}{n}}x_i P(X=x_i )+b\sum_{ \forall j\in  \Intf{1}{m}}  y_jP( Y=y_j )\\
+       &=  aE(X)+bE(Y).
+\end{align*}
+\item  Soit $X$ une variable aléatoire telle que $P(X\geq 0)=1$ d'où $P(X< 0)=0$.\\
+De plus, pour tout $x\in \R$, $P(X=x)=0$ car $\{X=x\}\subset \{X< 0\}$.\\
+\[ E(X) = \sum_{\forall i\in  \Intf{1}{n} } x_i P(X=x_i)= \sum_{\forall i\in  \Intf{1}{n}: x_i\geq 0 } x_i P(X=x_i)\geq 0.\]
+\item Soit $X$ une variable aléatoire telle que $P(Y- X\leq 0)=1$. Ainsi $E(Y- X)\geq 0$ et $E(X)\leq E(Y)$.
+\end{itemize}
+\end{proof}
 %
 
 
 \subsection{Variance}
-
-
-
-
 La variance est une mesure de la dispersion des valeurs d'une loi de probabilité.
 \begin{Df}[variance d'une variable aléatoire]
-
-Soit $X$ une variable aléatoire réelle.
-Sa \defi{variance} est $E\left( (X-E(X))^2\right)$ et on la note $V(X)$.
-Son \defi{écart-type} est $\sigma(X) =\sqrt{V(X)}$.
+Soit $X$ une variable aléatoire.\\
+La \defi{variance} de $X$ est $$E\left( (X-E(X))^2\right)$$ et on la note $V(X)$.\\
+L'\defi{écart-type} est $\sigma(X) =\sqrt{V(X)}$.
 \end{Df}
 \begin{Prop}[Formule de K\oe nig-Hugens]
-Soit $X$ une variable aléatoire réelle.
-Pour tout $a>0$, on a
+Soit $X$ une variable aléatoire.\\
+Pour tout $a>0$, on a :
 \[ V(X) = E(X^2)-(E(X))^2 \]
 \end{Prop}
+\begin{proof}
+\begin{align*}
+  V(X) &= E\left( (X-E(X))^2\right) \\
+  V(X) &= E\left( X^2-2E(X)X + E(X)^2\right)\\
+  V(X) &= E(X^2)-2E(X)E(X) + E(X)^2 \text{ car } E \text{ linéaire et }E(a)=a\\
+  V(X) &= E(X^2)-(E(X))^2
+\end{align*}
+\end{proof}
+
+
+
+
 \begin{Ex}[Somme de deux dés]
 Reprenons l'exemple du lancer de deux dés en notant $S$ la somme des chiffres obtenus. 
 On a :
-$$E(S^2 )\overbrace{=}^{thransfert} \sum_{s\in S (\Omega)} s^2P(S = s)=  2^2.\frac{1}{36}+3^2.\frac{2}{36}+4^2.\frac{3}{36}+\dots+12^2.\frac{1}{36}=\frac{329}{6}.$$
+$$E(S^2 )\overbrace{=}^{\text{th transfert}} \sum_{s\in S (\Omega)} s^2P(S = s)=  2^2.\frac{1}{36}+3^2.\frac{2}{36}+4^2.\frac{3}{36}+\dots+12^2.\frac{1}{36}=\frac{329}{6}.$$
 La variance de $S$ vaut alors :
 $$V(S)=E(S^2 )-(E(S))^2=\frac{329}{6}-7^2=\frac{35}{6}.$$
 et son écart-type
 $$\sigma(S)=\sqrt{V(S)}\approx 2,42.$$
 \end{Ex}
-
+\begin{Df}[Réduite]
+Une variable aléatoire est dite \defi{réduite} si sa variance est égale à .
+\end{Df}
+\begin{Ex}[Centrer et réduire une variable aléatoire]
+Soit $X$ une variable aléatoire.\\
+La variable aléatoire $Y=\frac{X-E(X)}{\sigma(X)}$ est centrée réduite.
+\end{Ex}
 
 \begin{Df}[Covariance de deux variables aléatoires]
-
-Soit $X$ et $Y$ deux variables aléatoires réelles.
-Leur \defi{covariance} est $E( (X-E(X)) (Y-E(Y)) )$ et on la note $\mathrm{Cov}(X,Y)$.
+Soit $X$ et $Y$ deux variables aléatoires.\\
+La \defi{covariance} de $X$ et $Y$ est $$E( (X-E(X)) (Y-E(Y)) )$$ et on la note $\mathrm{Cov}(X,Y)$.
 \end{Df}
 \begin{Prop}[Propriétés]
-
-Soit $X$ et $Y$ deux variables aléatoires réelles.
+Soit $X$ et $Y$ deux variables aléatoires.
 \begin{itemize}
 \item
-  $V(aX+b) = a^2V(X)$.
+  $V(aX+b) =E\left( (X-E(X))^2\right)$.
+  \item
+  $Var(X+Y) = Var(X) + Var(Y) + 2\mathrm{Cov}(X,Y)$.
 \item
   Si $X$ et $Y$ sont indépendantes, alors $V(X+Y) =V(X)+V(Y)$.
-\item
-  $Var(X+Y) = Var(X) + Var(Y) + 2\mathrm{Cov}(X,Y)$.
 \end{itemize}
 \end{Prop}
+\begin{proof}
+\begin{itemize}
+\item
+  $V(aX+b) =E( (aX+b-E(aX+b))^2)=E( a^2(X-E(X))^2)=a^2V(X)$ car $E$ linéaire..
+\item
+   $V(X+Y) =E( (X+Y-E(X+Y))^2)= E( (X-E(X))^2) +  E( (Y-E(Y))^2)+2E( (X-E(X)(Y-E(Y))) =Var(X) + Var(Y) + 2\mathrm{Cov}(X,Y)$.
+\item
+Si $X$ et $Y$ sont indépendantes, alors $X-E(X)$ et $Y-E(Y)$ sont indépendantes, d'où $$E( (X-E(X)(Y-E(Y)))=E(X-E(X)) E(Y-E(Y))=0.$$
+\end{itemize}
+\end{proof}
+
 
 \begin{Df}[Corrélation]
-
-Soit $X$ et $Y$ deux variables aléatoires réelles de variance non nulles.
-Leur \defi{coefficient de corrélation} est
+Soit $X$ et $Y$ deux variables aléatoires de variance non nulles.\\
+Le \defi{coefficient de corrélation} de $X$ et $Y$ est
 \[ \rho(X,Y) = \frac{\mathrm{Cov}(X,Y)}{\sigma(X)\sigma(Y)} \]
 \end{Df}
-
-
 \begin{Prop}[Propriétés]
-
-Soit $X$ et $Y$ deux variables aléatoires réelles de variance non nulles.
+Soit $X$ et $Y$ deux variables aléatoires de variance non nulles.
 \begin{itemize}
 \item
   $\rho(X,Y) \in [-1,1]$
 \item
-  $\rho(X,Y) = ±1$ si et seulement si il existe deux réels $a$ et $b$ tels que l'événement $(Y=aX+b)$ soit certain.
+  $\rho(X,Y) = ±1$ si et seulement si il existe deux réels $a$ et $b$ tels que l'événement $\{Y=aX+b\}$ soit certain.
 \item
   Si $X$ et $Y$ sont indépendantes, alors $\rho(X,Y) = 0$. On dit qu'elles sont décorrélées.
   La réciproque est fausse.
 \end{itemize}
 \end{Prop}
+\begin{proof}
+On utilise l'inégalité de Cauchy-Schwarz $|\mathrm{Cov}(X, Y )| \leq \sigma (X)\sigma (Y )$ (voir un cours d'algèbre bilinéaire pour la preuve de cette inégalité).
+\end{proof}
 %% -----------------------------------------------------------------------------
 \subsection{Lois usuelles}
 
-\begin{Df}[Loi uniforme]
+\subsubsection{Loi uniforme}
 
-Une variable aléatoire réelle $X$ suit la \defi{loi uniforme} sur $\{1,2,\dots,n\}$
+Lorsque on se trouve dans une situation d'équiprobabilité par exemples "jeter un dé équilibré", " tirer une boule dans une urne de boules distinctes", "choisir un élève au hasard pour passer au tableau", on modélise l'expérience aléatoire avec une variable aléatoire suivant une loi uniforme.
+\begin{DfProp}[Loi uniforme]
+Une variable aléatoire $X$ suit la \defi{loi uniforme} sur $\Intf{1}{n}$
 si 
 \begin{enumerate}
-\item $X(\Omega)=\{1,2,\dots,n\}$,
-\item $\forall k\in \{1,2,\dots,n\}:\quad  P(X=k) = \frac{1}{n}.$ 
+\item $X(\Omega)=\Intf{1}{n}$,
+\item $\forall i\in \Intf{1}{n}:\quad  P(X=i) = \frac{1}{n}.$ 
 \end{enumerate} 
 On note $X \hookrightarrow \mathcal{U}(E)$.\\
 On a : $E(X)=\frac{n+1}{2}$ et $V(X)=\frac{n^2-1}{2}$.
-\end{Df}
+\end{DfProp}
+\begin{proof}
+L'espérance est :
+$$E(X)=\sum_{i=1}^n iP(X=i)=\sum_{i=1}^n i \frac{1}{n}=\frac{1}{n} \sum_{i=1}^n i =\frac{1}{n} \frac{n(n+1)}{2}=\frac{n+1}{2}.$$
+Pour la variance, on a :
+$$E(X^2)=\sum_{i=1}^n i^2P(X=i)=\frac{1}{n} \sum_{i=1}^n i^2 =\frac{1}{n} \frac{(2n+1)n(n+1)}{6}=\frac{(2n+1)(n+1)}{6}.$$
+Ainsi, on a :
+$$V(X)=E(X^2) - (E(X))^2=\frac{(2n+1)(n+1)}{6}- \left(\frac{n+1}{2}\right)^2=\frac{n+1}{2}\left(\frac{2(2n+1)-3(n+1)}{3}\right),$$
+$$V(X)=\frac{n+1}{2}\frac{n-1}{6}=\frac{n^2-1}{12}.$$
+\end{proof}
+\subsubsection{Loi de Bernoulli}
+Lorsque l'issue est binaire du
+type "succès ou échec", "vrai ou faux", "marche ou arrêt", pile
+ou face", etc, on modélise l'expérience aléatoire avec une variable aléatoire suivant une loi de Bernoulli.
 
-\begin{Df}[Loi de Bernoulli]
-Une variable $X$ à valeurs dans $\{0,1\}$ suit la \defi{loi de Bernoulli} de paramètre $p$
+\begin{DfProp}[Loi de Bernoulli]
+Une variable aléatoire $X$ suit la \defi{loi de Bernoulli} de paramètre $p$
 si 
 \begin{enumerate}
 \item $X(\Omega)=\{0,1\}$,
@@ -525,30 +612,73 @@ si
 \end{enumerate} 
 On note $X \hookrightarrow  \mathcal{B}(p)$.\\
 On a : $E(X)=p$ et $V(X)=p(1-p)$.
-\end{Df}
-\begin{Prop}[Loi indicatrice]
-Soit $A$ est un événement de $\Omega$. La variable aléatoire réelle $1_A$ définie par  
+\end{DfProp}
+\begin{proof}
+L'espérance est :
+$$E(X)=0 P(X=0)+1P(X=1)=p.$$
+Pour la variance, on a :
+$$E(X^2)=0^2P(X=0)+1^2P(X=1)=p^2.$$
+Ainsi, on a :
+$$V(X)=p-p^2=p(1-p).$$
+\end{proof}
+
+\begin{DfProp}[Loi indicatrice]
+Soit $A$ est un événement de $\Omega$.\\
+ La variable aléatoire réelle $1_A$ définie par  
 $$1_A(\omega) =\begin{cases}1\text{ si }\omega \in A\\0\text{ si }\omega \in \bar A \end{cases}$$
 est une variable de Bernoulli de paramètre $p=P(A)$. On l'appelle \defi{loi indicatrice} de l'événement $A$.
-\end{Prop}
+\end{DfProp}
+
+\subsubsection{Loi Binomiale}
+Lorsque on répète $n$ fois une expérience de Bernoulli indépendamment  des unes et des
+autres et que l'on compte le nombre de succès, par exemples "nombre de faces obtenus après n lancers", on modélise l'expérience aléatoire avec une variable aléatoire suivant une loi binomiale.\\
+En effet, soit $X_1, X_2,\dots, X_n$ $n$ variables aléatoires indépendantes de loi de Bernoulli de même paramètre $p$.\\
+On pose $X=X_1+ X_2+\dots+ X_n$ la variable aléatoire représentant le nombre de succès.\\
+On a $X(\Omega) = \Intf{0}{n}$ et
+
+$$(X = k) = (X_1+ X_2+\dots+ X_n=k)=\bigcup_{I\subset\Intf{1}{n}:\card (I)=k} \left(\cap_{i\in I} (X_i=1)\right)\cap \left(\cap_{i\in \Intf{1}{n}\setminus I} (X_i=0)\right)$$
+Comme l'union est disjointe, on a :
+$$P(X = k) =\sum_{I\subset\Intf{1}{n}:\card (I)=k } P(\left(\cap_{i\in I} (X_i=1)\right)\cap \left(\cap_{i\in \Intf{1}{n}\setminus I} (X_i=0)\right))$$
+Comme les variables aléatoires sont indépendantes, on a :
+$$P(X = k) =\sum_{I\subset\Intf{1}{n}:\card (I)=k} p^k(1-p)^{n-k}$$
+Le nombre de parties à $k$ éléments de l'ensemble $\Intf{1}{n}$ est le coefficient binomial correspondant à la position des $k$ succès, d'où
+$$P(X = k) =\begin{pmatrix}n\\k\end{pmatrix} p^k(1-p)^{n-k},$$
+où $p^k$ est la probabilité d'obtention de ces $k$
+succès et $(1 - p)^{n-k}$ est la probabilité d'obtention des échecs.\\
+On définit donc :
 \begin{Df}[Loi binomiale]
-Une variable $X$ à valeurs dans $\{0,n\}$ suit la \defi{loi binomiale} de paramètres $n$ et $p$
+Une variable aléatoire $X$ suit la \defi{loi binomiale} de paramètres $n$ et $p$
 si
 \begin{enumerate}
-\item $X(\Omega)=\{0,1,2\dots,12\}$,
-\item $\forall k\in\{0,1,\dots,n\},\quad P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}.$ 
+\item $X(\Omega)= \Intf{1}{n}$,
+\item $\forall i\in\Intf{1}{n}:\quad\ P(X=i) = \binom{n}{i} p^i (1-p)^{n-i}.$ 
 \end{enumerate} 
 On note $X \hookrightarrow  \mathcal{B}(n,p)$.\\
 On a : $E(X)=np$ et $V(X)=np(1-p)$.
 \end{Df}
-\begin{NB}
-Pour $n=1$, on retrouve la loi de Bernouilli de paramètre $p$.
-\end{NB}
 \begin{Prop}[Loi des tirages avec remise]
 Soit $X_1, X_2,\dots, X_n$ $n$ variables aléatoires indépendantes de loi de Bernoulli de même paramètre $p$.\\
-Alors $S=X_1+ X_2+\dots+ X_n$ suit une loi binomiale de paramètres $n, p$.\\
-En d'autres termes, si l'expérience aléatoire est  une répétition de $n$ épreuves identiques et indépendantes tel que chaque épreuve est une expérience Bernouilli de paramètre  $p$ et si $S$ est égale au nombre de succès des $n$ épreuves de l'expérience, alors $S$  suit une loi binomiale de paramètres $n, p$.\\    
+Alors $X=X_1+ X_2+\dots+ X_n$ suit une loi binomiale de paramètres $n, p$.\\
+En d'autres termes, si l'expérience aléatoire est  une répétition de $n$ épreuves identiques et indépendantes tel que chaque épreuve est une expérience Bernouilli de paramètre  $p$ et si $S$ est égale au nombre de succès des $n$ épreuves de l'expérience, alors $S$  suit une loi binomiale de paramètres $n, p$.\\
+Inversement, si $X$ suit une loi binomiale de paramètres $n, p$, alors il existe $X_1, X_2,\dots, X_n$ $n$ variables aléatoires indépendantes de loi de Bernoulli de même paramètre $p$ tel que $X=X_1+ X_2+\dots+ X_n$.    
 \end{Prop}
+\begin{proof}
+La preuve a été faite dans l'introduction de la loi binomiale.
+\end{proof}
+\begin{NB}
+Pour $n=1$, on retrouve la loi de Bernoulli de paramètre $p$.
+\end{NB}
+\begin{Prop}[Espérance et Variance]
+Soit $X\hookrightarrow  \mathcal{B}(n,p)$.\\
+On a : $E(X)=np$ et $V(X)=np(1-p)$.
+\end{Prop}
+\begin{proof}
+Au lieu d'un calcul directe de l'espérance $E(X)=\sum_{i=0}^n i   \binom{n}{i} p^i (1-p)^{n-i} p^i (1-p)^{n-i}$, nous utilisons la proposition sur la loi des tirages avec remise.\\
+Il existe $X_1, X_2,\dots, X_n$ $n$ variables aléatoires indépendantes de loi de Bernoulli de même paramètre $p$ tel que $X=X_1+ X_2+\dots+ X_n$. Ainsi :
+$$E(X)=E(X_1+ X_2+\dots+ X_n)\overbrace{=}^{\text{linéarité}}E(X_1)+ E(X_2)+\dots+ E(X_n)=np.$$
+Aussi, la variance est égale à :
+$$V(X)=V(X_1+ X_2+\dots+ X_n)\overbrace{=}^{\text{indépendantes}}V(X_1)+ V(X_2)+\dots+ V(X_n)=np(1-p).$$
+\end{proof}
 
 
 \subsection{Convergence et approximations}
@@ -592,27 +722,45 @@ nombres.
 
 Lors d'un lancer d'une pièce de monnaie équilibrée, les deux côtés « pile » et « face » apparaissent de façon équiprobable pour des raisons de symétrie : on ne s'attend pas plus à l'un ou à l'autre côté. Cette mesure de l'attente s'appuie souvent sur une considération statistique : on observe que la fréquence des occurrences de chaque côté se rapproche de 1/2. 
 \begin{center}
-\includegraphics[width=8cm]{frequence_lancer.png}
+\includegraphics[width=12cm]{frequence_lancer.png}
 \end{center}
 Le théorème de la loi des grands nombres permet de justifier ce résultat en interprétant la probabilité comme une fréquence de réalisation.\\
 La modélisation de cette expérience aléatoire est :
 \begin{enumerate}
-\item  \textbf{n\up{ième} lancer} :  pour tout $n\in\N^*$,  la variable aléatoire $X_n$, représente le résultat du n\up{ième} lancer. Elle  suit une loi Bernouilli de paramètre $p$ (l'issue 0 représente le pile et l'issue 1 le face). Elles sont supposées indépendantes.  On a $E(X_n) = (1 - p).0 + p.1  = p.$ 
+\item  \textbf{n\up{ième} lancer} :  pour tout $i\in\N^*$,  la variable aléatoire $X_i$, représente le résultat du n\up{ième} lancer. Elle  suit une loi Bernoulli de paramètre $p$ (l'issue 0 représente le pile et l'issue 1 le face). Elles sont supposées indépendantes.  On a $E(X_i) = (1 - p).0 + p.1  = p.$ 
 \item \textbf{fréquence} : pour tout $n\in\N^*$,  la variable aléatoire $S_n$, représente la moyenne des résultats obtenus au cours des n premiers lancers, soit :
 $$ S_n =\frac{X_1+X_2+\dots+X_n}{n}$$ 
 \end{enumerate}
-L'issue, $\omega$, correspondant à une succession de faces existe, $X_n(\omega)=1$ pour tout $n\in \N^*$. Donc $1$ est une valeur possible de la variable aléatoire $S_n$. Cependant, le théorème de la loi faible des grands nombres prouve que la probabilité que $S_n$ s'écarte de l'espérance $E(X_n)$ tend vers 0 quand $n$ tend vers l'infini. 
+L'issue, $\omega$, correspondant à une succession de faces, $X_n(\omega)=1$ pour tout $n\in \N^*$, existe. Donc $1$ est une valeur possible de la variable aléatoire $S_n$. Cependant, le théorème de la loi faible des grands nombres prouve que la \textbf{probabilité} que $S_n$ s'écarte de l'espérance $E(X_n)$ tend vers 0 quand $n$ tend vers l'infini. 
 \begin{Th}[Loi faible des grands nombres]
-Soit $(X_n)_{n\in\N^*}$ une suite de variables aléatoires discrètes définies sur un espace probabilisé $(\Omega,\mathcal{A} ,P)$. On
-suppose toutes les variables indépendantes et de même loi, admettant une espérance $m$ et un écart
-type $\sigma$. Posons $S_n =\frac{X_1+X_2+\dots+X_n}{n}.$\\
+Soit $(X_n)_{n\in\N^*}$ une suite de variables aléatoires indépendantes et de même loi, admettant une espérance $m$ et un écart
+type $\sigma$.\\
+On pose $S_n =\frac{X_1+X_2+\dots+X_n}{n}.$\\
 Alors 
 $$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon \right )\tend[n\to+\infty]0.$$
+On dit que la suite des variables aléatoires $(s_n)$ \defi{converge en probabilité} vers $m$. 
 \end{Th}
 \begin{proof}
 D'après l'inégalité de Bienaymé-Tchebychev et par indépendance des variables aléatoires,
 $$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon\right)\leq \frac{V(S_n)}{\epsilon^2}=\frac{\frac{V(X_1+X_2+\dots+X_n)}{n^2}}{\epsilon^2}=\frac{\sigma^2}{n\epsilon^2} \tend[n\to+\infty]0.$$
 \end{proof}
+
+
+\begin{Th}[Théorème de Bernoulli]
+Soit $(A_n)_{n\in\N}$ une suite 
+d'événements indépendants de même probabilité $p$.\\
+La suite des  
+variables aléatoires $\frac 1 n \sum_{i=0}^N 1_{A_i}$ converge en probabilité vers $p$. 
+\end{Th}
+\begin{proof} Les variables aléatoires $1_{A_n}$ sont  
+indépendantes de même loi de Bernoulli. D'après la loi faible des grands nombres, la suite  des  
+variables aléatoires $\frac 1 n \sum_{i=0}^N 1_{A_i}$ converge en probabilité vers $E(X_1)=p$.
+\end{proof}
 \begin{NB}
-Le TP Python \url{https://github.com/VincentTariel/cours/blob/master/probabilite/simulation_variable_aleatoire_avtivite_python.pdf} permet de vous familiariser avec ce théorème sur des applications.
+Ce théorème assure qu'en répétant une expérience aléatoire, la fréquence 
+des occurrences d'un événement converge en probabilité  
+vers la probabilité de l'événement.
+Ce théorème apporte la cohérence entre l'approche de la modélisation probabiliste et  
+l'approche fréquentiste.\\
+Le TP Python \url{https://github.com/VincentTariel/cours/blob/master/probabilite/simulation_variable_aleatoire_avtivite_python.pdf} permet de vous familiariser sur les applications de ce théorème.
 \end{NB}
