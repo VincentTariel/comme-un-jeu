@@ -680,27 +680,46 @@ Soit $X$ et $Y$ deux variables aléatoires de variance non nulles.
 \item
   $\rho(X,Y) \in [-1,1]$
 \item
-  $\rho(X,Y) = ±1$ si et seulement si il existe deux réels $a$ et $b$ tels que l'événement $(Y=aX+b)$ soit certain.
+  $\rho(X,Y) = ±1$ si et seulement si il existe deux réels $a$ et $b$ tels que l'événement $\{Y=aX+b\}$ soit certain.
 \item
   Si $X$ et $Y$ sont indépendantes, alors $\rho(X,Y) = 0$. On dit qu'elles sont décorrélées.
   La réciproque est fausse.
 \end{itemize}
 \end{Prop}
+\begin{proof}
+On utilise l'inégalité de Cauchy-Schwarz $|\mathrm{Cov}(X, Y )| \leq \sigma (X)\sigma (Y )$ (voir un cours d'algèbre bilinéaire pour la preuve de cette inégalité).
+\end{proof}
 %% -----------------------------------------------------------------------------
 \subsection{Lois usuelles}
 
-\begin{Df}[Loi uniforme]
+\subsubsection{Loi uniforme}
+
+Lorsque on se trouve dans une situation d'équiprobabilité par exemples "jeter un dé équilibré", " tirer une boule dans une urne de boules distinctes", "choisir un élève au hasard pour passer au tableau", on modélise l'expérience aléatoire avec une variable aléatoire suivant une loi uniforme.
+\begin{DfProp}[Loi uniforme]
 Une variable aléatoire $X$ suit la \defi{loi uniforme} sur $\Intf{1}{n}$
 si 
 \begin{enumerate}
 \item $X(\Omega)=\Intf{1}{n}$,
-\item $\forall k\in \Intf{1}{n}:\quad  P(X=k) = \frac{1}{n}.$ 
+\item $\forall i\in \Intf{1}{n}:\quad  P(X=i) = \frac{1}{n}.$ 
 \end{enumerate} 
 On note $X \hookrightarrow \mathcal{U}(E)$.\\
 On a : $E(X)=\frac{n+1}{2}$ et $V(X)=\frac{n^2-1}{2}$.
-\end{Df}
+\end{DfProp}
+\begin{proof}
+L'espérance est :
+$$E(X)=\sum_{i=1}^n iP(X=i)=\sum_{i=1}^n i \frac{1}{n}=\frac{1}{n} \sum_{i=1}^n i =\frac{1}{n} \frac{n(n+1)}{2}=\frac{n+1}{2}.$$
+Pour la variance, on a :
+$$E(X^2)=\sum_{i=1}^n i^2P(X=i)=\frac{1}{n} \sum_{i=1}^n i^2 =\frac{1}{n} \frac{(2n+1)n(n+1)}{6}=\frac{(2n+1)(n+1)}{6}.$$
+Ainsi, on a :
+$$V(X)=E(X^2) - (E(X))^2=\frac{(2n+1)(n+1)}{6}- \left(\frac{n+1}{2}\right)^2=\frac{n+1}{2}\left(\frac{2(2n+1)-3(n+1)}{3}\right),$$
+$$V(X)=\frac{n+1}{2}\frac{n-1}{6}=\frac{n^2-1}{12}.$$
+\end{proof}
+\subsubsection{Loi de Bernoulli}
+Lorsque l'issue est binaire du
+type "succès ou échec", "vrai ou faux", "marche ou arrêt", pile
+ou face", etc, on modélise l'expérience aléatoire avec une variable aléatoire suivant une loi de Bernoulli.
 
-\begin{Df}[Loi de Bernoulli]
+\begin{DfProp}[Loi de Bernoulli]
 Une variable aléatoire $X$ suit la \defi{loi de Bernoulli} de paramètre $p$
 si 
 \begin{enumerate}
@@ -709,30 +728,73 @@ si
 \end{enumerate} 
 On note $X \hookrightarrow  \mathcal{B}(p)$.\\
 On a : $E(X)=p$ et $V(X)=p(1-p)$.
-\end{Df}
-\begin{Prop}[Loi indicatrice]
-Soit $A$ est un événement de $\Omega$. La variable aléatoire réelle $1_A$ définie par  
+\end{DfProp}
+\begin{proof}
+L'espérance est :
+$$E(X)=0 P(X=0)+1P(X=1)=p.$$
+Pour la variance, on a :
+$$E(X^2)=0^2P(X=0)+1^2P(X=1)=p^2.$$
+Ainsi, on a :
+$$V(X)=p-p^2=p(1-p).$$
+\end{proof}
+
+\begin{DfProp}[Loi indicatrice]
+Soit $A$ est un événement de $\Omega$.\\
+ La variable aléatoire réelle $1_A$ définie par  
 $$1_A(\omega) =\begin{cases}1\text{ si }\omega \in A\\0\text{ si }\omega \in \bar A \end{cases}$$
 est une variable de Bernoulli de paramètre $p=P(A)$. On l'appelle \defi{loi indicatrice} de l'événement $A$.
-\end{Prop}
+\end{DfProp}
+
+\subsubsection{Loi Binomiale}
+Lorsque on répète $n$ fois une expérience de Bernoulli indépendamment  des unes et des
+autres et que l'on compte le nombre de succès, par exemples "nombre de faces obtenus après n lancers", on modélise l'expérience aléatoire avec une variable aléatoire suivant une loi binomiale.\\
+En effet, soit $X_1, X_2,\dots, X_n$ $n$ variables aléatoires indépendantes de loi de Bernoulli de même paramètre $p$.\\
+On pose $X=X_1+ X_2+\dots+ X_n$ la variable aléatoire représentant le nombre de succès.\\
+On a $X(\Omega) = \Intf{0}{n}$ et
+
+$$(X = k) = (X_1+ X_2+\dots+ X_n=k)=\bigcup_{I\subset\Intf{1}{n}:\card (I)=k} \left(\cap_{i\in I} (X_i=1)\right)\cap \left(\cap_{i\in \Intf{1}{n}\setminus I} (X_i=0)\right)$$
+Comme l'union est disjointe, on a :
+$$P(X = k) =\sum_{I\subset\Intf{1}{n}:\card (I)=k } P(\left(\cap_{i\in I} (X_i=1)\right)\cap \left(\cap_{i\in \Intf{1}{n}\setminus I} (X_i=0)\right))$$
+Comme les variables aléatoires sont indépendantes, on a :
+$$P(X = k) =\sum_{I\subset\Intf{1}{n}:\card (I)=k} p^k(1-p)^{n-k}$$
+Le nombre de parties à $k$ éléments de l'ensemble $\Intf{1}{n}$ est le coefficient binomial correspondant à la position des $k$ succès, d'où
+$$P(X = k) =\begin{pmatrix}n\\k\end{pmatrix} p^k(1-p)^{n-k},$$
+où $p^k$ est la probabilité d'obtention de ces $k$
+succès et $(1 - p)^{n-k}$ est la probabilité d'obtention des échecs.\\
+On définit donc :
 \begin{Df}[Loi binomiale]
 Une variable aléatoire $X$ suit la \defi{loi binomiale} de paramètres $n$ et $p$
 si
 \begin{enumerate}
 \item $X(\Omega)= \Intf{1}{n}$,
-\item $\forall k\in\Intf{1}{n}:\quad\ P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}.$ 
+\item $\forall i\in\Intf{1}{n}:\quad\ P(X=i) = \binom{n}{i} p^i (1-p)^{n-i}.$ 
 \end{enumerate} 
 On note $X \hookrightarrow  \mathcal{B}(n,p)$.\\
 On a : $E(X)=np$ et $V(X)=np(1-p)$.
 \end{Df}
-\begin{NB}
-Pour $n=1$, on retrouve la loi de Bernouilli de paramètre $p$.
-\end{NB}
 \begin{Prop}[Loi des tirages avec remise]
 Soit $X_1, X_2,\dots, X_n$ $n$ variables aléatoires indépendantes de loi de Bernoulli de même paramètre $p$.\\
-Alors $S=X_1+ X_2+\dots+ X_n$ suit une loi binomiale de paramètres $n, p$.\\
-En d'autres termes, si l'expérience aléatoire est  une répétition de $n$ épreuves identiques et indépendantes tel que chaque épreuve est une expérience Bernouilli de paramètre  $p$ et si $S$ est égale au nombre de succès des $n$ épreuves de l'expérience, alors $S$  suit une loi binomiale de paramètres $n, p$.\\    
+Alors $X=X_1+ X_2+\dots+ X_n$ suit une loi binomiale de paramètres $n, p$.\\
+En d'autres termes, si l'expérience aléatoire est  une répétition de $n$ épreuves identiques et indépendantes tel que chaque épreuve est une expérience Bernouilli de paramètre  $p$ et si $S$ est égale au nombre de succès des $n$ épreuves de l'expérience, alors $S$  suit une loi binomiale de paramètres $n, p$.\\
+Inversement, si $X$ suit une loi binomiale de paramètres $n, p$, alors il existe $X_1, X_2,\dots, X_n$ $n$ variables aléatoires indépendantes de loi de Bernoulli de même paramètre $p$ tel que $X=X_1+ X_2+\dots+ X_n$.    
 \end{Prop}
+\begin{proof}
+La preuve a été faite dans l'introduction de la loi binomiale.
+\end{proof}
+\begin{NB}
+Pour $n=1$, on retrouve la loi de Bernoulli de paramètre $p$.
+\end{NB}
+\begin{Prop}[Espérance et Variance]
+Soit $X\hookrightarrow  \mathcal{B}(n,p)$.\\
+On a : $E(X)=np$ et $V(X)=np(1-p)$.
+\end{Prop}
+\begin{proof}
+Au lieu d'un calcul directe de l'espérance $E(X)=\sum_{i=0}^n i   \binom{n}{i} p^i (1-p)^{n-i} p^i (1-p)^{n-i}$, nous utilisons la proposition sur la loi des tirages avec remise.\\
+Il existe $X_1, X_2,\dots, X_n$ $n$ variables aléatoires indépendantes de loi de Bernoulli de même paramètre $p$ tel que $X=X_1+ X_2+\dots+ X_n$. Ainsi :
+$$E(X)=E(X_1+ X_2+\dots+ X_n)\overbrace{=}^{\text{linéarité}}E(X_1)+ E(X_2)+\dots+ E(X_n)=np.$$
+Aussi, la variance est égale à :
+$$V(X)=V(X_1+ X_2+\dots+ X_n)\overbrace{=}^{\text{indépendantes}}V(X_1)+ V(X_2)+\dots+ V(X_n)=np(1-p).$$
+\end{proof}
 
 
 \subsection{Convergence et approximations}
@@ -776,30 +838,47 @@ nombres.
 
 Lors d'un lancer d'une pièce de monnaie équilibrée, les deux côtés « pile » et « face » apparaissent de façon équiprobable pour des raisons de symétrie : on ne s'attend pas plus à l'un ou à l'autre côté. Cette mesure de l'attente s'appuie souvent sur une considération statistique : on observe que la fréquence des occurrences de chaque côté se rapproche de 1/2. 
 \begin{center}
-\includegraphics[width=8cm]{frequence_lancer.png}
+\includegraphics[width=12cm]{frequence_lancer.png}
 \end{center}
 Le théorème de la loi des grands nombres permet de justifier ce résultat en interprétant la probabilité comme une fréquence de réalisation.\\
 La modélisation de cette expérience aléatoire est :
 \begin{enumerate}
-\item  \textbf{n\up{ième} lancer} :  pour tout $n\in\N^*$,  la variable aléatoire $X_n$, représente le résultat du n\up{ième} lancer. Elle  suit une loi Bernouilli de paramètre $p$ (l'issue 0 représente le pile et l'issue 1 le face). Elles sont supposées indépendantes.  On a $E(X_n) = (1 - p).0 + p.1  = p.$ 
+\item  \textbf{n\up{ième} lancer} :  pour tout $i\in\N^*$,  la variable aléatoire $X_i$, représente le résultat du n\up{ième} lancer. Elle  suit une loi Bernoulli de paramètre $p$ (l'issue 0 représente le pile et l'issue 1 le face). Elles sont supposées indépendantes.  On a $E(X_i) = (1 - p).0 + p.1  = p.$ 
 \item \textbf{fréquence} : pour tout $n\in\N^*$,  la variable aléatoire $S_n$, représente la moyenne des résultats obtenus au cours des n premiers lancers, soit :
 $$ S_n =\frac{X_1+X_2+\dots+X_n}{n}$$ 
 \end{enumerate}
-L'issue, $\omega$, correspondant à une succession de faces existe, $X_n(\omega)=1$ pour tout $n\in \N^*$. Donc $1$ est une valeur possible de la variable aléatoire $S_n$. Cependant, le théorème de la loi faible des grands nombres prouve que la probabilité que $S_n$ s'écarte de l'espérance $E(X_n)$ tend vers 0 quand $n$ tend vers l'infini. 
+L'issue, $\omega$, correspondant à une succession de faces, $X_n(\omega)=1$ pour tout $n\in \N^*$, existe. Donc $1$ est une valeur possible de la variable aléatoire $S_n$. Cependant, le théorème de la loi faible des grands nombres prouve que la \textbf{probabilité} que $S_n$ s'écarte de l'espérance $E(X_n)$ tend vers 0 quand $n$ tend vers l'infini. 
 \begin{Th}[Loi faible des grands nombres]
-Soit $(X_n)_{n\in\N^*}$ une suite de variables aléatoires discrètes définies sur un espace probabilisé $(\Omega,\mathcal{A} ,P)$. On
-suppose toutes les variables indépendantes et de même loi, admettant une espérance $m$ et un écart
-type $\sigma$. Posons $S_n =\frac{X_1+X_2+\dots+X_n}{n}.$\\
+Soit $(X_n)_{n\in\N^*}$ une suite de variables aléatoires indépendantes et de même loi, admettant une espérance $m$ et un écart
+type $\sigma$.\\
+On pose $S_n =\frac{X_1+X_2+\dots+X_n}{n}.$\\
 Alors 
 $$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon \right )\tend[n\to+\infty]0.$$
+On dit que la suite des variables aléatoires $(s_n)$ \defi{converge en probabilité} vers $m$. 
 \end{Th}
 \begin{proof}
 D'après l'inégalité de Bienaymé-Tchebychev et par indépendance des variables aléatoires,
 $$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon\right)\leq \frac{V(S_n)}{\epsilon^2}=\frac{\frac{V(X_1+X_2+\dots+X_n)}{n^2}}{\epsilon^2}=\frac{\sigma^2}{n\epsilon^2} \tend[n\to+\infty]0.$$
 \end{proof}
-\begin{NB}
-Le TP Python \url{https://github.com/VincentTariel/cours/blob/master/probabilite/simulation_variable_aleatoire_avtivite_python.pdf} permet de vous familiariser avec ce théorème sur des applications.
-\end{NB}
 
+
+\begin{Th}[Théorème de Bernoulli]
+Soit $(A_n)_{n\in\N}$ une suite 
+d'événements indépendants de même probabilité $p$.
+La suite des  
+variables aléatoires $\frac 1 n \sum_{i=0}^N 1_{A_i}$ converge en probabilité vers $p$. 
+\end{Th}
+\begin{proof} Les variables aléatoires $1_{A_n}$ sont  
+indépendantes de même loi de Bernoulli. D'après la loi faible des grands nombres, la suite  des  
+variables aléatoires $\frac 1 n \sum_{i=0}^N 1_{A_i}$ converge en probabilité vers $E(X_1)=p$.
+\end{proof}
+\begin{NB}
+Ce théorème assure qu'en répétant une expérience aléatoire, la fréquence 
+des occurrences d'un événement converge en probabilité  
+vers la probabilité de l'événement.
+Ce théorème apporte la cohérence entre l'approche de la modélisation probabiliste et  
+l'approche fréquentiste.\\
+Le TP Python \url{https://github.com/VincentTariel/cours/blob/master/probabilite/simulation_variable_aleatoire_avtivite_python.pdf} permet de vous familiariser sur les applications de ce théorème.
+\end{NB}
 
 \end{document}
