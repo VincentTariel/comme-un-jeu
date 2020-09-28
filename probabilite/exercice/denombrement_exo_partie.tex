@@ -1,23 +1,23 @@
 \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Nombre de parties d'un ensemble]
-Dénombrer  l'ensemble des parties de $\{1,\dots,n\}$, noté $ \mathcal{P}(\{1,\dots,n\})$. 
+Dénombrer  l'ensemble des parties de $\Intf{1}{n}$, noté $ \mathcal{P}(\Intf{1}{n})$. 
 \begin{correction}
 Démontrons que cette fonction est bijective :
 \[
 f:
   \begin{array}{rcl}
-    \mathcal{P}(\{1,\dots,n\}) & \longrightarrow & \mathcal{F}(\{1,\dots,n\},\{0,1\}) \\
+    \mathcal{P}(\Intf{1}{n}) & \longrightarrow & \mathcal{F}(\Intf{1}{n},\{0,1\}) \\
       A & \longmapsto & \mathbf 1_A \\
   \end{array}
 \]avec $\mathbf 1_A$ fonction indicatrice de l'ensemble $A$
 \[
-\mathbf 1_A :\begin{array}{rcl}  \{1,\dots,n\} & \longrightarrow & \{0,1\}  \\
+\mathbf 1_A :\begin{array}{rcl}  \Intf{1}{n} & \longrightarrow & \{0,1\}  \\
 i & \longmapsto & \left\{\begin{matrix}  1 \ \mbox{si} \ i \ \in \ A \\ 0 \ \mbox{si} \ i \ \notin \ A \end{matrix}\right. \end{array}
 \]
 \begin{itemize}
-\item injective : soit $A,B\in \mathcal{P}(\{1,\dots,n\})$ tel que $f(A)=f(B)$, d'où $\mathbf 1_A=\mathbf 1_B$ donc $A=B$.
-\item surjectivité : soit $\phi\in  \mathcal{F}(\{1,\dots,n\},\{0,1\})$. On pose $A=\{i\in \{1,\dots,n\}:\phi(i)=1\}$. on a bien $f(A)=\phi$.
+\item \textit{injective }: soit $A,B\in \mathcal{P}(\Intf{1}{n})$ tel que $f(A)=f(B)$, d'où $\mathbf 1_A=\mathbf 1_B$ donc $A=B$.
+\item \textit{surjectivité} : soit $\phi\in  \mathcal{F}(\Intf{1}{n},\{0,1\})$. On pose $A=\{i\in \Intf{1}{n}:\phi(i)=1\}$. on a bien $f(A)=\phi$.
 \end{itemize}
-Comme $f$ est bijective $\text{Card}(\mathcal{P}(\{1,\dots,n\}))=\text{Card}(\mathcal{F}(\{1,\dots,n\},\{0,1\}))=2^n$.
+Comme $f$ est bijective $\text{Card}(\mathcal{P}(\Intf{1}{n}))=\text{Card}(\mathcal{F}(\Intf{1}{n},\{0,1\}))=2^n$.
 \end{correction}
 
 \finexo

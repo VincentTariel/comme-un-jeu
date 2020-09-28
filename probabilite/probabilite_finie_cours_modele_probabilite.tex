@@ -82,7 +82,7 @@ $\omega\in A$&	 $\omega$ appartient à $A$&	 Le résultat $\omega$ est une des réa
 \end{Df} 
 
 \begin{Df}[Tribu]
-L'ensemble des événements possibles appelé \defi{tribu} est l'ensemble des parties de l'univers, soit $\mathcal{P}(\Omega)$.
+L'ensemble des événements possibles appelé \defi{tribu} est l'ensemble des parties de l'univers. Dans le cadre d'un univers fini, la tribu est l'ensemble des parties de l'univers, soit $\mathcal{P}(\Omega)$.
 \end{Df}
 \begin{Ex}
 Pour le lancer d'une pièce, l'univers est $\{P,F\}$ et la tribu est $ \{\varnothing, \{P \}, \{F \}, \{P, F \} \}$.
@@ -93,7 +93,7 @@ Le couple $(\Omega,\mathcal{P}(\Omega))$ est appelé \defi{espace probabilisable}
 \end{Df}
 
 \begin{Df}[Axiomes des probabilités]
-Soit $(\Omega,\mathcal{P}(\Omega))$ un espace probabilisable fini.
+Soit $(\Omega,\mathcal{P}(\Omega))$ un espace probabilisable fini.\\
 Une \defi{probabilité} sur $(\Omega,\mathcal{P}(\Omega))$ est une application
 de $\mathcal{P}(\Omega)$ dans $\R^+$ vérifiant :
 \begin{itemize}
@@ -111,15 +111,15 @@ Le triplet  $(\Omega,\mathcal{P}(\Omega),P)$ s'appelle un \defi{espace probabili
 \begin{Prop}
 \begin{enumerate}
 \item $ P(\emptyset)=0.$
-\item Pour tout $A,B\in \mathcal{A}$ tel que  $A\subset B$, on a :
+\item Pour tout $A,B\in \mathcal{P}(\Omega)$ tel que  $A\subset B$, on a :
 $$P(A)\leq P(B)$$
 $$P(B\setminus A )=P(B)-P(A)$$
-\item Pour tout $A\in \mathcal{A}$, on a $P(A)\in[0,1]$.
-\item Pour tout $A,B\in \mathcal{A}$, on a $$P(A\cup B)+P(A\cap B)=P(A)+P(B).$$
-\item Pour tout $A,B\in \mathcal{A}$, on a $$P(A\cap B)\leq P(A)+P(B).$$
+\item Pour tout $A\in \mathcal{P}(\Omega)$, on a $P(A)\in[0,1]$.
+\item Pour tout $A,B\in \mathcal{P}(\Omega)$, on a $$P(A\cup B)+P(A\cap B)=P(A)+P(B).$$
+\item Pour tout $A,B\in \mathcal{P}(\Omega)$, on a $$P(A\cap B)\leq P(A)+P(B).$$
 \item Si $A_1, \dots, A_n$ est une famille d'événements deux à deux incompatibles, alors
 alors \[ P\left( \cup_{i=1}^n A_i \right) = \sum_{i=1}^n P(A_i) \]
-\item \defi{Sous additivité} :Si $A_1, \dots, A_n$ est une famille d'événements , alors  :
+\item Sous additivité : si $A_1, \dots, A_n$ est une famille d'événements , alors  :
 \[ P\left( \cup_{i=1}^n A_i \right) \leq  \sum_{i=1}^n P(A_i) \]
 \end{enumerate}
 \end{Prop}
@@ -156,38 +156,48 @@ P\left( \cup_{i=1}^{n+1} A_i \right)&=P(\left( \cup_{i=1}^{n} A_i \right)\cup A_
 \end{enumerate}
 \end{proof}
 
-\begin{Df}[Probabilité uniforme]
+\begin{DfProp}[Probabilité uniforme]
 On appelle \defi{probabilité uniforme} sur $\Omega$ la probabilité définie par :
-$$P(A)=\frac{card(A)}{card(\Omega)}.$$
-\end{Df}
+$$P(A)=\frac{\card (A)}{\card (\Omega)}.$$
+\end{DfProp}
+\begin{proof}
+\begin{itemize}
+\item $P(\Omega)=\frac{\card (\Omega)}{\card (\Omega)}=1.$
+\item Soit $A$ et $B$ deux parties disjointes de $\Omega$. On a :
+$$P(A\cup B)=\frac{\card (A\cup B)}{\card (\Omega)}\overbrace{=}^{\text{A  et B sont disjoints}}=\frac{\card (A)+ \card (B)}{\card (\Omega)}=\frac{\card (A)}{\card (\Omega)}+\frac{\card (B)}{\card (\Omega)}=P(A)+P(B) .$$
 
+\end{itemize}
+\end{proof}
 \begin{Ex}[Lancer de deux dés]
-Pour l'expérience aléatoire du lancer de deux dés, l'univers est $\Omega=\overbrace{\{1,2,3,4,5,6\}}^{\text{Issues du premier dé}}\times \overbrace{\{1,2,3,4,5,6\}}^{\text{Issues du second dé}}$ et la probabilité est la probabilité uniforme.\\
+Pour l'expérience aléatoire du lancer de deux dés, l'univers est $\Omega=\overbrace{\{1,2,3,4,5,6\}}^{\text{issues du premier dé}}\times \overbrace{\{1,2,3,4,5,6\}}^{\text{issues du second dé}}$ et la probabilité est la probabilité uniforme.\\
 L'événement $A$="Somme des chiffres égale à 2 ou 12" est $\{(1,1),(6,6)\}$.\\
 L'événement $B$="Somme des chiffres égale à 7" est $\{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\}$. \\
 D'où
-$$P(A)=\frac{card(A)}{card(\Omega)}=\frac{2}{36}=\frac{1}{18},$$
+$$P(A)=\frac{\card (A)}{\card (\Omega)}=\frac{2}{36}=\frac{1}{18},$$
 et
- $$P(B)=\frac{card(B)}{card(\Omega)}=\frac{6}{36}=\frac{1}{6}.$$
+ $$P(B)=\frac{\card (B)}{\card (\Omega)}=\frac{6}{36}=\frac{1}{6}.$$
 \end{Ex}
 
-\begin{Prop}
-Une probabilité $P$ sur un univers fini est complètement déterminée par les $P(\{\omega\})$ pour tout $\omega \in \Omega$. $P(\{\omega\})$, appelé poids de probabilité.\\
+\begin{Prop}[Détermination d'une probabilité par l'image des singletons]
+Une probabilité $P$ sur un univers fini est complètement déterminée par les $P(\{\omega\})$ pour tout $\omega \in \Omega$.\\
+$P(\{\omega\})$ est appelé \defi{poids de probabilité}.
+\end{Prop}
+\begin{proof}
 En effet, pour $A \subset \Omega$, on a :
 \begin{align*}
 P(A)&=P(\bigcup\limits_{\omega\in A}\{w\} ),\\
  &=\sum_{\omega\in A}P(\{w\}).
 \end{align*}
-\end{Prop}
+\end{proof}
 \begin{NB}
 \begin{itemize}
 \item Les poids d'une probabilité $P$ vérifient
 $$ \sum_{\omega \in \Omega}P(\{\omega\}) = 1.$$
-\item Il est souvent plus facile de définir une probabilité sur les événements élémentaires ("les issues") que sur l'ensemble des événements.\\
-Une probabilité sur $\Omega=\{\omega_1,\ldots,\omega_n\}$ est la donnée d'une suite finie $(p_1,\ldots,p_n)$ de nombres tels que :
+\item Il est souvent plus facile de définir une probabilité sur les événements élémentaires ("les issues") que sur l'ensemble des événements.
+\item Une probabilité sur $\Omega=\Intf{1}{n}$ est la donnée d'une suite finie $(p_1,\ldots,p_n)$ de nombres tels que :
 \begin{enumerate}
-\item $p_i = P(\{\omega_i\})$
-\item $0\leq p_i\leq 1$
+\item $p_i = P(\{\omega_i\}),\forall i\in\Intf{1}{n} $
+\item $0\leq p_i\leq 1,,\forall i\in\Intf{1}{n}$
 \item $p_1+p_2+\ldots+p_n=1.$
 \end{enumerate}
 \end{itemize}
@@ -198,12 +208,10 @@ $$\begin{cases}
 p_6=2 p_1=2 p_2=2 p_3=2 p_4=2 p_5 \\
 p_1+p_2+p_3+p_4+p_5+p_6=1
 \end{cases}$$
-Après résolution, la probabilité est donc définie par
+Après résolution de ce système d'équations, la probabilité est donc définie par
 $$p_1=p_2=p_3=p_4=p_5=\frac 1 7 \text{ et }  p_6=\frac 2 7.$$
 \end{Ex}
-
-
-
+Un système complet d'événements intervient dans la modélisation d'une expérience aléatoire à plusieurs étapes.
 \begin{Df}[Système complet d'événements]
 Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.\\
 Un \defi{système complet d'événements}, appelé aussi \defi{partition}, est une famille $(A_1,\ldots,A_n)$
@@ -221,9 +229,11 @@ d'événements deux à deux incompatibles tels que
 $(A_1,A_2,A_3)$ est un système complet d'événements de $\Omega$.
 \end{center}
 \end{Df}
-\begin{NB}[$A,\bar A$]
+\begin{NB}[$A,\bar A$ système complet d'événements]
 $(A,\bar A)$ est un système complet d'événements pour tout événement $A$.
 \end{NB}
+
+
 \begin{Prop}[Probabilité d'un système complet d'événements]
 \label{prop:sce}
 Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.\\
@@ -248,12 +258,7 @@ Pour tout événement $B$, on a
 
 \end{Prop}
 
-\begin{NB}
-En particulier, pour tout événement $A$, on a :
-$$P(A)+P(\bar A)=1$$
-et pour tout événement $B$, :
-$$P(B) = P(B\cap A)+P(B\cap\bar A)$$
-\end{NB}
+
 
 
 \begin{proof}
@@ -271,13 +276,16 @@ P(\Omega)&=\sum_{i=1}^n P(\Omega\cap A_i)\\
 \end{align*}
 \end{proof}
 \begin{NB}
-Un système complet d'événements intervient dans la modélisation d'une expérience aléatoire à plusieurs étapes comme dans l'exemple ci-dessous.  
+En particulier, pour tout événement $A$, on a :
+$$P(A)+P(\bar A)=1$$
+et pour tout événement $B$, :
+$$P(B) = P(B\cap A)+P(B\cap\bar A)$$
 \end{NB}
 \begin{Ex}[3 urnes]
 On dispose de 3 urnes $U_1$, $U_2$, $U_3$, chacune contient 10 boules; parmi elles, $U_1$ contient 1 blanche, $U_2$ contient 2 blanches, et $U_3$ contient 6 blanches. On tire au hasard une urne puis  une boule dans cette urne. Quelle est la probabilité de l'événement $B$="obtenir une blanche" ?\\
 Les événements $U_1$="tirer l'urne 1,  $U_2$="tirer l'urne 2", $U_3$="tirer l'urne 3" forment un système complet d'événements. On a donc :
 $$P(B)= P(B\cap U_1)+P(B\cap U_2)+P(B\cap U_3).$$
-Le but des probabilités conditionnelles est de déterminer les probabilité des termes de cette somme.
+Le but des probabilités conditionnelles est de déterminer les probabilités des termes de cette somme.
 \end{Ex}
 
 \subsection{Probabilité conditionnelle}
@@ -293,16 +301,15 @@ Un élève passant au tableau est choisi aléatoirement. \\
 On note $H=$"élève choisi est un homme" et  $M=$"élève choisi est majeur".\\
 L'équiprobabilité donne  :
 $$ P(M) = \frac{N_m}{N}\text{ et } P(H\cap M)=\frac{N_{h\cap m}}{N}.$$
-Quelle est la probabilité que l'élève choisie soit un homme sachant qu'il doit être majeur, noté $P_M(H)$ ? 
+Quelle est la probabilité que l'élève choisie soit un homme sachant qu'il doit être majeur, noté $P_M(H)$ ? \\
 Dans cette expérience aléatoire, l'information supplémentaire est l'élève choisi  est majeur. L'univers est maintenant l'ensemble des élèves majeurs donc la probabilité est :
 $$P_M(H) =\frac{N_{h\cap m}}{N_m}.$$
 Mais,
 $$P_M(H) =\frac{N_{h\cap m}}{N_m}=\frac{\frac{N_{h\cap m}}{N}}{\frac{N_m}{N}}=\frac{P(H\cap M)}{P(M)}.$$ 
 Par analogie, la définition formelle est :
 \begin{Df}[Probabilité conditionnelle]
-
 Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.
-Soit $A$ un événement tel que $P(A)>0$.
+Soit $A$ un événement tel que $P(A)>0$.\\
 L'application
 \[ \Fonction{P_A}{\mathcal{P}(\Omega)}{[0,1]}{B}{\frac{P(A\cap B)}{P(A)}} \]
 est une probabilité sur $(\Omega,\mathcal{P}(\Omega))$
@@ -314,7 +321,7 @@ On note $P(B|A) = P_A(B)$.
 \begin{Ex}
 On lance un dé parfaitement équilibré. La probabilité d'obtenir un 6 est 1/6. On suppose maintenant que ce dé a ses faces impaires peintes en vert, et ses faces paires peintes en bleu. On a aperçu de loin que, sur le dessus du dé, on a obtenu une face bleue. Quelle est la probabilité d'obtenir 6 sachant une face bleue ?\\
 On note $B=\{2,4,6\}$ l'événement "face bleue". On a :
-$$P_B(\{6\})=\frac{P(\{6\}\cap B)}{P(B)}=\frac{\frac 1 6 }{\frac 1 2 }=\frac 1 3.$$
+$$P_B(\{6\})=\frac{P(\{6\}\cap B)}{P(B)}=\frac{\frac{\card( \{6\})}{\card( \Omega)} }{\frac{\card( \{2,4,6\})}{\card( \Omega)} }=\frac{\frac 1 6 }{\frac 3 6 }=\frac 1 3.$$
 \end{Ex}
 
 
@@ -334,7 +341,7 @@ Ce qui donne :
 $$P(B)= P_{U_1}(B)P(U_1)+P_{U_1}(B)P(U_2)+P_{U_3}(B)P(U_3)=\frac{1}{10} \frac 1 3+ \frac{2}{10} \frac 1 3 +\frac{3}{10} \frac 1 3 =\frac{6}{30} =\frac{1}{5} .$$
 \end{Ex}
 \begin{NB}
-En particulier, si  $A$ est un événement de probabilité non nulle, on a pour tout événement $B$:
+En particulier, si  $A$ et $\bar A$ sont deux événements de probabilité non nulle, on a pour tout événement $B$:
 \[ P(B) = P_A(B)P(A) + P_{\bar A}(B)P(\bar A).\]
 \end{NB}
 
@@ -344,16 +351,19 @@ En particulier, si  $A$ est un événement de probabilité non nulle, on a pour tou
 Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.\\
 Soit $A$ et $B$ deux événements de probabilités non nulles.\\
 Alors
-$$ P_B(A) = \frac{ P_A(B)P(A) }{ P(B) } $$
+$$ P_B(A) = \frac{ P_A(B)P(A) }{ P(B) }.$$
+Cette formule permet d'inverser des conditions. 
 \end{Prop}
-Cette formule permet d'inverser des conditions. Sa version simple découle de façon directe de la
-définition d'une probabilité conditionnelle.
+\begin{proof}
+On a $P(A\cap B)=P(B)P_B(A)$ et $P(A\cap B)=P(B\cap A)=P(A)P_A(B)$. Comme $P(B)\neq 0$, on a le résultat voulu. 
+\end{proof}
+
 \begin{Prop}[Formule de Bayes usuelle]
-Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.
-Soit $(A_1,\ldots,A_n)$ un système complet d'événements de probabilités non nulles.
+Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.\\
+Soit $(A_1,\ldots,A_n)$ un système complet d'événements de probabilités non nulles.\\
 Pour tout événement $B$ de probabilité non nulle,
-et pour tout $k\in\{1,n\}$, on a
-\[ P_B(A_k) = \frac{ P_{A_k}(B)P(A_k) }{ \sum_{i=1}^n P_{A_i}(B)P(A_i) }. \]
+et  on a
+\[\forall k\in\Intf{1}{n} :\quad P_B(A_k) = \frac{ P_{A_k}(B)P(A_k) }{ \sum_{i=1}^n P_{A_i}(B)P(A_i) }. \]
 \end{Prop}
 
 \begin{NB}
@@ -428,7 +438,7 @@ $$P(B)= P_{U_1}(B)P(U_1)+P_{U_1}(B)P(U_2)+P_{U_1}(B)P(U_3).$$
 Soit $A_1,A_2,\dots, A_n$ $n$ événements vérifiant $P(A_1\cap A_2\cap \dots \cap A_{n-1})\neq 0$.\\
 Alors 
 $$P(A_1\cap A_2\cap \dots \cap A_{n})=P(A_1)P_{A_1}(A_2)P_{A_1\cap A_2 }(A_3)\dots P_{A_1\cap A_2\cap \dots \cap A_{n-1}}(A_n).$$
-\end{Prop}
+\begin{center}
 \begin{tikzpicture}[scale=1.5]
 \node (start) at (0,0) {$\Omega$};
 \node (A1) at (1.5,1) {$A_1$};
@@ -444,7 +454,10 @@ $$P(A_1\cap A_2\cap \dots \cap A_{n})=P(A_1)P_{A_1}(A_2)P_{A_1\cap A_2 }(A_3)\do
 \draw[dashed] (A1) -- (A2f);
 \draw(A2) -- (A3)node[midway,sloped,above]{$P_{A_1\cap A_2}(A_3)$};
 \draw[dashed] (A2) -- (A3f);
-\end{tikzpicture}\\
+\end{tikzpicture}
+Cas pour n=3
+\end{center}
+\end{Prop}
 \begin{proof}
 Il suffit de remonter le temps : 
 $$P(A_1\cap A_2\cap \dots \cap A_{n})=P(A_1\cap A_2\cap \dots \cap A_{n-1}) P_{A_1\cap A_2\cap \dots \cap A_{n-1}}(A_n).$$
@@ -474,7 +487,7 @@ Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.
   Deux événements $A$ et $B$ sont \defi{indépendants} si $P(A\cap B)=P(A)P(B)$.
 \item
   Une famille $(A_1,\ldots,A_n)$ d'événements sont \defi{(mutuellement) indépendants}
-  si pour toute partie $I\subset\{1,\ldots,n\}$, on a
+  si pour toute partie $I\subset\Intf{1}{n}$, on a
   \[ P\left( \bigcap_{i\in I} A_i \right) = \prod_{i\in I} P(A_i).\]
 \end{itemize}
 \end{Df}
@@ -491,9 +504,9 @@ Donc les événements $A$ et $B$ sont indépendants.
 
 \begin{NB}
 Trois événements peuvent être indépendants deux à deux, sans pour autant être mutuellement indépendants. 
-Par exemple, on considère un dé équilibré à 4 faces ($\Omega=\{1,2,3,4\}$ avec $p_1=p_2=p_3=p_4=\frac 1 4$ et les événements :
-$$A=\{1,2\},\quad B=\{1=3\},\quad C=\{1,4\}.$$
-On a : $$P(A)=P(B)=P(C)=\frac 1 2$$ et $$P(A\cap B)=(A\cap C)=P(B\cap C)=P(\{1\})=\frac 1 4 =P(A)P(B)=P(A)P(C)=P(B)P(C).$$
+Par exemple, on considère un dé équilibré à 4 faces. On a $\Omega=\{1,2,3,4\}$ avec $p_1=p_2=p_3=p_4=\frac 1 4$.\\
+Soit les événements $A=\{1,2\}, B=\{1,3\}$ et $C=\{1,4\}.$\\
+On a : $$P(A)=P(B)=P(C)=\frac 1 2$$ et $$P(A\cap B)=P(A\cap C)=P(B\cap C)=P(\{1\})=\frac 1 4 =P(A)P(B)=P(A)P(C)=P(B)P(C).$$
 Les événements $A$, $B$ et $C$ sont deux à deux indépendants mais :
  $$P(A\cap B\cap C )= P(\{1\})=\frac 1 4 \neq  \frac 1 8 =  P(A)P(B)P(C).$$
  Donc les événements ne sont pas mutuellement indépendants.
