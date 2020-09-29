@@ -5,7 +5,7 @@
 \item si la somme est égale à 7, le casino gagne 1 euro,
 \item dans les autres cas, c'est nul (le joueur gagne 0 euro).  
 \end{itemize}
-A votre avis, ce jeu est-il favorable au joueur ou au casino ? A chaque partie quelle est le gain moyen du joueur ?
+A votre avis, ce jeu est-il favorable au joueur ou au casino ? Quel est le gain moyen du joueur ?
 
 
 Dans ce jeu, on fait intervenir le hasard en observant la somme des points marqués par deux dés. Considérons le jet d'un dé bleu et d'un dé
@@ -31,7 +31,7 @@ On dit que S est une variable aléatoire sur $\{2,3,\dots,12\}$.\\
 En fait, l'observation qui nous intéresse dans cette expérience, ce n'est pas $\omega$,  mais seulement $S(\omega)$. On aimerait connaître la probabilité que
 la somme des points prenne une valeur donnée, soit $P(S = k)$ pour $k$ entier
 fixé entre 2 et 12. \\
-La méthode est de déterminer l'ensemble des issues donnant $(S=k)$ en lisant le tableau ci-dessous puis de calculer la probabilité de cette ensemble. Par exemple, on a $(S=3)=\{(1,2),(2,1)\}$, puis $P(S=3)=P(\{(1,2),(2,1)\})\overbrace{=}^{\text{équiprobabilité}}\frac{\card(\{(1,2),(2,1)\}) }{\card(\Omega)}=\frac{2}{36}$.\\
+La méthode est de déterminer l'ensemble des issues donnant $(S=k)$ en lisant le tableau ci-dessous puis de calculer la probabilité de cet événement. Par exemple, on a $(S=3)=\{(1,2),(2,1)\}$, puis $$P(S=3)=P(\{(1,2),(2,1)\})\overbrace{=}^{\text{équiprobabilité}}\frac{\card(\{(1,2),(2,1)\}) }{\card(\Omega)}=\frac{2}{36}.$$
 On obtient ainsi :
 \begin{center}
 \begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|}
@@ -116,7 +116,7 @@ L'ensemble $(X=x_i)_{1\leq i\leq n}$ forme un système complet d'événements de $\
 \begin{DfProp}[Loi d'une variable aléatoire]
 Soit $X$ une variable aléatoire.\\
 L'application
-\[ \Fonction{P_X}{\mathcal{P}(X(\Omega))}{[0,1]}{A}{P(X^{-1}(A))} \]
+\[ \Fonction{P_X}{\mathcal{P}(X(\Omega))}{\R^+}{A}{P(X^{-1}(A))} \]
 est une probabilité sur $X(\Omega)$, appelée \defi{loi de la variable $X$}.
 \end{DfProp}
 \begin{proof}

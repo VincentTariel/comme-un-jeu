@@ -94,14 +94,15 @@ Le couple $(\Omega,\mathcal{P}(\Omega))$ est appelé \defi{espace probabilisable}
 
 \begin{Df}[Axiomes des probabilités]
 Soit $(\Omega,\mathcal{P}(\Omega))$ un espace probabilisable fini.\\
-Une \defi{probabilité} sur $(\Omega,\mathcal{P}(\Omega))$ est une application
-de $\mathcal{P}(\Omega)$ dans $\R^+$ vérifiant :
+Une \defi{probabilité}, $P$, sur $(\Omega,\mathcal{P}(\Omega))$ est une application :
+\[ \Fonction{P}{\mathcal{P}(\Omega)}{\R^+}{A}{P(A)} \]
+vérifiant :
 \begin{itemize}
 \item
   $P(\Omega)=1$.
 \item
   Pour deux événements disjoints $A$ et $B$, on a  :
-$$P(A\cup B)=P(A)+P(B)$$  
+$$P(A\cup B)=P(A)+P(B).$$  
 \end{itemize}
 Le triplet  $(\Omega,\mathcal{P}(\Omega),P)$ s'appelle un \defi{espace probabilisé}.
 \end{Df}
@@ -459,11 +460,21 @@ Cas pour n=3
 \end{center}
 \end{Prop}
 \begin{proof}
-Il suffit de remonter le temps : 
-$$P(A_1\cap A_2\cap \dots \cap A_{n})=P(A_1\cap A_2\cap \dots \cap A_{n-1}) P_{A_1\cap A_2\cap \dots \cap A_{n-1}}(A_n).$$
-Puis :
-$$P(A_1\cap A_2\cap \dots \cap A_{n})=P(A_1\cap A_2\cap \dots \cap A_{n-2}) P_{A_1\cap A_2\cap \dots \cap A_{n-2}}(A_{n-1})P_{A_1\cap A_2\cap \dots \cap A_{n-1}}(A_n).$$
-On itère jusqu'à $A_1$.
+Démontrons par récurrence la propriété $(H_n)$ pour tout $n\in\N^*$ :
+\begin{center}
+Si $A_1,A_2,\dots, A_n$ $n$ événements vérifiant $P(A_1\cap A_2\cap \dots \cap A_{n-1})\neq 0$,\\
+Alors  $P(A_1\cap A_2\cap \dots \cap A_{n})=P(A_1)P_{A_1}(A_2)P_{A_1\cap A_2 }(A_3)\dots P_{A_1\cap A_2\cap \dots \cap A_{n-1}}(A_n).$
+\end{center}
+\begin{itemize}
+\item \textit{Initialisation : } Soit $A_1$ un événement. On a bien $P(A_1)=P(A_1)$.
+\item \textit{Hérédité : } Soit $n\in\N^*$. Supposons la propriété $(H_n)$ vraie au rang $n$ et vérifions au rang $n+1$.\\
+Soit $A_1,A_2,\dots, A_{n+1}$ $n+1$ événements vérifiant $P(A_1\cap A_2\cap \dots \cap A_{n})\neq 0$. \\
+Comme  $P(A_1\cap A_2\cap \dots \cap A_{n})\neq 0$, on a :
+$$P(A_1\cap A_2\cap \dots \cap A_{n} \cap A_{n+1})=P(A_1\cap A_2\cap \dots \cap A_{n}) P_{A_1\cap A_2\cap \dots \cap A_{n}}(A_n+1).$$
+Comme  $A_1\cap A_2\cap \dots \cap A_{n} \subset A_1\cap A_2\cap \dots \cap A_{n-1}$, on a $P(A_1\cap A_2\cap \dots \cap A_{n-1})\neq 0$. On applique l'hypothèse de récurrence à $P(A_1\cap A_2\cap \dots \cap A_{n})$, d'où 
+$$P(A_1\cap A_2\cap \dots \cap A_{n} \cap A_{n+1})=P(A_1)P_{A_1}(A_2)P_{A_1\cap A_2 }(A_3)\dots P_{A_1\cap A_2\cap \dots \cap A_{n-1}}(A_n) P_{A_1\cap A_2\cap \dots \cap A_{n}}(A_n+1).$$
+\end{itemize}
+La propriété $(H_n)$ est donc vraie pour tout $n\in\N^*$.
 \end{proof}
 \begin{Ex}
 On considère une urne contenant 4 boules blanches et 3 boules noires. On tire une à une et sans remise 3 boules de l'urne. Quelle est la probabilité pour que la première boule tirée soit blanche, la seconde blanche et la troisième noire ?\\
