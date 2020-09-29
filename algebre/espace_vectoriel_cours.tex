@@ -16,6 +16,8 @@
 \usepackage{xcolor}
 \usepackage{sectsty}
 \usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{enumitem}
 \definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
 \sectionfont{\color{magenta}}
 \subsectionfont{\color{red}}
@@ -73,44 +75,44 @@
 \chapter{Espace vectoriel $E$}
 %\tableofcontents
 
-\begin{Ex}[$\vec{x}\in \R^2$]
+\begin{Ex}[$\vect{x}\in \R^2$]
 Tout d'abord, commençons par les vecteurs du plan :\\
 \begin{tabular}{p{3cm}|p{4cm}|p{4cm}|p{4cm}}
 &Vecteur géométrique  &   Vecteur  numérique  &   Vecteur  algébrique       \\  \hline
 Représentation&\includegraphics[width=3cm]{espace_vectoriel_vecteur.png} & $\begin{pmatrix}
 2\\1
-\end{pmatrix}$ & $\vec{u}= 2 \vec{e}_1 + 1 \vec{e}_2 $  \\\hline
+\end{pmatrix}$ & $\vect{u}= 2 \vect{e}_1 + 1 \vect{e}_2 $  \\\hline
 Multiplication par un scalaire & \includegraphics[width=4cm]{espace_vectoriel_vecteur_homo.png} & $\begin{pmatrix}
 -1\\-0,5
 \end{pmatrix}=-0.5.\begin{pmatrix}
 2\\1
-\end{pmatrix}$  &  $\vec{v}=-0.5.\vec{u}$ \\\hline
+\end{pmatrix}$  &  $\vect{v}=-0.5.\vect{u}$ \\\hline
 Addition  & \includegraphics[width=0.15\textwidth]{espace_vectoriel_vecteur_sum.png} & $\begin{pmatrix}
 2\\1
 \end{pmatrix}+\begin{pmatrix}
 -1\\1
 \end{pmatrix}=\begin{pmatrix}
 1\\2
-\end{pmatrix}$&$ \vec{w}= \vec{u}+\vec{v}$
+\end{pmatrix}$&$ \vect{w}= \vect{u}+\vect{v}$
 \end{tabular}\\
 \end{Ex}
 Du fait de l'équivalence entre ces trois représentations,  géométrique,  numérique et algébrique, tout ce qui est vrai ou faux pour l'un l'est aussi pour l'autre
 \footnote{Il y a des limites à cette équivalence. La représentation géométrique est uniquement pertinente dans le plan et l'espace. La représentation numérique est limitée aux espaces vectoriels de dimension finie.}.
 Savoir passer d'une représentation à l'autre est essentiel pour bien comprendre l'algèbre linéaire. 
-\begin{Ex}[Exemples d'ensembles de vecteurs : $E=\{\vec{x}\}$]
+\begin{Ex}[Exemples d'ensembles de vecteurs : $E=\{\vect{x}\}$]
 Il existe de très nombreux ensembles  où il est possible d'effectuer une addition et une homothétie soit une combinaison linéaire, par exemples :
 \begin{itemize}
-\item l'ensemble des n-uplets réels : $\vec{x}=(x_{1},x_{2},\ldots ,x_{n})$ et $E=\R^n$ et , où chaque $x_{i}$ est un réel,
+\item l'ensemble des n-uplets réels : $\vect{x}=(x_{1},x_{2},\ldots ,x_{n})$ et $E=\R^n$ et , où chaque $x_{i}$ est un réel,
 %jeu vidéo: rendu d'objets dans une scène (jeux vidéos) et un vecteur d'appréciation de films 
-\item l'ensemble des matrices carrés réels : $\vec{x}=\begin{pmatrix}
+\item l'ensemble des matrices carrés réels : $\vect{x}=\begin{pmatrix}
 a_{1,1} & a_{1,2} & \cdots & a_{1,n}\\
 a_{2,1} & a_{2,2} & \cdots & a_{2,n}\\
 \vdots & \vdots & \ddots & \vdots\\
 a_{n,1} & a_{n,2} & \cdots & a_{n,n}\\
 \end{pmatrix}$ et $E=\mathcal{M}_{n}(\R)$ , où  chaque $a_{i,j}$ est un un réel,
-\item l'ensemble des solutions d'une équations différentielles linéaire d'ordre 1 homogène : $\vec{x}=f$ une fonction $\mathcal{C}^1$ tel que  $f'+a_{0}f=0$ et $E=\{f\in C_1 :  f'+a_{0}f=0\}$,
-\item l'ensemble des polynômes réels : $\vec{x}= a_{0}+a_{1}X^{1}+a_{2}X^{2}+\dots +a_{n}X^{n}$ et $E=\R[X]$,
-\item l'ensemble des suites réels : $\vec{x}=(u_{n})_{n\in \mathbb {N} }$ et $E=\R^{\N}$,
+\item l'ensemble des solutions d'une équations différentielles linéaire d'ordre 1 homogène : $\vect{x}=f$ une fonction $\mathcal{C}^1$ tel que  $f'+a_{0}f=0$ et $E=\{f\in C_1 :  f'+a_{0}f=0\}$,
+\item l'ensemble des polynômes réels : $\vect{x}= a_{0}+a_{1}X^{1}+a_{2}X^{2}+\dots +a_{n}X^{n}$ et $E=\R[X]$,
+\item l'ensemble des suites réels : $\vect{x}=(u_{n})_{n\in \mathbb {N} }$ et $E=\R^{\N}$,
 \item etc.
 \end{itemize}
 \end{Ex}
@@ -122,7 +124,7 @@ Une stratégie efficace pour étudier ces ensembles est :
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Structure algébrique}
-\begin{Df}[Loi de composition interne : $\vec{x} \myop \vec{y}$  ]
+\begin{Df}[Loi de composition interne : $\vect{x} \myop \vect{y}$  ]
 Soit $A$ un ensemble. Une \defi{loi de composition interne}, $\myop$, est une application qui, à deux éléments de $A$, associe un élément de $A$ :
 $$ \Fonction{\myop}{A×A}{A}{(x,y)}{x \myop y}.$$
 \end{Df}
@@ -147,91 +149,77 @@ Un groupe est dit \defi{abélien} ou \defi{commutatif} si la loi $\myop$ est de p
 \end{Df}
 \begin{Ex}[Le Groupe $(\R^n,+)$ ]
 La loi d'addition sur $\R^n$ est définie par 
-$$ \Fonction{+}{\R^n\times\R^n}{\R^n}{(\vec{x}=(x_1,x_2,\dots,x_n),\vec{y}=(y_1,y_2,\dots,y_n))}{\vec{x}+\vec{y}=(x_1+y_1, x_2+y_2, \dots, x_n+y_n)}.$$
+$$ \Fonction{+}{\R^n\times\R^n}{\R^n}{(\vec{x}=(x_1,x_2,\dots,x_n),\vect{y}=(y_1,y_2,\dots,y_n))}{\vect{x}+\vect{y}=(x_1+y_1, x_2+y_2, \dots, x_n+y_n)}.$$
 
 \begin{itemize}
-\item  \defi{associative} : Soit $\vec{x}=(x_1,x_2,\dots,x_n),\vec{y}=(y_1,y_2,\dots,y_n),\vec{z}=(z_1,z_2,\dots,z_n)\in\R^n .$\\
+\item  \defi{associative} : Soit $\vect{x}=(x_1,x_2,\dots,x_n),\vect{y}=(y_1,y_2,\dots,y_n),\vect{z}=(z_1,z_2,\dots,z_n)\in\R^n .$\\
  On a :
  \begin{align*}
- \vec{x}+(\vec{y}+\vec{z})&=(x_1,x_2,\dots,x_n)+\left((y_1,y_2,\dots,y_n)+(z_1,z_2,\dots,z_n)\right)\\
+ \vect{x}+(\vect{y}+\vect{z})&=(x_1,x_2,\dots,x_n)+\left((y_1,y_2,\dots,y_n)+(z_1,z_2,\dots,z_n)\right)\\
  &=(x_1,x_2,\dots,x_n)+(y_1+z_1, y_2+z_2, \dots, y_n+z_n)\\
  &=(x_1+y_1+z_1, x_2+y_2+z_2, \dots, x_n+y_n+z_n)\\
   &=(x_1+y_1, x_2+y_2, \dots, x_n+y_n)+(z_1,z_2,\dots,z_n)\\
   &=\left((x_1,x_2,\dots,x_n)+(y_1,y_2,\dots,y_n)\right)+(z_1,z_2,\dots,z_n)\\
-  &=(\vec{x}+\vec{y})+\vec{z}
+  &=(\vect{x}+\vect{y})+\vect{z}
  \end{align*}
- \item  \defi{commutative} : Soit $\vec{x}=(x_1,x_2,\dots,x_n),\vec{y}=(y_1,y_2,\dots,y_n)\in\R^n .$\\
+ \item  \defi{commutative} : Soit $\vect{x}=(x_1,x_2,\dots,x_n),\vect{y}=(y_1,y_2,\dots,y_n)\in\R^n .$\\
  On a :
  \begin{align*}
- \vec{x}+\vec{y}&=(x_1,x_2,\dots,x_n)+(y_1,y_2,\dots,y_n)\\
+ \vect{x}+\vect{y}&=(x_1,x_2,\dots,x_n)+(y_1,y_2,\dots,y_n)\\
   &=(x_1+y_1, x_2+y_2, \dots, x_n+y_n)\\
   &=(y_1+x_1, y_2+x_2, \dots, y_n+x_n)\\
-  &=\vec{y}+\vec{x}
+  &=\vect{y}+\vect{x}
  \end{align*}
- \item  \defi{élément neutre} : Soit $\vec{x}=(x_1,x_2,\dots,x_n)\in\R^n$\\
- Montrons que $\vec{0}=(0,0,\dots,0)$ est l'élément neutre\\
+ \item  \defi{élément neutre} : Soit $\vect{x}=(x_1,x_2,\dots,x_n)\in\R^n$\\
+ Montrons que $\vect{0}=(0,0,\dots,0)$ est l'élément neutre\\
  On a :
  \begin{align*}
- \vec{x}+\vec{0}&=(x_1+0,x_2+0,\dots,x_n+0)\\
+ \vect{x}+\vect{0}&=(x_1+0,x_2+0,\dots,x_n+0)\\
   &=(x_1, x_2, \dots, x_n)\\
-  &=\vec{x}
+  &=\vect{x}
  \end{align*}
-  \item  \defi{symétrique} : Soit $\vec{x}=(x_1,x_2,\dots,x_n)\in\R^n$\\
- Montrons que $-\vec{x}=(-x_1,-x_2,\dots,-x_n)$ est l'opposé de $\vec{x}$.\\
+  \item  \defi{symétrique} : Soit $\vect{x}=(x_1,x_2,\dots,x_n)\in\R^n$\\
+ Montrons que $-\vect{x}=(-x_1,-x_2,\dots,-x_n)$ est l'opposé de $\vect{x}$.\\
  On a :
  \begin{align*}
- \vec{x}+(-\vec{x})&=(x_1,x_2,\dots,x_n)+(-x_1,-x_2,\dots,-x_n)\\
+ \vect{x}+(-\vect{x})&=(x_1,x_2,\dots,x_n)+(-x_1,-x_2,\dots,-x_n)\\
   &=(x_1-x_1, x_2-x_2, \dots, x_n-x_n)\\
   &=(0, 0, \dots, 0)\\
-  &=\vec{0}
+  &=\vect{0}
  \end{align*}
 \end{itemize}
 Donc $(\R^n,+)$ est un groupe commutatif.
 \end{Ex}
 
 
-\begin{Df}[Loi de composition externe : $\lambda.\vec{x}$] Soit $\K$ et $A$ deux ensembles. Une \defi{loi de composition externe}, $.$, est une application qui, à un élément de $\K$ et un élément de $A$, associe un élément de $A$ :
+\begin{Df}[Loi de composition externe : $\lambda.\vect{x}$] Soit $\K$ et $A$ deux ensembles. Une \defi{loi de composition externe}, $.$, est une application qui, à un élément de $\K$ et un élément de $A$, associe un élément de $A$ :
 $$ \Fonction{.}{A×A}{A}{(\lambda,x)}{\lambda. x} $$
 \end{Df}
 \begin{Ex}[$(\R^n,.)$]
 La loi de multiplication sur $\R^n$ est définie par 
-$$ \Fonction{.}{\R\times\R^n}{\R^n}{(\lambda,\vec{x}=(x_1,x_2,\dots,x_n))}{\lambda.\vec{x}=(\lambda.x_1, \lambda.x_2, \dots, \lambda.x_n)}.$$
+$$ \Fonction{.}{\R\times\R^n}{\R^n}{(\lambda,\vect{x}=(x_1,x_2,\dots,x_n))}{\lambda.\vect{x}=(\lambda.x_1, \lambda.x_2, \dots, \lambda.x_n)}.$$
 Par exemple sur $\R^2$, $2.(1,-2)=(2,-4)$.
 \end{Ex}
 
-\begin{Df}[Corps $\K$ : $\R$ ou $\C$] Dans ce cours
-\footnote{%\begin{tiny}
-Un \defi{corps} est un triplet $(\K,+,×)$ où
-\begin{enumerate}
-\item $\K$ est un ensemble;
-\item
-  $+$ et $×$ sont des lois de composition internes sur $\K$;
-\item
-  $(\K,+)$ est un groupe abélien, i.e.  
-  $+$ est associative, commutative, admet un neutre et tout élément de $\K$ admet un symétrique pour $+$.
-  On note $0_\K$ le neutre de $+$;
-\item
-  $×$ est associative, commutative, admet un neutre et tout élément de $\K\setminus\{0_\K\}$ admet un symétrique pour $×$.
-  On note $1_\K$ le neutre de $×$;
-\item
-  La loi $×$ est distributive sur la loi $+$, i.e.  
-  $\forall(x,y,z)\in\K ^3$, $x×(y+z) = (x×y)+(x×z)$;
-\item
-  $0_\K ? 1_\K$.
-\end{enumerate}
-\textbf{Remarque} Lorsque le contexte est clair, on écrit souvent $\K$ au lieu de $(\K,+,×)$.\\
-\textbf{Exemples}
-\begin{itemize}
-\item le corps des réels $?$, des complexes $?$, des rationnels $?$;
-\item si $\K$ est un corps, le corps des fractions rationnelles à coefficients dans $\K$, noté $\K(X)$;
-\item $\Q [i] = \{a+ib:(a,b)\in \Q ^2\}$;
-\item le corps des entiers modulo un nombre premier $p$, noté $\Z/p\Z$.
-\end{itemize}
-Tous ces corps sont munis des lois usuelles.
-}
+\begin{Df}[Corps $\K$ : $\R$ ou $\C$] Dans ce cours%\samepage\footnote{%\begin{tiny}
+%Un \defi{corps} (commutatif) $(K,+,\times )$ est un ensemble muni de deux lois internes possédant les propriétés suivantes :
+%\begin{itemize}
+%\item $(K,+)$ est un groupe abélien, dont l'élément neutre est noté $0$ ;
+%\item $(K\setminus \{0\},\times )$ est également un groupe abélien, dont l'élément neutre est noté $1$ ;
+%\item $\times$ est distributive par rapport à $+$.
+%\end{itemize}
+%\textbf{Remarque} Lorsque le contexte est clair, on écrit souvent $\K$ au lieu de $(\K,+,×)$.\\
+%\textbf{Exemples}
+%\begin{itemize}
+%\item le corps des réels $\R$, des complexes $\C$, des rationnels $\Q$;
+%\item si $\K$ est un corps, le corps des fractions rationnelles à coefficients dans $\K$, noté $\K(X)$;
+%\item $\Q [i] = \{a+ib:(a,b)\in \Q ^2\}$;
+%\item le corps des entiers modulo un nombre premier $p$, noté $\Z/p\Z$.
+%\end{itemize}
+%}
 , un corps $\K$ désigne soit l'ensemble des nombres réels $\R$ ou soit l'ensemble des nombres complexes $\C$. 
 \end{Df}
-\begin{Df}[Espace vectoriel : $\lambda\vec{x}+\mu\vec{y}$]
+\begin{Df}[Espace vectoriel : $\lambda\vect{x}+\mu\vect{y}$]
 Soit $\K$ un corps.\\
 Un \defi{$\K$-espace vectoriel} est un triplet $(E,+,.)$ où
 $+$ est une loi de composition interne sur $E$ et
@@ -241,13 +229,13 @@ vérifiant les propriétés suivantes:
 \item $(E, +)$ est un groupe commutatif;
 \item la loi $.$ est compatible avec la structure de groupe $(E, +)$, i.e.  
  \begin{enumerate}
-  \item $\forall(\lambda ,\mu )\in\K^2$, $\forall \vec{x}\in E$, $(\lambda +\mu ) . \vec{x} = (\lambda . \vec{x}) + (\mu . \vec{x})$;
-  \item $\forall\lambda \in\K$, $\forall(\vec{x},\vec{y})\in E^2$, $\lambda . (\vec{x}+\vec{y}) = (\lambda . \vec{x}) + (\lambda . \vec{y})$;
-  \item $\forall\vec{x}\in E$, $1_\K. \vec{x} = \vec{x}$;
-  \item $\forall(\lambda ,\mu )\in\K^2$, $\forall\vec{x}\in E$, $\lambda . (\mu . \vec{x}) = (\lambda \mu ) . \vec{x}$.
+  \item $\forall(\lambda ,\mu )\in\K^2$, $\forall \vect{x}\in E$, $(\lambda +\mu ) . \vect{x} = (\lambda . \vect{x}) + (\mu . \vect{x})$;
+  \item $\forall\lambda \in\K$, $\forall(\vect{x},\vect{y})\in E^2$, $\lambda . (\vect{x}+\vect{y}) = (\lambda . \vect{x}) + (\lambda . \vect{y})$;
+  \item $\forall\vect{x}\in E$, $1_\K. \vect{x} = \vect{x}$;
+  \item $\forall(\lambda ,\mu )\in\K^2$, $\forall\vect{x}\in E$, $\lambda . (\mu . \vect{x}) = (\lambda \mu ) . \vect{x}$.
   \end{enumerate}
 \end{enumerate}
-Un élément d'un $\K$-espace vectoriel est appelé un vecteur et est noté dans ce cours avec une flèche  $\vec{x}$. Un élément du corps $\K$ est un scalaire et est noté dans ce cours à l'aide d'une lettre grecque, $\lambda$.   
+Un élément d'un $\K$-espace vectoriel est appelé un vecteur et est noté dans ce cours avec une flèche  $\vect{x}$. Un élément du corps $\K$ est un scalaire et est noté dans ce cours à l'aide d'une lettre grecque, $\lambda$.   
 \end{Df}
 
 
@@ -264,80 +252,80 @@ Un élément d'un $\K$-espace vectoriel est appelé un vecteur et est noté dans ce 
 \section{Construire des espaces vectoriels}
 \subsection{Sous-espace vectoriel : $F\subset E$ et $F$ e.v.}
 \subsubsection{Définition}
-\begin{Df}[Sous espace vectoriel]
+\begin{DfProp}[Sous espace vectoriel]
 Soit $(E,+,.)$ un $\K $-espace vectoriel et $F$ une partie de $E$.
 On dit que $F$ est un \defi{sous espace vectoriel} de $E$ si
-\begin{enumerate}
+\begin{itemize}
 \item
   $F$ est non vide,
 \item
-  $F$ est stable par $+$, i.e.   $\forall \vec{x},\vec{y} \in F$, $\vec{x}+\vec{y}\in F$,
+  $F$ est stable par $+$, i.e.   $\forall \vect{x},\vect{y} \in F$, $\vect{x}+\vect{y}\in F$,
 \item
-  $F$ est stable par $.$ , i.e.   $\forall \lambda \in \K $, $\forall \vec{x} \in F$, $\lambda .\vec{x}\in F$.
-\end{enumerate}
-\end{Df}
+  $F$ est stable par $.$ , i.e.   $\forall \lambda \in \K $, $\forall \vect{x} \in F$, $\lambda .\vect{x}\in F$.
+\end{itemize}
+Muni des lois induites, F est alors un espace vectoriel.
+\end{DfProp}
 \begin{Ex}
 $F=\{(x,y)\in\R^2:x+2y=0\}$ \includegraphics[width=4.5cm]{espace_vectoriel_exemple_ssev.png} est un sous espace vectoriel de $\R^2$ 
 car :
-
-\begin{enumerate}
-\item \underline{non vide :}\\
+\begin{itemize}
+\item \textit{non vide :}\\
 $(0,0)\in \R^2$ car $0+2.0=0.$
-\item \underline{stable par $+$ :}\\
-Soit $\vec{x}_1=(x_1,y_1),\vec{x}_2=(x_2,y_2) \in F $ d'où $ x_1+2y_1=0$ et $ x_2+2y_2=0$.\\
-Montrons que $\vec{x}_1+\vec{x}_2=(x_1+x_2,y_1+y_2)\in F$.\\
+\item \textit{stable par $+$ :}\\
+Soit $\vect{x}_1=(x_1,y_1),\vect{x}_2=(x_2,y_2) \in F $ d'où $ x_1+2y_1=0$ et $ x_2+2y_2=0$.\\
+Montrons que $\vect{x}_1+\vect{x}_2=(x_1+x_2,y_1+y_2)\in F$.\\
 i.e. montrons que $(x_1+x_2)+2(y_1+y_2)=0$.\\
 On a :
 $$(x_1+x_2)+2(y_1+y_2)= x_1+2y_1 + x_2+2y_2 = 0+0 =0.$$
 \item
-  \underline{$F$ est stable par $.$ :} \\
-Soit $\lambda\in \R$ et $\vec{x}=(x,y)\in F $ d'où $ x_1+2y_1=0$ et $ x_2+2y_2=0$.\\
-Montrons que $\lambda\vec{x}=( \lambda x,\lambda  y)\in F$.\\
+  \textit{stable par $.$ :} \\
+Soit $\lambda\in \R$ et $\vect{x}=(x,y)\in F $ d'où $ x_1+2y_1=0$ et $ x_2+2y_2=0$.\\
+Montrons que $\lambda\vect{x}=( \lambda x,\lambda  y)\in F$.\\
 i.e. montrons que $(\lambda x)+2(\lambda  y)=0$.\\
 On a 
 $$(\lambda x)+2(\lambda  y)= \lambda (x +2 y) = \lambda 0 =0.$$  
-\end{enumerate}
+\end{itemize}
 \end{Ex}
 
-\begin{Prop}
+\begin{Prop}[Critère d'un sous-espace vectoriel]
 Soit $E$ un $\K $-espace vectoriel et $F\subset E$.
 $F$ est un sous espace vectoriel  de $E$ si et seulement si
-\begin{enumerate}
+\begin{itemize}
 \item
-  $\vec{0_E}\in F$;
+  $\vect{0_E}\in F$;
 \item
-  $\forall \lambda  \in \K $, $\forall  \vec{x},\vec{y} \in F$, $\lambda .\vec{x} + \vec{y} \in  F$.
-\end{enumerate}
+  $\forall \lambda  \in \K $, $\forall  \vect{x},\vect{y} \in F$, $\lambda .\vect{x} + \vect{y} \in  F$.
+\end{itemize}
 \end{Prop}
-\subsubsection{Engendré par une famille finie : $Vect (\vec{x}_1,\dots,\vec{x_p})=\{\lambda_1. \vec{x_1}+\dots + \lambda_p. \vec{x_p} \}$ }
+\subsubsection{Engendré par une famille finie : $\Vectt (\vec{x}_1,\dots,\vec{x_p})=\{\lambda_1. \vec{x_1}+\dots + \lambda_p. \vec{x_p} \}$ }
 
 \begin{Df}[Famille finie]
 Soit $E$ un $\K $-espace vectoriel.\\
-Une \defi{famille finie} de vecteurs de $E$ est un $p$-uplet $\mathcal{F} = (\vec{x}_1,\dots,\vec{x_p})$ formée de vecteurs de $E$, où $p\in \N$.
+Une \defi{famille finie} de vecteurs de $E$ est un $p$-uplet $\mathcal{F} = (\vect{x}_1,\dots,\vect{x_p})$ formée de vecteurs de $E$, où $p\in \N$.
 \end{Df}
 \begin{Df}[Combinaison linéaire]
-Avec les mêmes notations, une \defi{combinaison linéaire} de la famille $\mathcal{F}$ est un vecteur $\vec{x} \in E$ de la forme $\vec{x} = \lambda_1. \vec{x_1}+\dots + \lambda_p. \vec{x_p}$ où $\lambda_1,\dots,\lambda_p \in  \K$.\\
-Les scalaires $\lambda_1,\dots,\lambda_p$ sont appelés \defi{coefficients} de la combinaison linéaire.
-On note $Vect (\mathcal{F})$ l'ensemble des combinaison linéaires de la famille $(\vec{x}_1,\dots,\vec{x_p})$.\\
-$$Vect (\mathcal{F})=\{ \lambda_1. \vec{x_1}+\dots + \lambda_p. \vec{x_p} : \lambda_1,\dots,\lambda_p \in  \K \}.$$
-Par convention, $Vect(\emptyset)= \{\vec{0}_E\}$.
+Avec les mêmes notations, une \defi{combinaison linéaire} de la famille $\mathcal{F}$ est un vecteur $\vect{x} \in E$ de la forme $\vect{x} = \lambda_1. \vect{x_1}+\dots + \lambda_p. \vect{x_p}$ où $\lambda_1,\dots,\lambda_p \in  \K$.\\
+Les scalaires $\lambda_1,\dots,\lambda_p$ sont appelés \defi{coefficients} de la combinaison linéaire.\\
+On note \defi{$\Vectt (\mathcal{F})$} l'ensemble des combinaison linéaires de la famille $(\vect{x}_1,\dots,\vect{x_p})$.\\
+$$\Vectt (\mathcal{F})=\{ \lambda_1. \vect{x_1}+\dots + \lambda_p. \vect{x_p} : \lambda_1,\dots,\lambda_p \in  \K \}.$$
+Par convention, $\Vectt(\emptyset)= \{\vect{0}_E\}$.
 \end{Df}
 \begin{DfProp}[Espace engendré]
-Soit $E$ un $\K $-espace vectoriel et $(\vec{x}_1,\dots,\vec{x_p})$ une famille de vecteurs de $E$.\\
-L'ensemble $Vect(\vec{x}_1,\dots,\vec{x_p})$ est un sous espace vectoriel  de $E$, appelé \defi{espace engendré} par la famille $(\vec{x}_1,\dots,\vec{x_p})$.
-Il s'agit du plus petit (pour l'inclusion) sous espace vectoriel  de $E$ contenant $\vec{x_1},\dots,\vec{x_p}$.
+Soit $E$ un $\K $-espace vectoriel et $(\vect{x}_1,\dots,\vect{x_p})$ une famille de vecteurs de $E$.\\
+L'ensemble $\Vectt(\vect{x}_1,\dots,\vect{x_p})$ est un sous espace vectoriel  de $E$, appelé \defi{espace engendré} par la famille $(\vect{x}_1,\dots,\vect{x_p})$.
+Il s'agit du plus petit (pour l'inclusion) sous espace vectoriel  de $E$ contenant $\vect{x_1},\dots,\vect{x_p}$.
 \end{DfProp}
 \begin{Ex}[Droite vectoriel]
-Lorsque que $p=1$ avec $ \vec{x} \neq \vec{0}$, $Vect(\vec{x}) = \{\lambda .\vec{x} : \forall \lambda  \in  \K  \}$
-est la \defi{droite vectorielle} engendrée par $\vec{x}$. On la note $\R \vec{x}$.\\
+Lorsque que $p=1$ avec $ \vect{x} \neq \vect{0}$, $\Vectt(\vect{x}) = \{\lambda .\vect{x} : \forall \lambda  \in  \K  \}$
+est la \defi{droite vectorielle} engendrée par $\vect{x}$. On la note $\R \vect{x}$.\\
 Une droite vectorielle dans $\R ^2$ est 
 \begin{center}
 \includegraphics[width=6cm]{espace_vectoriel_droite.png}
 \end{center}
 \end{Ex}
 \begin{Ex}[Plan vectoriel]
-Lorsque que $p=2$ avec $ \vec{x_1}$ non colinéaire à $\vec{x_2}$, $Vect (\vec{x_1},\vec{x_2}) = \{\lambda .\vec{x_1}+\mu.\vec{x_2} : \forall \lambda ,\mu \in  \K  \}$
-est le \defi{plan vectorielle} engendrée par $(\vec{x_1},\vec{x_2})$. On le note $\R \vec{x_1}+\R \vec{x_2}$.\\
+Lorsque que $p=2$ avec $ \vect{x_1}$ non colinéaire à $\vect{x_2}$, $\Vectt (\vect{x_1},\vect{x_2}) = \{\lambda .\vect{x_1}+\mu.\vect{x_2} : \forall \lambda ,\mu \in  \K  \}$
+est le \defi{plan vectorielle} engendrée par $(\vect{x_1},\vect{x_2})$. On le note $\R \vect{x_1}+\R \vect{x_2}$.\\
 Un plan vectorielle dans $\R ^3$  est 
 \begin{center}
 \includegraphics[width=6cm]{espace_vectoriel_plan.png}
@@ -350,19 +338,17 @@ Soit $E$ un $\K $-espace vectoriel, $F_1, \dots, F_p$ des sous espaces vectoriel
 Alors l'intersection $\cap_{i=1}^p F_i$ est également un sous espace vectoriel.
 \end{Prop}
 \begin{proof}
-Soit $F_1, \dots, F_p$ des sous espaces vectoriels de $E$.\\
-Montrons que  $\cap_{i=1}^p F_i$ est également un sous espace vectoriel.
-\begin{enumerate}
-\item \underline{non vide :}\\
-$\forall i \in \{1,\dots,p\}: \vec{0}\in F_i$ donc $\vec{0}\in \cap_{i=1}^p F_i$
-\item \underline{stable par $+$ :}\\
-Soit $\vec{x}_1,\vec{x}_2 \in \cap_{i=1}^p F_i $ d'où $\forall i \in \{1,\dots,p\}: \vec{x}_1,\vec{x}_2\in F_i$.\\
-$\forall i \in \{1,\dots,p\}: \vec{x}_1+\vec{x}_2 \in F_i$ donc $\vec{x}_1+\vec{x}_2\in \cap_{i=1}^p F_i$.
+\begin{itemize}
+\item \textit{non vide :}\\
+$\forall i \in \Intf{1}{p}: \vect{0}\in F_i$ donc $\vect{0}\in \cap_{i=1}^p F_i$
+\item \textit{stable par $+$ :}\\
+Soit $\vect{x}_1,\vect{x}_2 \in \cap_{i=1}^p F_i $ d'où pour tout $i\in \Intf{1}{p}: \vect{x}_1,\vect{x}_2\in F_i$.\\
+Ainsi pour tout $i \in \Intf{1}{p}: \vect{x}_1+\vect{x}_2 \in F_i$ donc $\vect{x}_1+\vect{x}_2\in \cap_{i=1}^p F_i$.
 \item
-  \underline{$F$ est stable par $.$} \\
-Soit $\lambda\in \R$ et Soit $\vec{x}\in \cap_{i=1}^p F_i $ d'où $\forall i \in \{1,\dots,p\}: \vec{x}\in F_i$.\\
-$\forall i \in \{1,\dots,p\}: \lambda\vec{x}\in F_i$ donc $\lambda \vec{x}\in \cap_{i=1}^p F_i$.
-\end{enumerate}
+  \textit{stable par $.$ :} \\
+Soit $\lambda\in \R$ et Soit $\vect{x}\in \cap_{i=1}^p F_i $ d'où $\forall i \in \Intf{1}{p}: \vect{x}\in F_i$.\\
+Ainsi pour tout $i \in \Intf{1}{p}: \lambda\vect{x}\in F_i$ donc $\lambda \vect{x}\in \cap_{i=1}^p F_i$.
+\end{itemize}
 \end{proof}
 \begin{Ex}$F=\overbrace{\{(x,y,z)\in \R^3: z=0\}}^{=F_1}\cap \overbrace{\{(x,y,z)\in \R^3: z=x\}}^{=F_2} $  l'intersection de deux plans vectoriels, $F_1$ et $F_2$ dans $\R ^3$
 \begin{center}
@@ -370,95 +356,84 @@ $\forall i \in \{1,\dots,p\}: \lambda\vec{x}\in F_i$ donc $\lambda \vec{x}\in \c
 \end{center}
 \end{Ex}
 
-\subsubsection{Somme de sous-espaces vectoriels : $F_1+F2=\{\vec{x_1}+\vec{x_2}:\vec{x_1} \in F_1,\vec{x_2} \in F_2  \}$ }
+\subsubsection{Somme de sous-espaces vectoriels : $F_1+F2=\{\vec{x}+\vec{y}:\vec{x} \in F_1,\vec{y} \in F_2  \}$ }
 \begin{NB}
 L'union $\cup_{i=1}^p F_i$ n'est presque jamais un sous espace vectoriel.
 
 \begin{center}
 \includegraphics[width=4.5cm]{espace_vectoriel_union.png}
 \end{center}
-Sur cette figure, les vecteurs $\vec{x},\vec{y}\in F_1\cup F_2$ et on a $\vec{x}+\vec{y}\not\in  F_1 \cup F_2.$ La somme permet de construire le plus petit (au sens de l'inclusion) sous espace vectoriel  de $E$ contenant $F_1$ et $F_2$.
+Sur cette figure, les vecteurs $\vect{x},\vect{y}\in F_1\cup F_2$ et on a $\vect{x}+\vect{y}\not\in  F_1 \cup F_2.$ La somme permet de construire le plus petit (au sens de l'inclusion) sous espace vectoriel  de $E$ contenant $F_1$ et $F_2$.
 \end{NB}
-\begin{Df}[Somme]
+\begin{DfProp}[Somme]
 Soit $E$ un $\K $-espace vectoriel, $F_1$ et $F_2$ deux sous-espaces vectoriels de $E$.\\
-On appelle \defi{somme} de $F_1$ et $F_2$ l'ensemble $ F_1+F_2$ des vecteurs de la forme $\vec{x_1} +\vec{x_2}$
-où $\vec{x_1}\in F_1$ et $\vec{x_2}\in F_2$;
+On appelle \defi{somme} de $F_1$ et $F_2$ l'ensemble $ F_1+F_2$ des vecteurs de la forme $\vect{x} +\vect{y}$
+où $\vect{x}\in F_1$ et $\vect{y}\in F_2$;
 autrement dit,
-\[  F_1+F_2 = \{\vec{x_1} +\vec{x_2} : \vec{x_1}\in F_1,\vec{x_2}\in F_2\}. \]
-\end{Df}
-\begin{Prop}
+\[  F_1+F_2 = \{\vect{x} +\vect{y} : \vect{x}\in F_1,\vect{y}\in F_2\}. \]
 $F_1+F_2$ est un sous espace vectoriel  de $E$.\\
 Plus précisément $F_1+F_2$ est le plus petit (au sens de l'inclusion) sous espace vectoriel  de $E$ contenant $F_1$ et $F_2$.
-\end{Prop}
+\end{DfProp}
 \begin{proof}
-Soit $F_1, F_2$ deux sous espaces vectoriels de $E$.\\
-Montrons que  $F_1+F_2$ est également un sous espace vectoriel.
-\begin{enumerate}
-\item \underline{non vide :}\\
-$\vec{0}\in F_1,F_2$ d'où $\vec{0}=\overbrace{\vec{0}}^{\in F_1}+\overbrace{\vec{0}}^{\in F_2}\in F_1+F_2.$
-\item \underline{stable par $+$ :}\\
-Soit $\vec{x}+\vec{y},\vec{x'}+\vec{y'} \in  F_1+F_2.$\\
-$\vec{x}+\vec{y}+\vec{x'}+\vec{y'} =\overbrace{\vec{x}+\vec{x'}}^{\in F_1}+\overbrace{\vec{y}+\vec{y'}}^{\in F_2}\in  F_1+F_2.$
+\begin{itemize}
+\item \textit{non vide :}\\
+$\vect{0}\in F_1,F_2$ d'où $\vect{0}=\underbrace{\vect{0}}_{\in F_1}+\underbrace{\vect{0}}_{\in F_2}\in F_1+F_2.$
+\item \textit{stable par $+$ :}\\
+Soit $\vect{x_1}+\vect{y_1},\vect{x_2}+\vect{y_2} \in  F_1+F_2.$\\
+$\vect{x_1}+\vect{y_1}+\vect{x_2}+\vect{y_2} =\underbrace{\vect{x_1}+\vect{x_2}}_{\in F_1}+\underbrace{\vect{y_1}+\vect{y_2}}_{\in F_2}\in  F_1+F_2.$
 \item
-  \underline{$F$ est stable par $.$} \\
-Soit $\lambda\in \R$ et Soit $\vec{x}+\vec{y}  \in  F_1+F_2.$\\
-$\lambda (\vec{x}+\vec{y})=\overbrace{\lambda\vec{x}}^{\in F_1}+\overbrace{\lambda\vec{y}}^{\in F_2} \in  F_1+F_2.$
-\end{enumerate}
+  \textit{stable par $.$ :} \\
+Soit $\lambda\in \R$ et $\vect{x}+\vect{y}  \in  F_1+F_2.$\\
+$\lambda (\vect{x}+\vect{y})=\underbrace{\lambda\vect{x}}_{\in F_1}+\underbrace{\lambda\vect{y}}_{\in F_2} \in  F_1+F_2.$
+\end{itemize}
 \end{proof}
 \begin{Ex}
-Soit $\R \vec{x}_1$ et $\R \vec{x}_2$ deux droite vectorielles distinctes. La somme de ces deux espace vectoriels forme le plan vectoriel $\R \vec{x}_1+\R \vec{x}_2$.
+Soit $\R \vect{x}_1$ et $\R \vect{x}_2$ deux droite vectorielles distinctes. La somme de ces deux espace vectoriels forme le plan vectoriel $\R \vect{x}_1+\R \vect{x}_2$.
 \begin{center}
 \includegraphics[width=8cm]{espace_vectoriel_somme.png}
 \end{center}
 \end{Ex}
 
 \begin{Df}[Somme directe]
-Avec les mêmes notations, on dit que la somme $F_1+F_2$ est \defi{directe} si tout vecteur de la somme se décompose \defi{de façon unique} sous la forme $\vec{x_1} +\vec{x_2}$ où $\vec{x_1}\in F_1$ et $\vec{x_2}\in F_2$.
+Avec les mêmes notations, on dit que la somme $F_1+F_2$ est \defi{directe} si tout vecteur de la somme se décompose \textbf{de façon unique} sous la forme $\vect{x} +\vect{y}$ où $\vect{x}\in F_1$ et $\vect{y}\in F_2$.
 On note alors la somme $F_1\oplus F_2$.
 \end{Df}
 \begin{Prop}[Critère 1]
 Avec les mêmes notations, la somme $F_1+F_2$ est directe si et seulement si
-$$ \forall \vec{x_1} \in F_1, \forall \vec{x_2} \in F_2:\quad 
-  \vec{x_1} +\vec{x_2} = \vec{0_E} \Rightarrow \vec{x_1} =  \vec{x_2} = \vec{0_E}.$$
+$$ \forall \vect{x} \in F_1, \forall \vect{y} \in F_2:\quad 
+  \vect{x} +\vect{y} = \vect{0_E} \Rightarrow \vect{x} =  \vect{y} = \vect{0_E}.$$
 \end{Prop}
 \begin{proof}$\quad$\\
 \begin{itemize}
-\item \underline{$(\Longrightarrow)$} :\\
-Supposons que la somme $F_1+F_2$ est directe.\\
-Soit $\vec{x_1} \in F_1$ et $\vec{x_2} \in F_2$ tel que $\vec{x_1} + \vec{x_2}=\vec{0}$. On a aussi $\overbrace{\vec{0}}^{\in F_1}+\overbrace{\vec{0}}^{\in F_2}=\vec{0}.$ L'unicité de décomposition permet d'identifier  $\vec{x_1}=\vec{0}$ et $\vec{x_2}=\vec{0}$.
-\item \underline{$(\Longleftarrow)$} :\\
-Supposons que $\forall \vec{x_1} \in F_1, \forall \vec{x_2} \in F_2,
-  \vec{x_1} +\vec{x_2} = \vec{0_E} \Rightarrow \vec{x_1} =  \vec{x_2} = \vec{0_E}.$.\\
-Soit $\vec{x} \in F_1+F_2$  tel que $\vec{x}= \overbrace{\vec{x_1}}^{\in F_1} + \overbrace{\vec{x_2}}^{\in F_2}$ et $\vec{x}= \overbrace{\vec{x'_1}}^{\in F_1} + \overbrace{\vec{x'_2}}^{\in F_2}$ \\
-Montrons que $\vec{x_1}=\vec{x'_1}$ et $\vec{x_2}=\vec{x'_2}$.\\ 
-On a :
-$$\vec{0} =\vec{x}-\vec{x}=\vec{x_1} + \vec{x_2}-(\vec{x'_1} + \vec{x'_2}) = \overbrace{\vec{x_1} -\vec{x'_1} }^{\in F_1}+\overbrace{\vec{x_2} -\vec{x'_2} }^{\in F_2}.$$
-D'après l'hypothèse, on a   $\vec{x_1} -\vec{x'_1}=\vec{0}$ et $\vec{x_2} -\vec{x'_2}=\vec{0}$, d'où $\vec{x_1} =\vec{x'_1}$ et $\vec{x_2}=\vec{x'_2}.$
+\item \textit{$(\Longrightarrow)$} :\\
+Soit $\vect{x} \in F_1$ et $\vect{y} \in F_2$ tel que $\vect{x} + \vect{y}=\vect{0}$. On a aussi $\underbrace{\vect{0}}_{\in F_1}+\underbrace{\vect{0}}_{\in F_2}=\vect{0}.$ L'unicité de décomposition permet d'identifier  $\vect{x}=\vect{0}$ et $\vect{y}=\vect{0}$.
+\item \textit{$(\Longleftarrow)$} :\\
+Supposons qu'un $\vect{z} \in F_1+F_2$  se décompose de 2 façons :$\vect{z}= \underbrace{\vect{x}}_{\in F_1} + \underbrace{\vect{y}}_{\in F_2}$ et $\vect{z}= \underbrace{\vect{x'}}_{\in F_1} + \underbrace{\vect{y}}_{\in F_2}$. \\
+On soustrait ces deux égalités :
+$$\vect{0}= \underbrace{\vect{x} -\vect{x'} }_{\in F_1}+\underbrace{\vect{y} -\vect{y'} }_{\in F_2}.$$
+D'après l'hypothèse, on a   $\vect{x} -\vect{x'}=\vect{0}$ et $\vect{y} -\vect{y'}=\vect{0}$, d'où l'unicité de la décomposition avec $\vect{x} =\vect{x'}$ et $\vect{y}=\vect{y'}.$ 
 \end{itemize}
 \end{proof}
 \begin{Prop}[Critère 2]
-Avec les mêmes notations, la somme $F_1+F_2$ est directe si et seulement si $F_1\cap F_2 = \{\vec{0_E}\}$.
+Avec les mêmes notations, la somme $F_1+F_2$ est directe si et seulement si $F_1\cap F_2 = \{\vect{0_E}\}$.
 \end{Prop}
 \begin{proof}$\quad $\\
 \label{proof:critere2}
 \begin{itemize}
-\item \underline{$(\Longrightarrow)$ :}\\
-Supposons que la somme $F_1+F_2$ est directe.
-\begin{itemize}
-\item \underline{$\{\vec{0_E}\}   \subset  F_1\cap F_2$} :\\
-$\vec{0_E}\in F_1,F_2$ donc $\vec{0_E}\in F_1\cap F_2 .$ 
-\item \underline{$F_1\cap F_2  \subset \{\vec{0_E}\} $} :
-Soit $\vec{x}\in F_1\cap F_2$. 
-On $\vec{0}= \overbrace{\vec{x}}^{\in F_1} + \overbrace{-\vec{x}}^{\in F_2}= \overbrace{\vec{0}}^{\in F_1} + \overbrace{\vec{0}}^{\in F_2}$. Par unicité de décomposition, on identifie $\vec{x}=\vec{0}.$
+\item \textit{$(\Longrightarrow)$ :}
+\begin{itemize}[label=*]
+\item \textit{$\{\vect{0_E}\}   \subset  F_1\cap F_2$} :
+$\vect{0_E}\in F_1,F_2$ donc $\vect{0_E}\in F_1\cap F_2 .$ 
+\item \textit{$F_1\cap F_2  \subset \{\vect{0_E}\} $} :
+Soit $\vect{x}\in F_1\cap F_2$. 
+On a $\vect{0}= \underbrace{\vect{x}}_{\in F_1} + \underbrace{-\vect{x}}_{\in F_2}= \underbrace{\vect{0}}_{\in F_1} + \underbrace{\vect{0}}_{\in F_2}$. Par unicité de la décomposition, on identifie $\vect{x}=\vect{0}.$
 \end{itemize}
-Du fait de la double inclusion, on a $F_1\cap F_2 = \{\vec{0_E}\}.$\\
-\item \underline{$(\Longleftarrow)$ :}\\
-Supposons que $F_1\cap F_2 = \{\vec{0_E}\}$.\\
-Soit $\vec{x} \in F_1+F_2$  tel que $\vec{x}= \overbrace{\vec{x_1}}^{\in F_1} + \overbrace{\vec{x_2}}^{\in F_2}$ et $\vec{x}= \overbrace{\vec{x'_1}}^{\in F_1} + \overbrace{\vec{x'_2}}^{\in F_2}$ \\
-Montrons que $\vec{x_1}=\vec{x'_1}$ et $\vec{x_2}=\vec{x'_2}$.\\ 
-On a :
-$$\overbrace{\vec{x_1} -\vec{x'_1} }^{\in F_1}=\overbrace{\vec{x'_2} -\vec{x_2} }^{\in F_2}.$$
-Comme $F_1\cap F_2 = \{\vec{0_E}\}$, on a $\vec{x_1} -\vec{x'_1}=\vec{0}$ et $\vec{x'_2} -\vec{x_2} =\vec{0}$, d'où $\vec{x_1} =\vec{x'_1}$ et $\vec{x_2}=\vec{x'_2}.$
+Du fait de la double inclusion, on a $F_1\cap F_2 = \{\vect{0_E}\}.$\\
+\item \textit{$(\Longleftarrow)$ :}\\
+Supposons qu'un $\vect{z} \in F_1+F_2$  se décompose de 2 façons :$\vect{z}= \underbrace{\vect{x}}_{\in F_1} + \underbrace{\vect{y}}_{\in F_2}$ et $\vect{z}= \underbrace{\vect{x'}}_{\in F_1} + \underbrace{\vect{y}}_{\in F_2}$. \\
+On soustrait ces deux égalités :
+$$\underbrace{\vect{x} -\vect{x'} }_{\in F_1}=\underbrace{\vect{y} -\vect{y'} }_{\in F_2}.$$
+Comme $F_1\cap F_2 = \{\vect{0_E}\}$, on a $\vect{x} -\vect{x'}=\vect{0}$ et $\vect{y} -\vect{y'} =\vect{0}$, d'où l'unicité de la décomposition avec $\vect{x} =\vect{x'}$ et $\vect{x}=\vect{y'}.$
 \end{itemize}
 
 \end{proof}
@@ -469,12 +444,12 @@ Comme $F_1\cap F_2 = \{\vec{0_E}\}$, on a $\vec{x_1} -\vec{x'_1}=\vec{0}$ et $\v
 \end{center}
 Si $F_1=\{(x,y,z)\in\R^3: x+y+z=0\}$ et $F_1=\{(x,y,z)\in\R^3: x-y+z=0\}$. On a :
 \begin{align*}
- \vec{x}=(x,y,z)\in F_1 \cap F_2 & \Leftrightarrow \begin{cases}x+y+z=0 \\ x-y+z=0 \end{cases}\\
+ \vect{x}=(x,y,z)\in F_1 \cap F_2 & \Leftrightarrow \begin{cases}x+y+z=0 \\ x-y+z=0 \end{cases}\\
  & \Leftrightarrow \begin{cases}x+y+z=0 \\ -2y=0 \quad L_2\leftarrow L_2 - L_1\end{cases}\\
  & \Leftrightarrow \begin{cases}x+z=0 \\ y=0 \end{cases}\\
  & \Leftrightarrow  z=\lambda, x=-\lambda , y=0,\quad  \forall t\in \R \\
  & \Leftrightarrow  (x,y,z) = \lambda(-1,0,1),\quad  \forall t\in \R \\
- & \Leftrightarrow  (x,y,z) \in Vect( -1,0,1)
+ & \Leftrightarrow  (x,y,z) \in \Vectt( -1,0,1)
  \end{align*}
 Finalement  $F_1 \cap F_2 = \R  ( -1,0,1)$. 
 \end{Ex}
@@ -484,40 +459,40 @@ on dit que $F_1$ et $F_2$ sont \defi{supplémentaires}, et on note
 \[ E = F_1\oplus F_2. \]
 \end{Df}
 \begin{Ex}
-Montrons que $\R_n[X]=\R_{n-1}[X]\oplus Vect(X^n)$.\\
+Montrons que $\R_n[X]=\R_{n-1}[X]\oplus \Vectt(X^n)$.\\
 \begin{itemize}
-\item \underline{$\R_n[X]=\R_{n-1}[X]+ Vect(X^n) $} :\\
+\item \textit{$\R_n[X]=\R_{n-1}[X]+ \Vectt(X^n) $} :\\
 Soit $P =a_0+a_1 X+\dots+a_{n-1} X^{n-1}+a_{n} X^{n}\in \R_n[X].$
-On a $$P =\overbrace{a_0+a_1 X+\dots+a_{n-1} X^{n-1}}^{\in \R_{n-1}[X]}+\overbrace{a_{n} X^{n}}^{\in Vect(X^n)}.$$
-\item \underline{$\R_{n-1}[X]\cap  Vect(X^n)=\{\vec{0}_{\R_n[X]}\}$ :}\\
-Soit $P \in \R_{n-1}[X]\cap Vect(X^n)$.\\
-Comme $P \in \R_{n-1}[X]$, on a $deg(P)<n$. Comme  $P \in Vect(X^n)$, on a $P=\lambda X^n$. Si $\lambda\neq 0$, on a $deg(P=\lambda X^n)=n$, d'où une contradiction.  Donc $P=0$.  
+On a $$P =\overbrace{a_0+a_1 X+\dots+a_{n-1} X^{n-1}}^{\in \R_{n-1}[X]}+\overbrace{a_{n} X^{n}}^{\in \Vectt(X^n)}.$$
+\item \textit{$\R_{n-1}[X]\cap  \Vectt(X^n)=\{\vect{0}_{\R_n[X]}\}$ :}\\
+Soit $P \in \R_{n-1}[X]\cap \Vectt(X^n)$.\\
+Comme $P \in \R_{n-1}[X]$, on a $deg(P)<n$. Comme  $P \in \Vectt(X^n)$, on a $P=\lambda X^n$. Si $\lambda\neq 0$, on a $deg(P=\lambda X^n)=n$, d'où une contradiction.  Donc $P=0$.  
 \end{itemize}
 \end{Ex}
-\begin{Df}[Somme]
-Soit $E$ un $\K$-espace vectoriel et $F_1,\dots, F_p$ des sous-espaces vectoriels de $E$.
-On appelle \defi{somme} de $F_1,\dots, F_p$ l'ensemble $ \sum_{k=1}^p F_k$ des vecteurs de la forme $\vec{x_1} +\vec{x_2}+ \dots + \vec{x_p}$
-où $\vec{x_1}\in F_1$, $\vec{x_2}\in F_2$, ..., $\vec{x_p}\in F_p$;
+\begin{DfProp}[Somme]
+Soit $E$ un $\K$-espace vectoriel et $F_1,\dots, F_p$ des sous-espaces vectoriels de $E$.\\
+On appelle \defi{somme} de $F_1,\dots, F_p$ l'ensemble $ \sum_{k=1}^p F_k$ des vecteurs de la forme $\vect{x_1} +\vect{x_2}+ \dots + \vect{x_p}$
+où $\vect{x_1}\in F_1$, $\vect{x_2}\in F_2$, ..., $\vect{x_p}\in F_p$;
 autrement dit,
-\[  \sum_{k=1}^p F_k = \{ \vec{x_1} +\vec{x_2}+ \dots + \vec{x_p}: \vec{x_1}\in F_1,\vec{x_2}\in F_2,\dots, \vec{x_p}\in F_p\}. \]
+\[  \sum_{k=1}^p F_k = \{ \vect{x_1} +\vect{x_2}+ \dots + \vect{x_p}: \vect{x_1}\in F_1,\vect{x_2}\in F_2,\dots, \vect{x_p}\in F_p\}. \]
 Il s'agit d'un sous espace vectoriel  de $E$;
 plus précisément $S$ est le plus petit (au sens de l'inclusion) sous espace vectoriel  de $E$ contenant $F_1,\dots, F_p$.
-\end{Df}
+\end{DfProp}
 
 
 \begin{Df}[Somme directe]
-Avec les mêmes notations, on dit que la somme $\sum_{i=1}^p F_i$ est \defi{directe} si tout vecteur de la somme se décompose \defi{de façon unique} sous la forme $\vec{x_1} +\vec{x_2}+ \dots + \vec{x_p}$ où $\vec{x_1}\in F_1$, $\vec{x_2}\in F_2$, ..., $\vec{x_p}\in F_p$.
+Avec les mêmes notations, on dit que la somme $\sum_{i=1}^p F_i$ est \defi{directe} si tout vecteur de la somme se décompose \defi{de façon unique} sous la forme $\vect{x_1} +\vect{x_2}+ \dots + \vect{x_p}$ où $\vect{x_1}\in F_1$, $\vect{x_2}\in F_2$, ..., $\vect{x_p}\in F_p$.
 On note alors la somme $\oplus_{k=1}^p F_k$.
 \end{Df}
-\begin{Prop}{Critère 1}
+\begin{Prop}[Critère 1]
 Avec les mêmes notations, la somme $\sum_{i=1}^p F_i$ est directe si et seulement si
-$$\vec{x_1}\in F_1, \vec{x_2}\in F_2, ..., \vec{x_p}\in F_p,
- \vec{x_1} +\vec{x_2}+ \dots + \vec{x_p} = \vec{0_E} \implies \vec{x_1} =\dots=\vec{x_p}= \vec{0_E}.$$
+$$\vect{x_1}\in F_1, \vect{x_2}\in F_2, ..., \vect{x_p}\in F_p,
+ \vect{x_1} +\vect{x_2}+ \dots + \vect{x_p} = \vect{0_E} \implies \vect{x_1} =\dots=\vect{x_p}= \vect{0_E}.$$
 \end{Prop}  
 \begin{NB}
 Le critère 2 ne se généralise pas (simplement) pour $p > 2$.\\
-$E = \R ^2$, $\vec{x_1} = (1,0)$, $\vec{x_2} = (0,1)$ et $\vec{x_3} = (1,1)$.
-On a $\R \vec{x_1} \cap \R \vec{x_2} = \R \vec{x_1} \cap \R \vec{x_3} = \R \vec{x_2} \cap \R \vec{x_3} = \{(0,0)\}$. Cependant la somme $\R \vec{x_1} + \R \vec{x_2} + \R \vec{x_3}$ n'est pas directe car $(1,1)=1(1,1)$ et $(1,1)=1(1,0)+1(0,1).$ 
+$E = \R ^2$, $\vect{x_1} = (1,0)$, $\vect{x_2} = (0,1)$ et $\vect{x_3} = (1,1)$.
+On a $\R \vect{x_1} \cap \R \vect{x_2} = \R \vect{x_1} \cap \R \vect{x_3} = \R \vect{x_2} \cap \R \vect{x_3} = \{(0,0)\}$. Cependant la somme $\R \vect{x_1} + \R \vect{x_2} + \R \vect{x_3}$ n'est pas directe car $(1,1)=1(1,1)$ et $(1,1)=1(1,0)+1(0,1).$ 
 \end{NB}
 
 
@@ -525,23 +500,23 @@ On a $\R \vec{x_1} \cap \R \vec{x_2} = \R \vec{x_1} \cap \R \vec{x_3} = \R \vec{
 \subsection{Espace vectoriel produit : $(\vec{x_1},\vec{x_2})\in E_1\times E_2$}
 \begin{Df}[Produit cartésien]
 Soit $(E_1, +_1, ._1)$ et $(E_2, +_2, ._2)$ deux $\K $-espaces vectoriels.\\
-On pose \[ E = E_1\times E_2 = \{ (\vec{x_1},\vec{x_2}) : \vec{x_1}\in E_1, \vec{x_2}\in E_2 \}. \]
+On pose \[ E = E_1\times E_2 = \{ (\vect{x_1},\vect{x_2}) : \vect{x_1}\in E_1, \vect{x_2}\in E_2 \}. \]
 $E$ est le \defi{produit cartésien} des ensembles $E_1, E_2$.\\
 On définit la loi de composition interne $+$ sur $E$ par : 
-$$\forall (\vec{x_1},\vec{x_2})\in E, (\vec{y_1},\vec{y_2})\in E,\quad (\vec{x_1},\vec{x_2})+(\vec{y_1},\vec{y_2}) =  (\vec{x_1}+_1\vec{y_1},\vec{x_2}+_2\vec{y_2}). $$
+$$\forall (\vect{x_1},\vect{x_2})\in E, (\vect{y_1},\vect{y_2})\in E,\quad (\vect{x_1},\vect{x_2})+(\vect{y_1},\vect{y_2}) =  (\vect{x_1}+_1\vect{y_1},\vect{x_2}+_2\vect{y_2}). $$
 De même, on définit la loi de composition externe $.$ sur $E$ par:
-$$\forall \lambda \in \K,\forall (\vec{x_1},\vec{x_2}) \in E,
- \lambda . (\vec{x_1},\vec{x_2}) =(\lambda ._1\vec{x_1},\lambda ._2\vec{x_2}).$$
+$$\forall \lambda \in \K,\forall (\vect{x_1},\vect{x_2}) \in E,
+ \lambda . (\vect{x_1},\vect{x_2}) =(\lambda ._1\vect{x_1},\lambda ._2\vect{x_2}).$$
  \end{Df}
  \begin{Ex}
-Pour $p\in \N*$ et $E$ un $\K $-espace vectoriel, on définit $E^p$ par \[ E^p = \prod_{k=1}^p E. \]
+Pour $p\in \N^*$ et $E$ un $\K $-espace vectoriel, on définit $E^p$ par \[ E^p = \prod_{k=1}^p E. \]
 Notez le cas particulier $E = \K $, où $E^p=\K^p$.  
  \end{Ex}
 \begin{Prop}
 $E$ ainsi défini est un $\K $-espace vectoriel.
 \end{Prop}
 \begin{Df} 
-On définit de manière analogue le $\K $-espace vectoriel $E$,  produit cartésien des ensembles $E_1, \dots, E_n$.  $(E_1, +_1, ._1)$, $(E_2, +_2, ._2)$, ..., $(E_p, +_p, ._p)$ de $\K $-espaces vectoriels $ E = \prod_{k=1}^p E_k = \{ (\vec{x_1},\dots, \vec{x_p}): \vec{x_1}\in E_1, \dots, \vec{x_p}\in E_p \}$.
+On définit de manière analogue le $\K $-espace vectoriel $E$,  produit cartésien des ensembles $E_1, \dots, E_n$.  $(E_1, +_1, ._1)$, $(E_2, +_2, ._2)$, ..., $(E_p, +_p, ._p)$ de $\K $-espaces vectoriels $ E = \prod_{k=1}^p E_k = \{ (\vect{x_1},\dots, \vect{x_p}): \vect{x_1}\in E_1, \dots, \vect{x_p}\in E_p \}$.
 \end{Df}
 
 
@@ -551,22 +526,22 @@ On définit de manière analogue le $\K $-espace vectoriel $E$,  produit cartésien
 \section{Base: $\forall \vec{x}\in E, \exists !(\lambda_1,\dots \lambda_p),\quad \vec{x} = \lambda_1 \vec{e_1}+\dots +\lambda_p \vec{e_p}$}
 \subsection{Définition}
 \subsubsection{Famille génératrice : existence}
-\begin{Df}[Famille génératrice] Une famille finie  $\mathcal{F}=(\vec{e}_1,\dots,\vec{e_p})$ est \defi{génératrice} de $E$ si tout vecteur de $E$ est combinaison linéaire de $\mathcal{F}$, c'est à dire si $Vect(\mathcal{F}) = E$, c'est à dire si 
-\[ \forall \vec{x} \in E,\exists \lambda_1,\dots,\lambda_p \in \K,\quad \vec{x} = \lambda_1 \vec{e_1}+ \lambda_2 \vec{e_2}+\dots +\lambda_p \vec{e_p}. \]
+\begin{Df}[Famille génératrice] Une famille finie  $\mathcal{F}=(\vect{e}_1,\dots,\vect{e_p})$ est \defi{génératrice} de $E$ si tout vecteur de $E$ est combinaison linéaire de $\mathcal{F}$, c'est à dire si $\Vectt(\mathcal{F}) = E$, c'est à dire si 
+\[ \forall \vect{x} \in E,\exists \lambda_1,\dots,\lambda_p \in \K,\quad \vect{x} = \lambda_1 \vect{e_1}+ \lambda_2 \vect{e_2}+\dots +\lambda_p \vect{e_p}. \]
 \end{Df}
-\begin{Ex} La famille  $\{(1,1), (0,1), (1,-1)\}$  est génératrice de $\R^2$. En effet, soit $\vec{x}=(x,y)\in\R^2$, on a :
+\begin{Ex} La famille  $\{(1,1), (0,1), (1,-1)\}$  est génératrice de $\R^2$. En effet, soit $\vect{x}=(x,y)\in\R^2$, on a :
 $$(x,y)=\frac{x+y}{2}(1,1)+ \frac{x-y}{2} (1,-1).$$
 En revanche,  la combinaison linéaire n'est pas unique car $(x,y)= x(1,1)+(y-1)(0,1).$
 \end{Ex}
 \subsubsection{Famille libre : unicité}
 \begin{Df}[Famille libre]
-Une famille finie  $\mathcal{F}=(\vec{e}_1,\dots,\vec{e_p})$ est \defi{libre} si tout vecteur appartenant à l'espace vectoriel engendré par la famille s'exprime de manière unique comme combinaison linéaire de la famille, c'est à dire si 
-\[ \forall \vec{x} \in Vect((\vec{e}_1,\dots,\vec{e_p}),\exists ! \lambda_1,\dots,\lambda_n \in \K,\quad \vec{x} = \lambda_1 \vec{e_1}+ \lambda_2 \vec{e_2}+\dots +\lambda_p \vec{e_p}. \]
+Une famille finie  $\mathcal{F}=(\vect{e}_1,\dots,\vect{e_p})$ est \defi{libre} si tout vecteur appartenant à l'espace vectoriel engendré par la famille s'exprime de manière unique comme combinaison linéaire de la famille, c'est à dire si 
+\[ \forall \vect{x} \in \Vectt((\vect{e}_1,\dots,\vect{e_p}),\exists ! \lambda_1,\dots,\lambda_n \in \K,\quad \vect{x} = \lambda_1 \vect{e_1}+ \lambda_2 \vect{e_2}+\dots +\lambda_p \vect{e_p}. \]
 Autrement dit aucun des vecteurs de la famille n'est combinaison linéaire des autres.
 \end{Df}
 \begin{Prop}[Critère]
-Une famille finie  $\mathcal{F}=(\vec{e}_1,\dots,\vec{e_p})$ est libre si et seulement si la seule combinaison linéaire de $\mathcal{F}$ nulle est triviale, c'est à dire
-$$ \forall \lambda_1,\dots,\lambda_p   \in \K,\quad  \lambda _1 \vec{e_1}+\dots+\lambda _n \vec{e_n} = \vec{0_E} \Rightarrow \lambda _1=\lambda _2=\dots=\lambda_p= 0_\K  .$$
+Une famille finie  $\mathcal{F}=(\vect{e}_1,\dots,\vect{e_p})$ est libre si et seulement si la seule combinaison linéaire de $\mathcal{F}$ nulle est triviale, c'est à dire
+$$ \forall \lambda_1,\dots,\lambda_p   \in \K,\quad  \lambda _1 \vect{e_1}+\dots+\lambda _n \vect{e_n} = \vect{0_E} \Rightarrow \lambda _1=\lambda _2=\dots=\lambda_p= 0_\K  .$$
 \end{Prop}
 \begin{proof}
 La démonstration est similaire au critère 2 de la somme directe (voir démonstration~\ref{proof:critere2}).
@@ -580,9 +555,9 @@ On vérifie que $(1,1)-2(0,1)- (1,-1) =(0,0)$.
 \end{Ex}
 \subsubsection{Base : existence et unicité}
 \begin{Df}
-On dit que la famille $\mathcal{F}=(\vec{e}_1,\dots,\vec{e_p})$ est une \defi{base} de $E$ si elle est libre et génératrice.\\
-De façon équivalente, la famille $(\vec{e}_1,\dots,\vec{e_p})$ est une base de $E$ si
-\[ \forall \vec{x}\in E, \exists !  \lambda_1,\dots,\lambda_p   \in \K ,\quad  \vec{x} = \lambda_1 \vec{e_1}+ \lambda_2 \vec{e_2}+\dots +\lambda_p \vec{e_p}. \]
+On dit que la famille $\mathcal{F}=(\vect{e}_1,\dots,\vect{e_p})$ est une \defi{base} de $E$ si elle est libre et génératrice.\\
+De façon équivalente, la famille $(\vect{e}_1,\dots,\vect{e_p})$ est une base de $E$ si
+\[ \forall \vect{x}\in E, \exists !  \lambda_1,\dots,\lambda_p   \in \K ,\quad  \vect{x} = \lambda_1 \vect{e_1}+ \lambda_2 \vect{e_2}+\dots +\lambda_p \vect{e_p}. \]
 \end{Df}
 \begin{Ex}
 L'espace vectoriel des polynôme de degré inférieur ou égal à $n$, $\K _n[X]$,  admet une base $(1,X,X^2,\dots,X^n)$, appelée base canonique.
@@ -591,9 +566,9 @@ L'espace vectoriel des polynôme de degré inférieur ou égal à $n$, $\K _n[X]$,  a
 L'espace vectoriel des matrices carrés de taille $2$, $\Matrix{M}{2}{\R}$,  admet une base $(\begin{pmatrix}1,0\\0,0\end{pmatrix},\begin{pmatrix}0,1\\0,0\end{pmatrix},\begin{pmatrix}0,0\\1,0\end{pmatrix},\begin{pmatrix}0,0\\0,1\end{pmatrix} )$, appelée base canonique.
 \end{Ex} 
  
-\begin{NB} On n'a pas unicité de la base. Par exemple pour $\K _n[X]$, les polynômes de Lagrange 
+\begin{NB} On n'a pas unicité de la base. Par exemple pour $\K _n[X]$, avec les $x_i$ $n+1$ scalaires distincts, les polynômes de Lagrange 
 $$ l_{i}(X)=\prod _{j=0,j\neq i}^{n}{\frac {X-x_{j}}{x_{i}-x_{j}}} $$
-$$l_{i}(X)={\frac {X-x_{0}}{x_{i}-x_{0}}}\cdots {\frac {X-x_{i-1}}{x_{i}-x_{i-1}}}~{\frac {X-x_{i+1}}{x_{i}-x_{i+1}}}\cdots {\frac {X-x_{n}}{x_{i}-x_{n}}}$$ pour $0 \leq i \leq n$ avec les $x_i$ $n+1$ scalaires distincts forment une base de $\K _n[X]$.
+$$l_{i}(X)={\frac {X-x_{0}}{x_{i}-x_{0}}}\cdots {\frac {X-x_{i-1}}{x_{i}-x_{i-1}}}~{\frac {X-x_{i+1}}{x_{i}-x_{i+1}}}\cdots {\frac {X-x_{n}}{x_{i}-x_{n}}}$$   forment une base de $\K _n[X]$.
 \end{NB}
 
 \subsection{Existence d'une base}
@@ -618,10 +593,10 @@ Alors il existe une base $\mathcal{B}$ de $E$ telle que $\mathcal{L}\subset \mat
 La démonstration  repose sur l'algorithme suivant :\\
 Soit la partie libre initiale $\mathcal{L}$.\\
 Comme $E$ est un espace vectoriel de dimension finie, il existe une famille finie, $\mathcal{G}$, génératrice de $E$.\\
-Tant que $\mathcal{L}$ n'est pas génératrice de $E$:
+Tant que $\mathcal{L}$ n'est pas génératrice de $E$ :
 \begin{enumerate}
-\item Puisque $\mathcal{G}$ engendre $E$, il existe un vecteur $\vec{g}$ de $\mathcal{G}$ qui n'est pas une combinaison linéaire d'éléments de $\mathcal{L}$. Nécessairement, $\vec{g}$ n'appartient pas à $\mathcal{L}$.
-\item On remplace $\mathcal{L}$ par $\mathcal{L}\cup \{\vec{g} \}$, qui est encore libre car le nouveau vecteur n'est pas une combinaison linéaire des précédents.
+\item Puisque $\mathcal{G}$ engendre $E$ et que $\mathcal{L}$ n'est pas génératrice de $E$, il existe un vecteur $\vect{g}$ de $\mathcal{G}$ qui n'est pas une combinaison linéaire d'éléments de $\mathcal{L}$.
+\item On remplace $\mathcal{L}$ par $\mathcal{L}\cup \{\vect{g} \}$, qui est encore libre car le nouveau vecteur n'est pas une combinaison linéaire des précédents.
 \end{enumerate}
 La boucle se termine en un nombre fini d'étapes puisqu'on ajoute à chaque étape un élément de $\mathcal{G}$ différent des précédents et que $\mathcal{G}$ est fini. $\mathcal{L}$ est alors une partie génératrice, donc une base de $E$.
 \end{proof}
@@ -640,22 +615,23 @@ Si $E$ est un espace vectoriel de dimension finie admettant une famille génératr
 \begin{proof}
 Démontrons cette proposition par récurrence.
 \begin{itemize}
-\item \underline{Initialisation} :\\
-Soit $(\vec{g}_1)$ une famille génératrice de $E$.\\
-Soit $(\vec{v}_1,\vec{v}_2)$ une famille de $E$. Il existe $\alpha_1$ et $\alpha_2$ dans $\R$ tel que $\vec{v}_1=\alpha_1 \vec{g}_1$ et $\vec{v}_2=\alpha_2 \vec{g}_1$.\\
-Si  $\alpha_1=\alpha_2=0$ alors la famille $(\vec{v}_1=\vec{0},\vec{v}_2=\vec{0})$ est liée.\\
-Si $\alpha_1\neq 0$, alors $\vec{v}_1=\frac{\lambda_2}{\lambda_1}\vec{v}_2$. Les vecteurs sont colinéaires donc liées.\\
-Idem si $\alpha_2\neq 0$.\\
-\item \underline{Hérédité} :\\
-Soit $(\vec{g_1},\dots,\vec{g_n})$ une famille génératrice de $E$.\\
-Soit $(\vec{v}_1, \vec{v}_2,\dots \vec{v}_{n+1})$ une famille de $n+1$ vecteurs de $E$.\\
-Pour tout $i\in \{1,\dots,n+1\}$, il existe $\lambda_{i,1},\lambda_{i,2},\dots,\lambda_{i,n}\in\K$ tel que $$\vec{v}_i=  \lambda_{i,1}\vec{g}_1 + \lambda_{i,2}\vec{g_2}+\dots+\lambda_{i,n}.\vec{g_n}$$
-Quitte à réorganiser les deux familles, on peut supposer que $\lambda_{n+1,n}\neq 0$. Pour tout  $i\in \{1,\dots,n\}$, on a 
-$$\vec{v}_i-\frac{\lambda_{i,n}}{\lambda_{n+1,n}}\vec{v}_{n+1}\in Vect(\vec{g_1},\dots,\vec{g}_{n-1}).$$
-On applique l'hypothèse de récurrence à l'espace vectoriel générée par la famille $(\vec{g_1},\dots,\vec{g}_{n-1})$. Donc la famille $\left(\vec{v}_1-\frac{\lambda_{1,n}}{\lambda_{n+1,n}}\vec{v}_{n+1},\dots, \vec{v}_n-\frac{\lambda_{n,n}}{\lambda_{n+1,n}}\vec{v}_{n+1}\right)$ est liée. Il existe  $\beta_{1},\beta_{2},\dots,\beta{n}\in\K$ non tous nuls tel que :
-$$\beta_1 (\vec{v}_1-\frac{\lambda_{1,n}}{\lambda_{n+1,n}}\vec{v}_{n+1})+\dots+\beta_n (\vec{v}_n-\frac{\lambda_{n,n}}{\lambda_{n+1,n}}\vec{v}_{n+1})=\vec{0}.$$
+\item \textit{Initialisation} :\\
+Soit $(\vect{g}_1)$ une famille génératrice de $E$.\\
+Soit $(\vect{v}_1,\vect{v}_2)$ une famille de $E$. Il existe $\lambda_1$ et $\lambda_2$ dans $\R$ tel que $\vect{v}_1=\lambda_1 \vect{g}_1$ et $\vect{v}_2=\lambda_2 \vect{g}_1$.\\
+Si  $\lambda_1=\lambda_2=0$ alors la famille $(\vect{v}_1=\vect{0},\vect{v}_2=\vect{0})$ est liée.\\
+Si $\lambda_1\neq 0$, alors $\vect{v}_1=\frac{\lambda_2}{\lambda_1}\vect{v}_2$. Les vecteurs sont colinéaires donc liées.\\
+Idem si $\lambda_2\neq 0$.\\
+\item \textit{Hérédité} :\\
+Soit $(\vect{g_1},\dots,\vect{g_n})$ une famille génératrice de $E$.\\
+Soit $(\vect{v}_1, \vect{v}_2,\dots \vect{v}_{n+1})$ une famille de $n+1$ vecteurs de $E$.\\
+Pour tout $i\in \Intf{1}{n+1}$, il existe $\lambda_{i,1},\lambda_{i,2},\dots,\lambda_{i,n}\in\K$ tel que $$\vect{v}_i=  \lambda_{i,1}\vect{g}_1 + \lambda_{i,2}\vect{g_2}+\dots+\lambda_{i,n}.\vect{g_n}$$
+Quitte à réorganiser les deux familles, on peut supposer que $\lambda_{n+1,n}\neq 0$. \\
+Pour tout  $i\in \Intf{1}{n}$, on a 
+$$\vect{v}_i-\frac{\lambda_{i,n}}{\lambda_{n+1,n}}\vect{v}_{n+1}=\in \Vectt(\vect{g_1},\dots,\vect{g}_{n-1}).$$
+On applique l'hypothèse de récurrence à l'espace vectoriel générée par la famille $(\vect{g_1},\dots,\vect{g}_{n-1})$. Donc la famille $\left(\vect{v}_1-\frac{\lambda_{1,n}}{\lambda_{n+1,n}}\vect{v}_{n+1},\dots, \vect{v}_n-\frac{\lambda_{n,n}}{\lambda_{n+1,n}}\vect{v}_{n+1}\right)$ est liée. Il existe  $\beta_{1},\beta_{2},\dots,\beta{n}\in\K$ non tous nuls tel que :
+$$\beta_1 (\vect{v}_1-\frac{\lambda_{1,n}}{\lambda_{n+1,n}}\vect{v}_{n+1})+\dots+\beta_n (\vect{v}_n-\frac{\lambda_{n,n}}{\lambda_{n+1,n}}\vect{v}_{n+1})=\vect{0}.$$
 d'où 
-$$\beta_1\vec{v}_1+\dots +\beta_n\vec{v}_n - (\beta_1\frac{\lambda_{1,n}}{\lambda_{n+1,n}}+\dots +\beta_n\frac{\lambda_{n,n}}{\lambda_{n+1,n}})\vec{v}_{n+1}=\vec{0}.$$
+$$\beta_1\vect{v}_1+\dots +\beta_n\vect{v}_n - (\beta_1\frac{\lambda_{1,n}}{\lambda_{n+1,n}}+\dots +\beta_n\frac{\lambda_{n,n}}{\lambda_{n+1,n}})\vect{v}_{n+1}=\vect{0}.$$
 La famille est donc liée. 
 \end{itemize}
 \end{proof}
@@ -666,12 +642,12 @@ Si $E$ est un espace vectoriel de dimension finie admettant une famille génératr
 Si la famille a strictement plus de $n$ vecteurs, on peut en enlever pour constituer une famille de $n+1$ vecteurs qui est donc liée d'après la proposition précédente. A fortiori, la famille initiale est liée. 
 \end{proof}
 
-\begin{Prop}
-Soit $E$ un espace vectoriel de dimension finie et $(\vec{e}_1,\dots,\vec{e_p})$ et $(\vec{f}_1,\dots,\vec{f_q})$ deux bases de $E$.\\
+\begin{Prop}[Unicité du cardinal d'une base]
+Soit $E$ un espace vectoriel de dimension finie et $(\vect{e}_1,\dots,\vect{e_p})$ et $(\vect{f}_1,\dots,\vect{f_q})$ deux bases de $E$.\\
 Alors $p=q$.
 \end{Prop}
 \begin{proof}
-$(\vec{e}_1,\dots,\vec{e_p})$ est une famille génératrice de $E$. Comme $(\vec{f}_1,\dots,\vec{f_q})$ est libre d'après la proposition précédente,  $q\leq p$.
+$(\vect{e}_1,\dots,\vect{e_p})$ est une famille génératrice de $E$. Comme $(\vect{f}_1,\dots,\vect{f_q})$ est libre d'après la proposition précédente,  $q\leq p$.
 Par symétrie, on a aussi $p\leq q$. Finalement $p=q$.
 \end{proof}
 Cette proposition nous permet cette définition.
@@ -681,8 +657,8 @@ La \defi{dimension} d'un espace vectoriel de dimension finie est égale au cardin
 
 \begin{Prop}[Critère]
 Soit $E$ un espace vectoriel de dimension $n$.\\
-Si $(\vec{e}_1,\dots,\vec{e_n})$ est une famille libre, alors $(\vec{e}_1,\dots,\vec{e_n})$ est une base de $E$.\\
-Si $(\vec{e}_1,\dots,\vec{e_n})$ est une famille génératrice, alors $(\vec{e}_1,\dots,\vec{e_n})$ est une base de $E$.
+Si $(\vect{e}_1,\dots,\vect{e_n})$ est une famille libre, alors $(\vect{e}_1,\dots,\vect{e_n})$ est une base de $E$.\\
+Si $(\vect{e}_1,\dots,\vect{e_n})$ est une famille génératrice, alors $(\vect{e}_1,\dots,\vect{e_n})$ est une base de $E$.
 \end{Prop}
 \begin{Ex} Pour tout polynôme $P$ appartenant à $\K _{n}[X]$, la combinaison linéaire des polynômes de Lagrange  $\sum _{j=0}^{n}P(x_{j})l_{j}(X)$ avec $x_{0},\ldots ,x_{n}$ $n + 1$ scalaires distincts  est égale au polynôme $P$ aux points $x_{0},\ldots ,x_{n}$, donc égal à $P$. Les polynômes de Lagrange forment une famille génératrice de $n+1$ vecteurs. Comme $\dim(\K _{n}[X])=n+1$, ils forment une base de $\K _{n}[X]$. 
 \end{Ex}
@@ -696,20 +672,20 @@ Alors $F$ est également de dimension finie et $\dim F \leq \dim E$, avec égalité
 
 \begin{Df}[Base adaptée]
 Soit $E$ un $\K $-espace vectoriel de dimension  $n$ et $F$ un sous espace vectoriel de $E$.\\
-La base $(\vec{e}_1,\dots,\vec{e_n})$ est dite \defi{adaptée} à $F$
-si et seulement s'il existe $p\in \{1,n\}$ tel que $(\vec{e}_1,\dots,\vec{e_p})$ soit une base de $F$.
+La base $(\vect{e}_1,\dots,\vect{e_n})$ est dite \defi{adaptée} à $F$
+si et seulement s'il existe $p\in \Intf{1}{n}$ tel que $(\vect{e}_1,\dots,\vect{e_p})$ soit une base de $F$.
 \end{Df}
 \begin{Ex} La base $((1,-1,0),(0,1,-1),(0,0,1))$ est adaptée à $F=\{(x,y,z)\in\R ^3: x+y+z=0\}$ dans l'espace vectoriel $\R ^3$ car $((1,-1,0),(0,1,-1))$ est une base de $F$. 
 \end{Ex}
-\begin{Prop}
- La base ainsi définie existe.
+\begin{Prop}[Existence d'une base adaptée]
+La base ainsi définie existe.
 \end{Prop}
 \begin{proof}
-Comme $F$ est un espace vectoriel de dimension finie, il existe une base $(\vec{e}_1,\dots,\vec{e_p})$ de $F$. Cette famille est libre dans $E$. On la complète en une base de $E$ d'après le théorème de la base incomplète.  
+Comme $F$ est un espace vectoriel de dimension finie, il existe une base $(\vect{e}_1,\dots,\vect{e_p})$ de $F$. Cette famille est libre dans $E$. On la complète en une base de $E$ d'après le théorème de la base incomplète.  
 \end{proof}
 \begin{Df}
 Soit $E$ un $\K $-espace vectoriel de dimension finie, $F_1,\dots, F_p$ des sous-espaces vectoriels supplémentaires de $E$ et $B$ une base de $E$.\\
-La base $\mathcal{B}$ est dite \defi{adaptée} à la décomposition $E =\oplus_{k=1}^p F_k$ si et seulement si $\mathcal{B}$ peut s'écrire comme la concaténation de $\mathcal{B}_1,\dots,\mathcal{B}_p$ où $\mathcal{B}_k$ est une base de $F_k$ pour tout $k\in \{1,p\}$.
+La base $\mathcal{B}$ est dite \defi{adaptée} à la décomposition $E =\oplus_{k=1}^p F_k$ si et seulement si $\mathcal{B}$ peut s'écrire comme la concaténation de $\mathcal{B}_1,\dots,\mathcal{B}_p$ où $\mathcal{B}_k$ est une base de $F_k$ pour tout $k\in \Intf{1}{p}$.
 \end{Df}
 \begin{Prop}
  La base ainsi définie existe.
@@ -718,12 +694,12 @@ La base $\mathcal{B}$ est dite \defi{adaptée} à la décomposition $E =\oplus_{k=1
 \label{prop:base}
 Soit $E$ un $\K $-espace vectoriel de dimension finie et $\mathcal{B}$ une base de $E$.\\
 On suppose que $\mathcal{B}$ s'écrit comme la concaténation de $\mathcal{B}_1,\dots \mathcal{B}_p$.\\
-Pour $k\in \{1,\dots,p\}$, notons $F_k$ le sous espace vectoriel engendré par $\mathcal{B}_k$.\\
+Pour $k\in \Intf{1}{p}$, notons $F_k$ le sous espace vectoriel engendré par $\mathcal{B}_k$.\\
 Alors les sous-espaces vectoriels $F_1,\dots, F_p$ sont supplémentaires.
 \end{Prop}
 
 \section{Théorèmes en dimension finie}
-\begin{Prop}
+\begin{Prop}[Existence d'un supplémentaire]
 Dans un espace vectoriel de dimension finie, tout sous espace vectoriel admet un supplémentaire.\\
 Autrement dit, soit $E$ est un espace vectoriel de dimension finie et $F$ un sous espace vectoriel de $E$.\\
 Alors il existe un sous espace vectoriel $G$ de $E$ tel que $E = F \oplus G$.
@@ -734,24 +710,24 @@ D'après la proposition \ref{prop:base}, si on pose $G$ l'espace vectoriel engend
 \end{proof}
 \begin{Prop}
 Soit $E_1,\dots E_p$ des $\K $-espaces vectoriels.\\
-L'espace vectoriel produit $\prod_{k=1}^p E_k$ est de dimension finie si et seulement si $\forall k\in \{1,\dots,p\}$, $E_k$ est de dimension finie.\\
+L'espace vectoriel produit $\prod_{k=1}^p E_k$ est de dimension finie si et seulement si $\forall k\in \Intf{1}{p}$, $E_k$ est de dimension finie.\\
 De plus, dans ce cas, \[ \dim( \prod_{k=1}^p E_k ) = \sum_{k=1}^p \dim(E_k). \]
 \end{Prop}
 \begin{proof}
 On suppose $p=2$.\\
-Soit $(\vec{e_1},\dots,\vec{e_n})$ une base de $E_1$ et $(\vec{f_1},\dots,\vec{f_q})$ une base de $E_2$.\\
-Alors $( (\vec{e_1},\vec{0}_F),\dots,(\vec{e_n},\vec{0}_F),(\vec{0}_E,\vec{f_1}),\dots,(\vec{0}_E,\vec{f_q}))$ est une base de $E_1\times E_2.$
+Soit $(\vect{e_1},\dots,\vect{e_n})$ une base de $E_1$ et $(\vect{f_1},\dots,\vect{f_q})$ une base de $E_2$.\\
+Alors $( (\vect{e_1},\vect{0}_F),\dots,(\vect{e_n},\vect{0}_F),(\vect{0}_E,\vect{f_1}),\dots,(\vect{0}_E,\vect{f_q}))$ est une base de $E_1\times E_2.$
 \begin{itemize}
-\item \underline{Génératrice} :\\
-Soit $(\vec{x},\vec{y})\in E_1\times E_2$. \\
-Comme $\vec{x}\in E_1$ et $(\vec{e_1},\dots,\vec{e_n})$ est une famille génératrice de $E_1$, il existe $\lambda_1,\dots,\lambda_n\in \K$ tel que $\vec{x}=\lambda_1\vec{e_1}+\dots+ \lambda_n\vec{e_n}$.\\
-Comme $\vec{y}\in E_2$ et $(\vec{f_1},\dots,\vec{f_q})$ est une famille génératrice de $E_2$, il existe $\beta_1,\dots,\beta_q\in \K$ tel que $\vec{y}=\beta_1\vec{f_1}+\dots+ \beta_q\vec{f_q}$.\\
-D'où $(\vec{x},\vec{y})=\lambda_1(\vec{e_1},\vec{0}_F)+\dots+\lambda_n(\vec{e_n},\vec{0}_F)+ \beta_1(\vec{0}_E,\vec{f_1})+\dots+\beta_q(\vec{0}_E,\vec{f_q}).$
-\item \underline{Libre} :\\
-Soit  $\lambda_1,\dots,\lambda_n,\beta_1,\dots,\beta_q\in K$ tel que $$\lambda_1(\vec{e_1},\vec{0}_F)+\dots+\lambda_n(\vec{e_n},\vec{0}_F)+ \beta_1(\vec{0}_E,\vec{f_1})+\dots+\beta_q(\vec{0}_E,\vec{f_q})=(\vec{0}_E,\vec{0}_F).$$
+\item \textit{Génératrice} :\\
+Soit $(\vect{x},\vect{y})\in E_1\times E_2$. \\
+Comme $\vect{x}\in E_1$ et $(\vect{e_1},\dots,\vect{e_n})$ est une famille génératrice de $E_1$, il existe $\lambda_1,\dots,\lambda_n\in \K$ tel que $\vect{x}=\lambda_1\vect{e_1}+\dots+ \lambda_n\vect{e_n}$.\\
+Comme $\vect{y}\in E_2$ et $(\vect{f_1},\dots,\vect{f_q})$ est une famille génératrice de $E_2$, il existe $\beta_1,\dots,\beta_q\in \K$ tel que $\vect{y}=\beta_1\vect{f_1}+\dots+ \beta_q\vect{f_q}$.\\
+D'où $(\vect{x},\vect{y})=\lambda_1(\vect{e_1},\vect{0}_F)+\dots+\lambda_n(\vect{e_n},\vect{0}_F)+ \beta_1(\vect{0}_E,\vect{f_1})+\dots+\beta_q(\vect{0}_E,\vect{f_q}).$
+\item \textit{Libre} :\\
+Soit  $\lambda_1,\dots,\lambda_n,\beta_1,\dots,\beta_q\in K$ tel que $$\lambda_1(\vect{e_1},\vect{0}_F)+\dots+\lambda_n(\vect{e_n},\vect{0}_F)+ \beta_1(\vect{0}_E,\vect{f_1})+\dots+\beta_q(\vect{0}_E,\vect{f_q})=(\vect{0}_E,\vect{0}_F).$$
 D'où:
-$$(\lambda_1\vec{e_1}+\dots+ \lambda_n\vec{e_n},\beta_1\vec{f_1}+\dots+ \beta_q\vec{f_q} )=(\vec{0}_E,\vec{0}_F).$$
-Par identification, on obtient $\lambda_1\vec{e_1}+\dots+ \lambda_n\vec{e_n}=\vec{0}_E$ et $\beta_1\vec{f_1}+\dots+ \beta_q\vec{f_q}=\vec{0}_F$. Comme $(\vec{e_1},\dots,\vec{e_n})$ une famille libre de $E_1$ et $(\vec{f_1},\dots,\vec{f_q})$ de $E_2$ , $\lambda_1=\dots=\lambda_n=\beta_1=\dots=\beta_q=0$. 
+$$(\lambda_1\vect{e_1}+\dots+ \lambda_n\vect{e_n},\beta_1\vect{f_1}+\dots+ \beta_q\vect{f_q} )=(\vect{0}_E,\vect{0}_F).$$
+Par identification, on obtient $\lambda_1\vect{e_1}+\dots+ \lambda_n\vect{e_n}=\vect{0}_E$ et $\beta_1\vect{f_1}+\dots+ \beta_q\vect{f_q}=\vect{0}_F$. Comme $(\vect{e_1},\dots,\vect{e_n})$ une famille libre de $E_1$ et $(\vect{f_1},\dots,\vect{f_q})$ de $E_2$ , $\lambda_1=\dots=\lambda_n=\beta_1=\dots=\beta_q=0$. 
 \end{itemize}
 \end{proof}
 
