@@ -1,0 +1,305 @@
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{mathrsfs}
+\usepackage{amsfonts,amsmath,amssymb,graphicx}
+\usepackage[francais]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{answers}
+\usepackage{a4wide,jlq2eams} 
+\usepackage{multicol}
+%---- Dimensions des marges ---
+\setlength{\paperwidth}{21cm} 
+\setlength{\paperheight}{29.7cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\oddsidemargin}{0cm} 
+\setlength{\topmargin}{-2.5cm}
+\setlength{\headsep}{0.7cm} 
+\setlength{\headheight}{1cm}
+\setlength{\textheight}{25cm} 
+\setlength{\textwidth}{17cm}
+
+
+
+
+%---- Structure Exercice -----
+\newtheorem{Exc}{Exercice}
+\Newassociation{correction}{Soln}{mycor}
+\Newassociation{indication}{Indi}{myind}
+%\newcommand{\precorrection}{~{\bf \footnotesize [Exercice corrig\'e]}}
+%\newcommand{\preindication}{~{\bf \footnotesize [Indication]}}
+\renewcommand{\Solnlabel}[1]{\bf \emph{Correction #1}}
+\renewcommand{\Indilabel}[1]{\bf \emph{Indication #1}}
+
+\def\exo#1{\futurelet\testchar\MaybeOptArgmyexoo}
+\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
+                        \else \let\next\NoOptArgmyexoo \fi \next}
+\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
+\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
+
+\newcommand{\finexo}{\end{Exc}}
+\newcommand{\flag}[1]{}
+
+\newtheorem{question}{Question}
+
+
+
+%---- Style de l'entete -----                     % -> à personnaliser <-
+\setlength{\parindent}{0cm}
+\newcommand{\entete}[1]
+{
+{\noindent
+  \textsf{Feuille d'exercices}            % Université
+}
+\hrule
+\hrule
+\begin{center} 
+\textbf{\textsf{\Large 
+     Espace vectoriel     % TITRE
+}}
+\end{center}
+\hrule
+}
+
+
+\begin{document}
+
+%--- Gestion des corrections ---
+ \Opensolutionfile{mycor}[ficcorex]
+ \Opensolutionfile{myind}[ficind]
+ \entete{\'Enoncés}
+
+\section{Espace vectoriel}
+\subsection{Structure}
+ \exo{tariel}[Propriétés des espaces-vectoriels]
+Soit $(E,+,.)$ un $\K     $-espace vectoriel.
+Pour tout $x\in E$, on note $-x$ le symétrique de $x$ pour la loi $+$.
+Pour $(\lambda   ,\mu    )\in \K     ^2$ et $(x,y)\in E^2$, montrer que:
+\begin{enumerate}
+\item $\lambda   x = 0_E$ si et seulement si $\lambda   = 0_\K     $ ou $x = 0_E$;
+\item $(-\lambda   ) x = \lambda   (-x) = -(\lambda   x)$;
+\item $(\lambda   - \mu    )x = \lambda   x - \mu    x$;
+\item $\lambda   (x-y) = \lambda   x - \lambda   y$.
+\end{enumerate}
+\finexo
+\subsection{Sous-espace vectoriel}
+ \exo{tariel}[Sous espaces-vectoriels de $R^n$]
+Parmi les ensembles suivants, lesquels sont, ou ne sont pas, des sous-espaces vectoriels?
+\begin{enumerate}
+\item $E_1=\{(x,y,z)\in\mathbb R^3;\ x+y+3z=0\}$;
+\item $E_2=\{(x,y,z)\in\mathbb R^3;\ x+y+3z=2\}$;
+\item $E_3=\{(x,y,z,t)\in\mathbb R^4;\ x=y=2z=4t\}$;
+\item $E_4=\{(x,y)\in\mathbb R^2;\ xy=0\}$;
+\item $E_5=\{(x,y)\in\mathbb R^2;\ y=x^2\}$;
+\item $E_6=\{(x,y,z)\in\mathbb R^3;\ 2x+3y-5z=0\}\cap\{(x,y,z)\in\mathbb R^3;\ x-y+z=0\}$;
+\item $E_7=\{(x,y,z)\in\mathbb R^3;\ 2x+3y-5z=0\}\cup\{(x,y,z)\in\mathbb R^3;\ x-y+z=0\}$.
+\end{enumerate}
+\finexo
+
+
+\exo{tariel}[Sous espaces-vectoriels]
+Déterminer si les ensembles suivants sont ou ne sont pas des sous-espaces vectoriels :
+\begin{enumerate}
+\item $E_1=\{P\in\mathbb R[X];\ P(0)=P(2)\}$;
+\item $E_2=\{P\in\mathbb R[X];\ P'(0)=0\}$;
+\item Pour $A\in\mathbb R[X]$ non-nul fixé, $E_3=\{P\in\mathbb R[X]; A\text{ divise }P\}$;
+\item $\mathcal D$ l'ensemble des fonctions de $\mathbb R$ dans $\mathbb R$ qui sont dérivables;
+\item $E_4$, l'ensemble des solutions de l'équation différentielle $y'+a(x) y=0$, où $a$ est une fonction.
+\item $E_5$, l'ensemble des solutions de l'équation différentielle $y'+a(x) y=x$,où $a$ est une fonction.
+\end{enumerate}
+\finexo
+
+ \exo{tariel}[Sous espaces-vectoriels des suites]
+Les ensembles suivants sont-ils des $\K  $-espaces vectoriels?
+\begin{enumerate}
+\item L'ensemble des suites réelles convergentes.
+\item L'ensemble des suites réelles convergentes vers $0$.
+\item L'ensemble des suites réelles convergentes vers $1$.
+\item L'ensemble des suites réelles bornées.
+\item L'ensemble des suites réelles croissantes.
+\item L'ensemble des suites réelles monotones.
+\item L'ensemble des suites réelles non convergentes.
+\item L'ensemble des suites réelles périodiques à partir d'un certain rang.
+\item L'ensemble des fonctions lipschitziennes de $\R $ dans $\R $.
+\item L'ensemble des fonctions paires de $\R $ dans $\R $.
+\item L'ensemble des fonctions de $\R $ dans $\R $ qui prennent la valeur $\beta$ en $\alpha$.
+\end{enumerate}
+\finexo
+
+\subsection{Espace vectoriel engendré par une famille}
+ \exo{tariel}[Polynôme]
+Démontrer que :
+$$\R_2[X]=\Vectt \left( (X-1)^2,(X-1)(X+1),(X+1)^2\right).$$ 
+\finexo
+
+ \exo{tariel}[Système d'équations]
+Donner un système d'équations des espaces vectoriels engendrés par les vecteurs suivants :
+\begin{enumerate}
+\item $u_1=(1,2,3)$;
+\item $u_1=(1,2,3)$ et $u_2=(-1,0,1)$;
+\item $u_1=(1,2,0)$, $u_2=(2,1,0)$ et $u_3=(1,0,1)$.
+\end{enumerate}
+\finexo
+ \exo{tariel}[**, trigonométrie]
+Démontrer que :
+$$\forall n\in\N : \quad \Vectt \left( x\mapsto \cos(kx) \right)_{0\leq k\leq n}= \Vectt \left( x\mapsto \cos^k x \right)_{0\leq k\leq n}.$$ 
+\finexo
+
+\section{Familles libres, génératrices et bases}
+
+
+
+\subsection{Combinaison linéaire}
+ \exo{tariel}[Combinaison linéaire]
+Les vecteurs $u$ suivants sont-ils combinaison linéaire des vecteurs $u_i$?
+\begin{enumerate}
+\item $E=\mathbb R^2$, $u=(1,2)$, $u_1=(1,-2)$, $u_2=(2,3)$;
+\item $E=\mathbb R^2$, $u=(1,2)$, $u_1=(1,-2)$, $u_2=(2,3)$, $u_3=(-4,5)$;
+\item $E=\mathbb R^3$, $u=(2,5,3)$, $u_1=(1,3,2)$, $u_2=(1,-1,4)$;
+\item $E=\mathbb R^3$, $u=(3,1,m)$, $u_1=(1,3,2)$, $u_2=(1,-1,4)$ (discuter suivant la valeur de $m$).
+\end{enumerate}
+\finexo
+ \exo{tariel}[Combinaison linéaire]
+\'Emile achète pour sa maman une bague contenant 2g d'or, 5g de cuivre et 4g d'argent. Il la paie 6200 euros.\newline
+Paulin achète pour sa maman une bague contenant 3g d'or, 5g de cuivre et 1g d'argent. Il la paie 5300 euros.\newline
+Frédéric achète pour sa chérie une bague contenant 5g d'or, 12g de cuivre et 9g d'argent. Combien va-t-il la payer?
+\finexo
+
+
+\subsection{Famille libre}
+ \exo{tariel}[Famille libre]
+Les familles suivantes sont-elles libres dans $\mathbb R^3$ (ou $\mathbb R^4$ pour la dernière famille)?
+\begin{enumerate}
+\item $(u,v)$ avec $u=(1,2,3)$ et $v=(-1,4,6)$;
+\item $(u,v,w)$ avec $u=(1,2,-1)$, $v=(1,0,1)$ et $w=(0,0,1)$;
+\item $(u,v,w)$ avec $u=(1,2,-1)$, $v=(1,0,1)$ et $w=(-1,2,-3)$;
+\item $(u,v,w,z)$ avec $u=(1,2,3,4)$, $v=(5,6,7,8)$, $w=(9,10,11,12)$ et $z=(13,14,15,16)$.
+\end{enumerate}
+\finexo
+ \exo{tariel}[Famille libre]
+On considère dans $\mathbb R^3$ les vecteurs 
+$v_1=(1,1,0)$, $v_2=(4,1,4)$ et $v_3=(2,-1,4)$.
+\begin{enumerate}
+\item Montrer que la famille $(v_1,v_2)$ est libre. Faire de même pour $(v_1,v_3)$, puis pour $(v_2,v_3)$.
+\item La famille $(v_1,v_2,v_3)$ est-elle libre?
+\end{enumerate}
+\finexo
+
+\exo{tariel}[Famille libre]
+On considère dans $\mathbb R^3$ les vecteurs 
+$$v_1=(1,-1,1),\ v_2=(2,-2,2),\ v_3=(2,-1,2).$$
+\begin{enumerate}
+\item Peut-on trouver un vecteur $w$ tel que $(v_1,v_2,w)$ soit libre?
+Si oui, construisez-en un.
+\item Même question en remplaçant $v_2$ par $v_3$.
+\end{enumerate}
+\finexo
+
+\exo{tariel}[Degrés échelonnés]
+Soit $(P_1,\dots,P_n)$ une famille de polynômes de $\mathbb C[X]$ non nuls, à degrés échelonnés, c'est-à-dire
+$\deg(P_1)<\deg(P_2)<\dots<\deg(P_n)$. Montrer que $(P_1,\dots,P_n)$ est une famille libre.
+\finexo
+
+
+\exo{tariel}[Fonctions]
+Soit $E=\mathcal F(\mathbb R,\mathbb R)$ l'espace vectoriel des fonctions de $\mathbb R$ dans $\mathbb R$. Les familles suivantes, so,t-elles indépendantes ? :
+\begin{enumerate}
+\item $(x\to\sin x,x\to\cos x)$;
+\item $(x\to\sin 2x,x\to\sin x,x\to\cos x)$;
+\item $(x\to\cos 2x,x\to\sin^2 x,x\to\cos^2 x)$;
+\item $(x\to x,x\to e^x,x\to\sin(x))$.
+\end{enumerate}
+\finexo
+\subsection{Base et dimension}
+\exo{tariel}[dans $\R^2$]
+Montrer que $\left((1,1),(1,-1)\right)$ est une base de $\R^2$ et déterminer les coordonnées du vecteur $(4,-2)$ dans cette base. 
+\finexo
+
+\exo{tariel}[**, dans $\R^n$]
+Montrer que $\left(1+X,X+X^2,\dots, X^{n-1}-X^n\right)$ est une base de $\R^n$, pour tout $n\in\N^*$. 
+\finexo
+\exo{tariel}[Déterminer une base d'un sous-espace vectoriel]
+Dans $\R^4$, on considère l'ensemble $F$ des vecteurs $(x_1, x_2, x_3, x_4)$ vérifiant $x_1 + x_2 + x_3 + x_4 = 0$. L'ensemble $F$
+est-il un sous-espace vectoriel de $\R^4$ ? Si oui, en donner une base.
+\finexo
+\section{Somme de sous-espaces vectoriels}
+\exo{tariel}
+On considère dans $\mathbb R^4$ les cinq vecteurs suivants : $v_1=(1,0,0,1)$, $v_2=(0,0,1,0)$, $v_3=(0,1,0,0)$, $v_4=(0,0,0,1)$ et $v_5=(0,1,0,1)$. Dire si les sous-espaces vectoriels suivants sont supplémentaires dans $\mathbb R^4$.
+\begin{enumerate}
+\item $\textrm{vect}(v_1,v_2)$ et $\textrm{vect}(v_3)$?
+\item $\textrm{vect}(v_1,v_2)$ et $\textrm{vect}(v_4,v_5)$?
+\item $\textrm{vect}(v_1,v_3,v_4)$ et $\textrm{vect}(v_2,v_5)$?
+\item $\textrm{vect}(v_1,v_4)$ et $\textrm{vect}(v_3,v_5)$?
+\end{enumerate}
+\finexo
+
+\exo{tariel}
+Par des considérations géométriques répondez aux questions suivantes :
+\begin{enumerate}
+
+\item  Deux droites vectorielles de $\mathbb R^3$
+sont-elles supplémentaires ?
+\item Deux plans vectoriels de $\mathbb R^3$
+sont-ils supplémentaires ?
+\item A quelle condition un plan vectoriel et une droite vectorielle de $\mathbb R^3$
+sont-ils supplémentaires ?
+\end{enumerate}
+\finexo
+
+\exo{tariel}
+Trouver un système générateur des sous-espaces vectoriels suivants de $\mathbb R^3$:
+\begin{enumerate}
+\item $F=\{(x,y,z)\in\mathbb \mathbb R^3;\ x+2y-z=0\}$;
+\item $G=\{(x,y,z)\in\mathbb \mathbb R^3;\ x-y+z=0\textrm{ et }2x-y-z=0\}$.
+\end{enumerate}
+\finexo
+\exo{tariel}
+Soit
+$$E = \{(u_n)_{n\in N} \in  \mathbb R^\mathbb N : (u_n)\text{ converge}.\}$$
+Montrer que l'ensemble des suites constantes et l'ensemble des suites convergeant vers 0 sont des sous-espaces supplémentaires dans E.
+\finexo
+
+\exo{tariel}
+Soit $E$ l'espace vectoriel des suites réelles, 
+$$F=\{(u_n)\in E;\ \forall n\in\mathbb N,\ u_{2n}=0\}$$
+$$G=\{(u_n)\in E;\ \forall n\in\mathbb N,\ u_{2n}=u_{2n+1}\}.$$
+Démontrer que $F$ et $G$ sont supplémentaires.
+\finexo
+
+\exo{tariel}
+Soit $E=\mathcal F(\mathbb R,\mathbb R)$ l'espace vectoriel des fonctions de $\mathbb R$ dans $\mathbb R$.
+On note $F$ le sous-espace vectoriel des fonctions paires (ie $f(-x)=f(x)$ pour tout $x\in\mathbb R$)
+et $G$ le sous-espace vectoriel des fonctions impaires (ie $f(-x)=-f(x)$ pour tout $x\in\mathbb R$).
+Montrer que $F$ et $G$ sont supplémentaires.
+\finexo
+\exo{tariel}
+On considère l'espace vectoriel $\mathcal{M}_n(\mathbb R)$ des matrices carrées d'ordre $n$   à coefficients réels.
+
+Une matrice $M$  de  $\mathcal{M}_n(\mathbb R)$ est dite symétrique si elle est égale à sa transposée.
+
+Une matrice  $M$ de $\mathcal{M}_n(\mathbb R)$  est dite antisymétrique si elle est égale à l'opposée de sa transposée.
+
+On appelle $\mathcal{S}_n(\mathbb R)$  le sous-ensemble de $\mathcal{M}_n(\mathbb R)$  formé des matrices symétriques, et $\mathcal{A}_n(\mathbb R)$  celui formé des matrices antisymétriques.
+\begin{enumerate}
+\item Démontrer que $\mathcal{S}_n(\mathbb R)$  et  $\mathcal{A}_n(\mathbb R)$ sont des sous-espaces vectoriels de   $\mathcal{M}_n(\mathbb R)$.
+\item Démontrer que $\mathcal{S}_n(\mathbb R)$  et  $\mathcal{A}_n(\mathbb R)$ sont supplémentaires.
+\end{enumerate}
+\finexo
+
+\exo{tariel}
+Soit $E$ l'espace vectoriel des fonctions de $\mathbb R$ dans $\mathbb R$, $F$ le sous-espace vectoriel des fonctions périodiques de période 1 et $G$ le sous-espace vectoriel des fonctions $f$ telles que $\lim_{+\infty}f=0$. Démontrer que $F\cap G=\{0\}$. Est-ce que $F$ et $G$ sont supplémentaires?
+\finexo
+
+\exo{tariel}
+Soit $A\in\mathbb R[X]$ un polynôme non-nul et $F=\{P\in\mathbb R[X];\ A\textrm{ divise }P\}$.
+Montrer que $F$ est un sous-espace vectoriel de $\mathbb R[X]$ et trouver un supplémentaire à $F$.
+\finexo
+
+\exo{tariel}
+Soient $F$ et $G$ deux sous-espaces vectoriels d'un espace vectoriel $E$ tels que
+$F+G=E$. Soit $F'$ un supplémentaire de $F\cap G$ dans $F$. Montrer que
+$F'\oplus G=E$.
+\finexo
+
+
+
+\end{document}

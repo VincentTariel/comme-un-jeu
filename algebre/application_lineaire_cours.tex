@@ -78,7 +78,7 @@
 %\tableofcontents
 \chapter{Application linéaire}
 \minitoc
-\begin{intr}
+\paragraph{Introduction}
 Comme souvent en mathématiques, ce sont plus les transformations qui sont intéressantes et pertinentes que les objets eux-mêmes.\\
 Une application linéaire est un cas particulier de transformation.  Dans le langage courant, un phénomène est dit linéaire si les
 effets sont proportionnels aux causes. \\
@@ -92,35 +92,43 @@ Beaucoup de phénomènes en sciences ne sont pas linéaires. Dans de tels
 cas, de "petites causes" peuvent avoir de "grands effets".\\
 D'un point de vue mathématiques, une
 transformation préservant la structure d'espace vectoriel est une application linéaire.  Les matrices sont des tableaux de nombres qui servent à interpréter en termes calculatoires et donc opérationnels les applications linéaires dont les espaces vectoriels sont de dimensions finies. 
-\end{intr}
-Notations : 
-$\K $ désigne le corps $\R $ ou $\C $.
+
+
+Notations : $\K $ désigne le corps $\R $ ou $\C $.
 
 \section{Applications linéaires}
 \subsection{Proportionnalité : $\mathbb{R}\rightarrow\mathbb{R}$}
-\begin{Df}
- Traduisant la proportionnalité, une fonction $u:\mathbb{R}\mapsto\mathbb{R}$ est dite linéaire si  $ u:x\mapsto k x$ où  $k$ est appelé coefficient de proportionnalité.
+\begin{Df}[Coefficient de proportionnalité]
+Traduisant la proportionnalité, une fonction $u:\mathbb{R}\mapsto\mathbb{R}$ est dite linéaire si  $ u:x\mapsto a x$ où  $\lambda$ est appelé \defi{coefficient de proportionnalité}.
 \end{Df}
-\begin{Ex} Le prix d'un plein d'essence est une fonction linéaire du nombre  de litres d'essence.
+\begin{Ex}[Plein d'essence]
+Le prix à la pompe est une fonction linéaire du volume d'essence mis dans le réservoir.
 \end{Ex}
-\begin{Ex}
-Soit $f:\mathbb{R}\rightarrow \mathbb{R}$ une fonction dérivable en $a$. On a  
+\begin{Ex}[Différentielle]
+Soit $f:\R \rightarrow \R $ une fonction dérivable en $a$. On a  
 $$\overbrace{f(a+h)-f(a)}^{\text{accroissement de la fonction}}=\overbrace{\mathrm {d}f_a(h)}^{\text{terme linéaire}}+\overbrace{h.\epsilon(h)}^{\text{petit terme correctif}}$$ où l'application $\mathrm {d}f_a$, appelé différentielle de $f$ en $a$, est linéaire : $\mathrm {d}f_a(h)=f'(a).h$ avec $f'(a)$ coefficient de proportionnalité.
 \end{Ex}
 \begin{Prop}
-Soit $u$ une fonction linéaire. Alors
-\begin{enumerate}
-\item
-  $\forall   (x,y)\in  \mathbb{R}^2$, $u(x+y) = u(x) + u(y)$ (si on somme de deux entrées, on somme les sorties résultantes);
-\item
-  $\forall   \lambda \in  \mathbb{R}$, $\forall   x\in  \mathbb{R}$, $u(\lambda x) = \lambda u(x)$ (si on multiplie l'entrée par une valeur, on multiplie la sortie résultante par cette valeur).
-\end{enumerate}
+Soit $u$ une fonction linéaire.
+\begin{itemize}
+\item si on somme de deux entrées, on somme les sorties résultantes
+$$\forall   x,y\in  \R:\quad u(x+y) = u(x) + u(y),$$
+\item si on multiplie l'entrée par une valeur, on multiplie la sortie résultante par cette valeur)
+  $$\forall   \lambda \in  \R,\forall   x\in  \R :\quad u(\lambda x) = \lambda u(x).$$
+\end{itemize}
 \end{Prop}
-\subsection{Calcul matriciel : $\mathbb{R}^p\rightarrow\mathbb{R}^n$}
+\begin{proof}
+Soit $x,y\in  \R $ et $\lambda \in  \R$
+\begin{itemize}
+\item $u(x+y) = a (x+y)=a x+a y =  u(x) + u(y) $ 
+\item $u(\lambda x) = a (\lambda x) =\lambda(ax)=\lambda u(x) $.
+\end{itemize}
+\end{proof}
+\subsection{Calcul matriciel : $\R ^p\rightarrow\R ^n$}
 \begin{Ex}[Exemple introductif]
 Une usine fabrique des vélos, des trottinettes et des rollers. Le prix payé, $y$,   pour $x_1$ vélos, $x_2$ trottinettes et $x_3$ rollers est une fonction linéaires des prix unitaires d'achat 150 $\EUR$, 40 $\EUR$ et 20 $\EUR$ respectivement. On a donc :
 $$y=150x_1+40x_2+20x_3.$$
-On représente cette opération à l'aide de tableaux :
+On représente cette opération à l'aide de tableaux de nombres :
 
 \begin{center}
 \begin{tikzpicture}[>=latex]
@@ -154,7 +162,7 @@ On représente cette opération à l'aide de tableaux :
 Les prix unitaires d'envoi sont respectivement égaux à 5$\EUR$ pour un vélo, 2 $\EUR$ pour la trottinette et 1 $\EUR$ pour les rollers.   Le prix payé est encore une fonction linéaire :
 $$Y=\begin{pmatrix}y_1\\y_2\end{pmatrix}=\begin{pmatrix} 150x_1+40x_2+20x_3 \\5x_1+2x_2+1x_3  \end{pmatrix}.$$
 avec $y_1$ prix des marchandises et $y_2$ prix d'envoi.\\
-On représente cette opération à l'aide de tableaux :
+On représente cette opération à l'aide de tableaux de nombres :
 \begin{center}
 \begin{tikzpicture}[>=latex]
 
@@ -204,7 +212,7 @@ $$ A=\begin{pmatrix}
 a_{11} & a_{12} & \cdots & a_{1p}\\
 a_{21} & a_{22} & \cdots & a_{2p}\\
 \vdots & \vdots & \ddots & \vdots\\
-a_{n1} & a_{m2} & \cdots & a_{np}\\
+a_{n1} & a_{n2} & \cdots & a_{np}\\
 \end{pmatrix}.$$
 Le scalaire $a_{ij}$ est appelé \defi{coefficient de A de position (i,j)}.\\
 La matrice $C_j=\begin{pmatrix}
@@ -244,7 +252,6 @@ la matrice $\lambda A$ est égale à :$$\lambda A= \begin{pmatrix}
  \vdots &  & \vdots\\
 \lambda a_{n1} & \cdots & \lambda a_{np}
 \end{pmatrix}.$$
-
 \end{enumerate}
 \end{Df}
 \begin{Ex}$
@@ -274,13 +281,32 @@ et $
 \end{pmatrix}
 $
 \end{Ex}
-\begin{Prop}
+\begin{Prop}[Structure de $\K $-espace vectoriel]
 $\MnpK$ possède une structure de $\K $-espace vectoriel. 
 \end{Prop}
-\begin{Prop}[Base canonique]La base canonique est $(E_{i,j})_{1\leqslant i\leqslant n, 1\leqslant j\leqslant p}$. La matrice  $E_{i,j}$ est celle dont tous les coefficients sont nuls sauf celui d'indice $(i,j)$ , qui vaut 1. Les coordonnées dans la base canonique d'une matrice $A$ sont ses coefficients :$$ A = \sum _{1\leqslant i\leqslant n\atop 1\leqslant j\leqslant p}  a_{i,j} E_{i,j}.$$
+\begin{proof}
+Tous les axiomes se vérifient aisément.  
+\end{proof}
+\begin{Prop}[Base canonique]La \defi{base canonique} est $(E_{i,j})_{1\leqslant i\leqslant n, 1\leqslant j\leqslant p}$ où la matrice  $E_{i,j}$ est celle dont tous les coefficients sont nuls sauf celui d'indice $(i,j)$ , qui vaut 1. Les coordonnées dans la base canonique d'une matrice $A$ sont ses coefficients :$$ A = \sum _{1\leqslant i\leqslant n\atop 1\leqslant j\leqslant p}  a_{i,j} E_{i,j}.$$
 On a $\dim( \MnpK)=np$.
 \end{Prop}
-
+\begin{proof}
+Du fait de l'égalité, $ A = \sum _{1\leqslant i\leqslant n\atop 1\leqslant j\leqslant p}  a_{i,j} E_{i,j}$,  $(E_{i,j})_{1\leqslant i\leqslant n, 1\leqslant j\leqslant p}$ est une famille génératrice de $\MnpK$.\\
+Soit  $(\lambda_{ij})_{1\leqslant i\leqslant n, 1\leqslant j\leqslant p}$ une famille de scalaires tel que
+$$\sum _{1\leqslant i\leqslant n\atop 1\leqslant j\leqslant p}  \lambda_{ij} E_{i,j}=0_{\MnpK}.$$
+D'où :
+ $$\begin{pmatrix}
+\lambda_{11} &  \cdots & \lambda_{1p}\\
+\vdots & \ \ddots & \vdots\\
+\lambda_{n1} &  \cdots & a_{np}\\
+\end{pmatrix}= \begin{pmatrix}
+0 &  \cdots &0\\
+\vdots & \ \ddots & \vdots\\
+0 &  \cdots & 0\\
+\end{pmatrix}$$
+Par identification, $\lambda_{ij}=0$ pour tout $i\in\Intf{1}{n}$ et  $j\in\Intf{1}{p}$, donc la famille est libre.\\
+La famille est donc une base. Comme la cardinal de la base $\card((E_{i,j})_{1\leqslant i\leqslant n, 1\leqslant j\leqslant p})$ est $np$, on a bien $\dim( \MnpK)=np$.
+\end{proof}
 \begin{Ex}$ \begin{pmatrix}
 0 &1  \\
 4 & 3 \\
@@ -310,29 +336,10 @@ On a $\dim( \MnpK)=np$.
 \end{pmatrix}
 $
 \end{Ex}
-\begin{Df}[Application linéaire d'une matrice]
-Soit $M \in   \MnpK$.\\
-On définit une application linéaire, dite \defi{canoniquement associée à $M$}, par
-\[ \Fonction{u_M}{\M{p}{1}{\K} }{\M{n}{1}{\K} }{X}{M\times X}.\]
-C'est une application linéaire car $ M\times(X+Y)=M\times X + M\times Y$ et $M\times(\lambda X)=\lambda M\times X$.  
-\end{Df}
-\begin{Ex}[Exemple introductif]
-Dans l'exemple introductif, $M=\begin{pmatrix} 120 & 50 & 25  \\
-  5   & 2 & 1\end{pmatrix}$ et l'application linéaire $u_M$ est la fonction co\^ut. 
-
-
-\end{Ex}
-\begin{NB}
-On identifiera fréquemment les $p$-uplets avec les matrices colonnes;
-cela est légitime car l'application
-\[ \Fonction{\Phi }{\K ^p}{\M{p}{1}{\K}}{(\lambda_1,\dots,\lambda_p)}{\begin{pmatrix}\lambda_1\\\vdots\\\lambda_p\end{pmatrix}} \]
-est un isomorphisme.\\
-Par exemple, on notera $X=\begin{pmatrix}x_1\\x_2\\\end{pmatrix}\overbrace{=}^{\text{identification}}(x_1,x_2)=\vec{x}.$
-\end{NB}
 \begin{Df}[Produit matriciel]
-Spot $A\in\MnpK$ et $B\in\M{p}{q}{\K}$.\\
-On définit  produit matriciel $C=A \times B$ appartenant à $\M{n}{q}{\K}$ par $(c_{ij}=\sum_{k=1}^p a_{ik}b_{kj})_{\substack{1\leq i\leq n\\1\leq j\leq q}}$
-
+Soit $A\in\MnpK$ et $B\in\M{p}{q}{\K}$.\\
+Leur \defi{produit matriciel}, noté $A \times B$, est la matrice $C=\M{n}{q}{\K}$ définie par :
+$$\forall i\in \Intf{1}{n},\forall i\in \Intf{1}{q} : \quad  c_{ij}=\sum_{k=1}^p a_{ik}b_{kj}.$$
 \begin{tikzpicture}[>=latex]
 % les matrices
 \matrix (A) [matrix of math nodes,%
@@ -401,11 +408,11 @@ On définit  produit matriciel $C=A \times B$ appartenant à $\M{n}{q}{\K}$ par $(
 \end{Df}
 
 
-\begin{NB}En générale, le produit matriciel n'est pas commutatif ($AB = BA$). Par exemple, si $A=\begin{pmatrix}0&1\\0&0\\\end{pmatrix}$ et $B=\begin{pmatrix}1&0\\0&0\\\end{pmatrix}$. On a $A\times B=\begin{pmatrix}0&0\\0&0\\\end{pmatrix}$ tandis que 
+\begin{NB}[Algèbre non commutative et non intègre]En générale, le produit matriciel n'est pas commutatif ($AB = BA$). Par exemple, si $A=\begin{pmatrix}0&1\\0&0\\\end{pmatrix}$ et $B=\begin{pmatrix}1&0\\0&0\\\end{pmatrix}$. On a $A\times B=\begin{pmatrix}0&0\\0&0\\\end{pmatrix}$ tandis que 
 $B\times A = \begin{pmatrix}0&1\\0&0\\\end{pmatrix}$.\\
 De plus, en générale, le produit matriciel n'est pas intègre (si $AB =0$ alors $A=0$ ou $B=0$). C'est à dire un produit de matrices peut être nul sans qu'aucune d'entre elles le soit. Par exemple, $\begin{pmatrix}0&1\\0&0\\\end{pmatrix}\times \begin{pmatrix}1&0\\0&0\\\end{pmatrix}=\begin{pmatrix}0&0\\0&0\\\end{pmatrix}.$ 
 \end{NB}
-\begin{Ex}
+\begin{Ex}[Exemple introductif]
 Une entreprise fabrique deux types de téléviseurs, téléviseurs HD et téléviseurs 4k. Pour fabriquer,
 \begin{itemize}
 \item  un téléviseur HD il faut 1 unité de bureau d'études, 2 unités de main d'\oe uvre et 3 unités de composants électroniques,
@@ -450,33 +457,44 @@ La chaine  youtube 3Blue1Brown donne un point de vue géométrique du calcul matri
 \begin{Prop}[Propriétés]
 \begin{enumerate}
 \item
-  \defi{Associativité} : $\forall A \in   \M{n}{q}{\K},\forall  B \in   \M{p}{q}{\K},C \in   \M{q}{r}{\K}:$,$$(A \times B) \times C = A \times (B \times C).$$
+  \defi{Associativité} : $$\forall A \in   \M{n}{p}{\K},\forall  B \in   \M{p}{q}{\K},C \in   \M{q}{r}{\K}:\quad  (A \times B) \times C = A \times (B \times C).$$
 \item
-  \defi{Bilinéarité} : $\forall A,B \in   \M{n}{q}{\K},\forall C,D \in   \M{p}{q}{\K},\forall \lambda,\mu \in K:$
-  $$ (\lambda A + \mu B) \times C = \lambda A\times C + \mu B\times C\text{ et }A\times (\lambda C+ \mu D) =\lambda A\times C + \mu A\times D.$$
+  \defi{Bilinéarité} : 
+  $$\forall A,B \in   \M{n}{q}{\K},\forall C,D \in   \M{p}{q}{\K},\forall \lambda,\mu \in \K:$$
+  $$  (\lambda A + \mu B) \times C = \lambda A\times C + \mu B\times C\text{ et }A\times (\lambda C+ \mu D) =\lambda A\times C + \mu A\times D.$$
 \item
   \defi{Élément neutre} : on appelle \defi{matrice identité} la matrice carré de taille n : $$I_n=\begin{pmatrix}1&0&\cdots &0\\0&\ddots &\ddots &\vdots \\\vdots &\ddots &\ddots &0\\0&\cdots &0&1\end{pmatrix}.$$
  On a $\forall A \in   \M{n}{q}{\K} :\quad I_n A =A I_q = A.$ 
 \end{enumerate}
 \end{Prop}
-
+\begin{proof}
+Soit $(d_{ij})_{\substack{1\leq i\leq n\\1\leq j\leq q}}$ les coefficients de la matrice $A\times B$.\\
+Soit $(d'_{ij})_{\substack{1\leq i\leq n\\1\leq j\leq q}}$ les coefficients de la matrice $B\times C$.\\
+Soit $(e_{ij})_{\substack{1\leq i\leq n\\1\leq j\leq r}}$ les coefficients de la matrice $(A\times B)\times C$.\\
+Soit $(d'_{ij})_{\substack{1\leq i\leq n\\1\leq j\leq r}}$ les coefficients de la matrice $A\times (B\times C)$.\\
+Soit $i\in \Intf{1}{n}$ et $j\in \Intf{1}{r}$. 
+On a :
+$$e_{ij}=\sum_{k=1}^q d_{ik}c_{kj}=\sum_{k=1}^q \sum_{l=1}^p a_{il}b_{lk} c_{kj}$$
+et  
+$$e'_{ij}=\sum_{l=1}^p a_{il}d'_{lj}=\sum_{l=1}^p  a_{il}\sum_{k=1}^q b_{lk} c_{kj}=\sum_{k=1}^q \sum_{l=1}^p a_{il}b_{lk} c_{kj}=e_{il}.$$
+Ainsi $(A \times B) \times C = A \times (B \times C).$\\
+Les deux autres propriétés se démontrent aisément. 
+\end{proof}
 
 \subsection{Cas général : $E\to F$ }
 
-\begin{Df}[Application linéaire]
+\begin{DfProp}[Application linéaire]
 Soit $E$ et $F$ deux $\K $-espaces vectoriels.
-Une application $u:E\to F$ est dite \defi{linéaire}, si et seulement si elle préserve la structure d'espace vectoriel, c'est à dire :
-\begin{enumerate}
+Une application $u:E\to F$ est dite \defi{linéaire}, si  elle préserve la structure d'espace vectoriel, c'est à dire si :
+\begin{itemize}
 \item
   \defi{addition} : $\forall   \vec{x},\vec{y}\in  E:\quad u(\vec{x}+\vec{y}) = u(\vec{x}) + u(\vec{y})$;
 \item
   \defi{homogénéité} : $\forall   \lambda \in  \K,\forall   \vec{x}\in  E:\quad u(\lambda \vec{x}) = \lambda u(\vec{x})$.
-\end{enumerate}
+\end{itemize}
 Ces deux conditions sont équivalentes à
-\begin{enumerate}
-\item $\forall   \lambda  \in  \K $, $\forall   \vec{x},\vec{y}\in  E$, $u(\lambda \vec{x} +  \vec{y}) = \lambda u(\vec{x}) +  u(\vec{y})$.
-\end{enumerate}
-\end{Df}
+$$\forall   \lambda  \in  \K , \forall   \vec{x},\vec{y}\in  E:\quad u(\lambda \vec{x} +  \vec{y}) = \lambda u(\vec{x}) +  u(\vec{y})$$.
+\end{DfProp}
 \begin{Ex} 
 \begin{enumerate}
 \item Équation d'un plan : $\Fonction{\Phi _1}{\mathbb {R}^3 }{\mathbb {R}}{(x,y,z)}{x+y+3z}$,
@@ -511,13 +529,15 @@ L'application $f(x,y)\mapsto (x+y,1)$ n'est pas linéaire car $f(0,0)=(0,1).$
 \begin{Ex}
 $\Phi _3$ et $R_\theta$ sont des endomorphismes. Comme $R_\theta$ est bijectif, $R_\theta$ est un automorphisme. 
 \end{Ex}
-\begin{Df}
+\begin{DfProp}[Espace vectoriel des application linéaires et endomorphismes]
 Soit $E$ et $F$ deux $\K $-espaces vectoriels.
 L'ensemble des applications linéaires de $E$ dans $F$ est noté \defi{$\mathcal{L}(E,F)$} ;
 il s'agit d'un sous espace vectoriel de l'espace des fonctions de $E$ dans $F$ muni des lois usuelles.\\
 L'espace vectoriel des endomorphismes de $E$ se note \defi{$\LE$}$= \mathcal{L}(E,E)$.
-\end{Df}
-
+\end{DfProp}
+\begin{proof}
+Tous les axiomes se vérifient aisément.  
+\end{proof}
 \begin{Df}[composition d'application linéaire]
 La \defi{loi de composition interne $\circ$} est définie comme une composition de fonctions, c'est à dire si $u\in\mathcal{L}(E,F)$ et $v\in\mathcal{L}(F,G) $,
  alors  $\forall \vec{x} \in E : (v\circ u)(\vec{x})=v(u(\vec{x}))$.\\
@@ -527,7 +547,7 @@ On a $v\circ u\in \mathcal{L}(E,G).$
 L'application $P\mapsto XP'(X^2)$ est un endomorphisme de $\K[X]$. Les applications $P\mapsto P'$, $P\mapsto P(X^2)$ et $P\mapsto XP$ sont linéaire, donc par composition  $P\mapsto XP'(X^2)$ l'est aussi.    
 \end{Ex} 
  \begin{Prop}[Propriétés]
-\begin{enumerate}
+\begin{itemize}
 \item
   \defi{Associativité} : $$(u \circ v) \circ w =u \circ( v \circ w).$$
 \item
@@ -536,8 +556,14 @@ L'application $P\mapsto XP'(X^2)$ est un endomorphisme de $\K[X]$. Les applicati
 \item
   \defi{Élément neutre} : on appelle \defi{application identité} : $$Id_E:x\mapsto x.$$
  On a $ u\circ Id_E =Id_E\circ u = u.$ 
-\end{enumerate}
+\end{itemize}
 \end{Prop}
+\begin{proof}
+La composition des fonctions est associative donc en particulier les fonctions linéaires aussi.\\
+Les fonctions sont linéaires à gauche. En revanche, il faut l'hypothèse de linéarité pour la linéarité à droite. En effet, soit $\vec{x}\in E$. On a :
+$$u\circ (\lambda v+ \mu w)(\vec{x})=u(\lambda v(\vec{x})+ \mu w(\vec{x}))\overbrace{=}^{\text{linéarité de }u}=\lambda u(v(\vec{x})) + \mu u(w(\vec{x})).$$
+\end{proof}
+
 \begin{NB} On omet le plus souvent le symbole  $\circ$ : $v\circ u =v u$.
 \end{NB}
 \subsection{Dualité entre le point vue vectoriel et le  point de vue matriciel en dimension finie}
@@ -547,12 +573,21 @@ $$u(x,y)=u(x(1,0)+y(0,1))\overbrace{=}^{\text{linéarité}}x.u(1,0)+ y.u(0,1)=x.(1
 \begin{Th}
 Pour connaître/définir une application linéaire complètement, il suffit de connaître/définir les  images d'une base de l'espace vectoriel de départ. 
 \end{Th}
+\begin{proof}[Caractérisation par l'image d'une base]
+Soit $\mathcal{B}=(\vec{e_1},\dots,\vec{e_p})$ une base de $E$.\\
+Comme $u$ est linéaire, on a :
+\begin{align}
+u(\vec{x})&=u(\lambda_1.\vec{e_1}+\dots +\lambda_p.\vec{e_p})\\
+u(\vec{x})&=\lambda_1.u(\vec{e_1})+\dots +\lambda_p.u(\vec{e_p})
+\end{align}
+Cela implique que l'application linéaire $u$ est entièrement déterminée par les vecteur $(u(\vec{e_1}),\dots,u(\vec{e_p}))$.
+\end{proof}
+
 \begin{Ex}[Unité pour la proportionnalité]
 Il tape au rythme de $42$ mots à la minute. Combien tape-t-il de mot en 10 minutes ?\\
 Soit $u$ l'application linéaire représentant le nombre de mot taper en fonction du temps. On a $u(1)=42$. Donc 
 $u(10)\overbrace{=}^{\text{linéarité}}10u(1)=420$.
 \end{Ex}
-%TODO ranger 
 
 \begin{Df}[Coordonnées d'un vecteur]
 Soit $\mathcal{B} = (\vec{e_1},\dots,\vec{e_p})$ une base de $E$.\\
@@ -563,6 +598,13 @@ On appelle coordonnées de $\vec{x}$ dans la base $E$ la matrice colonne
 x_1\\\vdots\\x_p\\
 \end{pmatrix} \]
 \end{Df}
+\begin{NB}[Identification matrice colonne et $p$-uplets]
+On identifiera fréquemment les $p$-uplets avec les matrices colonnes ;
+cela est légitime car l'application
+\[ \Fonction{\Phi }{\K ^p}{\M{p}{1}{\K}}{(\lambda_1,\dots,\lambda_p)}{\begin{pmatrix}\lambda_1\\\vdots\\\lambda_p\end{pmatrix}} \]
+est un isomorphisme.\\
+Par exemple, on notera $X=\begin{pmatrix}x_1\\x_2\\\end{pmatrix}\overbrace{=}^{\text{identification}}(x_1,x_2)=\vec{x}.$
+\end{NB}
 
 \begin{Ex}[Polynôme] 
 Soit $P=1-X^2\in \R_n[X]$. Dans la base canonique $\mathcal{B}=(1,X,X^2,\dots,X^n)$ de $\R_n[X]$, on a $$[P]_\mathcal{B}=\begin{pmatrix}1\\0\\-1\\0\\\vdots \\0\\\end{pmatrix}$$. 
@@ -572,7 +614,6 @@ Soit $\mathcal{B} = (\vec{e_1},\dots,\vec{e_p})$ une base de $E$ et $\mathcal{B}
 Pour tout $j\in  \{1,\dots,p\}$, le vecteur $u(\vec{e_j})$ se décompose dans la base $\mathcal{B}'$:
 \[u(\vec{e_j})=a_{1j}.\vec{f_1}+\dots +a_{nj}.\vec{f_n}. \]
 On appelle \defi{matrice de l'application linéaire $u$} la matrice, $[u]_\mathcal{B}^{\mathcal{B}'}$,  définie par :
-
 \begin{center}
   \begin{tikzpicture}[
       every left delimiter/.style={xshift=0.75em},
@@ -620,27 +661,69 @@ car $\Phi _3(X^i)=i X^{i-1}$.
 \begin{Th}[Dualité]
 Soit $\mathcal{B}$ une base de $E$ et $\mathcal{B}'$ une base de $F$.\\
 L'application
-\[ \Fonction{}{\mathcal{L}(E,F)}{\M{n}{q}{\K} }{u}{[u]_\mathcal{B}^{\mathcal{B}'}} \]
+\[ \Fonction{\Phi}{\mathcal{L}(E,F)}{\M{n}{q}{\K} }{u}{[u]_\mathcal{B}^{\mathcal{B}'}} \]
 est linéaire et bijective, autrement dit un isomorphisme.
 \end{Th}
-\begin{Cor}
-$$\dim \mathcal{L}(E,F) = \dim(E) ×\dim(F).$$
+\begin{proof}
+On ajoute une seconde partie à la démonstration sur la caractérisation d'une application linéaire par l'image d'une base.\\
+Soit $\mathcal{B}'=(\vect{f_1},\dots,\vect{f_n})$ une base de $F$.\\
+Il existe une famille $(a_{ij})_{\substack{1\leq i\leq n\\1\leq j\leq p}}$ d'éléments de $\K$ tel que :
+$$\forall j\in \Intf{1}{p}: u(\vect{e_j})=a_{1j}\vect{f_1}+\dots+a_{nj}\vect{f_n}.$$ 
+Ainsi, les coefficient $(a_{ij})_{\substack{1\leq i\leq n\\1\leq j\leq p}}$ de la matrice $[u]_\mathcal{B}^{\mathcal{B}'}$   caractérise entièrement l'application linéaire $u$ d'où l'isomorphisme. 
+\end{proof}
+
+\begin{Cor}[Dimension de $\mathcal{L}(E,F)$]
+$$\dim \mathcal{L}(E,F) = \dim(E) \times\dim(F).$$
 \end{Cor}
-\begin{Df}[Application linéaire d'une matrice]
+\begin{proof}
+Comme l'application $\Phi$ est bijective, la dimension de l'espace vectoriel de départ est égale à celle d'arrivé (voir la section image et noyau). Donc on a $$\dim \mathcal{L}(E,F)=\dim \M{n}{q}{\K}= n q= \dim (F)\dim (E).$$ 
+\end{proof}
+
+\begin{DfProp}[Application linéaire d'une matrice]
 Inversement, si l'on se donne une matrice $M \in   \M{n}{q}{\K} $,
 on peut définir une application linéaire, dite \defi{canoniquement associée à $M$}, par
 \[ \Fonction{u_M}{\M{p}{1}{\K}}{\M{n}{1}{\K}}{X}{M\times X}.\]
 Si l'on note $\mathcal{B}$ la base canonique de $\M{p}{1}{\K}$ et $\mathcal{B}'$ la base canonique de $\M{n}{1}{\K}$,
 on vérifie  que
 \[ [u_M]_{\mathcal{B}}^{\mathcal{B}'} = M. \]
-\end{Df}
+\end{DfProp}
+\begin{proof}
+$u_M$ est  une application linéaire car $$u_M(X+Y)= M\times(X+Y)=M\times X + M\times Y=u_M(X)+u_M(Y)$$ et $$u_M(\lambda X)=M\times(\lambda X)=\lambda M\times X=\lambda u_M( X).$$ 
+\end{proof}
+\begin{Ex}[Matrice de rotation]
+La matrice de rotation $\begin{pmatrix}\cos \theta & -\sin \theta\\ \sin \theta & \cos \theta\end{pmatrix}$ est canoniquement associée à l'application linéaire rotation $\Fonction{R_\theta}{\mathbb {R}^2 }{\mathbb {R}^2}{(x,y)}{ (x\cos \theta - y \sin \theta,x\sin \theta + y \cos \theta)}$ en ayant effectuée l'identification de $\R^2$ avec $\M{2}{1}{\K}$. 
+\end{Ex}
+
+
 \begin{Th}[Image d'une application linéaire et image d'une matrice]
 Soit $\mathcal{B}$ une base de $E$ et $\mathcal{B}'$ une base de $F$.\\
-Soit $u:E\to F$ une application linéaire et $\vec{x}$ un vecteur de $E$.
+Soit $u:E\to F$ une application linéaire et $\vec{x}$ un vecteur de $E$.\\
 Alors \[ [u(\vec{x})]_{\mathcal{B}'} = [u]_\mathcal{B}^{\mathcal{B}'} × [\vec{x}]_\mathcal{B}. \]
 ou si on pose $Y=[u(\vec{x})]_{\mathcal{B}'},\quad A =[u]_\mathcal{B}^{\mathcal{B}'}$ et  $[\vec{x}]_\mathcal{B}$, on a :
 $$Y=AX.$$
 \end{Th}
+\begin{proof}
+Soit $\mathcal{B}=(\vect{e_1},\dots,\vect{e_p})$ une base de $E$.\\
+Soit $\mathcal{B}'=(\vect{f_1},\dots,\vect{f_n})$ une base de $F$.\\
+Soit $(a_{ij})_{\substack{1\leq i\leq n\\1\leq j\leq p}}$ les coefficients de la matrice $[u]_\mathcal{B}^{\mathcal{B}'}$.\\
+Soit $\vec{x}=x_1\vect{e_1}+\dots+x_p\vect{e_p}\in E$.\\
+On a :
+$$u(\vec{x})\overbrace{=}^{\text{linéarité}} =\sum_{j=1}^p x_j\vect{e_j}=\sum_{j=1}^p x_j\sum_{i=1}^n a_{ij} \vect{f_i}=\sum_{i=1}^n \left(\sum_{j=1}^p x_j a_{ij}\right) \vect{f_i}, $$
+d'où $ [u(\vec{x})]_{\mathcal{B}'}=\begin{pmatrix}\sum_{j=1}^p x_j a_{1j} \\\vdots\\\sum_{j=1}^p x_j a_{nj} \end{pmatrix}$.\\
+Aussi on a :
+
+\begin{align*}\\
+ &\begin{pmatrix}x_1\\\vdots\\x_p\end{pmatrix} \\
+\left[u\right]_{\mathcal{B}}^{\mathcal{B}'} \times \left[\vec{x}\right]_{\mathcal{B}}=\begin{pmatrix}
+    a_{11} &  \dots & a_{1p}  \\
+    \vdots &   &  \vdots  \\
+    a_{n1} &  \dots & a_{np}
+  \end{pmatrix}& \\
+\left[u\right]_{\mathcal{B}}^{\mathcal{B}'} \times \left[\vec{x}\right]_{\mathcal{B}}=\begin{pmatrix}\sum_{j=1}^p x_j a_{1j} \\\vdots\\\sum_{j=1}^p x_j a_{nj} \end{pmatrix}&.
+\end{align*}
+Finalement on obtient bien $ [u(\vec{x})]_{\mathcal{B}'} = [u]_\mathcal{B}^{\mathcal{B}'} × [\vec{x}]_\mathcal{B}. $
+\end{proof}
+
 \begin{Ex}[Dérivée polynomial] 
 Soit $P=1-X^2$. On a $[P]_\mathcal{B}=\begin{pmatrix}1\\0\\-1\\0\\\vdots \end{pmatrix}$. D'où 
 $$[\Phi_3(P)]_\mathcal{B}=  [\Phi _3]_{\mathcal{B}} [P]_\mathcal{B} =\begin{pmatrix} 0 &1&0&\ldots &0 \\
@@ -750,7 +833,7 @@ Soit $(\vec{x_i})_{i\in I}$ une famille de $E$ .\\
 Alors $$ u(\text{Vect}((\vec{x_i})_{i\in I}))=\text{Vect}( \left(u(\vec{x_i})\right)_{i\in I})).$$
 \end{Prop}
 \begin{Ex}
-L'image de la droite vectoriel $\mathbb{R}(1,1)$ par $R_\theta$ est la droite vectoriel $\mathbb{R}R_\theta(1,1)$.
+L'image de la droite vectoriel $\R (1,1)$ par $R_\theta$ est la droite vectoriel $\R R_\theta(1,1)$.
 \end{Ex}
 \begin{Df}[Noyau et image]
 \begin{itemize}
@@ -996,7 +1079,7 @@ Si  $P$ est inversible alors $P$ est la matrice de passage de la base canonique 
 
 
  \begin{Ex}
-Dans $\mathbb{R}^2$, si $\mathcal{B}$ est la base canonique et si $\mathcal{B}' = \left( \begin{pmatrix}
+Dans $\R ^2$, si $\mathcal{B}$ est la base canonique et si $\mathcal{B}' = \left( \begin{pmatrix}
 1\\2
 \end{pmatrix},\begin{pmatrix}
 -1\\3
@@ -1015,7 +1098,7 @@ $$\begin{array}{rl}
 \end{array}.$$
  \end{Ex}
   \begin{Ex}
-Dans $\mathbb{R}_2[X]$, le $\mathbb{R}$-espace vectoriel constitué des polynômes à coefficients réels de degré $\leq 2$, considérons la base $\mathcal{B}=(X^i)_{0\leq i \leq 2}$ et  $\mathcal{B}'=((X-1)^i)_{0\leq i \leq 2}$.
+Dans $\R _2[X]$, le $\R $-espace vectoriel constitué des polynômes à coefficients réels de degré $\leq 2$, considérons la base $\mathcal{B}=(X^i)_{0\leq i \leq 2}$ et  $\mathcal{B}'=((X-1)^i)_{0\leq i \leq 2}$.
 \[\text{Comme }
 \left \{
 \begin{array}{c @{=} l}
@@ -1352,8 +1435,8 @@ Soit $E$ un $\K $-espace vectoriel.
 Soit $P = \{(x,y,z)\in  \R ^3:2x+y-z=0\}$ un hyperplan de $\R^3$.\\
 Soit $x = (1,0,0)$ et $D = \K x$. On a $E = P \oplus D$.\\
 Soit $\Phi$ la forme linéaire définie par $ \Fonction{\Phi }{E}{\R }{(x,y,z)}{2x+y-z}$. On a $P = \Ker \Phi $ et $[\phi]_{\mathcal{B}}=(2,1,-1)$ avec $\mathcal{B}$ la base canonique de $\R ^3$
-%2) \textit{Gradient de température} : Soit $(x,y,z)$ un élément de $\mathbb{R}^3$.  Le gradient de température 
-%:$$\overrightarrow {\mathbb {\nabla } }T(x,y,z)=\left({\frac {\partial T}{\partial x}}(x,y,z),{\frac {\partial T}{\partial y}}(x,y,z),{\frac {\partial T}{\partial z}}(x,y,z)\right)$$  est une forme linéaire sur l'ensemble des fonctions différentiables: $\{T:\mathbb{R}^3\to \mathbb {R}: T\text{ fonction différentiable}\}$.
+%2) \textit{Gradient de température} : Soit $(x,y,z)$ un élément de $\R ^3$.  Le gradient de température 
+%:$$\overrightarrow {\mathbb {\nabla } }T(x,y,z)=\left({\frac {\partial T}{\partial x}}(x,y,z),{\frac {\partial T}{\partial y}}(x,y,z),{\frac {\partial T}{\partial z}}(x,y,z)\right)$$  est une forme linéaire sur l'ensemble des fonctions différentiables: $\{T:\R ^3\to \mathbb {R}: T\text{ fonction différentiable}\}$.
 \end{Ex}
 \begin{Prop} 
 Soit $E$ est un $\K $-espace vectoriel de dimension finie, $\mathcal{B}=(e_1,\dots,e_n)$ une base de $E$ et $\phi\in E^*$. Alors   $$[\phi]_{\mathcal{B}}=(\phi(e_1),\phi(e_2),\dots,\phi(e_n))$$ est une matrice ligne avec $n$ composantes. Si $\phi\neq 0$, $\Rang \phi =1$ et $\Ker \phi =n-1$.
@@ -1694,11 +1777,11 @@ Si l'on compose deux matrice de rotation d'angle $\theta$ et $\theta'$, on a :
 \end{align*} 
 Donc la composition de deux rotations est une rotation d'angle la somme des angles des deux rotations.
 \end{Ex}
-\subsection{Exercice de synthèse: endomorphisme sur $\mathbb{R}_2[X]$}
+\subsection{Exercice de synthèse: endomorphisme sur $\R _2[X]$}
 Soit $\mathbb R_2[X]$ l'espace vectoriel des polynômes à coefficients réels de degré inférieur ou égal à 2.
 On définit l'application $\phi$ par : 
 $$
-\Fonction{\phi}{\mathbb{R}_2[X]}{\mathbb{R}_2[X]}{P}{P-P'}
+\Fonction{\phi}{\R _2[X]}{\R _2[X]}{P}{P-P'}
 $$ où $P'$ est le polynôme dérivé de $P$.
 \begin{enumerate}
 \item Démontrer que $\phi$ est un endomorphisme. 
@@ -1715,30 +1798,30 @@ Correction :
 \item \textit{Linéaire} : soit $P,Q\in \mathbb R_2[X]$ et soit $\lambda,\mu \in \R $.\\
 $$\phi(\lambda P + \mu Q)= (\lambda P + \mu Q)-(\lambda P + \mu Q)'=\lambda (P - P')+\mu(Q - Q')= \lambda\phi( P) + \mu \phi(Q) $$
 \end{itemize} 
-\item Les applications, identité $\mathrm{Id}_{\mathbb{R}_2[X]}:P\mapsto P$ et dérivée $\psi:P\mapsto P'$, sont linéaires. Comme $\mathcal{L}(R_2[X])$ est un espace vectoriel, $\phi$ est une application linéaire car combinaison linéaire de $\mathrm{Id}_{\mathbb{R}_2[X]}$ et $\psi$. 
+\item Les applications, identité $\mathrm{Id}_{\R _2[X]}:P\mapsto P$ et dérivée $\psi:P\mapsto P'$, sont linéaires. Comme $\mathcal{L}(R_2[X])$ est un espace vectoriel, $\phi$ est une application linéaire car combinaison linéaire de $\mathrm{Id}_{\R _2[X]}$ et $\psi$. 
 \end{enumerate}
 \item 2 solutions :
 \begin{enumerate}
-\item Comme $\phi$ est un endomorphisme d'un espace vectoriel de dimension finie, il suffit de démontrer que  $\phi$ est injective, soit  $\Ker\phi=\{0_{\mathbb{R}_2[X]} \}$ .\\
-Montrons que  $\{0_{\mathbb{R}_2[X]} \} \subset \Ker\phi $.\\
+\item Comme $\phi$ est un endomorphisme d'un espace vectoriel de dimension finie, il suffit de démontrer que  $\phi$ est injective, soit  $\Ker\phi=\{0_{\R _2[X]} \}$ .\\
+Montrons que  $\{0_{\R _2[X]} \} \subset \Ker\phi $.\\
 \hspace{1cm}$\Ker\phi$ est un espace vectoriel donc il contient l'élément neutre.\\
-Montrons que $\Ker\phi   \subset \{0_{\mathbb{R}_2[X]} \}$.\\
-\hspace{1cm}Soit $P\in \Ker\phi$, c'est à dire que $\phi(P)=0_{\mathbb{R}_2[X]}$. Soit $P=P'$. D'où $P=0_{\mathbb{R}_2[X]}$.
-\item  Déterminons la matrice de l'endomorphisme de $\phi$ dans la base canonique, $\mathcal{B}=(1,X,X^2)$ de $\mathbb{R}_2[X]$.
+Montrons que $\Ker\phi   \subset \{0_{\R _2[X]} \}$.\\
+\hspace{1cm}Soit $P\in \Ker\phi$, c'est à dire que $\phi(P)=0_{\R _2[X]}$. Soit $P=P'$. D'où $P=0_{\R _2[X]}$.
+\item  Déterminons la matrice de l'endomorphisme de $\phi$ dans la base canonique, $\mathcal{B}=(1,X,X^2)$ de $\R _2[X]$.
 $$[\phi]_{\mathcal{B}}=\begin{pmatrix}1 &-1&0\\0 &1&-2\\0&0&1 \end{pmatrix}\text{ car } \phi(X^i)=X^i-i  X^{i-1}.$$
 Comme $\det ([\phi]_{\mathcal{B}})=1$, produit des coefficients de la diagonale pour une matrice triangulaire supérieur,  $[\phi]_{\mathcal{B}}$ est inversible, donc $\phi$ est bijectif.  
 \end{enumerate}
 \item 2 solutions :
 \begin{enumerate}
-\item L'application dérivée $\psi:P\mapsto P'$, est nilpotente car $\psi^3=0$. Comme $\psi$ et $\mathrm{Id}_{\mathbb{R}_2[X]}$ commutent,
-on a$$ \mathrm{Id}_{\mathbb{R}_2[X]}=\mathrm{Id}^3_{\mathbb{R}_2[X]}-\psi^3=(\mathrm{Id}_{\mathbb{R}_2[X]}-\psi)\circ(\mathrm{Id}_{\mathbb{R}_2[X]}+\psi+\psi^2)=\phi\circ (\mathrm{Id}_{\mathbb{R}_2[X]}+\psi+\psi^2).$$ Donc l'inverse de $\phi$ est $\phi^{-1}=(\mathrm{Id}_{\mathbb{R}_2[X]}+\psi+\psi^2)$.
+\item L'application dérivée $\psi:P\mapsto P'$, est nilpotente car $\psi^3=0$. Comme $\psi$ et $\mathrm{Id}_{\R _2[X]}$ commutent,
+on a$$ \mathrm{Id}_{\R _2[X]}=\mathrm{Id}^3_{\R _2[X]}-\psi^3=(\mathrm{Id}_{\R _2[X]}-\psi)\circ(\mathrm{Id}_{\R _2[X]}+\psi+\psi^2)=\phi\circ (\mathrm{Id}_{\R _2[X]}+\psi+\psi^2).$$ Donc l'inverse de $\phi$ est $\phi^{-1}=(\mathrm{Id}_{\R _2[X]}+\psi+\psi^2)$.
 \item  Déterminons l'inverse de matrice de l'endomorphisme de $\phi$ par la méthode du pivot de Gauss:
 $$\begin{array}{rl}
 &\left({\begin{array}{rrr|rrr}1 &-1&0&1&0&0\\0 &1&-2&0&1&0\\0&0&1&0&0&1 \end{array}}\right)\\
 \begin{small}\begin{array}{r} \\(L2)\leftarrow (L2)+2(L3) \end{array}\end{small}&\left({\begin{array}{rrr|rrr}1 &-1&0&1&0&0\\0 &1&0&0&1&2\\0&0&1&0&0&1 \end{array}}\right)\\
 \begin{small}\begin{array}{r} \\(L1)\leftarrow (L1)+(L2) \end{array}\end{small}&\left({\begin{array}{rrr|rrr}1 &0&0&1&1&2\\0 &1&0&0&1&2\\0&0&1&0&0&1 \end{array}}\right)
 \end{array}.$$
-D'où $\phi^{-1}(1)=1,\phi^{-1}(X)=1+X$ et $\phi^{-1}(X^2)=2+2X+X^2$.  Soit $\phi^{-1}=(\mathrm{Id}_{\mathbb{R}_2[X]}+\psi+\psi^2)$.
+D'où $\phi^{-1}(1)=1,\phi^{-1}(X)=1+X$ et $\phi^{-1}(X^2)=2+2X+X^2$.  Soit $\phi^{-1}=(\mathrm{Id}_{\R _2[X]}+\psi+\psi^2)$.
 \end{enumerate}
 \end{enumerate}
 %

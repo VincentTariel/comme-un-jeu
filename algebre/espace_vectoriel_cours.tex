@@ -102,7 +102,7 @@ Savoir passer d'une représentation à l'autre est essentiel pour bien comprendre 
 \begin{Ex}[Exemples d'ensembles de vecteurs : $E=\{\vect{x}\}$]
 Il existe de très nombreux ensembles  où il est possible d'effectuer une addition et une homothétie soit une combinaison linéaire, par exemples :
 \begin{itemize}
-\item l'ensemble des n-uplets réels : $\vect{x}=(x_{1},x_{2},\ldots ,x_{n})$ et $E=\R^n$ et , où chaque $x_{i}$ est un réel,
+\item l'ensemble des n-uplet réels : $\vect{x}=(x_{1},x_{2},\ldots ,x_{n})$ et $E=\R^n$ et , où chaque $x_{i}$ est un réel,
 %jeu vidéo: rendu d'objets dans une scène (jeux vidéos) et un vecteur d'appréciation de films 
 \item l'ensemble des matrices carrés réels : $\vect{x}=\begin{pmatrix}
 a_{1,1} & a_{1,2} & \cdots & a_{1,n}\\
@@ -193,7 +193,7 @@ Donc $(\R^n,+)$ est un groupe commutatif.
 
 
 \begin{Df}[Loi de composition externe : $\lambda.\vect{x}$] Soit $\K$ et $A$ deux ensembles. Une \defi{loi de composition externe}, $.$, est une application qui, à un élément de $\K$ et un élément de $A$, associe un élément de $A$ :
-$$ \Fonction{.}{A×A}{A}{(\lambda,x)}{\lambda. x} $$
+$$ \Fonction{.}{\K×A}{A}{(\lambda,x)}{\lambda. x} $$
 \end{Df}
 \begin{Ex}[$(\R^n,.)$]
 La loi de multiplication sur $\R^n$ est définie par 
@@ -627,7 +627,7 @@ Soit $(\vect{v}_1, \vect{v}_2,\dots \vect{v}_{n+1})$ une famille de $n+1$ vecteu
 Pour tout $i\in \Intf{1}{n+1}$, il existe $\lambda_{i,1},\lambda_{i,2},\dots,\lambda_{i,n}\in\K$ tel que $$\vect{v}_i=  \lambda_{i,1}\vect{g}_1 + \lambda_{i,2}\vect{g_2}+\dots+\lambda_{i,n}.\vect{g_n}$$
 Quitte à réorganiser les deux familles, on peut supposer que $\lambda_{n+1,n}\neq 0$. \\
 Pour tout  $i\in \Intf{1}{n}$, on a 
-$$\vect{v}_i-\frac{\lambda_{i,n}}{\lambda_{n+1,n}}\vect{v}_{n+1}=\in \Vectt(\vect{g_1},\dots,\vect{g}_{n-1}).$$
+$$\vect{v}_i-\frac{\lambda_{i,n}}{\lambda_{n+1,n}}\vect{v}_{n+1}\in \Vectt(\vect{g_1},\dots,\vect{g}_{n-1}).$$
 On applique l'hypothèse de récurrence à l'espace vectoriel générée par la famille $(\vect{g_1},\dots,\vect{g}_{n-1})$. Donc la famille $\left(\vect{v}_1-\frac{\lambda_{1,n}}{\lambda_{n+1,n}}\vect{v}_{n+1},\dots, \vect{v}_n-\frac{\lambda_{n,n}}{\lambda_{n+1,n}}\vect{v}_{n+1}\right)$ est liée. Il existe  $\beta_{1},\beta_{2},\dots,\beta{n}\in\K$ non tous nuls tel que :
 $$\beta_1 (\vect{v}_1-\frac{\lambda_{1,n}}{\lambda_{n+1,n}}\vect{v}_{n+1})+\dots+\beta_n (\vect{v}_n-\frac{\lambda_{n,n}}{\lambda_{n+1,n}}\vect{v}_{n+1})=\vect{0}.$$
 d'où 
@@ -724,10 +724,10 @@ Comme $\vect{x}\in E_1$ et $(\vect{e_1},\dots,\vect{e_n})$ est une famille génér
 Comme $\vect{y}\in E_2$ et $(\vect{f_1},\dots,\vect{f_q})$ est une famille génératrice de $E_2$, il existe $\beta_1,\dots,\beta_q\in \K$ tel que $\vect{y}=\beta_1\vect{f_1}+\dots+ \beta_q\vect{f_q}$.\\
 D'où $(\vect{x},\vect{y})=\lambda_1(\vect{e_1},\vect{0}_F)+\dots+\lambda_n(\vect{e_n},\vect{0}_F)+ \beta_1(\vect{0}_E,\vect{f_1})+\dots+\beta_q(\vect{0}_E,\vect{f_q}).$
 \item \textit{Libre} :\\
-Soit  $\lambda_1,\dots,\lambda_n,\beta_1,\dots,\beta_q\in K$ tel que $$\lambda_1(\vect{e_1},\vect{0}_F)+\dots+\lambda_n(\vect{e_n},\vect{0}_F)+ \beta_1(\vect{0}_E,\vect{f_1})+\dots+\beta_q(\vect{0}_E,\vect{f_q})=(\vect{0}_E,\vect{0}_F).$$
+Soit  $\lambda_1,\dots,\lambda_n,\beta_1,\dots,\beta_q\in \K$ tel que $$\lambda_1(\vect{e_1},\vect{0}_F)+\dots+\lambda_n(\vect{e_n},\vect{0}_F)+ \beta_1(\vect{0}_E,\vect{f_1})+\dots+\beta_q(\vect{0}_E,\vect{f_q})=(\vect{0}_E,\vect{0}_F).$$
 D'où:
 $$(\lambda_1\vect{e_1}+\dots+ \lambda_n\vect{e_n},\beta_1\vect{f_1}+\dots+ \beta_q\vect{f_q} )=(\vect{0}_E,\vect{0}_F).$$
-Par identification, on obtient $\lambda_1\vect{e_1}+\dots+ \lambda_n\vect{e_n}=\vect{0}_E$ et $\beta_1\vect{f_1}+\dots+ \beta_q\vect{f_q}=\vect{0}_F$. Comme $(\vect{e_1},\dots,\vect{e_n})$ une famille libre de $E_1$ et $(\vect{f_1},\dots,\vect{f_q})$ de $E_2$ , $\lambda_1=\dots=\lambda_n=\beta_1=\dots=\beta_q=0$. 
+Par identification, on obtient $\lambda_1\vect{e_1}+\dots+ \lambda_n\vect{e_n}=\vect{0}_E$ et $\beta_1\vect{f_1}+\dots+ \beta_q\vect{f_q}=\vect{0}_F$. Comme $(\vect{e_1},\dots,\vect{e_n})$ et $(\vect{f_1},\dots,\vect{f_q})$ sont des familles libres de $E_1$ et  de $E_2$ respectivement, $\lambda_1=\dots=\lambda_n=\beta_1=\dots=\beta_q=0$. 
 \end{itemize}
 \end{proof}
 
@@ -743,8 +743,9 @@ $$\dim (F_1 + F_2) = \dim F_1 + \dim F_2 - \dim(F_1 \cap F_1).$$
 \begin{proof}
 Une idée est de remarquer l'analogie avec la formule ensembliste  :
 $$\text{card}(A)+\text{card}(B)=\text{card}(A\cup B)+\text{card}(A\cap B).$$
-Soit $C$ une base de $F\cap G$. On la complète en une base $A$ de $F$ et en une base $B$ de $G$.\\
-$A\cup B$ est une base   $F+G$ et $A\cap B=C$ est une base de $F\cap G$.  
+Soit $(\vect{e_1},\dots,\vect{e_p})$ une base de $F_1\cap F_2$. On la complète en une base 
+$(\vect{e_1},\dots,\vect{e_p},\vect{f_{p+1}},\dots,\vect{f_{p+k}})$ de $F_1$ et en une base $(\vect{e_1},\dots,\vect{e_p},\vect{g_{p+1}},\dots,\vect{g_{p+m}})$ de $F_2$. $(\vect{e_1},\dots,\vect{e_p},\vect{f_{p+1}},\dots,\vect{f_{p+k}},\vect{g_{p+1}},\dots,\vect{g_{p+m}})$ est une base   $F_1+F_2$.\\
+Comme le cardinal d'une base est égale à la dimension de l'espace vectoriel, on obtient bien l'égalité souhaitée.
 \end{proof}
 \begin{Prop}
 Soit $E$ un $\K $-espace vectoriel et $F_1,\dots F_p$ des sous-espaces vectoriels de dimension finie de $E$.
