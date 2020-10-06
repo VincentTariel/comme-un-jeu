@@ -4,7 +4,7 @@ Bienvenue sur le dépôt des cours de Vincent Tariel enseignant en CPGE à l'ISE
 
 Ce dépôt est là pour encourager la collaboration et l'échange.
 
-
+\\[ x\to \mathbb{R} \\]
 L'objectif de ces cours est d'être partagé avec
 # les élèves
 

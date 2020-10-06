@@ -1412,6 +1412,77 @@ Synthèse :
 
 %TODO (A-I_n)(A-2I_n)=0 
 
+%%
+%%% ---------------------------------------------------------------------------
+\section{Matrices par blocs}
+
+\begin{Df}[Décomposition par blocs]
+Soit $A\in  \MnpK $ une matrice.
+Sa \defi{décomposition par blocs} suivant le découpage $(n_1,\dots,n_s) $ pour les lignes et $(p_1,\dots,p_t)$ pour les colonnes est
+\begin{center}
+  \begin{tikzpicture}[
+      dots/.style={
+        line width=1pt,
+        line cap=round,
+        dash pattern=on 0pt off 5pt,
+        shorten >=.1cm,
+    shorten <=.1cm}]
+    \matrix[
+      matrix of nodes,
+      left delimiter=(,
+      right delimiter=),
+    ]{
+      \node (A) {$A_{1,1}$}; &[1.1cm] \node (B) {$A_{1,t}$}; \\[1.1cm]
+      \node (C) {$A_{s,1}$}; &        \node (D) {$A_{s,t}$}; \\
+    };
+
+    \draw [dots] (A.east)  -- (B.west);
+    \draw [dots] (C.east)  -- (D.west);
+    \draw [dots] (A.south) -- (C.north);
+    \draw [dots] (B.south) -- (D.north);
+
+    \draw [<->]  ([xshift=1cm]B.north east) -- node [right] {$n_1$} ([xshift=1cm]B.south east);
+    \draw [<->]  ([xshift=1cm]D.north east) -- node [right] {$n_s$} ([xshift=1cm]D.south east);
+    \draw [dots] ([xshift=1cm]B.south east) -- ([xshift=1cm]D.north east);
+    \draw [<->]  ([xshift=1.75cm]B.north east) -- node [right] {$n$} ([xshift=1.75cm]D.south east);
+
+    \draw [<->]  ([yshift=-0.5cm]C.south west) -- node [below] {$p_1$}([yshift=-0.5cm]C.south east);
+    \draw [<->]  ([yshift=-0.5cm]D.south west) -- node [below] {$p_t$}([yshift=-0.5cm]D.south east);
+    \draw [dots] ([yshift=-0.5cm]C.south east) -- ([yshift=-0.5cm]D.south west);
+    \draw [<->]  ([yshift=-1.1cm]C.south west) -- node [below] {$p$} ([yshift=-1.1cm]D.south east);
+
+    \node[xshift=-0.9cm] at ($(A.west)!0.5!(C.west)$) { $A =$ };
+  \end{tikzpicture}
+\end{center}
+\end{Df}
+\begin{Ex}
+La matrice ${P} ={\begin{pmatrix}1&1&2&2\\1&1&2&2\\3&3&4&4\\3&3&4&4\end{pmatrix}}$
+peut être partitionnée en quatre blocs $2\times 2$ avec $$P_{11}={\begin{pmatrix}1&1\\1&1\end{pmatrix}},P_{12}={\begin{pmatrix}2&2\\2&2\end{pmatrix}},P_{21}={\begin{pmatrix}3&3\\3&3\end{pmatrix}},{P}_{22}={\begin{pmatrix}4&4\\4&4\end{pmatrix}}.$$
+On peut alors écrire la matrice par bloc comme :
+$$P={\begin{pmatrix} {P} _{11}& {P} _{12}\\ {P} _{21}& {P} _{22}\end{pmatrix}}.$$
+\end{Ex}
+\begin{Prop}[Addition par blocs]
+Soit $A$ et $B$ deux matrices de $\MnpK$ exprimées par blocs selon les mêmes découpages. Soit $\lambda ,\mu  \in  \K $.\\
+Alors la matrice $\lambda A + \mu  B$ s'exprime par blocs selon les mêmes découpages que $A$ et $B$, et les blocs s'obtiennent en combinant les blocs situés aux mêmes places.
+\end{Prop}
+\begin{Prop}[Produit par blocs]
+Soit $A\in  \MnpK$ et $B\in  \M{p}{q}{\K}$.\\
+On suppose que $A$ a une décomposition par blocs suivant le découpage $(n_1,\dots,n_s)$ pour les lignes et $(p_1,\dots,n_t)$ pour les colonnes.\\
+On suppose que $B$ a une décomposition par blocs suivant le découpage $(p_1,\dots,n_t)$ pour les lignes et $(q_1,\dots,q_u)$ pour les colonnes.\\
+Alors le produit $C = AB\in  \mathrm{M}_{n,q}(\K )$ admet une décomposition par blocs suivant le découpage $(n_1,\dots,n_s)$ pour les lignes et $(q_1,\dots,q_u)$ pour les colonnes
+\[ C = \begin{pmatrix} C_{1,1} &  \dots &  C_{1,u}  \\  \vdots &   &  \vdots  \\  C_{s,1} &  \dots &  C_{s,u} \end{pmatrix} \]
+où pour tous $i\in  \{1,\dots,s\}$ et $j\in  \{1,\dots,u\}$,
+\[ C_{i,j} = \sum  _{k=1}^t A_{i,k} B_{k,j} \]
+\end{Prop}
+\begin{NB}
+Le cas qui nous intéressera le plus fréquemment est celui des matrices carrées ayant le même découpage pour les lignes et pour les colonnes. Dans ce cas, les blocs diagonaux sont également des matrices carrées.
+\end{NB}
+\begin{Prop}[Déterminant triangulaire par blocs]
+Soit $A\in  \MnK$ une matrice carrée admettant une décomposition triangulaire supérieure par blocs :
+$$A =\begin{pmatrix} {A} _{11}&{A} _{12}&\cdots &{A} _{1s}\\0& A_{22}&\cdots &{A} _{2s}\\\vdots &\vdots &\ddots &\vdots \\0&0&\cdots &A_{nn}\end{pmatrix}.$$
+Alors $$ \det(A) = \prod_{k=1}^s \det(A_{kk}) \text{ et } \tr(A)= \sum_{k=1}^s \tr(A_{kk}) $$
+\end{Prop}
+
 \section{Catégories d'applications linéaires}
 \subsection{Forme linéaire : $E\mapsto \K $}
 \begin{Df}[Forme linéaire]
@@ -1575,76 +1646,7 @@ par rapport à $\Ker(s - \mathrm{Id}_E)$ parallèlement à $\Ker(s + \mathrm{Id}_E)
 
 
 
-%%
-%%% ---------------------------------------------------------------------------
-\section{Matrices par blocs}
 
-\begin{Df}[Décomposition par blocs]
-Soit $A\in  \MnpK $ une matrice.
-Sa \defi{décomposition par blocs} suivant le découpage $(n_1,\dots,n_s) $ pour les lignes et $(p_1,\dots,p_t)$ pour les colonnes est
-\begin{center}
-  \begin{tikzpicture}[
-      dots/.style={
-        line width=1pt,
-        line cap=round,
-        dash pattern=on 0pt off 5pt,
-        shorten >=.1cm,
-    shorten <=.1cm}]
-    \matrix[
-      matrix of nodes,
-      left delimiter=(,
-      right delimiter=),
-    ]{
-      \node (A) {$A_{1,1}$}; &[1.1cm] \node (B) {$A_{1,t}$}; \\[1.1cm]
-      \node (C) {$A_{s,1}$}; &        \node (D) {$A_{s,t}$}; \\
-    };
-
-    \draw [dots] (A.east)  -- (B.west);
-    \draw [dots] (C.east)  -- (D.west);
-    \draw [dots] (A.south) -- (C.north);
-    \draw [dots] (B.south) -- (D.north);
-
-    \draw [<->]  ([xshift=1cm]B.north east) -- node [right] {$n_1$} ([xshift=1cm]B.south east);
-    \draw [<->]  ([xshift=1cm]D.north east) -- node [right] {$n_s$} ([xshift=1cm]D.south east);
-    \draw [dots] ([xshift=1cm]B.south east) -- ([xshift=1cm]D.north east);
-    \draw [<->]  ([xshift=1.75cm]B.north east) -- node [right] {$n$} ([xshift=1.75cm]D.south east);
-
-    \draw [<->]  ([yshift=-0.5cm]C.south west) -- node [below] {$p_1$}([yshift=-0.5cm]C.south east);
-    \draw [<->]  ([yshift=-0.5cm]D.south west) -- node [below] {$p_t$}([yshift=-0.5cm]D.south east);
-    \draw [dots] ([yshift=-0.5cm]C.south east) -- ([yshift=-0.5cm]D.south west);
-    \draw [<->]  ([yshift=-1.1cm]C.south west) -- node [below] {$p$} ([yshift=-1.1cm]D.south east);
-
-    \node[xshift=-0.9cm] at ($(A.west)!0.5!(C.west)$) { $A =$ };
-  \end{tikzpicture}
-\end{center}
-\end{Df}
-\begin{Ex}
-La matrice ${P} ={\begin{pmatrix}1&1&2&2\\1&1&2&2\\3&3&4&4\\3&3&4&4\end{pmatrix}}$
-peut être partitionnée en quatre blocs $2\times 2$ avec $$P_{11}={\begin{pmatrix}1&1\\1&1\end{pmatrix}},P_{12}={\begin{pmatrix}2&2\\2&2\end{pmatrix}},P_{21}={\begin{pmatrix}3&3\\3&3\end{pmatrix}},{P}_{22}={\begin{pmatrix}4&4\\4&4\end{pmatrix}}.$$
-On peut alors écrire la matrice par bloc comme :
-$$P={\begin{pmatrix} {P} _{11}& {P} _{12}\\ {P} _{21}& {P} _{22}\end{pmatrix}}.$$
-\end{Ex}
-\begin{Prop}[Addition par blocs]
-Soit $A$ et $B$ deux matrices de $\MnpK$ exprimées par blocs selon les mêmes découpages. Soit $\lambda ,\mu  \in  \K $.\\
-Alors la matrice $\lambda A + \mu  B$ s'exprime par blocs selon les mêmes découpages que $A$ et $B$, et les blocs s'obtiennent en combinant les blocs situés aux mêmes places.
-\end{Prop}
-\begin{Prop}[Produit par blocs]
-Soit $A\in  \MnpK$ et $B\in  \M{p}{q}{\K}$.\\
-On suppose que $A$ a une décomposition par blocs suivant le découpage $(n_1,\dots,n_s)$ pour les lignes et $(p_1,\dots,n_t)$ pour les colonnes.\\
-On suppose que $B$ a une décomposition par blocs suivant le découpage $(p_1,\dots,n_t)$ pour les lignes et $(q_1,\dots,q_u)$ pour les colonnes.\\
-Alors le produit $C = AB\in  \mathrm{M}_{n,q}(\K )$ admet une décomposition par blocs suivant le découpage $(n_1,\dots,n_s)$ pour les lignes et $(q_1,\dots,q_u)$ pour les colonnes
-\[ C = \begin{pmatrix} C_{1,1} &  \dots &  C_{1,u}  \\  \vdots &   &  \vdots  \\  C_{s,1} &  \dots &  C_{s,u} \end{pmatrix} \]
-où pour tous $i\in  \{1,\dots,s\}$ et $j\in  \{1,\dots,u\}$,
-\[ C_{i,j} = \sum  _{k=1}^t A_{i,k} B_{k,j} \]
-\end{Prop}
-\begin{NB}
-Le cas qui nous intéressera le plus fréquemment est celui des matrices carrées ayant le même découpage pour les lignes et pour les colonnes. Dans ce cas, les blocs diagonaux sont également des matrices carrées.
-\end{NB}
-\begin{Prop}[Déterminant triangulaire par blocs]
-Soit $A\in  \MnK$ une matrice carrée admettant une décomposition triangulaire supérieure par blocs :
-$$A =\begin{pmatrix} {A} _{11}&{A} _{12}&\cdots &{A} _{1s}\\0& A_{22}&\cdots &{A} _{2s}\\\vdots &\vdots &\ddots &\vdots \\0&0&\cdots &A_{nn}\end{pmatrix}.$$
-Alors $$ \det(A) = \prod_{k=1}^s \det(A_{kk}) \text{ et } \tr(A)= \sum_{k=1}^s \tr(A_{kk}) $$
-\end{Prop}
 
 \section{Annexe}
 \subsection{Dualité entre l'interprétation algébrique et l'interprétation algébrique}

@@ -1,0 +1,706 @@
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{mathrsfs}
+\usepackage{amsfonts,amsmath,amssymb,graphicx}
+\usepackage[francais]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{answers}
+\usepackage{a4wide,jlq2eams} 
+\usepackage{multicol}
+%---- Dimensions des marges ---
+\setlength{\paperwidth}{21cm} 
+\setlength{\paperheight}{29.7cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\oddsidemargin}{0cm} 
+\setlength{\topmargin}{-2.5cm}
+\setlength{\headsep}{0.7cm} 
+\setlength{\headheight}{1cm}
+\setlength{\textheight}{25cm} 
+\setlength{\textwidth}{17cm}
+
+
+
+
+%---- Structure Exercice -----
+\newtheorem{Exc}{Exercice}
+\Newassociation{correction}{Soln}{mycor}
+\Newassociation{indication}{Indi}{myind}
+%\newcommand{\precorrection}{~{\bf \footnotesize [Exercice corrig\'e]}}
+%\newcommand{\preindication}{~{\bf \footnotesize [Indication]}}
+\renewcommand{\Solnlabel}[1]{\bf \emph{Correction #1}}
+\renewcommand{\Indilabel}[1]{\bf \emph{Indication #1}}
+
+\def\exo#1{\futurelet\testchar\MaybeOptArgmyexoo}
+\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
+                        \else \let\next\NoOptArgmyexoo \fi \next}
+\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
+\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
+
+\newcommand{\finexo}{\end{Exc}}
+\newcommand{\flag}[1]{}
+
+\newtheorem{question}{Question}
+
+
+
+%---- Style de l'entete -----                     % -> à personnaliser <-
+\setlength{\parindent}{0cm}
+\newcommand{\entete}[1]
+{
+{\noindent
+  \textsf{Feuille d'exercices}            % Université
+}
+\hrule
+\hrule
+\begin{center} 
+\textbf{\textsf{\Large 
+     Applications linéaires     % TITRE
+}}
+\end{center}
+\hrule
+}
+
+
+\begin{document}
+
+%--- Gestion des corrections ---
+ \Opensolutionfile{mycor}[ficcorex]
+ \Opensolutionfile{myind}[ficind]
+ \entete{\'Enoncés}
+
+
+\section{Applications linéaires}
+\subsection{Proportionnalité} 
+\exo{tariel}[Dilution]
+Quelle quantité d'alcool à 70°  dois-je mette dans  1L l'alcool a 90 ° pour  diluer  75 ° ?
+\finexo
+
+\subsection{Calcul matriciel} 
+\exo{tariel}[Des calculs de produits]
+Calculer lorsqu'ils sont définis les produits $AB$ et $BA$ dans chacun des cas suivants :
+\begin{enumerate}
+\item $\displaystyle A= \left(\begin{array}{cc}
+1  &  0  \\
+0  &  0 \\
+\end{array}\right),\quad 
+B=\left(\begin{array}{cc}
+0  &  0  \\
+0  &  1 \\
+\end{array}\right)
+$
+\item $\displaystyle A=\left(\begin{array}{ccc}
+0 & 2 & 1\\
+1 & 1 & 0\\
+-1&-2 &-1\\
+\end{array}\right),\quad
+B=\left(\begin{array}{ccc}
+2 & 0 & 1\\
+-1& 1 & 2\\
+\end{array}\right)
+$
+\item $\displaystyle A=\left(\begin{array}{cc}
+1 & 2 \\
+1 & 1 \\
+0 & 3 \\
+\end{array}\right),
+\quad B=\left(\begin{array}{cccc}
+-1 & 1 & 0& 1 \\
+2 & 1 & 0& 0 \\
+\end{array}\right)
+$
+\end{enumerate}
+\finexo
+\exo{tariel}[Commutant]
+Soient $a$ et $b$ des réels non nuls, et $A=\left( \begin{array}{cc} a & b\\ 
+ 0 &a \end{array} \right).$ Trouver toutes les matrices $B\in\mathcal M_2(\mathbb R)$ qui commutent avec $A$,
+c'est-à-dire telles que $AB=BA$.
+
+\finexo
+
+\exo{tariel}[Annulateur]
+
+On considère les matrices $A=\left(\begin{array}{ccc}
+1&0&0\\
+0&1&1\\
+3&1&1\end{array}\right)$, $B=\left(\begin{array}{ccc}
+1&1&1\\
+0&1&0\\
+1&0&0\end{array}\right)$ et $C=\left(\begin{array}{ccc}
+1&1&1\\
+1&2&1\\
+0&-1&-1\end{array}\right)$. Calculer $AB$, $AC$. Que constate-t-on? La matrice $A$ peut-elle être inversible? 
+Trouver toutes les matrices $F\in\mathcal M_3(\mathbb R)$ telles que $AF=0$ (où $0$ désigne la matrice nulle).
+\finexo
+
+\exo{tariel}[Produit non commutatif]
+
+Déterminer deux éléments $A$ et $B$ de
+$\mathcal M_2({\mathbb R})$ tels que : $AB=0$ et $BA\not = 0$.
+\finexo
+
+
+\exo{tariel}[Matrices stochastiques en petite taille]
+On dit qu'une matrice $A\in\mathcal M_n(\mathbb R)$ est une matrice stochastique si la somme des coefficients
+sur chaque colonne de $A$ est égale à 1. Démontrer que le produit de deux matrices stochastiques est
+une matrice stochastique si $n=2$. Reprendre la question si $n\leq 1$.
+\finexo
+
+\exo{tariel}[Puissance $n$-ième, par récurrence]
+
+Calculer la puissance $n$-ième des matrices suivantes : 
+$$A=\left(\begin{array}{cc}
+1&-1\\
+-1&1\\
+\end{array}\right),\ B=\left(\begin{array}{cc}
+1&1\\
+0&2\\
+\end{array}\right).$$
+\finexo
+
+\exo{tariel}[Puissance $n$-ième - avec la formule du binôme]
+
+Soit $$A=\left(
+\begin{array}{ccc}
+1&1&0\\
+0&1&1\\
+0&0&1
+\end{array}\right),\quad
+I=\left(
+\begin{array}{ccc}
+1&0&0\\
+0&1&0\\
+0&0&1
+\end{array}\right)\textrm{ et }
+B=A-I.$$
+Calculer $B^n$ pour tout $n\in\mathbb N$. En déduire $A^n$.
+\finexo
+
+\exo{tariel}[Puissance $n$-ième - avec un polynôme annulateur]
+
+\begin{enumerate}
+\item Pour $n\geq 2$, déterminer le reste de la division euclidienne de $X^n$ par $X^2-3X+2$.
+\item Soit  $A=\begin{pmatrix} 
+0&1&-1\\
+-1&2&-1\\
+1&-1&2
+\end{pmatrix}$. Déduire de la question précédente la valeur de $A^n$, pour $n\geq 2$.
+\end{enumerate}
+\finexo
+
+\exo{tariel}[Inverser une matrice  sans calculs!]
+
+\begin{enumerate}
+\item Soit $A=\left(
+\begin{array}{ccc}
+-1&1&1\\
+1&-1&1\\
+1&1&-1
+\end{array}\right)$. Montrer que $A^2=2I_3-A$, en déduire que $A$ est inversible et calculer $A^{-1}$.
+\item  Soit $ A=\begin{pmatrix} 1 & 0 & 2 \cr
+0 & -1 & 1 \cr
+1 & -2 & 0 \cr \end{pmatrix} .$ Calculer $
+A^3-A .$ En déduire
+que $ A $ est inversible puis déterminer $ A^{-1} .$ 
+\item Soit $A=\begin{pmatrix} 
+0&1&-1\\
+-1&2&-1\\
+1&-1&2
+\end{pmatrix}$. Calculer $A^2-3A+2I_3$. En déduire que $A$ est inversible, et calculer $A^{-1}$.
+\end{enumerate}
+\finexo
+
+\exo{tariel}[Inverse avec calculs!]
+
+Dire si les matrices suivantes sont inversibles et, le
+cas échéant, calculer leur inverse :
+$$A=\left(
+\begin{array}{rcl}
+1&1&2\\
+1&2&1\\
+2&1&1
+\end{array}
+\right),\quad
+B=\left(
+\begin{array}{rcl}
+0&1&2\\
+1&1&2\\
+0&2&3
+\end{array}
+\right).$$
+\finexo
+
+\exo{tariel}[Matrice nilpotente]
+
+Soit $A\in\mathcal M_n(\mathbb R)$ une matrice nilpotente, c'est-à-dire qu'il existe $p\geq 1$ tel que $A^p=0$. Démontrer que la matrice $I_n-A$ est inversible, et déterminer son inverse.
+\finexo
+
+
+
+\subsection{Applications linéaires}
+\exo{tariel}[Applications linéaires ou non?]
+Dire si les applications suivantes sont des applications linéaires :
+\begin{enumerate}
+\item $f:\mathbb R^2\to\mathbb R^3,\ (x,y)\mapsto (x+y,x-2y,0)$;
+\item $f:\mathbb R^2\to\mathbb R^3,\ (x,y)\mapsto (x+y,x-2y,1)$;
+\item $f:\mathbb R^2\to\mathbb R,\ (x,y)\mapsto x^2-y^2$;
+\item $f:\mathbb R[X]\to \mathbb R^2,\ P\mapsto \big(P(0),P'(1)\big)$.
+\end{enumerate}
+\finexo
+
+\exo{tariel}[Définie par une base]
+
+On considère dans $\mathbb R^2$ les trois vecteurs $u=(1,1)$, $v=(2,-1)$ et $w=(1,4)$.
+\begin{enumerate}
+\item Démontrer que $(u,v)$ est une base de $\mathbb R^2$.
+\item Pour quelle(s) valeur(s) du réel $a$ existe-t-il une application linéaire $f:\mathbb R^2\to \mathbb R^2$
+telle que $f(u)=(2,1)$, $f(v)=(1,-1)$ et $f(w)=(5,a)$?
+\end{enumerate}
+\finexo
+
+\exo{tariel}[Du local au global...]
+Soit $E$ un espace vectoriel de dimension finie et $f\in\mathcal L(E)$.
+On suppose que, pour tout $x\in E$, il existe un entier $n_x\in\mathbb N$ tel
+que $f^{n_x}(x)=0.$ Montrer qu'il existe un entier $n$ tel que $f^n=0$.
+\finexo
+
+\subsection{Dualité}
+\exo{tariel}[Application linéaire définie sur les matrices]
+Soient $A=\left(\begin{array}{cc}-1&2\\1&0\end{array}\right)$
+et $f$ l'application de $M_2(\mathbb R)$ dans $M_2(\mathbb R)$
+définie par $f(M)=AM$.
+\begin{enumerate}
+\item Montrer que $f$ est linéaire.
+\item Déterminer sa matrice dans la base canonique de $M_2(\mathbb R)$.
+\end{enumerate}
+\finexo
+\section{Images et noyaux}
+
+\exo{tariel}[Noyau et image]
+Soit $f:\mathbb R^2\to\mathbb R^3$ l'application linéaire définie par
+$$f(x,y)=(x+y,x-y,x+y).$$
+Déterminer le noyau de $f$, son image. $f$ est-elle injective? surjective?
+\finexo
+
+
+\exo{tariel}[Application linéaire donnée par l'image d'une base]
+Soit $E=\mathbb R^3$. On note ${\cal B}=\{e_1,e_2,e_3\}$ la base canonique de $E$ et $u$ l'endomorphisme de $\mathbb R^3$ défini par la donnée des images des vecteurs de la base : 
+$$u(e_1) = -2e_1 +2e_3 \; , u(e_2)=3e_2 \; , u(e_3)=-4e_1 + 4e_3.$$ 
+\begin{enumerate}
+\item Déterminer une base de $\ker~u$. 
+$u$ est-il injectif? peut-il être surjectif? Pourquoi?
+\item Déterminer une base de $\textrm{Im}~u$. Quel est le rang de u ?
+\item Montrer que $E=\ker~u\bigoplus \textrm{Im}~u$.
+\end{enumerate}
+\finexo
+
+\exo{tariel}[Noyau prescrit?]
+Soit $E=\mathbb R^4$ et $F=\mathbb R^2$. On considère
+$H=\{(x,y,z,t)\in\mathbb R^4;\ x=y=z=t\}$. Existe-t-il des applications linéaires de $E$ dans $F$
+dont le noyau est $H$?
+\finexo
+
+\exo{tariel}[A noyau fixé]
+Soit $E$ le sous-espace vectoriel de $\mathbb R^3$ engendré par les vecteurs
+$u=(1,0,0)$ et $v=(1,1,1)$. Trouver un endomorphisme $f$ de $\mathbb R^3$ dont le noyau est $E$.
+\finexo
+
+\exo{tariel}[Application linéaire à contraintes]
+Montrer qu'il existe un unique endomorphisme $f$ de $\mathbb R^4$ tel que, si 
+$(e_1,e_2,e_3,e_4)$ désigne la base canonique, alors on a
+\begin{enumerate}
+\item $f(e_1)=e_1-e_2+e_3$ et $f(2e_1+3e_4)=e_2$.
+\item $\ker(f)=\{(x,y,z,t)\in\mathbb R^4,\ x+2y+z=0\textrm{ et }x+3y-t=0\}.$
+\end{enumerate}
+\finexo
+
+\exo{tariel}[Espace vectoriel des polynômes de dimension infinie]
+\begin{enumerate}
+\item Montrer que l'application $\Fonction{\phi}{\K[X]}{\K\times\K[X]}{P}{(P(0),P')}$ est un isomorphisme.
+\item En déduire que $\K[X]$ est de dimension infinie. 
+\end{enumerate}
+\finexo
+
+
+\section{Matrices par blocs}
+\exo{tariel}[*, Trace du produit tensoriel de deux matrices]
+Pour $A\in\mathcal M_n(\mathbb R)$ et $B\in\mathcal M_p(\mathbb R)$, on définit le produit tensoriel de $A$ et $B$ par 
+$$A\otimes B=\left(\begin{array}{ccc}
+a_{1,1}B&\dots&a_{1,n}B\\
+\vdots&&\vdots\\
+a_{n,1}B&\dots&a_{n,n}B
+\end{array}\right).$$
+Quelle est la taille de la matrice $A\otimes B$? Démontrer que $\textrm{tr}(A\otimes B)=\textrm{tr}(A)\textrm{tr}(B)$.
+\finexo
+\exo{tariel}[**, Matrices de Walsh]
+La suite de matrices de Walsh, $(W_n)_{n\in\N}$, est définie par :
+$$W_0=(1)\text{ et }\forall n\in\N:\quad W_{n+1}=\begin{pmatrix}W_n & W_n\\W_n &-W_n
+\end{pmatrix}.$$ 
+Déterminer la taille de $W_n$ et calculer $w_n^2$, pour tout $n\in\N$.
+\finexo
+
+
+
+\exo{tariel}[**, Déterminant d'une matrice triangulaire supérieur par blocs]
+ On définit par blocs une matrice $A$ par $A=\left(
+\begin{array}{cc}
+B&D\\
+0&C
+\end{array}
+\right)$ où $A$, $B$ et $C$ sont des matrices carrées de formats respectifs $n$, $p$ et $q$ avec $p+q=n$. Montrer que $\text{det}(A)=\text{det}(B)\times\text{det}(C)$.
+\finexo
+%
+%
+%
+%
+%\section*{Matrices}
+%
+%
+%
+%
+%
+%
+
+%
+%
+%\Exercice[Explicite...]
+%
+%Calculer le rang des matrices suivantes :
+%$$A=\left(
+%\begin{array}{ccc}
+%1&2&3\\
+%2&3&4\\
+%3&4&5
+%\end{array}\right)\quad
+%B=\left(
+%\begin{array}{ccc}
+%1&1&1\\
+%1&2&4\\
+%1&3&9
+%\end{array}\right)$$
+%$$
+%C=\left(\begin{array}{cccc}
+%1&2&3&2\\
+%2&3&4&2\\
+%3&4&5&2\\
+%\end{array}
+%\right)
+%$$
+%
+%
+%\Exercice[Avec un paramètre]
+%
+%Déterminer, suivant la valeur du réel $a$, le rang de la matrice suivante :
+%$$A=\left(
+%\begin{array}{cccc}
+%1&a&a^2&a^3\\
+%a&a^2&a^3&1\\
+%a^2&a^3&1&a\\
+%a^3&1&a&a^2
+%\end{array}\right).$$
+%
+%
+%
+%
+%
+%
+%
+%\Exercice[Matrices et suites]
+%
+%Soient $(a_n)$, $(b_n)$ et $(c_n)$ trois suites réelles telles que $a_0=1$, $b_0=2$, $c_0=7$, et vérifiant les relations de récurrence :
+%$$
+%\left\{
+%\begin{array}{rcccc}
+%a_{n+1}&=&3a_n+&b_n&\\
+%b_{n+1}&=&&3b_n+&c_n\\
+%c_{n+1}&=&&&3c_n
+%\end{array}
+%\right.$$
+%On souhaite exprimer $a_n$, $b_n$, et $c_n$ uniquement en fonction de $n$.
+%\begin{enumerate}
+%\item On considère le vecteur colonne $X_n=\left(\begin{array}{c}a_n\\b_n\\c_n\end{array}\right)$. Trouver une matrice $A$ telle que $X_{n+1}=AX_n$. En déduire que $X_n=A^n X_0$.
+%\item Soit $N=\left(\begin{array}{ccc}0&1&0\\
+%0&0&1\\
+%0&0&0\end{array}\right)$. Calculer $N^2$, $N^3$, puis $N^p$ pour $p\geq 3$.
+%\item Montrer que :
+%$$A^n=3^{n}I+3^{n-1}nN+3^{n-2}\frac{n(n-1)}{2}N^2.$$
+%\item En déduire $a_n$, $b_n$ et $c_n$ en fonction de $n$.
+%\end{enumerate}
+%
+%
+%\Exercice[Donnée par une matrice]
+%
+%On considère l'endomorphisme $f$ de $\mathbb R^3$ dont la matrice 
+%dans la base canonique est :
+%$$A=\left(
+%\begin{array}{ccc}
+%1&1&1\\
+%-1&2&-2\\
+%0&3&-1
+%\end{array}\right).$$
+%Donner une base de $\ker(f)$ et de $\textrm{Im}(f)$.
+%
+%
+%\Exercice[Réduction]
+%
+%On considère l'endomorphisme $f$ de $\mathbb R^3$ dont la matrice 
+%dans la base canonique est :
+%$$M=\left(
+%\begin{array}{ccc}
+%1&1&-1\\
+%-3&-3&3\\
+%-2&-2&2
+%\end{array}\right).$$
+%Donner une base de $\ker(f)$ et de $\textrm{Im}(f)$. En déduire que $M^n=0$ pour tout $n\geq 2$.
+%
+%
+%\Exercice[Changement de base]
+%
+%Soit $u$ l'application linéaire de $\mathbb R^3$ dans $\mathbb R^2$ dont la matrice dans leur base
+%canonique respective est
+%$$A=\left(
+%\begin{array}{ccc}
+%2&-1&1\\
+%3&2&-3
+%\end{array}\right).$$
+%On appelle $(e_1,e_2,e_3)$ la base canonique de $\mathbb R^3$ et $(f_1,f_2)$ celle de $\mathbb R^2$. On pose
+%$$e_1'=e_2+e_3,\ e_2'=e_3+e_1,\ e_3'=e_1+e_2$$
+%$$f_1'=\frac{1}{2}(f_1+f_2),\ f_2'=\frac{1}{2}(f_1-f_2).$$
+%\begin{enumerate}
+%\item Montrer que $(e_1',e_2',e_3')$ est une base de $\mathbb R^3$ puis que $(f_1',f_2')$ est une base de
+%$\mathbb R^2$.
+%\item Quelle est la matrice de $u$ dans ces nouvelles bases?
+%\end{enumerate}
+%
+%
+%
+%
+%
+%
+%
+
+%
+%
+%
+%\section*{Déterminants}
+%
+%
+%\Exercice[Pour s'échauffer...]
+%
+%\begin{enumerate}
+%\item Calculer le déterminant suivant :
+%$$\left|\begin{array}{cccc}
+%1&1&1&1\\
+%1&-1&1&1\\
+%1&1&-1&1\\
+%1&1&1&-1
+%\end{array}\right|.$$
+%\item Soit $E$ un $\mathbb R$-espace vectoriel et $f\in\mathcal L(E)$ tel que $f^2=-Id_E$. Que dire de la dimension de $E$?
+%\end{enumerate}
+%
+%\Exercice[Divisible sans calculs!]
+%Montrer, sans le calculer, que le déterminant suivant est divisible par 13 :
+%$$\left|
+%\begin{array}{ccc}
+%5&2&1\\
+%4&7&6\\
+%6&3&9\\
+%\end{array}
+%\right|.$$
+%
+%
+%\Exercice[Calcul sans développer]
+%Montrer que $D=\left| 
+%\begin{array}{ccc}
+%1+a & a & a \\ 
+%b & 1+b & b \\ 
+%c & c & 1+c
+%\end{array}
+%\right| =1+a+b+c$ sans le développer.
+%
+%
+%\Exercice[Sous forme factorisée]
+%
+%Calculer en mettant en évidence la factorisation le déterminant suivant :
+%$$D=\left|\begin{array}{ccc}
+%1&\cos a&\cos 2a\\
+%1&\cos b&\cos 2b\\
+%1&\cos c&\cos 2c
+%\end{array}
+%\right|.$$
+%
+%\Exercice[Tridiagonal]
+%Soit $\Delta_n$ le déterminant de taille $n$ suivant : 
+%$$\Delta_n=\left|
+%\begin{array}{ccccc}
+%3&1&0&\dots&0\\
+%2&3&1&\ddots&\vdots\\
+%0&2&3&\ddots&0\\
+%\vdots&\ddots&\ddots&\ddots&1\\
+%0&\dots&0&2&3
+%\end{array}\right|.$$
+%\begin{enumerate}
+%\item Démontrer que, pour tout $n\geq 1$, on a $\Delta_{n+2}=3\Delta_{n+1}-2\Delta_n$.
+%\item En déduire la valeur de  $\Delta_n$ pour tout $n\geq 1$.
+%\end{enumerate}
+%
+%
+%\Exercice[Calcul à l'aide d'une fonction affine]
+%Soit $A=(a_{i,j})\in M_n(\mathbb R)$. On note $A(x)$ la matrice dont le terme général est $a_{i,j}+x$. 
+%\begin{enumerate}
+%\item Montrer que la fonction $x\mapsto \det(A(x))$ est une fonction polynômiale de degré inférieur ou égal à 1.
+%\item Pour $a$ et $b$ deux réels distincts et $\alpha_1,\dots,\alpha_n\in\mathbb R$, en déduire la valeur du déterminant suivant
+%$$\left|
+%\begin{array}{cccc}
+%\alpha_1&a&\dots&a\\
+%b&\alpha_2&\ddots&\vdots\\
+%\vdots&\ddots&\ddots&a\\
+%b&\dots&b&\alpha_n
+%\end{array}\right|.$$
+%\end{enumerate}
+%
+%
+%\Exercice[Imbriqué...]
+%Soient $s_1,\dots,s_n\in\mathbb R$. Calculer le déterminant suivant :
+%$$
+%\left|
+%\begin{array}{cccc}
+%s_1&\dots&\dots&s_1\\
+%\vdots&s_2&\dots&s_2\\
+%\vdots&\vdots&\ddots&\vdots\\
+%s_1&s_2&\dots&s_n
+%\end{array}\right|.$$
+%
+%
+%\Exercice[Tridiagonal]
+%Soient $a,b,c$ des réels et $\Delta_n$ le déterminant de la matrice $n\times n$ suivant :
+%$$\Delta_n=\left|\begin{array}{ccccc}
+%a&b&0&\dots&0\\
+%c&a&b&\ddots&\vdots\\
+%0&\ddots&\ddots&\ddots&0\\
+%\vdots&\ddots&\ddots&\ddots&b\\
+%0&\dots&0&c&a
+%\end{array}\right|.$$
+%\begin{enumerate}
+%\item Démontrer que, pour tout $n\geq 1$, on a $\Delta_{n+2}=a\Delta_{n+1}-bc\Delta_n.$
+%\item On suppose que $a^2=4bc$. Démontrer que, pour tout $n\geq 1$, on a $\Delta_n=\frac{(n+1)a^n}{2^n}$.
+%\end{enumerate}
+%
+%
+%\Exercice[Pleins de $-1$!]
+%Soit $A=(a_{i,j})_{1\leq i,j\leq n}\in\mathcal M_n(\mathbb K)$ et soit $B=(b_{i,j})_{1\leq i,j\leq n}$ définie par $b_{i,j}=(-1)^{i+j}a_{i,j}$. Calculer $\det(B)$ en fonction de $\det(A)$.
+%
+%
+%\Exercice[Matrice compagnon]
+%Soient $a_0,\dots,a_{n-1}$ $n$ nombres complexes et soit 
+%$$A=\left( \begin{array}{ccccc}
+%0&\dots&\dots&0&a_0\\
+%1&\ddots&&\vdots&a_1\\
+%0&\ddots&\ddots&\vdots&\vdots\\
+%\vdots&\ddots&\ddots&0&\vdots\\
+%0&\dots&0&1&a_{n-1}
+%\end{array}\right).$$
+%Calculer $\det(A-xI_n)$.
+%
+%
+%\Exercice[ Sur des polynômes]
+%Soit $u\in\mathcal L(\mathbb R_n[X])$. Calculer $\det(u)$ dans chacun des cas suivants :
+%\begin{enumerate}
+%\item $u(P)=P+P'$;
+%\item $u(P)=P(X+1)-P(X)$;
+%\item $u(P)=XP'+P(1)$.
+%\end{enumerate}
+%
+%
+%\Exercice[Inversibilité]
+%Pour $\alpha\in\mathbb R$, on considère
+%$$M_\alpha=\left(\begin{array}{ccc}
+%1&3&\alpha\\
+%2&-1&1\\
+%-1&1&0
+%\end{array}
+%\right).$$
+%Déterminer les valeurs de $\alpha$ pour lesquelles l'application linéaire associée à $M_\alpha$
+%est bijective.
+%
+%
+%\Exercice[Inversibilité d'une matrice à paramètres]
+%\'Etudier, suivant la valeur du paramètre $a\in\mathbb R$ ou $m\in\mathbb R$, l'inversibilité des matrices suivantes :
+%$$A=\left(\begin{array}{cccc}
+%a&-1&0&-1\\
+%-1&a&-1&0\\
+%0&-1&a&-1\\
+%-1&0&-1&a
+%\end{array}\right)\textrm{ et }B=\left(\begin{array}{cccc}
+%0&m&m&m^2-m\\
+%1&m-1&2m-1&m^2-m\\
+%0&m&m&0\\
+%1&m&3m-1&0
+%\end{array}\right).$$
+%
+%
+%\subsubsection{Symétrie et projection}
+%%
+%\Exercice[]
+%On considère $\Fonction{s}{\R^2}{\R^2}{(x,y)}{(x + 2y, ?y)}.$
+%\begin{enumerate}
+%\item Montrer que $s$ est une symétrie. Préciser ses éléments caractéristiques.
+%\item Démontrer $p=\frac{\mathrm{Id}+s}{}{2}$ est une projection.
+%\end{enumerate}
+%\Exercice[]
+%On considère les espaces $F = \{(x, y, z) \in \R^3| x+2y+z = 0\text{ et }2x+y?z = 0\}$ et $G = \{(x, y, z) \in \R^3| x+y+2z = 0\}$.
+%\begin{enumerate}
+%\item Déterminer une base de $F,$ puis démontrer que $F$ et $G$ sont supplémentaires dans $\R^3$.
+%\item  Soit $p$ la projection sur $F$ parallèlement à $G$ et $(x, y, z) \in \R^3$. Déterminer les
+%coordonnées de $p(x,y,z)$. Même question avec $q$ la projection sur $G$ parallèlement à $F$.
+%\end{enumerate}
+%\Exercice[]
+%Soit $E$ un espace vectoriel et $p,q$ deux projecteurs de $E$ tels que $p\neq 0$, $q\neq 0$ et $p\neq q$. Démontrer que $(p,q)$ est une famille libre de $\mathcal{L}(E)$.
+%%
+%\Exercice
+%Soient $E_1,\dots ,E_n$ des sous-espaces vectoriels de $E$. On suppose que $E_1\oplus \dots \oplus En=E$. On note $p_i$ le projecteur sur $E_i$ parallèlement à $\oplus_{j\neq i}E_j$. Montrer que $p_i\circ p_j=0$ si $i\neq j$ et $p_1+\dots+p_n=\mathrm{Id}_E$.
+%
+%\subsubsection{Forme linéaire}
+%\Exercice[Une forme linéaire]
+%
+%Déterminer la forme linéaire $f$ définie sur $\mathbb R^3$ telle que
+%$$f(1,1,1)=0,\ f(2,0,1)=1\textrm{ et }f(1,2,3)=4.$$
+%Donner une base du noyau de $f$.
+%
+%
+%\Exercice[Une base en dimension 2]
+%Soient $f_1,f_2$ les deux éléments de $\mathcal L(\mathbb R^2,\mathbb R)$
+%définis par
+%$$f_1(x,y)=x+y\textrm{ et }f_2(x,y)=x-y.$$
+%\begin{enumerate}
+%\item Montrer que $(f_1,f_2)$ forme une base de $(\mathbb R^2)^*$.
+%\item Exprimer les formes linéaires suivantes dans la base $(f_1,f_2)$ :
+%$$g(x,y)=x,\ h(x,y)=2x-6y.$$
+%\end{enumerate}
+%
+%
+
+%--- Fin des exercices ---
+%------------------------------------------------------
+%------------------------------------------------------
+
+%--- Gestion des corrections ---
+% \ \newpage
+% \setcounter{page}{1}
+% \entete{Indications}
+%
+% \Closesolutionfile{myind}
+% \Readsolutionfile{myind}
+
+% \ \newpage
+% \setcounter{page}{1}
+% \entete{Corrections}
+
+ \Closesolutionfile{mycor}
+ \Readsolutionfile{mycor}
+
+\end{document}
+\endinput
+
+
+
+
