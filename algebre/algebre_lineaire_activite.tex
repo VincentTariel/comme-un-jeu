@@ -1,0 +1,196 @@
+\documentclass[a4paper]{book}
+\usepackage{t1enc}
+\usepackage[latin1]{inputenc}
+\usepackage[french]{minitoc}
+ \usepackage{amsmath}
+\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
+\usepackage[francais]{babel}
+\usepackage{amsmath}
+\usepackage{TikZ}
+\usepackage{tkz-fct}   
+\usepackage{a4wide,jlq2eams} 
+\usepackage{graphicx}
+\usepackage[colorlinks = true,urlcolor  = blue]{hyperref}
+\usepackage{thmbox}
+\usepackage{changepage}
+\usepackage{xcolor}
+\usepackage{sectsty}
+ \usepackage{enumitem}
+\usepackage{eurosym}
+\usepackage{mathrsfs}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
+\sectionfont{\color{magenta}}
+\subsectionfont{\color{red}}
+\subsubsectionfont{\color{red}}
+\setlength{\shadowsize}{1.5pt}
+\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}} 
+ 
+\pagestyle{fancy}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth} 
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\fancypagestyle{plain}{%
+   \fancyhead{} % get rid of headers
+   \renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+\setcounter{minitocdepth}{3}
+
+
+\renewcommand{\thesection}{\Roman{section}} 
+\renewcommand{\thesubsection}{\Roman{section}.\Alph{subsection}}
+\thmboxoptions{S,bodystyle=\itshape\noindent}
+\newtheorem[L]{Lem}{Lemme}[section]
+\newtheorem[L]{Th}[Lem]{Théorème}
+\newtheorem[L]{Cor}[Lem]{Corollaire}
+\newtheorem[L]{Prop}[Lem]{Proposition}
+
+\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
+\newtheorem[S,bodystyle=\upshape\noindent]{DfProp}{Définition-Proposition}
+\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
+\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
+\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
+
+
+\newcommand\SUI{(u_n)_{n\in\N}}
+\newcommand\SER{ \sum u_n}
+\newcommand\myop{ \bigtriangleup}
+\def\pa#1{({#1})}
+\newcommand\Matrix[3]{\mathrm{#1}_{#2}\pa{#3}}
+\def\sEnsemble#1#2{\mathopen\{#1\mid#2\mathclose\}}
+\newcommand{\myunit}{1 cm}
+\tikzset{
+    node style sp/.style={draw,circle,minimum size=\myunit},
+    node style ge/.style={circle,minimum size=\myunit},
+    arrow style mul/.style={draw,sloped,midway,fill=white},
+    arrow style plus/.style={midway,sloped,fill=white},
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{tocdepth}{5}
+\begin{document}
+\dominitoc
+%\tableofcontents
+\chapter{Problème introductif de l'algèbre linéaire}
+\textbf{Problème  :}\\
+La somme des tailles d'un fils et du père est de 2,5 mètres. La différence de tailles  est de 0.5 mètres.\\
+Quel est la taille du fils ?   
+
+\section{Modélisation}
+Soit l'inconnue $x$ représentant la taille du fils et l'inconnue $y$ représentant la taille du père.
+La somme est 2,5 donc $x+y=2,5.$\\
+La différence est 0,5 donc $y-x=0,5.$\\
+On cherche $x$ et $y$ vérifiant ces deux équations.\\
+\section{Représentation : système d'équations}
+Le système d'équation s'écrit :
+$$\begin{cases}
+y+x&=2,5\\
+y-x&=0,5
+\end{cases}
+$$
+\subsection{Résolution algébrique}
+Pour déterminer l'ensemble des solutions $x$ et $y$ vérifiant ce système, une idée est de découpler les dépendances entre les inconnues dans les équations. C'est la méthode du pivot de Gauss qui transforme un système d'équations en un autre équivalent (ayant les mêmes solutions). Par exemple, en transformant  la ligne 2 par ligne 2 plus la ligne 1, on obtient :
+$$\begin{cases}
+y+x&=2,5\\
+2y&=3
+\end{cases}
+$$
+Puis, en divisant la ligne 2 par 2, on obtient : 
+$$\begin{cases}
+y+x&=2,5\\
+y&=1,5
+\end{cases}
+$$
+Enfin, en transformant la ligne 1 par ligne 1 moins la ligne 2, on obtient : 
+$$\begin{cases}
+x&=1\\
+y&=1,5
+\end{cases}
+$$
+Ainsi l'ensemble des solution est l'unique solution $x=1$ et $y=1,5$.
+\subsection{Résolution géométrique}
+Le système équation :
+$$\begin{cases}
+y+x&=2,5\\
+y-x&=0,5
+\end{cases}$$
+est constitué de deux équations de deux droites. 
+\begin{figure}[!h]
+\begin{tikzpicture}
+\draw[step=1cm,gray,very thin] (-2,-2) grid (6,6);
+\draw[thick,->] (-2,0) -- (6,0)node[anchor=west] {$x$};
+\draw[thick,->] (0,-2) -- (0,6)node[anchor=south] {$y$};
+\foreach \x in {-2,-1,0,1,2,3,4,5}
+   \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
+\foreach \y in {-2,-1,0,1,2,3,4,5}
+    \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east] {$\y$};
+\draw[-,color=red] (-2,-1.5) -- (5.5,6)node[anchor=south] {$y-x=0,5$};
+\draw[-,color=blue] (-2,4.5) -- (4.5,-2)node[anchor=north] {$y+x=2,5$};
+
+\draw[->,color=red] (2.25,2.75) -- (1.25,3.75)node[anchor=south] {$\begin{pmatrix}-1\\1\end{pmatrix}$};
+
+\draw[->,color=blue] (1.75,0.75) -- (2.75,1.75)node[anchor=south] {$\begin{pmatrix}1\\1\end{pmatrix}$};
+\end{tikzpicture}	
+\end{figure}  
+Comme les vecteurs normaux aux deux droites $\begin{pmatrix}
+1\\1
+\end{pmatrix}$ et $\begin{pmatrix}
+-1\\1
+\end{pmatrix}$ ne sont pas colinéaires, les deux droites ne sont pas parallèles et donc admettent un unique point d'intersection $(1; 1,5)$.\\
+Ainsi l'ensemble des solution est l'unique solution $x=1$ et $y=1,5$.
+\section{Représentation :  matricielle}
+Une idée est de transformer ce système deux équations à deux inconnues en un système d'une équation à une inconnue dont on sait résoudre par de simple opérations algébriques. Par exemple, pour l'équation $2x+1=5$, on additionne l'opposé de $1$, soit $-1$ $$2x+1+(-1)=5+(-1)$$ ce qui donne $2x=4$, puis on multiple par l'inverse de 2, soit $\frac 1 2$, $$\frac 1 2 2x=\frac 1 2 4$$ ce qui donne $x=2$.\\
+On représente cette opération à l'aide de tableaux de nombres :
+\begin{center}
+\begin{tikzpicture}[>=latex]
+\matrix (A) [matrix of math nodes,%
+             nodes = {node style ge},%
+             left delimiter  = (,%
+             right delimiter = )] at (-2.5*\myunit,0)
+{%
+  120 & 50   \\
+  5   & 2  \\
+};
+\matrix (B) [matrix of math nodes,%
+             nodes = {node style ge},%
+             left delimiter  = (,%
+             right delimiter =)] at (0,2.5*\myunit)
+{%
+  x\\
+  y\\
+};
+\draw[dotted] (0,0) node {$=$};
+\matrix (Y) [matrix of math nodes,%
+             nodes = {node style ge},%
+             left delimiter  = (,%
+             right delimiter = )] at (2*\myunit,0)
+{%
+  2,5  \\
+  0,5 \\
+};
+\draw[<->,red](A-1-1) to[in=180,out=90]
+    node[arrow style mul] (x) {$5\times x_1$} (B-1-1);
+\draw[<->,red](A-1-2) to[in=180,out=90]
+    node[arrow style mul] (y) {$2\times x_2$} (B-2-1);
+\draw[red,->] (x) to node[arrow style plus] {$+$} (y);
+\end{tikzpicture}
+\end{center}
+
+
+
+
+
+%
+%  
+
+\section{Représentation :  espace vectoriel}
+\section{Représentation :  application linéaire}
+
+
+\end{document}

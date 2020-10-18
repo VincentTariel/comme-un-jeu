@@ -293,7 +293,7 @@ $u$ est-il injectif? peut-il être surjectif? Pourquoi?
 \end{enumerate}
 \finexo
 
-\exo{tariel}[Noyau prescrit?]
+\exo{tariel}[Noyau prescrit ?]
 Soit $E=\mathbb R^4$ et $F=\mathbb R^2$. On considère
 $H=\{(x,y,z,t)\in\mathbb R^4;\ x=y=z=t\}$. Existe-t-il des applications linéaires de $E$ dans $F$
 dont le noyau est $H$?
@@ -638,27 +638,31 @@ B&D\\
 %\end{array}\right).$$
 %
 %
-%\subsubsection{Symétrie et projection}
+\section{Symétrie et projection}
 %%
-%\Exercice[]
-%On considère $\Fonction{s}{\R^2}{\R^2}{(x,y)}{(x + 2y, ?y)}.$
-%\begin{enumerate}
-%\item Montrer que $s$ est une symétrie. Préciser ses éléments caractéristiques.
-%\item Démontrer $p=\frac{\mathrm{Id}+s}{}{2}$ est une projection.
-%\end{enumerate}
-%\Exercice[]
-%On considère les espaces $F = \{(x, y, z) \in \R^3| x+2y+z = 0\text{ et }2x+y?z = 0\}$ et $G = \{(x, y, z) \in \R^3| x+y+2z = 0\}$.
-%\begin{enumerate}
-%\item Déterminer une base de $F,$ puis démontrer que $F$ et $G$ sont supplémentaires dans $\R^3$.
-%\item  Soit $p$ la projection sur $F$ parallèlement à $G$ et $(x, y, z) \in \R^3$. Déterminer les
-%coordonnées de $p(x,y,z)$. Même question avec $q$ la projection sur $G$ parallèlement à $F$.
-%\end{enumerate}
-%\Exercice[]
-%Soit $E$ un espace vectoriel et $p,q$ deux projecteurs de $E$ tels que $p\neq 0$, $q\neq 0$ et $p\neq q$. Démontrer que $(p,q)$ est une famille libre de $\mathcal{L}(E)$.
-%%
-%\Exercice
-%Soient $E_1,\dots ,E_n$ des sous-espaces vectoriels de $E$. On suppose que $E_1\oplus \dots \oplus En=E$. On note $p_i$ le projecteur sur $E_i$ parallèlement à $\oplus_{j\neq i}E_j$. Montrer que $p_i\circ p_j=0$ si $i\neq j$ et $p_1+\dots+p_n=\mathrm{Id}_E$.
-%
+\exo{tariel}[Noyau et image]
+On considère $\Fonction{s}{\R^2}{\R^2}{(x,y)}{(x + 2y, -y)}.$
+\begin{enumerate}
+\item Montrer que $s$ est une symétrie. Préciser ses éléments caractéristiques.
+\item Démontrer $p=\frac{\mathrm{Id}+s}{2}$ est une projection.
+\end{enumerate}
+\finexo
+\exo{tariel}[Noyau et image]
+On considère les espaces $F = \{(x, y, z) \in \R^3| x+2y+z = 0\text{ et }2x+y-z = 0\}$ et $G = \{(x, y, z) \in \R^3| x+y+2z = 0\}$.
+\begin{enumerate}
+\item Déterminer une base de $F,$ puis démontrer que $F$ et $G$ sont supplémentaires dans $\R^3$.
+\item  Soit $p$ la projection sur $F$ parallèlement à $G$ et $(x, y, z) \in \R^3$. Déterminer les
+coordonnées de $p(x,y,z)$. Déterminer la matrice de $p$ dans la base canonique.\\
+Même question avec $q$ la projection sur $G$ parallèlement à $F$.
+\end{enumerate}
+\finexo
+\exo{tariel}
+Soit $E$ un espace vectoriel et $p,q$ deux projecteurs de $E$ tels que $p\neq 0$, $q\neq 0$ et $p\neq q$. Démontrer que $(p,q)$ est une famille libre de $\mathcal{L}(E)$.
+\finexo
+\exo{tariel}
+Soient $E_1,\dots ,E_n$ des sous-espaces vectoriels de $E$. On suppose que $E_1\oplus \dots \oplus E_n=E$. On note $p_i$ le projecteur sur $E_i$ parallèlement à $\oplus_{j\neq i}E_j$.\\ 
+Montrer que $p_i\circ p_j=0$ si $i\neq j$ et $p_1+\dots+p_n=\mathrm{Id}_E$.
+\finexo
 %\subsubsection{Forme linéaire}
 %\Exercice[Une forme linéaire]
 %

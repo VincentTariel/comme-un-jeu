@@ -99,7 +99,7 @@ Notations : $\K $ désigne le corps $\R $ ou $\C $.
 \section{Applications linéaires}
 \subsection{Proportionnalité : $\mathbb{R}\rightarrow\mathbb{R}$}
 \begin{Df}[Coefficient de proportionnalité]
-Traduisant la proportionnalité, une fonction $u:\mathbb{R}\mapsto\mathbb{R}$ est dite linéaire si  $ u:x\mapsto a x$ où  $\lambda$ est appelé \defi{coefficient de proportionnalité}.
+Traduisant la proportionnalité, une fonction $u:\mathbb{R}\mapsto\mathbb{R}$ est dite linéaire si  $ u:x\mapsto a x$ où  $a$ est appelé \defi{coefficient de proportionnalité}.
 \end{Df}
 \begin{Ex}[Plein d'essence]
 Le prix à la pompe est une fonction linéaire du volume d'essence mis dans le réservoir.
@@ -816,7 +816,7 @@ L'ensemble $\{x\in A : f(x)  \in  B'\}$ est appelé \defi{image réciproque} de $B
 \end{Df}
 \begin{Ex}[Carré]
 Soit $f:x\mapsto x^2$.\\
-On a $f([0,1])=[-1,1]$ et $f^{-1}(\{2\})=\{-\sqrt{2},\sqrt{2}\}$.
+On a $f([-1,1])=[0,1]$ et $f^{-1}(\{2\})=\{-\sqrt{2},\sqrt{2}\}$.
 \end{Ex}
 \begin{Prop}[Morphisme d'espace vectoriel]
 Soit $E',F'$ deux sous-espace vectoriel de de $E$ et $F$ respectivement.\\
@@ -851,10 +851,10 @@ Alors $$ \Ima u =\text{Vect}( \left(u(\vec{x_i})\right)_{i\in I})).$$
 \end{Prop}
 
 \begin{Ex}\label{ex:noyau}
-Soit $\Fonction{u}{\R^2}{\R^3}{(x,y,z)}{(x+y+z,x-y)}$.\\
+Soit $\Fonction{u}{\R^3}{\R^2}{(x,y,z)}{(x+y+z,x-y)}$.\\
 On a $u(x,y,z)=x(1,1)+y(1,-1)+z(0,1)$.
 Donc $\Ima u$ est l'espace vectoriel engendré par la famille $((1,1),(1,-1),(0,1))$ d'où $\Ima u=\R^2$.
-$$(x,y,z)\in \Ker u \Leftrightarrow u(x,y,z)=(0,0)  \Leftrightarrow \begin{cases}x+y+z=&0\\x-y=&0\end{cases}\overbrace{\Leftrightarrow}^{x=t} \exists t \in \R: (x,y,z)=t(1,1,2).$$
+$$(x,y,z)\in \Ker u \Leftrightarrow u(x,y,z)=(0,0)  \Leftrightarrow \begin{cases}x+y+z=&0\\x-y=&0\end{cases}\overbrace{\Leftrightarrow}^{x=t} \exists t \in \R: (x,y,z)=t(1,1,-2).$$
 Donc $\Ker u =\R (1,1,2).$
 \end{Ex}
 \begin{Ex}[Dérivée polynomiale]
@@ -882,8 +882,8 @@ Soit $M=\begin{pmatrix}
 \end{pmatrix}$
 On a $M\begin{pmatrix}x \\y \\z\\\end{pmatrix}=x\begin{pmatrix}1\\1\\ \end{pmatrix}+y\begin{pmatrix}1\\-1\\ \end{pmatrix}+z\begin{pmatrix}0\\1\\ \end{pmatrix}$.
 Donc $\Ima M$ est l'espace vectoriel engendré par la famille $(\begin{pmatrix}1\\1\\ \end{pmatrix},\begin{pmatrix}1\\-1\\ \end{pmatrix},\begin{pmatrix}0\\1\\ \end{pmatrix})$ d'où $\Ima M=\M{2}{1}{\K}$.
-$$\begin{pmatrix}x \\y \\z\\\end{pmatrix} \in \Ker M \Leftrightarrow M\begin{pmatrix}x \\y \\z\\\end{pmatrix}=\begin{pmatrix}0 \\0 \\0\\\end{pmatrix} \Leftrightarrow \begin{cases}x+y+z=&0\\x-y=&0\end{cases}\overbrace{\Leftrightarrow}^{x=t} \exists t \in \R: \begin{pmatrix}x \\y \\z\\\end{pmatrix}=t\begin{pmatrix}1 \\1 \\2\\\end{pmatrix} .$$
-Donc $\Ker M =\R \begin{pmatrix}1 \\1 \\2\\\end{pmatrix}.$\\
+$$\begin{pmatrix}x \\y \\z\\\end{pmatrix} \in \Ker M \Leftrightarrow M\begin{pmatrix}x \\y \\z\\\end{pmatrix}=\begin{pmatrix}0 \\0 \\0\\\end{pmatrix} \Leftrightarrow \begin{cases}x+y+z=&0\\x-y=&0\end{cases}\overbrace{\Leftrightarrow}^{x=t} \exists t \in \R: \begin{pmatrix}x \\y \\z\\\end{pmatrix}=t\begin{pmatrix}1 \\1 \\-2\\\end{pmatrix} .$$
+Donc $\Ker M =\R \begin{pmatrix}1 \\1 \\-2\\\end{pmatrix}.$\\
 Comme $M$ est la matrice associée à l'application linéaire de l'exemple~\ref{ex:noyau}, on retrouve les mêmes résultats en identifiant les n-uplets aux matrices colonnes. 
 \end{Ex}
 \begin{Prop}[Image d'une base]
