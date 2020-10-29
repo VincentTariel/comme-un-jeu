@@ -1,0 +1,7 @@
+finir algèbre linéaire :
+* feuille exercice systeme linéaire
+* sortir le chapitre matrice du chapitre application linéaire
+* compléter le chapitre matrice
+* ajouter l'activite de decouverte sur les polynômes annulateurs
+* compl
+ 
