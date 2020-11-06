@@ -1,26 +1,11 @@
 
-\documentclass[12pt,a4paper]{article}
-\usepackage{mathrsfs}
-\usepackage{amsfonts,amsmath,amssymb,graphicx}
-\usepackage[francais]{babel}
-\usepackage[latin1]{inputenc}
+\documentclass{book}
+\usepackage{jlq2eams}
+
+
+
+
 \usepackage{answers}
-\usepackage{a4wide,jlq2eams} 
-\usepackage{multicol}
-%---- Dimensions des marges ---
-\setlength{\paperwidth}{21cm} 
-\setlength{\paperheight}{29.7cm}
-\setlength{\evensidemargin}{0cm}
-\setlength{\oddsidemargin}{0cm} 
-\setlength{\topmargin}{-2.5cm}
-\setlength{\headsep}{0.7cm} 
-\setlength{\headheight}{1cm}
-\setlength{\textheight}{25cm} 
-\setlength{\textwidth}{17cm}
-
-
-
-
 %---- Structure Exercice -----
 \newtheorem{Exc}{Exercice}
 \Newassociation{correction}{Soln}{mycor}
@@ -43,33 +28,19 @@
 
 
 
-%---- Style de l'entete -----                     % -> à personnaliser <-
-\setlength{\parindent}{0cm}
-\newcommand{\entete}[1]
-{
-{\noindent
-  \textsf{Feuille d'exercices}            % Université
-}
-\hrule
-\hrule
-\begin{center} 
-\textbf{\textsf{\Large 
-     Applications linéaires     % TITRE
-}}
-\end{center}
-\hrule
-}
+
 
 
 \begin{document}
-
+%--- Gestion des corrections ---
+\chapter*{Application lin\'eaires : exercices}
 %--- Gestion des corrections ---
  \Opensolutionfile{mycor}[ficcorex]
  \Opensolutionfile{myind}[ficind]
- \entete{\'Enoncés}
 
 
-\section{Applications linéaires}
+
+\section{Applications lin\'eaires}
 \subsection{Proportionnalité} 
 \exo{tariel}[Dilution]
 Quelle quantité d'alcool à 70°  dois-je mette dans  1L l'alcool a 90 ° pour  diluer  75 ° ?

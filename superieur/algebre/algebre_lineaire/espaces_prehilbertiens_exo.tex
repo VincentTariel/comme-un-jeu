@@ -1,26 +1,10 @@
+\documentclass{book}
+\usepackage{jlq2eams}
 
-\documentclass[12pt,a4paper]{article}
-\usepackage{mathrsfs}
-\usepackage{amsfonts,amsmath,amssymb,graphicx}
-\usepackage[francais]{babel}
-\usepackage[latin1]{inputenc}
+
+
+
 \usepackage{answers}
-\usepackage{a4wide,jlq2eams} 
-\usepackage{multicol}
-%---- Dimensions des marges ---
-\setlength{\paperwidth}{21cm} 
-\setlength{\paperheight}{29.7cm}
-\setlength{\evensidemargin}{0cm}
-\setlength{\oddsidemargin}{0cm} 
-\setlength{\topmargin}{-2.5cm}
-\setlength{\headsep}{0.7cm} 
-\setlength{\headheight}{1cm}
-\setlength{\textheight}{25cm} 
-\setlength{\textwidth}{17cm}
-
-
-
-
 %---- Structure Exercice -----
 \newtheorem{Exc}{Exercice}
 \Newassociation{correction}{Soln}{mycor}
@@ -40,33 +24,15 @@
 \newcommand{\flag}[1]{}
 
 \newtheorem{question}{Question}
-
-
-
-%---- Style de l'entete -----                     % -> à personnaliser <-
-\setlength{\parindent}{0cm}
-\newcommand{\entete}[1]
-{
-{\noindent
-  \textsf{Feuille d'exercices}            % Université
-}
-\hrule
-\hrule
-\begin{center} 
-\textbf{\textsf{\Large 
-     Espace préhilbertien réel     % TITRE
-}}
-\end{center}
-\hrule
-}
+   
 
 
 \begin{document}
-
+\chapter*{Espaces préhilbertiens réels : exercices}
 %--- Gestion des corrections ---
  \Opensolutionfile{mycor}[ficcorex]
  \Opensolutionfile{myind}[ficind]
- \entete{\'Enoncés}
+
 
 
 
@@ -77,7 +43,7 @@
 
 Vérifier que $\PS..$ est un produit scalaire sur $E$ dans les cas suivants.
 \begin{enumerate}
-\item $E = \MnR$
+\item $E = \Mn{n}{\R}$
   et $\PS AB = \tr{ \transposee{A}B}$.\\
 \item $E = \mathcal{C}([-1,1],\R)$
   et $PS fg = \int_{-1}^1 \frac{f(t)g(t)}{\sqrt{1-t^2}}\,\mathrm{dt}$.
@@ -137,7 +103,7 @@ Montrer que $\phi$ est un produit scalaire sur $\LE$,
 et déterminer une base orthonormale pour ce produit scalaire.
 \finexo
  \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Matrice symétrique]
-Soit $\mathcal{E} = \MnR$ muni du produit scalaire usuel 
+Soit $\mathcal{E} = \Mn{n}{\R}$ muni du produit scalaire usuel 
 $\PS AB = \Tr\bigl(\transposee{A} B\bigr)$.\\
 Montrer que $ \SnR$ et $\AnR$ sont supplémentaires orthogonaux,
   où $\SnR$ désigne l'ensemble des matrices symétriques
@@ -203,7 +169,7 @@ $$
 
 
  \exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Matrice symétrique]
-Soit $\mathcal{E} = \MnR$ muni du produit scalaire usuel
+Soit $\mathcal{E} = \Mn{n}{\R}$ muni du produit scalaire usuel
 $\PS AB = \Tr\bigl(\transposee{ A} B\bigr)$.
 \begin{enumerate}
 \item Montrer que $\mathcal{S}$ et $\mathcal{A}$ sont supplémentaires orthogonaux,
