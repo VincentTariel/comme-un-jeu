@@ -1,80 +1,12 @@
 \documentclass[a4paper]{book}
-\usepackage{t1enc}
-\usepackage[latin1]{inputenc}
-\usepackage[french]{minitoc}
- \usepackage{amsmath}
-\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
-\usepackage[francais]{babel}
-\usepackage{amsmath}
-\usepackage{TikZ}
-\usepackage{tkz-fct}   
-\usepackage{a4wide,jlq2eams} 
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{thmbox}
-\usepackage{changepage}
-\usepackage{xcolor}
-\usepackage{sectsty}
-\usepackage{mathrsfs}
-\usepackage{amssymb}
-\usepackage{enumitem}
-\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
-\sectionfont{\color{magenta}}
-\subsectionfont{\color{red}}
-\subsubsectionfont{\color{red}}
-\setlength{\shadowsize}{1.5pt}
-\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}} 
- 
-\pagestyle{fancy}
-\addtolength{\headwidth}{\marginparsep}
-\addtolength{\headwidth}{\marginparwidth} 
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-\fancyhf{}
-\fancyhead[LE,RO]{\bfseries\thepage}
-\fancyhead[LO]{\bfseries\rightmark}
-\fancyhead[RE]{\bfseries\leftmark}
-\fancypagestyle{plain}{%
-   \fancyhead{} % get rid of headers
-   \renewcommand{\headrulewidth}{0pt} % and the line
-}
+\usepackage{jlq2eams}
 
-\setcounter{minitocdepth}{3}
-
-
-
-\thmboxoptions{S,bodystyle=\itshape\noindent}
-\newtheorem[L]{Lem}{Lemme}[section]
-\newtheorem[L]{Th}[Lem]{Théorème}
-\newtheorem[L]{Cor}[Lem]{Corollaire}
-\newtheorem[L]{Prop}[Lem]{Proposition}
-
-\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
-\newtheorem[S,bodystyle=\upshape\noindent]{DfProp}{Définition-Proposition}
-\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
-\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
-\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
-
-
-
-
-\newcommand\SUI{(u_n)_{n\in\N}}
-\newcommand\SER{ \sum u_n}
-\newcommand\myop{ \bigtriangleup}
-\def\pa#1{({#1})}
-\newcommand\Matrix[3]{\mathrm{#1}_{#2}\pa{#3}}
-\def\sEnsemble#1#2{\mathopen\{#1\mid#2\mathclose\}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setcounter{tocdepth}{5}
 \begin{document}
 
 %TODO proof  et rajouter des exemples
-%\dominitoc
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Espace vectoriel $E$}
-%\tableofcontents
-
+\chapter*{Espace vectoriel $E$}
 \begin{Ex}[$\vect{x}\in \R^2$]
 Tout d'abord, commençons par les vecteurs du plan :\\
 \begin{tabular}{p{3cm}|p{4cm}|p{4cm}|p{4cm}}
@@ -124,28 +56,28 @@ Une stratégie efficace pour étudier ces ensembles est :
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Structure algébrique}
-\begin{Df}[Loi de composition interne : $\vect{x} \myop \vect{y}$  ]
-Soit $A$ un ensemble. Une \defi{loi de composition interne}, $\myop$, est une application qui, à deux éléments de $A$, associe un élément de $A$ :
-$$ \Fonction{\myop}{A×A}{A}{(x,y)}{x \myop y}.$$
+\begin{Df}[Loi de composition interne : $\vect{x} \bigtriangleup \vect{y}$  ]
+Soit $A$ un ensemble. Une \defi{loi de composition interne}, $\bigtriangleup$, est une application qui, à deux éléments de $A$, associe un élément de $A$ :
+$$ \Fonction{\bigtriangleup}{A×A}{A}{(x,y)}{x \bigtriangleup y}.$$
 \end{Df}
 \begin{Df}[Propriétés]
-On dit que $\myop$ 
+On dit que $\bigtriangleup$ 
 \begin{enumerate}
-\item est \defi{associative} : si $\in(x,y,z)\in A^3$, $x \myop (y \myop z) = (x \myop y) \myop z$.
+\item est \defi{associative} : si $\in(x,y,z)\in A^3$, $x \bigtriangleup (y \bigtriangleup z) = (x \bigtriangleup y) \bigtriangleup z$.
   On ne considèrera que des loi associatives.
 \item
-est \defi{commutative} : si $\forall(x,y)\in A^2$, $x \myop y = y \myop x$;
-\item admet \defi{un élément neutre} si $\exists e\in A$ tel que $\forall x\in A$, $x \myop e = e \myop x = x$.
-  Il existe au plus un élément $e$ vérifiant cette propriété, et on l'appelle \defi{le neutre}  de la loi $\myop$.
+est \defi{commutative} : si $\forall(x,y)\in A^2$, $x \bigtriangleup y = y \bigtriangleup x$;
+\item admet \defi{un élément neutre} si $\exists e\in A$ tel que $\forall x\in A$, $x \bigtriangleup e = e \bigtriangleup x = x$.
+  Il existe au plus un élément $e$ vérifiant cette propriété, et on l'appelle \defi{le neutre}  de la loi $\bigtriangleup$.
 \item
 est \defi{symétrique} (ou \defi{inverse} si loi est $\times$ , ou \defi{opposé} si la loi est $+$)
-  Si $\myop$ est une loi associative qui admet un neutre $e$, et si $x\in A$, on appelle  de $x$ pour la loi $\myop$ tout élément $x'\in A$ tel que $x \myop x' = x' \myop x = e$.
-  Si $\myop$ est également associative, il existe au plus un élément $x'$ vérifiant cette propriété, et on l'appelle \defi{le} symétrique de $x$ pour la loi $\myop$.
+  Si $\bigtriangleup$ est une loi associative qui admet un neutre $e$, et si $x\in A$, on appelle  de $x$ pour la loi $\bigtriangleup$ tout élément $x'\in A$ tel que $x \bigtriangleup x' = x' \bigtriangleup x = e$.
+  Si $\bigtriangleup$ est également associative, il existe au plus un élément $x'$ vérifiant cette propriété, et on l'appelle \defi{le} symétrique de $x$ pour la loi $\bigtriangleup$.
 \end{enumerate}
 \end{Df}
 \begin{Df}[Groupe]
-Un \defi{groupe} est un couple $(G,\myop)$ où $G$ est un ensemble et $\myop$ une loi de composition interne sur $G$ associative, admettant un neutre et pour laquelle tout élément de $G$ admet un symétrique pour la loi $\myop$.
-Un groupe est dit \defi{abélien} ou \defi{commutatif} si la loi $\myop$ est de plus commutative.
+Un \defi{groupe} est un couple $(G,\bigtriangleup)$ où $G$ est un ensemble et $\bigtriangleup$ une loi de composition interne sur $G$ associative, admettant un neutre et pour laquelle tout élément de $G$ admet un symétrique pour la loi $\bigtriangleup$.
+Un groupe est dit \defi{abélien} ou \defi{commutatif} si la loi $\bigtriangleup$ est de plus commutative.
 \end{Df}
 \begin{Ex}[Le Groupe $(\R^n,+)$ ]
 La loi d'addition sur $\R^n$ est définie par 
@@ -249,6 +181,9 @@ Un élément d'un $\K$-espace vectoriel est appelé un vecteur et est noté dans ce 
  si $X$ est un ensemble et $E$ un $\K$-espace vectoriel, l'ensemble des fonctions $\mathcal{F}(X,E)$ muni des lois usuelles.
 \end{itemize}
 \end{Ex}
+%\begin{Prop}[Structure de $\K $-espace vectoriel]
+%$\MnpK$ possède une structure de $\K $-espace vectoriel. 
+%\end{Prop}
 \section{Construire des espaces vectoriels}
 \subsection{Sous-espace vectoriel : $F\subset E$ et $F$ e.v.}
 \subsubsection{Définition}
@@ -337,7 +272,7 @@ Un plan vectorielle dans $\R ^3$  est
 Soit $E$ un $\K $-espace vectoriel, $F_1, \dots, F_p$ des sous espaces vectoriels de $E$.\\
 Alors l'intersection $\cap_{i=1}^p F_i$ est également un sous espace vectoriel.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 \begin{itemize}
 \item \textit{non vide :}\\
 $\forall i \in \Intf{1}{p}: \vect{0}\in F_i$ donc $\vect{0}\in \cap_{i=1}^p F_i$
@@ -349,7 +284,7 @@ Ainsi pour tout $i \in \Intf{1}{p}: \vect{x}_1+\vect{x}_2 \in F_i$ donc $\vect{x
 Soit $\lambda\in \R$ et Soit $\vect{x}\in \cap_{i=1}^p F_i $ d'où $\forall i \in \Intf{1}{p}: \vect{x}\in F_i$.\\
 Ainsi pour tout $i \in \Intf{1}{p}: \lambda\vect{x}\in F_i$ donc $\lambda \vect{x}\in \cap_{i=1}^p F_i$.
 \end{itemize}
-\end{proof}
+\end{Proof}
 \begin{Ex}$F=\overbrace{\{(x,y,z)\in \R^3: z=0\}}^{=F_1}\cap \overbrace{\{(x,y,z)\in \R^3: z=x\}}^{=F_2} $  l'intersection de deux plans vectoriels, $F_1$ et $F_2$ dans $\R ^3$
 \begin{center}
 \includegraphics[width=6cm]{espace_vectoriel_inter.png}
@@ -374,7 +309,7 @@ autrement dit,
 $F_1+F_2$ est un sous espace vectoriel  de $E$.\\
 Plus précisément $F_1+F_2$ est le plus petit (au sens de l'inclusion) sous espace vectoriel  de $E$ contenant $F_1$ et $F_2$.
 \end{DfProp}
-\begin{proof}
+\begin{Proof}
 \begin{itemize}
 \item \textit{non vide :}\\
 $\vect{0}\in F_1,F_2$ d'où $\vect{0}=\underbrace{\vect{0}}_{\in F_1}+\underbrace{\vect{0}}_{\in F_2}\in F_1+F_2.$
@@ -386,7 +321,7 @@ $\vect{x_1}+\vect{y_1}+\vect{x_2}+\vect{y_2} =\underbrace{\vect{x_1}+\vect{x_2}}
 Soit $\lambda\in \R$ et $\vect{x}+\vect{y}  \in  F_1+F_2.$\\
 $\lambda (\vect{x}+\vect{y})=\underbrace{\lambda\vect{x}}_{\in F_1}+\underbrace{\lambda\vect{y}}_{\in F_2} \in  F_1+F_2.$
 \end{itemize}
-\end{proof}
+\end{Proof}
 \begin{Ex}
 Soit $\R \vect{x}_1$ et $\R \vect{x}_2$ deux droite vectorielles distinctes. La somme de ces deux espace vectoriels forme le plan vectoriel $\R \vect{x}_1+\R \vect{x}_2$.
 \begin{center}
@@ -403,7 +338,7 @@ Avec les mêmes notations, la somme $F_1+F_2$ est directe si et seulement si
 $$ \forall \vect{x} \in F_1, \forall \vect{y} \in F_2:\quad 
   \vect{x} +\vect{y} = \vect{0_E} \Rightarrow \vect{x} =  \vect{y} = \vect{0_E}.$$
 \end{Prop}
-\begin{proof}$\quad$\\
+\begin{Proof}$\quad$\\
 \begin{itemize}
 \item \textit{$(\Longrightarrow)$} :\\
 Soit $\vect{x} \in F_1$ et $\vect{y} \in F_2$ tel que $\vect{x} + \vect{y}=\vect{0}$. On a aussi $\underbrace{\vect{0}}_{\in F_1}+\underbrace{\vect{0}}_{\in F_2}=\vect{0}.$ L'unicité de décomposition permet d'identifier  $\vect{x}=\vect{0}$ et $\vect{y}=\vect{0}$.
@@ -413,12 +348,12 @@ On soustrait ces deux égalités :
 $$\vect{0}= \underbrace{\vect{x} -\vect{x'} }_{\in F_1}+\underbrace{\vect{y} -\vect{y'} }_{\in F_2}.$$
 D'après l'hypothèse, on a   $\vect{x} -\vect{x'}=\vect{0}$ et $\vect{y} -\vect{y'}=\vect{0}$, d'où l'unicité de la décomposition avec $\vect{x} =\vect{x'}$ et $\vect{y}=\vect{y'}.$ 
 \end{itemize}
-\end{proof}
+\end{Proof}
 \begin{Prop}[Critère 2]
 Avec les mêmes notations, la somme $F_1+F_2$ est directe si et seulement si $F_1\cap F_2 = \{\vect{0_E}\}$.
 \end{Prop}
-\begin{proof}$\quad $\\
-\label{proof:critere2}
+\begin{Proof}$\quad $\\
+\label{Proof:critere2}
 \begin{itemize}
 \item \textit{$(\Longrightarrow)$ :}
 \begin{itemize}[label=*]
@@ -436,7 +371,7 @@ $$\underbrace{\vect{x} -\vect{x'} }_{\in F_1}=\underbrace{\vect{y} -\vect{y'} }_
 Comme $F_1\cap F_2 = \{\vect{0_E}\}$, on a $\vect{x} -\vect{x'}=\vect{0}$ et $\vect{y} -\vect{y'} =\vect{0}$, d'où l'unicité de la décomposition avec $\vect{x} =\vect{x'}$ et $\vect{x}=\vect{y'}.$
 \end{itemize}
 
-\end{proof}
+\end{Proof}
 
 \begin{Ex} Géométriquement, l'intersection entre deux plans vectoriels distincts, $F_1$ et $F_2$, est une droite vectoriel, $F_1\cap F_2$, donc la somme n'est pas directe.
 \begin{center}
@@ -543,9 +478,9 @@ Autrement dit aucun des vecteurs de la famille n'est combinaison linéaire des au
 Une famille finie  $\mathcal{F}=(\vect{e}_1,\dots,\vect{e_p})$ est libre si et seulement si la seule combinaison linéaire de $\mathcal{F}$ nulle est triviale, c'est à dire
 $$ \forall \lambda_1,\dots,\lambda_p   \in \K,\quad  \lambda _1 \vect{e_1}+\dots+\lambda _n \vect{e_n} = \vect{0_E} \Rightarrow \lambda _1=\lambda _2=\dots=\lambda_p= 0_\K  .$$
 \end{Prop}
-\begin{proof}
-La démonstration est similaire au critère 2 de la somme directe (voir démonstration~\ref{proof:critere2}).
-\end{proof}
+\begin{Proof}
+La démonstration est similaire au critère 2 de la somme directe (voir démonstration~\ref{Proof:critere2}).
+\end{Proof}
 \begin{Ex}
 Dans l'exemple précédent, on a démontré qu'un vecteur pouvait s'exprimer à l'aide de deux combinaisons linéaires distinctes. Avec ce dernier critère, la démonstration serait :\\
 Soit $\lambda,\beta,\alpha \in \R$ tel que $$\lambda (1,1) + \beta  (0,1) + \alpha (1,-1)    =(0,0).$$
@@ -563,7 +498,7 @@ De façon équivalente, la famille $(\vect{e}_1,\dots,\vect{e_p})$ est une base de
 L'espace vectoriel des polynôme de degré inférieur ou égal à $n$, $\K _n[X]$,  admet une base $(1,X,X^2,\dots,X^n)$, appelée base canonique.
 \end{Ex}
 \begin{Ex}
-L'espace vectoriel des matrices carrés de taille $2$, $\Matrix{M}{2}{\R}$,  admet une base $(\begin{pmatrix}1,0\\0,0\end{pmatrix},\begin{pmatrix}0,1\\0,0\end{pmatrix},\begin{pmatrix}0,0\\1,0\end{pmatrix},\begin{pmatrix}0,0\\0,1\end{pmatrix} )$, appelée base canonique.
+L'espace vectoriel des matrices carrés de taille $2$, $\Mn{2}{\R}$,  admet une base $(\begin{pmatrix}1,0\\0,0\end{pmatrix},\begin{pmatrix}0,1\\0,0\end{pmatrix},\begin{pmatrix}0,0\\1,0\end{pmatrix},\begin{pmatrix}0,0\\0,1\end{pmatrix} )$, appelée base canonique.
 \end{Ex} 
  
 \begin{NB} On n'a pas unicité de la base. Par exemple pour $\K _n[X]$, avec les $x_i$ $n+1$ scalaires distincts, les polynômes de Lagrange 
@@ -589,7 +524,7 @@ L'espace vectoriel des fonctions continues réels est  de dimension infinie.
 Soit $E$ un espace vectoriel de dimension finie et $\mathcal{L}$ une famille libre de $E$.\\  
 Alors il existe une base $\mathcal{B}$ de $E$ telle que $\mathcal{L}\subset \mathcal{B}$.
 \end{Th}
-\begin{proof}
+\begin{Proof}
 La démonstration  repose sur l'algorithme suivant :\\
 Soit la partie libre initiale $\mathcal{L}$.\\
 Comme $E$ est un espace vectoriel de dimension finie, il existe une famille finie, $\mathcal{G}$, génératrice de $E$.\\
@@ -599,20 +534,20 @@ Tant que $\mathcal{L}$ n'est pas génératrice de $E$ :
 \item On remplace $\mathcal{L}$ par $\mathcal{L}\cup \{\vect{g} \}$, qui est encore libre car le nouveau vecteur n'est pas une combinaison linéaire des précédents.
 \end{enumerate}
 La boucle se termine en un nombre fini d'étapes puisqu'on ajoute à chaque étape un élément de $\mathcal{G}$ différent des précédents et que $\mathcal{G}$ est fini. $\mathcal{L}$ est alors une partie génératrice, donc une base de $E$.
-\end{proof}
+\end{Proof}
 \begin{Th}[Théorème de la base extraite]
 Soit $E$ un espace vectoriel de dimension finie et $\mathcal{G}$ une famille génératrice de $E$. \\ 
 Alors il existe une base $\mathcal{B}$ de $E$ telle que $\mathcal{B}\subset \mathcal{G}.$
 \end{Th}
-\begin{proof}
+\begin{Proof}
 La démonstration est identique à la précédente exceptée que $\mathcal{L}=\emptyset$.
-\end{proof}
+\end{Proof}
 
 \subsection{Unicité du cardinal de la base}
 \begin{Prop}
 Si $E$ est un espace vectoriel de dimension finie admettant une famille génératrice de $n$ vecteurs, alors toute famille de $n+1$ vecteurs est liée.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Démontrons cette proposition par récurrence.
 \begin{itemize}
 \item \textit{Initialisation} :\\
@@ -634,22 +569,22 @@ d'où
 $$\beta_1\vect{v}_1+\dots +\beta_n\vect{v}_n - (\beta_1\frac{\lambda_{1,n}}{\lambda_{n+1,n}}+\dots +\beta_n\frac{\lambda_{n,n}}{\lambda_{n+1,n}})\vect{v}_{n+1}=\vect{0}.$$
 La famille est donc liée. 
 \end{itemize}
-\end{proof}
+\end{Proof}
 \begin{Prop}
 Si $E$ est un espace vectoriel de dimension finie admettant une famille génératrice de $n$ vecteurs, alors toute famille ayant strictement plus de $n$ vecteurs est liée.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Si la famille a strictement plus de $n$ vecteurs, on peut en enlever pour constituer une famille de $n+1$ vecteurs qui est donc liée d'après la proposition précédente. A fortiori, la famille initiale est liée. 
-\end{proof}
+\end{Proof}
 
 \begin{Prop}[Unicité du cardinal d'une base]
 Soit $E$ un espace vectoriel de dimension finie et $(\vect{e}_1,\dots,\vect{e_p})$ et $(\vect{f}_1,\dots,\vect{f_q})$ deux bases de $E$.\\
 Alors $p=q$.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 $(\vect{e}_1,\dots,\vect{e_p})$ est une famille génératrice de $E$. Comme $(\vect{f}_1,\dots,\vect{f_q})$ est libre d'après la proposition précédente,  $q\leq p$.
 Par symétrie, on a aussi $p\leq q$. Finalement $p=q$.
-\end{proof}
+\end{Proof}
 Cette proposition nous permet cette définition.
 \begin{DfProp}[Dimension]
 La \defi{dimension} d'un espace vectoriel de dimension finie est égale au cardinal d'une base quelconque de $E$.
@@ -680,9 +615,9 @@ si et seulement s'il existe $p\in \Intf{1}{n}$ tel que $(\vect{e}_1,\dots,\vect{
 \begin{Prop}[Existence d'une base adaptée]
 La base ainsi définie existe.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Comme $F$ est un espace vectoriel de dimension finie, il existe une base $(\vect{e}_1,\dots,\vect{e_p})$ de $F$. Cette famille est libre dans $E$. On la complète en une base de $E$ d'après le théorème de la base incomplète.  
-\end{proof}
+\end{Proof}
 \begin{Df}
 Soit $E$ un $\K $-espace vectoriel de dimension finie, $F_1,\dots, F_p$ des sous-espaces vectoriels supplémentaires de $E$ et $B$ une base de $E$.\\
 La base $\mathcal{B}$ est dite \defi{adaptée} à la décomposition $E =\oplus_{k=1}^p F_k$ si et seulement si $\mathcal{B}$ peut s'écrire comme la concaténation de $\mathcal{B}_1,\dots,\mathcal{B}_p$ où $\mathcal{B}_k$ est une base de $F_k$ pour tout $k\in \Intf{1}{p}$.
@@ -704,16 +639,16 @@ Dans un espace vectoriel de dimension finie, tout sous espace vectoriel admet un
 Autrement dit, soit $E$ est un espace vectoriel de dimension finie et $F$ un sous espace vectoriel de $E$.\\
 Alors il existe un sous espace vectoriel $G$ de $E$ tel que $E = F \oplus G$.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Soit $\mathcal{B}_1$ une base de $F$ que l'on complète avec $\mathcal{B}_2$ pour former une base de $E$.\\
 D'après la proposition \ref{prop:base}, si on pose $G$ l'espace vectoriel engendrée par  $\mathcal{B}_2$, alors $E = F \oplus G$.  
-\end{proof}
+\end{Proof}
 \begin{Prop}
 Soit $E_1,\dots E_p$ des $\K $-espaces vectoriels.\\
 L'espace vectoriel produit $\prod_{k=1}^p E_k$ est de dimension finie si et seulement si $\forall k\in \Intf{1}{p}$, $E_k$ est de dimension finie.\\
 De plus, dans ce cas, \[ \dim( \prod_{k=1}^p E_k ) = \sum_{k=1}^p \dim(E_k). \]
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 On suppose $p=2$.\\
 Soit $(\vect{e_1},\dots,\vect{e_n})$ une base de $E_1$ et $(\vect{f_1},\dots,\vect{f_q})$ une base de $E_2$.\\
 Alors $( (\vect{e_1},\vect{0}_F),\dots,(\vect{e_n},\vect{0}_F),(\vect{0}_E,\vect{f_1}),\dots,(\vect{0}_E,\vect{f_q}))$ est une base de $E_1\times E_2.$
@@ -729,7 +664,7 @@ D'où:
 $$(\lambda_1\vect{e_1}+\dots+ \lambda_n\vect{e_n},\beta_1\vect{f_1}+\dots+ \beta_q\vect{f_q} )=(\vect{0}_E,\vect{0}_F).$$
 Par identification, on obtient $\lambda_1\vect{e_1}+\dots+ \lambda_n\vect{e_n}=\vect{0}_E$ et $\beta_1\vect{f_1}+\dots+ \beta_q\vect{f_q}=\vect{0}_F$. Comme $(\vect{e_1},\dots,\vect{e_n})$ et $(\vect{f_1},\dots,\vect{f_q})$ sont des familles libres de $E_1$ et  de $E_2$ respectivement, $\lambda_1=\dots=\lambda_n=\beta_1=\dots=\beta_q=0$. 
 \end{itemize}
-\end{proof}
+\end{Proof}
 
 \begin{Cor}
 Pour $p\in \N^*$ et $E$ un $\K $-espace vectoriel.\\
@@ -740,13 +675,13 @@ dans ce cas, on a $\dim(E^p) = p.\dim(E)$.
 Soit E un $\K $-espace vectoriel dimension finie et $F_1$, $F_2$ deux sous espace vectoriel de $E$. On a :
 $$\dim (F_1 + F_2) = \dim F_1 + \dim F_2 - \dim(F_1 \cap F_1).$$
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Une idée est de remarquer l'analogie avec la formule ensembliste  :
 $$\text{card}(A)+\text{card}(B)=\text{card}(A\cup B)+\text{card}(A\cap B).$$
 Soit $(\vect{e_1},\dots,\vect{e_p})$ une base de $F_1\cap F_2$. On la complète en une base 
 $(\vect{e_1},\dots,\vect{e_p},\vect{f_{p+1}},\dots,\vect{f_{p+k}})$ de $F_1$ et en une base $(\vect{e_1},\dots,\vect{e_p},\vect{g_{p+1}},\dots,\vect{g_{p+m}})$ de $F_2$. $(\vect{e_1},\dots,\vect{e_p},\vect{f_{p+1}},\dots,\vect{f_{p+k}},\vect{g_{p+1}},\dots,\vect{g_{p+m}})$ est une base   $F_1+F_2$.\\
 Comme le cardinal d'une base est égale à la dimension de l'espace vectoriel, on obtient bien l'égalité souhaitée.
-\end{proof}
+\end{Proof}
 \begin{Prop}
 Soit $E$ un $\K $-espace vectoriel et $F_1,\dots F_p$ des sous-espaces vectoriels de dimension finie de $E$.
 Alors la somme $\sum_{k=1}^p F_k$ est également de dimension finie, et
@@ -765,4 +700,89 @@ Les conditions suivantes sont alors équivalentes:
 \item  $\sum_{k=1}^p F_k = E$.
 \end{enumerate}
 \end{Prop}
+%TODO ECRIRE CETTE PARTIE
+\section{Retour aux matrices}
+\begin{Prop}[Structure de $\K $-espace vectoriel]
+$\MnpK$ possède une structure de $\K $-espace vectoriel. 
+\end{Prop}
+\begin{Proof}
+Tous les axiomes se vérifient aisément.  
+\end{Proof}
+\begin{DfProp}[Base canonique]La \defi{base canonique} est $(E_{ij})_{1\leqslant i\leqslant n, 1\leqslant j\leqslant p}$ où la matrice  $E_{i,j}$ est celle dont tous les coefficients sont nuls sauf celui d'indice $(i,j)$ , qui vaut 1.\\
+ Les coordonnées dans la base canonique d'une matrice $A$ sont ses coefficients :
+ $$ \begin{pmatrix}
+a_{11} & \cdots & a_{1p}\\
+ \vdots &  & \vdots\\
+a_{n1} & \cdots & a_{np}
+\end{pmatrix} =a_{11}\begin{pmatrix}
+1 & \cdots & 0\\
+ \vdots &  & \vdots\\
+0 & \cdots & 0
+\end{pmatrix}+\dots+a_{1p}\begin{pmatrix}
+0 & \cdots & 1\\
+ \vdots &  & \vdots\\
+0 & \cdots & 0
+\end{pmatrix}+ \dots+a_{n1}\begin{pmatrix}
+0 & \cdots & 0\\
+ \vdots &  & \vdots\\
+1 & \cdots & 0
+\end{pmatrix}+\dots+a_{np} \begin{pmatrix}
+0 & \cdots & 0\\
+ \vdots &  & \vdots\\
+0 & \cdots & 1
+\end{pmatrix},$$
+ $$ \begin{pmatrix}
+a_{11} & \cdots & a_{1p}\\
+ \vdots &  & \vdots\\
+a_{n1} & \cdots & a_{np}
+\end{pmatrix} =  \sum _{1\leqslant i\leqslant n\atop 1\leqslant j\leqslant p}  a_{ij} E_{ij}.$$
+On a $\dim( \MnpK)=np$.
+\end{DfProp}
+\begin{Proof}
+Du fait de l'égalité, $ A = \sum _{1\leqslant i\leqslant n\atop 1\leqslant j\leqslant p}  a_{i,j} E_{i,j}$,  $(E_{i,j})_{1\leqslant i\leqslant n, 1\leqslant j\leqslant p}$ est une famille génératrice de $\MnpK$.\\
+Soit  $(\lambda_{ij})_{1\leqslant i\leqslant n, 1\leqslant j\leqslant p}$ une famille de scalaires tel que
+$$\sum _{1\leqslant i\leqslant n\atop 1\leqslant j\leqslant p}  \lambda_{ij} E_{i,j}=0_{\MnpK}.$$
+D'où :
+ $$\begin{pmatrix}
+\lambda_{11} &  \cdots & \lambda_{1p}\\
+\vdots & \ \ddots & \vdots\\
+\lambda_{n1} &  \cdots & a_{np}\\
+\end{pmatrix}= \begin{pmatrix}
+0 &  \cdots &0\\
+\vdots & \ \ddots & \vdots\\
+0 &  \cdots & 0\\
+\end{pmatrix}$$
+Par identification, $\lambda_{ij}=0$ pour tout $i\in\Intf{1}{n}$ et  $j\in\Intf{1}{p}$, donc la famille est libre.\\
+La famille est donc une base. Comme la cardinal de la base $\card((E_{i,j})_{1\leqslant i\leqslant n, 1\leqslant j\leqslant p})$ est $np$, on a bien $\dim( \MnpK)=np$.
+\end{Proof}
+\begin{Ex}$ \begin{pmatrix}
+0 &1  \\
+4 & 3 \\
+\end{pmatrix} =
+0\cdot
+\begin{pmatrix}
+1 &0  \\
+0 & 0  \\
+\end{pmatrix}
++
+1\cdot
+\begin{pmatrix}
+0 &1  \\
+0 & 0 \\
+\end{pmatrix}
++
+4\cdot
+\begin{pmatrix}
+0 &0  \\
+1 & 0  \\
+\end{pmatrix}
++
+3\cdot
+\begin{pmatrix}
+0 &0  \\
+0 & 1  \\
+\end{pmatrix}
+$
+\end{Ex}
+
 \end{document}

@@ -1,86 +1,8 @@
 \documentclass[a4paper]{book}
-\usepackage{t1enc}
-\usepackage[latin1]{inputenc}
-\usepackage[french]{minitoc}
- \usepackage{amsmath}
-\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
-\usepackage[francais]{babel}
-\usepackage{amsmath}
-\usepackage{TikZ}
-\usepackage{tkz-fct}   
-\usepackage{a4wide,jlq2eams} 
-\usepackage{graphicx}
-\usepackage[colorlinks = true,urlcolor  = blue]{hyperref}
-\usepackage{thmbox}
-\usepackage{changepage}
-\usepackage{xcolor}
-\usepackage{sectsty}
- \usepackage{enumitem}
-\usepackage{eurosym}
-\usepackage{mathrsfs}
-\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
-\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
-\sectionfont{\color{magenta}}
-\subsectionfont{\color{red}}
-\subsubsectionfont{\color{red}}
-\setlength{\shadowsize}{1.5pt}
-\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}} 
- 
-\pagestyle{fancy}
-\addtolength{\headwidth}{\marginparsep}
-\addtolength{\headwidth}{\marginparwidth} 
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-\fancyhf{}
-\fancyhead[LE,RO]{\bfseries\thepage}
-\fancyhead[LO]{\bfseries\rightmark}
-\fancyhead[RE]{\bfseries\leftmark}
-\fancypagestyle{plain}{%
-   \fancyhead{} % get rid of headers
-   \renewcommand{\headrulewidth}{0pt} % and the line
-}
-
-\setcounter{minitocdepth}{3}
-
-
-\renewcommand{\thesection}{\Roman{section}} 
-\renewcommand{\thesubsection}{\Alph{subsection}}
-\thmboxoptions{S,bodystyle=\itshape\noindent}
-\newtheorem[L]{Lem}{Lemme}[section]
-\newtheorem[L]{Th}[Lem]{Théorème}
-\newtheorem[L]{Cor}[Lem]{Corollaire}
-\newtheorem[L]{Prop}[Lem]{Proposition}
-
-\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
-\newtheorem[S,bodystyle=\upshape\noindent]{DfProp}{Définition-Proposition}
-\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
-\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
-\newtheorem[S,bodystyle=\upshape\noindent]{Meth}{Méthode}
-\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
-
-
-\newcommand\SUI{(u_n)_{n\in\N}}
-\newcommand\SER{ \sum u_n}
-\newcommand\myop{ \bigtriangleup}
-\def\pa#1{({#1})}
-\newcommand\Matrix[3]{\mathrm{#1}_{#2}\pa{#3}}
-\def\sEnsemble#1#2{\mathopen\{#1\mid#2\mathclose\}}
-\newcommand{\myunit}{1 cm}
-\tikzset{
-    node style sp/.style={draw,circle,minimum size=\myunit},
-    node style ge/.style={circle,minimum size=\myunit},
-    arrow style mul/.style={draw,sloped,midway,fill=white},
-    arrow style plus/.style={midway,sloped,fill=white},
-}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setcounter{tocdepth}{5}
+\usepackage{jlq2eams}
 \begin{document}
-%\dominitoc
-%\tableofcontents
+
 \chapter{Réduction des endomorphismes/matrices carrés}
-%\minitoc
-
-
 La réduction d'endomorphisme a pour objectif d'exprimer des matrices et des endomorphismes sous une forme plus simple, par exemple pour faciliter les calculs. 
 Réduire un endomorphisme $u\in\LE$, cela correspond à trouver une base de l'espace dans laquelle l'endomorphisme s'exprime simplement. C'est à dire c'est décomposer l'espace $E$ comme somme directe de sous-espaces stables par $u$,
 $E = \oplus     _{i=1}^n E_i$ où les $E_i$ sont stables par $u$. On peut donc définir  les endomorphismes $u_{|E_i}$ induits par $u$ sur $E_i$, soit :
@@ -414,7 +336,7 @@ Si $\lambda$ est de multiplicité 1 (racine simple) alors $\dim E_\lambda =1$.
 \end{NB}
 
 \subsection{Polynôme annulateur}
-
+% TODO 
 \begin{Df}[Polynôme annulateur]
 Soit $u\in \LE$.
 Un polynôme $P\in \K [X]$ est dit \defi{polynôme annulateur de $u$} s'il est non nul et si $P(u) = 0_{\LE}$.\\

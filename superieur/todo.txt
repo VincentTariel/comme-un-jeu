@@ -3,5 +3,6 @@ finir algèbre linéaire :
 * sortir le chapitre matrice du chapitre application linéaire
 * compléter le chapitre matrice
 * ajouter l'activite de decouverte sur les polynômes annulateurs
+** ajouter l'involution de l'appication transposée (c'est une involution de {\displaystyle \mathrm {M} _{n}(K)}{\displaystyle \mathrm {M} _{n}(K)} ; c'est donc la symétrie par rapport au sous-espace des matrices symétriques, parallèlement à celui des matrices antisymétriques.)
 * compl
  

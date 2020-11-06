@@ -1,12 +1,156 @@
+\usepackage{t1enc}
+\usepackage[latin1]{inputenc}
+\usepackage[french]{minitoc}
+ \usepackage{amsmath}
+\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
+\usepackage[francais]{babel}
+\usepackage{amsmath,thmtools}
+\usepackage{TikZ}
+\usepackage{tkz-fct}   
+\usepackage{a4wide} 
+\usepackage{graphicx}
+\usepackage{thmbox}
+\usepackage{changepage}
+\usepackage{xcolor}
+\usepackage{sectsty}
+ \usepackage{enumitem}
+\usepackage{eurosym}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{geometry}
+\geometry{hmargin=2cm,vmargin=1.5cm}
+\pagestyle{fancy}
+
+\usepackage{titlesec}
+
+\titleformat
+{\chapter} % command
+[display] % shape
+{\bfseries\huge} % format
+{Story No. \ \thechapter} % label
+{-5ex} % sep
+{
+    \rule{\textwidth}{1pt}
+    \vspace{1ex}
+    \centering
+} % before-code
+[
+\vspace{-2ex}%
+\rule{\textwidth}{0.3pt}
+]
+\titlespacing*{\chapter}{0pt}{-50pt}{10pt}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\fancypagestyle{plain}{%
+   \fancyhead{} % get rid of headers
+   \renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+
+
+\renewcommand{\thesection}{\Roman{section}} 
+\renewcommand{\thesubsection}{\Alph{subsection}}
+
+
+
+\definecolor{colorprop}{rgb}{0.0, 0.4, 0.74}
+\colorlet{colordef}{red!60}
+
+\sectionfont{\color{black}}
+\subsectionfont{\color{black}}
+\subsubsectionfont{\color{black}}
+
+
+\newcommand{\definebox}[3]{%
+  \newcounter{#1}
+  \newenvironment{#1}[1][]{%
+    \stepcounter{#1}%
+    \mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=white]
+            {\strut \color{#3}\MakeUppercase#2~\csname \endcsname\ifstrempty{##1}{}{:~##1}};}}%
+    \mdfsetup{innertopmargin=0pt,linecolor=#3,%
+        linewidth=1pt,topline=true,roundcorner=5pt,
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}%
+    \begin{mdframed}[]\relax%
+    }{\end{mdframed}}%
+}
+\newcommand{\defineboxx}[3]{%
+  \newcounter{#1}
+  \newenvironment{#1}[1][]{%
+    \stepcounter{#1}%
+    \mdfsetup{%
+        frametitle={%
+            \hspace*{-40pt}\tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=white]
+            {\strut \MakeUppercase#2~\csname \endcsname\ifstrempty{##1}{}{:~##1}};}}%
+    \mdfsetup{innertopmargin=0pt,linecolor=#3,%
+        linewidth=1pt,topline=false,innerleftmargin=20pt,bottomline=false,rightline=false,
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}%
+    \begin{mdframed}[]\relax%
+    }{\end{mdframed}}%
+}
+\newcommand{\defineboxxx}[3]{%
+  \newcounter{#1}
+  \newenvironment{#1}[1][]{%
+    \stepcounter{#1}%
+    \mdfsetup{%
+        frametitle={%
+            \hspace*{-40pt}\tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=white]
+            {\strut \MakeUppercase#2~\csname \endcsname\ifstrempty{##1}{}{:~##1}};}}%
+    \mdfsetup{innertopmargin=0pt,linecolor=#3,%
+        linewidth=1pt,topline=false,innerleftmargin=20pt,bottomline=false,rightline=false,leftline=false,
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}%
+    \begin{mdframed}[]\relax%
+    }{\end{mdframed}}%
+}
+\definebox{Df}{Définition}{colordef}
+\definebox{DfProp}{Définition-Proposition}{colordef}
+\definebox{Alg}{Algorithme}{colordef}
+\definebox{Th}{Théorème}{colorprop}
+\definebox{Lem}{Lemme}{colorprop}
+\definebox{Prop}{Proposition}{colorprop}
+\definebox{Cor}{Corollaire}{colorprop}
+\defineboxx{Proof}{Démonstration}{colorprop}
+
+\defineboxx{Ex}{Exemple}{black}
+\defineboxxx{NB}{Remarque}{black}
+\usepackage[colorlinks = true,urlcolor  = colorprop]{hyperref}
+\newenvironment{Text}{}
+   
+\newcommand{\defi}[1]{\textbf{\textcolor{colordef}{#1}}} 
+\newcommand{\propri}[1]{\textbf{\textcolor{colorprop}{#1}}}
+ 
+
+\newcommand{\myunit}{1 cm}
+\tikzset{
+    node style sp/.style={draw,circle,minimum size=\myunit},
+    node style ge/.style={circle,minimum size=\myunit},
+    arrow style mul/.style={draw,sloped,midway,fill=white},
+    arrow style plus/.style={midway,sloped,fill=white},
+}
+
+\newcommand*\commentterm[4][]{%
+   \begin{tikzpicture}[anchor=base west,baseline,inner sep=0pt, outer sep=0pt,minimum size=0pt]
+      \node(xa){$#3$};
+      \node[overlay,at=(xa),shift=(#2),color=colorprop](xb){#4};
+      \draw[overlay,->,shorten <=2pt,shorten >=2pt,#1,,color=colorprop](xb)to(xa);
+   \end{tikzpicture}%
+}
+ \setcounter{MaxMatrixCols}{20}
 %----------------------------------------------------
 % Diverses macros pour l'utilisation de TeX
 %----------------------------------------------------
 
-%--------------------------------------------------
-% les euros
-%--------------------------------------------------
-
-\newcommand{\euro}{\textsf{\EUR}}
 
 
 %--------------------------------------------------
@@ -42,65 +186,6 @@
   % pour écrire la même chose entouré d'une boîte
 
 
-\newcommand{\reponse}[2][Bcenter]{%
-\shadowbox{%
-  \begin{#1}#2\end{#1}%
-  }%
-}
-  % entourage ombré d'une expression (centrée par défaut);
-  % autres options Bflushleft et Bflushright
-
-\newcommand{\Reponse}[2][Bcenter]{%
-\begin{center}
-  \shadowbox{%
-    \begin{#1}#2\end{#1}%
-  }%
-\end{center}
-}
-  % entourage centré et ombré d'une expression (centrée par défaut);
-  % autres options Bflushleft et Bflushright
-
-\newenvironment{Bminipage}%
-{\begin{Sbox}\begin{minipage}}%
-{\end{minipage}\end{Sbox}\shadowbox{\TheSbox}}
-
-\newcommand{\alaligne}{\mbox{}\hspace*{\fill}}
-  % pour aller à la ligne dans un environnement
-  
-\newcommand{\DP}{\string :}
-  % pour éviter le carctère actif :
-
-%--------------------------------------------------
-% Environnement PROPOSITION
-%
-%  énumère une liste de propositions numérotées par des chiffres romains italiques
-%  pas d'espacement entre les diverses propositions
-%   JLQ le 28/01/94
-%--------------------------------------------------
-
-\newenvironment{prop}
-  {\begin{enumerate}
-    \renewcommand{\theenumi}{\roman{enumi}}%
-    \renewcommand{\labelenumi}{$(\theenumi)$}%
-    \parsep=0pt\itemsep=0pt\parskip=0pt\topsep=0pt\partopsep=0pt\itemindent=0pt\leftmargini=0pt%
-%    \setlength{\leftmargini}{0mm}%
-  }
-  {\end{enumerate}}
-%----------------------------------------------------------------------
-
-%--------------------------------------------------
-% Environnement pour la démonstration d'une proposition
-%--------------------------------------------------
-
-\newcounter{numdemprop}
-\newenvironment{demprop}[0]%
-{\setcounter{numdemprop}{0}\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}%
-\begin{trivlist}}%
-{\end{trivlist}}
-
-\newcommand{\monitem}{\addtocounter{numdemprop}{1}\item[]\hspace*{-2cm}
-\makebox[2cm][r]{$(\roman{numdemprop})$ }}
-%--------------------------------------------------
 
 
 %--------------------------------------------------
@@ -527,15 +612,15 @@
 \newcommand{\Det}[1][B]{\det_{\mathcal{#1}}}
   % déterminant dans la base B ...
 \newcommand{\M}[3]{\mathcal{M}_{#1,#2}(#3)}
-\newcommand{\MnpK}{\mathcal{M}_{n,p}(\K)}
-\newcommand{\Mnp}[2][n,p]{\mathcal{M}_{#1}(#2)}
-\newcommand{\MnK}{\mathcal{M}_{n}(\K)}
-\newcommand{\MnR}{\mathcal{M}_{n}(\R)}
-\newcommand{\Mn}[2][n]{\mathcal{M}_{#1}(#2)}
+\newcommand{\Mn}[2]{\mathcal{M}_{#1}(#2)}
+
+\newcommand{\MnK}{\Mn{n}{\K}}
+\newcommand{\MnpK}{\M{n}{p}{\K}}
+
 \newcommand{\GLnK}{\mathcal{GL}_n(\K)}
 \newcommand{\GLn}[2][n]{\mathcal{GL}_{#1}(#2)}
-
-
+\newcommand{\In}{I_n}
+  % trace d'une matrice, ...
 %--------------------------------------------------
 % Espaces vectoriels
 %--------------------------------------------------

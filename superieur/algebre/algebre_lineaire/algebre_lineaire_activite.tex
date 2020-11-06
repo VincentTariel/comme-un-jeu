@@ -187,8 +187,9 @@ Dans notre exemple, comme les vecteurs normaux aux deux droites $\begin{pmatrix}
 \end{center}
 Ainsi l'ensemble des solution admet une unique solution. Par lecture graphique, l'unique solution est $(1 , 1,5 )$
 \section{Matricielle}
-Une idée est de transformer ce système deux équations à deux inconnues en un système d'une équation à une inconnue dont on sait résoudre par de simple opérations algébriques. Par exemple, pour l'équation $2x+1=5$, on additionne l'opposé de $1$, soit $-1$ $$2x+1+(-1)=5+(-1)$$ ce qui donne $2x=4$, puis on multiple par l'inverse de 2, soit $\frac 1 2$, $$\frac 1 2 2x=\frac 1 2 4$$ ce qui donne $x=2$.\\
-On représente cette opération à l'aide de tableaux de nombres :
+On sait résoudre par de simples opérations algébriques une équation linéaire à une inconnue. Par exemple, pour l'équation $2x+1=5$, on additionne l'opposé de $1$, soit $-1$ $$2x+1+(-1)=5+(-1)$$ ce qui donne $2x=4$, puis on multiple par l'inverse de 2, ce qui donne $x=2$.\\
+Une idée est de transformer le système de deux équations à deux inconnues à une équation à une inconnue. Cette transformation est une abstraction sur la nature des coefficients et des variables des équations : de \textbf{réels} à  \textbf{tableaux de nombres}.\\
+Ainsi, l'équation équivalente au système d'équations linéaires est  :
 \begin{center}
 \begin{tikzpicture}[>=latex]
 \matrix (A) [matrix of math nodes,%
@@ -254,7 +255,8 @@ $$ \begin{pmatrix}
  1  \\
  1,5  \\
 \end{pmatrix}.$$ 
-Par identification,   l'ensemble des solution est de nouveau l'unique solution $x=1$ et $y=1,5$. 
+Par identification, l'ensemble des solution est de nouveau l'unique solution $x=1$ et $y=1,5$. 
+
 \section{Espace vectoriel}
 Une idée est de transformer ce système deux équations à deux inconnues en un système d'une équation à deux inconnues. Soit, 
 $$x\begin{pmatrix}
