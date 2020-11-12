@@ -2,7 +2,7 @@
 \usepackage{jlq2eams}
 \begin{document}
 
-\chapter{Réduction des endomorphismes/matrices carrés}
+\chapter*{Réduction des endomorphismes/matrices carrés}
 La réduction d'endomorphisme a pour objectif d'exprimer des matrices et des endomorphismes sous une forme plus simple, par exemple pour faciliter les calculs. 
 Réduire un endomorphisme $u\in\LE$, cela correspond à trouver une base de l'espace dans laquelle l'endomorphisme s'exprime simplement. C'est à dire c'est décomposer l'espace $E$ comme somme directe de sous-espaces stables par $u$,
 $E = \oplus     _{i=1}^n E_i$ où les $E_i$ sont stables par $u$. On peut donc définir  les endomorphismes $u_{|E_i}$ induits par $u$ sur $E_i$, soit :
@@ -443,16 +443,15 @@ alors $M$ est diagonalisable.
 \end{Cor}
 
 
-\begin{Meth}
-
-Une méthode pour diagonaliser une matrice $A$ de $\MnK$:
+\begin{Alg}
+Une algorithme pour diagonaliser une matrice $A$ de $\MnK$:
 \begin{itemize}
 \item on calcule le polynôme caractéristique $\chi       _A$;
 \item on factorise $\chi       _A$: s'il n'est pas scindé, c'est que $A$ n'est pas diagonalisable dans $\K $;
 \item pour chaque racine $\lambda    $, on détermine une base du sous-espace propre $E_\lambda    $ en résolvant le système linéaire $AX =\lambda    X$. Si on trouve strictement moins de $m_\lambda    $ vecteurs libres, c'est que $A$ n'est pas diagonalisable;
 \item soit $P$ la matrice carrée dont les colonnes sont les $n$ vecteurs propres trouvés. Soit $D$ la matrice diagonale formée des valeurs propres correspondantes. On a alors $A = PDP^{-1}$ et $D = P^{-1}AP$.
 \end{itemize}
-\end{Meth}
+\end{Alg}
 Des applications :
 \begin{itemize}
 \item calcul des puissances d'une matrice $A$;

@@ -1,9 +1,9 @@
 \documentclass{book}
 \usepackage{jlq2eams}
 \begin{document}
-%\dominitoc
-%\tableofcontents
-\chapter{Espaces préhilbertiens réels}
+
+
+\chapter*{Espaces préhilbertiens réels}
 
 
 
@@ -20,52 +20,52 @@ Soit $E$ un $\R$-espace vectoriel de dimension finie ou infinie.
 Un \defi{produit scalaire} sur $E$ est une forme bilinéaire symétrique définie positive sur $E$.
 Autrement dit, un \defi{produit scalaire} sur $E$ est une application $\varphi:E^2\to \R$
 \begin{itemize}
-\item \emph{bilinéaire} :
-  $\forall \vec{x},\vec{y},\vec{z}\in E, \forall \lambda ,\mu \in \R$
-  $$ \varphi (\lambda \vec{x}+\mu \vec{y},\vec{z}) = \lambda \varphi (\vec{x},\vec{z}) + \mu \varphi (\vec{y},\vec{z})\text{ par rapport à la première variable}, $$
-  $$ \varphi (\vec{x},\lambda \vec{y}+\mu \vec{z}) = \lambda \varphi (\vec{x},\vec{y}) + \mu \varphi (\vec{x},\vec{z})\text{ par rapport à la seconde variable}. $$
-\item \emph{symétrique} : $\forall \vec{x},\vec{y}\in E, \quad  \varphi (\vec{y},\vec{x}) = \varphi (\vec{x},\vec{y}).$
-\item \emph{définie} : $\forall \vec{x}\in E, \quad \varphi (\vec{x},\vec{x})=0 \Longrightarrow \vec{x} = \vec{0}_E$,
-\item \emph{positive} : $\forall \vec{x}\in E,\quad \varphi (\vec{x},\vec{x})\geq 0.$ 
+\item \defi{bilinéaire} :
+  $\forall \vect{x},\vect{y},\vect{z}\in E, \forall \lambda ,\mu \in \R$
+  $$ \varphi (\lambda \vect{x}+\mu \vect{y},\vect{z}) = \lambda \varphi (\vect{x},\vect{z}) + \mu \varphi (\vect{y},\vect{z})\text{ par rapport à la première variable}, $$
+  $$ \varphi (\vect{x},\lambda \vect{y}+\mu \vect{z}) = \lambda \varphi (\vect{x},\vect{y}) + \mu \varphi (\vect{x},\vect{z})\text{ par rapport à la seconde variable}. $$
+\item \defi{symétrique} : $\forall \vect{x},\vect{y}\in E, \quad  \varphi (\vect{y},\vect{x}) = \varphi (\vect{x},\vect{y}).$
+\item \defi{définie} : $\forall \vect{x}\in E, \quad \varphi (\vect{x},\vect{x})=0 \Longrightarrow \vect{x} = \vect{0}_E$,
+\item \defi{positive} : $\forall \vect{x}\in E,\quad \varphi (\vect{x},\vect{x})\geq 0.$ 
 \end{itemize}
 \end{Df}
 Il suffit de vérifier la linéarité à gauche et la symétrie pour justifier la bilinéarité.
 \begin{NB}
-A ce stade, les notions de norme et d'angle ne sont pas définies. Le produit scalaire est définie indépendamment d'une relation du type   $\langle \vec{x}, \vec{y} \rangle = \|\vec{x}\|\|\vec{y}\| \cos(\vec{x}, \vec{y})$. En réalité, dans la théorie des espaces préhilbertiens réels, la définition du produit scalaire est première et les notion de norme et d'angle viennent après.\\
-Norme : $\|\vec{x}\|=\sqrt{\langle \vec{x}, \vec{x} \rangle}$.\\
-Angle : $\theta=\arccos{\frac{\langle \vec{x}, \vec{y} \rangle}{\|\vec{x}\|\|\vec{y}\| }}$
+A ce stade, les notions de norme et d'angle ne sont pas définies. Le produit scalaire est définie indépendamment d'une relation du type   $\langle \vect{x}, \vect{y} \rangle = \|\vect{x}\|\|\vect{y}\| \cos(\vect{x}, \vect{y})$. En réalité, dans la théorie des espaces préhilbertiens réels, la définition du produit scalaire est première et les notion de norme et d'angle viennent après.\\
+Norme : $\|\vect{x}\|=\sqrt{\langle \vect{x}, \vect{x} \rangle}$.\\
+Angle : $\theta=\arccos{\frac{\langle \vect{x}, \vect{y} \rangle}{\|\vect{x}\|\|\vect{y}\| }}$
 \begin{center}
         \begin{tikzpicture}[very thick]
-          \draw[-latex] (0,0) -- (3,0)  node[above]{$\vec{x}$};
-          \draw[-latex] (0,0) -- (1, 3)  node[ right]{$\vec{y}$};
-			\draw (3,0) coordinate (a) -- (0,0) coordinate (b) -- (1,3) coordinate (c)  pic["$\theta=\arccos{\frac{\langle \vec{x}, \vec{y} \rangle}{\|\vec{x}\|\|\vec{y}\| }}$", draw=orange, <->, angle eccentricity=1.2, angle radius=2cm]
+          \draw[-latex] (0,0) -- (3,0)  node[above]{$\vect{x}$};
+          \draw[-latex] (0,0) -- (1, 3)  node[ right]{$\vect{y}$};
+			\draw (3,0) coordinate (a) -- (0,0) coordinate (b) -- (1,3) coordinate (c)  pic["$\theta=\arccos{\frac{\langle \vect{x}, \vect{y} \rangle}{\|\vect{x}\|\|\vect{y}\| }}$", draw=orange, <->, angle eccentricity=1.2, angle radius=2cm]
     {angle=a--b--c};
         \end{tikzpicture}
 \end{center}
 \end{NB} 
 \begin{Df}[Espace préhilbertien réel]
 Un \defi{espace préhilbertien réel}  est un $\R $-espace vectoriel $E$ muni d'un produit scalaire.\\
-On note le produit scalaire généralement $\langle \vec{x}, \vec{y} \rangle$, $\langle \vec{x} \mid \vec{y} \rangle$, $(\vec{x},\vec{y})$, $(\vec{x}\mid \vec{y})$ ou encore $\vec{x}.\vec{y}$.\\
+On note le produit scalaire généralement $\langle \vect{x}, \vect{y} \rangle$, $\langle \vect{x} \mid \vect{y} \rangle$, $(\vect{x},\vect{y})$, $(\vect{x}\mid \vect{y})$ ou encore $\vect{x}.\vect{y}$.\\
 Un espace préhilbertien réel de dimension finie est appelé \defi{espace euclidien}.
 \end{Df}
 \begin{DfProp}[Produit scalaire canonique sur $\R^n$]
 Le \defi{produit scalaire canonique} est défini par  
-$$\forall \vec{x} = ( x_1, \dots, x_n),\vec{y} =( y_1, \dots, y_n) \in\R^n :\quad \PS{\vec{x}}{\vec{y}} =\sum_{i=1}^n x_i \, y_i.  $$
+$$\forall \vect{x} = ( x_1, \dots, x_n),\vect{y} =( y_1, \dots, y_n) \in\R^n :\quad \PS{\vect{x}}{\vect{y}} =\sum_{i=1}^n x_i \, y_i.  $$
 Si on pose $X=\begin{pmatrix}
 x_1\\ \vdots \\ x_n 
 \end{pmatrix}$ et $Y=\begin{pmatrix}
 y_1\\ \vdots \\ y_n 
-\end{pmatrix}$, on a $\PS{\vec{x}}{\vec{y}}=\transposee{X}Y.$
+\end{pmatrix}$, on a $\PS{\vect{x}}{\vect{y}}=\transposee{X}Y.$
 \end{DfProp}
-Ainsi défini, nous retrouvons le produit scalaire usuel défini dans le plan $\R^2$. Par exemple si $\vec{x} = ( x_1, x_2),\vec{y} =( y_1, y_2)$, on a  $\PS{\vec{x}}{\vec{y}} =x_1 y_1+x_2 y_2$.
-\begin{proof}
+Ainsi défini, nous retrouvons le produit scalaire usuel défini dans le plan $\R^2$. Par exemple si $\vect{x} = ( x_1, x_2),\vect{y} =( y_1, y_2)$, on a  $\PS{\vect{x}}{\vect{y}} =x_1 y_1+x_2 y_2$.
+\begin{Proof}
 \begin{itemize}
-\item \emph{symétrique} : $\PS{\vec{x}}{\vec{y}}=\transposee{X}Y  \overbrace{=}^{\text{matrice carré de taille 1}} \transposee{(\transposee{X}Y)} = \transposee{Y}X =\PS{\vec{y}}{\vec{x}}.$
-\item \emph{bilinéaire} : par symétrie la linéarité par rapport à la seconde variable suffit,   $$\PS{\vec{x}}{\lambda \vec{y}_1+\mu \vec{y}_2}=\transposee{X}(\lambda Y_1+\mu Y_2)  =\lambda \transposee{X} Y_1+\mu \transposee{X} Y_2=\lambda \PS{\vec{x}}{\vec{y}_1}+\mu \PS{\vec{x}}{\vec{y}_2}  .$$
-\item \emph{positive}: $\PS{\vec{x}}{\vec{x}}=\sum_{i=1}^n x_i^2 \geq 0.$
-\item \emph{définie}: $\PS{\vec{x}}{\vec{x}}=\sum_{i=1}^n \overbrace{x_i^2}^{\geq 0} = 0$, alors  $x_i=0$ pour tout i, soit $\vec{x}=\vec{0}_{\R^n}$.
+\item \emph{symétrique} : $\PS{\vect{x}}{\vect{y}}=\transposee{X}Y  \overbrace{=}^{\text{matrice carré de taille 1}} \transposee{(\transposee{X}Y)} = \transposee{Y}X =\PS{\vect{y}}{\vect{x}}.$
+\item \emph{bilinéaire} : par symétrie la linéarité par rapport à la seconde variable suffit,   $$\PS{\vect{x}}{\lambda \vect{y}_1+\mu \vect{y}_2}=\transposee{X}(\lambda Y_1+\mu Y_2)  =\lambda \transposee{X} Y_1+\mu \transposee{X} Y_2=\lambda \PS{\vect{x}}{\vect{y}_1}+\mu \PS{\vect{x}}{\vect{y}_2}  .$$
+\item \emph{positive}: $\PS{\vect{x}}{\vect{x}}=\sum_{i=1}^n x_i^2 \geq 0.$
+\item \emph{définie}: $\PS{\vect{x}}{\vect{x}}=\sum_{i=1}^n \overbrace{x_i^2}^{\geq 0} = 0$, alors  $x_i=0$ pour tout i, soit $\vect{x}=\vect{0}_{\R^n}$.
 \end{itemize}
-\end{proof}
+\end{Proof}
 \begin{Ex}[Non unicité du produit scalaire]
 L'application $(X,Y)\to\transposee{X}\begin{pmatrix}
 2&1 \\1&2
@@ -121,76 +121,76 @@ On a $$\PS{A}{A}=\Tr (\transposee{A}A) = \sum_{j=1}^{n}  (\transposee{A} A)_{j j
 \begin{Df}
 Soit $(E,\PS{.}{.})$ un espace préhilbertien réel.\\
 On appelle \defi{norme associée} l'application $\norme{.}: E\to \R $ définie par 
-$$ \forall \vec{x}\in E:\quad  \norme{\vec{x}} =\sqrt{\PS{\vec{x}}{\vec{x}}}.$$
-On appelle \defi{distance} de $\vec{x}$ à $\vec{y}$ le réel positif $d(\vec{x},\vec{y}) =\norme{\vec{x}-\vec{y}} $.\\ 
-Le vecteur $\vec{x}$ est dit \defi{unitaire} si $\norme{\vec{x}}=1.$
+$$ \forall \vect{x}\in E:\quad  \norme{\vect{x}} =\sqrt{\PS{\vect{x}}{\vect{x}}}.$$
+On appelle \defi{distance} de $\vect{x}$ à $\vect{y}$ le réel positif $d(\vect{x},\vect{y}) =\norme{\vect{x}-\vect{y}} $.\\ 
+Le vecteur $\vect{x}$ est dit \defi{unitaire} si $\norme{\vect{x}}=1.$
 \end{Df}
 \begin{NB}
-Si $\vec{x}\neq \vec{0}$, le vecteur $\frac{\vec{x}}{\norme{\vec{x}}}$ est unitaire.
+Si $\vect{x}\neq \vect{0}$, le vecteur $\frac{\vect{x}}{\norme{\vect{x}}}$ est unitaire.
 \end{NB}
 \begin{Prop}[Identités remarquables de la norme associée]
-Soit $(E,\PS{.}{.})$ un espace préhilbertien réel et $\vec{x},\vec{y}\in E$.
+Soit $(E,\PS{.}{.})$ un espace préhilbertien réel et $\vect{x},\vect{y}\in E$.
 On a
 \begin{itemize}
-\item $\norme{\vec{x}+\vec{y}}^2 = \norme{\vec{x}}^2 + \norme{\vec{y}}^2 + 2\PS{\vec{x}}{\vec{y}}$
-\item $\norme{\vec{x}-\vec{y}}^2 = \norme{\vec{x}}^2 - \norme{\vec{y}}^2 + 2\PS{\vec{x}}{\vec{y}}$
-\item \defi{identité du parallélogramme}:
-  $\norme{\vec{x}+\vec{y}}^2 + \norme{\vec{x}-\vec{y}}^2 = 2\bigl( \norme{\vec{x}}^2 + \norme{\vec{y}}^2 \bigr)$
-\item \defi{identité de polarisation}:
-  $\PS{\vec{x}}{\vec{y}} = \frac14 \bigl( \norme{\vec{x}+\vec{y}}^2 - \norme{\vec{x}-\vec{y}}^2 \bigr)$.
+\item $\norme{\vect{x}+\vect{y}}^2 = \norme{\vect{x}}^2 + \norme{\vect{y}}^2 + 2\PS{\vect{x}}{\vect{y}}$
+\item $\norme{\vect{x}-\vect{y}}^2 = \norme{\vect{x}}^2 + \norme{\vect{y}}^2 - 2\PS{\vect{x}}{\vect{y}}$
+\item \propri{identité du parallélogramme}:
+  $\norme{\vect{x}+\vect{y}}^2 + \norme{\vect{x}-\vect{y}}^2 = 2\bigl( \norme{\vect{x}}^2 + \norme{\vect{y}}^2 \bigr)$
+\item \propri{identité de polarisation}:
+  $\PS{\vect{x}}{\vect{y}} = \frac14 \bigl( \norme{\vect{x}+\vect{y}}^2 - \norme{\vect{x}-\vect{y}}^2 \bigr)$.
 \end{itemize}
-L'identité du parallélogramme signifie que, dans un parallélogramme, la somme des carrés des longueurs des diagonales est égale à la somme des carrés des longueurs des côtés.
+L'identité du parallélogramme signifie que, dans un parallélogramme, la somme des carrés des longueurs des diagonales est égale au double de la somme des carrés des longueurs des côtés.
 \begin{center}
         \begin{tikzpicture}[very thick]
-          \draw[-latex] (0,0) -- (3,0)  node[pos=0.8,,above]{$\vec{x}$};
-          \draw[-latex] (0,0) -- (1, 3)  node[pos=0.8, left]{$\vec{y}$};
-          \draw[-latex] (0,0) -- (4, 3)  node[pos=0.8, right]{$\vec{x}+\vec{y}$};
-          \draw[-latex] (3,0) -- (1, 3)  node[pos=0.8, right]{$\vec{y}-\vec{x}$};
+          \draw[-latex] (0,0) -- (3,0)  node[pos=0.8,,above]{$\vect{x}$};
+          \draw[-latex] (0,0) -- (1, 3)  node[pos=0.8, left]{$\vect{y}$};
+          \draw[-latex] (0,0) -- (4, 3)  node[pos=0.8, right]{$\vect{x}+\vect{y}$};
+          \draw[-latex] (3,0) -- (1, 3)  node[pos=0.8, right]{$\vect{y}-\vect{x}$};
 			\draw[-] (1,3) -- (4, 3)  ;
 			\draw[-] (3,0) -- (4, 3)  ;
         \end{tikzpicture}
 \end{center}
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Pour la première identité, on a :
-$$\norme{\vec{x}+\vec{y}}^2 = \PS{\vec{x}+\vec{y}}{\vec{x}+\vec{y}}\overbrace{=}^{\text{distributivité}}\PS{\vec{x}}{\vec{x}}+\PS{\vec{x}}{\vec{y}}+\PS{\vec{y}}{\vec{x}}+\PS{\vec{y}}{\vec{y}}\overbrace{=}^{\text{symétrie}}\norme{\vec{x}}^2 + \norme{\vec{y}}^2 + 2\PS{\vec{x}}{\vec{y}}.$$
+$$\norme{\vect{x}+\vect{y}}^2 = \PS{\vect{x}+\vect{y}}{\vect{x}+\vect{y}}\overbrace{=}^{\text{distributivité}}\PS{\vect{x}}{\vect{x}}+\PS{\vect{x}}{\vect{y}}+\PS{\vect{y}}{\vect{x}}+\PS{\vect{y}}{\vect{y}}\overbrace{=}^{\text{symétrie}}\norme{\vect{x}}^2 + \norme{\vect{y}}^2 + 2\PS{\vect{x}}{\vec{y}}.$$
 La démonstration de la suivante est similaire. Les deux dernières identités sont des combinaisons des deux premières (+ et -). 
-\end{proof}
+\end{Proof}
 
 \begin{Th}[Inégalité de Cauchy-Schwarz]
 Soit $(E,\PS{.}{.})$ un espace préhilbertien réel.\\
-Alors pour tout $\vec{x},\vec{y}\in E$, on a :
-\[ | \PS{\vec{x}}{\vec{y}} | \leq  \norme{\vec{x}}\cdot \norme{\vec{y}}. \]
-De plus, on a égalité si et seulement si $\vec{x}$ et $\vec{y}$ sont liés.
+Alors pour tout $\vect{x},\vect{y}\in E$, on a :
+\[ | \PS{\vect{x}}{\vect{y}} | \leq  \norme{\vect{x}}\cdot \norme{\vect{y}}. \]
+De plus, on a égalité si et seulement si $\vect{x}$ et $\vect{y}$ sont liés.
 \end{Th}
-\begin{proof}
+\begin{Proof}
 Voir \url{https://www.youtube.com/watch?v=0AVLW1bTpLw}.\\
-Dans $\R^2$, la démonstration est directe car $\PS{\vec{x}}{\vec{y}}=\norme{\vec{x}}\cdot \norme{\vec{y}}\cos(\theta)$  et $|\cos(\theta)|\leq 1$.
+Dans $\R^2$, la démonstration est directe car $\PS{\vect{x}}{\vect{y}}=\norme{\vect{x}}\cdot \norme{\vect{y}}\cos(\theta)$  et $|\cos(\theta)|\leq 1$.
 \begin{center}
         \begin{tikzpicture}[very thick]
-          \draw[-latex] (0,0) -- (3,0)  node[above]{$\vec{x}$};
-          \draw[-latex] (0,0) -- (1, 3)  node[ right]{$\vec{y}$};
+          \draw[-latex] (0,0) -- (3,0)  node[above]{$\vect{x}$};
+          \draw[-latex] (0,0) -- (1, 3)  node[ right]{$\vect{y}$};
 			\draw (3,0) coordinate (a) -- (0,0) coordinate (b) -- (1,3) coordinate (c)  pic["$\theta$", draw=orange, <->, angle eccentricity=1.2, angle radius=2cm]
     {angle=a--b--c};
         \end{tikzpicture}
 \end{center}
-Dans le cas générale, lorsque $\vec{y} =  \vec{0}$, l'énoncé est clairement vrai, par conséquent on supposera $\vec{y}$ non nul.
+Dans le cas générale, lorsque $\vect{y} =  \vect{0}$, l'énoncé est clairement vrai, par conséquent on supposera $\vect{y}$ non nul.
 \begin{itemize}
-\item \textit{Inégalité} Posons, pour tout réel $t$, $P(t)=\norme{\vec{x}+t\vec{y}}^{2}$. Par construction, la fonction $P$ est  positive ou nulle. On a :
-$$P(t)= \PS{\vec{x}+t\vec{y}}{\vec{x}+t\vec{y}}\overbrace{=}^{\text{bilinéarité}} \norme{\vec{x}}^2 +2t\PS{\vec{x}}{\vec{y}} +t^2  \norme{\vec{y}}^2$$
-Comme $\vec{y}$ est non nul, $\norme{\vec{y}}^2$ est non nul également.  $P$ est donc une fonction polynomiale du second degré. $P$ étant positive ou nulle, son discriminant est négatif ou nul  :
-$$4\PS{ \vec{x}}{\vec{y}}^{2}-4\norme{\vec{x}}^{2}\norme{\vec{y}}^{2}\leq 0 $$
+\item \textit{Inégalité} Posons, pour tout réel $t$, $P(t)=\norme{\vect{x}+t\vect{y}}^{2}$. Par construction, la fonction $P$ est  positive ou nulle. On a :
+$$P(t)= \PS{\vect{x}+t\vect{y}}{\vect{x}+t\vect{y}}\overbrace{=}^{\text{bilinéarité}} \norme{\vect{x}}^2 +2t\PS{\vect{x}}{\vect{y}} +t^2  \norme{\vect{y}}^2$$
+Comme $\vect{y}$ est non nul, $\norme{\vect{y}}^2$ est non nul également.  $P$ est donc une fonction polynomiale du second degré. $P$ étant positive ou nulle, son discriminant est négatif ou nul  :
+$$4\PS{ \vect{x}}{\vect{y}}^{2}-4\norme{\vect{x}}^{2}\norme{\vect{y}}^{2}\leq 0 $$
 Comme $t\to\sqrt{t}$ est croissante, on obtient l'inégalité de Cauchy-Schwarz
-\[ | \PS{\vec{x}}{\vec{y}} | \leq  \norme{\vec{x}}\cdot \norme{\vec{y}}. \]
-\item \textit{Égalité} Si $(\vec{x}, \vec{y})$ est une famille liée alors, il existe $\lambda\in\ R$ tel que $\vec{x} = \lambda\vec{y}$. On a:
-$$|\PS{\vec{x}}{\vec{y}}|=|\PS{\lambda\vec{y}}{\vec{y}}|=|\lambda| \norme{\vec{y}}^{2}=\norme{\vec{x}}\norme{\vec{y}}.$$
-Réciproquement, si $|\PS{\vec{x}}{\vec{y}} = \norme{\vec{x}}\norme{\vec{y}}$ alors le discriminant ci-dessus est nul donc $P$ admet une racine réelle (double) $t$, et pour ce $t$ on a
-$$ \norme{\vec{x}+t\vec{y}}^{2}=0\overbrace{\Longrightarrow}^{\text{définie}} \vec{x}+t\vec{y} =\vec{0}.$$
-Donc $(\vec{x}, \vec{y})$ est une famille liée.
+\[ | \PS{\vect{x}}{\vect{y}} | \leq  \norme{\vect{x}}\cdot \norme{\vect{y}}. \]
+\item \textit{Égalité} Si $(\vect{x}, \vect{y})$ est une famille liée alors, il existe $\lambda\in\ R$ tel que $\vect{x} = \lambda\vect{y}$. On a:
+$$|\PS{\vect{x}}{\vect{y}}|=|\PS{\lambda\vect{y}}{\vect{y}}|=|\lambda| \norme{\vect{y}}^{2}=\norme{\vect{x}}\norme{\vect{y}}.$$
+Réciproquement, si $|\PS{\vect{x}}{\vect{y}}| = \norme{\vect{x}}\norme{\vect{y}}$ alors le discriminant ci-dessus est nul donc $P$ admet une racine réelle (double) $t$, et pour ce $t$ on a
+$$ \norme{\vect{x}+t\vect{y}}^{2}=0\overbrace{\Longrightarrow}^{\text{définie}} \vect{x}+t\vect{y} =\vect{0}.$$
+Donc $(\vect{x}, \vect{y})$ est une famille liée.
 \end{itemize} 
-\end{proof}
+\end{Proof}
 \begin{Ex}
-Pour tout $x_1,\dots,x_n\in \R:\quad \left(\sum_{i=1}^n x_i\right)^2\leq n \sum_{i=1}^n x_i$ avec égalité si et seulement si $x_1=\dots=x_n$.\\
+Pour tout $x_1,\dots,x_n\in \R:\quad \left(\sum_{i=1}^n x_i\right)^2\leq n \sum_{i=1}^n x_i^2$ avec égalité si et seulement si $x_1=\dots=x_n$.\\
 Il suffit d'appliquer l'inégalité de Cauchy-Schwarz  aux vecteurs $(x_1,\dots,x_n)$ et $(1,\dots,1)$ de $ \R^n$ muni du produit scalaire canonique.   
 \end{Ex}
 \begin{Ex}
@@ -203,22 +203,22 @@ Il suffit d'appliquer l'inégalité de Cauchy-Schwarz  aux vecteurs $f$ et $x\to 1
 
 \begin{Cor}[Norme sur $E$]
 Soit $(E,\PS{.}{.})$ un espace préhilbertien réel.\\
-Alors la norme associée $\norme{.}$ est une \defi{norme} sur $E$, c'est-à-dire vérifie ces propriétés :
+Alors la norme associée $\norme{.}$ est une \propri{norme} sur $E$, c'est-à-dire vérifie ces propriétés :
 \begin{itemize}
-\item \textit{Homogène :} $\norme{\lambda \vec{x}}=|\lambda|\norme{\vec{x}}.$ 
-\item \textit{Définie :} $\norme{\vec{x}}=0\Longrightarrow \vec{x} =0.$
-\item \text{Inégalité triangulaire :}  $\norme{\vec{x}+\vec{y}}\leq \norme{\vec{x}}+\norme{\vec{y}}.$
+\item \propri{Homogène :} $\norme{\lambda \vect{x}}=|\lambda|\norme{\vect{x}}.$ 
+\item \propri{Définie :} $\norme{\vect{x}}=0\Longrightarrow \vect{x} =0.$
+\item \propri{Inégalité triangulaire :}  $\norme{\vect{x}+\vect{y}}\leq \norme{\vect{x}}+\norme{\vect{y}}.$
 \end{itemize}
 \end{Cor}
 Cette norme fournit une structure d'espace vectoriel normé sur $E$. On peut donc parler de convergence sur $E$, de topologie sur $E$, etc.
-\begin{proof}
+\begin{Proof}
 \begin{itemize}
-\item \textit{Homogène :} $\norme{\lambda \vec{x}}=\sqrt{\PS{\lambda \vec{x}}{\lambda \vec{x}}}=|\lambda|\sqrt{\PS{ \vec{x}}{\vec{x}}}=|\lambda|\norme{\vec{x}}.$ 
-\item \textit{Définie :} $\norme{\vec{x}}=\sqrt{\PS{ \vec{x}}{\vec{x}}}=0\Longrightarrow \PS{ \vec{x}}{\vec{x}} =0\Longrightarrow \vec{x} =0$
-\item \text{Inégalité triangulaire :} $$\norme{\vec{x}+\vec{y}}^2=\norme{\vec{x}}^2+2\PS{\vec{x},\vec{y}} + \norme{\vec{y}}^2\overbrace{\leq}^{\text{Inégalité de Cauchy-Schwarz}}\norme{\vec{x}}^2+2\norme{\vec{x}} \norme{\vec{y}} + \norme{\vec{y}}^2 =(\norme{\vec{x}}+\norme{\vec{y}})^2.$$
-Comme $t\to\sqrt{t}$ est croissante, on obtient l'inégalité : $\norme{\vec{x}+\vec{y}}\leq \norme{\vec{x}}+\norme{\vec{y}}.$
+\item \textit{Homogène :} $\norme{\lambda \vect{x}}=\sqrt{\PS{\lambda \vect{x}}{\lambda \vect{x}}}=|\lambda|\sqrt{\PS{ \vect{x}}{\vect{x}}}=|\lambda|\norme{\vect{x}}.$ 
+\item \textit{Définie :} $\norme{\vect{x}}=\sqrt{\PS{ \vect{x}}{\vect{x}}}=0\Longrightarrow \PS{ \vect{x}}{\vect{x}} =0\Longrightarrow \vect{x} =0$
+\item \textit{Inégalité triangulaire :} $$\norme{\vect{x}+\vect{y}}^2=\norme{\vect{x}}^2+2\PS{\vect{x}}{\vect{y}}+  \norme{\vect{y}}^2\overbrace{\leq}^{\text{Inégalité de Cauchy-Schwarz}}\norme{\vect{x}}^2+2\norme{\vect{x}} \norme{\vect{y}} + \norme{\vect{y}}^2 =(\norme{\vect{x}}+\norme{\vect{y}})^2.$$
+Comme $t\to\sqrt{t}$ est croissante, on obtient l'inégalité : $\norme{\vect{x}+\vect{y}}\leq \norme{\vect{x}}+\norme{\vect{y}}.$
 \end{itemize}
-\end{proof}
+\end{Proof}
 \section{Orthogonalité}
 On considère un un espace préhilbertien réel $(E,\PS{.}{.})$.
 
@@ -227,9 +227,9 @@ On considère un un espace préhilbertien réel $(E,\PS{.}{.})$.
 \subsection{Vecteurs orthogonaux}
 
 \begin{Df}[Vecteurs orthogonaux]
-Soit $\vec{x},\vec{y}\in E$.\\
-On dit que les vecteurs $\vec{x}$ et $\vec{y}$ sont \emph{orthogonaux} si $\PS{\vec{x}}{\vec{y}} = 0$.\\
-On note $\vec{x} \perp \vec{y}$.
+Soit $\vect{x},\vect{y}\in E$.\\
+On dit que les vecteurs $\vect{x}$ et $\vect{y}$ sont \defi{orthogonaux} si $\PS{\vect{x}}{\vect{y}} = 0$.\\
+On note $\vect{x} \perp \vect{y}$.
 \end{Df}
 En géométrie d'Euclide, la notion d'orthogonalité est associée  à l'angle droit et est première par rapport au produit scalaire. Dans cette théorie générale, elle est seconde et est relative au produit scalaire. En particulier, en fonction du choix du produit scalaire, deux vecteurs peuvent être orthogonaux ou non.
 \begin{Ex}
@@ -248,8 +248,8 @@ $E=\mathcal{C}([0,2\pi],\R )$ et $\PS{f}{g}= \int_0^{2\pi} f(t)g(t)\,\mathrm{dt}
 Comme $\PS{\cos}{\sin}=0$, les vecteurs $\cos$ et $\sin$ sont orthogonaux. 
 \end{Ex}   
 \begin{Th}[Pythagore]
-Soit $\vec{x},\vec{y}\in E$.\\
-$$\norme{\vec{x}+\vec{y}}^2=\norme{\vec{x}}^2+\norme{\vec{y}}^2 \Leftrightarrow \PS{\vec{x}}{\vec{y}} = 0.$$
+Soit $\vect{x},\vect{y}\in E$.\\
+$$\norme{\vect{x}+\vect{y}}^2=\norme{\vect{x}}^2+\norme{\vect{y}}^2 \Leftrightarrow \PS{\vect{x}}{\vect{y}} = 0.$$
 \newcommand{\pythagwidth}{3cm}
 \newcommand{\pythagheight}{2cm}
 
@@ -264,6 +264,7 @@ $$\norme{\vec{x}+\vec{y}}^2=\norme{\vec{x}}^2+\norme{\vec{y}}^2 \Leftrightarrow 
   \coordinate  (B1) at (\pythagheight/2, \pythagheight/2);
   \coordinate  (C1) at (-\pythagwidth/2, -\pythagwidth/2);
   \coordinate  (E1) at (\pythagheight*3/2, \pythagwidth);
+  \coordinate  (E2) at (\pythagheight*2/2, \pythagwidth);
   \draw [very thick] (A) -- (C) -- (B) -- (A);
   \newcommand{\ranglesize}{0.3cm}
   \draw (A) -- ++ (0, \ranglesize) -- ++ (-\ranglesize, 0) -- ++ (0, -\ranglesize);
@@ -289,125 +290,125 @@ $$\norme{\vec{x}+\vec{y}}^2=\norme{\vec{x}}^2+\norme{\vec{y}}^2 \Leftrightarrow 
 Illustration du théorème de Pythagore dans le plan
 \end{center}
 \end{Th}
-\begin{proof}
-$\norme{\vec{x}+\vec{y}}^2=\norme{\vec{x}}^2+\norme{\vec{y}}^2+2\PS{\vec{x}}{\vec{y}}$, donc  $\norme{\vec{x}+\vec{y}}^2=\norme{\vec{x}}^2+\norme{\vec{y}}^2 \Leftrightarrow \PS{\vec{x}}{\vec{y}} = 0.$
-\end{proof}
+\begin{Proof}
+$\norme{\vect{x}+\vect{y}}^2=\norme{\vect{x}}^2+\norme{\vect{y}}^2+2\PS{\vect{x}}{\vect{y}}$, donc  $\norme{\vect{x}+\vect{y}}^2=\norme{\vect{x}}^2+\norme{\vect{y}}^2 \Leftrightarrow \PS{\vect{x}}{\vect{y}} = 0.$
+\end{Proof}
 \begin{Prop}
 Le vecteur nul est le seul vecteur orthogonal à tout les autres.
 \end{Prop}
-\begin{proof}
-Analyse : Soit $\vec{x}$ un vecteur orthogonal à tout les autres. En particulier, il est orthogonal à lui-même donc $\PS{\vec{x}}{\vec{x}}=0$, donc  $\vec{x}=\vec{0}$.\\
+\begin{Proof}
+Analyse : Soit $\vect{x}$ un vecteur orthogonal à tout les autres. En particulier, il est orthogonal à lui-même donc $\PS{\vect{x}}{\vect{x}}=0$, donc  $\vect{x}=\vect{0}$.\\
 Synthèse : on vérifie que le vecteur nul est orthogonal à tout les autres.
-\end{proof}
+\end{Proof}
 \subsection{Famille orthogonales et orthonormales}   
 \begin{Df}
-Soit $\mathcal{F} = (\vec{x}_1,\dots,\vec{x}_n)$ une famille de vecteurs de $E$.\\
+Soit $\mathcal{F} = (\vect{x}_1,\dots,\vect{x}_n)$ une famille de vecteurs de $E$.\\
 La famille $\mathcal{F}$ est \defi{orthogonale} si 
-$$\forall i,j\in \ccro{1}{n}:\quad i\neq j \Rightarrow \PS{\vec{x}_i}{\vec{x}_j}=0.$$
-La famille $\mathcal{F}$ est \defi{orthonormale}  si la famille est orthogonale et si les vecteurs sont unitaires ($\forall i\in \ccro{1}{n}:\norme{\vec{x}_i}=1$).\\
+$$\forall i,j\in \Intf{1}{n}:\quad i\neq j \Rightarrow \PS{\vect{x}_i}{\vect{x}_j}=0.$$
+La famille $\mathcal{F}$ est \defi{orthonormale}  si la famille est orthogonale et si les vecteurs sont unitaires ($\forall i\in \Intf{1}{n}:\norme{\vect{x}_i}=1$).\\
 La famille $\mathcal{F}$ est une \defi{base orthonormale} si la famille une base et une famille orthonormale.
 \end{Df}
 \begin{Th}[Pythagore généralisée]
-Soit $(\vec{x}_1,\dots,\vec{x}_n)$ une famille orthogonale de vecteurs de $E$.\\
-Alors \[ \norme{\sum_{i=1}^n \vec{x}_i }^2 = \sum_{i=1}^n \norme{\vec{x}_i}^2. \]
+Soit $(\vect{x}_1,\dots,\vect{x}_n)$ une famille orthogonale de vecteurs de $E$.\\
+Alors \[ \norme{\sum_{i=1}^n \vect{x}_i }^2 = \sum_{i=1}^n \norme{\vect{x}_i}^2. \]
 \end{Th}
 \begin{Prop}[libre]
 Une famille orthogonale dont tous les vecteurs sont non nuls est libre.\\
 En particulier, une famille orthonormale est libre.
 \end{Prop}
 Si $E$ est de dimension finie, une famille orthonormale contient au plus $\dim E$ vecteurs. Si elle contient $\dim E$, c'est une base. 
-\begin{proof}
-Soit $(\vec{x}_1,\dots,\vec{x}_n)$ une famille orthogonale dont tous les vecteurs sont non nuls.\\
-Soit $\lambda_1,\dots,\lambda_n\in\R $ tel que $\lambda_1\vec{x}_1+\dots+\lambda_n\vec{x}_n=\vec{0}$.\\
-Pour tout $j\in \ccro{1}{n}$, on a :
-$$\PS{\vec{x}_j}{\sum_{i=1}^n\lambda_i\vec{x}_i}=\sum_{i=1}^n\lambda_i\PS{\vec{x}_j}{\vec{x}_i}\overbrace{=}^{\text{famille orthogonale}}\lambda_j \norme{\vec{x}_j}^2=0 $$ 
-Comme $\norme{\vec{x}_j}\neq 0$, $\lambda_j=0$ pour tout $j\in \ccro{1}{n}$. Donc la famille est libre.
-\end{proof}
+\begin{Proof}
+Soit $(\vect{x}_1,\dots,\vect{x}_n)$ une famille orthogonale dont tous les vecteurs sont non nuls.\\
+Soit $\lambda_1,\dots,\lambda_n\in\R $ tel que $\lambda_1\vect{x}_1+\dots+\lambda_n\vect{x}_n=\vect{0}$.\\
+Pour tout $j\in \Intf{1}{n}$, on a :
+$$\PS{\vect{x}_j}{\sum_{i=1}^n\lambda_i\vect{x}_i}=\sum_{i=1}^n\lambda_i\PS{\vect{x}_j}{\vect{x}_i}\overbrace{=}^{\text{famille orthogonale}}\lambda_j \norme{\vect{x}_j}^2=0 $$ 
+Comme $\norme{\vect{x}_j}\neq 0$, $\lambda_j=0$ pour tout $j\in \Intf{1}{n}$. Donc la famille est libre.
+\end{Proof}
 \begin{Prop}[Coordonnées dans une base orthonormale]
-Soit $E$ un espace euclidien de dimension $n$ et $(\vec{e}_1,\dots,\vec{e}_n)$ une base orthonormale de $E$.
+Soit $E$ un espace euclidien de dimension $n$ et $(\vect{e}_1,\dots,\vect{e}_n)$ une base orthonormale de $E$.
 Alors
-$$\forall \vec{x}\in E :  \quad  \vec{x}=\PS{\vec{x}}{\vec{e}_1} \vec{e}_1+\dots+\PS{\vec{x}}{\vec{e}_n}\vec{e}_n=\sum_{i=0}^n\PS{\vec{x}}{\vec{e}_i}\vec{e}_i.$$ 
+$$\forall \vect{x}\in E :  \quad  \vect{x}=\PS{\vect{x}}{\vect{e}_1} \vect{e}_1+\dots+\PS{\vect{x}}{\vect{e}_n}\vect{e}_n=\sum_{i=0}^n\PS{\vect{x}}{\vect{e}_i}\vect{e}_i.$$ 
 \end{Prop}
-\begin{proof}
-Soit $\vec{x}\in E$. Il existe $x_1,\dots,x_n\in\R$ tel que $\vec{x}= x_1 \vec{e}_1+\dots+x_n\vec{e}_n=\sum_{i=0}^n x_i\vec{e}_i.$\\
-Pour tout $j\in \ccro{1}{n}$, on a :
-$$\PS{\vec{x}}{\vec{e}_j} = \PS{\sum_{i=1}^nx_i\vec{e}_i}{\vec{e}_j}=\sum_{i=1}^nx_i\PS{\vec{e}_i}{\vec{e}_j}\overbrace{=}^{\text{famille orthonormale}}x_j.$$ 
-\end{proof} 
+\begin{Proof}
+Soit $\vect{x}\in E$. Il existe $x_1,\dots,x_n\in\R$ tel que $\vect{x}= x_1 \vect{e}_1+\dots+x_n\vect{e}_n=\sum_{i=0}^n x_i\vect{e}_i.$\\
+Pour tout $j\in \Intf{1}{n}$, on a :
+$$\PS{\vect{x}}{\vect{e}_j} = \PS{\sum_{i=1}^nx_i\vect{e}_i}{\vect{e}_j}=\sum_{i=1}^nx_i\PS{\vect{e}_i}{\vect{e}_j}\overbrace{=}^{\text{famille orthonormale}}x_j.$$ 
+\end{Proof} 
 \begin{Prop}[Expression du produit scalaire et de la norme dans une base orthonormale]
-Soit $E$ un espace euclidien de dimension $n$ et $(\vec{e}_1,\dots,\vec{e}_n)$ une base orthonormale de $E$.
-Soit $\vec{x}= \sum_{i=1}^n x_i \vec{e}_i,\vec{y}=\sum_{i=1}^n y_i \vec{e}_i\in E$.\\
+Soit $E$ un espace euclidien de dimension $n$ et $(\vect{e}_1,\dots,\vect{e}_n)$ une base orthonormale de $E$.
+Soit $\vect{x}= \sum_{i=1}^n x_i \vect{e}_i,\vect{y}=\sum_{i=1}^n y_i \vect{e}_i\in E$.\\
 Alors :
-$$\PS{\vec{x}}{\vec{y}}=\sum_{i=1}^n x_iy_j=\sum_{i=1}^n \PS{\vec{x}}{\vec{e}_i}\PS{\vec{y}}{\vec{e}_i}=   \transposee {X}Y\quad \text{et}\quad \norme{\vec{x}}^2=\sum_{i=1}^n \PS{\vec{x}}{\vec{e}_i}^2 =\transposee {X}X$$
+$$\PS{\vect{x}}{\vect{y}}=\sum_{i=1}^n x_iy_j=\sum_{i=1}^n \PS{\vect{x}}{\vect{e}_i}\PS{\vect{y}}{\vect{e}_i}=   \transposee {X}Y\quad \text{et}\quad \norme{\vect{x}}^2=\sum_{i=1}^n \PS{\vect{x}}{\vect{e}_i}^2 =\transposee {X}X$$
 \end{Prop} 
-\begin{proof}
-$$\PS{\vec{x}}{\vec{y}} = \PS{\sum_{i=1}^n x_i \vec{e}_i }{\sum_{j=1}^n y_j \vec{e}_j}\overbrace{=}^{\text{bilinéarité}}\sum_{i=1}^n\sum_{j=1}^n x_i y_j\PS{  \vec{e}_i }{ \vec{e}_j}=\sum_{i=1}^n x_iy_j. $$
-\end{proof}
+\begin{Proof}
+$$\PS{\vect{x}}{\vect{y}} = \PS{\sum_{i=1}^n x_i \vect{e}_i }{\sum_{j=1}^n y_j \vect{e}_j}\overbrace{=}^{\text{bilinéarité}}\sum_{i=1}^n\sum_{j=1}^n x_i y_j\PS{  \vect{e}_i }{ \vect{e}_j}=\sum_{i=1}^n x_iy_j. $$
+\end{Proof}
 Ainsi, en dimension finie, tous les produits scalaires se ramènent au produit scalaire canonique via le choix d'une base orthonormale. Dans le cours sur les espaces vectoriels, on a prouvé l'existence d'une base. Le théorème prouve que l'on peut construire une base orthonormale à partir d'une base quelconque.  
 
 \begin{Th}[Algorithme d'orthonormalisation de Gram-Schmidt]
-Soit $(\vec{x}_1,\dots,\vec{x}_p)$ une famille \emph{libre} de vecteurs de $E$.\\
-Alors il existe une \emph{unique} famille $(\vec{e}_1,\dots,\vec{e}_p)$  de vecteurs de $E$
+Soit $(\vect{x}_1,\dots,\vect{x}_p)$ une famille \emph{libre} de vecteurs de $E$.\\
+Alors il existe une \propri{unique} famille $(\vect{e}_1,\dots,\vect{e}_p)$  de vecteurs de $E$
 telle que
 \begin{itemize}
-\item la famille $(\vec{e}_1,\dots,\vec{e}_p)$ est orthonormale,
-\item pour tout $n\in \ccro{1,p}$, \[ Vect (\vec{x}_1,\dots,\vec{x}_n) = Vect (\vec{e}_1,\dots,\vec{e}_n), \]
-\item pour tout $n\in \ccro{1,p}$, $\PS{\vec{x}_n}{\vec{e}_n} > 0$.
+\item la famille $(\vect{e}_1,\dots,\vect{e}_p)$ est orthonormale,
+\item pour tout $n\in \Intf{1}{p}$, \[ \Vectt (\vect{x}_1,\dots,\vect{x}_n) = \Vectt (\vect{e}_1,\dots,\vect{e}_n), \]
+\item pour tout $n\in \Intf{1}{p}$, $\PS{\vect{x}_n}{\vect{e}_n} > 0$.
 \end{itemize}
 De plus, on peut la construire avec les formules suivantes:
 \begin{itemize}
-\item $\vec{e}_1 = \frac{\vec{x}_1}{\norme{\vec{x}_1}}$;
-\item pour $n\in \ccro{2,p}$, on note
-  \[ \vec{e'}_n = \vec{x}_n - \sum_{k=1}^{n-1} \PS{\vec{e}_k}{\vec{x}_n} \vec{e}_k; \]
-	\[\vec{e}_n = \frac{\vec{e'}_n}{\norme{\vec{e'}_n}}.\]
+\item $\vect{e}_1 = \frac{\vect{x}_1}{\norme{\vect{x}_1}}$;
+\item pour $n\in \Intf{2}{p}$, on note
+  \[ \vect{e'}_n = \vect{x}_n - \sum_{k=1}^{n-1} \PS{\vect{e}_k}{\vect{x}_n} \vect{e}_k; \]
+	\[\vect{e}_n = \frac{\vect{e'}_n}{\norme{\vect{e'}_n}}.\]
 \end{itemize}
 \end{Th}
-\begin{proof}
+\begin{Proof}
 Si $n=2$, on applique cette algorithme :
 \begin{enumerate}
-\item \textit{Normaliser $\vec{x_1}$ : } $\vec{e_1}=\frac{\vec{x_1}}{\norme{\vec{x_1}}}$
-\item \textit{Projeter $\vec{x_2}$ sur la droite vectorielle  $\R \vec{x_1}$ : }$\PS{\vec{x_2}}{\vec{e_1}}\vec{e_1}$
-\item \textit{Retrancher à $\vec{x_2}$ la composante suivante $\vec{e_1}$  : } $\vec{e'_2}= \vec{x_2} - \PS{\vec{x_2}}{\vec{e_1}}\vec{e_1}$
-\item \textit{Normaliser $\vec{e'_2}$ : } $\vec{e_2}=\frac{\vec{e'_2}}{\norme{\vec{e'_2}}} $
+\item \textit{Normaliser $\vect{x_1}$ : } $\vect{e_1}=\frac{\vect{x_1}}{\norme{\vect{x_1}}}$
+\item \textit{Projeter $\vect{x_2}$ sur la droite vectorielle  $\R \vect{x_1}$ : }$\PS{\vect{x_2}}{\vect{e_1}}\vect{e_1}$
+\item \textit{Retrancher à $\vect{x_2}$ la composante suivante $\vect{e_1}$  : } $\vect{e'_2}= \vect{x_2} - \PS{\vect{x_2}}{\vect{e_1}}\vect{e_1}$
+\item \textit{Normaliser $\vect{e'_2}$ : } $\vect{e_2}=\frac{\vect{e'_2}}{\norme{\vect{e'_2}}} $
 \end{enumerate}
 \begin{center}
 \begin{tikzpicture}[thick, scale=2]
 %\draw[->,very thick] (0,0) -- +(100pt,0pt);
 %\draw[->,very thick] (0,0) -- +(0pt,100pt);
 \draw[->,blue] (0,0) -- +(90pt,30pt);
-\draw[->,green] (0,0) -- +(30pt,10pt);
-\draw[->,green] (0,0) -- +(-10pt,30pt);
 \draw[->,blue] (0,0) -- +(30pt,60pt);
 \draw[->,red] (0,0) -- +(45pt,15pt);
 \draw[->,red] (0,0) -- +(-15pt,45pt);
+\draw[->,green] (0,0) -- +(30pt,10pt);
+\draw[->,green] (0,0) -- +(-10pt,30pt);
 \draw[dashed,gray] (45pt,15pt) -- (30pt,60pt);
 \draw[dashed,gray] (-15pt,45pt) -- (30pt,60pt);
 \draw (49.7434pt,16.5811pt) -- (48.1623pt,21.3246pt);
 \draw (43.4189pt,19.7434pt) -- (48.1623pt,21.3246pt);
-\draw (90pt,30pt) node[anchor=west] {${\color{blue} \vec{x_1}}$};
-\draw (25pt,7pt) node[anchor=west] {${\color{green} \vec{e_1}=\frac{\vec{x_1}}{\norme{\vec{x_1}}} }$};
-\draw (30pt,60pt) node[anchor=west] {${\color{blue} \vec{x_2}}$};
-\draw (46pt,11pt) node[anchor=west] {${\color{red} \PS{\vec{x_2}}{\vec{e_1}}\vec{e_1}}$};
-\draw (-22pt,45pt) node[anchor=south] {${\color{red}\vec{e'_2}=\vec{x_2} -\PS{\vec{x_2}}{\vec{e_1}}\vec{e_1} }$};
-\draw (-35pt,30pt) node[anchor=west] {${\color{green} \vec{e_2}=\frac{\vec{e'_2}}{\norme{\vec{e'_2}}} }$};
+\draw (90pt,30pt) node[anchor=west] {${\color{blue} \vect{x_1}}$};
+\draw (25pt,0pt) node[anchor=west] {${\color{green} \vect{e_1}=\frac{\vect{x_1}}{\norme{\vect{x_1}}} }$};
+\draw (30pt,60pt) node[anchor=west] {${\color{blue} \vect{x_2}}$};
+\draw (46pt,11pt) node[anchor=west] {${\color{red} \PS{\vect{x_2}}{\vect{e_1}}\vect{e_1}}$};
+\draw (-22pt,45pt) node[anchor=south] {${\color{red}\vect{e'_2}=\vect{x_2} -\PS{\vect{x_2}}{\vect{e_1}}\vect{e_1} }$};
+\draw (-35pt,30pt) node[anchor=west] {${\color{green} \vect{e_2}=\frac{\vect{e'_2}}{\norme{\vect{e'_2}}} }$};
 \end{tikzpicture}
 \end{center}
-Plus généralement, le procédé de Gram-Schmidt construit $\vec{e_k}$ en retranchant à  $\vec{x_k}$ ses composantes selon $\vec{e_1},\dots, \vec{e_{k-1}}$ puis en le normalisant  :\\
+Plus généralement, le procédé de Gram-Schmidt construit $\vect{e_k}$ en retranchant à  $\vect{x_k}$ ses composantes selon $\vect{e_1},\dots, \vect{e_{k-1}}$ puis en le normalisant  :\\
 \begin{tabular}{ll}
-$\vec{e'_1}=\vec{x_1}$&$\vec{e_1}=\frac{\vec{e'_1}}{\norme{\vec{e'_1}}}$ \\
-$\vec{e'_2}=\vec{x_2}-\PS{\vec{x_2}}{\vec{e_1}}\vec{e_1}$&$\vec{e_2}=\frac{\vec{e'_2}}{\norme{\vec{e'_2}}}$ \\
-$\vec{e'_3}=\vec{x_2}-\PS{\vec{x_3}}{\vec{e_1}}\vec{e_1}-\PS{\vec{x_3}}{\vec{e_2}}\vec{e_2}$&$\vec{e_3}=\frac{\vec{e'_3}}{\norme{\vec{e'_3}}}$ \\
+$\vect{e'_1}=\vect{x_1}$&$\vect{e_1}=\frac{\vect{e'_1}}{\norme{\vect{e'_1}}}$ \\
+$\vect{e'_2}=\vect{x_2}-\PS{\vect{x_2}}{\vect{e_1}}\vect{e_1}$&$\vect{e_2}=\frac{\vect{e'_2}}{\norme{\vect{e'_2}}}$ \\
+$\vect{e'_3}=\vect{x_2}-\PS{\vect{x_3}}{\vect{e_1}}\vect{e_1}-\PS{\vect{x_3}}{\vect{e_2}}\vect{e_2}$&$\vect{e_3}=\frac{\vect{e'_3}}{\norme{\vect{e'_3}}}$ \\
 $\vdots$&$\vdots$ \\
-$\vec{e'_k}=\vec{x_k}-\sum_{i=1}^{k-1}\PS{\vec{x_k}}{\vec{e_i}}\vec{e_i}$&$\vec{e_k}=\frac{\vec{e'_k}}{\norme{\vec{e'_k}}}$ \\
+$\vect{e'_k}=\vect{x_k}-\sum_{i=1}^{k-1}\PS{\vect{x_k}}{\vect{e_i}}\vect{e_i}$&$\vect{e_k}=\frac{\vect{e'_k}}{\norme{\vect{e'_k}}}$ \\
 \end{tabular}\\
-Démontrons par récurrence que $\vec{e'_k}$ est orthogonal à la famille $(\vec{e_1},\dots, \vec{e_{k-1})}$ pour $k\in \ccro{1}{n}$.\\
+Démontrons par récurrence que $\vect{e'_k}$ est orthogonal à la famille $(\vect{e_1},\dots, \vect{e_{k-1})}$ pour $k\in \Intf{1}{n}$.\\
 \begin{itemize}
-\item \textit{Initialisation }: le vecteur  $\vec{e'_1}$ est orthogonal à la famille vide
+\item \textit{Initialisation }: le vecteur  $\vect{e'_1}$ est orthogonal à la famille vide
 \item \textit{Hérédité }: supposons la propriété vraie au rang $k$ et montrons qu'elle est vraie au rang $k+1$.\\
-Soit $j\in\ccro{1}{k-1}$. On a :
-$$\PS{\vec{e'_k}}{\vec{e_j}}=\PS{\vec{x_k}-\sum_{i=1}^{k-1}\PS{\vec{x_k}}{\vec{e_i}}\vec{e_i}}{\vec{e_j}}=\PS{\vec{x_k}}{\vec{e_j}}- \overbrace{\sum_{i=1}^{k-1}\PS{\vec{x_k}}{\vec{e_i}}\PS{ \vec{e_i}} {\vec{e_j}}}^{\text{ d'après HR } \PS{\vec{e_i}}{\vec{e_j}}=\delta_{i,j}} =\PS{\vec{x_k}}{\vec{e_j}}-\PS{\vec{x_k}}{\vec{e_j}}\PS{ \vec{e_j}} {\vec{e_j}}=0$$
+Soit $j\in\Intf{1}{k-1}$. On a :
+$$\PS{\vect{e'_k}}{\vect{e_j}}=\PS{\vect{x_k}-\sum_{i=1}^{k-1}\PS{\vect{x_k}}{\vect{e_i}}\vect{e_i}}{\vect{e_j}}=\PS{\vect{x_k}}{\vect{e_j}}- \overbrace{\sum_{i=1}^{k-1}\PS{\vect{x_k}}{\vect{e_i}}\PS{ \vect{e_i}} {\vect{e_j}}}^{\text{ d'après HR } \PS{\vect{e_i}}{\vect{e_j}}=\delta_{i,j}} =\PS{\vect{x_k}}{\vect{e_j}}-\PS{\vect{x_k}}{\vect{e_j}}\PS{ \vect{e_j}} {\vect{e_j}}=0$$
 \end{itemize}
-Donc la famille $\vec{e_1},\dots, \vec{e_{n}}$ est orthogonal et du fait de la normalisation orthonormal. 
-\end{proof}
+Donc la famille $\vect{e_1},\dots, \vect{e_{n}}$ est orthogonal et du fait de la normalisation orthonormal. 
+\end{Proof}
 \begin{Ex}
 Soit $\R^2$ muni du produit scalaire  $\PS{X}{Y}=\transposee{X}\begin{pmatrix}
 2&1 \\1&2
@@ -415,22 +416,22 @@ Soit $\R^2$ muni du produit scalaire  $\PS{X}{Y}=\transposee{X}\begin{pmatrix}
 Soit $((1,0),(0,1))$ la base canonique de $\R^2$.\\
 Construisons une base orthonormale.
 \begin{enumerate}
-\item \textit{Normaliser $(1,0)$ : } $$\vec{e_1}=\frac{(1,0)}{\norme{\vec{(1,0)}}}=\frac{(1,0)}{\sqrt{\begin{pmatrix}
+\item \textit{Normaliser $(1,0)$ : } $$\vect{e_1}=\frac{(1,0)}{\norme{\vect{(1,0)}}}=\frac{(1,0)}{\sqrt{\begin{pmatrix}
 1 &0
 \end{pmatrix}\begin{pmatrix}
 2&1 \\1&2
 \end{pmatrix}\begin{pmatrix}
 1 \\0
 \end{pmatrix}}}=(\frac{1}{\sqrt{2}},0)$$
-\item \textit{Projeter $(0,1)$ sur la droite vectorielle  $\R (1,0)$ : }$$\PS{\vec{x_2}}{\vec{e_1}}\vec{e_1}=\PS{(0,1)}{(\frac{1}{\sqrt{2}},0)}(\frac{1}{\sqrt{2}},0)=\left(\begin{pmatrix}
+\item \textit{Projeter $(0,1)$ sur la droite vectorielle  $\R (1,0)$ : }$$\PS{\vect{x_2}}{\vect{e_1}}\vect{e_1}=\PS{(0,1)}{(\frac{1}{\sqrt{2}},0)}(\frac{1}{\sqrt{2}},0)=\left(\begin{pmatrix}
 0 &1
 \end{pmatrix}\begin{pmatrix}
 2&1 \\1&2
 \end{pmatrix}\begin{pmatrix}
 \frac{1}{\sqrt{2}} \\0
 \end{pmatrix}\right)(\frac{1}{\sqrt{2}},0) = (\frac{1}{2},0).  $$
-\item \textit{Retrancher à $(0,1)$ la composante suivante $(\frac{1}{\sqrt{2}},0)$  : } $$\vec{e'_2}= (0,1) - (\frac{1}{2},0)=(-\frac{1}{2},1)$$
-\item \textit{Normaliser $(-\frac{1}{2},1)$ : } $$\vec{e_2}=\frac{(-\frac{1}{2},1)}{\norme{(-\frac{1}{2},1)}}= \frac{(-\frac{1}{2},1)}{\sqrt{3/2}}=(-\frac{1}{\sqrt{6}},\sqrt{\frac 2 3})$$
+\item \textit{Retrancher à $(0,1)$ la composante suivante $(\frac{1}{\sqrt{2}},0)$  : } $$\vect{e'_2}= (0,1) - (\frac{1}{2},0)=(-\frac{1}{2},1)$$
+\item \textit{Normaliser $(-\frac{1}{2},1)$ : } $$\vect{e_2}=\frac{(-\frac{1}{2},1)}{\norme{(-\frac{1}{2},1)}}= \frac{(-\frac{1}{2},1)}{\sqrt{3/2}}=(-\frac{1}{\sqrt{6}},\sqrt{\frac 2 3})$$
 \end{enumerate}
 
 \end{Ex}
@@ -441,7 +442,7 @@ Tout espace euclidien admet une base orthonormale.
 \begin{Df}[Orthogonal d'un espace vectoriel]
 Soit $F$ un sous-espace vectoriel de $E$.\\
 On appelle orthogonal de $F$, l'ensemble :
-$$F^{\perp}=\{\forall \vec{x}\in E : \forall \vec{y}\in F \quad \PS{\vec{x}}{\vec{y}}=0 \}. $$ 
+$$F^{\perp}=\{ \vect{x}\in E : \forall \vect{y}\in F \quad \PS{\vect{x}}{\vect{y}}=0 \}. $$ 
   \centering
 \begin{tikzpicture}
 \draw (0.3,0.2) node{$F$};
@@ -459,27 +460,27 @@ $$F^{\perp}=\{\forall \vec{x}\in E : \forall \vec{y}\in F \quad \PS{\vec{x}}{\ve
  \item Si $F\subset G$, alors $G^{\perp}\subset F^{\perp}.$ 
 \end{enumerate}
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 \begin{enumerate}
 \item 
 \begin{itemize}
-\item \textit{Non vide} : $\vec{0}\in F^{\perp}$ car  $\forall \vec{y}\in F \quad \PS{\vec{0}}{\vec{y}}=0$.
-\item  \textit{Stabilité} : Soit $\vec{x},\vec{y}\in F^{\perp}$ et$\lambda,\mu\in\R$.
-$$\forall \vec{z}\in F:  \quad \PS{\lambda\vec{x}+\mu \vec{y}}{\vec{z}}=\lambda\overbrace{\PS{\vec{x}}{\vec{z}}}^{=0\text{ car }\vec{x}\in F^{\perp}}+\mu\overbrace{\PS{ \vec{y}}{\vec{z}}}^{=0\text{ car }\vec{y}\in F^{\perp}}=0.$$
+\item \textit{Non vide} : $\vect{0}\in F^{\perp}$ car  $\forall \vect{y}\in F \quad \PS{\vect{0}}{\vect{y}}=0$.
+\item  \textit{Stabilité} : Soit $\vect{x},\vect{y}\in F^{\perp}$ et$\lambda,\mu\in\R$.
+$$\forall \vect{z}\in F:  \quad \PS{\lambda\vect{x}+\mu \vect{y}}{\vect{z}}=\lambda\overbrace{\PS{\vect{x}}{\vect{z}}}^{=0\text{ car }\vect{x}\in F^{\perp}}+\mu\overbrace{\PS{ \vect{y}}{\vect{z}}}^{=0\text{ car }\vect{y}\in F^{\perp}}=0.$$
 \end{itemize}
 $F^{\perp}$ est bien un sous-espace vectoriel de $E$.
 \item  
-Soit $\vec{x}\in F\cap F^{\perp}$.  Donc $\PS{\overbrace{\vec{x}}^{\in F}}{\overbrace{\vec{x}}^{\in F^{\perp}}}=0$. Comme le produit scalaire est définie,  $\vec{x}=\vec{0}$.\\
+Soit $\vect{x}\in F\cap F^{\perp}$.  Donc $\PS{\overbrace{\vect{x}}^{\in F}}{\overbrace{\vect{x}}^{\in F^{\perp}}}=0$. Comme le produit scalaire est définie,  $\vect{x}=\vect{0}$.\\
 $F$ et $F^{\perp}$ sont en somme directe.
-\item Soit $\vec{x}\in G^{\perp}$. Soit $\vec{y}\in F$. Comme $F\subset G$, on a  $\PS{\vec{x}}{\vec{y}}=0$ puisque $\vec{x}\in G^{\perp}$. \\
-On a bien $\vec{x}\in G^{\perp}$.
+\item Soit $\vect{x}\in G^{\perp}$. Soit $\vect{y}\in F$. Comme $F\subset G$, on a  $\PS{\vect{x}}{\vect{y}}=0$ puisque $\vect{x}\in G^{\perp}$. \\
+On a bien $\vect{x}\in G^{\perp}$.
 \end{enumerate}
-\end{proof}
+\end{Proof}
 \begin{Ex}
-On a $\{\vec{0_E}\}^{\perp}=E$ et $E^{\perp}=\{\vec{0_E}\}$ car le seul vecteur de $E$ orthogonal à tout vecteur est le vecteur nul. 
+On a $\{\vect{0_E}\}^{\perp}=E$ et $E^{\perp}=\{\vect{0_E}\}$ car le seul vecteur de $E$ orthogonal à tout vecteur est le vecteur nul. 
 \end{Ex}
 \begin{Prop}
-$\vec{x}\in F^{\perp}$ si et seulement si $\vec{x}$ est orthogonal aux vecteurs d'une base quelconque de $F$. 
+$\vect{x}\in F^{\perp}$ si et seulement si $\vect{x}$ est orthogonal aux vecteurs d'une base quelconque de $F$. 
 \end{Prop}
 
 \begin{Prop}[Supplémentaire orthogonal d'un sous espace vectoriel de dimension finie]
@@ -490,44 +491,45 @@ En particulier, si $E$ est aussi de dimension finie : $\dim F^{\perp}+\dim F=\di
 \begin{tikzpicture}[scale=1.5]
 \draw (0.3,0.2) node{$F$};
 \filldraw[draw=black,fill=blue, fill opacity=0.2] (0,0)--(1,1.5)--(5,1.5)--(4,0)--(0,0) ;
-\draw[->] (2.25,0.75)--(4,2.5)node[pos=0.5,left]{$\vec{x}$} ;
-\draw[->] (2.25,0.75)--(4,1)node[pos=0.5,above,right]{$\vec{x_F}=\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}} \vec{e_i}$} ;
-\draw[->] (4,1)--(4,2.5)node[pos=0.5,right]{$\vec{x_{F^{\perp}}}=\vec{x}-\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}} \vec{e_i}$} ;
+\draw[->] (2.25,0.75)--(4,2.5)node[pos=0.5,left]{$\vect{x}$} ;
+\draw[->] (2.25,0.75)--(4,1)node[pos=0.5,above,right]{$\vect{x_F}=\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}} \vect{e_i}$} ;
+\draw[->] (4,1)--(4,2.5)node[pos=0.5,right]{$\vect{x_{F^{\perp}}}=\vect{x}-\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}} \vect{e_i}$} ;
 \draw[] (4,1.2)--(3.8,1.18)--(3.8,0.98) ;		                    
 \end{tikzpicture}
 \end{center}
 \end{Prop}
-\begin{proof}
-Soit $(\vec{e_1},\dots,\vec{e_p})$ une base orthonormale de $F$. Soit $\vec{x}\in E$.
+\begin{Proof}
+Soit $(\vect{e_1},\dots,\vect{e_p})$ une base orthonormale de $F$. Soit $\vect{x}\in E$.
 \begin{itemize}
-\item  \textit{Analyse} : on suppose qu'il existe $\vec{x_F}=\sum_{i=1}^p x_i \vec{e_i}\in F$ et $\vec{x_{F^{\perp}}}\in F^{\perp}$ tel que :
-$$\vec{x} = \sum_{i=1}^p x_i \vec{e_i} + \vec{x_{F^{\perp}}}.$$
-Pour tout $k\ccro{1}{p}$, on a :
-$$\PS{\vec{x}}{\vec{e_k}} = \PS{\sum_{i=1}^p x_i \vec{e_i} + \vec{x_{F^{\perp}}}}{\vec{e_k}}=\sum_{i=1}^p x_i\PS{ \vec{e_i}}{\vec{e_k}} + \PS{\vec{x_{F^{\perp}}}}{\vec{e_k}}=x_k.$$
-Finalement  $\vec{x_F}=\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}} \vec{e_i}$ et $\vec{x_{F^{\perp}}}=\vec{x}-\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}} \vec{e_i}$.
+\item  \textit{Analyse} : on suppose qu'il existe $\vect{x_F}=\sum_{i=1}^p x_i \vect{e_i}\in F$ et $\vect{x_{F^{\perp}}}\in F^{\perp}$ tel que :
+$$\vect{x} = \sum_{i=1}^p x_i \vect{e_i} + \vect{x_{F^{\perp}}}.$$
+Pour tout $k\Intf{1}{p}$, on a :
+$$\PS{\vect{x}}{\vect{e_k}} = \PS{\sum_{i=1}^p x_i \vect{e_i} + \vect{x_{F^{\perp}}}}{\vect{e_k}}=\sum_{i=1}^p x_i\PS{ \vect{e_i}}{\vect{e_k}} + \PS{\vect{x_{F^{\perp}}}}{\vect{e_k}}=x_k.$$
+Finalement  $\vect{x_F}=\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}} \vect{e_i}$ et $\vect{x_{F^{\perp}}}=\vect{x}-\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}} \vect{e_i}$.
 \item  \textit{Synthèse} : on peut écrire 
-$$\vec{x} =\overbrace{\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}} \vec{e_i}}^{\in F}+ \left(\vec{x}-\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}} \vec{e_i}\right).$$
-$\left(\vec{x}-\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}} \vec{e_i}\right)\in F^{\perp}$ car 
-$$\forall  j\ccro{1}{p}:\PS{\vec{x}-\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}} \vec{e_i}}{\vec{e_j}} =\PS{\vec{x}}{\vec{e_j}} -\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}}\PS{ \vec{e_i}}{\vec{e_j}}=0. $$  
+$$\vect{x} =\overbrace{\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}} \vect{e_i}}^{\in F}+ \left(\vect{x}-\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}} \vect{e_i}\right).$$
+Comme
+$$\forall  j\Intf{1}{p}:\PS{\vect{x}-\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}} \vect{e_i}}{\vect{e_j}} =\PS{\vect{x}}{\vect{e_j}} -\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}}\PS{ \vect{e_i}}{\vect{e_j}}\overbrace{=}^{(\vect{e_1},\dots,\vect{e_p}) \text{ BON} }0. $$ 
+$\vect{x}-\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}} \vect{e_i}$ est orthogonal à tous les vecteurs d'une base de $F^{\perp}$, donc appartient à  $F^{\perp}$.
 \end{itemize}
 
-\end{proof}
+\end{Proof}
 \begin{Cor}[Inégalité de Bessel]
-Soit $(\vec{e_1},\dots,\vec{e_p})$ une base orthonormale de $F$. Soit $\vec{x}\in E$.
+Soit $(\vect{e_1},\dots,\vect{e_p})$ une base orthonormale de $F$. Soit $\vect{x}\in E$.
 Alors, on a :
-$$\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}}^2\leq \norme{\vec{x}}^2$$
-avec égalité si et seulement si $\vec{x} \in F$.
+$$\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}}^2\leq \norme{\vect{x}}^2$$
+avec égalité si et seulement si $\vect{x} \in F$.
 \end{Cor}
-\begin{proof}
+\begin{Proof}
 On a :
 \begin{align*}
-\norme{\vec{x}}^2 &=  \norme{\overbrace{\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}} \vec{e_i}}^{\in F} +\overbrace{(\vec{x}-\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}} \vec{e_i})}^{\in F^{\perp} }}^2\\
-\norme{\vec{x}}^2 &\overbrace{=}^{\text{Th Pythagore}}\norme{\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}} \vec{e_i}}^2 +\norme{\vec{x}-\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}} \vec{e_i}}^2\\
-\norme{\vec{x}}^2 &\overbrace{=}^{(\vec{e_1},\dots,\vec{e_p}) \text{ BON} }\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}}^2+\norme{\vec{x}-\sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}} \vec{e_i}}^2\\
-\norme{\vec{x}}^2 &\geq \sum_{i=1}^p \PS{\vec{x}}{\vec{e_i}}^2
+\norme{\vect{x}}^2 &=  \norme{\overbrace{\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}} \vect{e_i}}^{\in F} +\overbrace{(\vect{x}-\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}} \vect{e_i})}^{\in F^{\perp} }}^2\\
+\norme{\vect{x}}^2 &\overbrace{=}^{\text{Th Pythagore}}\norme{\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}} \vect{e_i}}^2 +\norme{\vect{x}-\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}} \vect{e_i}}^2\\
+\norme{\vect{x}}^2 &\overbrace{=}^{(\vect{e_1},\dots,\vect{e_p}) \text{ BON} }\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}}^2+\norme{\vect{x}-\sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}} \vect{e_i}}^2\\
+\norme{\vect{x}}^2 &\geq \sum_{i=1}^p \PS{\vect{x}}{\vect{e_i}}^2
 \end{align*}
-avec égalité si et seulement si $\vec{x} \in F$.
-\end{proof}
+avec égalité si et seulement si $\vect{x} \in F$.
+\end{Proof}
 
 
 %TODO rajouter l'exemple Sn et An sonst supplémentaires orthogonaux dans Mn
@@ -536,15 +538,15 @@ avec égalité si et seulement si $\vec{x} \in F$.
 \begin{Df}[Projecteur orthogonal]
 Soit $F$ un espace vectoriel de dimension finie de $E$.\\
 On appelle \defi{projection orthogonale} sur $F$ la projection, notée $p_F$, sur $F$ parallèlement à $F^{\perp}$.\\
-Autrement dit, $$p_F(\vec{x})=p_F(\vec{x_F}+\vec{x_{F^{\perp}}})=\vec{x_F}=\sum_{i=1}^{n}\PS{\vec{x}}{\vec{e_i}} \vec{e_i},$$
-avec $(\vec{e_1},\dots,\vec{e_p})$ une base orthonormale de $F$. 
+Autrement dit, $$p_F(\vect{x})=p_F(\vect{x_F}+\vect{x_{F^{\perp}}})=\vect{x_F}=\sum_{i=1}^{n}\PS{\vect{x}}{\vect{e_i}} \vect{e_i},$$
+avec $(\vect{e_1},\dots,\vect{e_p})$ une base orthonormale de $F$. 
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
 \draw (0.3,0.2) node{$F$};
 \filldraw[draw=black,fill=blue, fill opacity=0.2] (0,0)--(1,1.5)--(5,1.5)--(4,0)--(0,0) ;
-\draw[->] (2.25,0.75)--(4,2.5)node[pos=0.5,left]{$\vec{x}$} ;
-\draw[->] (2.25,0.75)--(4,1)node[below]{$p_F(\vec{x})=\vec{x_F}=\sum_{i=1}^{n}\PS{\vec{x}}{\vec{e_i}} \vec{e_i}$} ;
-\draw[->] (4,1)--(4,2.5)node[pos=0.5,right]{$\vec{x_{F^{\perp}}}$} ;
+\draw[->] (2.25,0.75)--(4,2.5)node[pos=0.5,left]{$\vect{x}$} ;
+\draw[->] (2.25,0.75)--(4,1)node[below]{$p_F(\vect{x})=\vect{x_F}=\sum_{i=1}^{n}\PS{\vect{x}}{\vect{e_i}} \vect{e_i}$} ;
+\draw[->] (4,1)--(4,2.5)node[pos=0.5,right]{$\vect{x_{F^{\perp}}}$} ;
 \draw[] (4,1.2)--(3.8,1.18)--(3.8,0.98) ;		                    
 \draw[] (2.25,0.75)--(2.25,3)node{$F^{\perp}$} ;
 \draw[] (2.25,0)--(2.25,-1) ;
@@ -554,66 +556,66 @@ avec $(\vec{e_1},\dots,\vec{e_p})$ une base orthonormale de $F$.
 \end{Df}
 
 \begin{Th}[Distance à un sous-espace de dimension fini]
-Soit $F$ un sous-espace vectoriel de $E$ de dimension finie. Soit $\vec{x} \in E$.\\
-$$\forall \vec{y} \in F, \norme{\vec{x} -\vec{y}} \geq  \norme{\vec{x} - p_F(\vec{x})}$$
- avec égalité si et seulement si $\vec{y} = p_F(\vec{x})$.
+Soit $F$ un sous-espace vectoriel de $E$ de dimension finie. Soit $\vect{x} \in E$.\\
+$$\forall \vect{y} \in F, \norme{\vect{x} -\vect{y}} \geq  \norme{\vect{x} - p_F(\vect{x})}$$
+ avec égalité si et seulement si $\vect{y} = p_F(\vect{x})$.
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
 \draw (0.3,0.2) node{$F$};
 \filldraw[draw=black,fill=blue, fill opacity=0.2] (0,0)--(1,1.5)--(5,1.5)--(4,0)--(0,0) ;
-\draw[draw=red,->] (2.25,0.75)--(4.25,0.5)node[pos=0.7,below,red]{$\vec{y}$} ;
-\draw[->] (2.25,0.75)--(4,2.5)node[pos=0.5,left]{$\vec{x}$} ;
-\draw[->] (2.25,0.75)--(4,1)node[pos=0.5,above]{$p_F(\vec{x})$} ;
-\draw[->] (4,1)--(4,2.5)node[pos=0.5,right]{$\vec{x} - p_F(\vec{x})$} ;
-\draw[draw=red,->] (4.25,0.5)--(4,2.5)node[pos=0.4,right,red]{$\vec{x} - \vec{y}$} ;
-\draw[draw=green,->] (4.25,0.5)--(4,1)node[pos=0.6,left,green]{$p_F(\vec{x})- \vec{y}$} ;
+\draw[draw=red,->] (2.25,0.75)--(4.25,0.5)node[pos=0.7,below,red]{$\vect{y}$} ;
+\draw[->] (2.25,0.75)--(4,2.5)node[pos=0.5,left]{$\vect{x}$} ;
+\draw[->] (2.25,0.75)--(4,1)node[pos=0.5,above]{$p_F(\vect{x})$} ;
+\draw[->] (4,1)--(4,2.5)node[pos=0.5,right]{$\vect{x} - p_F(\vect{x})$} ;
+\draw[draw=red,->] (4.25,0.5)--(4,2.5)node[pos=0.4,right,red]{$\vect{x} - \vect{y}$} ;
+\draw[draw=green,->] (4.25,0.5)--(4,1)node[pos=0.6,left,green]{$p_F(\vect{x})- \vect{y}$} ;
 \draw[] (4,1.2)--(3.8,1.18)--(3.8,0.98) ;		                    
 \end{tikzpicture}
 \end{center} 
 \end{Th}
 
-\begin{proof}
-Soit $\vec{x} \in E$ et $\vec{y} \in F$. D'après le théorème de Pythagore, on a
+\begin{Proof}
+Soit $\vect{x} \in E$ et $\vect{y} \in F$. D'après le théorème de Pythagore, on a
 \begin{align*}
-\norme{\vec{x} - \vec{y}}&=\norme{ \overbrace{(\vec{x}- p_F(\vec{x}))}^{\in F^{\perp} }-\overbrace{(\vec{y}- p_F(\vec{x}))}^{\in F }}\overbrace{=}^{\text{Th Pythagore}} \norme{\vec{x}- p_F(\vec{x})  } +\norme{ \vec{y}- p_F(\vec{x}) }\\
+\norme{\vect{x} - \vect{y}}&=\norme{ \overbrace{(\vect{x}- p_F(\vect{x}))}^{\in F^{\perp} }-\overbrace{(\vect{y}- p_F(\vect{x}))}^{\in F }}\overbrace{=}^{\text{Th Pythagore}} \norme{\vect{x}- p_F(\vect{x})  } +\norme{ \vect{y}- p_F(\vect{x}) }\\
 \\
-\norme{\vec{x} - \vec{y}}&\geq \norme{\vec{x}- p_F(\vec{x})  }
+\norme{\vect{x} - \vect{y}}&\geq \norme{\vect{x}- p_F(\vect{x})  }
 \end{align*}
-avec égalité si et seulement si $\vec{y} = p_F(\vec{x})$.
-\end{proof}
+avec égalité si et seulement si $\vect{y} = p_F(\vect{x})$.
+\end{Proof}
 \begin{DfProp}[Distance à un sous-espace de dimension fini]
-Soit $F$ un sous-espace vectoriel de $E$ de dimension finie. Soit $\vec{x} \in E$.\\
-La  \defi{distance de $\vec{x}$ à $F$} est :
-$$d(\vec{x},F)=\inf_{\vec{y}\in F} \norme{\vec{x} - \vec{y}} = \norme{\vec{x} - p_F(\vec{x})} .$$
+Soit $F$ un sous-espace vectoriel de $E$ de dimension finie. Soit $\vect{x} \in E$.\\
+La  \defi{distance de $\vect{x}$ à $F$} est :
+$$d(\vect{x},F)=\inf_{\vect{y}\in F} \norme{\vect{x} - \vect{y}} = \norme{\vect{x} - p_F(\vect{x})} .$$
 \end{DfProp}
-\begin{proof}
-C'est une conséquence directe d'un théorème précédent qui affirme que le vecteur appartenant à $F$ "le plus proche" de $\vec{x}$ est le projeté orthogonal sur $F$ de $\vec{x}$.
-\end{proof}
+\begin{Proof}
+C'est une conséquence directe d'un théorème précédent qui affirme que le vecteur appartenant à $F$ "le plus proche" de $\vect{x}$ est le projeté orthogonal sur $F$ de $\vect{x}$.
+\end{Proof}
 \begin{Ex}
-Soit $E=\mathbb R^2$ muni de son produit scalaire canonique et de la base canonique $\mathcal B=(\vec{e}_1,\vec{e}_2)$. On considère $F$ le sous-espace vectoriel défini par l'équation 
+Soit $E=\mathbb R^2$ muni de son produit scalaire canonique et de la base canonique $\mathcal B=(\vect{e}_1,\vect{e}_2)$. On considère $F$ le sous-espace vectoriel défini par l'équation 
 $$\left\{
 \begin{array}{rcl}
 x_1+x_2&=&0
 \end{array}
 \right.
 $$
-Déterminer la matrice dans $\mathcal B$ de la projection orthogonale $p_F$ sur $F$ puis déterminer la distance de $\vec{x}$ à $F$.
+Déterminer la matrice dans $\mathcal B$ de la projection orthogonale $p_F$ sur $F$ puis déterminer la distance de $\vect{x}$ à $F$.
 \begin{enumerate}
-\item \textit{Déterminer une base orthonormale de $F$}. On commence par trouver une base de $F$. $(\vec{e}_1-\vec{e}_2)$ est une base de $F$. Cet unique vecteur constitue  une famille orthogonal, il suffit de le normaliser. Comme $\norme{\vec{e}_1-\vec{e}_2}=\sqrt{2}$, on pose $\vec{u}_1=\frac{1}{\sqrt 2} (\vec{e}_1+\vec{e}_2)$.
-\item \textit{Déterminer la matrice dans $\mathcal B$ de la projection orthogonale $p_F$ sur $F$.} On calcul $p_F(\vec{e}_1)$ et $p_F(\vec{e}_2)$ par la formule $p_F(\vec{e}_i)=\PS{\vec{e}_i}{\vec{u}_1}\vec{u}_1$. On obtient :
+\item \textit{Déterminer une base orthonormale de $F$}. On commence par trouver une base de $F$. $(\vect{e}_1-\vect{e}_2)$ est une base de $F$. Cet unique vecteur constitue  une famille orthogonal, il suffit de le normaliser. Comme $\norme{\vect{e}_1-\vect{e}_2}=\sqrt{2}$, on pose $\vect{u}_1=\frac{1}{\sqrt 2} (\vect{e}_1+\vect{e}_2)$.
+\item \textit{Déterminer la matrice dans $\mathcal B$ de la projection orthogonale $p_F$ sur $F$.} On calcul $p_F(\vect{e}_1)$ et $p_F(\vect{e}_2)$ par la formule $p_F(\vect{e}_i)=\PS{\vect{e}_i}{\vect{u}_1}\vect{u}_1$. On obtient :
 $$[p_F]_{\mathcal{B}}=\frac{1}{2}\begin{pmatrix}
 1 & -1\\
 -1 & 1
 \end{pmatrix}
 $$
-\item \textit{Déterminer la distance de $\vec{x}=(x_1,x_2)$ à $F$.} On a  $[p_F(\vec{x})]_{\mathcal{B}} = [p_F]_{\mathcal{B}}\times \begin{pmatrix}
+\item \textit{Déterminer la distance de $\vect{x}=(x_1,x_2)$ à $F$.} On a  $[p_F(\vect{x})]_{\mathcal{B}} = [p_F]_{\mathcal{B}}\times \begin{pmatrix}
 x_1\\
 x_2
 \end{pmatrix}= \begin{pmatrix}
 \frac{x_1 -x_2}{2} \\
 \frac{-x_1 +x2 }{2}
-\end{pmatrix}$. D'où $p_F(\vec{x})=(\frac{x_1 -x_2}{2},
-\frac{-x_1 +x2 }{2})$. Puis $\vec{x} - p_F(\vec{x})= (\frac{x_1 +x_2}{2},\frac{x_1 +x_2}{2})$. Soit $||\vec{x} - p_F(\vec{x})||=\frac{1}{\sqrt{2}}(x1+x2)$ 
+\end{pmatrix}$. D'où $p_F(\vect{x})=(\frac{x_1 -x_2}{2},
+\frac{-x_1 +x2 }{2})$. Puis $\vect{x} - p_F(\vect{x})= (\frac{x_1 +x_2}{2},\frac{x_1 +x_2}{2})$. Soit $||\vect{x} - p_F(\vect{x})||=\frac{1}{\sqrt{2}}(x1+x2)$ 
 \end{enumerate}
 
 \end{Ex}
@@ -623,18 +625,18 @@ On considère un un espace euclidien réel $(E,\PS{.}{.})$.
 \subsection{Représentations des formes linéaires}
 
 \begin{Prop}
-Pour toute forme linéaire $\phi : E \to \R$, il existe un unique vecteur $\vec{u} \in E$ tel que :
-$$ \forall \vec{x} \in E:\quad  \phi(\vec{x}) =\PS{ \vec{u}}{ \vec{x}} .$$
-En d'autres termes, l'application $\Fonction{}{E}{E^*}{\vec{u}}{\vec{x} \mapsto \PS{ \vec{u}}{ \vec{x}}} $
+Pour toute forme linéaire $\phi : E \to \R$, il existe un unique vecteur $\vect{u} \in E$ tel que :
+$$ \forall \vect{x} \in E:\quad  \phi(\vect{x}) =\PS{ \vect{u}}{ \vect{x}} .$$
+En d'autres termes, l'application $\Fonction{}{E}{E^*}{\vect{u}}{\vect{x} \mapsto \PS{ \vect{u}}{ \vect{x}}} $
 est un isomorphisme.
 \end{Prop}
-\begin{proof}
- Soit $(\vec{e_1},\dots,\vec{e_n})$ une base orthonormale de $E$. 
-Soit $\vec{x}=\sum_{i=1}^n x_i \vec{e_i}  \in E$. 
+\begin{Proof}
+ Soit $(\vect{e_1},\dots,\vect{e_n})$ une base orthonormale de $E$. 
+Soit $\vect{x}=\sum_{i=1}^n x_i \vect{e_i}  \in E$. 
  On a :
-$$ \phi(\vec{x})=\sum_{i=1}^n x_i \phi(\vec{e_i})\overbrace{=}^{(\vec{e_1},\dots,\vec{e_n})\text{ BON}}\PS{\sum_{i=1}^n \phi(\vec{e_i})\vec{e_i} }{\vec{x}}=\PS{\vec{u} }{\vec{x}},$$ 
-avec $ \vec{u}=\sum_{i=1}^n \phi(\vec{e_i})\vec{e_i}$.
-\end{proof}
+$$ \phi(\vect{x})=\sum_{i=1}^n x_i \phi(\vect{e_i})\overbrace{=}^{(\vect{e_1},\dots,\vect{e_n})\text{ BON}}\PS{\sum_{i=1}^n \phi(\vect{e_i})\vect{e_i} }{\vect{x}}=\PS{\vect{u} }{\vect{x}},$$ 
+avec $ \vect{u}=\sum_{i=1}^n \phi(\vect{e_i})\vect{e_i}$.
+\end{Proof}
 
 
 \subsection{Représentations des hyperplans}
@@ -644,16 +646,16 @@ Soit $H$ un hyperplan d'un espace euclidien $ E$. On appelle \defi{vecteur norma
 
 
 \begin{Prop}[Équation d'un hyperplan]
- Soit $ E$ un espace euclidien ayant pour base orthonormal $(\vec{e_1},\dots,\vec{e_n})$.
+ Soit $ E$ un espace euclidien ayant pour base orthonormal $(\vect{e_1},\dots,\vect{e_n})$.
 Soit $H$ un hyperplan de $E$. \\
-Si $\vec{u}=\sum_{i=1}^n u_i \vec{e_i}$ est un vecteur normal à $H$,\\
+Si $\vect{u}=\sum_{i=1}^n u_i \vect{e_i}$ est un vecteur normal à $H$,\\
 Alors 
-$$H=\left\{\vec{x}=\sum_{i=1}^n x_i \vec{e_i} \in E:   \sum_{i=1}^n u_i x_i=0 \right\}.$$
+$$H=\left\{\vect{x}=\sum_{i=1}^n x_i \vect{e_i} \in E:   \sum_{i=1}^n u_i x_i=0 \right\}.$$
 Réciproquement si 
-$$H=\left\{\vec{x}=\sum_{i=1}^n x_i \vec{e_i} \in E:   \sum_{i=1}^n u_i x_i=0 \right\}$$
-Alors  $\vec{u}=\sum_{i=1}^n u_i \vec{e_i}$ est un vecteur normal à $H$.\\
-En d'autres termes, il existe  $\vec{u}\in E$ non nul tel que  :
-$$H=\left\{\vec{x}\in E:   \PS{\vec{u}}{\vec{x}}=0 \right\}.$$
+$$H=\left\{\vect{x}=\sum_{i=1}^n x_i \vect{e_i} \in E:   \sum_{i=1}^n u_i x_i=0 \right\}$$
+Alors  $\vect{u}=\sum_{i=1}^n u_i \vect{e_i}$ est un vecteur normal à $H$.\\
+En d'autres termes, il existe  $\vect{u}\in E$ non nul tel que  :
+$$H=\left\{\vect{x}\in E:   \PS{\vect{u}}{\vect{x}}=0 \right\}.$$
 Ou bien encore, il existe $\phi \in E^*$ non nul tel que :
 $$H=\ker \phi.$$ 
 \end{Prop}

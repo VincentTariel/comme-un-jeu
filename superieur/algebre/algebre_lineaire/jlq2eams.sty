@@ -21,6 +21,8 @@
 \usetikzlibrary{matrix,arrows,decorations.pathmorphing}
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{geometry}
+\usepackage{pgfplots}
+
 \geometry{hmargin=2cm,vmargin=1.5cm}
 \pagestyle{fancy}
 
@@ -115,12 +117,19 @@
 }
 \definebox{Df}{Définition}{colordef}
 \definebox{DfProp}{Définition-Proposition}{colordef}
+\definebox{Voc}{Vocabulaire}{colordef}
 \definebox{Alg}{Algorithme}{colordef}
+
+
 \definebox{Th}{Théorème}{colorprop}
 \definebox{Lem}{Lemme}{colorprop}
 \definebox{Prop}{Proposition}{colorprop}
+\definebox{Propriete}{Propriété}{colorprop}
+
 \definebox{Cor}{Corollaire}{colorprop}
 \defineboxx{Proof}{Démonstration}{colorprop}
+
+\defineboxx{Meth}{Méthode}{colordef}
 
 \defineboxx{Ex}{Exemple}{black}
 \defineboxxx{NB}{Remarque}{black}
@@ -129,7 +138,7 @@
    
 \newcommand{\defi}[1]{\textbf{\textcolor{colordef}{#1}}} 
 \newcommand{\propri}[1]{\textbf{\textcolor{colorprop}{#1}}}
- 
+ \newcommand{\impo}[1]{\textbf{\textcolor{colorprop}{#1}}}
 
 \newcommand{\myunit}{1 cm}
 \tikzset{
@@ -394,9 +403,13 @@
 % Définition des vecteurs
 %--------------------------------------------------
 
-\newcommand{\Vect}[1]{\smash{\overrightarrow{\mathstrut#1}}}
+\newcommand{\Vect}[1]{\vbox{\halign{##\cr 
+  \tiny\rightarrowfill\cr\noalign{\nointerlineskip\vskip1pt} 
+  $#1\mskip2mu$\cr}}}
   % vecteur avec une flèche de hauteur constante
-\newcommand{\vect}[1]{\smash{\overrightarrow{#1}}}
+\newcommand{\vect}[1]{\vbox{\halign{##\cr 
+  \tiny\rightarrowfill\cr\noalign{\nointerlineskip\vskip1pt} 
+  $#1\mskip2mu$\cr}}}
   % vecteur avec une flèche
 
 \newcommand{\vc}[1]{\mathbf{#1}}

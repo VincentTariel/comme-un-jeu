@@ -1,89 +1,10 @@
-\documentclass[a4paper]{book}
-\usepackage{t1enc}
-\usepackage{mathrsfs}
-\usepackage[latin1]{inputenc}
-\usepackage[french]{minitoc}
- \usepackage{amsmath}
-\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
-\usepackage[francais]{babel}
-\usepackage{amsmath}
-\usepackage{TikZ}
-\usepackage{tkz-fct}   
-\usepackage{a4wide,jlq2eams} 
-\usepackage{graphicx}
-\usepackage[colorlinks = true,urlcolor  = blue]{hyperref}
-\usepackage{thmbox}
-\usepackage{changepage}
-\usepackage{xcolor}
-\usepackage{sectsty}
- \usepackage{enumitem}
-\usepackage{eurosym}
-\usepackage{caption}  
-\usepackage{wrapfig}
-\usetikzlibrary{angles}
-\usepackage{pgfplots}
-\usetikzlibrary{quotes}
-\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
-\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
-\sectionfont{\color{magenta}}
-\subsectionfont{\color{red}}
-\subsubsectionfont{\color{red}}
-\setlength{\shadowsize}{1.5pt}
-\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}} 
- 
-\pagestyle{fancy}
-\addtolength{\headwidth}{\marginparsep}
-\addtolength{\headwidth}{\marginparwidth} 
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-\fancyhf{}
-\fancyhead[LE,RO]{\bfseries\thepage}
-\fancyhead[LO]{\bfseries\rightmark}
-\fancyhead[RE]{\bfseries\leftmark}
-\fancypagestyle{plain}{%
-   \fancyhead{} % get rid of headers
-   \renewcommand{\headrulewidth}{0pt} % and the line
-}
-
-\setcounter{minitocdepth}{3}
-
-
-\renewcommand{\thesection}{\Roman{section}} 
-\renewcommand{\thesubsection}{\Alph{subsection}}
-\thmboxoptions{S,bodystyle=\itshape\noindent}
-\newtheorem[L]{Lem}{Lemme}[section]
-\newtheorem[L]{Th}[Lem]{Théorème}
-\newtheorem[L]{Cor}[Lem]{Corollaire}
-\newtheorem[L]{Prop}[Lem]{Proposition}
-
-\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
-\newtheorem[S,bodystyle=\upshape\noindent]{DfTh}{Définition-Théorème}
-\newtheorem[S,bodystyle=\upshape\noindent]{DfProp}{Définition-Proposition}
-\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
-\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
-\newtheorem[S,bodystyle=\upshape\noindent]{Meth}{Méthode}
-\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
-
-
-\newcommand\SUI{(u_n)_{n\in\N}}
-\newcommand\SER{ \sum u_n}
-\newcommand\myop{ \bigtriangleup}
-\def\pa#1{({#1})}
-\newcommand\Matrix[3]{\mathrm{#1}_{#2}\pa{#3}}
-\def\sEnsemble#1#2{\mathopen\{#1\mid#2\mathclose\}}
-\newcommand{\myunit}{1 cm}
-\tikzset{
-    node style sp/.style={draw,circle,minimum size=\myunit},
-    node style ge/.style={circle,minimum size=\myunit},
-    arrow style mul/.style={draw,sloped,midway,fill=white},
-    arrow style plus/.style={midway,sloped,fill=white},
-}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setcounter{tocdepth}{5}
+\documentclass{book} 
+\usepackage{jlq2eams} 
+\usepackage{caption} 
 \begin{document}
 %\dominitoc
 %\tableofcontents
-\chapter{Topologie des espaces vectoriels normés}
+\chapter*{Topologie des espaces vectoriels normés}
 
 Ce cours présente les grands concepts à l'origine de la topologie et de l'analyse fonctionnelle.
 L'étymologie du mot "topologie" est éloquente. En effet, en Grec, topos signifie lieu tandis que
@@ -139,10 +60,10 @@ On note parfois $E$ au lieu de $(E,N)$ si le choix de la norme est clair d'après
 Soit $E$ un espace vectoriel, $N$ une norme sur $E$. On a :
 $$\vec{x},\vec{y}\in E: |N(\vec{x}) - N(\vec{y})|\leq N(\vec{x}-\vec{y}).$$
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Soit $\vec{x},\vec{y}\in E$. On a $$N(\vec{x})=N(\vec{x}-\vec{y}+\vec{y})\overbrace{\leq}^{\text{inégalité triangulaire}} N(\vec{x}-\vec{y})+N(\vec{y}).$$
 Ainsi $N(\vec{x})-N(\vec{y})\leq N(\vec{x}-\vec{y}).$ En permutant $\vec{x}$ et $\vec{y}$, on obtient $N(\vec{y})-N(\vec{x})\leq N(\vec{x}-\vec{y}).$ Finalement $|N(\vec{x}) - N(\vec{y})|\leq N(\vec{x}-\vec{y}).$
-\end{proof}
+\end{Proof}
 \begin{Prop}[Norme hilbertienne]
 Soit $(E,\PS{}{})$ est un espace prehilbertien réel.
 La \defi{norme associée} définie par 
@@ -327,11 +248,11 @@ Les boules ouvertes et fermés  sont convexes.}
 }
 \end{minipage} 
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Soit $B(\vec{a},r)$ une boule ouverte.\\
 Soit $\vec{x},\vec{y}\in B(\vec{a},r).$ Soit $\lambda\in[0,1]$. On a :
 $$ \norme{(\lambda \vec{x} + (1-\lambda)\vec{y})-\vec{a}   }=\norme{(\lambda(\vec{x}-\vec{a}) + (1-\lambda)(\vec{y}-\vec{a})   }\leq |\lambda|\norme{\vec{x}-\vec{a}}+|1-\lambda|\norme{\vec{y}-\vec{a}}< |\lambda|r+|1-\lambda|r\overbrace{=}^{\lambda\in[0,1]} r.$$
-\end{proof}
+\end{Proof}
 \begin{Ex}
 Les sous espaces vectoriels sont des convexes.
 \end{Ex}
@@ -415,12 +336,12 @@ Dans le cas contraire, la suite $(\vec{x_n})_{n\in\N}$ \defi{diverge}.\\
 \begin{Prop}
 La suite $(\vec{x_n})_{n\in\N}$ \defi{converge} vers  $\vec{l}$ si et seulement si la suite réelle $(\norme{\vec{x_n}-\vec{l}})_{n\in\N}$ converge vers 0.
 \end{Prop}
-\begin{DfTh}[Unicité de la limite]
+\begin{DfProp}[Unicité de la limite]
 Si $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ au sens de $\norme{\,}$, $\vec{l}$ est unique pour cette norme.\\
 Dans ce cas, on peut dire que $\vec{l}$ est \defi{la limite} de $\vec{x_n}$ quand $n$ tend vers $+\infty$ et
 on écrit  $\vec{l}=\lim\limits_{n\to\infty}\vec{x_n}$.
-\end{DfTh}
-\begin{proof}
+\end{DfProp}
+\begin{Proof}
 Raisonnons par l'absurde : supposons que $(\vec{x_n})_{n\in\N}$ admette deux limites $\vec{l}$ et $\vec{l'}$ distinctes pour la norme $\norme{\,}$.\\
 \begin{center}
 \begin{tikzpicture}[scale=0.75,bullet/.style={circle,fill,inner sep=1.5pt,node contents={}}]
@@ -438,7 +359,7 @@ $$\forall n \geq N':\quad \norme{\vec{x_n} - \vec{l'}} <  \frac{\norme{\vec{l}-\
 Soit $N''=\max(N,N')$. On a :
 $$\norme{\vec{l} - \vec{l'}}=\norme{(\vec{l} - u_{N''})+ (u_{N''}- \vec{l'})}\leq \norme{\vec{l} - u_{N''}}+ \norme{u_{N''}- \vec{l'}}< \frac{\norme{\vec{l}-\vec{l'}}}{3}+\frac{\norme{\vec{l}-\vec{l'}}}{3}=\frac{2\norme{\vec{l}-\vec{l'}}}{3}.$$ 
 Comme $\norme{\vec{l}-\vec{l'}} \neq 0$, on obtient $1< \frac{2}{3}$ ce qui est impossible.
-\end{proof}
+\end{Proof}
 \begin{NB}[Dépendance de la norme en dimension infinie]
 La notion de convergence est définie à partir d'une norme. Si on change de norme (et donc on change d'espace vectoriel
 normé), il est possible que la suite considérée ne converge plus.\\
@@ -453,7 +374,7 @@ On a :
 Si la suite $(\vec{x_n})_{n\in\N}$ converge pour la norme $\norme{\,}$,\\
 Alors la suite $(\vec{x_n})_{n\in\N}$ est bornée pour la même norme $\norme{\,}$.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 On suppose que $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$.\\
 En particulier pour $\epsilon=1$, il existe $N\in\N$ tel que :
 $$\forall n\geq N:\norme{\vec{x_n}-\vec{l}}<1.$$
@@ -462,7 +383,7 @@ $$\forall n\geq N:\norme{\vec{x_n}}<1+\norme{\vec{l}}.$$
 En posant $M=\max(\norme{\vec{x_0}},\dots,\norme{\vec{x_{N-1}}},1+\norme{\vec{l}} )$, on obtient :
 $$\forall n\in N:\norme{\vec{x_n}}<M.$$
 Donc $(\vec{x_n})_{n\in\N}$ est bornée.
-\end{proof}
+\end{Proof}
 \begin{NB}
 La réciproque de ce proposition est fausse. La suite $((-1)^n)_{n\in\N}$ est bornée mais non convergente.
 \end{NB}
@@ -472,14 +393,14 @@ Si  $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ pour la norme $\norme{\,}$ et
 Alors $(\lambda\vec{x_n}+\mu\vec{y_n} )_{n\in\N}$ converge vers $\lambda\vec{l}+\mu\vec{l'}$  pour la norme $\norme{\,}$.\\
 Ainsi, l'ensemble des suites convergentes est un espace vectoriel. 
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 En bref $$\norme{\lambda\vec{x_n}+\mu\vec{y_n}  -\lambda\vec{l}+\mu\vec{l'} } =\norme{\lambda(\vec{x_n}-\vec{l}) +\mu(\vec{y_n}-\vec{l'}) }\leq |\lambda|\norme{\vec{x_n}-\vec{l}} +|\mu|\norme{\vec{y_n}-\vec{l'}}\tend[n\to\infty] 0.$$
-\end{proof}
+\end{Proof}
 \begin{Prop}[Suite extraite]
 Si $(\vec{x_n})_{n\in\N}$ est une suite convergente vers $\vec{l}$,\\
 Alors toute suite extraite $(\vec{x_{\phi(n)}})_{n\in\N}$ converge vers $\vec{l}$. 
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Soit $\phi$ une fonction strictement croissante de $\N$ dans $\N$.
 On suppose $(\vec{x_n})_{n\in\N}$ convergente vers $\vec{l}$.\\
 Soit $\epsilon>0$. Il existe $N\in\N$ telle que :
@@ -487,14 +408,14 @@ $$\forall n\geq N:\quad \norme{\vec{x_n}-\vec{l}}<\epsilon.$$
 Comme $\forall n\in\N: \phi(n)\geq n$, si $n>N$ alors $\phi(n)>N$, donc    
 $$\forall n\geq N:\quad \norme{\vec{x_{\phi(n)}}-\vec{l}}<\epsilon.$$
 Ainsi, $(\vec{x_{\phi(n)}})_{n\in\N}$ converge vers $\vec{l}$. 
-\end{proof}
+\end{Proof}
 \subsection{En dimension finie}
 \begin{Th}[Indépendance de la norme en dimension finie]
 On suppose que $E$ est de dimension finie. Soient $N$ et $N'$ deux normes sur $E$. Soit $(\vec{x_n})_{n\in\N}$ une suite d'éléments de $E$.\\
 $(\vec{x_n})_{n\in\N}$ est bornée pour la norme $N$ si et seulement si $(\vec{x_n})_{n\in\N}$ est bornée pour la norme $N'$.\\
 $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ pour la norme $N$ si et seulement si $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ pour la norme $N'$.
 \end{Th}
-\begin{proof}
+\begin{Proof}
 Comme $E$ un espace vectoriel de dimension finie, il existe deux réels strictement positifs tels que $\alpha N \leq  N'  \leq \beta N$.
 \begin{itemize}
 \item 
@@ -513,7 +434,7 @@ $$\forall n \geq N:\quad  N'(\vec{x_n} - \vec{l}) < \beta \frac{\epsilon}{\beta}
 et donc la suite $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ pour la norme $N'$.\\
 En permutant les rôles de $N$ et $N'$, on obtient la réciproque.
 \end{itemize}
-\end{proof}
+\end{Proof}
 \begin{NB}
 Dorénavant, on n'aura donc plus besoin de préciser "pour la norme $N$" lorsqu'on parlera de
 convergence, de limite ou de suite bornée dans un espace vectoriel de dimension finie. 
@@ -523,9 +444,9 @@ On suppose que $E$ est de dimension finie muni d'une base $\mathcal{B} = (\vec{e
 La \defi{norme infinie attachée à la base $\mathcal{B}$}, notée $\norme{\,}_\infty$, est  définie par :
 $$\forall \vec{x}=\sum_{i=i}^p x_i\vec{e_i} \in  E:\quad \norme{\vec{x}}_\infty=\max_{1\leq i\leq p}|x_i|.$$ 
 \end{DfProp}
-\begin{proof}
+\begin{Proof}
 Elle est formellement identique à celle qui établit que $\norme{\,}_{\infty}$ est une norme dans $\K^n$.
-\end{proof}
+\end{Proof}
 \begin{Prop}[Convergence composante par composante]
 On suppose que $E$ est de dimension finie muni d'une base $\mathcal{B} = (\vec{e_1}, \dots, \vec{e_p})$.\\
 Soit $(\vec{x_n})_{n\in\N}$ une suite d'éléments de $E$ telle que : 
@@ -534,7 +455,7 @@ Alors la suite $(\vec{x_n})_{n\in\N}$ converge dans $E$ si et seulement si les $
 Dans ce cas, on a $\lim\limits_{n\to\infty} \vec{x_n} = \sum_{i=1}^p (\lim\limits_{n\to\infty}x_{i,n}) \vec{e_i}.$\\
 De même pour la notion de bornée.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 \begin{itemize}
 \item $\Longrightarrow$ : On suppose que la suite $(\vec{x_n})_{n\in\N}$ convergeant vers  $\vec{l}=\sum_{i=1}^n l_i \vec{e_i}.$ Comme la notion de convergence ne dépend pas la norme, on choisit la convergence suivant la norme $\norme{\,}_\infty$ dans la base $\mathcal{B}$. On a alors :
 $$\forall \epsilon >0,\exists N\in \N, \forall n\geq N:\quad \norme{\vec{x_n}-\vec{l}}=\max_{1 \leq i \leq p }|x_{i,n}-l_i|<\epsilon \text{ et donc }\forall i\in\ccro{1}{p}|x_{i,n}|<\epsilon.$$
@@ -543,7 +464,7 @@ Donc toutes les suites $(x_{i,n})_{n\in\N}$ convergent respectivement vers $l_i$
 $$\forall \epsilon >0, \forall i\in\ccro{1}{p},\exists N_i\in \N, \forall n\geq N_i:\quad |x_{n,i}-l_i|<\epsilon.$$
 En posant $N_m=\max(N_1,\dots,N_p)$, on a   $\forall i\in\ccro{1}{p}, \forall n\geq N:\quad |x_{n,i}-l_i|<\epsilon$, donc $\norme{\vec{x_n}-\vec{l}}=\max_{1 \leq i \leq p }|x_{i,n}-l_i|<\epsilon$ avec $\vec{l}=\sum_{i=1}^n l_i \vec{e_i}$.
 \end{itemize}
-\end{proof}
+\end{Proof}
 \begin{Ex}[Convergence de matrices]
 La suite de matrices $\left(\begin{pmatrix}
 \frac{\ln(n)}{n}& (1+\frac{1}{n})^n\\ \sum_{k=1}^{n}\frac{1}{k^2}&0
@@ -588,12 +509,12 @@ Soit $A$ une partie de $\K^n$.\\
 $\vec{x}$ est adhérent à $A$ si et seulement si il existe une suite $(\vec{x_n})_{n\in\N}$
 d'éléments de $A$, convergente, de limite $\vec{x}$.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 \begin{itemize}
 \item $\Rightarrow :$ Soit $\vec{x}$ un point adhérent. On peut donc construire la suite $(\vec{x_n})_{n\in\N}$ tel que $\vec{x_n}\in B (\vec{x}, \frac{1}{n+1} )$. Cette suite converge vers $\vec{x}$. 
 \item $\Leftarrow :$ Soit une suite $(\vec{x_n})_{n\in\N}$ d'éléments de $A$, convergente, de limite $\vec{x}$. Donc, quelque soit $r>0$, à partir d'un certain rang, tous le termes de la suite appartiennent à  $B (\vec{x}, r)$, donc $B (\vec{x}, r) \cap A\neq \emptyset$ car $(\vec{x_n})_{n\in\N}$ est une suite d'éléments de $A$.
 \end{itemize}
-\end{proof}
+\end{Proof}
 Une partie dense est une partie permettant d'approcher tous les éléments de l'espace englobant.
 \begin{Df}[Dense]
 $A$ est \defi{dense} dans $\K^n$ si $\overline {A}=\K^n$
@@ -631,7 +552,7 @@ Par convention, l'ensemble vide $\emptyset$ et $\K^n$ sont à la fois ouverts et 
 \item La boule fermée  est une partie fermée de $\K^n$.
 \end{itemize}
 \end{Prop}
-\begin{proof}$,$\\
+\begin{Proof}$,$\\
 \begin{minipage}[c]{0.6\linewidth}{
 Soit $B(\vec{x},r)$ une boule ouverte.\\
 Soit $\vec{x'}\in B(\vec{x},r)$. \\
@@ -650,7 +571,7 @@ Soit $\vec{y}\in B(\vec{x'},r')$. On a $\norme{\vec{x}-\vec{y}}=\norme{(\vec{x}-
 \end{tiny}
 }
 \end{minipage} 
-\end{proof}
+\end{Proof}
 \begin{Ex}[Intervalle ouvert]
 Un intervalle ouvert $]a,b[$ de $\R$ est un ouvert de $\R$ car $]a,b[=B(\frac{a+b}{2},\frac{b-a}{2})$.
 \end{Ex}
@@ -684,7 +605,7 @@ Ainsi $K^n\setminus \{\vec{x}\}$ est un ouvert donc  $\{\vec{x}\}$ est un fermé.
   Si $U_1, \dots, U_n$ sont des ouverts de $\K^n$, alors $\cap_{i=1}^n U_i$ est un ouvert de $\K^n$.
 \end{itemize}
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 \begin{itemize}
 \item \emph{stabilité par union quelconque}:
   Soit $(U_i)_{i\in I}$ une famille d'ouverts de $\K^n$.\\
@@ -698,7 +619,7 @@ Ainsi $K^n\setminus \{\vec{x}\}$ est un ouvert donc  $\{\vec{x}\}$ est un fermé.
   Soit $r=\min(r_1,\dots,r_n)$. Donc, pour tout indice $i\in \ccro{1}{n}$, $B(\vec{x},r)\subset B(\vec{x},r_i)\subset U_i$.\\
   Ainsi $B(\vec{x},r)\subset \cap_{i=1}^n U_i$ et $\cap_{i=1}^n U_i$ est un ouvert. 
 \end{itemize}
-\end{proof}
+\end{Proof}
 \begin{NB} La propriété de stabilité par une intersection non finie est fausse.\\
 Considérons la famille dénombrable d'ouverts $(A_n)_{n\in\N^*}$ définie par : $A_n =]-\frac 1 n ,\frac 1 n[$. 
 Il est ici tout à fait évident que $(A_n)_{n\in\N^*}$ est une famille d'ouvert. On a :
@@ -716,7 +637,7 @@ Soit $F$ une partie non vide de $\K^n$.\\
 F est fermée si et seulement si pour toute suite convergente $(\vec{x_n})_{n\in\N}$
 d'éléments de F, la limite, $\lim\limits_{n\to\infty}\vec{x_n}$,  est un élément de $F$.
 \end{Th}
-\begin{proof}
+\begin{Proof}
 Soit $F$  une partie non vide de $\K^n$.\\
 \begin{itemize}
 \item $\Longrightarrow$ :   Soit $F$ est un fermé  de $\K^n$. Soit $(\vec{x_n})_{n\in\N}$ une suite d'éléments de $F$  convergeant vers $\vec{l}$.
@@ -726,7 +647,7 @@ Comme la suite converge vers  $\vec{l}$, à partir d'un certain rang, tous les te
 \item  $\Longleftarrow$ : par contreproposition, soit $F$ une partie non fermé de $\K^n$. Donc la complémentaire de $F$, $\K^n\setminus F$, n'est par un ouvert. Il existe alors un élément $\vec{l}$ de $\K^n\setminus F$ telle que toute boule ouverte de centre $\vec{l}$ contient un élément qui n'est pas dans $\K^n\setminus F$ et qui est donc dans $F$. En particulier, on peut construire une suite $(\vec{x_n})_{n\in\N}$ d'éléments de $F$  tel que $\vec{x_n}\in B(\vec{l},\frac 1 n )$. 
 Cette suite $(\vec{x_n})_{n\in\N}$ d'éléments de $F$ converge vers $\vec{l}\notin F$.
 \end{itemize}
-\end{proof}
+\end{Proof}
 \begin{Ex}
 $A=\{(x,y)\in \R^2:xy=1\}$ est un fermé.\\
 Soit $(x_n,y_n)_{n\in\N}$ une suite d'éléments de $A$ qui converge vers $(x,y)\in \R^2$. Les deux suites coordonnées $(x_n)_{n\in\N}$ et $(y_n)_{n\in\N}$ convergent vers $x$ et $y$ respectivement. Pour tout $n \in \N: x_ny_n=1$, par passage à la limite, on a : $\lim\limits_{n\to\infty}(x_ny_n)=\lim\limits_{n\to\infty}(1)=1$. Comme les deux suites coordonnées convergent, 
@@ -734,8 +655,8 @@ Soit $(x_n,y_n)_{n\in\N}$ une suite d'éléments de $A$ qui converge vers $(x,y)\i
 D'après la caractérisation séquentielle des fermé, A est fermé.
 \end{Ex}
 \begin{Ex}[Matrice symétrique]
-L'ensemble des matrices symétriques $\SnR=\{M\in\MnR:\transposee{M=M}\}$ est un fermé.\\
-Soit $(S_p=(s^p_{i j})_{1\leq i,j\leq n} )_{p\in\N}$ une suite d'éléments de $\SnR$ qui converge vers $M=(m_{ij})_{1\leq i,j\leq n}\in \MnR$.\\
+L'ensemble des matrices symétriques $\SnR=\{M\in\Mn{n}{\R}:\transposee{M=M}\}$ est un fermé.\\
+Soit $(S_p=(s^p_{i j})_{1\leq i,j\leq n} )_{p\in\N}$ une suite d'éléments de $\SnR$ qui converge vers $M=(m_{ij})_{1\leq i,j\leq n}\in \Mn{n}{\R}$.\\
 Comme $S_n$ est symétrique, $s^p_{i j}=s^p_{j i}$. Comme les suite coordonnées convergent, par passage à la limite on a $m_{ij}=\lim\limits_{p\to\infty}(s^p_{i j})=\lim\limits_{p\to\infty}(s^p_{j i})=m_{ji}$. Ainsi $M$ est symétrique.\\ 
 D'après la caractérisation séquentielle des fermé, $\SnR$ est fermé.
 \end{Ex}
@@ -924,13 +845,13 @@ L'application $f$ est dite \defi{lipschitzienne} si il existe $k>0$ telle que $f
 Soit $f:A\to F$ une fonction lipschitzienne.\\
 Alors $f$ est continue. 
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Soit $k>0$ tel que $f$ est $k$-lipschitzienne.\\
 Soit $ \vec{a} \in E$ et soit $\epsilon > 0$.
 On pose $\delta=\frac{\epsilon}{k}$.\\
 Soit $\vec{x}\in E$ tel que  $\norme{\vec{x}-\vec{a}}_E\leq\delta$.
 Comme  $f$ est $k$-lipschitzienne, on a $\norme{f(\vec{x})-f(\vec{a})}_F\leq k \norme{\vec{x}-\vec{a}}_E \leq k \delta=\epsilon$. $f$ est continue en $ \vec{a}$. Ainsi $f$ est continue. 
-\end{proof}
+\end{Proof}
 
 \begin{Ex}[Continuité des applications linéaires et multilinéaires d'un espace vectoriel de dimension finie]
 Soit $f:E \to F$ une application linéaire telle que $E$ est de \textbf{dimension finie}. Soit $(\vec{e_1},\dots,\vec{e_n})$ une base  de $E$.\\
@@ -971,9 +892,9 @@ Alors :
 \item les ensembles $\{x \in E, f (x) \geq 0 \}, \{x \in E, f (x) \leq 0 \}$ et $\{x \in E, f (x)= 0 \}$ sont des fermés de E. 
 \end{itemize}
 \end{Cor}
-\begin{proof}
+\begin{Proof}
 Comme $f$ est continue et $]0,+\infty[$ est un ouvert, $\{x \in E, f (x) > 0 \}=f^{-1}(]0,+\infty[)$ est un ouvert. De même pour les autres ensembles.
-\end{proof}
+\end{Proof}
 \begin{Ex}[$\GLnK$ ouvert]
 Comme $M$ est inversible si et seulement si $\Det[](M)\neq 0$, on a   $\GLnK=\Det[]^{-1}(\R\setminus \{0\})$.\\  
 Comme l'application déterminant est continue et $\R\setminus \{0\}$ est un ouvert, $\GLnK$ est un ouvert. 

@@ -1,88 +1,8 @@
-\documentclass[a4paper]{book}
-\usepackage{t1enc}
-\usepackage{mathrsfs}
-\usepackage[latin1]{inputenc}
-\usepackage[french]{minitoc}
- \usepackage{amsmath}
-\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
-\usepackage[francais]{babel}
-\usepackage{amsmath}
-\usepackage{TikZ}
-\usepackage{tkz-fct}   
-\usepackage{a4wide,jlq2eams} 
-\usepackage{graphicx}
-\usepackage[colorlinks = true,urlcolor  = blue]{hyperref}
-\usepackage{thmbox}
-\usepackage{changepage}
-\usepackage{xcolor}
-\usepackage{sectsty}
- \usepackage{enumitem}
-\usepackage{eurosym}
-\usepackage{caption}  
-\usepackage{wrapfig}
-\usetikzlibrary{angles}
-\usetikzlibrary{quotes}
-\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
-\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
-\sectionfont{\color{magenta}}
-\subsectionfont{\color{red}}
-\subsubsectionfont{\color{red}}
-\setlength{\shadowsize}{1.5pt}
-\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}} 
- 
-\pagestyle{fancy}
-\addtolength{\headwidth}{\marginparsep}
-\addtolength{\headwidth}{\marginparwidth} 
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-\fancyhf{}
-\fancyhead[LE,RO]{\bfseries\thepage}
-\fancyhead[LO]{\bfseries\rightmark}
-\fancyhead[RE]{\bfseries\leftmark}
-\fancypagestyle{plain}{%
-   \fancyhead{} % get rid of headers
-   \renewcommand{\headrulewidth}{0pt} % and the line
-}
-
-\setcounter{minitocdepth}{3}
-
-
-\renewcommand{\thesection}{\Roman{section}} 
-\renewcommand{\thesubsection}{\Alph{subsection}}
-\thmboxoptions{S,bodystyle=\itshape\noindent}
-\newtheorem[L]{Lem}{Lemme}[section]
-\newtheorem[L]{Th}[Lem]{Théorème}
-\newtheorem[L]{Cor}[Lem]{Corollaire}
-\newtheorem[L]{Prop}[Lem]{Proposition}
-
-\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
-\newtheorem[S,bodystyle=\upshape\noindent]{DfTh}{Définition-Théorème}
-\newtheorem[S,bodystyle=\upshape\noindent]{DfProp}{Définition-Proposition}
-\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
-\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
-\newtheorem[S,bodystyle=\upshape\noindent]{Meth}{Méthode}
-\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
-
-
-\newcommand\SUI{(u_n)_{n\in\N}}
-\newcommand\SER{ \sum u_n}
-\newcommand\myop{ \bigtriangleup}
-\def\pa#1{({#1})}
-\newcommand\Matrix[3]{\mathrm{#1}_{#2}\pa{#3}}
-\def\sEnsemble#1#2{\mathopen\{#1\mid#2\mathclose\}}
-\newcommand{\myunit}{1 cm}
-\tikzset{
-    node style sp/.style={draw,circle,minimum size=\myunit},
-    node style ge/.style={circle,minimum size=\myunit},
-    arrow style mul/.style={draw,sloped,midway,fill=white},
-    arrow style plus/.style={midway,sloped,fill=white},
-}
+\documentclass{book}
+\usepackage{jlq2eams}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setcounter{tocdepth}{5}
 \begin{document}
-%\dominitoc
-%\tableofcontents
-\chapter{Endomorphismes remarquables d'un espace euclidien}
+\chapter*{Endomorphismes remarquables d'un espace euclidien}
 
 Dans un espace euclidien $E$, l'objectif est  d'étudier les transformations de $E$ qui préservent le produit scalaire. Ainsi on cherche à remplacer
 les notions de base, équation linéaire, forme linéaire, transposition etc. par les notions
@@ -107,7 +27,7 @@ On appelle \defi{groupe orthogonal} l'ensemble de ces endomorphismes et on le no
 $u$ est une isométrie vectorielle si et seulement si 
 $$ \forall \vec{x}\in E:\quad \norme{u(\vec{x})} =\norme{\vec{x}}. $$ 
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 \begin{itemize}
 \item \textit{Implication :} Soit $\vec{x}\in E$.  En prenant  $\vec{x}= \vec{y}$, on obtient $\PS{u(\vec{x})}{ u(\vec{x})} =\PS{\vec{x}}{\vec{x}}$, soit $\norme{u(\vec{x})}^2 =\norme{\vec{x}}^2$, d'où $\norme{u(\vec{x})} =\norme{\vec{x}}.$
 \item \textit{Réciproque :} Soit $\vec{x},\vec{y}\in E$. On a 
@@ -118,11 +38,11 @@ $$ \forall \vec{x}\in E:\quad \norme{u(\vec{x})} =\norme{\vec{x}}. $$
 \overbrace{=}^{\text{Identité de polarisation}}&\PS{\vec{x}}{ \vec{y}}
 \end{align*}
 \end{itemize}
-\end{proof}
+\end{Proof}
 \begin{Prop}[Conservation d'une base orthonormale]
 $u$ est une isométrie vectorielle si et seulement si l'image d'une base orthonormale quelconque est une base orthonormale.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 \begin{itemize}
 \item \textit{Implication :} Soit $(\vec{e_1},\dots,\vec{e_n})$ une base orthonormale de $E$. Comme
 $$\PS{u(\vec{e_i})}{ u(\vec{e}_j)}\overbrace{=}^{\text{Conservation du produit scalaire}}\PS{\vec{e_i}}{ \vec{e_j}}$$, $(u(\vec{e_1}),\dots,u(\vec{e_n}))$ est bien une base orthonormale de $E$ 
@@ -135,11 +55,11 @@ Soit $\vec{x}=\sum_{i=1}^n x_i\vec{e_i},\vec{y}\sum_{i=1}^n y_i\vec{e_i}\in E$. 
 \overbrace{=}^{(\vec{e_1},\dots,\vec{e_n}) \text{BON}}&\PS{\vec{x}}{ \vec{y}}\\
 \end{align*}
 \end{itemize}
-\end{proof}
+\end{Proof}
 \begin{Prop}[Groupe]
 $\OrE$ est un groupe, sous groupe de $\GLE$.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 $\OrE$ est un sous groupe de $\GLE$.
 \begin{itemize}
 \item \textit{$\OrE\subset \GLE$} Soit $u\in \OrE$ Comme $u$ est un endomorphisme en dimension finie, il suffit de montrer que $u$ est injective, $\Ker u=\{\vec{0_E}\}$.\\
@@ -150,10 +70,10 @@ $$ \norme{u(v(\vec{x}))}\overbrace{=}^{u\in \OrE}\norme{v(\vec{x})}\overbrace{=}
 \item \textit{Stabilité inversion :} Soit $u \in \OrE$. Comme $u$ est un automorphisme, $u^{-1}$ l'est aussi. De plus, la norme est conservée car : 
 $$ \norme{\vec{x}} = \norme{u( u^{-1}(\vec{x}))}\overbrace{=}^{u\in\OrE }\norme{u^{-1}(\vec{x})}.$$
 \end{itemize}
-\end{proof}
+\end{Proof}
 \subsection{Matrice orthogonale}
 \begin{Df}[Matrice orthogonale]
-Une matrice carrée $M \in \MnR$ est dit \defi{orthogonal} si $$\transposee{M} M = I_n.$$
+Une matrice carrée $M \in \Mn{n}{R}$ est dit \defi{orthogonal} si $$\transposee{M} M = I_n.$$
 On note \defi{$\OnR$} l'ensemble des matrices orthogonales de taille $n$.\\
 Comme $\transposee{M} M = I_n$, la matrice $M$ est inversible d'inverse $\transposee{M}$ et on a aussi $ M \transposee{M}= I_n.$
 \end{Df}
@@ -170,7 +90,7 @@ $$
 \begin{Prop}
 $O \in \OnR$ est  orthogonal si et seulement si la famille des colonnes de $O$ (ou les lignes) est une base orthonormale de l'espace euclidien canonique $\R^n$.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Soit $C_1,\dots,C_n$ les colonnes de la matrice $O$.
 \begin{align*}
 O \in \OnR\text{  est  orthogonal } \Leftrightarrow&  \transposee{M} M =\begin{pmatrix}
@@ -182,12 +102,12 @@ C_1&\dots&C_n
 \vdots &&\vdots\\
 \transposee{C_n}C_1&\dots&\transposee{C_n}C_n\\
 \end{pmatrix} =  I_n\\
- \Leftrightarrow& \forall i,j\in\ccro{1}{n} :\quad \transposee{C_i}C_j=\delta_{ij}\\
-\Leftrightarrow& \forall i,j\in\ccro{1}{n} :\quad \PS{C_i}{C_j}=\delta_{ij}\\
+ \Leftrightarrow& \forall i,j\in\Intf{1}{n} :\quad \transposee{C_i}C_j=\delta_{ij}\\
+\Leftrightarrow& \forall i,j\in\Intf{1}{n} :\quad \PS{C_i}{C_j}=\delta_{ij}\\
 \Leftrightarrow& (C_1,\dots,C_n)\text{ est une base orthonormale de l'espace euclidien canonique } \R^n
 \end{align*} 
 Du fait de l'égalité $ O\transposee{O}=I_n$, on a le même résultat sur les lignes.
-\end{proof} 
+\end{Proof} 
 \begin{Ex}
 Il est facile de vérifier qu'une matrice de permutation est une matrice orthogonal car ses vecteurs colonnes forment une famille orthonormale. 
 \end{Ex}
@@ -196,7 +116,7 @@ Il est facile de vérifier qu'une matrice de permutation est une matrice orthogon
 Soit $u\in\LE$. Soit $\mathcal{B}$ une base orthonormale de $E$.\\
 $u$ est une isométrie vectorielle si et seulement si $[u]_\mathcal{B}$ est une matrice orthogonale.
 \end{Th}
-\begin{proof}
+\begin{Proof}
 Soit $\mathcal{B}=(\vec{e_1},\dots,\vec{e_n})$ une base orthonormale de $E$.\\
 Soit $C_1,\dots,C_n$ les colonnes de la matrice $[u]_\mathcal{B}$. On a  $[u(\vec{e_i})]_{\mathcal{B}}=C_i$.\\
 Le coefficient de la matrice $\transposee{[u]_{\mathcal{B}}}[u]_{\mathcal{B}} $ d'indice $i,j$ est :\\
@@ -205,21 +125,21 @@ $$\transposee{C_i}C_j\overbrace{=}^{\mathcal{B} \text{ BON}}\PS{u(\vec{e_i})}{u(
 \item Si $u\in\OrE$, alors $\PS{u(\vec{e_i})}{u(\vec{e_j})}\overbrace{=}^{\text{Conservation d'une base orthonormale}}\delta_{ij}$ et donc $\transposee{[u]_{\mathcal{B}}}[u]_{\mathcal{B}} =I_n$, d'où $[u]_{\mathcal{B}}\in \OnR.$
 \item Si $[u]_\mathcal{B}\in\OnR$, alors $\transposee{C_i}C_j=\delta_{i,j}$, soit $\PS{u(\vec{e_i})}{u(\vec{e_j})}=\delta_{ij}$ c'est à dire que l'image d'une base orthonormale et une  base orthonormale donc  $u\in\OrE.$
 \end{itemize}
-\end{proof}
+\end{Proof}
 \begin{Prop}[Matrice de passage d'un changement de bases orthonormales]
 Soit $\mathcal{B},\mathcal{B}'$ deux bases orthonormales de $E$.\\
 Alors la matrice de passage de base $\mathcal{B}$ à la base $\mathcal{B}'$, $P_{\mathcal{B}\to\mathcal{B}'}$, est une matrice orthogonale. 
 Ainsi, son inverse est $P_{\mathcal{B}'\to\mathcal{B}}=  P^{-1}_{\mathcal{B}\to\mathcal{B}'}=\transposee{P_{\mathcal{B}\to\mathcal{B}'}}.$
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Soit $u$ l'endomorphisme associée à la matrice de passage. Comme l'image d'une base orthonormale est une base orthonormale $f(\mathcal{B})=\mathcal{B}'$,  $f$ est une isométrie vectoriel, donc  $P_{\mathcal{B}\to\mathcal{B}'}$ est une matrice orthogonale.
-\end{proof}
+\end{Proof}
 \begin{Prop}[Groupe]
-$\OnR$ est un groupe, sous groupe de $\GLn{\R}$.  C'est pourquoi $\OnR$ est appelé le \defi{groupe orthogonal}.
+$\OnR$ est un groupe, sous groupe de $\GLn{\R}$.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Pour la démonstration, il suffit de se ramener à $u$ l'endomorphisme associée à la matrice orthogonale qui est une isométrie vectorielle.
-\end{proof}
+\end{Proof}
 \subsection{Déterminant}
 
 \begin{Prop}[Déterminant]
@@ -228,31 +148,31 @@ Alors $ \det O= \pm 1$.\\
  Soit $u\in \OrE$.\\
 Alors $ \det u= \pm 1$.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Comme $\transposee{O}O=I_n$, on a $\det (\transposee{O}O) =\det(I_n)=1$. Or $det (\transposee{O}O)=det \transposee{O}\det O=(\det O)^2$. Donc $ \det O= \pm 1$. \\
 Soit $\mathcal{B}$ une base orthonormée de $E$.  Comme $[u]_{\mathcal{B}}\in \OnR$ et $\det u= \det [u]_{\mathcal{B}}$, on conclut que $ \det u= \pm 1$.
-\end{proof}
+\end{Proof}
 \begin{NB}
 Une matrice ou un endomorphisme de déterminant 1 ou -1 n'est pas nécessairement une matrice orthogonale ou une isométrie vectorielle. Par exemple $\det \begin{pmatrix}1 &1\\0&1\end{pmatrix}=1$, mais les colonnes ne forment pas une base orthonormale de $\R^2$. Donc $\begin{pmatrix}1 &1\\0&1\end{pmatrix}\notin\mathcal{O}_2(\R)$. 
 \end{NB}
 \begin{Df}[Rotation et groupe spéciale orthogonale]
 Une matrice orthogonale [resp. isométrie] est \defi{direct(e)} si son déterminant est 1, indirect(e) si son déterminant est -1.\\
 Une isométrie vectorielle directe est également appelée \defi{rotation}.\\
-On note $\SOnR$ l'ensemble des matrices orthogonales directes de $\MnR$ et $\SOE$ l'ensemble des rotations de $E$.
+On note $\SOnR$ l'ensemble des matrices orthogonales directes de $\Mn{n}{\R}$ et $\SOE$ l'ensemble des rotations de $E$.
 \end{Df}
 \begin{Ex}
 $\begin{pmatrix}0 &1\\-1&0\end{pmatrix}\in \mathcal{SO}_2(\R)$.
 \end{Ex}
 \begin{Prop}[Groupe]
 $\SOnR$ [resp. $\SOE$ ] est un groupe, sous-groupe de $\OnR$ [resp. $\OrE$)] appelé \defi{groupe
-spécial orthogonal} de $\MnR$ [resp. $E$].
+spécial orthogonal} de $\Mn{n}{\R}$ [resp. $E$].
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 \begin{itemize}
 \item \textit{Non vide} : $I_n\in \SOnR$.
 \item \textit{Stabilité} :  Soit $S_1,S_2\in \SOnR$. $$\det (S_1 S_2^{-1})=\det S_1 \det S_2^{-1}=\frac{\det S_1}{ \det S_2}=1.$$
 \end{itemize}
-\end{proof}
+\end{Proof}
 \subsection{Symétrie orthogonale}
 \begin{Df}[Symétrie orthogonale]
 On appelle \defi{symétrie orthogonale} par rapport à $F$ parallèlement à $F^{\perp}$.\\
@@ -263,7 +183,7 @@ Si $F$ est un hyperplan de $E$, on parle alors de \defi{réflexion}.
 Soit $u$ une isométrie vectorielle.\\
 $u$ est une symétrie orthonormale si et seulement si sa matrice dans une base orthonormale est symétrique.  
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 
 \begin{itemize}
 \item $\Longrightarrow :$ Soit une symétrie orthonormale par rapport à $F$ et $F^{\perp}$. Soit $\mathcal{B}$ une base orthonormale adaptée à décomposition  $F\oplus F^{\perp}=E.$ La matrice de $u$ dans la base $\mathcal{B}$ est de la forme :
@@ -273,7 +193,7 @@ $$[u]_{\mathcal{B}'}= \transposee{P_{\mathcal{B}\to\mathcal{B}'}} \begin{pmatrix
 Donc $[u]_{\mathcal{B}'}$ est symétrique.
 \item $\Longleftarrow :$ Voir théorème spectral.
 \end{itemize}
-\end{proof}
+\end{Proof}
 
 \subsection{Orientation}
 \begin{Df}[Orientation]
@@ -289,10 +209,10 @@ Sur $\R^2$. La base de référence est $(\vec{e_1},\vec{e_2})$ la base canonique. 
 Soit $\mathcal{B}$ une base orthonormée directe.\\
 $\mathcal{B}'$ est une base orthonormée directe si seulement si la matrice de passage de $\mathcal{B}$ à $\mathcal{B}'$ est orthogonale directe.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 L'équivalence est due à l'égalité :
 $$ \det_\mathcal{B}(\mathcal{B}')=\det( P_{\mathcal{B}\to\mathcal{B}'})$$
-\end{proof}
+\end{Proof}
 \begin{Df}[Orientation d'un hyperplan]
 Orienter l'hyperplan $H$, c'est choisir un vecteur $\vec{n}$ orthogonal à $H$.\\
 Une base $(\vec{e_1},...,\vec{e_{n-1}})$
@@ -315,7 +235,7 @@ Les matrices indirectes sont les $S_\theta$, $\theta \in \R$.
 \includegraphics[width=6cm]{rotation.png}
 \end{center}
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Soit $M=\begin{pmatrix}
 a &c\\b&d\\
 \end{pmatrix}\in\Mn[2]{\R}$. 
@@ -327,15 +247,15 @@ $$
  \overbrace{\Leftrightarrow}^{\cos( \theta+\epsilon\frac \pi 2)=-\epsilon\sin \theta\text{ et }\sin( \theta+\epsilon\frac \pi 2)=\epsilon\cos \theta} \exists \theta\in \R \exists\epsilon \in\{-1,1\}: \quad M=\begin{pmatrix} \cos \theta &-\epsilon\sin \theta \\ \sin \theta & \epsilon \cos \theta \end{pmatrix}
  $$
  On conclut en remarquant que $\det \begin{pmatrix} \cos \theta &-\epsilon\sin \theta \\ \sin \theta & \epsilon \cos \theta \end{pmatrix}=\epsilon$.
-\end{proof}
+\end{Proof}
 \begin{Prop}
 $R_\theta R_{\theta'}=R_{\theta+\theta'}$ ($\mathcal{SO}_2(\R)$ est un sous-groupe commutatif)et $R_\theta^{-1}= R_{-\theta}$.
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 On a : $$R_\theta R_{\theta'}=\begin{pmatrix} \cos \theta &-\sin \theta \\ \sin \theta & \cos \theta \end{pmatrix} \begin{pmatrix} \cos \theta' &-\sin \theta' \\ \sin \theta' & \cos \theta' \end{pmatrix}=\begin{pmatrix} \cos \theta \cos \theta'- \sin \theta \sin \theta'  &- (\cos\theta \sin \theta'+\sin\theta \cos \theta') \\ \\cos\theta \sin \theta'+\sin\theta \cos \theta' &\cos \theta \cos \theta'- \sin \theta \sin \theta'\end{pmatrix}$$
 $$=\begin{pmatrix} \cos(\theta+\theta') &-\sin(\theta+\theta') \\ \sin(\theta+\theta') & \cos(\theta+\theta') \end{pmatrix}=R_{\theta+\theta'}.$$
 $R_\theta R_{-\theta}=R_{\theta-\theta}=I_2$ donc $R_\theta^{-1}= R_{-\theta}$.
-\end{proof}
+\end{Proof}
 On considère $\mathcal{P}$ un plan vectoriel orienté et $\mathcal{B}$ une base orthonormale directe de $\mathcal{P}$.
 \begin{Df}[Rotation]
 L'endomorphisme de $\mathcal{P}$ dont la matrice dans $\mathcal{B}$ est $R_{\theta}$ est appelé \defi{rotation d'angle $\theta$} et est noté $r_{\theta}$.
@@ -345,15 +265,15 @@ L'endomorphisme de $\mathcal{P}$ dont la matrice dans $\mathcal{B}$ est $R_{\the
 La matrice de $r_{\theta}$ dans toute BOND est $R_{\theta}$.\\
 $\theta$ s'appelle \defi{l'angle de la rotation}, il est défini modulo $2\pi$.
 \end{DfProp}
-\begin{proof}
+\begin{Proof}
 Soit $P$ la matrice de passage de la BOND $\mathcal{B}$ à une base BOND $\mathcal{B}'$. Comme $P$ appartient $\mathcal{SO}_2(\R)$, il existe $\theta'$ tel que $P=R_{\theta'}$. La  matrice de $r_{\theta}$ dans la base $\mathcal{B}'$  est : $R_{\theta'}^{-1}R_{\theta}R_{\theta'}=R_{-\theta'}R_{\theta}R_{\theta'}=R_{-\theta'+\theta+\theta'}=R_{\theta}.$
-\end{proof}
+\end{Proof}
 \begin{Prop}[Expression complexe d'une rotation]
 Soit $r_\theta$ la rotation d'angle $\theta \in \R$. Pour $\vec{x} \in  \mathcal{P}$, on note $z$ l'affixe de $M$ et $z'$ celle de $r_\theta(\vec{x})$.\\
 On a :
 $$z' = e^{i\theta} z.$$
 \end{Prop}
-\begin{proof}
+\begin{Proof}
 Soit $(x,y)$ les coordonnées du vecteur $\vec{x}$. D'une part, on a :
 $$
 [r_\theta(\vec{x})]_{\mathcal{B}}=\begin{pmatrix} \cos \theta &-\sin \theta \\ \sin \theta &  \cos \theta \end{pmatrix}=\begin{pmatrix} x&y \end{pmatrix}=\begin{pmatrix}\cos \theta x -\sin \theta y  \\ \sin \theta x + \cos \theta y \end{pmatrix} 
@@ -361,7 +281,7 @@ $$
 d'autre part, 
 $$z' = e^{i\theta} z=e^{i\theta}(x+iy)=(\cos \theta x -\sin \theta y) +i(\sin \theta x + \cos \theta y).$$
 On conclut en identifiant la partie réel et imaginaire aux cordonnées de $[r_\theta(\vec{x})]_{\mathcal{B}}$.
-\end{proof}
+\end{Proof}
 \begin{Df}[Reflexion]
 La \defi{reflexion} d'axe $D$ est la symétrie orthogonal par rapport à $D$. 
 \end{Df}
@@ -381,7 +301,7 @@ laquelle $u$ a pour matrice :
 \end{enumerate}
 avec le cas particulier $\theta = 0 [2\pi]$ :$\begin{pmatrix}-1&0&0\\0& 1 &0 \\0& 0 &  1 \end{pmatrix}$, matrice de réflexion (symétrie orthogonale par rapport à un plan).
 \end{Th}
-\begin{proof}
+\begin{Proof}
 Soit $\chi_u$ le polynôme caractéristique de $u$. $\chi_u$ est de degré 3 donc la limite en plus l'infini est de signe opposé à la limite en moins l'infini. D'après  le théorème des valeurs intermédiaires, il existe une racine réelle $\lambda$.\\
 Soit $\vec{x}$ un vecteur propre associée à cette valeur propre. par définition, an a  $u(\vec{x})=\lambda\vec{x}$, d'où  $\norme{u(\vec{x})}=|\lambda| \norme{\vec{x}}$. Comme $u$ est une isométrie vectorielle  $\norme{u(\vec{x})}= \norme{\vec{x}}$. Par conséquent $|\lambda|=1$.\\
 Considérons le supplémentaire orthogonal de la droite $Vect(\vec{x})$. Ce supplémentaire
@@ -401,7 +321,7 @@ $$[u]_{(\vec{x},\vec{y},\vec{z})} = \begin{pmatrix}
 0 & 0 & -1
 \end{pmatrix}.$$
 qui a permutation des vecteurs de base près est du type voulu.
-\end{proof}
+\end{Proof}
 \begin{Df}[Rotation]
         \begin{minipage}[c]{0.45\linewidth}{
 La \defi{rotation}, $r_{\vec{x},\theta}$, d'axe $\vec{x}$ et d'angle $\theta$ est l'endomorphisme de $\R^3$ défini par :
@@ -486,7 +406,7 @@ Il s'agit d'un sous-espace vectoriel de $\LE$.
 \begin{Df}[Matrices symétriques]
 Une matrice \defi{symétrique}, $S$, est une matrice carrée qui est égale à sa propre transposée, soit $\transposee{S}=S$.\\
 On note $\SnR$ est l'ensemble des matrices symétriques de taille $n$.\\
-Il s'agit d'un sous-espace vectoriel de $\MnR$ et $\dim \SnR=  \frac{n(n+1)}{2}$.
+Il s'agit d'un sous-espace vectoriel de $\Mn{n}{\R}$ et $\dim \SnR=  \frac{n(n+1)}{2}$.
 \end{Df}
 
 
@@ -495,7 +415,7 @@ Il s'agit d'un sous-espace vectoriel de $\MnR$ et $\dim \SnR=  \frac{n(n+1)}{2}$
 $$\begin{pmatrix}2&4&6\\4&0&10\\6&10&12\end{pmatrix}$$
 Toute matrice diagonale est symétrique.\\
 Soit $X\in \R^n$. Alors $X  \transposee{X}$ est symétrique.\\
-Soit $A\in \MnR$. Alors $\transposee{A} A$ est symétrique.\\
+Soit $A\in \Mn{n}{\R}$. Alors $\transposee{A} A$ est symétrique.\\
 \end{Ex}
 \begin{Ex}[Matrice hessienne]
 Soit $f$ une fonction de classe $\mathcal {C}^{2}(\mathbb{R}^2,\mathbb{R})$. Sa matrice hessienne $$\begin{pmatrix}\frac {\partial ^{2}f}{\partial x_{1}^{2}}&\frac {\partial ^{2}f}{\partial x_{1}\partial x_{2}}\\\frac {\partial ^{2}f}{\partial x_{2}\partial x_{1}}&\frac {\partial ^{2}f}{\partial x_{2}^{2}}\end{pmatrix}$$ est symétrique.
@@ -521,7 +441,7 @@ $$\forall X,Y\in  \R^n, \quad  \PS{SX}{Y}=\PS{X}{SY}.$$
 \begin{Df}[Matrices antisymétriques]
 Une matrice \defi{antisymétrique}, $A$, est une matrice carrée qui est égale à l'opposée de sa propre transposée, soit $\transposee{A}=-A$.\\
 On note $\AnR$ est l'ensemble des matrices antisymétriques de taille $n$.\\
-Il s'agit d'un sous-espace vectoriel de $\MnR$ et $\dim \AnR=  \frac{n(n-1)}{2}$.
+Il s'agit d'un sous-espace vectoriel de $\Mn{n}{\R}$ et $\dim \AnR=  \frac{n(n-1)}{2}$.
 \end{Df}
 \begin{Prop}[Supplémentaires orthogonaux]
 $\AnR$ et $SnR$ sont des supplémentaires orthogonaux par rapport au produit scalaire  $(A,B)\mapsto \tr(\transposee{A}B)$.\\
@@ -564,7 +484,7 @@ Alors les sous-espaces propres de $S$ sont deux à deux orthogonaux.
 \begin{Th}[Théorème spectral (endomorphisme symétrique)]
 Tout endomorphisme symétrique est diagonalisable dans une base orthonormale et ses valeurs propres sont toutes réelles.
 \end{Th}
-\begin{proof}
+\begin{Proof}
 Soit $u$ un endomorphisme symétrique et \\
 On montre d'abord qu'il  existe au moins une valeur propre réelle, puis on restreint $u$ par récurrence sur la dimension de l'espace :
 \begin{itemize}
@@ -581,7 +501,7 @@ Comme  $\transposee{X}\overline{X}\neq 0$, $\lambda=\overline{\lambda}$, donc $\
 \end{itemize}
 
 
-\end{proof}
+\end{Proof}
 \begin{Th}[Théorème spectral (matrice symétrique)]
 Soit $S$ une matrice symétrique réelle.\\
 Alors il existe une matrice $P$ orthogonale  et une matrice $D$ diagonale dont tous les coefficients sont réels, telles que la matrice A est égale à $PDP^{-1}=PD\transposee{P}$.

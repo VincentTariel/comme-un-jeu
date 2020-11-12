@@ -1,0 +1,760 @@
+\documentclass{book} 
+\usepackage{jlq2eams} 
+
+%%%%%%%% pour les figures en tikz
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usepackage{pgf}
+\usetikzlibrary{arrows}
+\usetikzlibrary{patterns}  
+\definecolor{CyanTikz40}{cmyk}{.4,0,0,0}
+\definecolor{CyanTikz20}{cmyk}{.2,0,0,0}
+\tikzstyle{general}=[line width=0.3mm, >=stealth, x=1cm, y=1cm,line cap=round, line join=round]
+\tikzstyle{quadrillage}=[line width=0.3mm, color=CyanTikz40]
+\tikzstyle{quadrillageNIV2}=[line width=0.3mm, color=CyanTikz20]
+\tikzstyle{quadrillage55}=[line width=0.3mm, color=CyanTikz40, xstep=0.5, ystep=0.5]
+\tikzstyle{cote}=[line width=0.3mm, <->]
+\tikzstyle{epais}=[line width=0.5mm, line cap=butt]
+\tikzstyle{tres epais}=[line width=0.8mm, line cap=butt]
+\tikzstyle{axe}=[line width=0.3mm, ->, color=Noir, line cap=rect]
+\newcommand{\quadrillageSeyes}[2]{\draw[line width=0.3mm, color=A1!10, ystep=0.2, xstep=0.8] #1 grid #2;
+\draw[line width=0.3mm, color=A1!30, xstep=0.8, ystep=0.8] #1 grid #2; }
+\newcommand{\axeX}[4][0]{\draw[axe] (#2,#1)--(#3,#1); \foreach \x in {#4} {\draw (\x,#1) node {\small $+$}; \draw (\x,#1) node[below] {\small $\x$};}}
+\newcommand{\axeY}[4][0]{\draw[axe] (#1,#2)--(#1,#3); \foreach \y in {#4} {\draw (#1, \y) node {\small $+$}; \draw (#1, \y) node[left] {\small $\y$};}}
+\newcommand{\axeOI}[3][0]{\draw[axe] (#2,#1)--(#3,#1);  \draw (1,#1) node {\small $+$}; \draw (1,#1) node[below] {\small $I$};}
+\newcommand{\axeOJ}[3][0]{\draw[axe] (#1,#2)--(#1,#3); \draw (#1, 1) node {\small $+$}; \draw (#1, 1) node[left] {\small $J$};}
+\newcommand{\axeXgraduation}[2][0]{\foreach \x in {#2} {\draw (\x,#1) node {\small $+$};}}
+\newcommand{\axeYgraduation}[2][0]{\foreach \y in {#2} {\draw (#1, \y) node {\small $+$}; }}
+\newcommand{\origine}{\draw (0,0) node[below left] {\small $0$};}
+\newcommand{\origineO}{\draw (0,0) node[below left] {$O$};}
+\newcommand{\point}[4]{\draw (#1,#2) node[#4] {$#3$};}
+\newcommand{\pointGraphique}[4]{\draw (#1,#2) node[#4] {$#3$};
+\draw (#1,#2) node {$+$};}
+\newcommand{\pointFigure}[4]{\draw (#1,#2) node[#4] {$#3$};
+\draw (#1,#2) node {$\times$};}
+\newcommand{\pointC}[3]{\draw (#1) node[#3] {$#2$};}
+\newcommand{\pointCGraphique}[3]{\draw (#1) node[#3] {$#2$};
+\draw (#1) node {$+$};}
+\newcommand{\pointCFigure}[3]{\draw (#1) node[#3] {$#2$};
+\draw (#1) node {$\times$};}
+\definecolor{A1}                {cmyk}{1.00, 0.00, 0.00, 0.50}
+\definecolor{A2}                {cmyk}{0.60, 0.00, 0.00, 0.10}
+\definecolor{A3}                {cmyk}{0.30, 0.00, 0.00, 0.05}
+\definecolor{A1}                {cmyk}{1.00, 0.00, 0.00, 0.50}
+\definecolor{A2}                {cmyk}{0.60, 0.00, 0.00, 0.10}
+\definecolor{A3}                {cmyk}{0.30, 0.00, 0.00, 0.05}
+\definecolor{A4}                {cmyk}{0.10, 0.00, 0.00, 0.00}
+\definecolor{B1}                {cmyk}{0.00, 1.00, 0.60, 0.40}
+\definecolor{B2}                {cmyk}{0.00, 0.85, 0.60, 0.15}
+\definecolor{B3}                {cmyk}{0.00, 0.20, 0.15, 0.05}
+\definecolor{B4}                {cmyk}{0.00, 0.05, 0.05, 0.00}
+\definecolor{C1}                {cmyk}{0.00, 1.00, 0.00, 0.50}
+\definecolor{C2}                {cmyk}{0.00, 0.60, 0.00, 0.20}
+\definecolor{C3}                {cmyk}{0.00, 0.30, 0.00, 0.05}
+\definecolor{C4}                {cmyk}{0.00, 0.10, 0.00, 0.05}
+\definecolor{D1}                {cmyk}{0.00, 0.00, 1.00, 0.50}
+\definecolor{D2}                {cmyk}{0.20, 0.20, 0.80, 0.00}
+\definecolor{D3}                {cmyk}{0.00, 0.00, 0.20, 0.10}
+\definecolor{D4}                {cmyk}{0.00, 0.00, 0.20, 0.05}
+\definecolor{F1}                {cmyk}{0.00, 0.80, 0.50, 0.00}
+\definecolor{F2}                {cmyk}{0.00, 0.40, 0.30, 0.00}
+\definecolor{F3}                {cmyk}{0.00, 0.15, 0.10, 0.00}
+\definecolor{F4}                {cmyk}{0.00, 0.07, 0.05, 0.00}
+\definecolor{G1}                {cmyk}{1.00, 0.00, 0.50, 0.00}
+\definecolor{G2}                {cmyk}{0.50, 0.00, 0.20, 0.00}
+\definecolor{G3}                {cmyk}{0.20, 0.00, 0.10, 0.00}
+\definecolor{G4}                {cmyk}{0.10, 0.00, 0.05, 0.00}
+\definecolor{H1}                {cmyk}{0.40, 0.00, 1.00, 0.10}
+\definecolor{H2}                {cmyk}{0.20, 0.00, 0.50, 0.05}
+\definecolor{H3}                {cmyk}{0.10, 0.00, 0.20, 0.00}
+\definecolor{H4}                {cmyk}{0.07, 0.00, 0.15, 0.00}
+\definecolor{J1}                {cmyk}{0.00, 0.50, 1.00, 0.00}
+\definecolor{J2}                {cmyk}{0.00, 0.20, 0.50, 0.00}
+\definecolor{J3}                {cmyk}{0.00, 0.10, 0.20, 0.00}
+\definecolor{J4}                {cmyk}{0.00, 0.07, 0.15, 0.00}
+\definecolor{FondOuv}           {cmyk}{0.00, 0.05, 0.10, 0.00}
+\definecolor{FondAutoEvaluation}{cmyk}{0.00, 0.03, 0.15, 0.00}
+\definecolor{FondTableaux}      {cmyk}{0.00, 0.00, 0.20, 0.00}
+\definecolor{FondAlgo}          {cmyk}{0.07, 0.00, 0.30, 0.00}
+\definecolor{BleuOuv}           {cmyk}{1.00, 0.00, 0.00, 0.00}
+\definecolor{PartieFonction}    {cmyk}{1.00, 0.00, 0.00, 0.00}
+\definecolor{PartieGeometrie}   {cmyk}{0.80, 0.80, 0.00, 0.00}
+\definecolor{PartieStatistique} {cmyk}{0.60, 0.95, 0.00, 0.20}
+\definecolor{PartieStatistiqueOLD} {cmyk}{0.95, 0.60, 0.20, 0.00}
+\definecolor{PartieStatistique*}{cmyk}{0.30, 1.00, 0.00, 0.00}
+\definecolor{U1}                {cmyk}{0.50, 0.10, 0.00, 0.10}
+\definecolor{U2}                {cmyk}{0.20, 0.15, 0.00, 0.00}
+\definecolor{CouleurRenvoiManuelNumerique}{cmyk}{0.40, 0.00, 0.00, 0.00}
+\definecolor{Blanc}             {gray}{1.00}
+\definecolor{gris1}             {gray}{0.80}
+\definecolor{gris2}             {gray}{0.60}
+\definecolor{gris3}             {gray}{0.40}
+\definecolor{Noir}              {gray}{0.00}
+\begin{document}
+\chapter*{Vecteurs}
+\section{Translations - Vecteurs associés}
+
+\begin{Df}[Translation]
+Soit $A$ et $B$ deux points du plan. \\
+On appelle \defi{translation qui transforme $A$ en $B$} la transformation qui, à tout point $M$ du plan, associe
+l'unique point $M'$ tel que $[ AM' ]$ et $[ BM ]$ ont même milieu.
+\begin{center}
+\begin{tikzpicture}[general, scale=0.4]
+\draw [quadrillage] (0,0) grid (11,8);
+\coordinate (A) at (1,1); 
+\coordinate (B) at (3,5); 
+\coordinate (M) at (7,2); 
+\coordinate (N) at (9,6);
+\coordinate (F) at (10.6, 7);
+\draw [loosely dashed] (A)--(N);
+\draw [loosely  dashed] (B)--(M); 
+\draw [->, epais, color=A1] (A)--(B); 
+\draw [->, epais, color=A1] (M)--(N); 
+\pointC{A}{A}{below left}
+\pointC{B}{B}{above left}
+\pointC{M}{M}{below right}
+\pointC{N}{M'}{above}
+\draw (3,2.25) node[rotate=122, color=F1]  {{\boldmath $\approx$}};
+\draw (7,4.75) node[rotate=122, color=F1]  {{\boldmath $\approx$}};
+\draw (4,4.25) node[rotate=53, color=C1]  {{\boldmath $\infty$}};
+\draw (6,2.75) node[rotate=53, color=C1]  {{\boldmath $\infty$}};
+\end{tikzpicture}
+%\begin{tikzpicture}[general, scale=0.4]
+%\draw [quadrillage]  (0,0) grid (16,8);
+%\coordinate (D) at (1,1); 
+%\coordinate (A) at (2.2,1.48); 
+%\coordinate (B) at (5.8,2.92); 
+%\coordinate (M) at (8.5,4); 
+%\coordinate (N) at (12.1,5.44);
+%\coordinate (F) at (16, 7);
+%\draw [loosely dashed] (D)--(F);
+%\draw [->, epais, color=A1, line cap=butt] (A)--(B); 
+%\draw [->, epais, color=A1, line cap=butt] (M)--(N); 
+%\pointC{A}{A}{below left}
+%\pointC{B}{B}{above left}
+%\pointC{M}{M}{below right}
+%\pointC{N}{M'}{above}
+%\end{tikzpicture}
+\end{center}
+\end{Df}
+
+\begin{Voc}
+\begin{itemize}
+\item Le point $M'$ est appelé \defi{image} du point $M$.
+\item On dit également que $M$ est le \defi{translaté} de $M'$.
+\end{itemize}
+\end{Voc}
+
+\begin{NB}
+Une \textbf{transformation} sert à \textbf{modéliser} mathématiquement un mouvement.
+\begin{itemize}
+\item La \textbf{symétrie centrale} est la transformation qui modélise le demi-tour. 
+\item La \textbf{translation} est la transformation qui modélise le glissement rectiligne. Pour la définir, on indique la direction, le sens et la longueur du mouvement. 
+\end{itemize}
+\end{NB}
+
+
+
+\begin{Prop}[Parallélogramme] On considère quatre points $A$,   $B$, $C$ et $D$. \\
+La translation qui transforme $A$ en $B$ transforme $C$ en $D$, si et seulement si  $ABDC$ est un \propri{parallélogramme} (éventuellement aplati).  
+\begin{center}
+\begin{tikzpicture}[general, scale=0.4]
+\draw [quadrillage] (0,0) grid (11,8);
+\coordinate (A) at (1,1); 
+\coordinate (B) at (3,5); 
+\coordinate (M) at (7,2); 
+\coordinate (N) at (9,6);
+\coordinate (F) at (10.6, 7);
+\draw [loosely dashed] (A)--(N);
+\draw [loosely  dashed] (B)--(M); 
+\draw [->, epais, color=A1] (A)--(B); 
+\draw [->, epais, color=A1] (M)--(N);
+\draw [dashed,  color=A1] (B)--(N); 
+\draw [dashed, color=A1] (A)--(M);  
+\pointC{A}{A}{below left}
+\pointC{B}{B}{above left}
+\pointC{M}{C}{below right}
+\pointC{N}{D}{above}
+%\draw (N) arc (32:52:3);
+%\draw (N) arc (32:12:3);
+\draw (3,2.25) node[rotate=122, color=F1]  {{\boldmath $\approx$}};
+\draw (7,4.75) node[rotate=122, color=F1]  {{\boldmath $\approx$}};
+\draw (4,4.25) node[rotate=53, color=C1]  {{\boldmath $\infty$}};
+\draw (6,2.75) node[rotate=53, color=C1]  {{\boldmath $\infty$}};
+\end{tikzpicture}
+\end{center}
+\end{Prop}
+
+\begin{Proof}
+C'est la conséquence de la propriété: \textit{un quadrilatère est un parallélogramme si et seulement si ses diagonales se coupent en leur milieu}\fg.
+\end{Proof}
+
+
+\begin{Df}[Vecteurs associés]
+\`A chaque translation est associé un \defi{vecteur}. \\
+Pour $A$ et $B$ deux points, le \defi{vecteur} $\Vect{AB}$ est associé à la translation qui transforme $A$ en $B$. \\
+Le vecteur $\Vect{AB}$ est défini par :
+\begin{enumerate}
+\item la \defi{direction} (celle de la droite $(AB)$), 
+\item le \defi{ sens} (de $A$ vers $B$)
+\item la \defi{ longueur} $AB$. 
+\end{enumerate}
+$A$ est l'\defi{origine} du vecteur et $B$ son \defi{extrémité}.
+\end{Df}
+
+
+
+\begin{Df}[Égalité entre vecteurs]
+Deux vecteurs qui définissent la même translation sont dits \defi{égaux}.\\
+\parbox{0.50\textwidth}{Deux vecteurs égaux ont : 
+\begin{enumerate}
+\item même direction; \item même sens; \item même longueur.
+\end{enumerate}
+}\hfill\parbox{0.50\textwidth}{
+\begin{center}
+\begin{tikzpicture}[general, scale=0.75]
+\draw [quadrillage, step=0.5] (-3,0.5) grid (4,3);
+\draw [->] (-2,2) --node[above] {$\vect{AB}$} (1,1);
+\draw [->] (-0,2.5) --node[above] {$\vect{CD}$} (3,1.5);
+\draw[color=black] (-2,2) node[above left] {$A$};
+\draw[color=black] (1,1) node[below right] {$B$};
+\draw[color=black] (-0,2.5) node[above left] {$C$};
+\draw[color=black] (3,1.5) node[below right] {$D$};
+\end{tikzpicture}\\
+$\Vect{AB}=\Vect{CD}$
+\end{center}
+}
+\end{Df}
+
+
+
+\begin{Propriete}[Parallélogramme]
+$\Vect{AB}=\Vect{CD}$ si et seulement si $ABDC$ est un parallélogramme (éventuellement aplati).
+\begin{center}
+\begin{tikzpicture}[general, scale=0.75]
+\draw [quadrillage, step=0.5] (-3,0.5) grid (4,3);
+\draw [->] (-2,2) --node[above] {$\vect{AB}$} (1,1);
+\draw [->] (-0,2.5) --node[above] {$\vect{CD}$} (3,1.5);
+\draw [dashed] (-2,2) -- (-0,2.5);
+\draw [dashed] (3,1.5) -- (1,1);
+\draw[color=black] (-2,2) node[above left] {$A$};
+\draw[color=black] (1,1) node[below right] {$B$};
+\draw[color=black] (-0,2.5) node[above left] {$C$};
+\draw[color=black] (3,1.5) node[below right] {$D$};
+\end{tikzpicture}
+\end{center}
+\end{Propriete}
+
+\begin{Meth} [Construire un vecteur] 
+Soit  $A$, $B$ et $C$ trois points non alignés.\\
+Pour \defi{placer} le point $D$ tel que $\Vect{CD}=\Vect{AB}$, on construit le parallélogramme $ABDC$.
+\begin{center}
+\begin{tikzpicture}[general, scale=0.5]
+\draw [quadrillage] (-4,-2) grid (5,5);
+\draw[dashed] (-3,-1)-- (2,0);
+\draw[->, epais] (-3,-1)-- (-1,3);
+\draw[dashed] (-1,3)-- (4,4);
+\draw[->, epais] (2,0)-- (4,4);
+\draw (-3,-1) node[below] {$A$};
+\draw (-1,3) node[above] {$B$};
+\draw (2,0) node[below] {$C$};
+\draw (4,4) node[right] {$D$};
+\end{tikzpicture}
+\end{center}
+\end{Meth}
+
+
+
+\begin{NB}
+Une translation peut être définie par un point quelconque et son translaté.\\ Il existe donc une  \textbf{infinité} de vecteurs associés à une translation. Ils sont tous égaux.  \\
+Le vecteur choisi pour définir la translation est un \textbf{représentant} de tous ces vecteurs. \\ La translation  \textbf{ne dépend pas} du représentant choisi pour la définir. 
+On le note souvent $\Vec u$.
+\end{NB}
+
+\begin{Df}[Vecteur nul]
+Le vecteur associé à la translation qui transforme un point quelconque en lui-même\\ est le \defi{vecteur nul}{}, noté $\Vect 0$.\\ Ainsi, 
+$\Vect{AA} = \Vect{BB}  = \Vect{CC}= \ldots =\Vect{0} $ 
+\end{Df}
+
+\begin{Df}[Vecteur opposé]
+Le vecteur $\Vect{BA}$ de la translation qui transforme $B$ en $A$ est appelé \defi{vecteur opposé}{} à $\Vect{AB}$. 
+\end{Df}
+\begin{NB}
+\begin{itemize}
+\item Le vecteur opposé à $\Vect{AB}$ se note $-\Vect{AB}$ et on a l'égalité $\Vect{BA}=-\Vect{AB}$.
+\item La notation $\overleftarrow{AB}$ n'existe pas.
+\end{itemize}
+\end{NB}
+
+\begin{NB} \par Deux vecteurs  \textbf{opposés} ont même direction, même longueur mais sont de sens contraires.
+\end{NB}
+
+\section{Opérations sur les vecteurs}
+
+\subsection{Additions}
+
+\begin{Propriete}[Enchaînement de translations]
+ L'enchaînement de deux translations est également une translation.
+\end{Propriete}
+
+
+\begin{DfProp}[Relation de Chasles]
+Soit $A$, $B$, $C$ trois points. \\
+L'encha\^inement de la translation de vecteur $\Vect{AB}$ puis de la translation de vecteur $\Vect{BC}$  est la translation de vecteur $\Vect{AC}$ et on a : $$\Vect{AB}+\Vect{BC}=\Vect{AC}.$$
+Le vecteur $\Vect{AC}$ est le vecteur \defi{somme}.
+\begin{center}
+\begin{tikzpicture}[general, scale=0.5]
+\draw [quadrillage] (-4,-2) grid (5,5);
+\draw[->,epais] (-3,-1)--node[below]{$\Vect{AB}$}  (2,0);
+\draw[->,epais] (2,0)--node[right]{$\Vect{BC}$} (4,4);
+\draw[->,epais] (-3,-1)--node[above,left]{$\Vect{AB}+\Vect{BC}=\Vect{AC}$} (4,4);
+\draw (-3,-1) node[below] {$A$};
+\draw (2,0) node[below] {$B$};
+\draw (4,4) node[right] {$C$};
+\end{tikzpicture}
+\end{center}
+\end{DfProp}
+%\begin{NB}
+% $\Vect{AB}+\Vect{BA}=\Vect{AA}=\Vec 0$.
+%\end{NB}
+%
+%
+%\begin{Propriete}Soit $\Vec {AB}$ et $\Vec {CD}$ deux vecteurs. Alors : 
+%\begin{itemize}
+%\item  $\Vec {AB} +\Vec {CD}=\Vec {CD} +\Vec {AB}$ \item $\Vec {AB} + \Vec 0 = \Vec 
+%{AB}$
+%\end{itemize}
+%\end{Propriete}
+
+\begin{Prop}[Diagonale du parallélogramme]
+\parbox{0.60\textwidth}{
+Soit $A$, $B$, $C$, $D$ quatre points. \\
+$\Vect{AD}=\Vect{AB}+\Vect{AC}$ si et seulement si $ABDC$ est un parall\'elogramme. 
+}\hfill
+\parbox{0.35\textwidth}{
+\begin{center}
+\begin{tikzpicture}[general, scale=0.5]
+\draw [quadrillage] (-4,-2) grid (5,5);
+\draw[->, epais] (-3,-1)--node[below]{$\Vect{AC}$}  (2,0);
+\draw[->, epais] (-3,-1)--node[left]{$\Vect{AB}$} (-1,3);
+\draw[->, epais] (-3,-1)--node[left]{$\Vect{AD}$} (4,4);
+\draw[dashed] (-1,3)-- (4,4);
+\draw[dashed] (2,0)-- (4,4);
+\draw (-3,-1) node[below] {$A$};
+\draw (-1,3) node[above] {$B$};
+\draw (2,0) node[below] {$C$};
+\draw (4,4) node[right] {$D$};
+\end{tikzpicture}
+\end{center}
+}
+\end{Prop}
+
+\begin{Proof}
+\begin{align*}
+\Vect{AD}=&\Vect{AB}+\Vect{AC}&\\
+\Leftrightarrow \Vect{AC}+\Vect{CD}=&\Vect{AB}+\Vect{AC}&\text{d'après la relation de Chasles}\\
+\Leftrightarrow \Vect{CD}=&\Vect{AB}\\
+ \Leftrightarrow ABDC \text{est un parall\'elogramme} 
+\end{align*}
+\end{Proof}
+
+
+\begin{Meth}[Construire la somme de deux vecteurs]\label{2G3_M_construire_somme}
+On remplace l'un des deux vecteurs par un représentant: 
+\begin{itemize}
+\item soit de même origine afin d'utiliser la règle du parallélogramme;
+\item soit d'origine l'extrémité de l'autre afin d'utiliser la relation de Chasles.
+\end{itemize}
+%\vspace{-0.5em}
+%\begin{enumerate}
+%\item  Construire un carré $ABCD$ de centre $O$.
+%\item Construire les vecteurs \par
+%$\Vec u=\Vect{AB}+\Vect{OD}$ et 
+%
+%$\Vec v=\Vect{AD}+\Vect{OC}$
+%\end{enumerate}
+%Correction :
+%\hfill
+%\begin{tikzpicture}[general]
+%  \draw (0,0) node[below] {$A$};
+%  \draw (2,0) node[below] {$B$};
+%  \draw (2,2) node[above] {$C$};
+%  \draw (0,2) node[above] {$D$};
+%  \draw (1,1) node[right] {$O$};
+%  \draw[color=B1] (0.5,0.5) node[above] {{\boldmath $\Vec u$}};
+%  \draw (1,-1) node {Avec la relation};
+%  \draw (1,-1.5) node {de Chasles};
+%  \draw (1,3) node[below, white] {$A$};
+%\draw (0,0)--(2,0)--(2,2)--(0,2)--cycle;
+%\draw (0,0)--(2,2);
+% \draw[->, color=A1, epais] (0,0)--(2,0);
+% \draw[->, color=A1, epais] (1,1)--(0,2);
+% \draw[->, color=A1, epais, dashed, line cap=butt] (2,0)--(1,1);
+% \draw[->, color=B1, epais, line cap=butt] (0,0)--(1,1);
+%\end{tikzpicture} 
+%\hfill
+%\begin{tikzpicture}[general]
+%  \draw (0,0) node[below] {$A$};
+%  \draw (2,0) node[below] {$B$};
+%  \draw (2,2) node[above] {$C$};
+%  \draw (0,2) node[above] {$D$};
+%  \draw (1,1) node[right] {$O$};
+%\draw (0,0)--(2,0)--(2,2)--(0,2)--cycle;
+%\draw[dashed] (1,1)--(1,3)--(0,2);
+%\draw (0,2)--(2,0);
+%\draw[->, color=A1, epais] (0,0)--(0,2);
+%\draw[->, color=A1, epais, line cap=butt] (1,1)--(2,2);
+%\draw[->, color=A1, epais, dashed] (0,0)--(1,1);
+%\draw[->, color=B1, epais] (0,0)--(1,3);
+%\draw[color=B1] (1,3) node[right] {$\Vec v$};
+%\draw (1,-1) node {Avec la règle};
+%\draw (1,-1.5) node { du parallélogramme};
+%\end{tikzpicture} 
+\end{Meth}
+
+
+\begin{NB} 
+$\Vect{AB}+\Vect{AC}=\Vec 0$ si et seulement si $A$ est le milieu du segment $[BC]$.
+\end{NB}
+
+
+\subsection{Soustraction}
+
+\begin{Df} \defi{Soustraire un vecteur}{}, c'est additionner son oppos\'e.
+\end{Df}
+
+\begin{Ex}
+Soit trois points $A$, $B$ et $C$ non align\'es. \\
+Donner un repr\'esentant du vecteur $\Vect u =\Vect{AB}-\Vect{AC}$.\\
+On a :\\
+$\Vect u=\Vect{AB}-\Vect{AC}$\\
+$\Vect u=\Vect{AB}+\Vect{CA}$\\
+$\Vect u=\Vect{CA}+\Vect{AB}$\\
+$\Vect u =\Vect{CB}$ en utilisant la relation de Chasles.
+\end{Ex}
+
+
+
+\section{Coordonnées d'un vecteur}
+
+
+\begin{Df}[Coordonnées d'un vecteur]
+\parbox{0.55\textwidth}{
+Dans un rep\`ere $(O;I,J)$,  on considère la translation de vecteur $\Vect u$ qui translate l'origine $O$ en un point $M$ de coordonnées $(a;b)$. \\
+Les \defi{coordonnées du vecteur} $\Vect{u}$ sont les coordonn\'ees du point  $M$ tel que  $\Vec u =\Vect{OM}$.\\
+On note $\Vec u\left( \begin{array}{c} a\\b\end{array}\right)$.
+}\hfill\parbox{0.40\textwidth}{
+\begin{tikzpicture}[general, scale=0.5]
+\draw [quadrillage] (-2,-2) grid (8,9);
+\foreach \x/\y/\P/\N in {6/0/below/a,0/5/left/b} 
+{\draw[color=C1] (\x,\y) node {\small  $+$};
+\draw[color=C1]  (\x,\y) node[\P] {{\boldmath $\N$}};}
+\draw[->,color=black] (-2,0) -- (8,0);
+\draw[->,color=black] (0,-2) -- (0,6);
+\origineO
+\draw [dashed, color=F1, epais] (0,5) -- (6,5);
+\draw [dashed, color=J1, epais] (6,0) -- (6,5);
+\foreach \x/\y/\P/\N in {1/0/below/I,0/1/left/J,6/5/right/M} 
+{\draw (\x,\y) node {\small  $+$};
+\draw (\x,\y) node[\P] {$\N$};}
+\draw [->, color=A1, tres epais, line cap=butt] (0,0) --node[left,above] {{\boldmath $\Vect{OM}$}} (6,5);
+\draw [->, color=A1, tres epais, line cap=butt] (1,3) --node[left] {{\boldmath $\Vect u$}} (7,8);
+
+\end{tikzpicture}
+}
+\end{Df}
+
+
+\begin{Prop}[Égalité des coordonnées]
+ Deux vecteurs sont égaux si et seulement si ces vecteurs ont les mêmes coordonnées.
+\end{Prop}
+
+
+\begin{Prop}[Coordonnées de $\Vect{AB}$]
+Dans un repère $(O; I,J)$, les  coordonnées du vecteur $\Vect{AB}$ sont $\left( \begin{array}{c} x_B-x_A\\y_B-y_A\end{array}\right)$.
+\end{Prop}
+
+\begin{Proof}
+ Soit $A$, $B$ et $M$ de coordonnées respectives $(x_A; y_A)$, $(x_B; y_B)$ et $(x_M; y_M)$ dans un repère $(O; I, J)$ tels que $\Vect{OM}=\Vect{AB}$ et $OMBA$ est un parallélogramme.\\
+Donc $[AM]$ et $[OB]$ ont même milieu.
+    $\renewcommand{\arraystretch}{2}\left \lbrace \begin{array}{c}
+                      \dfrac{x_A+x_M}{2}=\dfrac{x_B+x_O}{2}\\
+                      \dfrac{y_A+y_M}{2}=\dfrac{y_B+y_O}{2}
+                     \end{array} \right.\renewcommand{\arraystretch}{1}
+$   soit  $\left \lbrace \begin{array}{c}
+                     x_A+x_M=x_B\\
+                    y_A+y_M=y_B
+                     \end{array} \right.
+$ soit $\left \lbrace \begin{array}{c}
+                     x_M=x_B-x_A\\
+                    y_M=y_B-y_A
+                     \end{array} \right.
+$
+\end{Proof}
+
+\begin{Meth}[Lire les coordonnées d'un vecteur]
+\label{2G3_M_lire_coord}
+  Lire les coordonnées du vecteur $\Vec u$ sur la figure ci-dessous. 
+  \vspace{-0.5em}
+\begin{center}
+\begin{tikzpicture}[general, yscale=0.6]
+\foreach \a/\b/\c/\d in {0/0/5/0, 0/0.87/5/0.87, 0/2.61/5/2.61, 0/3.48/5/3.48, 0/1.74/1/3.48, 1/0/3/3.48, 2/0/4/3.48, 3/0/5/3.48, 4/0/5/1.74} {\draw[quadrillage] (\a,\b)--(\c, \d);}
+\draw[axe] (0,0)--(2,3.48); 
+\draw[axe] (0,1.74)--(5,1.74);
+\coordinate (I) at (2,1.74); 
+\coordinate (J) at (1.5,2.61); 
+\draw (I) node[rotate=-25] {{\boldmath $/$}} node[below]{$I$};
+\draw (J) node {{\boldmath $-$}} node[left]{$J$};
+\draw[epais, ->, line cap=butt, color=F1] (0.5,2.61)--(3,0);
+\draw (1.25,1.305) node[below] {{\boldmath $\Vect{u}$}};
+\end{tikzpicture}
+\end{center}
+Les coordonnées de $\Vec u$ sont $\left(\begin{array}{c}4 \\ -3
+\end{array}\right)
+$ car 
+\begin{center}
+\begin{tikzpicture}[general, yscale=0.6]
+\foreach \a/\b/\c/\d in {0/0/5/0, 0/0.87/5/0.87, 0/2.61/5/2.61, 0/3.48/5/3.48, 0/1.74/1/3.48, 1/0/3/3.48, 2/0/4/3.48, 3/0/5/3.48, 4/0/5/1.74} {\draw[quadrillage] (\a,\b)--(\c, \d);}
+\draw[axe] (0,0)--(2,3.48); 
+\draw[axe] (0,1.74)--(5,1.74);
+\coordinate (I) at (2,1.74); 
+\coordinate (J) at (1.5,2.61); 
+\draw (I) node[rotate=-25] {{\boldmath $/$}} node[below]{$I$};
+\draw (J) node {{\boldmath $-$}} node[above left]{$J$};
+\draw[epais, ->, line cap=butt, color=F1] (0.5,2.61)--(3,0);
+\draw (1.25,1.305) node[below, color=F1] {{\boldmath $\Vect{u}$}};
+\draw[epais, ->, line cap=butt, color=A1] (0.5,2.61)--(4.5,2.61);
+\draw (2.5,2.61) node[above, color=A1] {{\boldmath $+4$}};
+\draw[epais, ->, line cap=butt, color=A1] (4.5,2.61)--(3,0);
+\draw (3.75,1.305) node[right, color=A1] {{\boldmath $-3$}};
+\end{tikzpicture}
+\end{center}
+\end{Meth}
+
+ 
+\begin{Meth}[Construire un vecteur à partir de ses coordonnées]
+ Dans un repère orthonormé, construire le représentant d'origine $A(6; 2)$ du vecteur $\Vec u$ de coordonnées $\left( \begin{array}{c} -4 \\3\end{array}\right)$.  \\
+ On a :
+\begin{tikzpicture}[general, scale=0.4]
+\draw [quadrillage] (-2,-2) grid (8,6);
+\axeOI{-2}{8}
+\axeOJ{-2}{6}
+\origineO
+\draw [<-, color=A1, tres epais] (2,5) -- (6,2);
+\draw [<-,dashed, color=F1, epais] (2,2) -- (6,2);
+\draw [<-,dashed, color=J1, epais] (2,5) -- (2,2);
+\draw[color=black, color=F1] (4,2) node[below] {{\boldmath $-4$}};
+\draw[color=black, color=J1] (2,3.5) node[left] {{\boldmath $+3$}};
+\draw[color=black, color=A1] (4.5,4) node {{\boldmath $\Vec u$}};
+\pointGraphique{6}{2}{A}{below right}
+\end{tikzpicture}
+\end{Meth}
+
+
+
+\begin{Meth}[Repérer un point défini par une égalité vectorielle]
+ Dans un repère orthogonal $(O;I,J)$, on a les points $A(-2;3)$, $B(4;-1)$ et $C(5;3)$. \\Calculer les coordonnées 
+ \begin{enumerate}
+  \item du vecteur $\Vect{AB}$;
+  \item du point $D$ tel que $\Vect{AB}=\Vect{CD}$.
+ \end{enumerate}
+On a:
+ \begin{enumerate}
+  \item Les coordonnées du  vecteur $\Vect{AB}$ sont 
+$\left( \begin{array}{c}
+                    x_B-x_A \\ y_B-y_A
+                   \end{array}
+\right)$ soit $\left( \begin{array}{c}
+                    4-(-2) \\ -1-3
+                   \end{array}
+\right)$.
+Donc $\Vect{AB}$ a pour coordonnées $\left( \begin{array}{c}
+                    6 \\ -4
+                   \end{array}
+\right)$.
+
+\item On cherche $(x_D;y_D)$, les coordonnées du 
+point $D$ tel que $\Vect{AB}=\Vect{CD}$.\\ 
+Or, \og  \textit{ si deux vecteurs sont égaux 
+alors ils ont mêmes coordonnées}\fg. \\
+Donc le couple $(x_D;y_D)$ est la solution du système: 
+
+
+$\left\lbrace \begin{array}{c}
+                    x_D-x_C=x_B-x_A \\ y_D-y_C=y_B-y_A
+                   \end{array}\right.$ 
+soit  $\left \lbrace \begin{array}{l}
+                                                        x_D-5=6 \\y_D-3=-4
+                                                       \end{array}
+\right.$
+soit  $\left \lbrace \begin{array}{l}
+                                                        x_D=6+5=11 \\y_D=-4+3=-1
+                                                       \end{array}
+\right.$
+\vspace{0.1em}
+\par Les coordonnées du point $D$ sont $(11;-1)$.
+ \end{enumerate}
+\end{Meth}
+
+
+
+\begin{Prop}[Somme de deux vecteurs]
+Si $\Vect{u}$ et $\Vect{v}$ sont deux vecteurs de coordonn\'ees respectives $\left (\begin{array}{c}
+x\\y
+\end{array}\right)$ et 
+$\left(\begin{array}{c}
+x'\\y'
+\end{array}\right)$,
+alors les coordonn\'ees du \propri{vecteur somme}, $\Vect{u}+\Vect{v}$, sont 
+$\left(\begin{array}{c}
+x+x'\\y+y'
+\end{array}\right)$.
+\end{Prop}
+
+\begin{Meth}[Rep\'erer un point d\'efini par une somme vectorielle]
+\label{2G3_M_repere_point_somme}
+Dans un rep\`ere orthogonal $(O; I, J)$, on place les points $A(2;3)$, $B(4;-1)$, $C(5;3)$ et $D(-2;-1)$.
+Quelles sont les coordonn\'ees du point $E$ tel que $\Vect{AE}=\Vect{AD}+\Vect{CB}$?
+
+
+On cherche les coordonn\'ees $(x_E;y_E)$ du point $E$ tel que  $\Vect{AE}=\Vect{AD}+\Vect{CB}$. \\
+Donc le couple $(x_E;y_E)$ est solution du syst\`eme:
+
+$\left\lbrace\begin{array}{l}
+x_E-x_A=(x_D-x_A)+(x_B-x_C)\\y_E-y_A=(y_D-y_A)+(y_B-y_C)
+\end{array}\right.$
+soit 
+$\left \lbrace \begin{array}{l}
+x_E-2=(-2-2)+(4-5)\\y_E-3=(-1-3)+(-1-3)
+\end{array}
+\right.$ 
+soit 
+$\left \lbrace \begin{array}{l}
+x_E-2=-5 \\y_E-3=-8
+\end{array}
+\right.$ 
+soit 
+$\left \lbrace \begin{array}{l}
+x_E=-5+2=-3 \\y_E=-8+3=-5
+\end{array}
+\right.$
+\par
+Les coordonn\'ees du point $E$ sont $(-3;-5)$.
+\end{Meth}
+
+
+
+
+\section{Multiplication par un réel}
+
+
+\begin{Df}
+Soit $\Vect{u}$ un vecteur de coordonn\'ees $(x;y)$ et $\lambda$ un r\'eel. \\
+La \defi{multiplication de {\boldmath $\Vect{u}$} par {\boldmath $\lambda$}}{} est le vecteur \defi{$\lambda\Vect{u}$} de coordonn\'ees \defi{$(\lambda x;\lambda y)$}.
+\end{Df}
+
+\begin{Meth}[Rep\'erer le produit d'un vecteur par un réel]
+\label{2G3_M_reperer_produit}
+ Dans un rep\`ere orthogonal, construire le repr\'esentant d'origine $A(1; 4)$ du vecteur $-0,5 \Vec u$ avec $\Vec u \left( \begin{array}{c} 2 \\-3\end{array}\right)$.\\
+ On a : \\\parbox{0.49\linewidth}{
+$\Vec u$ a pour coordonn\'ees $\left( \begin{array}{c} 2 \\-3\end{array}\right)$. 
+Donc $-0,5 \Vec u$ a pour coordonn\'ees $\left( \begin{array}{c} -0,5\times 2 \\-0,5\times (-3)\end{array}\right)$  
+soit $\left( \begin{array}{c} -1 \\1,5\end{array}\right)$. 
+}\hfill\parbox{0.49\linewidth}{
+\begin{tikzpicture}[general, yscale=0.3, xscale=1.2]
+\draw [quadrillage, xstep=0.25] (-0.5,-1) grid (3.25,7);
+\axeX{-0.5}{3.25}{1}
+\axeY{-1}{7}{1}
+\draw [->, color=A1,epais] (1,4) -- (3,1);
+\draw [->, color=C1,epais] (1,4) -- (0,5.5);
+\draw [->,dashed, color=A1, epais](1,4) -- (1,5.5);
+\draw [->,dashed, color=C1, epais] (1,5.5)--(0,5.5);
+\draw[color=C1] (0.5,5.5) node[above] {{\boldmath $-1$}};
+\draw[color=A1] (1,4.75) node[right] {{\boldmath $+1,5$}};
+\draw[color=C1] (0.5,4) node[left] {{\boldmath $-0,5\Vec u$}};
+\draw[color=A1] (2,3) node[right] {{\boldmath $\Vec u$}};
+\pointGraphique{1}{4}{A}{below}
+\end{tikzpicture}}
+\end{Meth}
+
+\begin{Prop}[Sens en fonction du signe de $\lambda$]
+Soient deux vecteurs $\Vect{AB}$ et $\Vect{CD}$ et $\lambda$ un r\'eel tels que  $\Vect{AB}=\lambda\Vect{CD}$. 
+\begin{itemize}
+ \item si $\lambda>0$, $\Vect{AB}$ et $\Vect{CD}$ sont de m\^eme sens.
+\item si $\lambda<0$, $\Vect{AB}$ et $\Vect{CD}$ sont de sens contraires.
+\end{itemize}
+\end{Prop}
+
+\begin{NB}
+ $\Vec u$ et $\lambda \Vec u$ ont la m\^eme direction.  Leurs sens et leurs longueurs d\'ependent de $\lambda$.
+\end{NB}
+
+
+\section{Colin\'earit\'e}
+
+
+\begin{Df}[Colinéaire]
+On dit que deux vecteurs non nuls sont \defi{colinéaires} si  leurs coordonn\'ees dans un m\^eme rep\`ere sont proportionnelles. 
+\end{Df}
+
+ \begin{NB}
+Par convention, le vecteur nul est colin\'eaire \`a tout vecteur $\Vect{u}$. %En effet, $\Vect{0}=0.\Vect{u}$.
+ \end{NB}
+
+
+
+\begin{Prop}
+Deux vecteurs $\Vect{u}$ et $\Vect{v}$ non nuls sont colin\'eaires lorsqu'il existe un r\'eel $\lambda$ tel que $\Vect{v}=\lambda\Vect{u}$.
+\end{Prop}
+ 
+
+ 
+\begin{Meth}[V\'erifier la colin\'earit\'e de deux vecteurs]\label{2G3_M_colinearite}
+Pour v\'erifier que  deux vecteurs non nuls $\Vect{u}\left (\begin{array}{c}
+x\\y
+\end{array}\right)$ et $\Vect{v}\left(\begin{array}{c}
+x'\\y'
+\end{array}\right)$  sont colin\'eaires, il suffit de:
+\begin{description}
+\item[possibilité 1] trouver un r\'eel $\lambda$ non nul tel que $x'=\lambda x$ et $y'=\lambda y$; 
+\item[possibilité 2] vérifier que les produits en croix, $xy'$  et $x'y$, sont égaux.
+\end{description}
+
+Soit $(O; I, J)$ un rep\`ere orthogonal. Les vecteurs suivants sont-ils colin\'eaires? 
+\begin{enumerate}
+\item $\Vec u \left( \begin{array}{c}
+2\\6 
+\end{array}
+\right)$ et $\Vec v \left( \begin{array}{c}
+-6 \\ -18
+\end{array}
+\right)$. 
+\item $\Vec w \left( \begin{array}{c}
+-5 \\ 3\end{array}\right)$ et $\Vec z \left( \begin{array}{c}12 \\ -7\end{array}\right)$.
+\end{enumerate}
+On a :
+\begin{enumerate}
+\item $-6=-3\times 2$ et $-18=-3\times 6$ donc $\Vec v=-3\Vec u$.
+ $\Vec u$ et $\Vec v$ sont donc colin\'eaires.
+\item $-5\times(-7)=35$ et $3\times 12=36$.  Les produits en croix ne sont pas \'egaux.  
+  Donc $\Vec w$ et $\Vec z$ ne sont pas colin\'eaires.
+\end{enumerate}
+\end{Meth}
+
+
+\begin{Prop}[Caractérisation vectorielle des droites parallèles]
+\begin{itemize}
+\item Deux droites $(AB)$ et $(CD)$ sont \textbf{parall\`eles} si et seulement si les vecteurs $\Vect{AB}$ et $\Vect{CD}$ sont colin\'eaires;
+\item Trois points $A$, $B$ et $C$ sont \textbf{align\'es} si et seulement si les vecteurs $\Vect{AB}$ et $\Vect{AC}$ sont colin\'eaires.
+\end{itemize}
+\end{Prop}
+\begin{Ex}
+Les points $A(1;2 )$, $B(3;1 )$ et $C(5; 3)$  sont-ils alignés ?\\
+On calcule les coordonnées des vecteurs $\Vect{AB}$ et $\Vect{AC}$ puis les produits en croix :
+$$(x_B-x_A)(y_C-y_A)=(3-1)(3-2)=2\times 1=2.$$
+et ainsi : \\
+$$(y_B-y_A)(x_C-x_A)=(1-2)(5-1)=-1\times4=-4.$$
+Les coordonnées des vecteurs $\Vect{AB}$ et $\Vect{AC}$ ne sont pas proportionnelles. Donc $A$, $B$, $C$ ne sont pas alignés.
+\end{Ex}
+
+\end{document}
