@@ -12,16 +12,32 @@ Cette exemple introductif permet de présenter les \textbf{différentes représenta
 \begin{Ex}
 Problème : la somme des tailles d'un fils et du père est de 2,5 mètres. La différence de tailles  est de 0.5 mètres.
 Quel est la taille du fils ? \\
-\impo{Modélisation : }\\  
+\textbf{Modélisation : }\\  
 Soit l'inconnue $x$ représentant la taille du fils et l'inconnue $y$ représentant la taille du père.\\
 La somme est 2,5 donc $x+y=2,5$.\\
 La différence est 0,5 donc $y-x=0,5$.\\
 Ainsi on cherche $x$ et $y$ vérifiant le système $(S)$  :
-$$(S)\quad \begin{cases}
-x+y&=2,5\\
--x+y&=0,5
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+\draw[line width=0.3mm, <->,color=red] (0,0) -- node[left] {$x$}(0,1);
+\draw[line width=0.3mm, <->,color=green] (0,1) -- node[left] {$y$}(0,2.5);
+\draw[line width=0.3mm, <->,color=blue] (0.1,0) -- node[right] {$2,5$}(0.1,2.5);
+\end{tikzpicture}
+et
+\begin{tikzpicture}[scale=1.5]
+\draw[line width=0.3mm, <->,color=red] (0,0) -- node[left] {$x$}(0,1);
+\draw[line width=0.3mm, <->,color=blue] (0,1) -- node[left] {$0,5$}(0,1.5);
+\draw[line width=0.3mm, <->,color=green] (0.1,0) -- node[right] {$y$}(0.1,1.5);
+\end{tikzpicture}
+$\Leftrightarrow\quad \begin{cases}
+{\color{red}x}+{\color{green}y}&={\color{blue}2,5}\\
+{\color{red}x}+{\color{blue}0,5}&={\color{green}y}
+\end{cases}\Leftrightarrow\quad \begin{cases}
+{\color{red}x}+{\color{green}y}&={\color{blue}2,5}\\
+{\color{red}-x}+{\color{green}y}&={\color{blue}0,5}
 \end{cases}
-$$
+$		
+\end{center}
 \end{Ex}
 \section{Système d'équations}
 
@@ -56,7 +72,7 @@ $$(S)\quad \begin{cases}
 x+y&=2,5\quad(D_1)\\
 -x+y&=0,5\quad(D_2)
 \end{cases}$$
-est constitué de deux équations de deux droites $D_1$ et $D_2$. 
+est constitué de deux équations de deux droites $D_1$ et $D_2$.\\
 Trois cas se présentent alors :
 \begin{enumerate}
 \item Si les droites $D_1$ et $D_2$ ne sont pas parallèles, alors elle s'intersecte en un unique point et le système $(S)$ a une
@@ -112,14 +128,19 @@ Dans notre exemple, comme les vecteurs normaux aux deux droites $\begin{pmatrix}
 \end{tikzpicture}	
 \end{center}
 Ainsi l'ensemble des solution admet une unique solution. Par lecture graphique, l'unique solution est $(1 , 1,5 )$.\\
-La notion de vecteurs normaux sera l'objet du chapitre espaces préhilbertiens. 
+La notion de vecteurs normaux sera l'objet du chapitre \textbf{espaces préhilbertiens}. 
 
-\section{Matricielle}
+\section{Calcul matricielle}
 On sait résoudre par de simples opérations algébriques une équation linéaire à une inconnue. Par exemple, pour l'équation $2x+1=5$, on additionne l'opposé de $1$, soit $-1$ $$2x+1+(-1)=5+(-1)$$ ce qui donne $2x=4$, puis on multiple par l'inverse de 2, ce qui donne $x=2$.\\
 Une idée est de transformer le système de deux équations à deux inconnues à une équation à une inconnue. Cette transformation est une abstraction sur la nature des coefficients et des variables des équations : de \impo{réels} à  \impo{tableaux de nombres}.\\
 Ainsi, l'équation équivalente au système d'équations linéaires est  :
 \begin{center}
-\begin{tikzpicture}[>=latex]
+$\begin{cases}
+{\color{red}x}+{\color{green}y}&={\color{blue}2,5}\\
+{\color{red}-x}+{\color{green}y}&={\color{blue}0,5}
+\end{cases}\Leftrightarrow
+$	
+\begin{tikzpicture}[scale=1,>=latex]
 \matrix (A) [matrix of math nodes,%
              nodes = {node style ge},%
              left delimiter  = (,%
@@ -133,23 +154,23 @@ Ainsi, l'équation équivalente au système d'équations linéaires est  :
              left delimiter  = (,%
              right delimiter =)] at (0,2.5*\myunit)
 {%
-  x\\
-  y\\
+  \color{red}x\\
+  \color{green}y\\
 };
-\draw[dotted] (0,0) node {$=$};
+\draw[dotted] (.7*\myunit,0) node {$=$};
 \matrix (Y) [matrix of math nodes,%
              nodes = {node style ge},%
              left delimiter  = (,%
-             right delimiter = )] at (2*\myunit,0)
+             right delimiter = )] at (2.2*\myunit,0)
 {%
-  2,5  \\
-  0,5 \\
+  \color{blue}2,5  \\
+  \color{blue}0,5 \\
 };
-\draw[<->,red](A-1-1) to[in=180,out=90]
+\draw[<->,colordef](A-1-1) to[in=180,out=90]
     node[arrow style mul] (x) {$1\times x$} (B-1-1);
-\draw[<->,red](A-1-2) to[in=180,out=90]
+\draw[<->,colordef](A-1-2) to[in=180,out=90]
     node[arrow style mul] (y) {$1\times y$} (B-2-1);
-\draw[red,->] (x) to node[arrow style plus] {$+$} (y);
+\draw[colordef,->] (x) to node[arrow style plus] {$+$} (y);
 \end{tikzpicture}
 \end{center}
 Autrement dit, on $$A\times X =B$$ avec $A=\begin{pmatrix}
@@ -162,7 +183,7 @@ Autrement dit, on $$A\times X =B$$ avec $A=\begin{pmatrix}
  2,5   \\
  0,5  \\
 \end{pmatrix}$.\\
-La matrice  $\begin{pmatrix}
+En calculant le déterminant de la matrice (voir chapitre \textbf{déterminant)}, on démontre que la matrice  $\begin{pmatrix}
  1 & 1   \\
  -1 & 1  \\
 \end{pmatrix}$ est inversible, c'est à dire qu'il existe une matrice $A^{-1}=\begin{pmatrix}
@@ -184,19 +205,50 @@ $$ \begin{pmatrix}
  1,5  \\
 \end{pmatrix}.$$ 
 Par identification, l'ensemble des solution est de nouveau l'unique solution $x=1$ et $y=1,5$. 
-L'étude des matrices sera fait dans le prochain chapitre. 
+Les\textbf{matrices} seront étudiées dans le chapitre \textbf{matrices}. 
 \section{Espace vectoriel}
-Une idée est de transformer ce système deux équations à deux inconnues en un système d'une équation à deux inconnues. Soit, 
-$$x\begin{pmatrix}
+Une idée est de transformer ce système deux équations à deux inconnues en un système d'une équation à deux inconnues. On a :\\
+$$\begin{cases}
+{\color{red}x}+{\color{green}y}&={\color{blue}2,5}\\
+{\color{red}-x}+{\color{green}y}&={\color{blue}0,5}
+\end{cases}
+\Leftrightarrow
+	 {\color{red}x}\begin{pmatrix}
  1    \\
  -1   \\
-\end{pmatrix}+y\begin{pmatrix}
+\end{pmatrix}+{\color{green}y}\begin{pmatrix}
   1   \\
   1  \\
 \end{pmatrix}=\begin{pmatrix}
- 2,5   \\
- 0,5  \\
-\end{pmatrix}.$$
+ {\color{blue}2,5}   \\
+ {\color{blue}0,5}  \\
+\end{pmatrix}$$
+\begin{center}
+\begin{tikzpicture}[general,scale=1.5]
+\draw [quadrillage] (-0.1,-1.1) grid (3,1.1);
+\axeX{-0.1}{3}{1}
+\axeY{-1.1}{1.1}{1}
+\draw [->, epais] (0,0) -- (1,-1)node[right]{$\begin{pmatrix}
+ 1    \\
+ -1   \\
+\end{pmatrix}$};
+\draw [->, epais] (0,0) -- (1,1)node[right]{$\begin{pmatrix}
+ 1    \\
+ 1   \\
+\end{pmatrix}$};
+\draw [->, epais] (0,0) -- (2.5,0.5)node[right]{$\begin{pmatrix}
+ {\color{blue}2,5}   \\
+ {\color{blue}0,5}  \\
+\end{pmatrix}$};
+\draw [->, epais] (0,0) -- (2.3,-0.5)node[right]{$ {\color{red}x}\begin{pmatrix}
+ 1    \\
+ -1   \\
+\end{pmatrix}+{\color{green}y}\begin{pmatrix}
+  1   \\
+  1  \\
+\end{pmatrix}$};
+\end{tikzpicture}
+\end{center}
 Il s'agit de déterminer $x,y$ afin d'exprimer $\begin{pmatrix}
  2,5   \\
  0,5  \\
@@ -249,6 +301,76 @@ pour tout vecteur de $\R^2$ il existe un couple $(x,y)$ tel que ce vecteur s'exp
 L'étude des combinaisons linéaires sera fait dans le chapitre espaces vectoriels.\\
    
 \section{Application linéaire}
-
+La dernière idée est de considérer le membre de gauche de l'équation comme l'image d'une fonction :
+\begin{center}
+$
+\begin{cases}
+{\color{red}x}+{\color{green}y}&={\color{blue}2,5}\\
+{\color{red}-x}+{\color{green}y}&={\color{blue}0,5}
+\end{cases}
+\Leftrightarrow\quad \begin{pmatrix}
+ {\color{red}x} +{\color{green}y}   \\
+ {\color{red}-x} +{\color{green}y}   \\
+\end{pmatrix} =\begin{pmatrix}
+ {\color{blue}2,5}   \\
+ {\color{blue}0,5}  \\
+\end{pmatrix}
+\Leftrightarrow\quad
+u(\begin{pmatrix}
+ \color{red}x     \\ {\color{green}y}   \\
+\end{pmatrix})
+	 = \begin{pmatrix}
+ {\color{blue}2,5}   \\
+ {\color{blue}0,5}  \\
+\end{pmatrix}$\\
+\begin{tikzpicture}[general,scale=1]
+\draw [->, epais] (0,0)node[left]{avec $\quad \begin{pmatrix}
+ {\color{red}x}    \\
+{\color{green}y}   \\
+\end{pmatrix}$} -- (1,0);
+\draw [-, epais] (1,-1)--(2.5,-1)--(2.5,1)--(1,1)--(1,-1);
+\draw(1.75,0) node{$u$};
+\draw [->, epais] (2.5,0) -- (3.5,0)node[right]{$\begin{pmatrix}
+ {\color{red}x} + {\color{green}y}    \\
+ {\color{red}-x}+  {\color{green}y}   \\
+\end{pmatrix}$};
+\end{tikzpicture} 
+\end{center}
+Les solutions du système sont l'ensemble des antécédents $\begin{pmatrix}
+ {\color{blue}2,5}   \\
+ {\color{blue}0,5}  \\
+\end{pmatrix}$ par la fonction à deux variables $\Fonction{u}{\R^2}{\R^2}{\begin{pmatrix}
+  {\color{red}x}    \\
+ {\color{green}y}   \\
+\end{pmatrix}}{\begin{pmatrix}
+  {\color{red}x} +{\color{green}y}   \\
+  {\color{red}-x} +{\color{green}y}   \\
+\end{pmatrix}}$.\\
+L'étude générale des fonctions à plusieurs variables est compliquée et est fait dans un cours d'analyse,  
+cependant,  du fait que la fonction $u$ possède une propriété de linéarité:
+ $$u(\begin{pmatrix}
+ {x}    \\
+{y}   \\
+\end{pmatrix}+\begin{pmatrix}
+ {x'}    \\
+{y'}   \\
+\end{pmatrix})=u(\begin{pmatrix}
+ {x}    \\
+{y}   \\
+\end{pmatrix})+u(\begin{pmatrix}
+ {x'}    \\
+{y'}   \\
+\end{pmatrix}) \quad\text{ et }\quad u(\lambda \begin{pmatrix}
+ {x}    \\
+{y}   \\
+\end{pmatrix})=\lambda u(\begin{pmatrix}
+ {x}    \\
+{y}   \\
+\end{pmatrix})$$
+on peut démontrer qu'elle est bijective. Ainsi, il existe une unique vecteur antécédent au vecteur $\begin{pmatrix}
+ {\color{blue}2,5}   \\
+ {\color{blue}0,5}  \\
+\end{pmatrix}$ donc le système admet une unique solution.\\
+L'étude des applications linéaires sera fait dans le chapitre \textbf{applications linéaires}.
 
 \end{document}

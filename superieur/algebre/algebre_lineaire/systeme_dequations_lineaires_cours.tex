@@ -18,11 +18,29 @@ Soit la variable $x$ représentant la taille du fils et la variable $y$ représent
 La somme est 2,5 donc $x+y=2,5$.\\
 La différence est 0,5 donc $y-x=0,5$.\\
 Ainsi on cherche $x$ et $y$ vérifiant le système $(S)$  :
-$$(S)\quad \begin{cases}
-x+y&=2,5\\
--x+y&=0,5
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+\draw[line width=0.3mm, <->,color=red] (0,0) -- node[left] {$x$}(0,1);
+\draw[line width=0.3mm, <->,color=green] (0,1) -- node[left] {$y$}(0,2.5);
+\draw[line width=0.3mm, <->,color=blue] (0.1,0) -- node[right] {$2,5$}(0.1,2.5);
+\end{tikzpicture}
+et
+\begin{tikzpicture}[scale=1.5]
+\draw[line width=0.3mm, <->,color=red] (0,0) -- node[left] {$x$}(0,1);
+\draw[line width=0.3mm, <->,color=blue] (0,1) -- node[left] {$0,5$}(0,1.5);
+\draw[line width=0.3mm, <->,color=green] (0.1,0) -- node[right] {$y$}(0.1,1.5);
+\end{tikzpicture}
+$\Leftrightarrow\quad \begin{cases}
+{\color{red}x}+{\color{green}y}&={\color{blue}2,5}\\
+{\color{red}x}+{\color{blue}0,5}&={\color{green}y}
+\end{cases}\Leftrightarrow\quad \begin{cases}
+{\color{red}x}+{\color{green}y}&={\color{blue}2,5}\\
+{\color{red}-x}+{\color{green}y}&={\color{blue}0,5}
 \end{cases}
-$$
+$		
+\end{center}
+
+
 \subsection{Résolution par pivot de Gauss}
 Pour déterminer l'ensemble des solutions $x$ et $y$ vérifiant ce système, une idée est de découpler par itérations les dépendances entre les inconnues dans les équations par combinaison ou élimination. A chaque itération, ces deux opérations transforment  un système d'équations en un autre équivalent (ayant les mêmes solutions).\\
 L'application à l'exemple introductif est :

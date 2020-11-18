@@ -8,30 +8,59 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Espaces vectoriels}
 
+\section{Exemples introductifs}
+
+\begin{Ex}[Vecteur associé à la translation dans le plan $\R^2$]%dep=vecteurs,label=vecteurs_plans 
+Une \defi{translation} déplace tous les points d'un objet géométrique de la même distance, selon la même direction et dans le même sens.
 
 
-\begin{Ex}[$\vect{x}\in \R^2$]
+ C'est-à-dire suivant un même vecteur
+ 
 Tout d'abord, commençons par les vecteurs du plan :\\
 \begin{tabular}{p{3cm}|p{4cm}|p{4cm}|p{4cm}}
 &Vecteur géométrique  &   Vecteur  numérique  &   Vecteur  algébrique       \\  \hline
-Représentation&\includegraphics[width=3cm]{espace_vectoriel_vecteur.png} & $\begin{pmatrix}
+Représentation&\begin{tikzpicture}[general,scale=1]
+\draw [quadrillage] (-0.1,-0.1) grid (2.1,1.1);
+\draw [->, ] (0,0) -- (1,0)node[right]{$\vect{e_1}$};
+\draw [->] (0,0) -- (0,1)node[right]{$\vect{e_2}$};
+\draw [->, epais,color=red] (0,0) -- (2,1)node[right]{$\vect{u}$};
+\end{tikzpicture}& $\begin{pmatrix}
 2\\1
 \end{pmatrix}$ & $\vect{u}= 2 \vect{e}_1 + 1 \vect{e}_2 $  \\\hline
-Multiplication par un scalaire & \includegraphics[width=4cm]{espace_vectoriel_vecteur_homo.png} & $\begin{pmatrix}
+Multiplication par un scalaire &\begin{tikzpicture}[general,scale=1]
+\draw [quadrillage] (-1.1,-1.1) grid (2.1,1.1);
+\draw [->, ] (0,0) -- (1,0)node[right]{$\vect{e_1}$};
+\draw [->] (0,0) -- (0,1)node[right]{$\vect{e_2}$};
+\draw [->, epais,color=blue] (0,0) -- (-1,-0.5)node[above,right]{$\vect{v}=-0,5 \vect{u}$};
+\draw [->, epais,color=red] (0,0) -- (2,1)node[right]{$\vect{u}$};
+\end{tikzpicture}   & $\begin{pmatrix}
 -1\\-0,5
 \end{pmatrix}=-0.5.\begin{pmatrix}
 2\\1
 \end{pmatrix}$  &  $\vect{v}=-0.5.\vect{u}$ \\\hline
-Addition  & \includegraphics[width=0.15\textwidth]{espace_vectoriel_vecteur_sum.png} & $\begin{pmatrix}
+Addition  &\begin{tikzpicture}[general,scale=1]
+\draw [quadrillage] (-0.1,-0.1) grid (2.1,2.1);
+\draw [->, ] (0,0) -- (1,0)node[right]{$\vect{e_1}$};
+\draw [->] (0,0) -- (0,1)node[right]{$\vect{e_2}$};
+\draw [->, epais,color=red] (0,0) --node[above,right]{$\vect{u}$} (2,1);
+\draw [->, epais,color=blue] (2,1) --node[right]{$\vect{v}$} (1,2);
+\draw [->, epais,color=black] (0,0) -- (1,2)node[above,left]{$\vect{w}=\vect{u}+\vect{v}$};
+\end{tikzpicture}  & $\begin{pmatrix}
 1\\2
 \end{pmatrix}=\begin{pmatrix}
 2\\1
 \end{pmatrix}+\begin{pmatrix}
 -1\\1
 \end{pmatrix}$&$ \vect{w}= \vect{u}+\vect{v}$
-\end{tabular}\\
-\end{Ex}
+\end{tabular}
+\begin{Text}
 Du fait de l'équivalence\footnote{Il y a des limites à cette équivalence. La représentation géométrique est uniquement pertinente dans le plan et l'espace. La représentation numérique est limitée aux espaces vectoriels de dimension finie.} entre ces trois représentations,  géométrique,  numérique et algébrique, tout ce qui est vrai ou faux pour l'un l'est aussi pour l'autre. Savoir passer d'une représentation à l'autre est essentiel pour bien comprendre l'algèbre linéaire. 
+\end{Text}
+\end{Ex}
+
+
+
+
 \begin{Ex}[Exemples d'ensembles de vecteurs : $E=\{\vect{x}\}$]
 Il existe de très nombreux ensembles  où il est possible d'effectuer une addition et une homothétie soit une combinaison linéaire, par exemples :
 \begin{itemize}
@@ -43,7 +72,7 @@ a_{2,1} & a_{2,2} & \cdots & a_{2,n}\\
 \vdots & \vdots & \ddots & \vdots\\
 a_{n,1} & a_{n,2} & \cdots & a_{n,n}\\
 \end{pmatrix}$ et $E=\mathcal{M}_{n}(\R)$ , où  chaque $a_{i,j}$ est un un réel,
-\item l'ensemble des solutions d'une équations différentielles linéaire d'ordre 1 homogène : $\vect{x}=f$ une fonction $\mathcal{C}^1$ tel que  $f'+a_{0}f=0$ et $E=\{f\in C_1 :  f'+a_{0}f=0\}$,
+\item l'ensemble des solutions d'une équations différentielles linéaire d'ordre 1 homogène : $\vect{x}=f$  et $E=\{f\in C_1 :  f'+a_{0}f=0\}$,
 \item l'ensemble des polynômes réels : $\vect{x}= a_{0}+a_{1}X^{1}+a_{2}X^{2}+\dots +a_{n}X^{n}$ et $E=\R[X]$,
 \item l'ensemble des suites réels : $\vect{x}=(u_{n})_{n\in \mathbb {N} }$ et $E=\R^{\N}$,
 \item etc.
@@ -51,7 +80,7 @@ a_{n,1} & a_{n,2} & \cdots & a_{n,n}\\
 \end{Ex}
 Une stratégie efficace pour étudier ces ensembles est :
 \begin{enumerate}
-\item de définir une structure algébrique abstraite constituée de propriétés partagés par tous les ensembles : cette structure s'appelle \defi{l'espace vectoriel} et permet d'effectuer des combinaisons linéaires,
+\item de définir une structure algébrique ayant la propriété de pouvoir effectuer des \defi{combinaisons linéaires} entre les éléments : cette structure s'appelle \defi{espace vectoriel},
 \item de démontrer des énoncés sur cette structure  : ce qui est vrai ou faux dans cette structure  l'est aussi pour tous les cas particuliers. 
 \end{enumerate}
 

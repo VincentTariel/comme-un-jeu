@@ -82,7 +82,7 @@
     \mdfsetup{innertopmargin=0pt,linecolor=#3,%
         linewidth=1pt,topline=true,roundcorner=5pt,
         frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}%
-    \begin{mdframed}[]\relax%
+    \begin{mdframed}[]%\relax%
     }{\end{mdframed}}%
 }
 \newcommand{\defineboxx}[3]{%
@@ -132,9 +132,13 @@
 \defineboxx{Meth}{Méthode}{colordef}
 
 \defineboxx{Ex}{Exemple}{black}
+\defineboxx{Activite}{Activité}{black}
 \defineboxxx{NB}{Remarque}{black}
 \usepackage[colorlinks = true,urlcolor  = colorprop]{hyperref}
-\newenvironment{Text}{}
+\newenvironment{Text}{}{}
+\newenvironment{Correction}{\textbf{\newline Correction } }{}
+ 
+ 
    
 \newcommand{\defi}[1]{\textbf{\textcolor{colordef}{#1}}} 
 \newcommand{\propri}[1]{\textbf{\textcolor{colorprop}{#1}}}
@@ -691,3 +695,94 @@
 \DeclareMathOperator*\PetitO{o}
 \DeclareMathOperator*\GrandO{O}
 \DeclareMathOperator*\Sim{\sim}
+
+
+
+
+\usepackage{tkz-tab}
+\usepackage{pgf}
+\usetikzlibrary{arrows}
+\usetikzlibrary{patterns}  
+\definecolor{CyanTikz40}{cmyk}{.4,0,0,0}
+\definecolor{CyanTikz20}{cmyk}{.2,0,0,0}
+\tikzstyle{general}=[line width=0.3mm, >=stealth, x=1cm, y=1cm,line cap=round, line join=round]
+\tikzstyle{quadrillage}=[line width=0.3mm, color=CyanTikz40]
+\tikzstyle{quadrillageNIV2}=[line width=0.3mm, color=CyanTikz20]
+\tikzstyle{quadrillage55}=[line width=0.3mm, color=CyanTikz40, xstep=0.5, ystep=0.5]
+\tikzstyle{cote}=[line width=0.3mm, <->]
+\tikzstyle{epais}=[line width=0.5mm, line cap=butt]
+\tikzstyle{tres epais}=[line width=0.8mm, line cap=butt]
+\tikzstyle{axe}=[line width=0.3mm, ->, color=Noir, line cap=rect]
+\newcommand{\quadrillageSeyes}[2]{\draw[line width=0.3mm, color=A1!10, ystep=0.2, xstep=0.8] #1 grid #2;
+\draw[line width=0.3mm, color=A1!30, xstep=0.8, ystep=0.8] #1 grid #2; }
+\newcommand{\axeX}[4][0]{\draw[axe] (#2,#1)--(#3,#1); \foreach \x in {#4} {\draw (\x,#1) node {\small $+$}; \draw (\x,#1) node[below] {\small $\x$};}}
+\newcommand{\axeY}[4][0]{\draw[axe] (#1,#2)--(#1,#3); \foreach \y in {#4} {\draw (#1, \y) node {\small $+$}; \draw (#1, \y) node[left] {\small $\y$};}}
+\newcommand{\axeOI}[3][0]{\draw[axe] (#2,#1)--(#3,#1);  \draw (1,#1) node {\small $+$}; \draw (1,#1) node[below] {\small $I$};}
+\newcommand{\axeOJ}[3][0]{\draw[axe] (#1,#2)--(#1,#3); \draw (#1, 1) node {\small $+$}; \draw (#1, 1) node[left] {\small $J$};}
+\newcommand{\axeXgraduation}[2][0]{\foreach \x in {#2} {\draw (\x,#1) node {\small $+$};}}
+\newcommand{\axeYgraduation}[2][0]{\foreach \y in {#2} {\draw (#1, \y) node {\small $+$}; }}
+\newcommand{\origine}{\draw (0,0) node[below left] {\small $0$};}
+\newcommand{\origineO}{\draw (0,0) node[below left] {$O$};}
+\newcommand{\point}[4]{\draw (#1,#2) node[#4] {$#3$};}
+\newcommand{\pointGraphique}[4]{\draw (#1,#2) node[#4] {$#3$};
+\draw (#1,#2) node {$+$};}
+\newcommand{\pointFigure}[4]{\draw (#1,#2) node[#4] {$#3$};
+\draw (#1,#2) node {$\times$};}
+\newcommand{\pointC}[3]{\draw (#1) node[#3] {$#2$};}
+\newcommand{\pointCGraphique}[3]{\draw (#1) node[#3] {$#2$};
+\draw (#1) node {$+$};}
+\newcommand{\pointCFigure}[3]{\draw (#1) node[#3] {$#2$};
+\draw (#1) node {$\times$};}
+\definecolor{A1}                {cmyk}{1.00, 0.00, 0.00, 0.50}
+\definecolor{A2}                {cmyk}{0.60, 0.00, 0.00, 0.10}
+\definecolor{A3}                {cmyk}{0.30, 0.00, 0.00, 0.05}
+\definecolor{A1}                {cmyk}{1.00, 0.00, 0.00, 0.50}
+\definecolor{A2}                {cmyk}{0.60, 0.00, 0.00, 0.10}
+\definecolor{A3}                {cmyk}{0.30, 0.00, 0.00, 0.05}
+\definecolor{A4}                {cmyk}{0.10, 0.00, 0.00, 0.00}
+\definecolor{B1}                {cmyk}{0.00, 1.00, 0.60, 0.40}
+\definecolor{B2}                {cmyk}{0.00, 0.85, 0.60, 0.15}
+\definecolor{B3}                {cmyk}{0.00, 0.20, 0.15, 0.05}
+\definecolor{B4}                {cmyk}{0.00, 0.05, 0.05, 0.00}
+\definecolor{C1}                {cmyk}{0.00, 1.00, 0.00, 0.50}
+\definecolor{C2}                {cmyk}{0.00, 0.60, 0.00, 0.20}
+\definecolor{C3}                {cmyk}{0.00, 0.30, 0.00, 0.05}
+\definecolor{C4}                {cmyk}{0.00, 0.10, 0.00, 0.05}
+\definecolor{D1}                {cmyk}{0.00, 0.00, 1.00, 0.50}
+\definecolor{D2}                {cmyk}{0.20, 0.20, 0.80, 0.00}
+\definecolor{D3}                {cmyk}{0.00, 0.00, 0.20, 0.10}
+\definecolor{D4}                {cmyk}{0.00, 0.00, 0.20, 0.05}
+\definecolor{F1}                {cmyk}{0.00, 0.80, 0.50, 0.00}
+\definecolor{F2}                {cmyk}{0.00, 0.40, 0.30, 0.00}
+\definecolor{F3}                {cmyk}{0.00, 0.15, 0.10, 0.00}
+\definecolor{F4}                {cmyk}{0.00, 0.07, 0.05, 0.00}
+\definecolor{G1}                {cmyk}{1.00, 0.00, 0.50, 0.00}
+\definecolor{G2}                {cmyk}{0.50, 0.00, 0.20, 0.00}
+\definecolor{G3}                {cmyk}{0.20, 0.00, 0.10, 0.00}
+\definecolor{G4}                {cmyk}{0.10, 0.00, 0.05, 0.00}
+\definecolor{H1}                {cmyk}{0.40, 0.00, 1.00, 0.10}
+\definecolor{H2}                {cmyk}{0.20, 0.00, 0.50, 0.05}
+\definecolor{H3}                {cmyk}{0.10, 0.00, 0.20, 0.00}
+\definecolor{H4}                {cmyk}{0.07, 0.00, 0.15, 0.00}
+\definecolor{J1}                {cmyk}{0.00, 0.50, 1.00, 0.00}
+\definecolor{J2}                {cmyk}{0.00, 0.20, 0.50, 0.00}
+\definecolor{J3}                {cmyk}{0.00, 0.10, 0.20, 0.00}
+\definecolor{J4}                {cmyk}{0.00, 0.07, 0.15, 0.00}
+\definecolor{FondOuv}           {cmyk}{0.00, 0.05, 0.10, 0.00}
+\definecolor{FondAutoEvaluation}{cmyk}{0.00, 0.03, 0.15, 0.00}
+\definecolor{FondTableaux}      {cmyk}{0.00, 0.00, 0.20, 0.00}
+\definecolor{FondAlgo}          {cmyk}{0.07, 0.00, 0.30, 0.00}
+\definecolor{BleuOuv}           {cmyk}{1.00, 0.00, 0.00, 0.00}
+\definecolor{PartieFonction}    {cmyk}{1.00, 0.00, 0.00, 0.00}
+\definecolor{PartieGeometrie}   {cmyk}{0.80, 0.80, 0.00, 0.00}
+\definecolor{PartieStatistique} {cmyk}{0.60, 0.95, 0.00, 0.20}
+\definecolor{PartieStatistiqueOLD} {cmyk}{0.95, 0.60, 0.20, 0.00}
+\definecolor{PartieStatistique*}{cmyk}{0.30, 1.00, 0.00, 0.00}
+\definecolor{U1}                {cmyk}{0.50, 0.10, 0.00, 0.10}
+\definecolor{U2}                {cmyk}{0.20, 0.15, 0.00, 0.00}
+\definecolor{CouleurRenvoiManuelNumerique}{cmyk}{0.40, 0.00, 0.00, 0.00}
+\definecolor{Blanc}             {gray}{1.00}
+\definecolor{gris1}             {gray}{0.80}
+\definecolor{gris2}             {gray}{0.60}
+\definecolor{gris3}             {gray}{0.40}
+\definecolor{Noir}              {gray}{0.00}

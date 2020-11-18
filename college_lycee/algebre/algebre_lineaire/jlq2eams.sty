@@ -1,0 +1,785 @@
+\usepackage{t1enc}
+\usepackage[latin1]{inputenc}
+\usepackage[french]{minitoc}
+ \usepackage{amsmath}
+\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
+\usepackage[francais]{babel}
+\usepackage{amsmath,thmtools}
+\usepackage{TikZ}
+\usepackage{tkz-fct}   
+\usepackage{a4wide} 
+\usepackage{graphicx}
+\usepackage{thmbox}
+\usepackage{changepage}
+\usepackage{xcolor}
+\usepackage{sectsty}
+ \usepackage{enumitem}
+\usepackage{eurosym}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{geometry}
+\usepackage{pgfplots}
+
+\geometry{hmargin=2cm,vmargin=1.5cm}
+\pagestyle{fancy}
+
+\usepackage{titlesec}
+
+\titleformat
+{\chapter} % command
+[display] % shape
+{\bfseries\huge} % format
+{Story No. \ \thechapter} % label
+{-5ex} % sep
+{
+    \rule{\textwidth}{1pt}
+    \vspace{1ex}
+    \centering
+} % before-code
+[
+\vspace{-2ex}%
+\rule{\textwidth}{0.3pt}
+]
+\titlespacing*{\chapter}{0pt}{-50pt}{10pt}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\fancypagestyle{plain}{%
+   \fancyhead{} % get rid of headers
+   \renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+
+
+\renewcommand{\thesection}{\Roman{section}} 
+\renewcommand{\thesubsection}{\Alph{subsection}}
+
+
+
+\definecolor{colorprop}{rgb}{0.0, 0.4, 0.74}
+\colorlet{colordef}{red!60}
+
+\sectionfont{\color{black}}
+\subsectionfont{\color{black}}
+\subsubsectionfont{\color{black}}
+
+
+\newcommand{\definebox}[3]{%
+  \newcounter{#1}
+  \newenvironment{#1}[1][]{%
+    \stepcounter{#1}%
+    \mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=white]
+            {\strut \color{#3}\MakeUppercase#2~\csname \endcsname\ifstrempty{##1}{}{:~##1}};}}%
+    \mdfsetup{innertopmargin=10pt,linecolor=#3,%
+        linewidth=1pt,topline=true,roundcorner=5pt,
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}%
+    \begin{mdframed}[]\ignorespaces\relax
+    }{\end{mdframed}}%
+    \ignorespaces
+}
+\newcommand{\defineboxx}[3]{%
+  \newcounter{#1}
+  \newenvironment{#1}[1][]{%
+    \stepcounter{#1}%
+    \mdfsetup{%
+        frametitle={%
+            \hspace*{-40pt}\tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=white]
+            {\strut \MakeUppercase#2~\csname \endcsname\ifstrempty{##1}{}{:~##1}};}}%
+    \mdfsetup{innertopmargin=0pt,linecolor=#3,%
+        linewidth=1pt,topline=false,innerleftmargin=20pt,bottomline=false,rightline=false,
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}%
+    \begin{mdframed}[]\relax%
+    }{\end{mdframed}}%
+}
+\newcommand{\defineboxxx}[3]{%
+  \newcounter{#1}
+  \newenvironment{#1}[1][]{%
+    \stepcounter{#1}%
+    \mdfsetup{%
+        frametitle={%
+            \hspace*{-40pt}\tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=white]
+            {\strut \MakeUppercase#2~\csname \endcsname\ifstrempty{##1}{}{:~##1}};}}%
+    \mdfsetup{innertopmargin=0pt,linecolor=#3,%
+        linewidth=1pt,topline=false,innerleftmargin=20pt,bottomline=false,rightline=false,leftline=false,
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}%
+    \begin{mdframed}[]\relax%
+    }{\end{mdframed}}%
+}
+%\definebox{Df}{Définition}{colordef}
+%\definebox{DfProp}{Définition-Proposition}{colordef}
+%\definebox{Voc}{Vocabulaire}{colordef}
+%\definebox{Alg}{Algorithme}{colordef}
+%\defineboxx{Meth}{Méthode}{colordef}
+
+%\definebox{Th}{Théorème}{colorprop}
+%\definebox{Lem}{Lemme}{colorprop}
+%\definebox{Prop}{Proposition}{colorprop}
+%\definebox{Propriete}{Propriété}{colorprop}
+%\definebox{Cor}{Corollaire}{colorprop}
+
+
+\defineboxx{Proof}{Démonstration}{colorprop}
+\defineboxx{Ex}{Exemple}{black}
+\defineboxx{Activite}{Activité}{black}
+\defineboxxx{NB}{Remarque}{black}
+\usepackage[colorlinks = true,urlcolor  = colorprop]{hyperref}
+\newenvironment{Text}{}{}
+\newenvironment{Correction}{\textbf{\newline Correction } }{}
+   
+\newcommand{\defi}[1]{\textbf{\textcolor{colordef}{#1}}} 
+\newcommand{\propri}[1]{\textbf{\textcolor{colorprop}{#1}}}
+ \newcommand{\impo}[1]{\textbf{\textcolor{colorprop}{#1}}}
+
+\newcommand{\myunit}{1 cm}
+\tikzset{
+    node style sp/.style={draw,circle,minimum size=\myunit},
+    node style ge/.style={circle,minimum size=\myunit},
+    arrow style mul/.style={draw,sloped,midway,fill=white},
+    arrow style plus/.style={midway,sloped,fill=white},
+}
+
+\newcommand*\commentterm[4][]{%
+   \begin{tikzpicture}[anchor=base west,baseline,inner sep=0pt, outer sep=0pt,minimum size=0pt]
+      \node(xa){$#3$};
+      \node[overlay,at=(xa),shift=(#2),color=colorprop](xb){#4};
+      \draw[overlay,->,shorten <=2pt,shorten >=2pt,#1,,color=colorprop](xb)to(xa);
+   \end{tikzpicture}%
+}
+ \setcounter{MaxMatrixCols}{20}
+%----------------------------------------------------
+% Diverses macros pour l'utilisation de TeX
+%----------------------------------------------------
+
+
+
+%--------------------------------------------------
+% Typographie
+%--------------------------------------------------
+
+\frenchspacing
+%\ThinSpaceInFrenchNumbers
+
+
+\newcommand{\CS}{\makebox[0cm][r]{$\boxed{\Longleftarrow}$\hspace{1em}}}
+  % condition suffisante, entourée dans une boîte et placée
+  % à l'extérieur du texte
+\newcommand{\CN}{\makebox[0cm][r]{$\boxed{\Longrightarrow}$\hspace{1em}}}
+  % condition nécessaire, entourée dans une boîte et placée
+  % à l'extérieur du texte
+
+\newcommand{\Implique}[2]%
+{\vspace{1ex}\hspace*{-5em}%
+  $({\romannumeral#1})\implique({\romannumeral#2})$\hspace{1em}}
+% pour écrire (i) => (ii) à l'extérieur du texte
+\newcommand{\fImplique}[2]%
+{\vspace{1ex}\hspace*{-5em}%
+  {\fbox{$({\romannumeral#1})\implique({\romannumeral#2})$}\hspace{1em}}}
+  % pour écrire la même chose entouré d'une boîte
+\newcommand{\Iff}[2]%
+{\vspace{1ex}\hspace*{-5em}%
+  $({\romannumeral#1})\iff({\romannumeral#2})$\hspace{1em}}
+  % pour écrire (i) <=> (ii) à l'extérieur du texte
+\newcommand{\fIff}[2]%
+{\vspace{1ex}\hspace*{-5em}%
+  {\fbox{$({\romannumeral#1})\iff({\romannumeral#2})$}\hspace{1em}}}
+  % pour écrire la même chose entouré d'une boîte
+
+
+
+
+%--------------------------------------------------
+% Quelques raccourcis ...
+%--------------------------------------------------
+
+\newcommand{\mcal}{\mathcal}
+\newcommand{\mrm}{\mathrm}
+
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\dps}{\displaystyle} 
+
+% Les grecs ------------------------------
+\newcommand{\eps}{\varepsilon}
+\newcommand{\beps}{\boldsymbol{\varepsilon}}
+
+\newcommand{\vphi}{\varphi}
+\newcommand{\bphi}{\boldsymbol{\varphi}}
+\newcommand{\bPhi}{\boldsymbol{\Phi}}
+
+\newcommand{\bpsi}{\boldsymbol{\psi}}
+\newcommand{\btau}{\boldsymbol{\tau}}
+
+\newcommand{\la}{\lambda}
+\newcommand{\bla}{\boldsymbol{\lambda}}
+%----------------------------------------
+
+% Les constantes ------------------------------------
+%\newcommand{\ee}{\mathrm{e}}
+\DeclareMathOperator{\ee}{e}
+  % le nombre e, base de l'exponentielle
+
+\newcommand{\ii}{\mathrm{i}}
+  % le célèbre complexe dont le carré vaut -1
+%----------------------------------------------------
+
+\newcommand{\ra}{\frac}
+  % rapport
+\newcommand{\dra}{\dfrac}
+  % rapport en displaystyle
+\newcommand{\qqs}{\forall}
+    % quel que soit ...
+
+\newcommand{\implique}{\;\Longrightarrow\;}
+\newcommand{\vide}{\varnothing}
+  % l'ensemble vide de "amssymb"
+
+\newcommand{\et}{\mbox{ et }}
+\newcommand{\ie}{{}{\emph{i.e.}}}
+\newcommand{\etc}{{}{\emph{etc.}}}
+\newcommand{\cad}{\hbox{c.-\`a-d.}}
+
+
+%----------------------------------------------------------
+% Les inégalités
+%----------------------------------------------------------
+
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+%--------------------------------------------------
+% Ensembles, opérateurs ensemblistes, suites
+%--------------------------------------------------
+
+\newcommand{\union}{\mathrel{\cup}}
+\newcommand{\Union}{\mathrel{\bigcup}}
+\newcommand{\inter}{\mathrel{\cap}}
+\newcommand{\Inter}{\mathrel{\bigcap}}
+\newcommand{\Sum}{\mathop{\sum}\limits}
+
+\newcommand{\card}{\mathop{\mathrm{card}}\nolimits}
+  % cardinal d'un ensemble
+
+\newcommand{\ens}[3][]{\mathopen#1\{ #2\mathbin#1/ #3 \mathclose#1\}}
+   % définit un ensemble { x / P(x) }
+
+\newcommand{\sym}[1][n]{\mathfrak{S}_{#1}}
+  % groupe symétrique d'ordre n
+
+\DeclareMathSymbol{\complement}{\mathord}{AMSa}{"7B}
+  % complément d'un ensemble
+\newcommand{\prive}{\setminus}
+  % "E\A" se code $E\prive A$, "privé de"
+
+\newcommand{\rond}{\circ}
+  % symbole de composition des applications
+
+\newcommand{\combinaison}[2]{\mbox{\large\bf\sf C}_{#1}^{#2}}
+  % définit les coefficients binomiaux
+\newcommand{\comb}{\combinaison}
+
+% n-uplets--------------------------------------------------
+
+\newcommand{\Dots}{,\ldots,}
+\newcommand{\nuple}[2][]{#1( #2_1,\ldots,#2_n #1)}
+  % n-uplet (x_1,...,x_n) avec x=#2 et parenthèses extensibles
+\newcommand{\puple}[2][]{#1( #2_1,\ldots,#2_p #1)}
+  % p-uplet (x_1,...,x_p) avec x=#2 et parenthèses extensibles
+\newcommand{\Nuple}[3][]{#1( #2_1,\ldots,#2_#3 #1)}
+  % uplet (x_1,...,x_q) avec x=#2, q=#3 et parenthèses extensibles
+
+% suites--------------------------------------------------
+\newcommand{\suite}[2][]{#1( #2_n #1)_n}
+  % suite (x_n)_n avec x=#2 et parenthèses extensibles
+\newcommand{\ssuite}[3][]{#1( #2_#3 #1)_n}
+  % suite (x_q)_q avec x=#2, q=#3 et parenthèses extensibles
+\newcommand{\Suite}[2][]{#1( \vc{#2}_n #1)_n}
+  % suite de vecteurs (x_n)_n avec x=#2 et parenthèses extensibles
+\newcommand{\SSuite}[3][]{#1( \vc{#2}_#3 #1)_n}
+  % suite de vecteurs (x_q)_q avec x=#2, q=#3 et parenthèses extensibles
+
+% séries--------------------------------------------------
+\newcommand{\serie}[1]{\sum#1_n}
+\newcommand{\Serie}[2]{\sum(#1_n+#2_n)}
+
+
+%--------------------------------------------------
+% Les ensembles de nombres
+%--------------------------------------------------
+
+%\newcommand{\N}{\mathsf{N}}
+%\newcommand{\Z}{\mathsf{Z}}
+%\newcommand{\Q}{\mathsf{Q}}
+%\newcommand{\R}{\mathsf{R}}
+%\newcommand{\C}{\mathsf{C}}
+%\newcommand{\K}{\mathsf{K}}
+%\newcommand{\U}{\mathsf{U}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\U}{\mathbb{U}}
+
+\newcommand{\Nbb}{\mathbb{N}}
+\newcommand{\Zbb}{\mathbb{Z}}
+\newcommand{\Qbb}{\mathbb{Q}}
+\newcommand{\Rbb}{\mathbb{R}}
+\newcommand{\Cbb}{\mathbb{C}}
+\newcommand{\Kbb}{\mathbb{K}}
+\newcommand{\Ubb}{\mathbb{U}}
+
+\newcommand{\ccro}[2]{\{#1,\dots,#2\}}
+
+%--------------------------------------------------
+% Nombres complexes
+%--------------------------------------------------
+\newcommand{\conjug}[1]{\overline{#1}}
+  % conjuguaison
+\newcommand{\IM}{\mathop{\Im\mathrm{m}}\nolimits}
+  % partie imaginaire
+\newcommand{\RE}{\mathop{\Re\mathrm{e}}\nolimits}
+  % partie réelle
+
+%--------------------------------------------------
+% Limites
+%--------------------------------------------------
+
+\def\buildrel#1_#2^#3{\mathrel{\mathop{\kern 0pt#1}\limits_{#2}^{#3}}}
+  % définit une macro pour mettre #2 en dessous et #3 au dessus de #1
+\newcommand{\tend}[1][n]{\buildrel{\longrightarrow}_{#1}^{}}
+  % -> avec un "n" dessous par défaut
+\newcommand{\tendpas}[1][n]{\buildrel{\not\longrightarrow}_{#1}^{}}
+  % /-> avec un "n" dessous par défaut
+\newcommand{\equivalent}[1][n]{\buildrel{\sim}_{#1}^{}}
+  % le signe "équivalent" avec un "n" dessous par défaut
+\newcommand{\egal}[1][n]{\buildrel{=}_{#1}^{}}
+  % le signe "=" avec un "n" dessous par défaut
+
+%--------------------------------------------------
+% Dérivée et intégrale
+%--------------------------------------------------
+
+\DeclareMathOperator{\D}{D}
+  % pour la dérivation
+
+\newcommand{\sub}[1]{\sigma_{\vc#1}}
+  % subdivision
+\newcommand{\intd}{\int\!\!\!\int}
+  % intégrale double
+\newcommand{\intdepi}{\ra1{2\pi}\int_0^{2\pi}}
+  % intégrale entre 0 et 2\pi
+\newcommand{\intab}{\int_{\intf ab}}
+  % intégrale sur le segment [a,b]
+
+\newcommand{\dt}[1][t]{\mathrm{d}\mspace{-0.5mu}#1}
+  % élément différentiel dans une intégrale, dt par défaut
+  
+\newcommand{\entre}[3][\big]{#1\rvert_{#2}^{#3}}
+  % accroissement d'une fonction entre #2 et #3, \big par défaut
+
+
+\newcommand{\del}[2]{\ra{\partial#1}{\partial#2}}
+  % dérivée partielle : del f/del x
+\newcommand{\ddel}[3]{\ra{\partial^2#1}{\partial#2\,\partial#3}}
+  % dérivée partielle seconde : del^2 f/del x del y
+\newcommand{\Del}[3]{\ra{\partial^#1#2}{\partial#3^#1}}
+\newcommand{\dd}[2]{\ra{\mathrm{d}#1}{\mathrm{d}#2}}
+\DeclareMathOperator{\J}{J}
+  %jacobien
+
+
+%--------------------------------------------------
+% Définition des vecteurs
+%--------------------------------------------------
+
+\newcommand{\Vect}[1]{\vbox{\halign{##\cr 
+  \tiny\rightarrowfill\cr\noalign{\nointerlineskip\vskip1pt} 
+  $#1\mskip2mu$\cr}}}
+  % vecteur avec une flèche de hauteur constante
+\newcommand{\vect}[1]{\vbox{\halign{##\cr 
+  \tiny\rightarrowfill\cr\noalign{\nointerlineskip\vskip1pt} 
+  $#1\mskip2mu$\cr}}}
+  % vecteur avec une flèche
+
+\newcommand{\vc}[1]{\mathbf{#1}}
+  % vecteur écrit en gras
+\newcommand{\bvc}[1]{\boldsymbol{#1}}
+  % vecteur écrit en gras, cas des grecs
+
+\newcommand{\grad}{\mathop{\vect{\mathrm{grad}}}\nolimits}
+  % le vecteur gradient
+\DeclareMathOperator{\divergence}{div}
+\newcommand{\diver}{\divergence}
+  % l'opérateur divergence
+
+%--------------------------------------------------
+% Diverses normes
+%--------------------------------------------------
+
+\newcommand{\abs}[2][]{\mathopen#1\lvert #2 \mathclose#1\rvert}
+  % valeur absolue...
+\newcommand\PS[2]{\langle#1,#2\rangle}
+  % produit scalaire
+  
+\newcommand{\norme}[2][]{\mathopen#1\lVert #2 \mathclose#1\rVert}
+  % norme d'une fonction
+\newcommand{\norm}{\norme}
+
+\newcommand{\normeun}[2][]{\mathopen#1\lVert #2 \mathclose#1\rVert_1}
+  % norme d'une fonction
+\newcommand{\normu}{\normeun}
+
+\newcommand{\normedeux}[2][]{\mathopen#1\lVert #2 \mathclose#1\rVert_2}
+  % norme d'une fonction
+\newcommand{\normd}{\normedeux}
+
+\newcommand{\normeinfinie}[2][]{\mathopen#1\lVert #2 \mathclose#1\rVert_\infty}
+  % norme d'une fonction
+\newcommand{\normi}{\normeinfinie}
+
+\newcommand{\Norme}[1][N]{\mathcal{#1}}
+
+\DeclareMathOperator{\dist}{d}
+  % distance
+
+\newcommand{\Bo}[3][]{\mathcal{B}#1(\vc{#2},#3 #1)}
+  % Boule ouverte de centre #2 et de rayon #3, avec parenthèses variables
+\newcommand{\Bf}[3][]{\mathcal{B}_f#1(\vc{#2},#3 #1)}
+  % Boule fermée de centre #2 et de rayon #3, avec parenthèses variables
+
+%--------------------------------------------------
+% Produit scalaire
+%   JLQ le 29/06/98
+%--------------------------------------------------
+
+\newcommand{\scal}[3][]{#1\langle #2 \mathrel{#1\vert} #3 #1\rangle}
+    % le produit scalaire
+\newcommand{\Scal}[3][]{#1\langle \vc{#2} \mathrel{#1\vert} \vc{#3} #1\rangle}
+    % le produit scalaire et des vecteurs écrits en gras
+
+%--------------------------------------------------
+% Ecriture des intervalles
+%--------------------------------------------------
+
+\newcommand{\into}[3][]{\mathopen{#1]}#2,#3\mathclose{#1[}}
+  % intervalle ouvert ]#2;#3[
+\newcommand{\intof}[3][]{\mathopen{#1]}#2,#3 \mathclose#1\rbrack}
+  % intervalle ouvert-fermé ]#2;#3]
+\newcommand{\intfo}[3][]{\mathopen#1\lbrack #2,#3 \mathclose{#1[}}
+  % intervalle fermé-ouvert [#2;#3[
+\newcommand{\intf}[3][]{\mathopen#1\lbrack  #2,#3 \mathclose#1\rbrack}
+  % intervalle fermé [#2,#3] 
+
+\newcommand{\Intf}[3][]{\mathopen#1\lbrack\!#1\lbrack#2,#3 \mathclose#1\rbrack\!#1\rbrack}
+       %intervalle fermé [|#2;#3|] pour les nombres entiers
+
+%--------------------------------------------------
+% Les fonctions, les espaces fonctionnels
+%--------------------------------------------------
+
+\DeclareMathOperator{\ent}{Ent}
+  % partie entière
+\DeclareMathOperator{\Arg}{Arg}
+  % détermination principale de l'argument d'un nombre complexe
+\newcommand{\restr}[2][]{#1\rvert_{#2}}
+  % restriction d'une fonction à #2
+
+\newcommand{\oo}[2][]{\mathrm{o}#1(#2#1)}
+  % notation de Landau
+\newcommand{\OO}[2][]{\mathrm{O}#1(#2#1)}
+  % notation de Landau
+
+
+% Fonctions arcsinus, ... --------------------------------------
+
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\sh}{sh}
+%\DeclareMathOperator{\th}{th}
+
+\DeclareMathOperator{\cn}{cn}
+\DeclareMathOperator{\sn}{sn}
+\DeclareMathOperator{\dn}{dn}
+
+\DeclareMathOperator{\argth}{Arg\,th}
+\DeclareMathOperator{\argsh}{Arg\,sh}
+%----------------------------------------------------------------------
+
+% les fonctions ... --------------------------------------------------
+\newcommand{\FIE}[1][I,E]{\mathcal{F}(#1)}
+\newcommand{\FabE}[2][{a}{b}]{\mathcal{F}(\intf #1,#2)}
+\newcommand{\Fab}[1][{a}{b}]{\mathcal{F}(\intf #1)}
+
+% les fonctions bornées ... ------------------------------------------
+\newcommand{\BIE}[1][I,E]{\mathcal{B}(#1)}
+\newcommand{\BabE}[2][{a}{b}]{\mathcal{B}(\intf #1,#2)}
+\newcommand{\Bab}[1][{a}{b}]{\mathcal{B}(\intf #1)}
+
+% les fonctions en escalier ... --------------------------------------
+\newcommand{\EscIE}[1][I,E]{\mathcal{E}sc(#1)}
+\newcommand{\EscabE}[2][{a}{b}]{\mathcal{E}sc(\intf #1,#2)}
+\newcommand{\Escab}[1][{a}{b}]{\mathcal{E}sc(\intf #1)}
+
+% les fonctions continues ... -----------------------------------------
+\newcommand{\CIE}[1][I,E]{\mathcal{C}(#1)}
+\newcommand{\CI}[1][I]{\mathcal{C}(#1)}
+\newcommand{\CabE}[2][{a}{b}]{\mathcal{C}(\intf #1,#2)}
+\newcommand{\Cab}[1][{a}{b}]{\mathcal{C}(\intf #1)}
+
+% les fonctions continues par morceaux ... ----------------------------
+\newcommand{\CMIE}[1][I,E]{\mathcal{CM}(#1)}
+\newcommand{\CMI}[1][I]{\mathcal{CM}(#1)}
+\newcommand{\CMplI}[1][I]{\mathcal{CM}^{+}(#1)}
+\newcommand{\CMabE}[2][{a}{b}]{\mathcal{CM}(\intf #1,#2)}
+\newcommand{\CMab}[1][{a}{b}]{\mathcal{CM}(\intf #1)}
+
+% les fonctions sommables ... -----------------------------------------
+\newcommand{\LI}[2][1]{\mathcal{L}^{#1}(#2)}
+\newcommand{\LCI}[2][1]{\mathcal{L}_{\mathcal{C}}^{#1}(#2)}
+
+% les fonctions dérivables ... ----------------------------------------
+\newcommand{\DIE}[1][I,E]{\mathcal{D}(#1)}
+\newcommand{\DabE}[2][{a}{b}]{\mathcal{D}(\intf #1,#2)}
+\newcommand{\Dab}[1][{a}{b}]{\mathcal{D}(\intf #1)}
+
+% les fonctions de classe Ck ... --------------------------------------
+\newcommand{\CkIE}[2][I,E]{\mathcal{C}^{#2}(#1)}
+\newcommand{\CkabE}[3][{a}{b}]{\mathcal{C}^{#3}(\intf #1,#2)}
+\newcommand{\Ckab}[2][{a}{b}]{\mathcal{C}^{#2}(\intf #1)}
+
+% les fonctions k fois dérivables ... ---------------------------------
+\newcommand{\DkIE}[2][I,E]{\mathcal{D}^{#2}(#1)}
+\newcommand{\DkabE}[3][{a}{b}]{\mathcal{D}^{#3}(\intf #1,#2)}
+\newcommand{\Dkab}[2][{a}{b}]{\mathcal{D}^{#2}(\intf #1)}
+
+%les fonctions de classe Ck par morceaux ... --------------------------
+\newcommand{\CMkIE}[2][I,E]{\mathcal{C}^{#2}\mahtcal{M}(#1)}
+\newcommand{\CMkabE}[3][{a}{b}]{\mathcal{C}^{#3}\mathcal{M}(\intf #1,#2)}
+\newcommand{\CMkab}[2][{a}{b}]{\mathcal{C}^{#2}\mathcal{M}(\intf #1)}
+
+% les fonctions périodiques ... ----------------------------------------
+\newcommand{\Cdepi}{\mathcal{C}_{2\pi}}
+\newcommand{\CMdepi}{\mathcal{CM}_{2\pi}}
+\newcommand{\Tndepi}{\mathcal{T}_{n,2\pi}}
+\newcommand{\CT}{\mathcal{C}_{T}}
+\newcommand{\Tdepi}{\mathcal{T}_{2\pi}}
+\newcommand{\TT}{\mathcal{T}_{T}}
+
+%--------------------------------------------------
+% Les matrices,
+%--------------------------------------------------
+
+\newcommand{\mat}{\mathrm{Mat}}
+  % matrice Mat dans la base #1 (B)
+\newcommand{\Mat}[2]{\mathcal{M}\mathrm{at}_{\mathcal{#1},\mathcal{#2}}}
+  % matrice dans les bases #1 et #2
+\newcommand{\diag}[2][]{\mathrm{Diag}#1( #2_1,\ldots,#2_n #1)}
+  % matrice diagonale d'ordre n
+\newcommand{\Diag}[3][]{\mathrm{Diag}#1( #2_1,\ldots,#2_{#3} #1)}
+  % matrice diagonale d'ordre #2
+
+
+
+
+\newcommand{\transposee}[1]{#1^{\mathsf {T}}}
+    % nouvelle version;
+    % attention, les textes doivent être revus pour
+    % l'utiliser.
+  %transposition d'une matrice
+\newcommand{\trans}{\mbox{${}^t\hspace{-1pt}$}} % ancienne version de jlq
+  % transposition
+\newcommand{\tc}[1]{\mbox{${}^t\hspace{-1pt}$}\conjug{#1}}
+  % transposition et conjugaison
+\DeclareMathOperator{\com}{Com}
+  % comatrice ou matrice des cofacteurs
+
+
+\DeclareMathOperator{\Vectt}{Vect}
+% Espace vectoriel engendré
+%\DeclareMathOperator{\sp}{sp}
+\renewcommand{\sp}{\mathop{\mathrm{sp}}\nolimits}
+  % spectre d'une matrice, ...
+\DeclareMathOperator{\rg}{rg}
+\DeclareMathOperator{\Rang}{rg}
+  % rang d'une matrice, ...
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\Ima}{Im}
+  % image d'une application linéaire
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Tr}{tr}
+  % trace d'une matrice, ...
+%\DeclareMathOperator{\deter}{det}
+\renewcommand{\det}{\mathop{\mathrm{det}}\nolimits}
+  % déterminant, \det est "mal défini" chez AmsTeX!
+\newcommand{\Det}[1][B]{\det_{\mathcal{#1}}}
+  % déterminant dans la base B ...
+\newcommand{\M}[3]{\mathcal{M}_{#1,#2}(#3)}
+\newcommand{\Mn}[2]{\mathcal{M}_{#1}(#2)}
+
+\newcommand{\MnK}{\Mn{n}{\K}}
+\newcommand{\MnpK}{\M{n}{p}{\K}}
+\newcommand{\GLnK}{\mathcal{GL}_n(\K)}
+\newcommand{\GLn}[2][n]{\mathcal{GL}_{#1}(#2)}
+\newcommand{\In}{I_n}
+  % trace d'une matrice, ...
+%--------------------------------------------------
+% Espaces vectoriels
+%--------------------------------------------------
+
+\newcommand{\somdir}{\mathop{\oplus}\nolimits}
+\newcommand{\Somdir}{\mathop{\oplus}\limits}
+%\newcommand{\somDir}{\mathop{\bigoplus}\nolimits}
+%\newcommand{\SomDir}{\mathop{\bigoplus}\limits}
+
+\newcommand{\lin}[1]{\mathcal{L}(#1)}
+\newcommand{\Lin}[2]{\mathcal{L}(#1,#2)}
+
+\newcommand{\LEF}[1][E,F]{\mathcal{L}(#1)}
+\newcommand{\LE}[1][E]{\mathcal{L}(#1)}
+\newcommand{\LK}[2][K]{\mathcal{L}_{\#1}(#2)}
+
+\newcommand{\SE}[1][E]{\mathscr{S}(#1)}
+  % ensemble des endomorphismes symétriques sur #1, E par défaut
+\newcommand{\ASE}[1][E]{\mathscr{A}(#1)}
+  % ensemble des endomorphismes antisymétriques sur #1, E par défaut
+\newcommand{\SnR}[1][\R]{\mathscr{S}_n(#1)}
+  % ensemble des matrices symétriques d'ordre n sur #1, \R par défaut
+\newcommand{\AnR}[1][\R]{\mathscr{A}_n(#1)}
+  % ensemble des matrices antisymétriques d'ordre n sur #1, \R par défaut
+
+
+\newcommand{\GLE}[1][E]{\mathcal{GL}(#1)}
+  % groupe des automorphismes de #1, par défaut E
+\newcommand{\GLK}[2][K]{\mathcal{GL}_{\#1}(#2)}
+
+\newcommand{\OrE}[1][E]{\mathcal{O}(#1)}
+  % groupe des automorphismes orthogonaux de #1, par défaut E
+\newcommand{\SOE}[1][E]{\mathcal{SO}(#1)}
+  % groupe spécial orthogonal de #1, par défaut E
+\newcommand{\OpE}[1][E]{\mathcal{O}^+(#1)}
+  % groupe spécial orthogonal de #1, par défaut E
+\newcommand{\OmE}[1][E]{\mathcal{O}^-(#1)}
+  % ensemble des automorphismes orthogonaux de det=-1 de #1, par défaut E
+\newcommand{\OnR}[1][n]{\mathcal{O}_{#1}(\R)}
+  % groupe des automorphismes orthogonaux de #2^#1, par défaut #2^n
+
+\newcommand{\SOnR}[1][n]{\mathcal{SO}_{#1}(\R)}
+  % groupe spécial orthogonal d'ordre #1, par défaut n
+\newcommand{\Opn}[1][n]{\mathcal{O}^+(#1)}
+  % groupe spécial orthogonal d'ordre #1, par défaut n
+\newcommand{\Omn}[1][n]{\mathcal{O}^-(#1)}
+  % ensemble des matrices orthogonales de det=-1, d'ordre #1, par défaut n
+
+
+\newcommand{\LpEF}{\mathcal{L}_{p}(E,F)}
+\newcommand{\Lp}[2][p]{\mathcal{L}_{#1}(#2)}
+
+%---------------------------------------------------------------------- from yann
+\newcommand\Fonction[5]{{#1}\left|\begin{aligned}{#2}&\;\longrightarrow\;{#3}\\{#4}&\;\longmapsto\;{#5}\end{aligned}\right.}
+\newcommand\ninf{{n\to \infty}}
+\DeclareMathOperator*\PetitO{o}
+\DeclareMathOperator*\GrandO{O}
+\DeclareMathOperator*\Sim{\sim}
+
+
+
+
+\usepackage{tkz-tab}
+\usepackage{pgf}
+\usetikzlibrary{arrows}
+\usetikzlibrary{patterns}  
+\definecolor{CyanTikz40}{cmyk}{.4,0,0,0}
+\definecolor{CyanTikz20}{cmyk}{.2,0,0,0}
+\tikzstyle{general}=[line width=0.3mm, >=stealth, x=1cm, y=1cm,line cap=round, line join=round]
+\tikzstyle{quadrillage}=[line width=0.3mm, color=CyanTikz40]
+\tikzstyle{quadrillageNIV2}=[line width=0.3mm, color=CyanTikz20]
+\tikzstyle{quadrillage55}=[line width=0.3mm, color=CyanTikz40, xstep=0.5, ystep=0.5]
+\tikzstyle{cote}=[line width=0.3mm, <->]
+\tikzstyle{epais}=[line width=0.5mm, line cap=butt]
+\tikzstyle{tres epais}=[line width=0.8mm, line cap=butt]
+\tikzstyle{axe}=[line width=0.3mm, ->, color=Noir, line cap=rect]
+\newcommand{\quadrillageSeyes}[2]{\draw[line width=0.3mm, color=A1!10, ystep=0.2, xstep=0.8] #1 grid #2;
+\draw[line width=0.3mm, color=A1!30, xstep=0.8, ystep=0.8] #1 grid #2; }
+\newcommand{\axeX}[4][0]{\draw[axe] (#2,#1)--(#3,#1); \foreach \x in {#4} {\draw (\x,#1) node {\small $+$}; \draw (\x,#1) node[below] {\small $\x$};}}
+\newcommand{\axeY}[4][0]{\draw[axe] (#1,#2)--(#1,#3); \foreach \y in {#4} {\draw (#1, \y) node {\small $+$}; \draw (#1, \y) node[left] {\small $\y$};}}
+\newcommand{\axeOI}[3][0]{\draw[axe] (#2,#1)--(#3,#1);  \draw (1,#1) node {\small $+$}; \draw (1,#1) node[below] {\small $I$};}
+\newcommand{\axeOJ}[3][0]{\draw[axe] (#1,#2)--(#1,#3); \draw (#1, 1) node {\small $+$}; \draw (#1, 1) node[left] {\small $J$};}
+\newcommand{\axeXgraduation}[2][0]{\foreach \x in {#2} {\draw (\x,#1) node {\small $+$};}}
+\newcommand{\axeYgraduation}[2][0]{\foreach \y in {#2} {\draw (#1, \y) node {\small $+$}; }}
+\newcommand{\origine}{\draw (0,0) node[below left] {\small $0$};}
+\newcommand{\origineO}{\draw (0,0) node[below left] {$O$};}
+\newcommand{\point}[4]{\draw (#1,#2) node[#4] {$#3$};}
+\newcommand{\pointGraphique}[4]{\draw (#1,#2) node[#4] {$#3$};
+\draw (#1,#2) node {$+$};}
+\newcommand{\pointFigure}[4]{\draw (#1,#2) node[#4] {$#3$};
+\draw (#1,#2) node {$\times$};}
+\newcommand{\pointC}[3]{\draw (#1) node[#3] {$#2$};}
+\newcommand{\pointCGraphique}[3]{\draw (#1) node[#3] {$#2$};
+\draw (#1) node {$+$};}
+\newcommand{\pointCFigure}[3]{\draw (#1) node[#3] {$#2$};
+\draw (#1) node {$\times$};}
+\definecolor{A1}                {cmyk}{1.00, 0.00, 0.00, 0.50}
+\definecolor{A2}                {cmyk}{0.60, 0.00, 0.00, 0.10}
+\definecolor{A3}                {cmyk}{0.30, 0.00, 0.00, 0.05}
+\definecolor{A1}                {cmyk}{1.00, 0.00, 0.00, 0.50}
+\definecolor{A2}                {cmyk}{0.60, 0.00, 0.00, 0.10}
+\definecolor{A3}                {cmyk}{0.30, 0.00, 0.00, 0.05}
+\definecolor{A4}                {cmyk}{0.10, 0.00, 0.00, 0.00}
+\definecolor{B1}                {cmyk}{0.00, 1.00, 0.60, 0.40}
+\definecolor{B2}                {cmyk}{0.00, 0.85, 0.60, 0.15}
+\definecolor{B3}                {cmyk}{0.00, 0.20, 0.15, 0.05}
+\definecolor{B4}                {cmyk}{0.00, 0.05, 0.05, 0.00}
+\definecolor{C1}                {cmyk}{0.00, 1.00, 0.00, 0.50}
+\definecolor{C2}                {cmyk}{0.00, 0.60, 0.00, 0.20}
+\definecolor{C3}                {cmyk}{0.00, 0.30, 0.00, 0.05}
+\definecolor{C4}                {cmyk}{0.00, 0.10, 0.00, 0.05}
+\definecolor{D1}                {cmyk}{0.00, 0.00, 1.00, 0.50}
+\definecolor{D2}                {cmyk}{0.20, 0.20, 0.80, 0.00}
+\definecolor{D3}                {cmyk}{0.00, 0.00, 0.20, 0.10}
+\definecolor{D4}                {cmyk}{0.00, 0.00, 0.20, 0.05}
+\definecolor{F1}                {cmyk}{0.00, 0.80, 0.50, 0.00}
+\definecolor{F2}                {cmyk}{0.00, 0.40, 0.30, 0.00}
+\definecolor{F3}                {cmyk}{0.00, 0.15, 0.10, 0.00}
+\definecolor{F4}                {cmyk}{0.00, 0.07, 0.05, 0.00}
+\definecolor{G1}                {cmyk}{1.00, 0.00, 0.50, 0.00}
+\definecolor{G2}                {cmyk}{0.50, 0.00, 0.20, 0.00}
+\definecolor{G3}                {cmyk}{0.20, 0.00, 0.10, 0.00}
+\definecolor{G4}                {cmyk}{0.10, 0.00, 0.05, 0.00}
+\definecolor{H1}                {cmyk}{0.40, 0.00, 1.00, 0.10}
+\definecolor{H2}                {cmyk}{0.20, 0.00, 0.50, 0.05}
+\definecolor{H3}                {cmyk}{0.10, 0.00, 0.20, 0.00}
+\definecolor{H4}                {cmyk}{0.07, 0.00, 0.15, 0.00}
+\definecolor{J1}                {cmyk}{0.00, 0.50, 1.00, 0.00}
+\definecolor{J2}                {cmyk}{0.00, 0.20, 0.50, 0.00}
+\definecolor{J3}                {cmyk}{0.00, 0.10, 0.20, 0.00}
+\definecolor{J4}                {cmyk}{0.00, 0.07, 0.15, 0.00}
+\definecolor{FondOuv}           {cmyk}{0.00, 0.05, 0.10, 0.00}
+\definecolor{FondAutoEvaluation}{cmyk}{0.00, 0.03, 0.15, 0.00}
+\definecolor{FondTableaux}      {cmyk}{0.00, 0.00, 0.20, 0.00}
+\definecolor{FondAlgo}          {cmyk}{0.07, 0.00, 0.30, 0.00}
+\definecolor{BleuOuv}           {cmyk}{1.00, 0.00, 0.00, 0.00}
+\definecolor{PartieFonction}    {cmyk}{1.00, 0.00, 0.00, 0.00}
+\definecolor{PartieGeometrie}   {cmyk}{0.80, 0.80, 0.00, 0.00}
+\definecolor{PartieStatistique} {cmyk}{0.60, 0.95, 0.00, 0.20}
+\definecolor{PartieStatistiqueOLD} {cmyk}{0.95, 0.60, 0.20, 0.00}
+\definecolor{PartieStatistique*}{cmyk}{0.30, 1.00, 0.00, 0.00}
+\definecolor{U1}                {cmyk}{0.50, 0.10, 0.00, 0.10}
+\definecolor{U2}                {cmyk}{0.20, 0.15, 0.00, 0.00}
+\definecolor{CouleurRenvoiManuelNumerique}{cmyk}{0.40, 0.00, 0.00, 0.00}
+\definecolor{Blanc}             {gray}{1.00}
+\definecolor{gris1}             {gray}{0.80}
+\definecolor{gris2}             {gray}{0.60}
+\definecolor{gris3}             {gray}{0.40}
+\definecolor{Noir}              {gray}{0.00}
