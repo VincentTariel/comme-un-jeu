@@ -118,9 +118,9 @@
     }{\end{mdframed}}%
 }
 
-\defineboxx{Proof}{Démonstration}{colorprop}
+\defineboxx{Proof}{DÃ©monstration}{colorprop}
 \defineboxx{Ex}{Exemple}{black}
-\defineboxx{Activite}{Activité}{black}
+\defineboxx{Activite}{ActivitÃ©}{black}
 \defineboxxx{NB}{Remarque}{black}
 \usepackage[colorlinks = true,urlcolor  = colorprop]{hyperref}
 \newenvironment{Text}{}{}
@@ -139,7 +139,7 @@ coltitle=colordef,
 enhanced,
 attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
                  boxed title style={boxrule=0pt,colframe=white,},
-title= Définition  \bfseries{#1}}
+title= DÃ©finition  \bfseries{#1}}
 
 
 \newtcolorbox{DfProp}[1][]{
@@ -151,7 +151,7 @@ coltitle=colordef,
 enhanced,
 attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
                  boxed title style={boxrule=0pt,colframe=white,},
-title=Définition-Proposition \bfseries{#1}}
+title=DÃ©finition-Proposition \bfseries{#1}}
 
 \newtcolorbox{Voc}[1][]{
                 lower separated=false,
@@ -184,7 +184,7 @@ coltitle=colordef,
 enhanced,
 attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
                  boxed title style={boxrule=0pt,colframe=white,},
-title=Méthode  \bfseries{#1}}
+title=MÃ©thode  \bfseries{#1}}
 
 
 \newtcolorbox{Th}[1][]{
@@ -196,7 +196,7 @@ coltitle=colorprop,
 enhanced,
 attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
                  boxed title style={boxrule=0pt,colframe=white,},
-title=Théorème  \bfseries{#1}}
+title=ThÃ©orÃ¨me  \bfseries{#1}}
 
 \newtcolorbox{Lem}[1][]{
                 lower separated=false,
@@ -230,7 +230,7 @@ coltitle=colorprop,
 enhanced,
 attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
                  boxed title style={boxrule=0pt,colframe=white,},
-title=Propriété  \bfseries{#1}}
+title=PropriÃ©tÃ©  \bfseries{#1}}
 
 
 \newtcolorbox{Cor}[1][]{
@@ -278,28 +278,28 @@ title=Corollaire  \bfseries{#1}}
 
 
 \newcommand{\CS}{\makebox[0cm][r]{$\boxed{\Longleftarrow}$\hspace{1em}}}
-  % condition suffisante, entourée dans une boîte et placée
-  % à l'extérieur du texte
+  % condition suffisante, entourÃ©e dans une boÃ®te et placÃ©e
+  % Ã  l'extÃ©rieur du texte
 \newcommand{\CN}{\makebox[0cm][r]{$\boxed{\Longrightarrow}$\hspace{1em}}}
-  % condition nécessaire, entourée dans une boîte et placée
-  % à l'extérieur du texte
+  % condition nÃ©cessaire, entourÃ©e dans une boÃ®te et placÃ©e
+  % Ã  l'extÃ©rieur du texte
 
 \newcommand{\Implique}[2]%
 {\vspace{1ex}\hspace*{-5em}%
   $({\romannumeral#1})\implique({\romannumeral#2})$\hspace{1em}}
-% pour écrire (i) => (ii) à l'extérieur du texte
+% pour Ã©crire (i) => (ii) Ã  l'extÃ©rieur du texte
 \newcommand{\fImplique}[2]%
 {\vspace{1ex}\hspace*{-5em}%
   {\fbox{$({\romannumeral#1})\implique({\romannumeral#2})$}\hspace{1em}}}
-  % pour écrire la même chose entouré d'une boîte
+  % pour Ã©crire la mÃªme chose entourÃ© d'une boÃ®te
 \newcommand{\Iff}[2]%
 {\vspace{1ex}\hspace*{-5em}%
   $({\romannumeral#1})\iff({\romannumeral#2})$\hspace{1em}}
-  % pour écrire (i) <=> (ii) à l'extérieur du texte
+  % pour Ã©crire (i) <=> (ii) Ã  l'extÃ©rieur du texte
 \newcommand{\fIff}[2]%
 {\vspace{1ex}\hspace*{-5em}%
   {\fbox{$({\romannumeral#1})\iff({\romannumeral#2})$}\hspace{1em}}}
-  % pour écrire la même chose entouré d'une boîte
+  % pour Ã©crire la mÃªme chose entourÃ© d'une boÃ®te
 
 
 
@@ -335,7 +335,7 @@ title=Corollaire  \bfseries{#1}}
   % le nombre e, base de l'exponentielle
 
 \newcommand{\ii}{\mathrm{i}}
-  % le célèbre complexe dont le carré vaut -1
+  % le cÃ©lÃ¨bre complexe dont le carrÃ© vaut -1
 %----------------------------------------------------
 
 \newcommand{\ra}{\frac}
@@ -356,14 +356,14 @@ title=Corollaire  \bfseries{#1}}
 
 
 %----------------------------------------------------------
-% Les inégalités
+% Les inÃ©galitÃ©s
 %----------------------------------------------------------
 
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
 
 %--------------------------------------------------
-% Ensembles, opérateurs ensemblistes, suites
+% Ensembles, opÃ©rateurs ensemblistes, suites
 %--------------------------------------------------
 
 \newcommand{\union}{\mathrel{\cup}}
@@ -376,44 +376,44 @@ title=Corollaire  \bfseries{#1}}
   % cardinal d'un ensemble
 
 \newcommand{\ens}[3][]{\mathopen#1\{ #2\mathbin#1/ #3 \mathclose#1\}}
-   % définit un ensemble { x / P(x) }
+   % dÃ©finit un ensemble { x / P(x) }
 
 \newcommand{\sym}[1][n]{\mathfrak{S}_{#1}}
-  % groupe symétrique d'ordre n
+  % groupe symÃ©trique d'ordre n
 
 \DeclareMathSymbol{\complement}{\mathord}{AMSa}{"7B}
-  % complément d'un ensemble
+  % complÃ©ment d'un ensemble
 \newcommand{\prive}{\setminus}
-  % "E\A" se code $E\prive A$, "privé de"
+  % "E\A" se code $E\prive A$, "privÃ© de"
 
 \newcommand{\rond}{\circ}
   % symbole de composition des applications
 
 \newcommand{\combinaison}[2]{\mbox{\large\bf\sf C}_{#1}^{#2}}
-  % définit les coefficients binomiaux
+  % dÃ©finit les coefficients binomiaux
 \newcommand{\comb}{\combinaison}
 
 % n-uplets--------------------------------------------------
 
 \newcommand{\Dots}{,\ldots,}
 \newcommand{\nuple}[2][]{#1( #2_1,\ldots,#2_n #1)}
-  % n-uplet (x_1,...,x_n) avec x=#2 et parenthèses extensibles
+  % n-uplet (x_1,...,x_n) avec x=#2 et parenthÃ¨ses extensibles
 \newcommand{\puple}[2][]{#1( #2_1,\ldots,#2_p #1)}
-  % p-uplet (x_1,...,x_p) avec x=#2 et parenthèses extensibles
+  % p-uplet (x_1,...,x_p) avec x=#2 et parenthÃ¨ses extensibles
 \newcommand{\Nuple}[3][]{#1( #2_1,\ldots,#2_#3 #1)}
-  % uplet (x_1,...,x_q) avec x=#2, q=#3 et parenthèses extensibles
+  % uplet (x_1,...,x_q) avec x=#2, q=#3 et parenthÃ¨ses extensibles
 
 % suites--------------------------------------------------
 \newcommand{\suite}[2][]{#1( #2_n #1)_n}
-  % suite (x_n)_n avec x=#2 et parenthèses extensibles
+  % suite (x_n)_n avec x=#2 et parenthÃ¨ses extensibles
 \newcommand{\ssuite}[3][]{#1( #2_#3 #1)_n}
-  % suite (x_q)_q avec x=#2, q=#3 et parenthèses extensibles
+  % suite (x_q)_q avec x=#2, q=#3 et parenthÃ¨ses extensibles
 \newcommand{\Suite}[2][]{#1( \vc{#2}_n #1)_n}
-  % suite de vecteurs (x_n)_n avec x=#2 et parenthèses extensibles
+  % suite de vecteurs (x_n)_n avec x=#2 et parenthÃ¨ses extensibles
 \newcommand{\SSuite}[3][]{#1( \vc{#2}_#3 #1)_n}
-  % suite de vecteurs (x_q)_q avec x=#2, q=#3 et parenthèses extensibles
+  % suite de vecteurs (x_q)_q avec x=#2, q=#3 et parenthÃ¨ses extensibles
 
-% séries--------------------------------------------------
+% sÃ©ries--------------------------------------------------
 \newcommand{\serie}[1]{\sum#1_n}
 \newcommand{\Serie}[2]{\sum(#1_n+#2_n)}
 
@@ -456,50 +456,50 @@ title=Corollaire  \bfseries{#1}}
 \newcommand{\IM}{\mathop{\Im\mathrm{m}}\nolimits}
   % partie imaginaire
 \newcommand{\RE}{\mathop{\Re\mathrm{e}}\nolimits}
-  % partie réelle
+  % partie rÃ©elle
 
 %--------------------------------------------------
 % Limites
 %--------------------------------------------------
 
 \def\buildrel#1_#2^#3{\mathrel{\mathop{\kern 0pt#1}\limits_{#2}^{#3}}}
-  % définit une macro pour mettre #2 en dessous et #3 au dessus de #1
+  % dÃ©finit une macro pour mettre #2 en dessous et #3 au dessus de #1
 \newcommand{\tend}[1][n]{\buildrel{\longrightarrow}_{#1}^{}}
-  % -> avec un "n" dessous par défaut
+  % -> avec un "n" dessous par dÃ©faut
 \newcommand{\tendpas}[1][n]{\buildrel{\not\longrightarrow}_{#1}^{}}
-  % /-> avec un "n" dessous par défaut
+  % /-> avec un "n" dessous par dÃ©faut
 \newcommand{\equivalent}[1][n]{\buildrel{\sim}_{#1}^{}}
-  % le signe "équivalent" avec un "n" dessous par défaut
+  % le signe "Ã©quivalent" avec un "n" dessous par dÃ©faut
 \newcommand{\egal}[1][n]{\buildrel{=}_{#1}^{}}
-  % le signe "=" avec un "n" dessous par défaut
+  % le signe "=" avec un "n" dessous par dÃ©faut
 
 %--------------------------------------------------
-% Dérivée et intégrale
+% DÃ©rivÃ©e et intÃ©grale
 %--------------------------------------------------
 
 \DeclareMathOperator{\D}{D}
-  % pour la dérivation
+  % pour la dÃ©rivation
 
 \newcommand{\sub}[1]{\sigma_{\vc#1}}
   % subdivision
 \newcommand{\intd}{\int\!\!\!\int}
-  % intégrale double
+  % intÃ©grale double
 \newcommand{\intdepi}{\ra1{2\pi}\int_0^{2\pi}}
-  % intégrale entre 0 et 2\pi
+  % intÃ©grale entre 0 et 2\pi
 \newcommand{\intab}{\int_{\intf ab}}
-  % intégrale sur le segment [a,b]
+  % intÃ©grale sur le segment [a,b]
 
 \newcommand{\dt}[1][t]{\mathrm{d}\mspace{-0.5mu}#1}
-  % élément différentiel dans une intégrale, dt par défaut
+  % Ã©lÃ©ment diffÃ©rentiel dans une intÃ©grale, dt par dÃ©faut
   
 \newcommand{\entre}[3][\big]{#1\rvert_{#2}^{#3}}
-  % accroissement d'une fonction entre #2 et #3, \big par défaut
+  % accroissement d'une fonction entre #2 et #3, \big par dÃ©faut
 
 
 \newcommand{\del}[2]{\ra{\partial#1}{\partial#2}}
-  % dérivée partielle : del f/del x
+  % dÃ©rivÃ©e partielle : del f/del x
 \newcommand{\ddel}[3]{\ra{\partial^2#1}{\partial#2\,\partial#3}}
-  % dérivée partielle seconde : del^2 f/del x del y
+  % dÃ©rivÃ©e partielle seconde : del^2 f/del x del y
 \newcommand{\Del}[3]{\ra{\partial^#1#2}{\partial#3^#1}}
 \newcommand{\dd}[2]{\ra{\mathrm{d}#1}{\mathrm{d}#2}}
 \DeclareMathOperator{\J}{J}
@@ -507,28 +507,28 @@ title=Corollaire  \bfseries{#1}}
 
 
 %--------------------------------------------------
-% Définition des vecteurs
+% DÃ©finition des vecteurs
 %--------------------------------------------------
 
 \newcommand{\Vect}[1]{\vbox{\halign{##\cr 
   \tiny\rightarrowfill\cr\noalign{\nointerlineskip\vskip1pt} 
   $#1\mskip2mu$\cr}}}
-  % vecteur avec une flèche de hauteur constante
+  % vecteur avec une flÃ¨che de hauteur constante
 \newcommand{\vect}[1]{\vbox{\halign{##\cr 
   \tiny\rightarrowfill\cr\noalign{\nointerlineskip\vskip1pt} 
   $#1\mskip2mu$\cr}}}
-  % vecteur avec une flèche
+  % vecteur avec une flÃ¨che
 
 \newcommand{\vc}[1]{\mathbf{#1}}
-  % vecteur écrit en gras
+  % vecteur Ã©crit en gras
 \newcommand{\bvc}[1]{\boldsymbol{#1}}
-  % vecteur écrit en gras, cas des grecs
+  % vecteur Ã©crit en gras, cas des grecs
 
 \newcommand{\grad}{\mathop{\vect{\mathrm{grad}}}\nolimits}
   % le vecteur gradient
 \DeclareMathOperator{\divergence}{div}
 \newcommand{\diver}{\divergence}
-  % l'opérateur divergence
+  % l'opÃ©rateur divergence
 
 %--------------------------------------------------
 % Diverses normes
@@ -561,9 +561,9 @@ title=Corollaire  \bfseries{#1}}
   % distance
 
 \newcommand{\Bo}[3][]{\mathcal{B}#1(\vc{#2},#3 #1)}
-  % Boule ouverte de centre #2 et de rayon #3, avec parenthèses variables
+  % Boule ouverte de centre #2 et de rayon #3, avec parenthÃ¨ses variables
 \newcommand{\Bf}[3][]{\mathcal{B}_f#1(\vc{#2},#3 #1)}
-  % Boule fermée de centre #2 et de rayon #3, avec parenthèses variables
+  % Boule fermÃ©e de centre #2 et de rayon #3, avec parenthÃ¨ses variables
 
 %--------------------------------------------------
 % Produit scalaire
@@ -573,7 +573,7 @@ title=Corollaire  \bfseries{#1}}
 \newcommand{\scal}[3][]{#1\langle #2 \mathrel{#1\vert} #3 #1\rangle}
     % le produit scalaire
 \newcommand{\Scal}[3][]{#1\langle \vc{#2} \mathrel{#1\vert} \vc{#3} #1\rangle}
-    % le produit scalaire et des vecteurs écrits en gras
+    % le produit scalaire et des vecteurs Ã©crits en gras
 
 %--------------------------------------------------
 % Ecriture des intervalles
@@ -582,25 +582,25 @@ title=Corollaire  \bfseries{#1}}
 \newcommand{\into}[3][]{\mathopen{#1]}#2,#3\mathclose{#1[}}
   % intervalle ouvert ]#2;#3[
 \newcommand{\intof}[3][]{\mathopen{#1]}#2,#3 \mathclose#1\rbrack}
-  % intervalle ouvert-fermé ]#2;#3]
+  % intervalle ouvert-fermÃ© ]#2;#3]
 \newcommand{\intfo}[3][]{\mathopen#1\lbrack #2,#3 \mathclose{#1[}}
-  % intervalle fermé-ouvert [#2;#3[
+  % intervalle fermÃ©-ouvert [#2;#3[
 \newcommand{\intf}[3][]{\mathopen#1\lbrack  #2,#3 \mathclose#1\rbrack}
-  % intervalle fermé [#2,#3] 
+  % intervalle fermÃ© [#2,#3] 
 
 \newcommand{\Intf}[3][]{\mathopen#1\lbrack\!#1\lbrack#2,#3 \mathclose#1\rbrack\!#1\rbrack}
-       %intervalle fermé [|#2;#3|] pour les nombres entiers
+       %intervalle fermÃ© [|#2;#3|] pour les nombres entiers
 
 %--------------------------------------------------
 % Les fonctions, les espaces fonctionnels
 %--------------------------------------------------
 
 \DeclareMathOperator{\ent}{Ent}
-  % partie entière
+  % partie entiÃ¨re
 \DeclareMathOperator{\Arg}{Arg}
-  % détermination principale de l'argument d'un nombre complexe
+  % dÃ©termination principale de l'argument d'un nombre complexe
 \newcommand{\restr}[2][]{#1\rvert_{#2}}
-  % restriction d'une fonction à #2
+  % restriction d'une fonction Ã  #2
 
 \newcommand{\oo}[2][]{\mathrm{o}#1(#2#1)}
   % notation de Landau
@@ -627,7 +627,7 @@ title=Corollaire  \bfseries{#1}}
 \newcommand{\FabE}[2][{a}{b}]{\mathcal{F}(\intf #1,#2)}
 \newcommand{\Fab}[1][{a}{b}]{\mathcal{F}(\intf #1)}
 
-% les fonctions bornées ... ------------------------------------------
+% les fonctions bornÃ©es ... ------------------------------------------
 \newcommand{\BIE}[1][I,E]{\mathcal{B}(#1)}
 \newcommand{\BabE}[2][{a}{b}]{\mathcal{B}(\intf #1,#2)}
 \newcommand{\Bab}[1][{a}{b}]{\mathcal{B}(\intf #1)}
@@ -654,7 +654,7 @@ title=Corollaire  \bfseries{#1}}
 \newcommand{\LI}[2][1]{\mathcal{L}^{#1}(#2)}
 \newcommand{\LCI}[2][1]{\mathcal{L}_{\mathcal{C}}^{#1}(#2)}
 
-% les fonctions dérivables ... ----------------------------------------
+% les fonctions dÃ©rivables ... ----------------------------------------
 \newcommand{\DIE}[1][I,E]{\mathcal{D}(#1)}
 \newcommand{\DabE}[2][{a}{b}]{\mathcal{D}(\intf #1,#2)}
 \newcommand{\Dab}[1][{a}{b}]{\mathcal{D}(\intf #1)}
@@ -664,7 +664,7 @@ title=Corollaire  \bfseries{#1}}
 \newcommand{\CkabE}[3][{a}{b}]{\mathcal{C}^{#3}(\intf #1,#2)}
 \newcommand{\Ckab}[2][{a}{b}]{\mathcal{C}^{#2}(\intf #1)}
 
-% les fonctions k fois dérivables ... ---------------------------------
+% les fonctions k fois dÃ©rivables ... ---------------------------------
 \newcommand{\DkIE}[2][I,E]{\mathcal{D}^{#2}(#1)}
 \newcommand{\DkabE}[3][{a}{b}]{\mathcal{D}^{#3}(\intf #1,#2)}
 \newcommand{\Dkab}[2][{a}{b}]{\mathcal{D}^{#2}(\intf #1)}
@@ -674,7 +674,7 @@ title=Corollaire  \bfseries{#1}}
 \newcommand{\CMkabE}[3][{a}{b}]{\mathcal{C}^{#3}\mathcal{M}(\intf #1,#2)}
 \newcommand{\CMkab}[2][{a}{b}]{\mathcal{C}^{#2}\mathcal{M}(\intf #1)}
 
-% les fonctions périodiques ... ----------------------------------------
+% les fonctions pÃ©riodiques ... ----------------------------------------
 \newcommand{\Cdepi}{\mathcal{C}_{2\pi}}
 \newcommand{\CMdepi}{\mathcal{CM}_{2\pi}}
 \newcommand{\Tndepi}{\mathcal{T}_{n,2\pi}}
@@ -700,7 +700,7 @@ title=Corollaire  \bfseries{#1}}
 
 \newcommand{\transposee}[1]{#1^{\mathsf {T}}}
     % nouvelle version;
-    % attention, les textes doivent être revus pour
+    % attention, les textes doivent Ãªtre revus pour
     % l'utiliser.
   %transposition d'une matrice
 \newcommand{\trans}{\mbox{${}^t\hspace{-1pt}$}} % ancienne version de jlq
@@ -712,7 +712,7 @@ title=Corollaire  \bfseries{#1}}
 
 
 \DeclareMathOperator{\Vectt}{Vect}
-% Espace vectoriel engendré
+% Espace vectoriel engendrÃ©
 %\DeclareMathOperator{\sp}{sp}
 \renewcommand{\sp}{\mathop{\mathrm{sp}}\nolimits}
   % spectre d'une matrice, ...
@@ -722,15 +722,15 @@ title=Corollaire  \bfseries{#1}}
 \DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\im}{Im}
 \DeclareMathOperator{\Ima}{Im}
-  % image d'une application linéaire
+  % image d'une application linÃ©aire
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\Tr}{tr}
   % trace d'une matrice, ...
 %\DeclareMathOperator{\deter}{det}
 \renewcommand{\det}{\mathop{\mathrm{det}}\nolimits}
-  % déterminant, \det est "mal défini" chez AmsTeX!
+  % dÃ©terminant, \det est "mal dÃ©fini" chez AmsTeX!
 \newcommand{\Det}[1][B]{\det_{\mathcal{#1}}}
-  % déterminant dans la base B ...
+  % dÃ©terminant dans la base B ...
 \newcommand{\M}[3]{\mathcal{M}_{#1,#2}(#3)}
 \newcommand{\Mn}[2]{\mathcal{M}_{#1}(#2)}
 
@@ -757,36 +757,36 @@ title=Corollaire  \bfseries{#1}}
 \newcommand{\LK}[2][K]{\mathcal{L}_{\#1}(#2)}
 
 \newcommand{\SE}[1][E]{\mathscr{S}(#1)}
-  % ensemble des endomorphismes symétriques sur #1, E par défaut
+  % ensemble des endomorphismes symÃ©triques sur #1, E par dÃ©faut
 \newcommand{\ASE}[1][E]{\mathscr{A}(#1)}
-  % ensemble des endomorphismes antisymétriques sur #1, E par défaut
+  % ensemble des endomorphismes antisymÃ©triques sur #1, E par dÃ©faut
 \newcommand{\SnR}[1][\R]{\mathscr{S}_n(#1)}
-  % ensemble des matrices symétriques d'ordre n sur #1, \R par défaut
+  % ensemble des matrices symÃ©triques d'ordre n sur #1, \R par dÃ©faut
 \newcommand{\AnR}[1][\R]{\mathscr{A}_n(#1)}
-  % ensemble des matrices antisymétriques d'ordre n sur #1, \R par défaut
+  % ensemble des matrices antisymÃ©triques d'ordre n sur #1, \R par dÃ©faut
 
 
 \newcommand{\GLE}[1][E]{\mathcal{GL}(#1)}
-  % groupe des automorphismes de #1, par défaut E
+  % groupe des automorphismes de #1, par dÃ©faut E
 \newcommand{\GLK}[2][K]{\mathcal{GL}_{\#1}(#2)}
 
 \newcommand{\OrE}[1][E]{\mathcal{O}(#1)}
-  % groupe des automorphismes orthogonaux de #1, par défaut E
+  % groupe des automorphismes orthogonaux de #1, par dÃ©faut E
 \newcommand{\SOE}[1][E]{\mathcal{SO}(#1)}
-  % groupe spécial orthogonal de #1, par défaut E
+  % groupe spÃ©cial orthogonal de #1, par dÃ©faut E
 \newcommand{\OpE}[1][E]{\mathcal{O}^+(#1)}
-  % groupe spécial orthogonal de #1, par défaut E
+  % groupe spÃ©cial orthogonal de #1, par dÃ©faut E
 \newcommand{\OmE}[1][E]{\mathcal{O}^-(#1)}
-  % ensemble des automorphismes orthogonaux de det=-1 de #1, par défaut E
+  % ensemble des automorphismes orthogonaux de det=-1 de #1, par dÃ©faut E
 \newcommand{\OnR}[1][n]{\mathcal{O}_{#1}(\R)}
-  % groupe des automorphismes orthogonaux de #2^#1, par défaut #2^n
+  % groupe des automorphismes orthogonaux de #2^#1, par dÃ©faut #2^n
 
 \newcommand{\SOnR}[1][n]{\mathcal{SO}_{#1}(\R)}
-  % groupe spécial orthogonal d'ordre #1, par défaut n
+  % groupe spÃ©cial orthogonal d'ordre #1, par dÃ©faut n
 \newcommand{\Opn}[1][n]{\mathcal{O}^+(#1)}
-  % groupe spécial orthogonal d'ordre #1, par défaut n
+  % groupe spÃ©cial orthogonal d'ordre #1, par dÃ©faut n
 \newcommand{\Omn}[1][n]{\mathcal{O}^-(#1)}
-  % ensemble des matrices orthogonales de det=-1, d'ordre #1, par défaut n
+  % ensemble des matrices orthogonales de det=-1, d'ordre #1, par dÃ©faut n
 
 
 \newcommand{\LpEF}{\mathcal{L}_{p}(E,F)}
