@@ -1,135 +1,388 @@
-
-\documentclass[12pt,a4paper]{article}
-\usepackage{amsfonts,amsmath,amssymb,graphicx}
-\usepackage[francais]{babel}
-\usepackage[latin1]{inputenc}
-\usepackage{answers}
-\usepackage{a4wide,jlq2eams} 
-\usepackage{multicol}
-%---- Dimensions des marges ---
-\setlength{\paperwidth}{21cm} 
-\setlength{\paperheight}{29.7cm}
-\setlength{\evensidemargin}{0cm}
-\setlength{\oddsidemargin}{0cm} 
-\setlength{\topmargin}{-2.5cm}
-\setlength{\headsep}{0.7cm} 
-\setlength{\headheight}{1cm}
-\setlength{\textheight}{25cm} 
-\setlength{\textwidth}{17cm}
-
-
-
-
-%---- Structure Exercice -----
-\newtheorem{Exc}{Exercice}
-\Newassociation{correction}{Soln}{mycor}
-\Newassociation{indication}{Indi}{myind}
-%\newcommand{\precorrection}{~{\bf \footnotesize [Exercice corrig\'e]}}
-%\newcommand{\preindication}{~{\bf \footnotesize [Indication]}}
-\renewcommand{\Solnlabel}[1]{\bf \emph{Correction #1}}
-\renewcommand{\Indilabel}[1]{\bf \emph{Indication #1}}
-
-\def\exo#1{\futurelet\testchar\MaybeOptArgmyexoo}
-\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
-                        \else \let\next\NoOptArgmyexoo \fi \next}
-\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
-\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
-
-\newcommand{\finexo}{\end{Exc}}
-\newcommand{\flag}[1]{}
-
-\newtheorem{question}{Question}
-
-
-
-%---- Style de l'entete -----                     % -> � personnaliser <-
-\setlength{\parindent}{0cm}
-\newcommand{\entete}[1]
-{
-{\noindent
-  \textsf{Feuille d'exercices}    \hfill   \textsf{ISEN}          % Universit�
-}
-\hrule
-\hrule
-\begin{center} 
-\textbf{\textsf{\Large 
-     S�rie num�rique     % TITRE
-}}
-\end{center}
-\hrule
-}
-
-
+\documentclass{book}
+\usepackage{commeunjeustyle}
 \begin{document}
 
-%--- Gestion des corrections ---
- \Opensolutionfile{mycor}[ficcorex]
- \Opensolutionfile{myind}[ficind]
- \entete{\'Enonc�s}
+\begin{Exercice}[Rayon de convergence] 
+Déterminer le rayon de convergence des séries entières suivantes :
+
+  	\begin{enumerate}
+    \item $\sum\limits {\frac{{n^2 + 1}}{{3^n }}z^n }$
+     
+    \item $\sum\limits {{\mathrm{e}}^{ - n^2 } z^n }$
+     
+    \item $\sum\limits {\frac{{\ln n}}{{n^2 }}z^{2n} }$
+
+	\item $ \sum\limits {\frac{{n^n }}{{n!}}z^{3n} }$
+	
+	\item $ \sum\limits a_n z^{n} $ avec $a_n = \ln \left( 1 + \frac{ 1 }{ n } \right)$	
+
+	\item $ \sum\limits a_n z^{n} $ avec $a_n = \frac{ \mathrm{i}^n n^2 }{ n^2 + 1 }$	
+	
+	\item $ \sum\limits a_n z^{n} $ avec $a_n = \frac{1}{ n \binom{2n}{n} }$
+
+	\item $ \sum\limits a_n z^{n} $ avec $a_n = \tan \left( \frac{2n \pi}{3} \right)$
+
+	\item $ \sum\limits a_n z^{n} $ avec 
+	$a_n = \begin{cases}
+	a_{2n} &= a^n \\
+	a_{2n+1} &= b^n
+	\end{cases}$ où $0<a<b$
+  \end{enumerate}
+  \begin{Correction}
+On prend dans chaque cas $z \neq 0$. et on revient à la règle de d'Alembert des séries numériques :
 
 
+\begin{enumerate}
+\item %$\sum\limits \frac{{n^2 + 1}}{{3^n }  z^n }$
+	Pour tout $n \in \N$ : $a_n = \frac{ n^2 + 1 }{ 3^n } > 0$ et :    
+    
+		\hspace{0.7cm} $\frac{ a_{n+1} }{ a_n } |z| = \frac{ \frac{ (n+1)^2 + 1 }{ 3^{n+1} } }{ \frac{n^2 + 1}{ 3^n }  } |z|$
 
-\input{exercice/serie_entiere_exo_rayon_convergence_1}
-\input{exercice/serie_entiere_exo_rayon_convergence_2}
-\input{exercice/serie_entiere_exo_somme}
-\input{exercice/serie_entiere_exo_DSE}
-\input{exercice/serie_entiere_exo_eq_diff}
-\input{exercice/serie_entiere_exo_derivation}
-\input{exercice/serie_entiere_exo_impaire}
-\input{exercice/serie_entiere_exo_alternee}
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \frac{ (n+1)^2 + 1 }{ 3 (n^2 + 1) } |z| $
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } \underset{ n \to + \infty }{\sim} \frac{ n^2 }{ 3  n^2}|z| $
+				
+	Donc :
+	
+		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } |z| = |z| \frac{1}{3}$ 
+		
+	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = 3$.
+			
+     
+\item %$\sum\limits \mathrm{e}^{ - n^2 } z^n $
+	Pour tout $n \in \N$ : $a_n = \mathrm{e}^{ - n^2 } > 0$ et :    
+    
+		\hspace{0.7cm} $\frac{ a_{n+1} }{ a_n } |z| = \frac{ \mathrm{e}^{ - (n+1)^2 }  }{  \mathrm{e}^{ - n^2 } } |z|$
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \mathrm{e}^{ - 2n - 1 }|z|$
+		
+	Donc :
+	
+		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } |z| = 0$ 
+		
+	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = + \infty$.
+	
+	     
+\item %$\sum\limits \frac{ \ln n }{ n^2 }z^{2n} $
+	Pour tout $n \in \N \backslash \{ 0 ; 1 \}$ : $a_n = \frac{ \ln n }{ n^2 } > 0$ et :    
+    
+ 	\hspace{0.7cm} $\frac{ a_{n+1}|z|^{2(n+1)}}{ a_n|z|^{2n} }  = \frac{ \frac{ \ln (n+1) }{ (n+1)^2 } }{ \frac{ \ln n }{ n^2 }  } |z|^2$
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \frac{ n^2  \ln(n+1) }{ (n+1)^2 \ln n } |z|^2$
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } \underset{ n \to + \infty }{\sim} |z|^2 $
+		
+	Donc :
+	
+		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } |z| = 1 |z|^2$ 
+		
+	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = \sqrt{\frac{1}{1}}$.
 
 
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-%--- Fin des exercices ---
-%------------------------------------------------------
-%------------------------------------------------------
-
-%--- Gestion des corrections ---
-% \ \newpage
-% \setcounter{page}{1}
-% \entete{Indications}
+\item %$ \sum\limits  \frac{n^n }{n!}z^{3n} $ 
 %
-% \Closesolutionfile{myind}
-% \Readsolutionfile{myind}
 
- \ \newpage
- \setcounter{page}{1}
- \entete{Corrections}
+Pour tout $n \in \N^*$ : $u_n = \frac{n^n }{n!} |z|^{3n}> 0$ et :    
+    
+		\hspace{0.7cm} $\frac{ u_{n+1} }{ u_n } = \left( \frac{n+1}{n}\right)^n |z|^3$
 
- \Closesolutionfile{mycor}
- \Readsolutionfile{mycor}
+		\hspace{0.7cm} $\phantom{ \frac{ u_{n+1} }{ u_n } } = \mathrm{e}^{n \ln \left( 1+\frac{1}{n} \right) } |z|^3$
 
+		\hspace{0.7cm} $\phantom{ \frac{ u_{n+1} }{ u_n } } \underset{ n \to + \infty }{=} \mathrm{e}^{n   \left( \frac{1}{n} +  \circ \left( \frac{1}{n} \right) \right) } |z|^3$
+		
+	Donc :
+	
+		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ u_{n+1} }{ u_n } = \mathrm{e} \times |z|^3$ 
+		
+	D'après la règle de D'Alembert la série CV pour $ \mathrm{e} \times |z|^3 < 1$ soit $|z| < \frac{1}{\sqrt[3]{\mathrm{e}}}$, et diverge pour $r > \frac{1}{\sqrt[3]{\mathrm{e}}}$.	
+
+\smallskip
+
+On en déduit d'après la caractérisation du rayon de CV que $R_a = 	\frac{1}{\sqrt[3]{\mathrm{e}}}$.
+	
+	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \ln \left( 1 + \frac{ 1 }{ n } \right)$
+	Pour tout $n \in \N$ : $a_n = \ln \left( 1 + \frac{ 1 }{ n } \right) > 0$ et :    
+    
+		\hspace{0.7cm} $\frac{ a_{n+1} }{ a_n } |z| = \frac{ \ln \left( 1 + \frac{ 1 }{ n+1 } \right) }{ \ln \left( 1 + \frac{ 1 }{ n } \right)  } |z|$
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } \underset{ n \to + \infty }{\sim} \frac{ \frac{1}{n+1} }{ \frac{1}{n} } |z|$
+				
+	Donc :
+	
+		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } = 1 \times |z|$ 
+		
+	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = 1$.	
+		
+
+	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \frac{ \mathrm{i}^n n^2 }{ n^2 + 1 }$
+Les coefficients ne sont pas réels (et pas positifs), on travaille alors avec les modules.
+	
+	Pour tout $n \in \N$ : $|a_n| = \frac{ n^2 }{ n^2 + 1 } > 0$ et :    
+    
+		\hspace{0.7cm} \dots (à vous, c'est facile avec les équivalents)
+				
+	Donc :
+	
+		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ |a_{n+1}| }{ |a_n| } |z| = |z|$ 
+		
+	D'après la règle de D'Alembert le rayon de CV de $\sum\limits |a_n| z^{n} $ vaut :
+	%µ$1$, or $\sum\limits |a_n| z^{n} $ et $\sum\limits a_n z^{n}$ ont le même rayon de CV, donc :
+	 $R_a = 1$, .
+			
+	
+	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \frac{1}{ n \binom{2n}{n} }$
+	Pour tout $n \in \N$ : $a_n = \frac{1}{ n \binom{2n}{n} } > 0$ et :
+    
+		\hspace{0.7cm} $\frac{ a_{n+1} }{ a_n } |z| = \frac{ \frac{ 1 }{ n \binom{2n+2}{n+1} } }{  \frac{1}{ n \binom{2n}{n} }  } |z|$
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \frac{ n \times (2n)! \times ((n+1)!)^2 }{ (n+1) \times (2n+2)! \times (n!)^2  } |z|$
+
+		\hspace{0.7cm} $\phantom{ \frac{ a_{n+1} }{ a_n } |z| } = \frac{ n }{ 2 (2n+1) } |z|$
+				
+	Donc :
+	
+		\hspace{0.7cm} $\lim_{n \to + \infty} \frac{ a_{n+1} }{ a_n } = \frac{|z|}{4}$ 
+		
+	D'après la règle de D'Alembert le rayon de CV vaut : $R_a = 4$.
+
+
+
+	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \tan \left( \frac{2n \pi}{3} \right)$
+On analyse les valeurs de $a_n$, avec la $\pi$-périodicité de tan : 
+
+\hspace{0.7cm} $\forall n \in \N$, $a_{n+3} = a_n$
+
+Donc $a_n$ ne prend que trois valeurs : pour tout $p \in \N$, 
+$\begin{cases}
+a_{3p} & = a_0 = 0 \\
+a_{3p+1} & = a_1 = - \sqrt{3} \\
+a_{3p+2} & = a_2 = \sqrt{3} \\
+\end{cases}$.
+
+Point de critère de D'Alembert possible directement (indirectement oui)... mais si on a bien compris ce qu'est un rayon de CV c'est rapide :
+
+On déduit des valeurs d'une part que $a_n \underset{n \to + \infty}{\nrightarrow} 0$ donc $\sum\limits a_n 1^{n} $ diverge grossièrement, d'où $R_a \leqslant 1$ avec la caractérisation du rayon de CV.
+
+Et d'autre part que  $(|a_n| 1^{n}) $ est bornée, donc que $R_a \geqslant 1$ avec la définition du rayon de CV.
+
+Finalement : $R_a = 1$
+
+
+	\item %$ \sum\limits a_n z^{n} $ avec $a_n = \begin{cases} a_{2n} &= a^n \\ a_{2n+1}= & b^n \end{cases}$ où $0<a<b$
+Le règle de D'Alembert n'est pas exploitable directement ici.
+
+On revient à la définition du rayon de CV. et on utilise les suites extraites des termes d'indices pairs et impairs.
+
+Soit $r > 0$, la suite $(a_n r^n)$ est bornée équivaut à $(a_{2n} r^{2n})$ et $(a_{2n+1} r^{2n+1})$ sont bornées.
+
+\begin{itemize}
+	\item $a_{2n} r^{2n} = (a r^2)^n$ donc $(a_{2n} r^{2n})$ est une suite géométrique de raison $a r^2$,
+	
+	elle est bornée lorsque $a r^2 \leqslant 1 \Longleftrightarrow r \leqslant \frac{1}{\sqrt{a}}$.
+
+	\item $a_{2n+1} r^{2n+1} = r \times (b r^2)^n$ donc $(a_{2n+1} r^{2n+1})$ est une suite géométrique de raison $b r^2$,
+	
+	elle est bornée lorsque $b r^2 \leqslant 1 \Longleftrightarrow r \leqslant \frac{1}{\sqrt{b}}$.
+	
+	\item Et de plus  :  $0<a<b \Rightarrow  \frac{1}{\sqrt{b}} <  \frac{1}{\sqrt{a}}$
+\end{itemize}
+
+Donc $(a_n r^n)$ est bornée lorsque $r \leqslant \frac{1}{\sqrt{b}}$, le rayon de CV est $R_a = \frac{1}{\sqrt{b}}$.
+  \end{enumerate}
+\end{Correction}
+\end{Exercice}
+\begin{Exercice}[Rayon de convergence]
+  Déterminer le rayon de convergence des séries entières suivantes :
+$$\begin{array}{lll}
+\mathbf{1.}\ \sum_{n\geq 1}\frac{1}{\sqrt{n}}x^n&
+\mathbf{2.}\ \sum_n\frac{(n!)^2}{(2n)!}x^n&\mathbf{3.}\ \sum_{n\geq 1}  \frac{n!}{2^{2n}\sqrt{(2n)!}}x^n\\
+\mathbf {4.}\ \sum_{n}(\ln n) x^n&\mathbf{5.}\ \sum_n\frac{\sqrt nx^{2n}}{2^n+1}&
+\mathbf{6.}\ \sum_n(2+ni) z^n\\
+\mathbf{7.}\ \sum_n\frac{(-1)^n}{1\times 3\times\dots\times (2n-1)}z^n\\
+\end{array}$$
+\begin{Correction}
+\end{Correction}
+\end{Exercice} 
+
+\begin{Exercice}[Rayon de convergence et somme]
+Calculer le rayon de convergence  puis la somme de :
+\label{exo:2}
+  	\begin{enumerate}
+    \item $ \sum\limits_{n \geqslant 0} {\frac{{n - 1}}{{n!}}x^n } $
+     
+    \item $ \sum\limits_{n \geqslant 0} {\frac{{(n + 1)(n - 2)}}{{n!}}x^n } $
+
+	\item $ \sum\limits_{n \geqslant 2} {\frac{{x^n }}{{n(n - 1)}}} $
+	
+	\item $ \sum\limits_{n \geqslant 0} \frac{3n }{n+2} x^n$
+	
+	\item $ \sum\limits_{n \geqslant 0} \frac{x^{4n} }{ (4n)! } $	
+  \end{enumerate} 
+\begin{Correction}
+  	\begin{enumerate}
+    \item %$ \sum\limits_{n \geqslant 0} {\frac{{n - 1}}{{n!}}x^n } $
+    \begin{itemize}
+    	\item Rayon de CV $R = + \infty$ (utiliser la règle de D'Alembert \dots)
+    	
+    	\item Pour tout $x \in \R$ :
+
+L'égalité est bien valable car chacune des séries du membre de droite a aussi $+ \infty$ pour rayon de CV 
+    	
+\hspace{0.7cm} $ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n =  
+\sum\limits_{n = 0}^{ + \infty } {\frac{{n}}{{n!}}x^n }  - \sum\limits_{n = 0}^{ + \infty } {\frac{{1}}{{n!}}x^n } $
+    	
+\hspace{0.7cm} $\phantom{ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n  } =  
+\sum\limits_{n = 1}^{ + \infty } \frac{{n}}{{n!}}x^n  - \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
+
+\hspace{0.7cm} $\phantom{ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n  } = 
+x \sum\limits_{n = 1}^{ + \infty } \frac{1}{ (n-1)! }x^{n-1}  - \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
+
+\hspace{0.7cm} $\phantom{ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n  } = 
+\sum\limits_{n = 0}^{ + \infty } \frac{1}{ n! }x^{n}  - \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
+
+\hspace{0.7cm} $\phantom{ \sum\limits_{n = 0}^{ + \infty } \frac{n - 1}{n!}x^n  } = x \mathrm{e}^x  -  \mathrm{e}^x $
+    \end{itemize}
+
+     
+    \item %$ \sum\limits_{n \geqslant 0} \frac{(n + 1)(n - 2)}{n!}x^n  $
+    \begin{itemize}
+    	\item Rayon de CV $R = + \infty$ (utiliser la règle de D'Alembert \dots)
+    	
+    	\item Pour tout $x \in \R$ : sachant que $(n+1)(n-2) = n^2 - n - 2 = n(n-1) - 2$
+ 
+L'égalité est bien valable car chacune des séries du membre de droite a aussi $+ \infty$ pour rayon de CV 
+    	
+\hspace{0.7cm} $\sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n  =  
+\sum\limits_{n = 0}^{ + \infty } \frac{ n(n-1) }{ n! }x^n   - 2 \sum\limits_{n = 0}^{ + \infty } \frac{ 1 }{ n!} x^n  $
+    	
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n   } =  
+\sum\limits_{n = 2}^{ + \infty } \frac{ n(n-1) }{ n! } x^n  - 2 \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
+
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n   } =   
+x^2 \sum\limits_{n = 2}^{ + \infty } \frac{ 1 }{ (n-2) ! } x^{n-2}  - 2 \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
+
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n   } =  
+x^2 \sum\limits_{n = 0}^{ + \infty } \frac{ 1 }{ n! } x^n  - 2 \sum\limits_{n = 0}^{ + \infty } \frac{x^n}{n!}  $
+
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty } \frac{(n + 1)(n - 2)}{n!}x^n   } = 
+x^2 \mathrm{e}^x  -  2 \mathrm{e}^x $
+    \end{itemize}
+    
+
+
+	\item %$ \sum\limits_{n \geqslant 2} \frac{x^n }{n(n - 1)} $
+    \begin{itemize}
+    	\item Rayon de CV $R = 1$ (utiliser la règle de D'Alembert \dots)
+    	
+    	\item Pour tout $x \in ]-1 ; 1[$ : sachant que par décomposition en éléments simples $\frac{1}{n(n-1)} = \frac{1}{n-1} - \frac{1}{n}$
+    	
+    	 L'égalité est bien valable car chacune des séries du membre de droite a aussi $1$ pour rayon de CV  
+    	
+\hspace{0.7cm} $\sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n(n - 1)}  =  
+\sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n - 1} -  \sum\limits_{n = 2}^{ + \infty } \frac{ x^n }{ n }$
+    	
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n(n - 1)}  }=    
+x \sum\limits_{n = 2}^{ + \infty } \frac{x^{n-1} }{n - 1} -  \sum\limits_{n = 1}^{ + \infty } \frac{ x^n }{ n } + x$
+
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n(n - 1)}  }=    
+x \sum\limits_{n = 1}^{ + \infty } \frac{x^{n}}{n} -  \sum\limits_{n = 1}^{ + \infty } \frac{ x^n }{ n } + x$
+
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 2}^{ + \infty } \frac{x^n }{n(n - 1)}  }=  
+- x \ln(1-x)   +  \ln(1-x) + x $
+    \end{itemize}	
+
+	\item %$ \sum\limits_{n \geqslant 0} \frac{3n }{n+2} x^n$
+    \begin{itemize}
+    	\item Rayon de CV $R = 1$ (utiliser la règle de D'Alembert \dots)
+    	
+    	\item Pour tout $x \in ]-1 ; 1[$ : sachant que par décomposition en éléments simples $\frac{3n}{n+2} = 3\left( 1 - 2 \frac{1}{n+2} \right)$
+   
+  L'égalité ci-dessous est vraie car chacune des séries du membre de droite a aussi $1$ pour rayon de CV     
+    	
+\hspace{0.7cm} $\sum\limits_{n = 0}^{ + \infty } \frac{3n }{n+2}   =  
+3 \left( \sum\limits_{n = 0}^{ + \infty } x^n  -  2 \sum\limits_{n = 0}^{ + \infty } \frac{ x^n }{ n+2 } \right)$
+
+Soit $x=0$ et dans ce cas la somme est nulle, soit $x \neq 0$ et on peut factoriser par $x$ :
+
+\hspace{0.7cm} $\sum\limits_{n = 0}^{ + \infty } \frac{3n }{n+2}   =  
+3 \left( \sum\limits_{n = 0}^{ + \infty } x^n  -  \frac{2}{x^2} \sum\limits_{n = 0}^{ + \infty } \frac{ x^{n+2} }{ n+2 } \right)$
+    	
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty }  \frac{3n }{n+2}   }  =    
+3 \left( \sum\limits_{n = 0}^{ + \infty } x^n  -  \frac{2}{x^2} \sum\limits_{ n = 2 }^{ + \infty } \frac{ x^{n} }{ n }  \right)$
+
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty }  \frac{3n }{n+2}   }  =    
+3 \left( \sum\limits_{n = 0}^{ + \infty } x^n  -  \frac{2}{x^2} \sum\limits_{ n = 1 }^{ + \infty } \frac{ x^{n} }{ n } + -  \frac{2}{x^2} x   \right)$
+
+\hspace{0.7cm} $\phantom{  \sum\limits_{n = 0}^{ + \infty }  \frac{3n }{n+2}   }  =    
+3 \left(  \frac{1}{1-x}  + \frac{2}{x^2} \ln(1-x) +  \frac{2}{x}   \right)$
+    \end{itemize}		
+	
+	\item %$ \sum\limits_{n \geqslant 0} \frac{x^{4n} }{ (4n)! } $	
+	Il faut le voir mais on a immédiatement $R = + \infty$ par linéarité avec :
+	
+	\hspace{0.7cm}$ \sum\limits_{n \geqslant 0} \frac{x^{4n} }{ (4n)! } = \tfrac{1}{2} \left( \mathrm{ch}(x) + \cos(x) \right)$
+	
+ \end{enumerate} 
+\end{Correction}
+\end{Exercice} 
+
+\begin{Exercice}[DSE en 0]
+Développer en série entière au voisinage de 0 les fonctions suivantes. On précisera le rayon de convergence de la série entière obtenue.
+$$\begin{array}{lcl}
+\mathbf{1.}\ln(1+2x^2)&\quad&\mathbf{2.}\displaystyle \frac{1}{a-x}\textrm{ avec }a\neq 0\\
+\mathbf{3.}\ln(a+x) \textrm{ avec }a> 0&\quad&\mathbf{4.}\displaystyle \frac{e^x}{1-x}\\
+\mathbf{5.}\ln(1+x-2x^2)&\quad&\mathbf{6.}\displaystyle(4+x^2)^{-3/2}
+\end{array}$$
+\begin{Correction}
+\end{Correction}
+\end{Exercice}
+
+\begin{Exercice}[Équation différentielle]
+On considère l'équation différentielle $y''+xy'+y=1$. On cherche l'unique solution de
+cette équation vérifiant $y(0)=y'(0)=0$.
+\begin{enumerate}
+\item Supposons qu'il existe une série entière $f(x)=\sum_{n\geq 0}a_nx^n$ de rayon de convergence strictement positif
+solution de l'équation. Quelle relation de récurrence doit vérifier la suite $(a_n)$?
+\item Calculer explicitement $a_n$ pour chaque $n$. Quel est le rayon de convergence de la série entière obtenue?
+\item Exprimer cette série entière à l'aide des fonctions usuelles.
+\end{enumerate}
+\begin{Correction}
+\end{Correction}
+\end{Exercice}
+
+\begin{Exercice}[derivation]
+On considère la série entière de la variable réelle   $\sum _{n\geq 3}\frac {x^{n}}{(n+1)(n-2)}$
+\begin{enumerate}
+\item Déterminer le rayon de convergence $ R$ de cette série entière. Est-elle convergente pour $|x|=R$ ?
+\item Pour tout nombre réel $x$ tel que la série entière précédente converge, on note $S(x)$ sa somme.\\
+Expliciter la dérivée de la fonction $x\mapsto xS(x)$  sur $ ]-R,R[$.\\
+En déduire $ S(x)$ pour $x$ appartenant à $]-R,R[$.\\
+\item Calculer la somme de chacune des séries numériques suivantes :
+$$ \sum _{n\geq 3}(-1)^{n}{\frac {R^{n}}{(n+1)(n-2)}},$$
+$$ \sum _{n\geq 3}{\frac {R^{n}}{(n+1)(n-2)}}.$$ 
+\end{enumerate}
+\begin{Correction}
+\begin{enumerate}
+\item $R=1$. En effet, $\frac {|x|^{n}}{(n+1)(n-2)}\sim {\frac {|x|^{n}}{n^{2}}}$. Donc si $|x|\leq 1$, la série est absolument convergente (par comparaison avec la série de Riemann convergente $\sum _{n\geq 1}{\frac {1}{n^{2}}}$) tandis que si $|x|>1$ , $\frac {|x|^{n}}{n^{2}}\to +\infty $ et la série diverge grossièrement.
+\item On peut naturellement dériver la fonction sur son ouvert de convergence, soit ici $ ]-R,R[$.
+$$xS(x)=\sum _{n=3}^{\infty }{\frac {x^{n+1}}{(n+1)(n-2)}}.$$
+On a donc $(xS)'(x)=\sum _{n=3}^{\infty }{\frac {x^{n}}{n-2}}=x^{2}\sum _{k\geq 1}^{\infty }{\frac {x^{k}}{k}}=-x^{2}\ln(1-x)$.
+Une intégration par parties, suivie d'une intégration de fraction rationnelle, permet d'en déduire 
+$xS(x)$, puis
+$$S(x)={\frac {1}{3}}\left({\frac {1-x^{3}}{x}}\ln(1-x)+1+{\frac {x}{2}}+{\frac {x^{2}}{3}}\right).$$
+(Une autre méthode aboutissant à ce résultat est d'écrire :
+$$3S(x)=\sum _{n=3}^{\infty }\left({\frac {x^{n}}{n-2}}-{\frac {x^{n}}{n+1}}\right)={\frac {x^{3}}{1}}+{\frac {x^{4}}{2}}+{\frac {x^{5}}{3}}+{\frac {x^{3}-1}{x}}\sum _{n\geq 4}{\frac {x^{n}}{n}}=x^{3}+{\frac {x^{4}}{2}}+{\frac {x^{5}}{3}}+{\frac {1-x^{3}}{x}}\left(\ln(1-x)+x+{\frac {x^{2}}{2}}+{\frac {x^{3}}{3}}\right).$$
+\item Par continuité, $S(-1)={\frac {1}{3}}\left({\frac {2}{-1}}\ln 2+1-{\frac {1}{2}}+{\frac {(-1)^{2}}{3}}\right)={\frac {5}{18}}-{\frac {2}{3}}\ln 2$ et $S(1)={\frac {1}{3}}\left(0+1+{\frac {1}{2}}+{\frac {1^{2}}{3}}\right)={\frac {11}{18}}.$
+\end{enumerate}
+\end{Correction}
+\end{Exercice}
+\begin{Exercice}[Fonction impaire]
+Soit $S$ la somme de la série entière $\sum_n a_n x^n$ de rayon de convergence $R>0$. Démontrer que $S$ est paire si et seulement si, pour tout $k\in\mathbb N$, $a_{2k+1}=0$.
+\end{Exercice}
+\begin{Exercice}[Rayon de convergence]
+  Soit $(a_{n})_{n\geq 0} $ une suite de réels décroissante, de limite 0, et telle que $ \sum _{n\geq 0}a_{n}$ diverge. Quel est le rayon de convergence de la série entière $\sum _{n\geq 0}a_{n}z^{n}$ ?
+\begin{Correction}
+La série entière diverge en $z=1$ et converge en $z=-1$  (par le critère de convergence des séries alternées) donc $ R=1$.
+\end{Correction}
+\end{Exercice}
 \end{document}
-\endinput
-
-
-
-

@@ -1,137 +1,137 @@
 \documentclass[a4paper]{book}
-\usepackage{jlq2eams}
+\usepackage{commeunjeustyle}
 \begin{document}
 
-\chapter*{Réduction des endomorphismes/matrices carrés}
-La réduction d'endomorphisme a pour objectif d'exprimer des matrices et des endomorphismes sous une forme plus simple, par exemple pour faciliter les calculs. 
-Réduire un endomorphisme $u\in\LE$, cela correspond à trouver une base de l'espace dans laquelle l'endomorphisme s'exprime simplement. C'est à dire c'est décomposer l'espace $E$ comme somme directe de sous-espaces stables par $u$,
-$E = \oplus     _{i=1}^n E_i$ où les $E_i$ sont stables par $u$. On peut donc définir  les endomorphismes $u_{|E_i}$ induits par $u$ sur $E_i$, soit :
+\chapter*{RÃ©duction des endomorphismes/matrices carrÃ©s}
+La rÃ©duction d'endomorphisme a pour objectif d'exprimer des matrices et des endomorphismes sous une forme plus simple, par exemple pour faciliter les calculs. 
+RÃ©duire un endomorphisme $u\in\LE$, cela correspond Ã  trouver une base de l'espace dans laquelle l'endomorphisme s'exprime simplement. C'est Ã  dire c'est dÃ©composer l'espace $E$ comme somme directe de sous-espaces stables par $u$,
+$E = \oplus     _{i=1}^n E_i$ oÃ¹ les $E_i$ sont stables par $u$. On peut donc dÃ©finir  les endomorphismes $u_{|E_i}$ induits par $u$ sur $E_i$, soit :
  $$\Fonction{u_{|E_i}}{E_i }{E_i}{x}{u(x)}.$$
-Comme tout vecteur $\vec{x}\in E$ se décompose de façon unique sous la forme
+Comme tout vecteur $\vec{x}\in E$ se dÃ©compose de faÃ§on unique sous la forme
 $\vec{x} =  \vec{x_1} + \dots + \vec{x_n}$, on a:
 $$ u(\vec{x}) =  u_{|E_1}(\vec{x_1}) + \dots + u_{|E_n}(\vec{x_n}).$$
-Ainsi, l'étude de $u$ se ramène à l'étude des endomorphismes $u_{|E_i}$. L'idée directrice est que les $u_i$ sont plus \defi{simples} que $u$ car définis sur des sous-espaces vectoriels de $E$.\\
-En dimension finie, avec une base adaptée à la décomposition en somme directe, soit $\mathcal{B}_1$ base de $E_1$,..., $\mathcal{B}_n$ base de $E_n$, la matrice de $u$ dans la base $\mathcal{B}=(\mathcal{B}_1,\dots,\mathcal{B}_n)$ est :  
+Ainsi, l'Ã©tude de $u$ se ramÃ¨ne Ã  l'Ã©tude des endomorphismes $u_{|E_i}$. L'idÃ©e directrice est que les $u_i$ sont plus \defi{simples} que $u$ car dÃ©finis sur des sous-espaces vectoriels de $E$.\\
+En dimension finie, avec une base adaptÃ©e Ã  la dÃ©composition en somme directe, soit $\mathcal{B}_1$ base de $E_1$,..., $\mathcal{B}_n$ base de $E_n$, la matrice de $u$ dans la base $\mathcal{B}=(\mathcal{B}_1,\dots,\mathcal{B}_n)$ est :  
 $$ [u]_\mathcal{B} =\begin{pmatrix}[u_{|E_1}]_{\mathcal{B}_1}&\mathrm {0}&\cdots &\mathrm {0}\\\mathrm {0}&\mathrm [u_{|E_2}]_{\mathcal{B}_2}&\cdots &\mathrm {0}\\\vdots &\vdots &\ddots &\vdots \\\mathrm {0}&\mathrm {0}&\cdots &[u_{|E_n}]_{\mathcal{B}_n}\end{pmatrix}$$
-où $\mathrm {0}$ est la matrice nulle.\\
-Dans le cas favorable, les $u_i$ sont des homothéties, c'est à dire $u_{|E_i} =\lambda    _i \mathrm{Id}_{E_i}$. 
+oÃ¹ $\mathrm {0}$ est la matrice nulle.\\
+Dans le cas favorable, les $u_i$ sont des homothÃ©ties, c'est Ã  dire $u_{|E_i} =\lambda    _i \mathrm{Id}_{E_i}$. 
 $$u(\vec{x})=\lambda_1\vec{x_1}+\dots+\lambda_n\vec{x_n}$$
 Dans ce cas, la matrice de $u$ dans la base $\mathcal{B}$ est
 
 $$ [u]_\mathcal{B} = \begin{pmatrix}\lambda_1 \mathrm {I}_{\dim(E_1)}&\mathrm {0}&\cdots &\mathrm {0}\\\mathrm {0}&\lambda_2 \mathrm {I}_{\dim(E_2)}&\cdots &\mathrm {0}\\\vdots &\vdots &\ddots &\vdots \\\mathrm {0}&\mathrm {0}&\cdots &\lambda_n \mathrm {I}_{\dim(E_n)}\end{pmatrix}$$
-avec $\lambda_i \mathrm {I}_{\dim(E_i)}= \begin{pmatrix}\lambda_i&0&\ldots &0\\0&\lambda_i&\ddots &\vdots \\\vdots &\ddots &\ddots &0\\0&\ldots &0&\lambda_i\end{pmatrix}$. $ [u]_\mathcal{B} $ est donc une matrice diagonale. On dit que l'endomorphisme $u$ est \textbf{diagonalisable}. Dans le cadre du programme, l'essentiel du cours de réduction se limite à l'aspect de diagonalisation. Les méthodes de réduction sont de deux types, qu'il convient de souligner : les premières, de nature géométrique, reposent sur les notions de sous-espace stable et d'éléments propres ; les secondes, de nature algébrique, font appel aux polynômes annulateurs.\\
+avec $\lambda_i \mathrm {I}_{\dim(E_i)}= \begin{pmatrix}\lambda_i&0&\ldots &0\\0&\lambda_i&\ddots &\vdots \\\vdots &\ddots &\ddots &0\\0&\ldots &0&\lambda_i\end{pmatrix}$. $ [u]_\mathcal{B} $ est donc une matrice diagonale. On dit que l'endomorphisme $u$ est \impo{diagonalisable}. Dans le cadre du programme, l'essentiel du cours de rÃ©duction se limite Ã  l'aspect de diagonalisation. Les mÃ©thodes de rÃ©duction sont de deux types, qu'il convient de souligner : les premiÃ¨res, de nature gÃ©omÃ©trique, reposent sur les notions de sous-espace stable et d'Ã©lÃ©ments propres ; les secondes, de nature algÃ©brique, font appel aux polynÃ´mes annulateurs.\\
 
 
-Par exemple, soit E un $\K $-espace vectoriel et $E_1$, $E_2$ deux sous-espaces vectoriels supplémentaires dans E  ($E = E_1 \oplus E_2$).\\
-Le projecteur p (ou la projection) sur $E_1$ parallèlement à $E_2$ est défini par:
+Par exemple, soit E un $\K $-espace vectoriel et $E_1$, $E_2$ deux sous-espaces vectoriels supplÃ©mentaires dans E  ($E = E_1 \oplus E_2$).\\
+Le projecteur p (ou la projection) sur $E_1$ parallÃ¨lement Ã  $E_2$ est dÃ©fini par:
 $$\Fonction{p}{ E = E_1 \oplus E_2 }{ E}{\vec{x} = \vec{x_1} + \vec{x_2}}{\vec{x_1}}$$
-\textit{Nature géométrique} : pour tout $x\in E_1:\quad p(\vec{x})= 1.\vec{x}$ donc  $p_{|E_1}=1 \mathrm{Id}_{E_1}$ et  pour tout $x\in E_2:\quad p(\vec{x})= 0.\vec{x}$ donc  $p_{|E_2}=0 \mathrm{Id}_{E_2}$. La matrice de $p$ dans une base adaptée à $E_1 \oplus E_2$ s'écrit :
+\textit{Nature gÃ©omÃ©trique} : pour tout $x\in E_1:\quad p(\vec{x})= 1.\vec{x}$ donc  $p_{|E_1}=1 \mathrm{Id}_{E_1}$ et  pour tout $x\in E_2:\quad p(\vec{x})= 0.\vec{x}$ donc  $p_{|E_2}=0 \mathrm{Id}_{E_2}$. La matrice de $p$ dans une base adaptÃ©e Ã  $E_1 \oplus E_2$ s'Ã©crit :
 $$[p]_\mathcal{B} =\begin{pmatrix}1.\mathrm{I}_r&0\\ 0 &0.\mathrm{I}_{n-r}\end{pmatrix}.$$
-\textit{Nature algébrique} : On a $p^2=p$, d'où $p^2-p=0$ et enfin $(p-1.\mathrm{Id}_E)(p-0.\mathrm{Id}_E)=0$. Le polynôme $Q=(X-1).(X-0)$ est un polynôme annulateur de l'endomorphisme $p$ car $Q(p)=0$. Comme $Q$ est scindé simple, on démontrera que de nouveau $p$ est diagonalisable dans une base $\mathcal{B} $ adaptée à $E_1 \oplus E_2$.  
+\textit{Nature algÃ©brique} : On a $p^2=p$, d'oÃ¹ $p^2-p=0$ et enfin $(p-1.\mathrm{Id}_E)(p-0.\mathrm{Id}_E)=0$. Le polynÃ´me $Q=(X-1).(X-0)$ est un polynÃ´me annulateur de l'endomorphisme $p$ car $Q(p)=0$. Comme $Q$ est scindÃ© simple, on dÃ©montrera que de nouveau $p$ est diagonalisable dans une base $\mathcal{B} $ adaptÃ©e Ã  $E_1 \oplus E_2$.  
 
 
 \textit{Notations}
 \begin{itemize}
-\item $\K $ désigne un corps (ici $\R$ ou $\C$);
-\item $E$ désigne un $\K $-espace vectoriel de dimension finie;
-\item $\LE$ désigne l'ensemble des endomorphismes de $E$,
-  c'est à dire  l'ensemble des applications linéaires de $E$ dans $E$.
+\item $\K $ dÃ©signe un corps (ici $\R$ ou $\C$);
+\item $E$ dÃ©signe un $\K $-espace vectoriel de dimension finie;
+\item $\LE$ dÃ©signe l'ensemble des endomorphismes de $E$,
+  c'est Ã  dire  l'ensemble des applications linÃ©aires de $E$ dans $E$.
 \end{itemize}
 %\Para{Remarque}
-%Au cours précédent, on a vu l'aspect dual entre application linéaire et matrice. A partir d'une application linéaire $u$, on se donne 
-%et de l'endomorphisme de Kn défini par X?AX. En particulier, X est un vecteur propre de A pour la valeur propre \lambda     si et seulement si AX=\lambda    X.
+%Au cours prÃ©cÃ©dent, on a vu l'aspect dual entre application linÃ©aire et matrice. A partir d'une application linÃ©aire $u$, on se donne 
+%et de l'endomorphisme de Kn dÃ©fini par X?AX. En particulier, X est un vecteur propre de A pour la valeur propre \lambda     si et seulement si AX=\lambda    X.
 
 
 
-\section{Stabilité}
+\section{StabilitÃ©}
 \subsection{D'un sous espace vectoriel : $u(F)\subset F$}
 
-\begin{Df}[Stable] Soit $u\in \LE$. On dit qu'un sous-espace $F$ de $E$ est \defi{stable} par $u$ si $u(F)\subset F$, c'est à dire :
+\begin{Definition}[Stable] Soit $u\in \LE$. On dit qu'un sous-espace $F$ de $E$ est \defi{stable} par $u$ si $u(F)\subset F$, c'est Ã  dire :
 $$\forall \vec{x}\in F,\quad u(\vec{x})\in F.$$ 
-On peut alors définir un endomorphisme $u_{|F}\in \mathcal{L}(F)$ en posant $u_{|F}(\vec{x})=u(\vec{x})$ pour tout $x\in F$. $u_{|F}$ s'appelle l'\defi{endomorphisme induit} par $u$ sur $F$.
-\end{Df}
-\begin{Ex}[Dérivée]
+On peut alors dÃ©finir un endomorphisme $u_{|F}\in \mathcal{L}(F)$ en posant $u_{|F}(\vec{x})=u(\vec{x})$ pour tout $x\in F$. $u_{|F}$ s'appelle l'\defi{endomorphisme induit} par $u$ sur $F$.
+\end{Definition}
+\begin{Exemple}[DÃ©rivÃ©e]
 Soit $\phi:f\mapsto f'.$ L'espace vectoriel des fonctions $C^{\infty}$ est stable par $\phi$. 
-\end{Ex}
-\begin{Prop} Soit $F$ un sous-espace vectoriel de $E$ de dimension finie et soit $\mathcal{B}$ une base de $E$ dont les premiers vecteurs, $\mathcal{B}'$,  forment une base de $F$. Alors la matrice de $u$ dans cette base a la forme
+\end{Exemple}
+\begin{Proposition} Soit $F$ un sous-espace vectoriel de $E$ de dimension finie et soit $\mathcal{B}$ une base de $E$ dont les premiers vecteurs, $\mathcal{B}'$,  forment une base de $F$. Alors la matrice de $u$ dans cette base a la forme
 $$[u]_{\mathcal{B}}= \begin{pmatrix}
 A & B \\ 0 & C
 \end{pmatrix}$$
 si et seulement si $F$ est stable par $u$. Dans ce cas $A=[u_{|F}]_{\mathcal{B}'}$.
-\end{Prop}
-\begin{Prop}[Diagonalisation par blocs] Soit $E_1\oplus     E_2=E$ de dimension finie avec $E_1$ et $E_2$ stables par $u$. Alors la matrice de $u$ dans une base adaptée $\mathcal{B}=(\mathcal{B}_1,\mathcal{B}_2)$ à la décomposition $E_1\oplus     E_2=E$  a la forme diagonale par blocs
+\end{Proposition}
+\begin{Proposition}[Diagonalisation par blocs] Soit $E_1\oplus     E_2=E$ de dimension finie avec $E_1$ et $E_2$ stables par $u$. Alors la matrice de $u$ dans une base adaptÃ©e $\mathcal{B}=(\mathcal{B}_1,\mathcal{B}_2)$ Ã  la dÃ©composition $E_1\oplus     E_2=E$  a la forme diagonale par blocs
 $$[u]_{\mathcal{B}}= \begin{pmatrix}
 A & 0 \\ 0 & B
 \end{pmatrix}$$
  $A=[u_{|E_1}]_{\mathcal{B}_1}$ et $B=[u_{|E_2}]_{\mathcal{B}_2}$.
-\end{Prop}
+\end{Proposition}
 
-\begin{Df}[Stable] Soit $M\in \MnK$. On dit qu'un sous-espace $F$ de $\M{n}{1}{\K}$ est stable par $M$ si
+\begin{Definition}[Stable] Soit $M\in \MnK$. On dit qu'un sous-espace $F$ de $\M{n}{1}{\K}$ est stable par $M$ si
 $$\forall X\in \M{n}{1}{\K},\quad MX \in F.$$
-Dans ce cas, $M$ est semblable à une matrice de la forme$\begin{pmatrix}
-A & B \\ 0 & C\end{pmatrix}$ avec une matrice de passage de la base canonique à une base adaptée à $F$. 
-\end{Df}
-\begin{Prop}[Diagonalisation par blocs] Soit $E_1\oplus     E_2=\MnK$ avec $E_1$ et $E_2$ stables par $M$. Alors la matrice de $M$ est semblable à la matrice diagonale par blocs, c'est à dire que 
+Dans ce cas, $M$ est semblable Ã  une matrice de la forme$\begin{pmatrix}
+A & B \\ 0 & C\end{pmatrix}$ avec une matrice de passage de la base canonique Ã  une base adaptÃ©e Ã  $F$. 
+\end{Definition}
+\begin{Proposition}[Diagonalisation par blocs] Soit $E_1\oplus     E_2=\MnK$ avec $E_1$ et $E_2$ stables par $M$. Alors la matrice de $M$ est semblable Ã  la matrice diagonale par blocs, c'est Ã  dire que 
 $$M=P \begin{pmatrix}
 A & 0 \\ 0 & B
-\end{pmatrix}P^{-1}$$ avec $P$ la matrice de passage de la base canonique à une base adaptée $\mathcal{B}=(\mathcal{B}_1,\mathcal{B}_2)$.
-\end{Prop}
-\begin{Ex}[Matrice orthogonal]
+\end{pmatrix}P^{-1}$$ avec $P$ la matrice de passage de la base canonique Ã  une base adaptÃ©e $\mathcal{B}=(\mathcal{B}_1,\mathcal{B}_2)$.
+\end{Proposition}
+\begin{Exemple}[Matrice orthogonal]
 $$A=\frac{1}{3}\begin{pmatrix}2 & -1 & 2 \\ 2 &2&-1\\ -1&2&2\end{pmatrix}.$$ Soit $E_1=\mathrm{Vect}<\begin{pmatrix}1\\-1 \\0 \end{pmatrix},\begin{pmatrix}1\\0 \\-1 \end{pmatrix}>$ et $E_2=\mathrm{Vect}<\begin{pmatrix}1\\1 \\1 \end{pmatrix}>$.\\
-Pour la stabilité, on vérifie que $$A\begin{pmatrix}1\\-1 \\0 \end{pmatrix}=\begin{pmatrix}1\\0 \\-1 \end{pmatrix}\in E_1$$ et $$A\begin{pmatrix}1\\0 \\-1 \end{pmatrix}=\begin{pmatrix}0\\1 \\-1 \end{pmatrix}=-1\begin{pmatrix}1\\-1 \\0 \end{pmatrix} + 1\begin{pmatrix}1\\0 \\-1 \end{pmatrix}\in E_1.$$
+Pour la stabilitÃ©, on vÃ©rifie que $$A\begin{pmatrix}1\\-1 \\0 \end{pmatrix}=\begin{pmatrix}1\\0 \\-1 \end{pmatrix}\in E_1$$ et $$A\begin{pmatrix}1\\0 \\-1 \end{pmatrix}=\begin{pmatrix}0\\1 \\-1 \end{pmatrix}=-1\begin{pmatrix}1\\-1 \\0 \end{pmatrix} + 1\begin{pmatrix}1\\0 \\-1 \end{pmatrix}\in E_1.$$
 De plus, on a $A\begin{pmatrix}1\\1 \\1 \end{pmatrix}=\begin{pmatrix}1\\1 \\1 \end{pmatrix}\in E_2.$\\
-$A$ est semblable à la matrice $\begin{pmatrix}0 & -1 & 0 \\ 1 &1&0\\0&0&1\end{pmatrix}$ et la matrice de passage est $P=\begin{pmatrix}1 &1 & 1 \\ -1 &0&1\\0&-1&1\end{pmatrix}$.
-\end{Ex}
+$A$ est semblable Ã  la matrice $\begin{pmatrix}0 & -1 & 0 \\ 1 &1&0\\0&0&1\end{pmatrix}$ et la matrice de passage est $P=\begin{pmatrix}1 &1 & 1 \\ -1 &0&1\\0&-1&1\end{pmatrix}$.
+\end{Exemple}
 \subsection{D'une droite vectoriel : $u(\K \vec{x})\subset \K \vec{x}$ (vecteurs propres et valeurs propres: $u(\vec{x})=\lambda \vec{x}$)}
-\begin{Prop}[Caractérisation] Soit $u\in \LE$. Soit $\vec{x}\in E$.\\
+\begin{Proposition}[CaractÃ©risation] Soit $u\in \LE$. Soit $\vec{x}\in E$.\\
 $\K \vec{x}$ est stable par $u$ si et seulement si il existe $\lambda$ dans $\K $ tel que $u(\vec{x})=\lambda \vec{x}$.
-\end{Prop}
-\begin{Prop}[Caractérisation] Soit $M\in \MnK$. Soit $X\in\M{n}{1}{\K}$.\\
+\end{Proposition}
+\begin{Proposition}[CaractÃ©risation] Soit $M\in \MnK$. Soit $X\in\M{n}{1}{\K}$.\\
  $\K X$ est stable par $M$ si et seulement si il existe $\lambda$ dans $\K $ tel que $MX=\lambda X$.
-\end{Prop}
-\begin{Df}
+\end{Proposition}
+\begin{Definition}
 Soit $u\in \LE$.
 \begin{itemize}
 \item On dit que $\lambda    \in \K $ est une \defi{valeur propre} de $u$ si  il existe $\vec{x}\neq \vec{0}_{E}$ tel que $u(\vec{x}) =\lambda    \vec{x}$.
-\item On dit que $\vec{x}\in E$ est un \defi{vecteur propre} de $u$ associé à la valeur propre $\lambda    $ si  $\vec{x}\neq \vec{0}_{E}$ et $u(\vec{x}) =\lambda    \vec{x}$.
-\item On appelle \defi{spectre} de $u$, noté $\mathrm{Sp}(u)$, l'ensemble des valeurs propres de $u$.
-\item On appelle \defi{sous-espace propre} de $u$ associé à la valeur propre $\lambda    $ le sous-espace vectoriel $E_\lambda    (u) = \Ker(u -\lambda    \mathrm{Id}_E)$.
+\item On dit que $\vec{x}\in E$ est un \defi{vecteur propre} de $u$ associÃ© Ã  la valeur propre $\lambda    $ si  $\vec{x}\neq \vec{0}_{E}$ et $u(\vec{x}) =\lambda    \vec{x}$.
+\item On appelle \defi{spectre} de $u$, notÃ© $\mathrm{Sp}(u)$, l'ensemble des valeurs propres de $u$.
+\item On appelle \defi{sous-espace propre} de $u$ associÃ© Ã  la valeur propre $\lambda    $ le sous-espace vectoriel $E_\lambda    (u) = \Ker(u -\lambda    \mathrm{Id}_E)$.
 \end{itemize}
-\end{Df}
+\end{Definition}
 
-\begin{Ex} Soit $\Fonction{\Psi}{\mathbb {R}_n[X] }{\mathbb {R}_n[X]}{P}{XP'}$. On a $\Psi(X^i)=i\times  X^i$, pour tout $i\in\{0,\dots,n\}$. $X^i$ est un vecteur propre associé à la valeur propre $i$.
-\end{Ex}
-\begin{Ex} Soit $\phi:f\mapsto f'.$ On a $\mathrm{Sp}(\phi)=\R$. En effet, pour tout $\lambda\in\R$, la fonction $x\mapsto e^{\lambda x}$ est vecteur propre $$\phi(e^{\lambda x})=(e^{\lambda x})'=\lambda e^{\lambda x}.$$
-\end{Ex}
-\begin{Df}
+\begin{Exemple} Soit $\Fonction{\Psi}{\mathbb {R}_n[X] }{\mathbb {R}_n[X]}{P}{XP'}$. On a $\Psi(X^i)=i\times  X^i$, pour tout $i\in\{0,\dots,n\}$. $X^i$ est un vecteur propre associÃ© Ã  la valeur propre $i$.
+\end{Exemple}
+\begin{Exemple} Soit $\phi:f\mapsto f'.$ On a $\mathrm{Sp}(\phi)=\R$. En effet, pour tout $\lambda\in\R$, la fonction $x\mapsto e^{\lambda x}$ est vecteur propre $$\phi(e^{\lambda x})=(e^{\lambda x})'=\lambda e^{\lambda x}.$$
+\end{Exemple}
+\begin{Definition}
 Soit $M\in \MnK$.
 \begin{itemize}
 \item On dit que $\lambda    \in \K $ est une \defi{valeur propre} de $M$ si  il existe $X\neq \{0_{\M{n}{1}{\K}}\}$ tel que $MX =\lambda    X$.
-\item On dit que $X\in\M{n}{1}{\K}$ est un \defi{vecteur propre} de $u$ associé à la valeur propre $\lambda    $ si et seulement si $X\neq 0_{\M{n}{1}{\K}}$ et $MX =\lambda    X$.
-\item On appelle \defi{spectre} de $M$, noté $\mathrm{Sp}(M)$, l'ensemble des valeurs propres de $M$.
-\item On appelle \defi{sous-espace propre} de $M$ associé à la valeur propre $\lambda    $ le sous-espace vectoriel $E_\lambda    (M) = \Ker(M -\lambda    \mathrm{I}_n)$.
+\item On dit que $X\in\M{n}{1}{\K}$ est un \defi{vecteur propre} de $u$ associÃ© Ã  la valeur propre $\lambda    $ si et seulement si $X\neq 0_{\M{n}{1}{\K}}$ et $MX =\lambda    X$.
+\item On appelle \defi{spectre} de $M$, notÃ© $\mathrm{Sp}(M)$, l'ensemble des valeurs propres de $M$.
+\item On appelle \defi{sous-espace propre} de $M$ associÃ© Ã  la valeur propre $\lambda    $ le sous-espace vectoriel $E_\lambda    (M) = \Ker(M -\lambda    \mathrm{I}_n)$.
 \end{itemize}
-\end{Df}
-\begin{Ex} La matrice $M=\begin{pmatrix}0&1\\1&0\end{pmatrix}$ représente la symétrie par rapport à la première bissectrice, soit la symétrie par rapport à $E_1=\mathrm{Vect}\begin{pmatrix}
+\end{Definition}
+\begin{Exemple} La matrice $M=\begin{pmatrix}0&1\\1&0\end{pmatrix}$ reprÃ©sente la symÃ©trie par rapport Ã  la premiÃ¨re bissectrice, soit la symÃ©trie par rapport Ã  $E_1=\mathrm{Vect}\begin{pmatrix}
 1\\1
-\end{pmatrix}$ parallèlement à $E_2=\mathrm{Vect}\begin{pmatrix}1\\-1
+\end{pmatrix}$ parallÃ¨lement Ã  $E_2=\mathrm{Vect}\begin{pmatrix}1\\-1
 \end{pmatrix}$.\\
 %\begin{center}\includegraphics[width=6cm]{symetrie.png}
 %\end{center}
 On a $M\begin{pmatrix}1\\1\end{pmatrix}=1\begin{pmatrix}1\\1\end{pmatrix}$  et $M\begin{pmatrix}1\\-1\end{pmatrix}=-1\begin{pmatrix}1\\-1\end{pmatrix}$.
-$\begin{pmatrix}1\\1\end{pmatrix}$ est un vecteur propre associé à la valeur propre $1$ (tout vecteur appartenant à la première bissectrice est invariant par $M$) et $\begin{pmatrix}-1\\1\end{pmatrix}$ est un vecteur propre associé à la valeur propre $-1$ (tout vecteur orthogonal à la première bissectrice est transformé en son opposé par $M$).
-\end{Ex}
-\begin{Prop}
+$\begin{pmatrix}1\\1\end{pmatrix}$ est un vecteur propre associÃ© Ã  la valeur propre $1$ (tout vecteur appartenant Ã  la premiÃ¨re bissectrice est invariant par $M$) et $\begin{pmatrix}-1\\1\end{pmatrix}$ est un vecteur propre associÃ© Ã  la valeur propre $-1$ (tout vecteur orthogonal Ã  la premiÃ¨re bissectrice est transformÃ© en son opposÃ© par $M$).
+\end{Exemple}
+\begin{Proposition}
 Soit $u\in \LE$ et $\lambda    \in \mathrm{Sp} u$.\\
-Alors l'ensemble des vecteurs propres de $u$ associés à la valeur propre $\lambda    $ est $\Ker(u-\lambda    \mathrm{Id}_E)\setminus\{ \vec{0}_{E}\} $.
-\end{Prop}
-\begin{Prop}
+Alors l'ensemble des vecteurs propres de $u$ associÃ©s Ã  la valeur propre $\lambda    $ est $\Ker(u-\lambda    \mathrm{Id}_E)\setminus\{ \vec{0}_{E}\} $.
+\end{Proposition}
+\begin{Proposition}
 Soit $M\in \MnK$ et $\lambda    \in \mathrm{Sp} M$.\\
-Alors l'ensemble des vecteurs propres de $M$ associés à la valeur propre $\lambda    $ est $\Ker(M-\lambda    \mathrm{I}_n) \setminus \{0_{\M{n}{1}{\K}}\}$.
-\end{Prop}
+Alors l'ensemble des vecteurs propres de $M$ associÃ©s Ã  la valeur propre $\lambda    $ est $\Ker(M-\lambda    \mathrm{I}_n) \setminus \{0_{\M{n}{1}{\K}}\}$.
+\end{Proposition}
 
-\begin{Prop}
-Soit $u\in \LE$. Les conditions suivantes sont équivalentes:
+\begin{Proposition}
+Soit $u\in \LE$. Les conditions suivantes sont Ã©quivalentes:
 \begin{itemize}
 \item $\lambda    \in \mathrm{Sp} u$;
 \item $\exists \vec{x}\neq  \vec{0}_{E}$ tel que $(u -\lambda    \mathrm{Id}_E)(\vec{x}) = \vec{0}_E$;
@@ -139,353 +139,353 @@ Soit $u\in \LE$. Les conditions suivantes sont équivalentes:
 \item $u -\lambda    \mathrm{Id}_E$ n'est pas injective
 \item $u -\lambda    \mathrm{Id}_E$ n'est pas bijective (uniquement en dimension finie).
 \end{itemize}
-\end{Prop}
-\begin{Prop}
-Soit $M\in \MnK$. Les conditions suivantes sont équivalentes:
+\end{Proposition}
+\begin{Proposition}
+Soit $M\in \MnK$. Les conditions suivantes sont Ã©quivalentes:
 \begin{itemize}
 \item $\lambda    \in \mathrm{Sp} M$;
 \item $\exists X\neq 0_{\M{n}{1}{\K}}$ tel que $(M -\lambda    \mathrm{I}_n)X = 0$;
 \item $E_\lambda    (M) = \Ker(M -\lambda    \mathrm{I}_n)\neq\{0\}$;
 \item $(M -\lambda    \mathrm{I}_n)$ n'est pas inversible.
 \end{itemize}
-\end{Prop}
+\end{Proposition}
 
-\begin{Prop}
+\begin{Proposition}
 Soit $u\in \LE$, $\lambda    $ une valeur propre de $u$ et $E_\lambda    $ le sous-espace propre correspondant.\\
 Alors $E_\lambda    $ est stable par $u$.\\
-De plus, l'endomorphisme induit par $u$ sur $E_\lambda    $ est l'homothétie de rapport $\lambda    $.
+De plus, l'endomorphisme induit par $u$ sur $E_\lambda    $ est l'homothÃ©tie de rapport $\lambda    $.
 Autrement dit, $u_{\vert E_\lambda    } =\lambda    \mathrm{Id}_{E_\lambda    }$.\\
-De plus, en dimension finie, la matrice de $u$ dans une base adaptée à $E_\lambda    $ est de la forme :
+De plus, en dimension finie, la matrice de $u$ dans une base adaptÃ©e Ã  $E_\lambda    $ est de la forme :
 $$\begin{pmatrix}
 \mathrm{I}_{\dim(E_\lambda)} & B \\ 0 & C
 \end{pmatrix}.$$ 
-\end{Prop}
-\begin{Prop}[Diagonalisation] Soit $E_{\lambda_1}\oplus E_{\lambda_2}\dots \oplus E_{\lambda_p}  =E$ de dimension finie avec $E_{\lambda_1}$, $E_{\lambda_2}\dots$ et $E_{\lambda_p}$  des espaces propres de $u$. Alors la matrice de $u$ dans une base adaptée à $E_{\lambda_1}\oplus E_{\lambda_2}\dots \oplus E_{\lambda_p}$ est :
+\end{Proposition}
+\begin{Proposition}[Diagonalisation] Soit $E_{\lambda_1}\oplus E_{\lambda_2}\dots \oplus E_{\lambda_p}  =E$ de dimension finie avec $E_{\lambda_1}$, $E_{\lambda_2}\dots$ et $E_{\lambda_p}$  des espaces propres de $u$. Alors la matrice de $u$ dans une base adaptÃ©e Ã  $E_{\lambda_1}\oplus E_{\lambda_2}\dots \oplus E_{\lambda_p}$ est :
 $$ \begin{pmatrix}\lambda_1 \mathrm {I}_{\dim(E_1)}&\mathrm {0}&\cdots &\mathrm {0}\\\mathrm {0}&\lambda_2 \mathrm {I}_{\dim(E_2)}&\cdots &\mathrm {0}\\\vdots &\vdots &\ddots &\vdots \\\mathrm {0}&\mathrm {0}&\cdots &\lambda_p \mathrm {I}_{\dim(E_p)}\end{pmatrix}.$$
-\end{Prop}
+\end{Proposition}
 
-\begin{Prop}
+\begin{Proposition}
 Soit $M\in \MnK$, $\lambda    $ une valeur propre de $M$ et $E_\lambda    $ le sous-espace propre correspondant.\\
 Alors $E_\lambda    $ est stable par $M$.\\
-De plus, $M$ est semblable à une matrice de la forme $\begin{pmatrix}
+De plus, $M$ est semblable Ã  une matrice de la forme $\begin{pmatrix}
 \mathrm{I}_{\dim(E_\lambda)} & B \\ 0 & C
-\end{pmatrix}$, c'est à dire que :
+\end{pmatrix}$, c'est Ã  dire que :
 $$M = P \begin{pmatrix}
 \mathrm{I}_{\dim(E_\lambda)} & B \\ 0 & C
 \end{pmatrix} P^{-1}  $$
-avec $P$ la matrice de passage de la base canonique à une base adaptée à $E_\lambda$.  
-\end{Prop}
-\begin{Prop}[Diagonalisation] Soit $E_{\lambda_1}\oplus E_{\lambda_2}\dots \oplus E_{\lambda_p}  =\MnK$ avec $E_{\lambda_1}$, $E_{\lambda_2}\dots$ et $E_{\lambda_p}$  des espaces propres de $M$. Alors la matrice de $M$ est semblable à la matrice diagonale, c'est à dire que 
-$$M=P \begin{pmatrix}\lambda_1 \mathrm {I}_{\dim(E_1)}&\mathrm {0}&\cdots &\mathrm {0}\\\mathrm {0}&\lambda_2 \mathrm {I}_{\dim(E_2)}&\cdots &\mathrm {0}\\\vdots &\vdots &\ddots &\vdots \\\mathrm {0}&\mathrm {0}&\cdots &\lambda_p \mathrm {I}_{\dim(E_p)}\end{pmatrix} P^{-1}$$ avec $P$ la matrice de passage de la base canonique à une base adaptée à $E_{\lambda_1}\oplus E_{\lambda_2}\dots \oplus E_{\lambda_p}$.
-\end{Prop}
-\begin{Th}
+avec $P$ la matrice de passage de la base canonique Ã  une base adaptÃ©e Ã  $E_\lambda$.  
+\end{Proposition}
+\begin{Proposition}[Diagonalisation] Soit $E_{\lambda_1}\oplus E_{\lambda_2}\dots \oplus E_{\lambda_p}  =\MnK$ avec $E_{\lambda_1}$, $E_{\lambda_2}\dots$ et $E_{\lambda_p}$  des espaces propres de $M$. Alors la matrice de $M$ est semblable Ã  la matrice diagonale, c'est Ã  dire que 
+$$M=P \begin{pmatrix}\lambda_1 \mathrm {I}_{\dim(E_1)}&\mathrm {0}&\cdots &\mathrm {0}\\\mathrm {0}&\lambda_2 \mathrm {I}_{\dim(E_2)}&\cdots &\mathrm {0}\\\vdots &\vdots &\ddots &\vdots \\\mathrm {0}&\mathrm {0}&\cdots &\lambda_p \mathrm {I}_{\dim(E_p)}\end{pmatrix} P^{-1}$$ avec $P$ la matrice de passage de la base canonique Ã  une base adaptÃ©e Ã  $E_{\lambda_1}\oplus E_{\lambda_2}\dots \oplus E_{\lambda_p}$.
+\end{Proposition}
+\begin{Theoreme}
 Soit $u\in \LE$.\\
 Les sous-espaces propres de $u$ sont en somme directe.\\
 Autrement dit, si $(\vec{x}_i)_{i\in I}$ est une famille de vecteurs propres
-associés à des valeurs propres deux à deux distinctes,
+associÃ©s Ã  des valeurs propres deux Ã  deux distinctes,
 alors la famille $(\vec{x}_i)_{i\in I}$ est libre.
-\end{Th}
-\begin{Th}
+\end{Theoreme}
+\begin{Theoreme}
 Soit $M\in \MnK$.\\
 Les sous-espaces propres de $M$ sont en somme directe.\\
 Autrement dit, si $(X_i)_{i\in I}$ est une famille de vecteurs propres
-associés à des valeurs propres deux à deux distinctes,
+associÃ©s Ã  des valeurs propres deux Ã  deux distinctes,
 alors la famille $(X_i)_{i\in I}$ est libre.
-\end{Th}
+\end{Theoreme}
 %
 %% -----------------------------------------------------------------------------
-\section{Polynômes d'endomorphismes}
-À partir de maintenant et jusqu'à la fin du chapitre, on supposera que $E$ est un espace vectoriel de dimension finie.
+\section{PolynÃ´mes d'endomorphismes}
+Ã€ partir de maintenant et jusqu'Ã  la fin du chapitre, on supposera que $E$ est un espace vectoriel de dimension finie.
 
-\subsection{Polynôme caractéristique}
-\begin{Lem}
+\subsection{PolynÃ´me caractÃ©ristique}
+\begin{Lemme}
 Soit $u\in \LE$.\\
-L'application de $\K $ dans $\K $ définie par $\lambda     \mapsto \det(\lambda    \mathrm{Id}_E - u)$ est une fonction polynômiale en la variable $\lambda$.
-\end{Lem}
+L'application de $\K $ dans $\K $ dÃ©finie par $\lambda     \mapsto \det(\lambda    \mathrm{Id}_E - u)$ est une fonction polynÃ´miale en la variable $\lambda$.
+\end{Lemme}
 
-\begin{Lem}
+\begin{Lemme}
 Soit $M\in \MnK$.\\
-L'application de $\K $ dans $\K $ définie par $\lambda     \mapsto \det(\lambda    \mathrm{I}_n - M)$ est une fonction polynômiale en la variable $\lambda$.
-\end{Lem}
+L'application de $\K $ dans $\K $ dÃ©finie par $\lambda     \mapsto \det(\lambda    \mathrm{I}_n - M)$ est une fonction polynÃ´miale en la variable $\lambda$.
+\end{Lemme}
 
-\begin{Lem}
+\begin{Lemme}
 Soit $A,B\in \MnK$ deux matrices semblables.\\
 Alors $\det(\lambda    \mathrm{I}_n - A) = \det(\lambda    \mathrm{I}_n - B)$
-\end{Lem}
-\begin{Df}[Polynôme caractéristique]
+\end{Lemme}
+\begin{Definition}[PolynÃ´me caractÃ©ristique]
 Soit $u\in \LE$.
-On appelle \defi{polynôme caractéristique} de $u$ et on note $\chi       _u$ l'unique polynôme à coefficients dans $\K $ tel que $\forall   \lambda    \in \K $, $\chi       _u(\lambda    ) = \det(\lambda    \mathrm{Id}_E - u)$.
-\end{Df}
-\begin{Ex}
-On définit l'application $\phi$ par : 
+On appelle \defi{polynÃ´me caractÃ©ristique} de $u$ et on note $\chi       _u$ l'unique polynÃ´me Ã  coefficients dans $\K $ tel que $\forall   \lambda    \in \K $, $\chi       _u(\lambda    ) = \det(\lambda    \mathrm{Id}_E - u)$.
+\end{Definition}
+\begin{Exemple}
+On dÃ©finit l'application $\phi$ par : 
 $$
 \Fonction{\phi}{\mathbb{R}_2[X]}{\mathbb{R}_2[X]}{P}{P-P'}$$
 La matrice de l'endomorphisme de $\phi$ dans la base canonique, $\mathcal{B} =(1,X,X^2)$ de $\mathbb{R}_2[X]$ est :
 $$[\phi]_{\mathcal{B} }=\begin{pmatrix}1 &-1&0\\0 &1&-2\\0&0&1 \end{pmatrix}\text{ car } \phi(X^i)=X^i-i  X^{i-1}.$$
 Donc $\chi       _\phi(\lambda    )= \det(\lambda    \mathrm{Id}_E - \phi)=\det(\lambda    \mathrm{I}_3 - [u]_\mathcal{B} )=\begin{pmatrix}\lambda    -1 &1&0\\0 &\lambda    -1&2\\0&0&\lambda    -1 \end{pmatrix}=(\lambda    -1)^3.$
-\end{Ex}
-\begin{Df}[Polynôme caractéristique]
+\end{Exemple}
+\begin{Definition}[PolynÃ´me caractÃ©ristique]
 Soit $M\in \MnK$.
-On appelle \defi{polynôme caractéristique} de $M$ et on note $\chi       _M$ l'unique polynôme à coefficients dans $\K $ tel que $\forall   \lambda    \in \K $, $\chi       _M(\lambda    ) = \det(\lambda    \mathrm{I}_n - M)$.
-\end{Df}
-\begin{Ex}Soit $M=\begin{pmatrix}\frac 3 2 &-\frac 1 2\\-\frac 1 2&\frac 3 2\end{pmatrix}$.\\
+On appelle \defi{polynÃ´me caractÃ©ristique} de $M$ et on note $\chi       _M$ l'unique polynÃ´me Ã  coefficients dans $\K $ tel que $\forall   \lambda    \in \K $, $\chi       _M(\lambda    ) = \det(\lambda    \mathrm{I}_n - M)$.
+\end{Definition}
+\begin{Exemple}Soit $M=\begin{pmatrix}\frac 3 2 &-\frac 1 2\\-\frac 1 2&\frac 3 2\end{pmatrix}$.\\
 On a $\chi       _M(\lambda    )= \det(\lambda    \mathrm{I}_2 - P)=\begin{pmatrix}\lambda    -\frac 3 2 &\frac 1 2\\\lambda    +\frac 1 2&-\frac 3 2\end{pmatrix}=\lambda    ^2-3\lambda    +2=(\lambda    -1)(\lambda    -2).$
-\end{Ex}
+\end{Exemple}
 
-\begin{Prop}
+\begin{Proposition}
 Soit $u\in \LE$.\\
-Le spectre de $u$ est exactement l'ensemble des racines de $\chi_u$, c'est à dire  $\mathrm{Sp}(u) = \mathrm{Racines}(\chi_u)$.
-\end{Prop}
-\begin{Ex} On a $\mathrm{Sp}(\phi) =\{1\}$.
-\end{Ex}
-\begin{Prop}
+Le spectre de $u$ est exactement l'ensemble des racines de $\chi_u$, c'est Ã  dire  $\mathrm{Sp}(u) = \mathrm{Racines}(\chi_u)$.
+\end{Proposition}
+\begin{Exemple} On a $\mathrm{Sp}(\phi) =\{1\}$.
+\end{Exemple}
+\begin{Proposition}
 Soit $M\in \MnK$.\\
-Le spectre de $M$ est exactement l'ensemble des racines de $\chi_M$, c'est à dire  $\mathrm{Sp}(M) = \mathrm{Racines}(\chi_M)$.
-\end{Prop}
-\begin{Ex} Avec $M=\begin{pmatrix}\frac 3 2 &-\frac 1 2\\-\frac 1 2&\frac 3 2\end{pmatrix}$, on a $\mathrm{Sp}(M) =\{1,2\}$.
-\end{Ex}
+Le spectre de $M$ est exactement l'ensemble des racines de $\chi_M$, c'est Ã  dire  $\mathrm{Sp}(M) = \mathrm{Racines}(\chi_M)$.
+\end{Proposition}
+\begin{Exemple} Avec $M=\begin{pmatrix}\frac 3 2 &-\frac 1 2\\-\frac 1 2&\frac 3 2\end{pmatrix}$, on a $\mathrm{Sp}(M) =\{1,2\}$.
+\end{Exemple}
 
-\begin{Th}
+\begin{Theoreme}
 Soit $u\in \LE$, et $n = \dim E$.\\
  Alors:
 \begin{itemize}
-\item $\chi_u$ est un polynôme unitaire de degré $n$;
+\item $\chi_u$ est un polynÃ´me unitaire de degrÃ© $n$;
 \item le coefficient en $X^{n-1}$ de $\chi_u$ vaut $- \Tr u$;
 \item le coefficient constant de $\chi_u$ vaut $(-1)^n \det u$.
 \end{itemize}
-En résumé, $\chi_u(X)=X^n- \Tr u X^{n-1}+\dots + (-1)^n \det u$.
-\end{Th}
-\begin{Cor}
-Soit $u\in \LE$. On suppose que $\chi_u$ est scindé;
-$\chi_u$ peut alors s'écrire sous la forme $\chi_u(X)=\prod_{k=1}^n(X-\lambda_k)$.
+En rÃ©sumÃ©, $\chi_u(X)=X^n- \Tr u X^{n-1}+\dots + (-1)^n \det u$.
+\end{Theoreme}
+\begin{Corollaire}
+Soit $u\in \LE$. On suppose que $\chi_u$ est scindÃ©;
+$\chi_u$ peut alors s'Ã©crire sous la forme $\chi_u(X)=\prod_{k=1}^n(X-\lambda_k)$.
 On a $\Tr u = \sum_{k=1}^n \lambda_k$ et $\det u = \prod_{k=1}^n \lambda_k$.
-\end{Cor}
-\begin{Th}
+\end{Corollaire}
+\begin{Theoreme}
 Soit $M\in \MnK$.\\
  Alors:
 \begin{itemize}
-\item $\chi_M$ est un polynôme unitaire de degré $n$;
+\item $\chi_M$ est un polynÃ´me unitaire de degrÃ© $n$;
 \item le coefficient en $X^{n-1}$ de $\chi_M$ vaut $- \Tr M$;
 \item le coefficient constant de $\chi_M$ vaut $(-1)^n \det M$.
 \end{itemize}
-En résumé, $\chi_M(X)=X^n- \Tr M X^{n-1}+\dots + (-1)^n \det M$.
-\end{Th}
-\begin{Cor}
-Soit $M\in \MnK$. On suppose que $\chi_M$ est scindé;
-$\chi_M$ peut alors s'écrire sous la forme $\chi       _M(X)=\prod_{k=1}^n(X-\lambda_k)$.
+En rÃ©sumÃ©, $\chi_M(X)=X^n- \Tr M X^{n-1}+\dots + (-1)^n \det M$.
+\end{Theoreme}
+\begin{Corollaire}
+Soit $M\in \MnK$. On suppose que $\chi_M$ est scindÃ©;
+$\chi_M$ peut alors s'Ã©crire sous la forme $\chi       _M(X)=\prod_{k=1}^n(X-\lambda_k)$.
 On a $\Tr M = \sum_{k=1}^n \lambda_k$ et $\det M = \prod_{k=1}^n \lambda_k$.
-\end{Cor}
-\begin{Ex} Soit $M=\begin{pmatrix}\frac 3 2 &-\frac 1 2\\-\frac 1 2&\frac 3 2\end{pmatrix}$.
+\end{Corollaire}
+\begin{Exemple} Soit $M=\begin{pmatrix}\frac 3 2 &-\frac 1 2\\-\frac 1 2&\frac 3 2\end{pmatrix}$.
 Comme $\Tr M = 3$ et $\Det M=2$ On a $\chi       _M(\lambda    )=\lambda    ^2 - \Tr M X+\det M= \lambda    ^2 - 3 X+2$.
-\end{Ex}
-\begin{Prop}
+\end{Exemple}
+\begin{Proposition}
 Soit $u\in \LE$.\\
 Si $F$ est un sous-espace vectoriel stable par $u$,
 et $u_{|F}$ l'endomorphisme induit par $u$ sur $F$,
 alors $\chi_{u_{|F}}$ divise $\chi_u$.
-\end{Prop}
-\begin{proof} La matrice de $u$ dans la base $\mathcal{B} =(\mathcal{B} _F,\mathcal{B} _S)$ de $E$ où $\mathcal{B} _F$ est une base de $F$ est de la forme :
+\end{Proposition}
+\begin{Demonstration} La matrice de $u$ dans la base $\mathcal{B} =(\mathcal{B} _F,\mathcal{B} _S)$ de $E$ oÃ¹ $\mathcal{B} _F$ est une base de $F$ est de la forme :
 $$[u]_{\mathcal{B}}= \begin{pmatrix}
 A & B \\ 0 & C
 \end{pmatrix}\text{ avec } A= [u_{|F}]_{\mathcal{B} _F}.$$
 $$\chi_u = \det(X \mathrm{I}_n-[u]_{\mathcal{B}})=\begin{pmatrix}
 X \mathrm{I}_r - A & -B \\ 0 & X \mathrm{I}_{n-r}-C
 \end{pmatrix} = \det(X \mathrm{I}_r - A) \det(X \mathrm{I}_{n-r}-C) =\chi_{u_{|F}} \det(X \mathrm{I}_{n-r}-C).$$ Donc $\chi_{u_{|F}}$ divise $\chi       _u$.
-\end{proof}
+\end{Demonstration}
 
-\begin{Prop}
+\begin{Proposition}
 Soit $M\in \MnK$.\\
 Si $F$ est un sous-espace vectoriel stable par $M$,
 et $u_{|F}$ l'endomorphisme induit par $u$ sur $F$,
 alors $\chi_{u_{|F}}$ divise $\chi       _u$.
-\end{Prop}
-\begin{Prop}
+\end{Proposition}
+\begin{Proposition}
 Soit $u\in \LE$.\\
 Si $F$ et $G$ sont des sous-espaces vectoriels $u$-stables tels que $E = F\oplus G$,
 $u_{|F}$ et $u_{|G}$ les endomorphismes induits par $u$ sur $F$ et $G$ respectivement.\\
 Alors $\chi_u = \chi_{u_{|F}}\chi_{u_{|G}}$.
-\end{Prop}
-\begin{Df}[Multiplicité]
-On appelle \defi{multiplicité} de la valeur propre $\lambda$ la multiplicité de $\lambda$ comme racine de $\chi_u$ ou de $\chi_M$.
-\end{Df}
-\begin{Ex}
+\end{Proposition}
+\begin{Definition}[MultiplicitÃ©]
+On appelle \defi{multiplicitÃ©} de la valeur propre $\lambda$ la multiplicitÃ© de $\lambda$ comme racine de $\chi_u$ ou de $\chi_M$.
+\end{Definition}
+\begin{Exemple}
 Pour l'application $
-\Fonction{\phi}{\mathbb{R}_2[X]}{\mathbb{R}_2[X]}{P}{P-P'}$, comme $\chi_\phi(\lambda    )= (\lambda    -1)^3$, $1$ est de multiplicité 3.
-\end{Ex}
+\Fonction{\phi}{\mathbb{R}_2[X]}{\mathbb{R}_2[X]}{P}{P-P'}$, comme $\chi_\phi(\lambda    )= (\lambda    -1)^3$, $1$ est de multiplicitÃ© 3.
+\end{Exemple}
 
-\begin{Th}
+\begin{Theoreme}
 Soit $\lambda$ une valeur propre de $u$ ou de $M$.\\
-Alors $$1\leq \dim E_\lambda    \leq m_\lambda$$ où
+Alors $$1\leq \dim E_\lambda    \leq m_\lambda$$ oÃ¹
 \begin{itemize}
-\item $E_\lambda$ est le sous-espace propre de $u$ ou de $M$ associé à la valeur propre $\lambda$;
-\item $m_\lambda$ est la multiplicité de la valeur propre $\lambda$.
+\item $E_\lambda$ est le sous-espace propre de $u$ ou de $M$ associÃ© Ã  la valeur propre $\lambda$;
+\item $m_\lambda$ est la multiplicitÃ© de la valeur propre $\lambda$.
 \end{itemize}
-\end{Th}
+\end{Theoreme}
 
-\begin{proof} 
+\begin{Demonstration} 
 Soit $n$ la dimension de  $E$. Comme $\lambda$  est une valeur propre de $i$, $E_\lambda$ contient un vecteur non nulle, donc sa dimension $\dim E_\lambda \geq 1$. De plus  $E_\lambda$ est un sous espace vectoriel de $E$ donc $\dim E_\lambda \leq n$. On a :
 \begin{enumerate}
-\item Si $\dim E_\lambda=n$, alors $u$ est égalé à l'homothétie $\lambda\mathrm{Id}_E$, dont le  polynôme caractéristique est égal à  $(X-\lambda)^n$.et on a bien $m_\lambda=n$.
-\item Si $\dim E_\lambda\leq n$, alors soit $\mathcal{B}$ une base adaptée à  $E_\lambda$. La matrice $u$ dans la base $\mathcal{B}$ est de la forme $\begin{pmatrix}
+\item Si $\dim E_\lambda=n$, alors $u$ est Ã©galÃ© Ã  l'homothÃ©tie $\lambda\mathrm{Id}_E$, dont le  polynÃ´me caractÃ©ristique est Ã©gal Ã   $(X-\lambda)^n$.et on a bien $m_\lambda=n$.
+\item Si $\dim E_\lambda\leq n$, alors soit $\mathcal{B}$ une base adaptÃ©e Ã   $E_\lambda$. La matrice $u$ dans la base $\mathcal{B}$ est de la forme $\begin{pmatrix}
 \mathrm{I}_{\dim(E_\lambda)} & B \\ 0 & C
 \end{pmatrix}$. On obtient alors $\chi_u = (X-\lambda)^{\dim(E_\lambda)} \chi_C$ ce qui prouve $\dim(E_\lambda)\leq m_\lambda$ car $(X-\lambda)^{\dim(E_\lambda)}$ divise  $\chi_u$. 
 \end{enumerate}
-\end{proof}
-\begin{NB}
-Si $\lambda$ est de multiplicité 1 (racine simple) alors $\dim E_\lambda =1$.
-\end{NB}
+\end{Demonstration}
+\begin{Remarque}
+Si $\lambda$ est de multiplicitÃ© 1 (racine simple) alors $\dim E_\lambda =1$.
+\end{Remarque}
 
-\subsection{Polynôme annulateur}
+\subsection{PolynÃ´me annulateur}
 % TODO 
-\begin{Df}[Polynôme annulateur]
+\begin{Definition}[PolynÃ´me annulateur]
 Soit $u\in \LE$.
-Un polynôme $P\in \K [X]$ est dit \defi{polynôme annulateur de $u$} s'il est non nul et si $P(u) = 0_{\LE}$.\\
+Un polynÃ´me $P\in \K [X]$ est dit \defi{polynÃ´me annulateur de $u$} s'il est non nul et si $P(u) = 0_{\LE}$.\\
 Soit $M\in \MnK$.\\
-Un polynôme $P\in \K [X]$ est dit \defi{polynôme annulateur de $M$} s'il est non nul et si $P(M) = 0_{\MnK}$.
-\end{Df}
-\begin{Ex} Soit $M=\begin{pmatrix}\frac 3 2 &-\frac 1 2\\-\frac 1 2&\frac 3 2\end{pmatrix}$. On a $(M-2\mathrm{I}_2)(M-1\mathrm{I}_2)=0$, donc $P=(X-2)(X-1)$ est un polynôme annulateur de $M$.
-\end{Ex}
-\begin{Lem}
+Un polynÃ´me $P\in \K [X]$ est dit \defi{polynÃ´me annulateur de $M$} s'il est non nul et si $P(M) = 0_{\MnK}$.
+\end{Definition}
+\begin{Exemple} Soit $M=\begin{pmatrix}\frac 3 2 &-\frac 1 2\\-\frac 1 2&\frac 3 2\end{pmatrix}$. On a $(M-2\mathrm{I}_2)(M-1\mathrm{I}_2)=0$, donc $P=(X-2)(X-1)$ est un polynÃ´me annulateur de $M$.
+\end{Exemple}
+\begin{Lemme}
 Soit $u\in \LE$, $\vec{x}\in E$, $\lambda    \in \K $ et $P\in \K [X]$.
 On suppose que $u(\vec{x}) = \lambda    \vec{x}$.\\
 Alors $P(u)(\vec{x}) = P(\lambda    ) \vec{x}$.
-\end{Lem}
-\begin{Lem}
+\end{Lemme}
+\begin{Lemme}
 Soit $M\in \MnK$, $X\in \M{n}{1}{\K}$, $\lambda    \in \K $ et $P\in \K [X]$.
 On suppose que $MX = \lambda   X$.\\
 Alors $P(M)(X) = P(\lambda    ) X$.
-\end{Lem}
-\begin{Th}
-Soit $u\in \LE$ et $P$ un polynôme annulateur de $u$.\\
-Alors toutes les valeurs propres de $u$ sont des racines de $P$, c'est à dire  $\mathrm{Sp}(u)\subset\mathrm{Racines}(P)$.
-\end{Th}
-\begin{Th}
-Soit $M\in \MnK$ et $P$ un polynôme annulateur de $M$.
-Alors toutes les valeurs propres de $M$ sont des racines de $P$, c'est à dire  $\mathrm{Sp}(M)\subset\mathrm{Racines}(P)$.
-\end{Th}
-\begin{Ex} Soit $M=\begin{pmatrix}\frac 3 2 &-\frac 1 2\\-\frac 1 2&\frac 3 2\end{pmatrix}$. On a $(M-2\mathrm{I}_2)(M-1\mathrm{I}_2)=0$, donc $2$ et $1$ sont les uniques valeurs propres possibles. On vérifie que le vecteur $\begin{pmatrix}1\\1\end{pmatrix}$ est vecteur propre de $1$ et que le vecteur  $\begin{pmatrix}1\\-1\end{pmatrix}$ est vecteur propre de $2$.
-\end{Ex}
+\end{Lemme}
+\begin{Theoreme}
+Soit $u\in \LE$ et $P$ un polynÃ´me annulateur de $u$.\\
+Alors toutes les valeurs propres de $u$ sont des racines de $P$, c'est Ã  dire  $\mathrm{Sp}(u)\subset\mathrm{Racines}(P)$.
+\end{Theoreme}
+\begin{Theoreme}
+Soit $M\in \MnK$ et $P$ un polynÃ´me annulateur de $M$.
+Alors toutes les valeurs propres de $M$ sont des racines de $P$, c'est Ã  dire  $\mathrm{Sp}(M)\subset\mathrm{Racines}(P)$.
+\end{Theoreme}
+\begin{Exemple} Soit $M=\begin{pmatrix}\frac 3 2 &-\frac 1 2\\-\frac 1 2&\frac 3 2\end{pmatrix}$. On a $(M-2\mathrm{I}_2)(M-1\mathrm{I}_2)=0$, donc $2$ et $1$ sont les uniques valeurs propres possibles. On vÃ©rifie que le vecteur $\begin{pmatrix}1\\1\end{pmatrix}$ est vecteur propre de $1$ et que le vecteur  $\begin{pmatrix}1\\-1\end{pmatrix}$ est vecteur propre de $2$.
+\end{Exemple}
 
-\begin{Th}[Cayley-Hamilton]
+\begin{Theoreme}[Cayley-Hamilton]
 Soit $u\in \LE$.
-Alors le polynôme caractéristique de $u$ est un polynôme annulateur de $u$.\\
+Alors le polynÃ´me caractÃ©ristique de $u$ est un polynÃ´me annulateur de $u$.\\
 Soit $M\in \MnK$.\\
-Alors le polynôme caractéristique de $M$ est un polynôme annulateur de $M$.\\
-\end{Th}
+Alors le polynÃ´me caractÃ©ristique de $M$ est un polynÃ´me annulateur de $M$.\\
+\end{Theoreme}
 % -----------------------------------------------------------------------------
 \section{Endomorphismes diagonalisables}
 
-\begin{Df}[Diagonalisable]
+\begin{Definition}[Diagonalisable]
 \begin{itemize}
 \item Un endomorphisme $u\in \LE$ est dit \defi{diagonalisable} si et seulement si
   il existe une base $\mathcal{B} $ de $E$ telle que $[u]_\mathcal{B} $ est diagonale.
 \item Une matrice $A$ de $\MnK$ est dite \defi{diagonalisable} si et seulement si
-  elle est semblable à une matrice diagonale.
+  elle est semblable Ã  une matrice diagonale.
 \end{itemize}
-\end{Df}
-\begin{Prop}
+\end{Definition}
+\begin{Proposition}
 Soit $u\in \LE$ et $\mathcal{B} $ une base de $E$.\\
 Alors $u$ est diagonalisable si et seulement si $[u]_\mathcal{B} $ est diagonalisable.
-\end{Prop}
-\begin{Df}[Scindé simple]
-On dira que $P\in \K [X]$ est \defi{scindé simple} s'il est scindé et que toutes ses racines sont simples.
-\end{Df}
+\end{Proposition}
+\begin{Definition}[ScindÃ© simple]
+On dira que $P\in \K [X]$ est \defi{scindÃ© simple} s'il est scindÃ© et que toutes ses racines sont simples.
+\end{Definition}
 
-\begin{Th}
+\begin{Theoreme}
 Soit $u\in \LE$.\\
-Pour toute valeur propre $\lambda    $ de $u$, on note $m_\lambda    $ sa multiplicité et $E_\lambda    $ le sous-espace propre associé.\\
-Les conditions suivantes sont équivalentes:
+Pour toute valeur propre $\lambda    $ de $u$, on note $m_\lambda    $ sa multiplicitÃ© et $E_\lambda    $ le sous-espace propre associÃ©.\\
+Les conditions suivantes sont Ã©quivalentes:
 \begin{enumerate}
-\item $u$ est diagonalisable, c'est à dire  il existe une base $\mathcal{B} $ de $E$ telle que $[u]_\mathcal{B} $ est diagonale;
-\item $u$ admet un polynôme annulateur scindé et $\forall   \lambda    \in \mathrm{Sp} u$, $\dim E_\lambda    = m_\lambda    $;
-\item $\chi       _u$ est scindé et $\forall   \lambda    \in \mathrm{Sp} u$, $\dim E_\lambda    = m_\lambda    $;
+\item $u$ est diagonalisable, c'est Ã  dire  il existe une base $\mathcal{B} $ de $E$ telle que $[u]_\mathcal{B} $ est diagonale;
+\item $u$ admet un polynÃ´me annulateur scindÃ© et $\forall   \lambda    \in \mathrm{Sp} u$, $\dim E_\lambda    = m_\lambda    $;
+\item $\chi       _u$ est scindÃ© et $\forall   \lambda    \in \mathrm{Sp} u$, $\dim E_\lambda    = m_\lambda    $;
 \item $\sum_{\lambda    \in \mathrm{Sp} u} \dim E_\lambda     = \dim E$;
-\item $E$ est somme directe des espaces propres de $u$, c'est à dire  $E = \oplus     _{\lambda    \in \mathrm{Sp} u} E_\lambda    $;
-\item Il existe une base $\mathcal{B} $ de $E$ formée de vecteurs propres de $u$;
-\item Le polynôme scindé simple $\prod_{\lambda    \in \mathrm{Sp} u}(X-\lambda    )$ annule $u$;
-\item $u$ admet un polynôme annulateur scindé simple.
+\item $E$ est somme directe des espaces propres de $u$, c'est Ã  dire  $E = \oplus     _{\lambda    \in \mathrm{Sp} u} E_\lambda    $;
+\item Il existe une base $\mathcal{B} $ de $E$ formÃ©e de vecteurs propres de $u$;
+\item Le polynÃ´me scindÃ© simple $\prod_{\lambda    \in \mathrm{Sp} u}(X-\lambda    )$ annule $u$;
+\item $u$ admet un polynÃ´me annulateur scindÃ© simple.
 \end{enumerate}
-\end{Th}
+\end{Theoreme}
 
 
-\begin{Cor}
+\begin{Corollaire}
 Soit $u\in \LE$.
 \begin{enumerate}
-\item Si $\chi       _u$ est un polynôme scindé simple, alors $u$ est diagonalisable.
-  La réciproque est fausse (contre-exemple: $u = \mathrm{Id}_E$).
-\item Si $u$ est diagonalisable et que $F$ est stable par $u$, alors l'endomorphisme induit par $u$ sur $F$ est également diagonalisable.
-\item Si $E = \oplus_{k=1}^p F_k$ et que pour tout $k\in \{1,\dots,p\}$, $u_{\vert F_k}$ est une homothétie, alors $u$ est diagonalisable.
-  Pour la réciproque, cf. 2. du théorème précédent.
+\item Si $\chi       _u$ est un polynÃ´me scindÃ© simple, alors $u$ est diagonalisable.
+  La rÃ©ciproque est fausse (contre-exemple: $u = \mathrm{Id}_E$).
+\item Si $u$ est diagonalisable et que $F$ est stable par $u$, alors l'endomorphisme induit par $u$ sur $F$ est Ã©galement diagonalisable.
+\item Si $E = \oplus_{k=1}^p F_k$ et que pour tout $k\in \{1,\dots,p\}$, $u_{\vert F_k}$ est une homothÃ©tie, alors $u$ est diagonalisable.
+  Pour la rÃ©ciproque, cf. 2. du thÃ©orÃ¨me prÃ©cÃ©dent.
 \end{enumerate}
-\end{Cor}
+\end{Corollaire}
 
-\begin{Th}
+\begin{Theoreme}
 Soit $M\in \MnK$.\\
-Pour toute valeur propre $\lambda$ de $M$, on note $m_\lambda    $ sa multiplicité et $E_\lambda    $ le sous-espace propre associé.\\
-Les conditions suivantes sont équivalentes:
+Pour toute valeur propre $\lambda$ de $M$, on note $m_\lambda    $ sa multiplicitÃ© et $E_\lambda    $ le sous-espace propre associÃ©.\\
+Les conditions suivantes sont Ã©quivalentes:
 \begin{enumerate}
-\item $M$ est diagonalisable, c'est à dire  $M$ est semblable à une matrice diagonale;
-\item $M$ admet un polynôme annulateur scindé et $\forall   \lambda    \in \mathrm{Sp} M$, $\dim E_\lambda    = m_\lambda    $;
-\item $\chi_M$ est scindé et $\forall   \lambda    \in \mathrm{Sp} M$, $\dim E_\lambda    = m_\lambda    $;
+\item $M$ est diagonalisable, c'est Ã  dire  $M$ est semblable Ã  une matrice diagonale;
+\item $M$ admet un polynÃ´me annulateur scindÃ© et $\forall   \lambda    \in \mathrm{Sp} M$, $\dim E_\lambda    = m_\lambda    $;
+\item $\chi_M$ est scindÃ© et $\forall   \lambda    \in \mathrm{Sp} M$, $\dim E_\lambda    = m_\lambda    $;
 \item $\sum_{\lambda    \in \mathrm{Sp} M} \dim E_\lambda     = \dim E$;
-\item $E$ est somme directe des espaces propres de $M$, c'est à dire  $E = \oplus     _{\lambda    \in \mathrm{Sp} M} E_\lambda    $;
-\item Il existe une base $\mathcal{B} $ de $\M{n}{1}{\K}$ formée de vecteurs propres de $M$;
-\item Le polynôme scindé simple $\prod_{\lambda    \in \mathrm{Sp} M}(X-\lambda    )$ annule $M$;
-\item $M$ admet un polynôme annulateur scindé simple.
+\item $E$ est somme directe des espaces propres de $M$, c'est Ã  dire  $E = \oplus     _{\lambda    \in \mathrm{Sp} M} E_\lambda    $;
+\item Il existe une base $\mathcal{B} $ de $\M{n}{1}{\K}$ formÃ©e de vecteurs propres de $M$;
+\item Le polynÃ´me scindÃ© simple $\prod_{\lambda    \in \mathrm{Sp} M}(X-\lambda    )$ annule $M$;
+\item $M$ admet un polynÃ´me annulateur scindÃ© simple.
 \end{enumerate}
-\end{Th}
+\end{Theoreme}
 
 
-\begin{Cor}
+\begin{Corollaire}
 Soit $M\in \MnK$.
-Si $\chi_M$ est un polynôme scindé simple,\\
+Si $\chi_M$ est un polynÃ´me scindÃ© simple,\\
 alors $M$ est diagonalisable.
-\end{Cor}
+\end{Corollaire}
 
 
-\begin{Alg}
+\begin{Algorithme}
 Une algorithme pour diagonaliser une matrice $A$ de $\MnK$:
 \begin{itemize}
-\item on calcule le polynôme caractéristique $\chi       _A$;
-\item on factorise $\chi       _A$: s'il n'est pas scindé, c'est que $A$ n'est pas diagonalisable dans $\K $;
-\item pour chaque racine $\lambda    $, on détermine une base du sous-espace propre $E_\lambda    $ en résolvant le système linéaire $AX =\lambda    X$. Si on trouve strictement moins de $m_\lambda    $ vecteurs libres, c'est que $A$ n'est pas diagonalisable;
-\item soit $P$ la matrice carrée dont les colonnes sont les $n$ vecteurs propres trouvés. Soit $D$ la matrice diagonale formée des valeurs propres correspondantes. On a alors $A = PDP^{-1}$ et $D = P^{-1}AP$.
+\item on calcule le polynÃ´me caractÃ©ristique $\chi       _A$;
+\item on factorise $\chi       _A$: s'il n'est pas scindÃ©, c'est que $A$ n'est pas diagonalisable dans $\K $;
+\item pour chaque racine $\lambda    $, on dÃ©termine une base du sous-espace propre $E_\lambda    $ en rÃ©solvant le systÃ¨me linÃ©aire $AX =\lambda    X$. Si on trouve strictement moins de $m_\lambda    $ vecteurs libres, c'est que $A$ n'est pas diagonalisable;
+\item soit $P$ la matrice carrÃ©e dont les colonnes sont les $n$ vecteurs propres trouvÃ©s. Soit $D$ la matrice diagonale formÃ©e des valeurs propres correspondantes. On a alors $A = PDP^{-1}$ et $D = P^{-1}AP$.
 \end{itemize}
-\end{Alg}
+\end{Algorithme}
 Des applications :
 \begin{itemize}
 \item calcul des puissances d'une matrice $A$;
-\item système de suites linéaires récurrences à coefficients constants;
-\item systèmes différentiels linéaires à coefficients constants.
+\item systÃ¨me de suites linÃ©aires rÃ©currences Ã  coefficients constants;
+\item systÃ¨mes diffÃ©rentiels linÃ©aires Ã  coefficients constants.
 \end{itemize}
 
 % -----------------------------------------------------------------------------
 \section{Endomorphismes trigonalisables}
 
-\begin{Df}[Trigonalisable]
+\begin{Definition}[Trigonalisable]
 \begin{itemize}
-\item Un endomorphisme $u\in \LE$ est dit \defi{trigonalisable} si et seulement si il existe une base $\mathcal{B} $ de $E$ telle que $[u]_\mathcal{B} $ est triangulaire supérieure.
-\item Une matrice $A$ de $\MnK$ est dite \defi{trigonalisable} si et seulement si elle est semblable à une matrice triangulaire supérieure.
+\item Un endomorphisme $u\in \LE$ est dit \defi{trigonalisable} si et seulement si il existe une base $\mathcal{B} $ de $E$ telle que $[u]_\mathcal{B} $ est triangulaire supÃ©rieure.
+\item Une matrice $A$ de $\MnK$ est dite \defi{trigonalisable} si et seulement si elle est semblable Ã  une matrice triangulaire supÃ©rieure.
 \end{itemize}
-\end{Df}
+\end{Definition}
 
-\begin{Prop}
+\begin{Proposition}
 Soit $u\in \LE$ et $\mathcal{B} $ une base de $E$.\\
 Alors $u$ est trigonalisable si et seulement si $[u]_\mathcal{B} $ est trigonalisable.
-\end{Prop}
-\begin{Th}
-Soit $u\in \LE$. Les conditions suivantes sont équivalentes:
+\end{Proposition}
+\begin{Theoreme}
+Soit $u\in \LE$. Les conditions suivantes sont Ã©quivalentes:
 \begin{enumerate}
-\item $u$ est trigonalisable, c'est à dire  il existe $\mathcal{B} $ base de $E$ telle que $[u]_\mathcal{B} $ est triangulaire supérieure;
-\item $\chi       _u$ est scindé;
-\item $u$ admet un polynôme annulateur scindé.
+\item $u$ est trigonalisable, c'est Ã  dire  il existe $\mathcal{B} $ base de $E$ telle que $[u]_\mathcal{B} $ est triangulaire supÃ©rieure;
+\item $\chi       _u$ est scindÃ©;
+\item $u$ admet un polynÃ´me annulateur scindÃ©.
 \end{enumerate}
-\end{Th}
-\begin{Cor}
+\end{Theoreme}
+\begin{Corollaire}
 \begin{enumerate}
 \item Tout endomorphisme d'un $\C$-espace vectoriel de dimension finie est trigonalisable.
-\item Toute matrice carrée est trigonalisable dans $\mathcal{M}_{n}{\C}$.
+\item Toute matrice carrÃ©e est trigonalisable dans $\mathcal{M}_{n}{\C}$.
 \end{enumerate}
-\end{Cor}
+\end{Corollaire}
 
 \end{document}

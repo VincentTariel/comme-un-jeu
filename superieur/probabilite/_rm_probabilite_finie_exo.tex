@@ -1,0 +1,152 @@
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsfonts,amsmath,amssymb,graphicx}
+\usepackage[francais]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{answers}
+\usepackage{a4wide,commeunjeustyle} 
+
+%---- Dimensions des marges ---
+\setlength{\paperwidth}{21cm} 
+\setlength{\paperheight}{29.7cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\oddsidemargin}{0cm} 
+\setlength{\topmargin}{-2.5cm}
+\setlength{\headsep}{0.7cm} 
+\setlength{\headheight}{1cm}
+\setlength{\textheight}{25cm} 
+\setlength{\textwidth}{17cm}
+
+
+
+
+%---- Structure Exercice -----
+\newtheorem{Exc}{Exercice}
+\Newassociation{correction}{Soln}{mycor}
+\Newassociation{indication}{Indi}{myind}
+%\newcommand{\precorrection}{~{\bf \footnotesize [Exercice corrig\'e]}}
+%\newcommand{\preindication}{~{\bf \footnotesize [Indication]}}
+\renewcommand{\Solnlabel}[1]{\bf \emph{Correction #1}}
+\renewcommand{\Indilabel}[1]{\bf \emph{Indication #1}}
+
+\def\exo#1{\futurelet\testchar\MaybeOptArgmyexoo}
+\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
+                        \else \let\next\NoOptArgmyexoo \fi \next}
+\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
+\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
+
+\newcommand{\finexo}{\end{Exc}}
+\newcommand{\flag}[1]{}
+
+\newtheorem{question}{Question}
+
+
+
+%---- Style de l'entete -----                     % -> à personnaliser <-
+\setlength{\parindent}{0cm}
+\newcommand{\entete}[1]
+{
+{\noindent
+  \textsf{Feuille d'exercices}    \hfill   \textsf{ISEN}          % Université
+}
+\hrule
+\hrule
+\begin{center} 
+\impo{\textsf{\Large 
+     Probabilité finie     % TITRE
+}}
+\end{center}
+\hrule
+}
+
+
+\begin{document}
+
+%--- Gestion des corrections ---
+ \Opensolutionfile{mycor}[ficcorex]
+ \Opensolutionfile{myind}[ficind]
+ \entete{\'Enoncés}
+\section*{Modélisation probabilistes pour un univers fini}
+\subsection*{Algèbre des événements}
+\input{exercice/probabilite_finie_exo_ecriture_ensembliste}
+\input{exercice/probabilite_finie_exo_evenements}
+
+
+\subsection*{Axiomes des probabilités}
+\input{exercice/probabilite_finie_exo_intersection}
+\input{exercice/probabilite_finie_exo_des_pipes}
+
+
+\subsection*{Probabilité uniforme}
+\input{exercice/probabilite_finie_exo_chevaux}
+\input{exercice/probabilite_finie_exo_loto}
+\input{exercice/probabilite_finie_exo_comite}
+\input{exercice/probabilite_finie_exo_anniversaires}
+\input{exercice/probabilite_finie_exo_bridge}
+
+
+\subsection*{Indépendance}
+\input{exercice/probabilite_finie_exo_independance_mutuelle}
+\input{exercice/probabilite_finie_exo_independance_contexte}
+\input{exercice/probabilite_finie_exo_probabilite_reunion}
+\input{exercice/probabilite_finie_exo_irradiation}
+\input{exercice/probabilite_finie_exo_vrai_faux}
+
+\subsection*{Système complets d'événements}
+\input{exercice/probabilite_finie_exo_menteurs}
+
+
+\subsection*{Formule des probabilités composées}
+\input{exercice/probabilite_finie_exo_composees}
+\input{exercice/probabilite_finie_exo_roulette_russe}
+
+\subsection*{Probabilité conditionnelle}
+\input{exercice/probabilite_finie_exo_optimisation}
+
+\subsection*{Formule de Bayes}
+\input{exercice/probabilite_finie_exo_QCM}
+\input{exercice/probabilite_finie_exo_de_pipe}
+\input{exercice/probabilite_finie_exo_ateliers}
+\input{exercice/probabilite_finie_exo_USB}
+\input{exercice/probabilite_finie_exo_pieces_defectueuses}
+\input{exercice/probabilite_finie_exo_assurances}
+
+
+
+
+\section*{Variables aléatoires}
+
+\subsection*{Loi de probabilité}
+\input{exercice/probabilite_finie_exo_va_mille}
+\input{exercice/probabilite_finie_exo_va_des}
+
+
+\subsection*{Espérance}
+\input{exercice/probabilite_finie_exo_va_garagiste}
+\input{exercice/probabilite_finie_exo_va_note}
+\input{exercice/probabilite_finie_exo_va_arnaque}
+
+\subsection*{Lois usuels}
+\input{exercice/probabilite_finie_exo_va_commencer}
+\input{exercice/probabilite_finie_exo_va_avions}
+\input{exercice/probabilite_finie_exo_va_loi_uniforme}
+\input{exercice/probabilite_finie_exo_va_harry_poter}
+\input{exercice/probabilite_finie_exo_va_maximum_vraisemblance}
+\input{exercice/probabilite_finie_exo_va_code_route}
+\input{exercice/probabilite_finie_exo_va_restaurateur}
+
+\subsection*{Grand classiques}
+\input{exercice/probabilite_finie_exo_va_marche_aleatoire}
+\input{exercice/probabilite_finie_exo_va_permiere_occurence}
+\input{exercice/probabilite_finie_exo_va_analyse_sang}
+\input{exercice/probabilite_finie_exo_va_CD}
+\input{exercice/probabilite_finie_exo_va_lemme_borel_cantelli}
+\input{exercice/probabilite_finie_exo_va_marche_aleatoire2}
+\input{exercice/probabilite_finie_exo_va_loi_hypergeometrique}
+
+\end{document}
+\endinput
+
+
+
+

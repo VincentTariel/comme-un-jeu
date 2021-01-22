@@ -1,0 +1,540 @@
+\usepackage{t1enc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{minitoc}
+ \usepackage{amsmath}
+\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
+\usepackage[francais]{babel}
+\usepackage{amsmath,thmtools}
+\usepackage{TikZ}
+\usepackage{tkz-fct}   
+\usepackage{a4wide} 
+\usepackage{graphicx}
+\usepackage{thmbox}
+\usepackage{changepage}
+\usepackage{xcolor}
+\usepackage{sectsty}
+ \usepackage{enumitem}
+\usepackage{eurosym}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{geometry}
+\usepackage{pgfplots}
+\usepackage[most]{tcolorbox}
+
+\geometry{hmargin=2cm,vmargin=1.5cm}
+\pagestyle{fancy}
+
+\usepackage{titlesec}
+
+\titleformat
+{\chapter} % command
+[display] % shape
+{\bfseries\huge} % format
+{Story No. \ \thechapter} % label
+{-5ex} % sep
+{
+    \rule{\textwidth}{1pt}
+    \vspace{1ex}
+    \centering
+} % before-code
+[
+\vspace{-2ex}%
+\rule{\textwidth}{0.3pt}
+]
+\titlespacing*{\chapter}{0pt}{-50pt}{10pt}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\fancypagestyle{plain}{%
+   \fancyhead{} % get rid of headers
+   \renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+
+
+\renewcommand{\thesection}{\Roman{section}} 
+\renewcommand{\thesubsection}{\Alph{subsection}}
+
+
+
+\definecolor{colorprop}{rgb}{0.0, 0.4, 0.74}
+\colorlet{colordef}{red!60}
+
+\sectionfont{\color{black}}
+\subsectionfont{\color{black}}
+\subsubsectionfont{\color{black}}
+
+
+\newcommand{\definebox}[3]{%
+  \newcounter{#1}
+  \newenvironment{#1}[1][]{%
+    \stepcounter{#1}%
+    \mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=white]
+            {\strut \color{#3}\MakeUppercase#2~\csname \endcsname\ifstrempty{##1}{}{:~##1}};}}%
+    \mdfsetup{innertopmargin=10pt,linecolor=#3,%
+        linewidth=1pt,topline=true,roundcorner=5pt,
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}%
+    \begin{mdframed}[]\ignorespaces\relax
+    }{\end{mdframed}}%
+    \ignorespaces
+}
+\newcommand{\defineboxx}[3]{%
+  \newcounter{#1}
+  \newenvironment{#1}[1][]{%
+    \stepcounter{#1}%
+    \mdfsetup{%
+        frametitle={%
+            \hspace*{-40pt}\tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=white]
+            {\strut \MakeUppercase#2~\csname \endcsname\ifstrempty{##1}{}{:~##1}};}}%
+    \mdfsetup{innertopmargin=0pt,linecolor=#3,%
+        linewidth=1pt,topline=false,innerleftmargin=20pt,bottomline=false,rightline=false,
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}%
+    \begin{mdframed}[]\relax%
+    }{\end{mdframed}}%
+}
+\newcommand{\defineboxxx}[3]{%
+  \newcounter{#1}
+  \newenvironment{#1}[1][]{%
+    \stepcounter{#1}%
+    \mdfsetup{%
+        frametitle={%
+            \hspace*{-40pt}\tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=white]
+            {\strut \MakeUppercase#2~\csname \endcsname\ifstrempty{##1}{}{:~##1}};}}%
+    \mdfsetup{innertopmargin=0pt,linecolor=#3,%
+        linewidth=1pt,topline=false,innerleftmargin=20pt,bottomline=false,rightline=false,leftline=false,
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}%
+    \begin{mdframed}[]\relax%
+    }{\end{mdframed}}%
+}
+
+\defineboxx{Demonstration}{Démonstration}{colorprop}
+\defineboxx{Exemple}{Exemple}{black}
+\defineboxx{Activite}{Activité}{black}
+\defineboxxx{Remarque}{Remarque}{black}
+\defineboxx{Exercice}{Exercice}{black}
+\usepackage[colorlinks = true,urlcolor  = colorprop]{hyperref}
+\newenvironment{Texte}{}{}
+\newenvironment{Figure}{}{}
+\newenvironment{Correction}{\textbf{\newline Correction } }{}
+   
+\newcommand{\defi}[1]{\textbf{\textcolor{colordef}{#1}}} 
+\newcommand{\propri}[1]{\textbf{\textcolor{colorprop}{#1}}}
+\newcommand{\impo}[1]{\textbf{\textcolor{colorprop}{#1}}}
+
+\newtcolorbox{Definition}[1][]{
+                lower separated=false,
+                colback=white,
+colframe=colordef,fonttitle=,
+colbacktitle=white,
+coltitle=colordef,
+enhanced,
+attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                 boxed title style={boxrule=0pt,colframe=white,},
+title= Définition  \bfseries{#1}}
+
+
+\newtcolorbox{DefinitionProposition}[1][]{
+                lower separated=false,
+                colback=white,
+colframe=colordef,fonttitle=,
+colbacktitle=white,
+coltitle=colordef,
+enhanced,
+attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                 boxed title style={boxrule=0pt,colframe=white,},
+title=Définition-Proposition \bfseries{#1}}
+
+\newtcolorbox{Vocabulaire}[1][]{
+                lower separated=false,
+                colback=white,
+colframe=colordef,fonttitle=,
+colbacktitle=white,
+coltitle=colordef,
+enhanced,
+attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                 boxed title style={boxrule=0pt,colframe=white,},
+title=Vocabulaire  \bfseries{#1}}
+
+\newtcolorbox{Algorithme}[1][]{
+                lower separated=false,
+                colback=white,
+colframe=colordef,fonttitle=,
+colbacktitle=white,
+coltitle=colordef,
+enhanced,
+attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                 boxed title style={boxrule=0pt,colframe=white,},
+title=Algorithme  \bfseries{#1}}
+
+\newtcolorbox{Methode}[1][]{
+                lower separated=false,
+                colback=white,
+colframe=colordef,fonttitle=,
+colbacktitle=white,
+coltitle=colordef,
+enhanced,
+attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                 boxed title style={boxrule=0pt,colframe=white,},
+title=Méthode  \bfseries{#1}}
+
+
+\newtcolorbox{Theoreme}[1][]{
+                lower separated=false,
+                colback=white,
+colframe=colorprop,fonttitle=,
+colbacktitle=white,
+coltitle=colorprop,
+enhanced,
+attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                 boxed title style={boxrule=0pt,colframe=white,},
+title=Théorème  \bfseries{#1}}
+
+\newtcolorbox{Lemme}[1][]{
+                lower separated=false,
+                colback=white,
+colframe=colorprop,fonttitle=,
+colbacktitle=white,
+coltitle=colorprop,
+enhanced,
+attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                 boxed title style={boxrule=0pt,colframe=white,},
+title=Lemme  \bfseries{#1}}
+
+
+\newtcolorbox{Proposition}[1][]{
+                lower separated=false,
+                colback=white,
+colframe=colorprop,fonttitle=,
+colbacktitle=white,
+coltitle=colorprop,
+enhanced,
+attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                 boxed title style={boxrule=0pt,colframe=white,},
+title=Proposition  \bfseries{#1}}
+
+\newtcolorbox{Propriete}[1][]{
+                lower separated=false,
+                colback=white,
+colframe=colorprop,fonttitle=,
+colbacktitle=white,
+coltitle=colorprop,
+enhanced,
+attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                 boxed title style={boxrule=0pt,colframe=white,},
+title=Propriété  \bfseries{#1}}
+
+
+\newtcolorbox{Corollaire}[1][]{
+                lower separated=false,
+                colback=white,
+colframe=colorprop,fonttitle=,
+colbacktitle=white,
+coltitle=colorprop,
+enhanced,
+attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+                 boxed title style={boxrule=0pt,colframe=white,},
+title=Corollaire  \bfseries{#1}}
+
+
+
+
+
+%\tikzset{
+%    node style sp/.style={draw,circle,minimum size=\myunit},
+%    node style ge/.style={circle,minimum size=\myunit},
+%    arrow style mul/.style={draw,sloped,midway,fill=white},
+%    arrow style plus/.style={midway,sloped,fill=white},
+%}
+%
+%\newcommand*\commentterm[4][]{%
+%   \begin{tikzpicture}[anchor=base west,baseline,inner sep=0pt, outer sep=0pt,minimum size=0pt]
+%      \node(xa){$#3$};
+%      \node[overlay,at=(xa),shift=(#2),color=colorprop](xb){#4};
+%      \draw[overlay,->,shorten <=2pt,shorten >=2pt,#1,,color=colorprop](xb)to(xa);
+%   \end{tikzpicture}%
+%}
+ \setcounter{MaxMatrixCols}{20}
+%----------------------------------------------------
+% Diverses macros pour l'utilisation de TeX
+%----------------------------------------------------
+
+
+
+%--------------------------------------------------
+% Typographie
+%--------------------------------------------------
+
+
+
+
+%--------------------------------------------------
+% Les ensembles de nombres
+%--------------------------------------------------
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+
+
+
+%--------------------------------------------------
+% Limites
+%--------------------------------------------------
+
+\def\buildrel#1_#2^#3{\mathrel{\mathop{\kern 0pt#1}\limits_{#2}^{#3}}}
+  % définit une macro pour mettre #2 en dessous et #3 au dessus de #1
+\newcommand{\tend}[1][n]{\buildrel{\longrightarrow}_{#1}^{}}
+  % -> avec un "n" dessous par défaut
+\newcommand{\tendpas}[1][n]{\buildrel{\not\longrightarrow}_{#1}^{}}
+  % /-> avec un "n" dessous par défaut
+\newcommand{\equivalent}[1][n]{\buildrel{\sim}_{#1}^{}}
+  % le signe "équivalent" avec un "n" dessous par défaut
+
+
+
+
+%--------------------------------------------------
+% Définition des vecteurs
+%--------------------------------------------------
+\newcommand{\Vect}[1]{\vbox{\halign{##\cr 
+  \tiny\rightarrowfill\cr\noalign{\nointerlineskip\vskip1pt} 
+  $#1\mskip2mu$\cr}}}
+  % vecteur avec une flèche de hauteur constante
+
+%---- Fonction
+\newcommand\Fonction[5]{{#1}\left|\begin{aligned}{#2}&\;\longrightarrow\;{#3}\\{#4}&\;\longmapsto\;{#5}\end{aligned}\right.}
+
+%--------------------------------------------------
+% Diverses normes
+%--------------------------------------------------
+
+
+\newcommand\PS[2]{\langle#1,#2\rangle}
+  % produit scalaire
+  
+\newcommand{\norme}[2][]{\mathopen#1\lVert #2 \mathclose#1\rVert}
+  % norme d'une fonction
+
+
+
+
+
+\newcommand{\Intf}[3][]{\mathopen#1\lbrack\!#1\lbrack#2,#3 \mathclose#1\rbrack\!#1\rbrack}
+       %intervalle fermé [|#2;#3|] pour les nombres entiers
+
+
+
+
+
+%--------------------------------------------------
+% Les matrices,
+%--------------------------------------------------
+
+\newcommand{\mat}{\mathrm{Mat}}
+  % matrice Mat dans la base #1 (B)
+\newcommand{\Mat}[2]{\mathcal{M}\mathrm{at}_{\mathcal{#1},\mathcal{#2}}}
+  % matrice dans les bases #1 et #2
+\newcommand{\diag}[2][]{\mathrm{Diag}#1( #2_1,\ldots,#2_n #1)}
+  % matrice diagonale d'ordre n
+\newcommand{\Diag}[3][]{\mathrm{Diag}#1( #2_1,\ldots,#2_{#3} #1)}
+  % matrice diagonale d'ordre #2
+
+
+
+
+\newcommand{\transposee}[1]{#1^{\mathsf {T}}}
+    % nouvelle version;
+    % attention, les textes doivent être revus pour
+    % l'utiliser.
+  %transposition d'une matrice
+
+
+
+
+
+% Espace vectoriel engendré
+%\DeclareMathOperator{\sp}{sp}
+\renewcommand{\sp}{\mathop{\mathrm{sp}}\nolimits}
+  % spectre d'une matrice, ...
+\DeclareMathOperator{\rg}{rg}
+\DeclareMathOperator{\Rang}{rg}
+  % rang d'une matrice, ...
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\Ima}{Im}
+  % image d'une application linéaire
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Tr}{tr}
+  % trace d'une matrice, ...
+%\DeclareMathOperator{\deter}{det}
+\renewcommand{\det}{\mathop{\mathrm{det}}\nolimits}
+  % déterminant, \det est "mal défini" chez AmsTeX!
+\newcommand{\Det}[1][B]{\det_{\mathcal{#1}}}
+  % déterminant dans la base B ...
+\newcommand{\M}[3]{\mathcal{M}_{#1,#2}(#3)}
+\newcommand{\Mn}[2]{\mathcal{M}_{#1}(#2)}
+
+\newcommand{\MnK}{\Mn{n}{\K}}
+\newcommand{\MnpK}{\M{n}{p}{\K}}
+\newcommand{\GLnK}{\mathcal{GL}_n(\K)}
+\newcommand{\GLn}[2][n]{\mathcal{GL}_{#1}(#2)}
+\newcommand{\In}{I_n}
+  % trace d'une matrice, ...
+%--------------------------------------------------
+% Espaces vectoriels
+%--------------------------------------------------
+
+\newcommand{\somdir}{\mathop{\oplus}\nolimits}
+\newcommand{\Somdir}{\mathop{\oplus}\limits}
+%\newcommand{\somDir}{\mathop{\bigoplus}\nolimits}
+%\newcommand{\SomDir}{\mathop{\bigoplus}\limits}
+
+\newcommand{\lin}[1]{\mathcal{L}(#1)}
+\newcommand{\Lin}[2]{\mathcal{L}(#1,#2)}
+
+\newcommand{\LEF}[1][E,F]{\mathcal{L}(#1)}
+\newcommand{\LE}[1][E]{\mathcal{L}(#1)}
+\newcommand{\LK}[2][K]{\mathcal{L}_{\#1}(#2)}
+
+\newcommand{\SE}[1][E]{\mathscr{S}(#1)}
+  % ensemble des endomorphismes symétriques sur #1, E par défaut
+\newcommand{\ASE}[1][E]{\mathscr{A}(#1)}
+  % ensemble des endomorphismes antisymétriques sur #1, E par défaut
+\newcommand{\SnR}[1][\R]{\mathscr{S}_n(#1)}
+  % ensemble des matrices symétriques d'ordre n sur #1, \R par défaut
+\newcommand{\AnR}[1][\R]{\mathscr{A}_n(#1)}
+  % ensemble des matrices antisymétriques d'ordre n sur #1, \R par défaut
+
+
+\newcommand{\GLE}[1][E]{\mathcal{GL}(#1)}
+  % groupe des automorphismes de #1, par défaut E
+\newcommand{\GLK}[2][K]{\mathcal{GL}_{\#1}(#2)}
+
+\newcommand{\OrE}[1][E]{\mathcal{O}(#1)}
+  % groupe des automorphismes orthogonaux de #1, par défaut E
+\newcommand{\SOE}[1][E]{\mathcal{SO}(#1)}
+  % groupe spécial orthogonal de #1, par défaut E
+\newcommand{\OpE}[1][E]{\mathcal{O}^+(#1)}
+  % groupe spécial orthogonal de #1, par défaut E
+\newcommand{\OmE}[1][E]{\mathcal{O}^-(#1)}
+  % ensemble des automorphismes orthogonaux de det=-1 de #1, par défaut E
+\newcommand{\OnR}[1][n]{\mathcal{O}_{#1}(\R)}
+  % groupe des automorphismes orthogonaux de #2^#1, par défaut #2^n
+
+\newcommand{\SOnR}[1][n]{\mathcal{SO}_{#1}(\R)}
+  % groupe spécial orthogonal d'ordre #1, par défaut n
+\newcommand{\Opn}[1][n]{\mathcal{O}^+(#1)}
+  % groupe spécial orthogonal d'ordre #1, par défaut n
+\newcommand{\Omn}[1][n]{\mathcal{O}^-(#1)}
+  % ensemble des matrices orthogonales de det=-1, d'ordre #1, par défaut n
+
+
+
+
+
+
+
+
+
+
+\usepackage{tkz-tab}
+\usepackage{pgf}
+\usetikzlibrary{arrows}
+\usetikzlibrary{patterns}  
+\definecolor{CyanTikz40}{cmyk}{.4,0,0,0}
+\definecolor{CyanTikz20}{cmyk}{.2,0,0,0}
+\tikzstyle{general}=[line width=0.3mm, >=stealth, x=1cm, y=1cm,line cap=round, line join=round]
+\tikzstyle{quadrillage}=[line width=0.3mm, color=CyanTikz40]
+\tikzstyle{quadrillageNIV2}=[line width=0.3mm, color=CyanTikz20]
+\tikzstyle{quadrillage55}=[line width=0.3mm, color=CyanTikz40, xstep=0.5, ystep=0.5]
+\tikzstyle{cote}=[line width=0.3mm, <->]
+\tikzstyle{epais}=[line width=0.5mm, line cap=butt]
+\tikzstyle{tres epais}=[line width=0.8mm, line cap=butt]
+\tikzstyle{axe}=[line width=0.3mm, ->, color=Noir, line cap=rect]
+\newcommand{\quadrillageSeyes}[2]{\draw[line width=0.3mm, color=A1!10, ystep=0.2, xstep=0.8] #1 grid #2;
+\draw[line width=0.3mm, color=A1!30, xstep=0.8, ystep=0.8] #1 grid #2; }
+\newcommand{\axeX}[4][0]{\draw[axe] (#2,#1)--(#3,#1); \foreach \x in {#4} {\draw (\x,#1) node {\small $+$}; \draw (\x,#1) node[below] {\small $\x$};}}
+\newcommand{\axeY}[4][0]{\draw[axe] (#1,#2)--(#1,#3); \foreach \y in {#4} {\draw (#1, \y) node {\small $+$}; \draw (#1, \y) node[left] {\small $\y$};}}
+\newcommand{\axeOI}[3][0]{\draw[axe] (#2,#1)--(#3,#1);  \draw (1,#1) node {\small $+$}; \draw (1,#1) node[below] {\small $I$};}
+\newcommand{\axeOJ}[3][0]{\draw[axe] (#1,#2)--(#1,#3); \draw (#1, 1) node {\small $+$}; \draw (#1, 1) node[left] {\small $J$};}
+\newcommand{\axeXgraduation}[2][0]{\foreach \x in {#2} {\draw (\x,#1) node {\small $+$};}}
+\newcommand{\axeYgraduation}[2][0]{\foreach \y in {#2} {\draw (#1, \y) node {\small $+$}; }}
+\newcommand{\origine}{\draw (0,0) node[below left] {\small $0$};}
+\newcommand{\origineO}{\draw (0,0) node[below left] {$O$};}
+\newcommand{\point}[4]{\draw (#1,#2) node[#4] {$#3$};}
+\newcommand{\pointGraphique}[4]{\draw (#1,#2) node[#4] {$#3$};
+\draw (#1,#2) node {$+$};}
+\newcommand{\pointFigure}[4]{\draw (#1,#2) node[#4] {$#3$};
+\draw (#1,#2) node {$\times$};}
+\newcommand{\pointC}[3]{\draw (#1) node[#3] {$#2$};}
+\newcommand{\pointCGraphique}[3]{\draw (#1) node[#3] {$#2$};
+\draw (#1) node {$+$};}
+\newcommand{\pointCFigure}[3]{\draw (#1) node[#3] {$#2$};
+\draw (#1) node {$\times$};}
+\definecolor{A1}                {cmyk}{1.00, 0.00, 0.00, 0.50}
+\definecolor{A2}                {cmyk}{0.60, 0.00, 0.00, 0.10}
+\definecolor{A3}                {cmyk}{0.30, 0.00, 0.00, 0.05}
+\definecolor{A1}                {cmyk}{1.00, 0.00, 0.00, 0.50}
+\definecolor{A2}                {cmyk}{0.60, 0.00, 0.00, 0.10}
+\definecolor{A3}                {cmyk}{0.30, 0.00, 0.00, 0.05}
+\definecolor{A4}                {cmyk}{0.10, 0.00, 0.00, 0.00}
+\definecolor{B1}                {cmyk}{0.00, 1.00, 0.60, 0.40}
+\definecolor{B2}                {cmyk}{0.00, 0.85, 0.60, 0.15}
+\definecolor{B3}                {cmyk}{0.00, 0.20, 0.15, 0.05}
+\definecolor{B4}                {cmyk}{0.00, 0.05, 0.05, 0.00}
+\definecolor{C1}                {cmyk}{0.00, 1.00, 0.00, 0.50}
+\definecolor{C2}                {cmyk}{0.00, 0.60, 0.00, 0.20}
+\definecolor{C3}                {cmyk}{0.00, 0.30, 0.00, 0.05}
+\definecolor{C4}                {cmyk}{0.00, 0.10, 0.00, 0.05}
+\definecolor{D1}                {cmyk}{0.00, 0.00, 1.00, 0.50}
+\definecolor{D2}                {cmyk}{0.20, 0.20, 0.80, 0.00}
+\definecolor{D3}                {cmyk}{0.00, 0.00, 0.20, 0.10}
+\definecolor{D4}                {cmyk}{0.00, 0.00, 0.20, 0.05}
+\definecolor{F1}                {cmyk}{0.00, 0.80, 0.50, 0.00}
+\definecolor{F2}                {cmyk}{0.00, 0.40, 0.30, 0.00}
+\definecolor{F3}                {cmyk}{0.00, 0.15, 0.10, 0.00}
+\definecolor{F4}                {cmyk}{0.00, 0.07, 0.05, 0.00}
+\definecolor{G1}                {cmyk}{1.00, 0.00, 0.50, 0.00}
+\definecolor{G2}                {cmyk}{0.50, 0.00, 0.20, 0.00}
+\definecolor{G3}                {cmyk}{0.20, 0.00, 0.10, 0.00}
+\definecolor{G4}                {cmyk}{0.10, 0.00, 0.05, 0.00}
+\definecolor{H1}                {cmyk}{0.40, 0.00, 1.00, 0.10}
+\definecolor{H2}                {cmyk}{0.20, 0.00, 0.50, 0.05}
+\definecolor{H3}                {cmyk}{0.10, 0.00, 0.20, 0.00}
+\definecolor{H4}                {cmyk}{0.07, 0.00, 0.15, 0.00}
+\definecolor{J1}                {cmyk}{0.00, 0.50, 1.00, 0.00}
+\definecolor{J2}                {cmyk}{0.00, 0.20, 0.50, 0.00}
+\definecolor{J3}                {cmyk}{0.00, 0.10, 0.20, 0.00}
+\definecolor{J4}                {cmyk}{0.00, 0.07, 0.15, 0.00}
+\definecolor{FondOuv}           {cmyk}{0.00, 0.05, 0.10, 0.00}
+\definecolor{FondAutoEvaluation}{cmyk}{0.00, 0.03, 0.15, 0.00}
+\definecolor{FondTableaux}      {cmyk}{0.00, 0.00, 0.20, 0.00}
+\definecolor{FondAlgo}          {cmyk}{0.07, 0.00, 0.30, 0.00}
+\definecolor{BleuOuv}           {cmyk}{1.00, 0.00, 0.00, 0.00}
+\definecolor{PartieFonction}    {cmyk}{1.00, 0.00, 0.00, 0.00}
+\definecolor{PartieGeometrie}   {cmyk}{0.80, 0.80, 0.00, 0.00}
+\definecolor{PartieStatistique} {cmyk}{0.60, 0.95, 0.00, 0.20}
+\definecolor{PartieStatistiqueOLD} {cmyk}{0.95, 0.60, 0.20, 0.00}
+\definecolor{PartieStatistique*}{cmyk}{0.30, 1.00, 0.00, 0.00}
+\definecolor{U1}                {cmyk}{0.50, 0.10, 0.00, 0.10}
+\definecolor{U2}                {cmyk}{0.20, 0.15, 0.00, 0.00}
+\definecolor{CouleurRenvoiManuelNumerique}{cmyk}{0.40, 0.00, 0.00, 0.00}
+\definecolor{Blanc}             {gray}{1.00}
+\definecolor{gris1}             {gray}{0.80}
+\definecolor{gris2}             {gray}{0.60}
+\definecolor{gris3}             {gray}{0.40}
+\definecolor{Noir}              {gray}{0.00}

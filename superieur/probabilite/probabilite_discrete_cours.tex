@@ -1,140 +1,77 @@
-\documentclass[a4paper]{book}
-\usepackage{t1enc}
-\usepackage[latin1]{inputenc}
-\usepackage[french]{minitoc}
- \usepackage{amsmath}
-\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
-\usepackage[francais]{babel}
-\usepackage{amsmath}
-\usepackage{TikZ}
-\usetikzlibrary{shapes,backgrounds}
-\usepackage{tkz-fct}   
-\usepackage{a4wide,jlq2eams} 
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{slashbox}
-\usepackage{thmbox}
-\usepackage{xcolor}
-\usepackage{sectsty}
-\usepackage{longtable} 
-\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
-\sectionfont{\color{magenta}}
-\subsectionfont{\color{red}}
-\subsubsectionfont{\color{red}}
-\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}}
-
-\setlength{\shadowsize}{1.5pt}
- 
-\pagestyle{fancy}
-\addtolength{\headwidth}{\marginparsep}
-\addtolength{\headwidth}{\marginparwidth} 
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-\fancyhf{}
-\fancyhead[LE,RO]{\bfseries\thepage}
-\fancyhead[LO]{\bfseries\rightmark}
-\fancyhead[RE]{\bfseries\leftmark}
-\fancypagestyle{plain}{%
-   \fancyhead{} % get rid of headers
-   \renewcommand{\headrulewidth}{0pt} % and the line
-}
-
-\setcounter{minitocdepth}{3}
-
-
-
-\thmboxoptions{S,bodystyle=\itshape\noindent}
-\newtheorem[L]{Lem}{Lemme}[section]
-\newtheorem[L]{Th}[Lem]{Théorème}
-\newtheorem[L]{Cor}[Lem]{Corollaire}
-\newtheorem[L]{Prop}[Lem]{Proposition}
-
-\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
-\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
-\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
-\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\E}{(-4,-1) rectangle (4,4);\node[above right] at (-4,-1) {$\Omega$};}
-\newcommand{\A}{(0,0) ++(135:2) circle (2);\node at (-1.4,-0.75) {$A$};}
-\newcommand{\B}{(0,0) ++(45:2) circle (2);\node at (1.4,-0.75) {$B$};}
-\newcommand{\AuB}{(0,0) arc(-135:135:2) arc(45:315:2);\node at (0,1.5) {$A\cup B$};}
-\newcommand{\AnB}{(0,0) arc (-45:45:2) arc (135:225:2);\node at (0,1.5) {$A\cap B$};}
-
-
-
+\documentclass{book}
+\usepackage{commeunjeustyle}
 \begin{document}
-\chapter{Probabilité discrète}
-Lors du cours sur les probabilité finies, nous avons posé le cadre probabiliste afin de modéliser une expérience aléatoire dans les issues sont finies. Ce cours étend le cadre pour aussi modéliser une expérience aléatoire dont les issues sont \textbf{dénombrables finies ou infinies}, c'est à dire que l'on peut effectuer une énumération finie ou infinie des issues de l'expérience aléatoire.  Nous énoncerons uniquement les extensions et les nouvelles notions.   
+\chapter*{ProbabilitÃ© discrÃ¨te}
+Lors du cours sur les probabilitÃ© finies, nous avons posÃ© le cadre probabiliste afin de modÃ©liser une expÃ©rience alÃ©atoire dans les issues sont finies. Ce cours Ã©tend le cadre pour aussi modÃ©liser une expÃ©rience alÃ©atoire dont les issues sont \impo{dÃ©nombrables finies ou infinies}, c'est Ã  dire que l'on peut effectuer une Ã©numÃ©ration finie ou infinie des issues de l'expÃ©rience alÃ©atoire.  Nous Ã©noncerons uniquement les extensions et les nouvelles notions.   
  
 
-\section{Extension  de la modélisation probabilistes pour un univers dénombrable}
-\subsection{Axiomes des probabilité. Premières propriétés}
-\begin{Ex}[Première fois pile]
-Pour le lancer d'une pièce jusqu'à la première obtention de pile. L'univers est dénombrable $\N$ où une issue $\omega\in \N$ représente le temps du premiers succès.
-\end{Ex}
-\begin{Df}[Réunion et intersection dénombrables]
-Soit $(A_n )_{n\in \N}$ une suite d'événements de $\Omega$. On définit les ensembles $\bigcup\limits_{n\in\N}A_n$ et $\bigcap\limits_{n\in\N}A_n$ par :
+\section{Extension  de la modÃ©lisation probabilistes pour un univers dÃ©nombrable}
+\subsection{Axiomes des probabilitÃ©. PremiÃ¨res propriÃ©tÃ©s}
+\begin{Exemple}[PremiÃ¨re fois pile]
+Pour le lancer d'une piÃ¨ce jusqu'Ã  la premiÃ¨re obtention de pile. L'univers est dÃ©nombrable $\N$ oÃ¹ une issue $\omega\in \N$ reprÃ©sente le temps du premiers succÃ¨s.
+\end{Exemple}
+\begin{Definition}[RÃ©union et intersection dÃ©nombrables]
+Soit $(A_n )_{n\in \N}$ une suite d'Ã©vÃ©nements de $\Omega$. On dÃ©finit les ensembles $\bigcup\limits_{n\in\N}A_n$ et $\bigcap\limits_{n\in\N}A_n$ par :
 $$ \omega  \in \bigcup\limits_{n\in\N}A_n \Leftrightarrow \exists n\in\N:\quad \omega \in A_n$$ 
 et 
 $$ \omega  \in \bigcap\limits_{n\in\N}A_n \Leftrightarrow \forall n\in\N:\quad \omega \in A_n$$ 
-\end{Df}
-\begin{Ex}[Première fois pile]
-L'événement $A_p$="l'expérience se termine après le p-ième lancer" est le singleton $\{p\}$.\\
-L'évènement "l'expérience se termine après le p-ième lancer" s'écrit $\bigcup\limits_{n=p}^{+\infty}A_p$.\\
-L'évènement "l'expérience se termine après un temps infini" s'écrit $\bigcap\limits_{n=1}^{+\infty} \bar A_p$.
-\end{Ex}
-\begin{Df}[Axiomes des tribus]
-La probabilité $P$  est une fonction qui à un événement associe
-un nombre compris entre 0 et 1 quantifiant la chance de réalisation
-de cet événement. Pour des raisons sortant du cadre de ce cours, il n'est pas
-toujours possible d'attribuer ainsi de manière cohérente une probabilité à
+\end{Definition}
+\begin{Exemple}[PremiÃ¨re fois pile]
+L'Ã©vÃ©nement $A_p$="l'expÃ©rience se termine aprÃ¨s le p-iÃ¨me lancer" est le singleton $\{p\}$.\\
+L'Ã©vÃ¨nement "l'expÃ©rience se termine aprÃ¨s le p-iÃ¨me lancer" s'Ã©crit $\bigcup\limits_{n=p}^{+\infty}A_p$.\\
+L'Ã©vÃ¨nement "l'expÃ©rience se termine aprÃ¨s un temps infini" s'Ã©crit $\bigcap\limits_{n=1}^{+\infty} \bar A_p$.
+\end{Exemple}
+\begin{Definition}[Axiomes des tribus]
+La probabilitÃ© $P$  est une fonction qui Ã  un Ã©vÃ©nement associe
+un nombre compris entre 0 et 1 quantifiant la chance de rÃ©alisation
+de cet Ã©vÃ©nement. Pour des raisons sortant du cadre de ce cours, il n'est pas
+toujours possible d'attribuer ainsi de maniÃ¨re cohÃ©rente une probabilitÃ© Ã 
 chaque partie de $\Omega$.\\
-En d'autres termes, $P$ ne peut pas être considérée comme une application de $\mathcal{P}(\Omega)$
- dans $[0, 1$] mais comme une fonction ayant un domaine de définition $\mathcal{A}$ généralement plus
-petit que , noté $\mathcal{P}(\Omega)$.\\
-Voici les propriétés qu'il est raisonnable d'exiger de $\mathcal{A}$ :
+En d'autres termes, $P$ ne peut pas Ãªtre considÃ©rÃ©e comme une application de $\mathcal{P}(\Omega)$
+ dans $[0, 1$] mais comme une fonction ayant un domaine de dÃ©finition $\mathcal{A}$ gÃ©nÃ©ralement plus
+petit que , notÃ© $\mathcal{P}(\Omega)$.\\
+Voici les propriÃ©tÃ©s qu'il est raisonnable d'exiger de $\mathcal{A}$ :
 \begin{itemize}
 \item  $\mathcal{A}$ contient $\emptyset$ (et tous les singletons $\{\omega\}$),
-\item $\mathcal{A}$ est stable par passage au complémentaire : si $A$ est un événement
+\item $\mathcal{A}$ est stable par passage au complÃ©mentaire : si $A$ est un Ã©vÃ©nement
 de $\mathcal{A}$,  $\mathcal{A}^c$ l'est aussi,
-\item $\mathcal{A}$ est stable par les opérations de réunion et d'intersection sur les suites
-d'événements 
-\item Si $A_1,A_2,\ldots$ est une suite finie ou infinie d'événements
-de $\mathcal{A}$, sa réunion et son intersection sont encore des événements de $\mathcal{A}$.
+\item $\mathcal{A}$ est stable par les opÃ©rations de rÃ©union et d'intersection sur les suites
+d'Ã©vÃ©nements 
+\item Si $A_1,A_2,\ldots$ est une suite finie ou infinie d'Ã©vÃ©nements
+de $\mathcal{A}$, sa rÃ©union et son intersection sont encore des Ã©vÃ©nements de $\mathcal{A}$.
 \end{itemize}
-Nous appellerons \defi{tribu} toute famille  $\mathcal{A}$ de parties de  vérifiant les conditions ci-dessus.\\
-$(\Omega,\mathcal{A})$ est appelé \defi{espace probabilisable}. L'objectif de ce cours n'est pas de savoir construire mathématiquement la tribu  $\mathcal{A}$. On supposera que l'on sait construire à partir de l'univers la tribu ayant les "bonnes propriétés". 
-\end{Df}
-\begin{Df}[Axiomes des probabilités]
+Nous appellerons \defi{tribu} toute famille  $\mathcal{A}$ de parties de  vÃ©rifiant les conditions ci-dessus.\\
+$(\Omega,\mathcal{A})$ est appelÃ© \defi{espace probabilisable}. L'objectif de ce cours n'est pas de savoir construire mathÃ©matiquement la tribu  $\mathcal{A}$. On supposera que l'on sait construire Ã  partir de l'univers la tribu ayant les "bonnes propriÃ©tÃ©s". 
+\end{Definition}
+\begin{Definition}[Axiomes des probabilitÃ©s]
 Soit $(\Omega,\mathcal{A})$ un espace probabilisable.
-Une \defi{probabilité} sur $(\Omega,\mathcal{A})$ est une application
-de $\mathcal{A}$ dans $\R^+$ vérifiant :
+Une \defi{probabilitÃ©} sur $(\Omega,\mathcal{A})$ est une application
+de $\mathcal{A}$ dans $\R^+$ vÃ©rifiant :
 \begin{itemize}
 \item
   $P(\Omega)=1$.
 \item
-  Pour toute suite $(A_n)_{n\in\N^*}$ d'événements de $\mathcal{A}$ deux à deux disjoints (incompatibles) :
+  Pour toute suite $(A_n)_{n\in\N^*}$ d'Ã©vÃ©nements de $\mathcal{A}$ deux Ã  deux disjoints (incompatibles) :
 $$P(\bigcup_{n\in\N^*}A_n)=\sum_{n=1}^{+\infty}P(A_n)$$  
 \end{itemize}
-Le triplet  $(\Omega,\mathcal{A},P)$ s'appelle un \defi{espace probabilisé}.
-\end{Df}
-\begin{Prop}
-Une probabilité $P$ sur un univers dénombrable est complètement déterminée par les $P(\{\omega\})$ pour tout $\omega \in \Omega$. $P(\{\omega\})$, appelé poids de probabilité.\\
+Le triplet  $(\Omega,\mathcal{A},P)$ s'appelle un \defi{espace probabilisÃ©}.
+\end{Definition}
+\begin{Proposition}
+Une probabilitÃ© $P$ sur un univers dÃ©nombrable est complÃ¨tement dÃ©terminÃ©e par les $P(\{\omega\})$ pour tout $\omega \in \Omega$. $P(\{\omega\})$, appelÃ© poids de probabilitÃ©.\\
 En effet, pour $A \subset \Omega$, on a :
-\begin{align*}
+$$\begin{aligned}
 P(A)&=P(\bigcup\limits_{\omega\in A}\{w\} ),\\
  &=\sum_{\omega\in A}P(\{w\}).
-\end{align*}
-\end{Prop}
-\begin{Ex}[Première fois pile]
-Soit $p$ la probabilité d'obtenir pile. On pose $p_k=P(\{k\})=\overbrace{(1-p)^{k-1}}^{\text{proba d'obtenir d'abord k-1 piles}}p. $. On doit vérifier que $\sum_{k=1}^{+\infty}p_k=1$. 
-On a $$\sum_{k=1}^{+\infty}p_k=\sum_{k=1}^{+\infty} (1-p)^{k-1} p = p \sum_{k=1}^{+\infty} (1-p)^{k-1} \overbrace{=}^{\text{somme d'une série géométrique}}=p.\frac{1}{1-(1-p)}=1.$$
-\end{Ex}
-\begin{Prop}
+\end{aligned}$$
+\end{Proposition}
+\begin{Exemple}[PremiÃ¨re fois pile]
+Soit $p$ la probabilitÃ© d'obtenir pile. On pose $p_k=P(\{k\})=\overbrace{(1-p)^{k-1}}^{\text{proba d'obtenir d'abord k-1 piles}}p. $. On doit vÃ©rifier que $\sum_{k=1}^{+\infty}p_k=1$. 
+On a $$\sum_{k=1}^{+\infty}p_k=\sum_{k=1}^{+\infty} (1-p)^{k-1} p = p \sum_{k=1}^{+\infty} (1-p)^{k-1} \overbrace{=}^{\text{somme d'une sÃ©rie gÃ©omÃ©trique}}=p.\frac{1}{1-(1-p)}=1.$$
+\end{Exemple}
+\begin{Proposition}
 \begin{enumerate}
 \item $ P(\emptyset)=0.$
-\item Pour toute suite finie $(A_i)_{1\leq i \leq n}$ d'événements de $\mathcal{A}$ deux à deux disjoints (incompatibles) :
+\item Pour toute suite finie $(A_i)_{1\leq i \leq n}$ d'Ã©vÃ©nements de $\mathcal{A}$ deux Ã  deux disjoints (incompatibles) :
 $$P(\bigcup_{1\leq i \leq n}A_i)=\sum_{i=1}^{n}P(A_i).$$
 \item Pour tout $A,B\in \mathcal{A}$ tel que  $A\subset B$, on a :
 $$P(A)\leq P(B)$$
@@ -144,33 +81,33 @@ $$P(B\setminus A )=P(B)-P(A)$$
 \item Pour tout $A,B\in \mathcal{A}$, on a $$P(A\cap B)\leq P(A)+P(B).$$
 \item Pour tout $A\in \mathcal{A}$, on a 
 $$P(A)=1-P(A^c).$$
-\item \defi{Continuité monotone séquentielle :}
+\item \defi{ContinuitÃ© monotone sÃ©quentielle :}
 \begin{enumerate}
-\item  Soit $(A_n)_{n\in\N^*}$ est une suite croissante d'événements de $\mathcal{A}$, c'est à dire $A_n\subset A_{n+1}$, on a
+\item  Soit $(A_n)_{n\in\N^*}$ est une suite croissante d'Ã©vÃ©nements de $\mathcal{A}$, c'est Ã  dire $A_n\subset A_{n+1}$, on a
 $$P(\bigcup_{n\in\N^*}A_n)=\lim\limits_{n \to +\infty} P(A_n)$$ 
-\item Soit $(A_n)_{n\in\N^*}$ est une suite décroissante d'événements de $\mathcal{A}$, c'est à dire $A_{n+1}\subset A_{n}$, on a
+\item Soit $(A_n)_{n\in\N^*}$ est une suite dÃ©croissante d'Ã©vÃ©nements de $\mathcal{A}$, c'est Ã  dire $A_{n+1}\subset A_{n}$, on a
 $$P(\bigcap_{n\in\N^*}A_n)=\lim\limits_{n \to +\infty} P(A_n)$$ 
 \end{enumerate}
-\item \defi{Sous additivité} : Pour toute suite finie $(A_i)_{1\leq i \leq n}$ d'événements de $\mathcal{A}$, on a  :
+\item \defi{Sous additivitÃ©} : Pour toute suite finie $(A_i)_{1\leq i \leq n}$ d'Ã©vÃ©nements de $\mathcal{A}$, on a  :
 $$P(\bigcup_{n\in\N^*}A_n)=\sum_{n=1}^{+\infty} P(A_n).$$
 \end{enumerate}
-\end{Prop}
-\begin{proof}
+\end{Proposition}
+\begin{Demonstration}
 \begin{enumerate}
-\item Soit la suite $(A_n)_{n\in\N^*}$ définit par $A_1=\Omega$ et $A_n=\emptyset$ si $n>1$. Les événements de cette suite sont deux à deux disjoints et $\bigcup_{n\in\N^*}A_n=\Omega$.
-\begin{align*}
+\item Soit la suite $(A_n)_{n\in\N^*}$ dÃ©finit par $A_1=\Omega$ et $A_n=\emptyset$ si $n>1$. Les Ã©vÃ©nements de cette suite sont deux Ã  deux disjoints et $\bigcup_{n\in\N^*}A_n=\Omega$.
+$$\begin{aligned}
 P(\Omega)=&P(\bigcup_{n\in\N^*}A_n)\\
-P(\Omega)=&P(\Omega)+P(\emptyset)+P(\emptyset)+\cdots \text{ car deux à deux disjoints}\\
+P(\Omega)=&P(\Omega)+P(\emptyset)+P(\emptyset)+\cdots \text{ car deux Ã  deux disjoints}\\
 0=&P(\emptyset)+P(\emptyset)+\cdots\\
 P(\emptyset)=&0.
-\end{align*}
-\item Soit la suite $(B_i)_{i\in\N^*}$ définit par $B_i=A_i$ si $i\leq n$ et $B_i=\emptyset$ si $i>n$. On a :
-\begin{align*}
+\end{aligned}$$
+\item Soit la suite $(B_i)_{i\in\N^*}$ dÃ©finit par $B_i=A_i$ si $i\leq n$ et $B_i=\emptyset$ si $i>n$. On a :
+$$\begin{aligned}
 P(\bigcup_{1\leq i \leq n}A_i)=&P(\bigcup_{i\in\N^*}B_i)\\
 P(\bigcup_{1\leq i \leq n}A_i)=&\sum_{n=1}^{+\infty}P(B_n)\\
 P(\bigcup_{1\leq i \leq n}A_i)=&P(A_1)+\dots+P(A_n)+P(\emptyset)+\dots \\
 P(\bigcup_{1\leq i \leq n}A_i)=&\sum_{i=1}^{n}P(A_i)
-\end{align*}
+\end{aligned}$$
 \item Comme  $A \bigcup\limits_{\text{disjoints}}(B\setminus A)=B$, on a :
 $$ P(A)+P(B\setminus A)=P(B).$$
 \item Comme $A\subset \Omega$, on a $P(A)\leq P(\Omega)=1$.
@@ -179,62 +116,62 @@ $$ P(A)+P(B\setminus A)=P(B).$$
 \item Comme $P(A\cup B)+ P(A\cap B)=P(A)+P(B)$, on a $P(A\cup B)\leq P(A)+P(B)$.
 \item Comme $A \bigcup\limits_{\text{disjoints}}A^c=\Omega$, on a 
 $$P(A)+P(A^c)=1.$$
-\item \defi{Continuité monotone séquentielle :}
+\item \defi{ContinuitÃ© monotone sÃ©quentielle :}
 \begin{enumerate}
-\item  Soit $(A_n)_{n\in\N^*}$ est une suite croissante d'événements de $\mathcal{A}$. On pose la suite $(B_n)$ défini $B_0=A_0$ et $B_n =A_{n}\setminus A_{n-1}$ pour tout $n\geq 1$. Les éléments de cette suite sont deux à deux disjoints et $\cup_{k=0}^n A_k = \cup_{k=0}^n B_k$. On a :
-\begin{align*}
+\item  Soit $(A_n)_{n\in\N^*}$ est une suite croissante d'Ã©vÃ©nements de $\mathcal{A}$. On pose la suite $(B_n)$ dÃ©fini $B_0=A_0$ et $B_n =A_{n}\setminus A_{n-1}$ pour tout $n\geq 1$. Les Ã©lÃ©ments de cette suite sont deux Ã  deux disjoints et $\cup_{k=0}^n A_k = \cup_{k=0}^n B_k$. On a :
+$$\begin{aligned}
 P(\cup_{k=0}^n A_k)=&P(\cup_{k=0}^n B_k)\\
 =& \sum_{k=0}^n P(B_k)
-\end{align*}
-La série numérique $\sum  P(B_n)$ est à termes positifs et majoré par 1 $\left(\sum_{k=0}^n P(B_k)=P(\cup_{k=0}^n B_k)\leq P(\Omega)=1\right)$ donc convergente. Par passage à la limite on a 
-\begin{align*}
+\end{aligned}$$
+La sÃ©rie numÃ©rique $\sum  P(B_n)$ est Ã  termes positifs et majorÃ© par 1 $\left(\sum_{k=0}^n P(B_k)=P(\cup_{k=0}^n B_k)\leq P(\Omega)=1\right)$ donc convergente. Par passage Ã  la limite on a 
+$$\begin{aligned}
 \lim\limits_{n\to \infty}P(A_n) &=\lim\limits_{n\to \infty} P(\cup_{k=0}^n B_k)\\
 &=\sum_{k=0}^{+\infty} P(B_k)\\
 &=P(\cup_{k=0}^{+\infty} B_k)\\
 &=P(\cup_{k=0}^{+\infty} A_k)
-\end{align*}
+\end{aligned}$$
 \item On a :
-\begin{align*}
+$$\begin{aligned}
 P(\bigcap_{n\in\N^*}A_n)&=1-P((\bigcap_{n\in\N^*}A_n)^c)\\
 &=1-P(\bigcup_{n\in\N^*}A_n^c)\\
 &=1-\lim\limits_{n\to \infty}P(A_n^c)\\
 &=\lim\limits_{n\to \infty}(1-P(A_n^c))\\
 &=\lim\limits_{n\to \infty}P(A_n)
-\end{align*}
+\end{aligned}$$
 \end{enumerate}
-\item \defi{Sous additivité} : Pour toute suite finie $(A_i)_{1\leq i \leq n}$ d'événements de $\mathcal{A}$, on a  :
+\item \defi{Sous additivitÃ©} : Pour toute suite finie $(A_i)_{1\leq i \leq n}$ d'Ã©vÃ©nements de $\mathcal{A}$, on a  :
 $$\forall n \in \N :\quad P(\bigcup_{i=1}^n A_n)\leq \sum_{i=1}^{n} P(A_i)\underbrace{\leq}_{\text{termes positifs} } \sum_{i=1}^{+\infty} P(A_i).$$
-De plus $\bigcup_{n=1}^{+\infty} A_n= \bigcup_{n=1}^{+\infty} (\cup_{i=1}^n A_i)$ et la suite $(\cup_{i=1}^n A_i)$ est croissante d'où :
-$$P(\bigcup_{n=1}^{+\infty} A_n) \underbrace{=}_{\text{Continuité monotome}}\lim\limits_{n\to \infty}P(\bigcup_{i=1}^n A_n)\leq  \lim\limits_{n\to \infty} \sum_{i=1}^{n} P(A_i).$$ 
+De plus $\bigcup_{n=1}^{+\infty} A_n= \bigcup_{n=1}^{+\infty} (\cup_{i=1}^n A_i)$ et la suite $(\cup_{i=1}^n A_i)$ est croissante d'oÃ¹ :
+$$P(\bigcup_{n=1}^{+\infty} A_n) \underbrace{=}_{\text{ContinuitÃ© monotome}}\lim\limits_{n\to \infty}P(\bigcup_{i=1}^n A_n)\leq  \lim\limits_{n\to \infty} \sum_{i=1}^{n} P(A_i).$$ 
 \end{enumerate}
-\end{proof}
+\end{Demonstration}
 
 
-\begin{Prop}[Formule des probabilités totales]
-Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.\\
-Soit $ (A_n)_{n\in \N*}$ un système complet d'événements de probabilités non nulles.\\
-Pour tout événement $B$, on a
+\begin{Proposition}[Formule des probabilitÃ©s totales]
+Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisÃ©.\\
+Soit $ (A_n)_{n\in \N*}$ un systÃ¨me complet d'Ã©vÃ©nements de probabilitÃ©s non nulles.\\
+Pour tout Ã©vÃ©nement $B$, on a
 \[ P(B) = \sum_{i=1}^{+\infty} P_{A_i}(B)P(A_i). \]
-\end{Prop}
-\begin{Prop}[formule de Bayes usuelle]
-Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisé.
-Soit $(A_n)_{n\in \N*}$ un système complet d'événements de probabilités non nulles.
-Pour tout événement $B$ de probabilité non nulle,
+\end{Proposition}
+\begin{Proposition}[formule de Bayes usuelle]
+Soit $(\Omega,\mathcal{P}(\Omega),P)$ un espace probabilisÃ©.
+Soit $(A_n)_{n\in \N*}$ un systÃ¨me complet d'Ã©vÃ©nements de probabilitÃ©s non nulles.
+Pour tout Ã©vÃ©nement $B$ de probabilitÃ© non nulle,
 et pour tout $k\in\{1,n\}$, on a
 \[ P_B(A_k) = \frac{ P_{A_k}(B)P(A_k) }{ \sum\limits_{i=1}^{+\infty} P_{A_i}(B)P(A_i) }. \]
-\end{Prop}
+\end{Proposition}
 
 
 
-\section{Variables aléatoire discrètes}
+\section{Variables alÃ©atoire discrÃ¨tes}
 
-\subsection{Définition}
-\begin{Ex}[Martingale Roulette]La Roulette, inventée par Blaise Pascal, est un des jeux les plus populaires des casinos. Le pari simple est de parier la couleur de la case sur laquelle la bille lancée dans le cylindre va s'arrêter parmi 37 cases (18 rouges, 18 noirs et un vert).\\
-La martingale est : le joueur doit, suite à chaque perte, tripler sa mise. S'il perd à nouveau, il mise la somme initiale triplée et ainsi de suite, jusqu'à ce qu'il gagne. Par exemple, le joueur joue 1 euro à la première partie et perd. Puis il joue donc 3 euros et  perd encore. Après, il joue donc 9 et gagne. Finalement, son gain est $9-3-1=5$ euros.\\  
+\subsection{DÃ©finition}
+\begin{Exemple}[Martingale Roulette]La Roulette, inventÃ©e par Blaise Pascal, est un des jeux les plus populaires des casinos. Le pari simple est de parier la couleur de la case sur laquelle la bille lancÃ©e dans le cylindre va s'arrÃªter parmi 37 cases (18 rouges, 18 noirs et un vert).\\
+La martingale est : le joueur doit, suite Ã  chaque perte, tripler sa mise. S'il perd Ã  nouveau, il mise la somme initiale triplÃ©e et ainsi de suite, jusqu'Ã  ce qu'il gagne. Par exemple, le joueur joue 1 euro Ã  la premiÃ¨re partie et perd. Puis il joue donc 3 euros et  perd encore. AprÃ¨s, il joue donc 9 et gagne. Finalement, son gain est $9-3-1=5$ euros.\\  
 A votre avis, ce jeu est-il favorable au joueur ou au casino ? A chaque partie quelle est le gain moyen du joueur ?\\
-\'Etape 1 : comme pour l'expérience aléatoire du lancer d'une pièce jusqu'à la première obtention de pile, on pose $X$ la variable aléatoire représentant le nombre de parties joués jusqu'à gagner une première fois. Par exemple, $X=3$ signifie que l'on a perdu les deux premières parties et gagné la troisième. La loi de la variable aléatoire est $X$ est :
+\'Etape 1 : comme pour l'expÃ©rience alÃ©atoire du lancer d'une piÃ¨ce jusqu'Ã  la premiÃ¨re obtention de pile, on pose $X$ la variable alÃ©atoire reprÃ©sentant le nombre de parties jouÃ©s jusqu'Ã  gagner une premiÃ¨re fois. Par exemple, $X=3$ signifie que l'on a perdu les deux premiÃ¨res parties et gagnÃ© la troisiÃ¨me. La loi de la variable alÃ©atoire est $X$ est :
 $$P(X=n)=(1-p)^{n-1} p\text{ avec } p=\frac{18}{37}.$$
-\'Etape 2 :  on calcule nos gains en fonction du nombre de parties joués jusqu'à gagner une première fois  $n$.
+\'Etape 2 :  on calcule nos gains en fonction du nombre de parties jouÃ©s jusqu'Ã  gagner une premiÃ¨re fois  $n$.
 \begin{center}
 \begin{tabular}{|c||c|c|c|c|c|c|c|}
 \hline
@@ -244,172 +181,172 @@ $G(n)$ & 1 & 3-1& 9-(1+3)&27-(1-3-9)&\dots  &$3^{n-1}-\sum_{k=0}^{n-2}3^k=\frac{
  \end{center}
 Le gain moyen est donc :
 $$E(G(X))=\sum_{n=1}^{+\infty}G(n)P(X=n)=\sum_{n=1}^{+\infty} \frac{3^{n-1}+1}{2}  (1-p)^{n-1} p=\frac p 2 \sum_{n=1}^{+\infty} (3^{n-1}+1)  (1-p)^{n-1}$$
-La série géométrique $\sum (1-p)^{n-1}$ converge car $|1-p|<1$. Par contre, la série numérique  $\sum (3(1-p))^{n-1}$ diverge vers l'infini car $|3(1-p)|>1$. En conclusion, $E(G(X))=+\infty$ et donc ce jeu est "très" favorable au joueur. L'unique condition pour jouer à ce jeu est de n'avoir pas de limite sur son compte en banque$\dots$.  
-\end{Ex}
-\begin{Df}[Variable aléatoire réelle discrète]
+La sÃ©rie gÃ©omÃ©trique $\sum (1-p)^{n-1}$ converge car $|1-p|<1$. Par contre, la sÃ©rie numÃ©rique  $\sum (3(1-p))^{n-1}$ diverge vers l'infini car $|3(1-p)|>1$. En conclusion, $E(G(X))=+\infty$ et donc ce jeu est "trÃ¨s" favorable au joueur. L'unique condition pour jouer Ã  ce jeu est de n'avoir pas de limite sur son compte en banque$\dots$.  
+\end{Exemple}
+\begin{Definition}[Variable alÃ©atoire rÃ©elle discrÃ¨te]
 Soit $(\Omega,\mathcal{A})$ un espace probabilisable.\\
-Une \defi{variable aléatoire réelle discrète} est une application : $$\Fonction{X}{\Omega}{\R}{\omega}{X(\omega)}.$$ telle que
+Une \defi{variable alÃ©atoire rÃ©elle discrÃ¨te} est une application : $$\Fonction{X}{\Omega}{\R}{\omega}{X(\omega)}.$$ telle que
 \begin{enumerate}
-\item $X (\Omega)$ est un ensemble dénombrable;
-\item Si $x \in X (\Omega)$ alors $X^{-1}(\{x \}) = (X = x )$ est un événement, c'est-à-dire :$X^{-1}(\{x \})\in \mathcal{A}$.
+\item $X (\Omega)$ est un ensemble dÃ©nombrable;
+\item Si $x \in X (\Omega)$ alors $X^{-1}(\{x \}) = (X = x )$ est un Ã©vÃ©nement, c'est-Ã -dire :$X^{-1}(\{x \})\in \mathcal{A}$.
 \end{enumerate}
-\end{Df}
-\begin{NB}
-Lors de la définition de l'axiome des tribus, l'ensemble des événements ne devait ne pas être "trop grand" afin de donner du sens à l'application probabilité. La définition de la variable aléatoire impose que l'ensemble des événements ne doit pas être "trop petit" pour que chaque $x$, $(X = x )$ soit un élément de $\mathcal{A}$.
-\end{NB}
+\end{Definition}
+\begin{Remarque}
+Lors de la dÃ©finition de l'axiome des tribus, l'ensemble des Ã©vÃ©nements ne devait ne pas Ãªtre "trop grand" afin de donner du sens Ã  l'application probabilitÃ©. La dÃ©finition de la variable alÃ©atoire impose que l'ensemble des Ã©vÃ©nements ne doit pas Ãªtre "trop petit" pour que chaque $x$, $(X = x )$ soit un Ã©lÃ©ment de $\mathcal{A}$.
+\end{Remarque}
 
-\begin{Prop}
-Soit $(\Omega,\mathcal{A})$ un espace probabilisable et $X$ une variable aléatoire discrète sur cet espace.\\
-Soit $A$ une partie de $\R$. L'ensemble $X^{-1}(A)=\{X \in A\}$, est un événement.
-\end{Prop}
-Comme toutes les variables aléatoires sont supposées discrètes, on s'autorise désormais à écrire l'ensemble des images sous la forme $X (\Omega) = \{x_n:n\in \N\}$ ou $X (\Omega) = \{x_i:i\in I\}$ avec $I$ ensemble dénombrable.
-\begin{Prop}
-Soit $(\Omega,\mathcal{A},P)$ un espace probabilisé et $X$ une variable aléatoire discrète sur cette espace.\\
-L'ensemble $(X=x_n)_{n\in\N}$ forme un système complet d'événements de $\Omega$.
-\end{Prop}
-\subsection{Loi d'une variable aléatoire}
-\begin{Df}[Loi d'une variable aléatoire]
-Soit $X$ une variable aléatoire discrète sur un espace probabilisé $(\Omega,\mathcal{A},P)$.\\ 
+\begin{Proposition}
+Soit $(\Omega,\mathcal{A})$ un espace probabilisable et $X$ une variable alÃ©atoire discrÃ¨te sur cet espace.\\
+Soit $A$ une partie de $\R$. L'ensemble $X^{-1}(A)=\{X \in A\}$, est un Ã©vÃ©nement.
+\end{Proposition}
+Comme toutes les variables alÃ©atoires sont supposÃ©es discrÃ¨tes, on s'autorise dÃ©sormais Ã  Ã©crire l'ensemble des images sous la forme $X (\Omega) = \{x_n:n\in \N\}$ ou $X (\Omega) = \{x_i:i\in I\}$ avec $I$ ensemble dÃ©nombrable.
+\begin{Proposition}
+Soit $(\Omega,\mathcal{A},P)$ un espace probabilisÃ© et $X$ une variable alÃ©atoire discrÃ¨te sur cette espace.\\
+L'ensemble $(X=x_n)_{n\in\N}$ forme un systÃ¨me complet d'Ã©vÃ©nements de $\Omega$.
+\end{Proposition}
+\subsection{Loi d'une variable alÃ©atoire}
+\begin{Definition}[Loi d'une variable alÃ©atoire]
+Soit $X$ une variable alÃ©atoire discrÃ¨te sur un espace probabilisÃ© $(\Omega,\mathcal{A},P)$.\\ 
 L'application
 \[ \Fonction{P_X}{X(\Omega)}{[0,1]}{x}{P(X=x)} \]
-est une probabilité sur $\R$, appelée \defi{loi de la variable $X$}.
-\end{Df}
+est une probabilitÃ© sur $\R$, appelÃ©e \defi{loi de la variable $X$}.
+\end{Definition}
 
 
 
-\begin{Th}
-Soit $\{x_n:n\in\N\}$ une famille dénombrable de réels deux à deux distincts et $\{p_n : n\in\N:\}$ une famille de réels positifs telle que $\sum_{n=1}^{\infty} p_n = 1$. Alors il existe 
-une variable aléatoire discrète $X$ sur un
-espace probabilisé $(\Omega,\mathcal{A},P)$ à valeurs dans  $\{x_n:n\in\N\}$ telle que : 
+\begin{Theoreme}
+Soit $\{x_n:n\in\N\}$ une famille dÃ©nombrable de rÃ©els deux Ã  deux distincts et $\{p_n : n\in\N:\}$ une famille de rÃ©els positifs telle que $\sum_{n=1}^{\infty} p_n = 1$. Alors il existe 
+une variable alÃ©atoire discrÃ¨te $X$ sur un
+espace probabilisÃ© $(\Omega,\mathcal{A},P)$ Ã  valeurs dans  $\{x_n:n\in\N\}$ telle que : 
 $$ \forall n \in \N:\quad  P( X = x_n ) = p_n.$$
-\end{Th}
+\end{Theoreme}
 
-\subsection{Vecteurs aléatoires}
-\begin{Df}[Loi conjointe]
-Soit $X,Y$ deux variables aléatoires réelles discrètes définies sur $(\Omega,\mathcal{A},P)$.\\
-On note  $(X,Y)$ le \defi{couple de variables aléatoires} prenant ses valeurs dans $\R^2$.\\
-La \defi{loi conjointe} du couple $(X,Y)$ est déterminé par  :
+\subsection{Vecteurs alÃ©atoires}
+\begin{Definition}[Loi conjointe]
+Soit $X,Y$ deux variables alÃ©atoires rÃ©elles discrÃ¨tes dÃ©finies sur $(\Omega,\mathcal{A},P)$.\\
+On note  $(X,Y)$ le \defi{couple de variables alÃ©atoires} prenant ses valeurs dans $\R^2$.\\
+La \defi{loi conjointe} du couple $(X,Y)$ est dÃ©terminÃ© par  :
 \begin{enumerate}
 \item $X(\Omega)\times Y(\Omega)=\{x_i:i\in \N\}\times \{y_j:j\in \N\} $, les valeurs prises par le couple
 \item $\forall (i,j)\in \N\times \N:\quad P(X=x_i\cap Y=y_j)$,
 \end{enumerate}
 On note $p_{i,j}=P(X=x_i\cap Y=y_j)$.\\
-Les événements $((X=x_i)\cap (y=y_j))_{\forall (i,j)\in \N\times \N}$ forment un système complet d'événements de $\Omega$. En particulier, on a : 
+Les Ã©vÃ©nements $((X=x_i)\cap (y=y_j))_{\forall (i,j)\in \N\times \N}$ forment un systÃ¨me complet d'Ã©vÃ©nements de $\Omega$. En particulier, on a : 
 $$\sum_{i=1}^{+\infty} \sum_{j=1}^{+\infty}P(X=x_i\cap Y=y_j)=\sum_{i=1}^{+\infty} \sum_{j=1}^{+\infty}p_{i,j}=1.$$ 
-\end{Df}
-\begin{Df}[Lois marginales]
-Soit $X,Y$ deux variables aléatoires réelles définies sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
-La loi de $X$ appelé \defi{première loi marginale} et la loi de $Y$ \defi{second loi marginale} du couple.
-\end{Df}
-\begin{Prop}[Relations]
-Soit $X,Y$ deux variables aléatoires réelles définies sur $(\Omega,\mathcal{A},P)$. On a :
+\end{Definition}
+\begin{Definition}[Lois marginales]
+Soit $X,Y$ deux variables alÃ©atoires rÃ©elles dÃ©finies sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
+La loi de $X$ appelÃ© \defi{premiÃ¨re loi marginale} et la loi de $Y$ \defi{second loi marginale} du couple.
+\end{Definition}
+\begin{Proposition}[Relations]
+Soit $X,Y$ deux variables alÃ©atoires rÃ©elles dÃ©finies sur $(\Omega,\mathcal{A},P)$. On a :
 $$\forall i\in \N: \quad P(X=x_i)=\sum_{j=1}^{+\infty}P\left((X=x_i)\cap (Y=y_j)\right)$$
 et 
 $$\forall j\in \N: \quad P(Y=y_j)=\sum_{i=1}^{+\infty }P((X=x_i)\cap (Y=y_j)).$$ 
-\end{Prop}
-\begin{Ex}[Deux piles]
-Dans une succession de piles ou faces pour laquelle la probabilité d'obtenir pile est $p \in ]0,1[$ et d'obtenir
+\end{Proposition}
+\begin{Exemple}[Deux piles]
+Dans une succession de piles ou faces pour laquelle la probabilitÃ© d'obtenir pile est $p \in ]0,1[$ et d'obtenir
 face est $q = 1 - p$, on note $X$ le rang d'apparition du premier pile et $Y$ celui du second. La loi
 conjointe de $(X ,Y )$ est : 
 \begin{itemize}
 \item si $j>i>1, \quad P(X=i,Y=j)\overbrace{=}^{\overbrace{F\dots F}^{i-1}P\overbrace{F\dots F}^{j-i-1}P}(1-p)^{i-1}p(1-p)^{j-i-1}p=(1-p)^{j-2}p^2,$
 \item sinon  $P(X=i,Y=j)=0$.
 \end{itemize}
-\end{Ex}
+\end{Exemple}
 
 %% -----------------------------------------------------------------------------
-\subsection{Indépendance et lois conditionnelles}
-\begin{Df}[Lois conditionnelles]
-Soit $(X,Y)$ un couple de variables aléatoires sur $(\Omega,\mathcal{A},P)$.\\
+\subsection{IndÃ©pendance et lois conditionnelles}
+\begin{Definition}[Lois conditionnelles]
+Soit $(X,Y)$ un couple de variables alÃ©atoires sur $(\Omega,\mathcal{A},P)$.\\
 \begin{enumerate}
-\item On appelle \defi{loi conditionnelle} de $X$ sachant $(Y = y_j )$ pour $P(Y = y_j )\neq 0$, la probabilité définie par  :
+\item On appelle \defi{loi conditionnelle} de $X$ sachant $(Y = y_j )$ pour $P(Y = y_j )\neq 0$, la probabilitÃ© dÃ©finie par  :
 $$\forall i\in \N:\quad  P_{Y=y_j}(X=x_i)=\frac{P(X=x_i\cap Y=y_j) } {P(Y=y_i)}$$ 
-\item On appelle \defi{loi conditionnelle} de $Y$ sachant $(X = x_i )$ pour $P(X = x_i )\neq 0$, la probabilité définie par  :
+\item On appelle \defi{loi conditionnelle} de $Y$ sachant $(X = x_i )$ pour $P(X = x_i )\neq 0$, la probabilitÃ© dÃ©finie par  :
 $$\forall j\in \N:\quad  P_{X=x_i}(Y=y_j)=\frac{P(X=x_i\cap Y=y_j) } {P(X=x_i)}$$ 
 \end{enumerate}
-\end{Df}
-\begin{NB}
-Les lois marginales et les lois conditionnelles déterminent la loi conjointe :
+\end{Definition}
+\begin{Remarque}
+Les lois marginales et les lois conditionnelles dÃ©terminent la loi conjointe :
 $$\forall (i,j)\in \N\times \N:\quad P(X=x_i\cap Y=y_j)=P_{X=x_i}(Y=y_j)P(X=x_i)$$
 $$\forall (i,j)\in \N\times \N:\quad P(X=x_i\cap Y=y_j)=P_{Y=y_j}(X=x_i)P(Y=y_j)$$
-\end{NB}
-\begin{Df}[Indépendance]
-Soit $(X,Y)$ un couple de variables aléatoires sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
-On dit que $X$ et $Y$ sont \defi{indépendantes} si 
+\end{Remarque}
+\begin{Definition}[IndÃ©pendance]
+Soit $(X,Y)$ un couple de variables alÃ©atoires sur $(\Omega,\mathcal{P}(\Omega),P)$.\\
+On dit que $X$ et $Y$ sont \defi{indÃ©pendantes} si 
 $$ \forall (i,j)\in \N\times \N:\quad P(X=x_i\cap Y=y_j):\quad P( (X=x_i)\cap (Y=y_j) ) = P(X=x_i) P(Y=y_j).$$
-\end{Df}
-\begin{NB} Dans la modélisation d'une expérience aléatoire, l'hypothèse d'indépendance des variables aléatoires est souvent une donnée de l'expérience et 
-non pas une propriété à vérifier. Par exemple, la modélisation de l'expérience du jeter de deux dés serait :
+\end{Definition}
+\begin{Remarque} Dans la modÃ©lisation d'une expÃ©rience alÃ©atoire, l'hypothÃ¨se d'indÃ©pendance des variables alÃ©atoires est souvent une donnÃ©e de l'expÃ©rience et 
+non pas une propriÃ©tÃ© Ã  vÃ©rifier. Par exemple, la modÃ©lisation de l'expÃ©rience du jeter de deux dÃ©s serait :
 \begin{itemize}
-\item $X_1$,  la variable aléatoire représentant le chiffre du premier dé,
-\item $X_2$, la variable aléatoire représentant le chiffre du second dé,
-\item $X_1$ et $X_2$, supposées indépendantes,
-\item $S=X_1+X_2$, la variable aléatoire représentant la somme des deux dés.
+\item $X_1$,  la variable alÃ©atoire reprÃ©sentant le chiffre du premier dÃ©,
+\item $X_2$, la variable alÃ©atoire reprÃ©sentant le chiffre du second dÃ©,
+\item $X_1$ et $X_2$, supposÃ©es indÃ©pendantes,
+\item $S=X_1+X_2$, la variable alÃ©atoire reprÃ©sentant la somme des deux dÃ©s.
 \end{itemize}
-\end{NB}
+\end{Remarque}
 
-\begin{Th}
-Soit $(X,Y)$ un couple de variables aléatoires sur $(\Omega,\mathcal{A},P)$.\\
-Si $X$ et $Y$ sont indépendantes, il en va de même pour les variables aléatoires $f(X)$ et $g(Y)$
-où $f:\R\to \R$ et $g:\R\to \R $ sont deux applications quelconques.
-\end{Th}
+\begin{Theoreme}
+Soit $(X,Y)$ un couple de variables alÃ©atoires sur $(\Omega,\mathcal{A},P)$.\\
+Si $X$ et $Y$ sont indÃ©pendantes, il en va de mÃªme pour les variables alÃ©atoires $f(X)$ et $g(Y)$
+oÃ¹ $f:\R\to \R$ et $g:\R\to \R $ sont deux applications quelconques.
+\end{Theoreme}
 
-\subsection{Fonction de répartition}
-\begin{Df}[Fonction de répartition]
-Soit $X$ une variable aléatoire discrète sur un espace probabilisé $(\Omega,\mathcal{A},P)$.\\ 
+\subsection{Fonction de rÃ©partition}
+\begin{Definition}[Fonction de rÃ©partition]
+Soit $X$ une variable alÃ©atoire discrÃ¨te sur un espace probabilisÃ© $(\Omega,\mathcal{A},P)$.\\ 
 On appelle fonction de
-répartition de $X$ et on note $F_X$ l'application :
+rÃ©partition de $X$ et on note $F_X$ l'application :
 \[ \Fonction{F_X}{\R}{\R}{x}{P(X\leq x)}.\]
-\end{Df}
+\end{Definition}
 
 
-\begin{Df}[Propriétés de la fonction de répartition]
-Soit $X$ une variable aléatoire discrète sur un espace probabilisé $(\Omega,\mathcal{A},P)$.\\ 
+\begin{Definition}[PropriÃ©tÃ©s de la fonction de rÃ©partition]
+Soit $X$ une variable alÃ©atoire discrÃ¨te sur un espace probabilisÃ© $(\Omega,\mathcal{A},P)$.\\ 
 \begin{enumerate}
 \item L'application $F_X$ est croissante.
 \item $\lim\limits_{x\to-\infty}F_X(x)=0$.
 \item $\lim\limits_{x\to+\infty}F_X(x)=1$.
 \end{enumerate}
-\end{Df}
+\end{Definition}
 
-\begin{Th}
-La loi de probabilité d'une variable aléatoire discrète réelle est caractérisée par sa fonction de répartition. C'est à dire si deux variables aléatoires réelles ont même fonction de répartition, alors elles ont même loi (et réciproquement).
-\end{Th}
-\subsection{Espérance}
-Pour donner du sens à l'espérance $\sum_{x\in X(\Omega)}x P(X = x )$ dans le cas d'une variable discrète, nous sommes confrontés à
-deux difficultés :
+\begin{Theoreme}
+La loi de probabilitÃ© d'une variable alÃ©atoire discrÃ¨te rÃ©elle est caractÃ©risÃ©e par sa fonction de rÃ©partition. C'est Ã  dire si deux variables alÃ©atoires rÃ©elles ont mÃªme fonction de rÃ©partition, alors elles ont mÃªme loi (et rÃ©ciproquement).
+\end{Theoreme}
+\subsection{EspÃ©rance}
+Pour donner du sens Ã  l'espÃ©rance $\sum_{x\in X(\Omega)}x P(X = x )$ dans le cas d'une variable discrÃ¨te, nous sommes confrontÃ©s Ã 
+deux difficultÃ©s :
 \begin{enumerate}
-\item  $X(\Omega)$ étant au plus dénombrable, on peut l'écrire sous la forme $\{x_n | n \in \N\}$. La série numérique $\sum x_n P(X = x_n )$ converge-t-elle ?
-\item La somme ne dépend-elle pas du choix de la bijection entre $X(\Omega)$ et $\N$, autrement dit de l'ordre de
+\item  $X(\Omega)$ Ã©tant au plus dÃ©nombrable, on peut l'Ã©crire sous la forme $\{x_n | n \in \N\}$. La sÃ©rie numÃ©rique $\sum x_n P(X = x_n )$ converge-t-elle ?
+\item La somme ne dÃ©pend-elle pas du choix de la bijection entre $X(\Omega)$ et $\N$, autrement dit de l'ordre de
 sommation ?
 \end{enumerate}
-La réponse aux deux questions est oui, du moment que la série est supposée absolument convergente.
-\begin{Df}[Espérance mathématique]
-Soit $X$ une variable aléatoire discrète sur l'espace probabilisé $(\Omega,\mathcal{A},P)$. 
-$X$ est dite d'espérance finie si la série $\sum x_n P(X = x_n )$ converge absolument.\\
-Dans ce cas, on appelle \defi{espérance} de $X$ et on note $E(X )$ le réel :
+La rÃ©ponse aux deux questions est oui, du moment que la sÃ©rie est supposÃ©e absolument convergente.
+\begin{Definition}[EspÃ©rance mathÃ©matique]
+Soit $X$ une variable alÃ©atoire discrÃ¨te sur l'espace probabilisÃ© $(\Omega,\mathcal{A},P)$. 
+$X$ est dite d'espÃ©rance finie si la sÃ©rie $\sum x_n P(X = x_n )$ converge absolument.\\
+Dans ce cas, on appelle \defi{espÃ©rance} de $X$ et on note $E(X )$ le rÃ©el :
 $$E(X ) =\sum_{n=0}^{+\infty} x_n P(X = x_n )$$
-\end{Df}
-\begin{Ex}[Loi géométrique]
-Soit $X$ une variable aléatoire suivant la loi $$\forall n\in \N^*:\quad  P(X=n)=(1-p)^{n-1}p.$$
-La loi est bien définie car $$\sum\limits_{n=1}^{\infty}P(X=n)=\sum\limits_{n=1}^{\infty}(1-p)^{n-1}p=p\sum\limits_{n=1}^{\infty}(1-p)^{n-1}\overbrace{=}^{\text{série géométrique}}p\frac{1}{1-(1-p)}=1.$$ 
-Montrons que la série géométrique  $\sum n P(X = n )$ converge absolument. La série à termes positifs $\sum\limits_{n=1}^{\infty}nP(X=n)=\sum\limits_{n=1}^{\infty}n(1-p)^{n-1}p$ converge par règle de d'Alembert. L'espérance est donc bien définie et est égale à:
-$$\sum\limits_{n=1}^{\infty}nP(X=n)=\sum\limits_{n=1}^{\infty}n(1-p)^{n-1}p=p\sum\limits_{n=1}^{\infty}n(1-p)^{n-1}\overbrace{=}^{\text{dérivée série géométrique}}p\frac{1}{(1-(1-p))^2}=\frac{1}{p}.$$
-\end{Ex}
-\begin{Th}
-Soit $X$ et $Y$ deux variables aléatoires indépendantes.\\
+\end{Definition}
+\begin{Exemple}[Loi gÃ©omÃ©trique]
+Soit $X$ une variable alÃ©atoire suivant la loi $$\forall n\in \N^*:\quad  P(X=n)=(1-p)^{n-1}p.$$
+La loi est bien dÃ©finie car $$\sum\limits_{n=1}^{\infty}P(X=n)=\sum\limits_{n=1}^{\infty}(1-p)^{n-1}p=p\sum\limits_{n=1}^{\infty}(1-p)^{n-1}\overbrace{=}^{\text{sÃ©rie gÃ©omÃ©trique}}p\frac{1}{1-(1-p)}=1.$$ 
+Montrons que la sÃ©rie gÃ©omÃ©trique  $\sum n P(X = n )$ converge absolument. La sÃ©rie Ã  termes positifs $\sum\limits_{n=1}^{\infty}nP(X=n)=\sum\limits_{n=1}^{\infty}n(1-p)^{n-1}p$ converge par rÃ¨gle de d'Alembert. L'espÃ©rance est donc bien dÃ©finie et est Ã©gale Ã :
+$$\sum\limits_{n=1}^{\infty}nP(X=n)=\sum\limits_{n=1}^{\infty}n(1-p)^{n-1}p=p\sum\limits_{n=1}^{\infty}n(1-p)^{n-1}\overbrace{=}^{\text{dÃ©rivÃ©e sÃ©rie gÃ©omÃ©trique}}p\frac{1}{(1-(1-p))^2}=\frac{1}{p}.$$
+\end{Exemple}
+\begin{Theoreme}
+Soit $X$ et $Y$ deux variables alÃ©atoires indÃ©pendantes.\\
 Alors \[ E(XY) = E(X) E(Y). \]
-\end{Th}
-\begin{Th}[Formule de transfert]
-Soit $X$ est une variable aléatoire réelle et $f:\R\to \R$.\\
-Alors $f(X)$ est d'espérance finie si et seulement si $\sum f(x_n)P(X=x_n)$ converge absolument. Dans ce cas :
+\end{Theoreme}
+\begin{Theoreme}[Formule de transfert]
+Soit $X$ est une variable alÃ©atoire rÃ©elle et $f:\R\to \R$.\\
+Alors $f(X)$ est d'espÃ©rance finie si et seulement si $\sum f(x_n)P(X=x_n)$ converge absolument. Dans ce cas :
 
 \[ E(f(X)) =  \sum_{n=0}^{\infty}  f(x_n) P(X=x_n). \]
-\end{Th}
+\end{Theoreme}
 
 
-\begin{Prop}[propriétés de l'espérance]
-Soit $X$ et $Y$ deux variables aléatoires réelles et $(a,b)\in\R^2$.
+\begin{Proposition}[propriÃ©tÃ©s de l'espÃ©rance]
+Soit $X$ et $Y$ deux variables alÃ©atoires rÃ©elles et $(a,b)\in\R^2$.
 \begin{itemize}
 \item
   $E(a) = a$.
@@ -420,71 +357,71 @@ Soit $X$ et $Y$ deux variables aléatoires réelles et $(a,b)\in\R^2$.
 \item
   Si $P(X\leq Y)=1$, alors $E(X)\leq E(Y)$.
 \end{itemize}
-\end{Prop}
+\end{Proposition}
 
-\begin{Prop}
-Soit $X$ une variable aléatoire à valeurs entières. Si $X$ admet une espérance finie, alors :
+\begin{Proposition}
+Soit $X$ une variable alÃ©atoire Ã  valeurs entiÃ¨res. Si $X$ admet une espÃ©rance finie, alors :
 $$E(X ) =\sum_{n=0}^{\infty}  P(X\geq n)$$
-\end{Prop}
+\end{Proposition}
 \subsection{Variance}
-\begin{Df}[Moment d'ordre p]
-Soit $X$ une variable aléatoire discrète et $p \in \N^*$. Si $X^p$
- admet une espérance finie, alors on appelle
-\defi{moment d'ordre p} de $X$ le réel $E(X^p).$
-\end{Df}
-\begin{Df}
-Soit $X$ une variable aléatoire réelle discrète admettant un moment
-d'ordre 2. Alors $(X -E(X ))^2$ est d'espérance finie. On appelle \defi{variance} de $X$ et on note $V(X )$ le réel
+\begin{Definition}[Moment d'ordre p]
+Soit $X$ une variable alÃ©atoire discrÃ¨te et $p \in \N^*$. Si $X^p$
+ admet une espÃ©rance finie, alors on appelle
+\defi{moment d'ordre p} de $X$ le rÃ©el $E(X^p).$
+\end{Definition}
+\begin{Definition}
+Soit $X$ une variable alÃ©atoire rÃ©elle discrÃ¨te admettant un moment
+d'ordre 2. Alors $(X -E(X ))^2$ est d'espÃ©rance finie. On appelle \defi{variance} de $X$ et on note $V(X )$ le rÃ©el
 positif :
 $$V(X ) = E((X - E(X ))^2)$$
-On appelle \defi{écart type} de $X$ et on note $\sigma(X )$ le réel $\sigma(X ) = \sqrt{V(X )}$.
-\end{Df}
-\begin{Df}[Covariance de deux variables aléatoires]
+On appelle \defi{Ã©cart type} de $X$ et on note $\sigma(X )$ le rÃ©el $\sigma(X ) = \sqrt{V(X )}$.
+\end{Definition}
+\begin{Definition}[Covariance de deux variables alÃ©atoires]
 
-Soit $X$ et $Y$ deux variables aléatoires réelles.
+Soit $X$ et $Y$ deux variables alÃ©atoires rÃ©elles.
 Leur \defi{covariance} est $E( (X-E(X)) (Y-E(Y)) )$ et on la note $\mathrm{Cov}(X,Y)$.
-\end{Df}
-\begin{Prop}[Propriétés]
+\end{Definition}
+\begin{Proposition}[PropriÃ©tÃ©s]
 
-Soit $X$ et $Y$ deux variables aléatoires réelles.
+Soit $X$ et $Y$ deux variables alÃ©atoires rÃ©elles.
 \begin{itemize}
 \item
   $V(aX+b) = a^2V(X)$.
 \item
-  Si $X$ et $Y$ sont indépendantes, alors $V(X+Y) =V(X)+V(Y)$.
+  Si $X$ et $Y$ sont indÃ©pendantes, alors $V(X+Y) =V(X)+V(Y)$.
 \item
   $Var(X+Y) = Var(X) + Var(Y) + 2\mathrm{Cov}(X,Y)$.
 \end{itemize}
-\end{Prop}
+\end{Proposition}
 
-\begin{Df}[Corrélation]
+\begin{Definition}[CorrÃ©lation]
 
-Soit $X$ et $Y$ deux variables aléatoires réelles de variance non nulles.
-Leur \defi{coefficient de corrélation} est
+Soit $X$ et $Y$ deux variables alÃ©atoires rÃ©elles de variance non nulles.
+Leur \defi{coefficient de corrÃ©lation} est
 \[ \rho(X,Y) = \frac{\mathrm{Cov}(X,Y)}{\sigma(X)\sigma(Y)} \]
-\end{Df}
+\end{Definition}
 
 
-\begin{Prop}[Propriétés]
+\begin{Proposition}[PropriÃ©tÃ©s]
 
-Soit $X$ et $Y$ deux variables aléatoires réelles de variance non nulles.
+Soit $X$ et $Y$ deux variables alÃ©atoires rÃ©elles de variance non nulles.
 \begin{itemize}
 \item
   $\rho(X,Y) \in [-1,1]$
 \item
-  $\rho(X,Y) = ±1$ si et seulement si il existe deux réels $a$ et $b$ tels que l'événement $(Y=aX+b)$ soit certain.
+  $\rho(X,Y) = Â±1$ si et seulement si il existe deux rÃ©els $a$ et $b$ tels que l'Ã©vÃ©nement $(Y=aX+b)$ soit certain.
 \item
-  Si $X$ et $Y$ sont indépendantes, alors $\rho(X,Y) = 0$. On dit qu'elles sont décorrélées.
-  La réciproque est fausse.
+  Si $X$ et $Y$ sont indÃ©pendantes, alors $\rho(X,Y) = 0$. On dit qu'elles sont dÃ©corrÃ©lÃ©es.
+  La rÃ©ciproque est fausse.
 \end{itemize}
-\end{Prop}
+\end{Proposition}
 
 %% -----------------------------------------------------------------------------
 \subsection{Lois usuelles}
 
-\begin{Df}[Loi géométrique]
+\begin{Definition}[Loi gÃ©omÃ©trique]
 
-Une variable aléatoire réelle $X$ suit la \defi{loi géométrique} de paramètre $p\in]0,1[$
+Une variable alÃ©atoire rÃ©elle $X$ suit la \defi{loi gÃ©omÃ©trique} de paramÃ¨tre $p\in]0,1[$
 si 
 \begin{enumerate}
 \item $X(\Omega)=\N^*$,
@@ -492,10 +429,10 @@ si
 \end{enumerate} 
 On note $X \hookrightarrow \mathcal{G}(p)$.\\
 On a : $E(X)=\frac{1}{p}$ et $V(X)=\frac{1-p}{p^2}$.
-\end{Df}
-Une loi géométrique apparaît lorsque l'on s'intéresse à une succession d'épreuves de Bernoulli indépendantes jusqu'à obtenir un premier succès. On parle alors de temps d'attente du premier succès.
-\begin{Df}[Loi de Poisson]
-Une variable aléatoire réelle $X$ suit la \defi{loi de Poisson} de paramètre $\lambda$
+\end{Definition}
+Une loi gÃ©omÃ©trique apparaÃ®t lorsque l'on s'intÃ©resse Ã  une succession d'Ã©preuves de Bernoulli indÃ©pendantes jusqu'Ã  obtenir un premier succÃ¨s. On parle alors de temps d'attente du premier succÃ¨s.
+\begin{Definition}[Loi de Poisson]
+Une variable alÃ©atoire rÃ©elle $X$ suit la \defi{loi de Poisson} de paramÃ¨tre $\lambda$
 si 
 \begin{enumerate}
 \item $X(\Omega)=\N$,
@@ -503,39 +440,39 @@ si
 \end{enumerate} 
 On note $X \hookrightarrow  \mathcal{P}(\lambda)$.\\
 On a : $E(X)=\lambda$ et $V(X)=\lambda$.
-\end{Df}
-Une loi géométrique apparaît lorsque l'on s'intéresse à des événements rares comme les suicides d'enfants, les arrivées de bateaux dans un port ou les accidents dus aux coups de pied de cheval dans les armée.
-\subsection{Fonction génératrice}
+\end{Definition}
+Une loi gÃ©omÃ©trique apparaÃ®t lorsque l'on s'intÃ©resse Ã  des Ã©vÃ©nements rares comme les suicides d'enfants, les arrivÃ©es de bateaux dans un port ou les accidents dus aux coups de pied de cheval dans les armÃ©e.
+\subsection{Fonction gÃ©nÃ©ratrice}
 Soit $X \hookrightarrow \mathcal{B}(n, p)$ une v.a. binomiale ; on a $P(X = k) =\begin{pmatrix}n\\k\end{pmatrix}p^k(1-p)^{n-k}$. On remarque que
-les nombres $P(X = k)$ sont précisément les coefficients du polynôme (de la variable s) suivant :
+les nombres $P(X = k)$ sont prÃ©cisÃ©ment les coefficients du polynÃ´me (de la variable s) suivant :
 $$G_X (s) := ((1 - p) + ps^n )=\sum_{k=0}^n p^k(1 - p)^{n-k} s^k = \sum_{k=0}^n s^k P(X = k) = E(s^X).$$
-Cette dernière expression, $E(s^X)$, se prête à la généralisation :
-\begin{Df}[Fonction génératrice]
-Soit $X$ une variable aléatoire à valeurs entières. On appelle fonction génératrice des probabilités de $X$, 
-noté $G_X$ , la fonction :
+Cette derniÃ¨re expression, $E(s^X)$, se prÃªte Ã  la gÃ©nÃ©ralisation :
+\begin{Definition}[Fonction gÃ©nÃ©ratrice]
+Soit $X$ une variable alÃ©atoire Ã  valeurs entiÃ¨res. On appelle fonction gÃ©nÃ©ratrice des probabilitÃ©s de $X$, 
+notÃ© $G_X$ , la fonction :
 $$ G_X: s \to E(s^X ) = \sum_{n=0}^{+\infty} P(X = n) s^n$$.
 
-On appelle série génératrice la série entière associée. On rappelle que $G_X$ est définie sur un intervalle de
-la forme $] - R,R[, ] - R,R], [-R,R[$ ou bien $[-R,R]$ où $R$ est le rayon de convergence de la série entière de
+On appelle sÃ©rie gÃ©nÃ©ratrice la sÃ©rie entiÃ¨re associÃ©e. On rappelle que $G_X$ est dÃ©finie sur un intervalle de
+la forme $] - R,R[, ] - R,R], [-R,R[$ ou bien $[-R,R]$ oÃ¹ $R$ est le rayon de convergence de la sÃ©rie entiÃ¨re de
 coefficients $P(X = n)$.
-\end{Df}
-\begin{NB}
-Comme $\sum_{n=0}^{+\infty} P(X = n) =1$, le rayon de convergence de la série génératrice est supérieur ou égale à 1.\\
-Dans le cas où la variable aléatoire est finie, la fonction génératrice est polynomiale et $R = +\infty$.
-\end{NB}
-Comme la fonction $G_X$ est la somme d'une série entière, elle est de classe $C^{\infty}$ sur l'intervalle ouvert $]-R,R[$ et on peut dériver terme à terme la somme de la série. Par unicité du développement en série entière, $G_X$ est la somme de sa
-série de Taylor donc : 
+\end{Definition}
+\begin{Remarque}
+Comme $\sum_{n=0}^{+\infty} P(X = n) =1$, le rayon de convergence de la sÃ©rie gÃ©nÃ©ratrice est supÃ©rieur ou Ã©gale Ã  1.\\
+Dans le cas oÃ¹ la variable alÃ©atoire est finie, la fonction gÃ©nÃ©ratrice est polynomiale et $R = +\infty$.
+\end{Remarque}
+Comme la fonction $G_X$ est la somme d'une sÃ©rie entiÃ¨re, elle est de classe $C^{\infty}$ sur l'intervalle ouvert $]-R,R[$ et on peut dÃ©river terme Ã  terme la somme de la sÃ©rie. Par unicitÃ© du dÃ©veloppement en sÃ©rie entiÃ¨re, $G_X$ est la somme de sa
+sÃ©rie de Taylor donc : 
 $$ \forall n \in  \N: \quad  P(X = n) = \frac{G_X^{(n)}(0)}{n!}$$
-La connaissance de $G_X$ nous permet donc de retrouver la loi de $X$. On dit alors que la loi de $X$ est caractérisée par sa série génératrice. Il sera dans certains
-cas intéressant de passer par la fonction génératrice
-afin de déterminer la loi de probabilité d'une variable
-donnée.\\
-C'est notamment le cas pour la somme de deux variables aléatoires indépendantes.
-\begin{Th}[Fonction génératrice de la somme de deux variables indépendantes]
-Soit $X$ et $Y$ deux variables aléatoires définies sur un espace probabilisé $(\Omega ,\mathcal{A} ,P)$ et à valeurs dans $\N$ avec $G_X$ et $G_Y$ leurs fonctions génératrices de rayon de convergence respectifs $R_X$ et $R_Y$.\\
-Si X et Y sont indépendantes, le rayon de convergence de la  fonction génératrice $G_{X +Y}$ est $R=\min(R_X ,R_Y )$ et :
+La connaissance de $G_X$ nous permet donc de retrouver la loi de $X$. On dit alors que la loi de $X$ est caractÃ©risÃ©e par sa sÃ©rie gÃ©nÃ©ratrice. Il sera dans certains
+cas intÃ©ressant de passer par la fonction gÃ©nÃ©ratrice
+afin de dÃ©terminer la loi de probabilitÃ© d'une variable
+donnÃ©e.\\
+C'est notamment le cas pour la somme de deux variables alÃ©atoires indÃ©pendantes.
+\begin{Theoreme}[Fonction gÃ©nÃ©ratrice de la somme de deux variables indÃ©pendantes]
+Soit $X$ et $Y$ deux variables alÃ©atoires dÃ©finies sur un espace probabilisÃ© $(\Omega ,\mathcal{A} ,P)$ et Ã  valeurs dans $\N$ avec $G_X$ et $G_Y$ leurs fonctions gÃ©nÃ©ratrices de rayon de convergence respectifs $R_X$ et $R_Y$.\\
+Si X et Y sont indÃ©pendantes, le rayon de convergence de la  fonction gÃ©nÃ©ratrice $G_{X +Y}$ est $R=\min(R_X ,R_Y )$ et :
 $$\forall t\in]-R,R[:\quad G_{X +Y} (t ) = E[t^{X +Y}]=  E[t^{X}t^{Y}]=E[t^{X}]E[t^{Y}]= G_X (t )G_Y (t )$$
-\end{Th}
+\end{Theoreme}
 %TODO le point technique est le rayon de convergence: utiliser le produit de Cauchy
 \begin{center}
 
@@ -548,90 +485,90 @@ Binomiale & $\mathcal{B}(n,p)$& $\left((1-p)+pt\right)^n$\\\hline
 && \\
 Uniforme &$\mathcal{U}( \{1,\dots , n\})$& $\frac{1}{n}(1+t+\dots+t^{n})=\frac{1}{n}\frac{1-t^{n+1}}{1-t}$\\\hline
 && \\
-Géométrique &$\mathcal{G}( p)$& $\frac{pt}{1-(1-p)t}$\\\hline
+GÃ©omÃ©trique &$\mathcal{G}( p)$& $\frac{pt}{1-(1-p)t}$\\\hline
 && \\
 Poisson &$\mathcal{P}(\lambda)$& $e^{\lambda(t-1)}$\\\hline
 
 \end{tabular}\\
-Fonction génératrice des lois usuelles
+Fonction gÃ©nÃ©ratrice des lois usuelles
 \end{center}
 
 
 \subsection{Convergence et approximations}
 
-\begin{Prop}[Approximation d'une loi binomiale par une loi de Poisson]
-Soit $(X_n)_{n\in\N}$ une suite de variables aléatoires tel que $X_n\hookrightarrow \mathcal{B}(n,p_n)$ et $\lim\limits_{n\to\infty}np_n=\lambda$.\\
+\begin{Proposition}[Approximation d'une loi binomiale par une loi de Poisson]
+Soit $(X_n)_{n\in\N}$ une suite de variables alÃ©atoires tel que $X_n\hookrightarrow \mathcal{B}(n,p_n)$ et $\lim\limits_{n\to\infty}np_n=\lambda$.\\
 Alors on a :
 $$\forall k \in \N:\quad  \lim\limits_{n\to\infty} P(X_n = k) = e^{-\lambda}\frac{\lambda^k}{k!}.$$
-\end{Prop}
-\begin{proof}
+\end{Proposition}
+\begin{Demonstration}
 Soit $k\in \N$. On a :
-\begin{align*}
+$$\begin{aligned}
 P(X_n = k) &= \begin{pmatrix}n \\ k \end{pmatrix} (p_n)^k (1-p_n)^{n-k}\\
 &= \frac{1}{k!} n.(n-1).\dots (n-k+1)(p_n)^k (1-p_n)^{n-k} \\
 &= \frac{1}{k!} 1.(1-1/n).\dots (1-(k+1)/n)(p_n/n)^k (1-p_n)^{n-k} \\
-\end{align*}
+\end{aligned}$$
 D'une part  $\overbrace{1.(1-1/n).\dots (1-(k+1)/n)}^{k \text{ facteurs fixes}}\tend[n\to+\infty]1$, d'autre part $(p_n/n)^k\tend[n\to+\infty] \lambda^k$ et enfin $(1-p_n)^{n-k}=e^{(n-k)\ln(1-p_n)}\tend[n\to+\infty] e^{-\lambda}$ car $(n-k)\ln(1-p_n)\equivalent[n\to+\infty] -np_n$. Finalement
 $$\lim\limits_{n\to\infty} P(X_n = k) = e^{-\lambda}\frac{\lambda^k}{k!}.$$
-\end{proof}
+\end{Demonstration}
 %TODO DEMO
 
 %TODO loi faible des grands nombres
 % Rajouter 
-En pratique, si $X$ est une variable aléatoire suivant la loi binomiale $\mathcal{B}(n,p)$ avec $n\geq 30$, $p\leq 0,10$ et $np\geq 15$, on peut approximer la loi de $X$ par la loi de Poisson de paramètre $np$.\\
-Ce théorème  justifie le fait que la loi de Poisson est utilisée comme modèle de certaines expériences aléatoires (nombre de clients entrant dans un magasin, nombre de coquilles dans une page de journal,...).
+En pratique, si $X$ est une variable alÃ©atoire suivant la loi binomiale $\mathcal{B}(n,p)$ avec $n\geq 30$, $p\leq 0,10$ et $np\geq 15$, on peut approximer la loi de $X$ par la loi de Poisson de paramÃ¨tre $np$.\\
+Ce thÃ©orÃ¨me  justifie le fait que la loi de Poisson est utilisÃ©e comme modÃ¨le de certaines expÃ©riences alÃ©atoires (nombre de clients entrant dans un magasin, nombre de coquilles dans une page de journal,...).
 
-\begin{Prop}[Inégalité de Markov]
-Soit $X$ une variable aléatoire réelle positive.\\
+\begin{Proposition}[InÃ©galitÃ© de Markov]
+Soit $X$ une variable alÃ©atoire rÃ©elle positive.\\
 Pour tout $a > 0$, on a :
 \[ P(X\geq a) \leq \frac{E(X)}{a}.\]
-\end{Prop}
-\begin{Prop}[Inégalité de Bienaymé-Tchebychev]
-Soit $X$ une variable aléatoire réelle.
+\end{Proposition}
+\begin{Proposition}[InÃ©galitÃ© de BienaymÃ©-Tchebychev]
+Soit $X$ une variable alÃ©atoire rÃ©elle.
 Pour tout $a>0$, on a
 \[ P( |X-E(X)| \geq a ) \leq \frac{V(X)}{a^2} \]
-\end{Prop}
+\end{Proposition}
 %TODO FAIRE LES DEMOS
-Cette inégalité présente un intérêt théorique en majorant la
-probabilité qu'une variable aléatoire s'écarte de sa moyenne. Nous allons l'utiliser pour prouver la loi faible des grands
+Cette inÃ©galitÃ© prÃ©sente un intÃ©rÃªt thÃ©orique en majorant la
+probabilitÃ© qu'une variable alÃ©atoire s'Ã©carte de sa moyenne. Nous allons l'utiliser pour prouver la loi faible des grands
 nombres.
 
 
 
 
-Lors d'un lancer d'une pièce de monnaie équilibrée, les deux côtés « pile » et « face » apparaissent de façon équiprobable pour des raisons de symétrie : on ne s'attend pas plus à l'un ou à l'autre côté. Cette mesure de l'attente s'appuie souvent sur une considération statistique : on observe que la fréquence des occurrences de chaque côté se rapproche de 1/2. 
+Lors d'un lancer d'une piÃ¨ce de monnaie Ã©quilibrÃ©e, les deux cÃ´tÃ©s Â« pile Â» et Â« face Â» apparaissent de faÃ§on Ã©quiprobable pour des raisons de symÃ©trie : on ne s'attend pas plus Ã  l'un ou Ã  l'autre cÃ´tÃ©. Cette mesure de l'attente s'appuie souvent sur une considÃ©ration statistique : on observe que la frÃ©quence des occurrences de chaque cÃ´tÃ© se rapproche de 1/2. 
 \begin{center}
 \includegraphics[width=8cm]{frequence_lancer.png}
 \end{center}
-Le théorème de la loi des grands nombres permet de justifier ce résultat en interprétant la probabilité comme une fréquence de réalisation.\\
-La modélisation de cette expérience aléatoire est :
+Le thÃ©orÃ¨me de la loi des grands nombres permet de justifier ce rÃ©sultat en interprÃ©tant la probabilitÃ© comme une frÃ©quence de rÃ©alisation.\\
+La modÃ©lisation de cette expÃ©rience alÃ©atoire est :
 \begin{enumerate}
-\item  \textbf{n\up{ième} lancer} :  pour tout $n\in\N^*$,  la variable aléatoire $X_n$, représente le résultat du n\up{ième} lancer. Elle  suit une loi Bernouilli de paramètre $p$ sachant que l'issue 0 représente le pile au n\up{ième} lancer et l'issue 1 le face au n\up{ième} lancer. Elles sont supposées indépendantes.  On a $E(X_n) = (1 - p).0 + p.1  = p.$ 
-\item \textbf{fréquence} : pour tout $n\in\N^*$,  la variable aléatoire $S_n$, représente la moyenne des résultats obtenus au cours des n premiers lancers, soit :
+\item  \impo{n\up{iÃ¨me} lancer} :  pour tout $n\in\N^*$,  la variable alÃ©atoire $X_n$, reprÃ©sente le rÃ©sultat du n\up{iÃ¨me} lancer. Elle  suit une loi Bernouilli de paramÃ¨tre $p$ sachant que l'issue 0 reprÃ©sente le pile au n\up{iÃ¨me} lancer et l'issue 1 le face au n\up{iÃ¨me} lancer. Elles sont supposÃ©es indÃ©pendantes.  On a $E(X_n) = (1 - p).0 + p.1  = p.$ 
+\item \impo{frÃ©quence} : pour tout $n\in\N^*$,  la variable alÃ©atoire $S_n$, reprÃ©sente la moyenne des rÃ©sultats obtenus au cours des n premiers lancers, soit :
 $$ S_n =\frac{X_1+X_2+\dots+X_n}{n}$$ 
 \end{enumerate}
-L'issue, $\omega$, correspondant à une succession de faces existe. Dans ce cas, $X_n(\omega)=1$ pour tout $n\in \N^*$. Donc $1$ est une valeur possible de la variable aléatoire $S_n$. 
-Cependant, le théorème de la loi faible des grands nombres affirme que la probabilité que $S_n$ s'écarte de l'espérance $E(X_n)$ tend vers 0 quand $n$ tend vers l'infini. \\
-La loi faible des grands nombres démontre que la probabilité d'un événement peut être définie comme la fréquence théorique vers laquelle tend la
-fréquence observée de cet événement lorsque le nombre n de répétitions tend vers l'infini.
+L'issue, $\omega$, correspondant Ã  une succession de faces existe. Dans ce cas, $X_n(\omega)=1$ pour tout $n\in \N^*$. Donc $1$ est une valeur possible de la variable alÃ©atoire $S_n$. 
+Cependant, le thÃ©orÃ¨me de la loi faible des grands nombres affirme que la probabilitÃ© que $S_n$ s'Ã©carte de l'espÃ©rance $E(X_n)$ tend vers 0 quand $n$ tend vers l'infini. \\
+La loi faible des grands nombres dÃ©montre que la probabilitÃ© d'un Ã©vÃ©nement peut Ãªtre dÃ©finie comme la frÃ©quence thÃ©orique vers laquelle tend la
+frÃ©quence observÃ©e de cet Ã©vÃ©nement lorsque le nombre n de rÃ©pÃ©titions tend vers l'infini.
 
-\begin{Th}[Loi faible des grands nombres]
-Soit $(X_n)_{n\in\N^*}$ une suite de variables aléatoires discrètes définies sur un espace probabilisé $(\Omega,\mathcal{A} ,P)$. On
-suppose toutes les variables indépendantes et de même loi, admettant une espérance $m$ et un écart
+\begin{Theoreme}[Loi faible des grands nombres]
+Soit $(X_n)_{n\in\N^*}$ une suite de variables alÃ©atoires discrÃ¨tes dÃ©finies sur un espace probabilisÃ© $(\Omega,\mathcal{A} ,P)$. On
+suppose toutes les variables indÃ©pendantes et de mÃªme loi, admettant une espÃ©rance $m$ et un Ã©cart
 type $\sigma$. Posons $S_n =\frac{X_1+X_2+\dots+X_n}{n}.$\\
 Alors 
 $$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon \right )\tend[n\to+\infty]0.$$
-\end{Th}
-\begin{proof}
-D'après l'inégalité de Bienaymé-Tchebychev et par indépendance des variables aléatoires,
+\end{Theoreme}
+\begin{Demonstration}
+D'aprÃ¨s l'inÃ©galitÃ© de BienaymÃ©-Tchebychev et par indÃ©pendance des variables alÃ©atoires,
 $$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon\right)\leq \frac{V(S_n)}{\epsilon^2}=\frac{\frac{V(X_1+X_2+\dots+X_n)}{n^2}}{\epsilon^2}=\frac{\sigma^2}{n\epsilon^2} \tend[n\to+\infty]0.$$
-\end{proof}
-\begin{NB}
-Le TP Python \url{https://github.com/VincentTariel/cours/blob/master/probabilite/simulation_variable_aleatoire_avtivite_python.pdf} permet de vous familiariser avec ce théorème sur des applications.
-\end{NB}
-Rapidement, on tombe sur le problème suivant : combien de
-lancers de pièces (ou combien de personnes doit on
-interroger), pour que le résultat que l'on avance soit correct
-avec grosse probabilité... En d'autres termes, on aimerait connaitre "la vitesse" de
-convergence. C'est l'objet d'un autre cours sur le théorème centrale limite.
+\end{Demonstration}
+\begin{Remarque}
+Le TP Python \url{https://github.com/VincentTariel/cours/blob/master/probabilite/simulation_variable_aleatoire_avtivite_python.pdf} permet de vous familiariser avec ce thÃ©orÃ¨me sur des applications.
+\end{Remarque}
+Rapidement, on tombe sur le problÃ¨me suivant : combien de
+lancers de piÃ¨ces (ou combien de personnes doit on
+interroger), pour que le rÃ©sultat que l'on avance soit correct
+avec grosse probabilitÃ©... En d'autres termes, on aimerait connaitre "la vitesse" de
+convergence. C'est l'objet d'un autre cours sur le thÃ©orÃ¨me centrale limite.
 \end{document}

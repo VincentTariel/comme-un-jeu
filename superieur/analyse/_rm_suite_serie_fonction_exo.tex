@@ -1,0 +1,234 @@
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsfonts,amsmath,amssymb,graphicx}
+\usepackage[francais]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{answers}
+\usepackage{a4wide,commeunjeustyle} 
+\usepackage{multicol}
+%---- Dimensions des marges ---
+\setlength{\paperwidth}{21cm} 
+\setlength{\paperheight}{29.7cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\oddsidemargin}{0cm} 
+\setlength{\topmargin}{-2.5cm}
+\setlength{\headsep}{0.7cm} 
+\setlength{\headheight}{1cm}
+\setlength{\textheight}{25cm} 
+\setlength{\textwidth}{17cm}
+
+
+
+
+%---- Structure Exercice -----
+\newtheorem{Exc}{Exercice}
+\Newassociation{correction}{Soln}{mycor}
+\Newassociation{indication}{Indi}{myind}
+%\newcommand{\precorrection}{~{\bf \footnotesize [Exercice corrig\'e]}}
+%\newcommand{\preindication}{~{\bf \footnotesize [Indication]}}
+\renewcommand{\Solnlabel}[1]{\bf \emph{Correction #1}}
+\renewcommand{\Indilabel}[1]{\bf \emph{Indication #1}}
+
+\def\exo#1{\futurelet\testchar\MaybeOptArgmyexoo}
+\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
+                        \else \let\next\NoOptArgmyexoo \fi \next}
+\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
+\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
+
+\newcommand{\finexo}{\end{Exc}}
+\newcommand{\flag}[1]{}
+
+\newtheorem{question}{Question}
+
+
+
+%---- Style de l'entete -----                     % -> à personnaliser <-
+\setlength{\parindent}{0cm}
+\newcommand{\entete}[1]
+{
+{\noindent
+  \textsf{Feuille d'exercices}            % Université
+}
+\hrule
+\hrule
+\begin{center} 
+\impo{\textsf{\Large 
+     Suites et séries de fonctions     % TITRE
+}}
+\end{center}
+\hrule
+}
+
+
+\begin{document}
+
+%%--- Gestion des corrections ---
+ \Opensolutionfile{mycor}[ficcorex]
+ \Opensolutionfile{myind}[ficind]
+ \entete{\'Enoncés}
+% 
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Domaine de définition]
+Soit $\zeta(x)=\sum_{n=1}^\infty \frac{1}{n^x}$ et $\mu(x)=\sum_{n=1}^\infty \frac{(-1)^n}{n^x}$.\\
+Déterminer le domaine de définition de la fonction $\zeta$, appelé fonction de Rienman et de la fonction $\mu$. 
+% voir h prepa analalyse dans le cours
+\finexo
+%
+%
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Convergence uniforme]
+Soit la suite de fonctions $(f_n)_{n\in\N}$ définie par : 
+$$\Fonction{f_n}{\mathbb{R}^+}{\mathbb{R}}{x}{x^2e^{-nx}}, \quad \forall n \in \mathbb{N}.$$
+Étudier la convergence de cette suite de fonctions. 
+\finexo
+% voir h prepa analalyse dans le cours
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Vrai/Faux]
+Soit $(f_n)_{n\in\N}$ une suite de fonctions qui converge simplement vers une fonction $f$ sur un intervalle $I$. Dire si les assertions suivantes sont vraies ou fausses et le prouver :
+\begin{enumerate}
+\item Si les $f_n$ sont croissantes, alors $f$ aussi.
+\item Si les $f_n$ sont strictement croissantes, alors $f$ aussi.
+\item Si les $f_n$ sont périodiques de période $T$, alors $f$ aussi.
+\item Si les $f_n$ sont continues en $a$, alors $f$ aussi.
+\end{enumerate}
+Reprendre l'exercice en remplaçant la convergence simple par la convergence uniforme.
+\finexo
+%
+%% Exercice 1775
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[\'Etude de convergence simple et uniforme détaillée]
+Pour $x\in\mathbb R$, on pose $f_n(x)=1+x+\dots+x^{n-1}$.
+\begin{enumerate}
+\item \'Etudier la convergence simple de la suite de fonctions $(f_n)_{n\in\N}$. On note $f(x)$ la limite de la suite $(f_n(x))$ lorsque cette limite existe.
+\item On pose, pour $x\in ]-1,1[$, $\varphi_n(x)=f(x)-f_n(x)$. Vérifier que 
+$$\varphi_n(x)=\frac{x^n}{1-x}.$$
+\item Quelle est la limite de $\varphi_n$ en $1$? En déduire que la convergence n'est pas uniforme sur $]-1,1[$. 
+\item Soit $a\in ]0,1[$. Démontrer que $(f_n)_{n\in\N}$ converge uniformément vers $f$ sur $[-a,a]$.
+\end{enumerate}
+\finexo
+%
+% Exercice 1776
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Convergence uniforme sur un intervalle plus petit...]
+On pose, pour $n\geq 1$ et $x\in ]0,1]$, $f_n(x)=nx^n\ln(x)$ et $f_n(0)=0$.
+\begin{enumerate}
+\item Démontrer que $(f_n)_{n\in\N}$ converge simplement sur $[0,1]$ vers une fonction $f$ que l'on précisera. On note ensuite $g=f-f_n$.
+\item \'Etudier les variations de $g$. 
+\item En déduire que la convergence de $(f_n)_{n\in\N}$ vers $f$ n'est pas uniforme sur $[0,1]$.
+\item Soit $a\in ]0,1]$. En remarquant qu'il existe $n_0\in\mathbb N$ tel que $e^{-1/n}\geq a$ pour tout $n\geq n_0$, démontrer que la suite $(f_n)_{n\in\N}$ converge uniformément vers $f$ sur $[0,a]$.
+\end{enumerate}
+\finexo
+
+
+
+
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Avec paramètre]
+Soit $a\geq 0$. On définit la suite de fonctions $(f_n)_{n\in\N}$ sur $[0,1]$ par $f_n(x)=n^a x^n(1-x)$.
+Montrer que la suite $(f_n)_{n\in\N}$ converge simplement vers 0 sur $[0,1]$, mais que la convergence est uniforme si et seulement si
+$a<1.$
+\finexo
+
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Convergence uniforme et fonctions bornées]
+Soit $(f_n)_{n\in\N}$ une suite de fonctions \emph{bornées}, $f_n:\mathbb R\to\mathbb R$.
+On suppose que la suite $(f_n)_{n\in\N}$ converge uniformément vers $f$. Montrer que $f$ est
+bornée. Le résultat persiste-t-il si on suppose uniquement la convergence simple?
+\finexo
+
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Convergence simple et fonctions décroissantes]
+Soit $(f_n)_{n\in\N}$ une suite de fonctions décroissantes définies sur $[0,1]$ telle que $(f_n)_{n\in\N}$ converge simplement vers la fonction nulle. Montrer que la convergence est en fait uniforme.
+\finexo
+
+
+
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Exemples et contre-exemples]
+Pour $x\geq 0$, on pose $u_n(x)=\frac{x}{n^2+x^2}.$
+\begin{enumerate}
+\item Montrer que la série $\sum_{n=1}^{+\infty}u_n$ converge simplement sur $\mathbb R_+$.
+\item  Montrer que la série $\sum_{n=1}^{+\infty}u_n$ converge uniformément sur tout intervalle $[0,A]$,
+avec $A>0$.
+\item Vérifier que, pour tout $n\in\mathbb N$, $\sum_{k=n+1}^{2n}\frac{n}{n^2+k^2}\geq\frac 15$.
+\item En déduire que la série $\sum_{n\geq 1}u_n$ ne converge pas uniformément sur $\mathbb R_+$.
+\item Montrer que la série $\sum_{n=1}^{+\infty}(-1)^n u_n$ converge uniformément sur $\mathbb R_+$.
+\item Montrer que la série $\sum_{n=1}^{+\infty}(-1)^n u_n$ converge normalement sur tout intervalle $[0,A]$,
+avec $A>0$.
+\item Montrer que la série $\sum_{n=1}^{+\infty}(-1)^n u_n$ ne converge pas normalement sur $\mathbb R_+$.
+\end{enumerate}
+\finexo
+
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Série alternée]
+On considère la série de fonctions $S(x)=\sum_{n=1}^{+\infty}\frac{(-1)^n}{x+n}$. 
+\begin{enumerate}
+\item Prouver que $S$ est définie sur $I=]-1,+\infty[$.
+\item Prouver que $S$ est continue sur $I$.
+\item Prouver que $S$ est dérivable sur $I$, calculer sa dérivée et en déduire que $S$ est croissante sur $I$.
+\item Quelle est la limite de $S$ en $-1$? en $+\infty$?
+\end{enumerate}
+\finexo
+
+
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Convergence normale]
+Soit $\zeta(x)=\sum_{n=1}^\infty \frac{1}{n^x}$.\\
+Démontrer que la fonction $zeta$ converge normalement sur tout intervalle $[a,\infty[$ avec $a>1$.\\
+En déduire la continuité de la fonction  $\zeta$ sur $]1,\infty[$.\\
+Donner la limite $\lim\limits_{x\to \infty}\zeta(x)$.
+ \finexo
+ 
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Equivalent Série-Intégrale]
+On considère la série de fonctions $\sum f_n$, où pour tout $n>0$, $\Fonction{f_n}{\mathbb{R}^{+*}}{\mathbb{R}}{x}{\frac{1}{\sh (nx)}}$. 
+\begin{enumerate}
+\item Donner le domaine de définition de la fonction $f(x)=\sum_{n=0}^{\infty} f_n(x)$.
+\item Démontrer que la fonction $f$ est continue sur $]0,+\infty[$.
+\item Donner un équivalent de $0$ de $f$. 
+\end{enumerate}
+
+%page 113 H-prépa analyse
+\finexo
+
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Convergence suite de fonctions]
+On considère la suite de fonctions $(f_n)_{n\in\N}$, où pour tout $n>0$, $\Fonction{f_n}{[0,1]}{\mathbb{R}}{x}{x^n(1-x)^n}$.  
+\begin{enumerate}
+\item Donner le domaine de définition de la fonction $f(x)=\lim_{n\to\infty} f_n(x)$.
+\item Démontrer que la suite de fonctions $f_n$ converge uniformément sur $[0,1]$.
+\end{enumerate}
+\finexo
+
+
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Convergence suite de fonctions]
+On considère la suite de fonctions $\sum f_n$, où pour tout $n>1$, $\Fonction{f_n}{[0,1]}{\mathbb{R}}{x}{\frac{xe^{-nx}}{\ln n}}$.  
+\begin{enumerate}
+\item Donner le domaine de définition de la fonction $f(x)=\sum_{n=2}^\infty f_n(x)$.
+\item Démontrer que la fonction $f$ est continue sur $\mathbb{R}^{+*}$.
+\item Démontrer que la fonction $f$ est continue sur $\mathbb{R}^{+}$.
+\end{enumerate}
+\finexo
+
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Espérance et variance de loi géométrique]
+Soit $X$, une variable aléatoire suivant une loi géométrique de paramètre p, $\mathcal{G}(p)$,c'est à dire  $$\forall k \in \mathbb{N}^*:\mathbb{P}(X=k)=(1-p)^{k-1}p.$$
+\begin{enumerate}
+\item Calculer l'espérance de $X$
+\item Calculer la variance de $X$
+\end{enumerate}
+\finexo
+
+\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Devoir Maison]
+CCP mp 2017 sujet 1 mathématique. Le problème est sur le série trigonométrique. 
+\finexo
+
+
+%--- Fin des exercices ---
+%------------------------------------------------------
+%------------------------------------------------------
+
+%--- Gestion des corrections ---
+% \ \newpage
+% \setcounter{page}{1}
+% \entete{Indications}
+%
+% \Closesolutionfile{myind}
+% \Readsolutionfile{myind}
+
+ \ \newpage
+ \setcounter{page}{1}
+ \entete{Corrections}
+
+ \Closesolutionfile{mycor}
+ \Readsolutionfile{mycor}
+
+\end{document}
+\endinput
+

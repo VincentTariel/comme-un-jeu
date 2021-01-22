@@ -1,22 +1,22 @@
 \documentclass{book}
    
-\usepackage{jlq2eams} 
+\usepackage{commeunjeustyle} 
 
 \begin{document}
+\chapter*{ActivitÃ© de dÃ©couverte de l'algÃ¨bre linÃ©aire}
+L'algÃ¨bre linÃ©aire est un outil essentiel pour toutes les branches des mathÃ©matiques, en particulier lorsqu'il s'agit
+de modÃ©liser puis rÃ©soudre numÃ©riquement des problÃ¨mes issus de divers domaines : des sciences physiques ou
+mÃ©caniques, des sciences du vivant, de la chimie, de l'Ã©conomie, des sciences de l'ingÃ©nieur...\\
+Cette exemple introductif permet de prÃ©senter les \impo{diffÃ©rentes reprÃ©sentations} de l'objet mathÃ©matique systÃ¨me d'Ã©quations linÃ©aires.
 
-L'algèbre linéaire est un outil essentiel pour toutes les branches des mathématiques, en particulier lorsqu'il s'agit
-de modéliser puis résoudre numériquement des problèmes issus de divers domaines : des sciences physiques ou
-mécaniques, des sciences du vivant, de la chimie, de l'économie, des sciences de l'ingénieur...\\
-Cette exemple introductif permet de présenter les \textbf{différentes représentations} de l'objet mathématique système d'équations linéaires.
-
-\begin{Ex}
-Problème : la somme des tailles d'un fils et du père est de 2,5 mètres. La différence de tailles  est de 0.5 mètres.
+\begin{Exemple}
+ProblÃ¨me : la somme des tailles d'un fils et du pÃ¨re est de 2,5 mÃ¨tres. La diffÃ©rence de tailles  est de 0.5 mÃ¨tres.
 Quel est la taille du fils ? \\
-\textbf{Modélisation : }\\  
-Soit l'inconnue $x$ représentant la taille du fils et l'inconnue $y$ représentant la taille du père.\\
+\impo{ModÃ©lisation : }\\  
+Soit l'inconnue $x$ reprÃ©sentant la taille du fils et l'inconnue $y$ reprÃ©sentant la taille du pÃ¨re.\\
 La somme est 2,5 donc $x+y=2,5$.\\
-La différence est 0,5 donc $y-x=0,5$.\\
-Ainsi on cherche $x$ et $y$ vérifiant le système $(S)$  :
+La diffÃ©rence est 0,5 donc $y-x=0,5$.\\
+Ainsi on cherche $x$ et $y$ vÃ©rifiant le systÃ¨me $(S)$  :
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
 \draw[line width=0.3mm, <->,color=red] (0,0) -- node[left] {$x$}(0,1);
@@ -38,44 +38,44 @@ $\Leftrightarrow\quad \begin{cases}
 \end{cases}
 $		
 \end{center}
-\end{Ex}
-\section{Système d'équations}
+\end{Exemple}
+\section{SystÃ¨me d'Ã©quations}
 
-\subsection{Résolution algébrique}
-Pour déterminer l'ensemble des solutions $x$ et $y$ vérifiant ce système, une idée est de découpler par itérations les dépendances entre les inconnues dans les équations par combinaison ou élimination. A chaque itération, ces deux opérations transforment  un système d'équations en un autre équivalent (ayant les mêmes solutions).\\
-L'application à l'exemple introductif est :
+\subsection{RÃ©solution algÃ©brique}
+Pour dÃ©terminer l'ensemble des solutions $x$ et $y$ vÃ©rifiant ce systÃ¨me, une idÃ©e est de dÃ©coupler par itÃ©rations les dÃ©pendances entre les inconnues dans les Ã©quations par combinaison ou Ã©limination. A chaque itÃ©ration, ces deux opÃ©rations transforment  un systÃ¨me d'Ã©quations en un autre Ã©quivalent (ayant les mÃªmes solutions).\\
+L'application Ã  l'exemple introductif est :
 \begin{enumerate}
-\item pour éliminer $x$ de la ligne 2,  on ajoute à la ligne 2 la ligne 1 :
+\item pour Ã©liminer $x$ de la ligne 2,  on ajoute Ã  la ligne 2 la ligne 1 :
 $$\begin{cases}
 x+y&=2,5\\
 2y&=3
 \end{cases}
 $$
-\item pour déterminer $y$, on divise la ligne 2 par 2 : 
+\item pour dÃ©terminer $y$, on divise la ligne 2 par 2 : 
 $$\begin{cases}
 x+y&=2,5\\
 y&=1,5
 \end{cases}
 $$
-\item pour éliminer $y$  de la ligne 2, on soustraie à la ligne 1 la ligne 2 :
+\item pour Ã©liminer $y$  de la ligne 2, on soustraie Ã  la ligne 1 la ligne 2 :
 $$\begin{cases}
 x&=1\\
 y&=1,5
 \end{cases}
 $$
 \end{enumerate}
-Ainsi l'ensemble des solution est l'unique solution $(1 , 1,5 )$ car ce dernier système d'équations est équivalent au premier.\\
-Cette approche sera l'objet du chapitre système d'équations linéaires. 
-\subsection{Résolution géométrique}
-Le système équation :
+Ainsi l'ensemble des solution est l'unique solution $(1 , 1,5 )$ car ce dernier systÃ¨me d'Ã©quations est Ã©quivalent au premier.\\
+Cette approche sera l'objet du chapitre systÃ¨me d'Ã©quations linÃ©aires. 
+\subsection{RÃ©solution gÃ©omÃ©trique}
+Le systÃ¨me Ã©quation :
 $$(S)\quad \begin{cases}
 x+y&=2,5\quad(D_1)\\
 -x+y&=0,5\quad(D_2)
 \end{cases}$$
-est constitué de deux équations de deux droites $D_1$ et $D_2$.\\
-Trois cas se présentent alors :
+est constituÃ© de deux Ã©quations de deux droites $D_1$ et $D_2$.\\
+Trois cas se prÃ©sentent alors :
 \begin{enumerate}
-\item Si les droites $D_1$ et $D_2$ ne sont pas parallèles, alors elle s'intersecte en un unique point et le système $(S)$ a une
+\item Si les droites $D_1$ et $D_2$ ne sont pas parallÃ¨les, alors elle s'intersecte en un unique point et le systÃ¨me $(S)$ a une
 unique solution.
 \begin{center}
 \begin{tikzpicture}[scale=0.5]
@@ -85,7 +85,7 @@ unique solution.
 \draw[-,color=blue] (-2,4.5) -- (6,3)node[anchor=north] {$D_2$};
 \end{tikzpicture}	
 \end{center}
-\item Si les droites $D_1$ et $D_2$  sont parallèles et non confondues, alors elle ne s'intersecte pas et le système $(S)$ n'a pas de solution.
+\item Si les droites $D_1$ et $D_2$  sont parallÃ¨les et non confondues, alors elle ne s'intersecte pas et le systÃ¨me $(S)$ n'a pas de solution.
 \begin{center}
 \begin{tikzpicture}[scale=0.5]
 \draw[thick,->] (-2,0) -- (6,0)node[anchor=west] {$x$};
@@ -94,7 +94,7 @@ unique solution.
 \draw[-,color=blue] (-2,1) -- (6,4)node[anchor=north] {$D_2$};
 \end{tikzpicture}	
 \end{center}
-\item Si les droites $D_1$ et $D_2$  sont parallèles et  confondues, alors elle s'intersecte en une infinité de points et le système $(S)$ a une infinité de solutions.
+\item Si les droites $D_1$ et $D_2$  sont parallÃ¨les et  confondues, alors elle s'intersecte en une infinitÃ© de points et le systÃ¨me $(S)$ a une infinitÃ© de solutions.
 \begin{center}
 \begin{tikzpicture}[scale=0.5]
 \draw[thick,->] (-2,0) -- (6,0)node[anchor=west] {$x$};
@@ -103,13 +103,13 @@ unique solution.
 \end{tikzpicture}
 \end{center}
 \end{enumerate} 
-%Nous verrons plus loin que ces trois cas de figure (une seule solution, aucune solution, une infinité de solutions) sont
-%les seuls cas qui peuvent se présenter pour n'importe quel système d'équations linéaires.\\
+%Nous verrons plus loin que ces trois cas de figure (une seule solution, aucune solution, une infinitÃ© de solutions) sont
+%les seuls cas qui peuvent se prÃ©senter pour n'importe quel systÃ¨me d'Ã©quations linÃ©aires.\\
 Dans notre exemple, comme les vecteurs normaux aux deux droites $\begin{pmatrix}
 1\\1
 \end{pmatrix}$ et $\begin{pmatrix}
 -1\\1
-\end{pmatrix}$ ne sont pas colinéaires, les deux droites ne sont pas parallèles et donc admettent un unique point d'intersection.
+\end{pmatrix}$ ne sont pas colinÃ©aires, les deux droites ne sont pas parallÃ¨les et donc admettent un unique point d'intersection.
 \begin{center}
 \begin{tikzpicture}[scale=0.5]
 \draw[step=1cm,gray,very thin] (-2,-2) grid (6,6);
@@ -128,12 +128,12 @@ Dans notre exemple, comme les vecteurs normaux aux deux droites $\begin{pmatrix}
 \end{tikzpicture}	
 \end{center}
 Ainsi l'ensemble des solution admet une unique solution. Par lecture graphique, l'unique solution est $(1 , 1,5 )$.\\
-La notion de vecteurs normaux sera l'objet du chapitre \textbf{espaces préhilbertiens}. 
+La notion de vecteurs normaux sera l'objet du chapitre \impo{espaces prÃ©hilbertiens}. 
 
 \section{Calcul matricielle}
-On sait résoudre par de simples opérations algébriques une équation linéaire à une inconnue. Par exemple, pour l'équation $2x+1=5$, on additionne l'opposé de $1$, soit $-1$ $$2x+1+(-1)=5+(-1)$$ ce qui donne $2x=4$, puis on multiple par l'inverse de 2, ce qui donne $x=2$.\\
-Une idée est de transformer le système de deux équations à deux inconnues à une équation à une inconnue. Cette transformation est une abstraction sur la nature des coefficients et des variables des équations : de \impo{réels} à  \impo{tableaux de nombres}.\\
-Ainsi, l'équation équivalente au système d'équations linéaires est  :
+On sait rÃ©soudre par de simples opÃ©rations algÃ©briques une Ã©quation linÃ©aire Ã  une inconnue. Par exemple, pour l'Ã©quation $2x+1=5$, on additionne l'opposÃ© de $1$, soit $-1$ $$2x+1+(-1)=5+(-1)$$ ce qui donne $2x=4$, puis on multiple par l'inverse de 2, ce qui donne $x=2$.\\
+Une idÃ©e est de transformer le systÃ¨me de deux Ã©quations Ã  deux inconnues Ã  une Ã©quation Ã  une inconnue. Cette transformation est une abstraction sur la nature des coefficients et des variables des Ã©quations : de \impo{rÃ©els} Ã   \impo{tableaux de nombres}.\\
+Ainsi, l'Ã©quation Ã©quivalente au systÃ¨me d'Ã©quations linÃ©aires est  :
 \begin{center}
 $\begin{cases}
 {\color{red}x}+{\color{green}y}&={\color{blue}2,5}\\
@@ -142,35 +142,35 @@ $\begin{cases}
 $	
 \begin{tikzpicture}[scale=1,>=latex]
 \matrix (A) [matrix of math nodes,%
-             nodes = {node style ge},%
+             nodes = {circle,minimum size=1cm},%
              left delimiter  = (,%
-             right delimiter = )] at (-2.5*\myunit,0)
+             right delimiter = )] at (-2.5cm,0)
 {%
   1 & 1   \\
  -1 & 1  \\
 };
 \matrix (B) [matrix of math nodes,%
-             nodes = {node style ge},%
+             nodes = {circle,minimum size=1cm},%
              left delimiter  = (,%
-             right delimiter =)] at (0,2.5*\myunit)
+             right delimiter =)] at (0,2.5cm)
 {%
   \color{red}x\\
   \color{green}y\\
 };
-\draw[dotted] (.7*\myunit,0) node {$=$};
+\draw[dotted] (.7cm,0) node {$=$};
 \matrix (Y) [matrix of math nodes,%
-             nodes = {node style ge},%
+             nodes = {circle,minimum size=1cm},%
              left delimiter  = (,%
-             right delimiter = )] at (2.2*\myunit,0)
+             right delimiter = )] at (2.2cm,0)
 {%
   \color{blue}2,5  \\
   \color{blue}0,5 \\
 };
 \draw[<->,colordef](A-1-1) to[in=180,out=90]
-    node[arrow style mul] (x) {$1\times x$} (B-1-1);
+    node[draw,sloped,midway,fill=white] (x) {$1\times x$} (B-1-1);
 \draw[<->,colordef](A-1-2) to[in=180,out=90]
-    node[arrow style mul] (y) {$1\times y$} (B-2-1);
-\draw[colordef,->] (x) to node[arrow style plus] {$+$} (y);
+    node[draw,sloped,midway,fill=white] (y) {$1\times y$} (B-2-1);
+\draw[colordef,->] (x) to node[midway,sloped,fill=white] {$+$} (y);
 \end{tikzpicture}
 \end{center}
 Autrement dit, on $$A\times X =B$$ avec $A=\begin{pmatrix}
@@ -183,13 +183,13 @@ Autrement dit, on $$A\times X =B$$ avec $A=\begin{pmatrix}
  2,5   \\
  0,5  \\
 \end{pmatrix}$.\\
-En calculant le déterminant de la matrice (voir chapitre \textbf{déterminant)}, on démontre que la matrice  $\begin{pmatrix}
+En calculant le dÃ©terminant de la matrice (voir chapitre \impo{dÃ©terminant)}, on dÃ©montre que la matrice  $\begin{pmatrix}
  1 & 1   \\
  -1 & 1  \\
-\end{pmatrix}$ est inversible, c'est à dire qu'il existe une matrice $A^{-1}=\begin{pmatrix}
+\end{pmatrix}$ est inversible, c'est Ã  dire qu'il existe une matrice $A^{-1}=\begin{pmatrix}
  \frac 1 2 & -\frac 1 2   \\
  \frac 1 2 & \frac 1 2  \\
-\end{pmatrix}$  telle que, en multipliant, par $A^{-1}$ les deux membres de l'équation $A\times X =B$, on obtient :
+\end{pmatrix}$  telle que, en multipliant, par $A^{-1}$ les deux membres de l'Ã©quation $A\times X =B$, on obtient :
 $$ X=A^{-1}B$$
 $$ \begin{pmatrix}
  x   \\
@@ -205,9 +205,9 @@ $$ \begin{pmatrix}
  1,5  \\
 \end{pmatrix}.$$ 
 Par identification, l'ensemble des solution est de nouveau l'unique solution $x=1$ et $y=1,5$. 
-Les\textbf{matrices} seront étudiées dans le chapitre \textbf{matrices}. 
+Les\impo{matrices} seront Ã©tudiÃ©es dans le chapitre \impo{matrices}. 
 \section{Espace vectoriel}
-Une idée est de transformer ce système deux équations à deux inconnues en un système d'une équation à deux inconnues. On a :\\
+Une idÃ©e est de transformer ce systÃ¨me deux Ã©quations Ã  deux inconnues en un systÃ¨me d'une Ã©quation Ã  deux inconnues. On a :\\
 $$\begin{cases}
 {\color{red}x}+{\color{green}y}&={\color{blue}2,5}\\
 {\color{red}-x}+{\color{green}y}&={\color{blue}0,5}
@@ -249,19 +249,19 @@ $$\begin{cases}
 \end{pmatrix}$};
 \end{tikzpicture}
 \end{center}
-Il s'agit de déterminer $x,y$ afin d'exprimer $\begin{pmatrix}
+Il s'agit de dÃ©terminer $x,y$ afin d'exprimer $\begin{pmatrix}
  2,5   \\
  0,5  \\
-\end{pmatrix}$  comme combinaisons linéaires des vecteurs $\begin{pmatrix}
+\end{pmatrix}$  comme combinaisons linÃ©aires des vecteurs $\begin{pmatrix}
  1    \\
  -1   \\
 \end{pmatrix}$ et $\begin{pmatrix}
  1   \\
   1  \\
-\end{pmatrix}$ (voir animation GeoGebra \url{https://www.geogebra.org/m/shsawcqc}). D'un point de vue mathématiques, on se pose trois questions :
+\end{pmatrix}$ (voir animation GeoGebra \url{https://www.geogebra.org/m/shsawcqc}). D'un point de vue mathÃ©matiques, on se pose trois questions :
 \begin{enumerate}
-\item \impo{Existence:} la famille est \impo{génératrice} de $\R^2$, c'est à dire  
-pour tout vecteur de $\R^2$ il existe un couple $(x,y)$ tel que ce vecteur s'exprime comme combinaison linéaire de   $\begin{pmatrix}
+\item \impo{Existence:} la famille est \impo{gÃ©nÃ©ratrice} de $\R^2$, c'est Ã  dire  
+pour tout vecteur de $\R^2$ il existe un couple $(x,y)$ tel que ce vecteur s'exprime comme combinaison linÃ©aire de   $\begin{pmatrix}
  1    \\
  -1   \\
 \end{pmatrix}$ et $\begin{pmatrix}
@@ -271,7 +271,7 @@ pour tout vecteur de $\R^2$ il existe un couple $(x,y)$ tel que ce vecteur s'exp
  2,5   \\
  0,5  \\
 \end{pmatrix}$. Avec  GeoGebra, on trouve la couple $(x=1,y=1,5)$.
-\item \impo{Unicité:} la famille est \impo{libre},  , c'est à dire si un vecteur de $\R^2$ s'exprime comme combinaison linéaire de   $\begin{pmatrix}
+\item \impo{UnicitÃ©:} la famille est \impo{libre},  , c'est Ã  dire si un vecteur de $\R^2$ s'exprime comme combinaison linÃ©aire de   $\begin{pmatrix}
  1    \\
  -1   \\
 \end{pmatrix}$ et $\begin{pmatrix}
@@ -281,13 +281,13 @@ pour tout vecteur de $\R^2$ il existe un couple $(x,y)$ tel que ce vecteur s'exp
  2,5   \\
  0,5  \\
 \end{pmatrix}$,   on ne peut pas trouver un autre couple que $(x=1,y=1,5)$.\\
-\item \impo{Existence} et \impo{Unicité} : les vecteurs $\begin{pmatrix}
+\item \impo{Existence} et \impo{UnicitÃ©} : les vecteurs $\begin{pmatrix}
  1    \\
  -1   \\
 \end{pmatrix}$ et $\begin{pmatrix}
  1   \\
   1  \\
-\end{pmatrix}$ forment une \impo{base} de $\R^2$, c'est à dire que pour tout vecteur de $\R^2$ il existe un unique couple $(x,y)$ tel que ce vecteur s'exprime comme combinaison linéaire de   $\begin{pmatrix}
+\end{pmatrix}$ forment une \impo{base} de $\R^2$, c'est Ã  dire que pour tout vecteur de $\R^2$ il existe un unique couple $(x,y)$ tel que ce vecteur s'exprime comme combinaison linÃ©aire de   $\begin{pmatrix}
  1    \\
  -1   \\
 \end{pmatrix}$ et $\begin{pmatrix}
@@ -296,12 +296,12 @@ pour tout vecteur de $\R^2$ il existe un couple $(x,y)$ tel que ce vecteur s'exp
 \end{pmatrix}$. Cela est vrai, en particulier pour le vecteur $\begin{pmatrix}
  2,5   \\
  0,5  \\
-\end{pmatrix}$.  On a ainsi l'existence et l'unicité de la solution du système linéaire. \\
+\end{pmatrix}$.  On a ainsi l'existence et l'unicitÃ© de la solution du systÃ¨me linÃ©aire. \\
 \end{enumerate}
-L'étude des combinaisons linéaires sera fait dans le chapitre espaces vectoriels.\\
+L'Ã©tude des combinaisons linÃ©aires sera fait dans le chapitre espaces vectoriels.\\
    
-\section{Application linéaire}
-La dernière idée est de considérer le membre de gauche de l'équation comme l'image d'une fonction :
+\section{Application linÃ©aire}
+La derniÃ¨re idÃ©e est de considÃ©rer le membre de gauche de l'Ã©quation comme l'image d'une fonction :
 \begin{center}
 $
 \begin{cases}
@@ -336,18 +336,18 @@ u(\begin{pmatrix}
 \end{pmatrix}$};
 \end{tikzpicture} 
 \end{center}
-Les solutions du système sont l'ensemble des antécédents $\begin{pmatrix}
+Les solutions du systÃ¨me sont l'ensemble des antÃ©cÃ©dents $\begin{pmatrix}
  {\color{blue}2,5}   \\
  {\color{blue}0,5}  \\
-\end{pmatrix}$ par la fonction à deux variables $\Fonction{u}{\R^2}{\R^2}{\begin{pmatrix}
+\end{pmatrix}$ par la fonction Ã  deux variables $\Fonction{u}{\R^2}{\R^2}{\begin{pmatrix}
   {\color{red}x}    \\
  {\color{green}y}   \\
 \end{pmatrix}}{\begin{pmatrix}
   {\color{red}x} +{\color{green}y}   \\
   {\color{red}-x} +{\color{green}y}   \\
 \end{pmatrix}}$.\\
-L'étude générale des fonctions à plusieurs variables est compliquée et est fait dans un cours d'analyse,  
-cependant,  du fait que la fonction $u$ possède une propriété de linéarité:
+L'Ã©tude gÃ©nÃ©rale des fonctions Ã  plusieurs variables est compliquÃ©e et est fait dans un cours d'analyse,  
+cependant,  du fait que la fonction $u$ possÃ¨de une propriÃ©tÃ© de linÃ©aritÃ©:
  $$u(\begin{pmatrix}
  {x}    \\
 {y}   \\
@@ -367,10 +367,10 @@ cependant,  du fait que la fonction $u$ possède une propriété de linéarité:
  {x}    \\
 {y}   \\
 \end{pmatrix})$$
-on peut démontrer qu'elle est bijective. Ainsi, il existe une unique vecteur antécédent au vecteur $\begin{pmatrix}
+son Ã©tude est plus facile. Ainsi on peut dÃ©montrer qu'elle est bijective et que donc il existe une unique vecteur antÃ©cÃ©dent au vecteur $\begin{pmatrix}
  {\color{blue}2,5}   \\
  {\color{blue}0,5}  \\
-\end{pmatrix}$ donc le système admet une unique solution.\\
-L'étude des applications linéaires sera fait dans le chapitre \textbf{applications linéaires}.
+\end{pmatrix}$. Le systÃ¨me admet une unique solution.\\
+L'Ã©tude des applications linÃ©aires sera fait dans le chapitre \impo{applications linÃ©aires}.
 
 \end{document}

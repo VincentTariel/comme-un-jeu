@@ -1,251 +1,141 @@
-
-\documentclass[12pt,a4paper]{article}
-\usepackage{amsfonts,amsmath,amssymb,graphicx}
-\usepackage[francais]{babel}
-\usepackage[latin1]{inputenc}
-\usepackage{answers}
-\usepackage{a4wide,jlq2eams} 
-
-%---- Dimensions des marges ---
-\setlength{\paperwidth}{21cm} 
-\setlength{\paperheight}{29.7cm}
-\setlength{\evensidemargin}{0cm}
-\setlength{\oddsidemargin}{0cm} 
-\setlength{\topmargin}{-2.5cm}
-\setlength{\headsep}{0.7cm} 
-\setlength{\headheight}{1cm}
-\setlength{\textheight}{25cm} 
-\setlength{\textwidth}{17cm}
-
-
-
-
-%---- Structure Exercice -----
-\newtheorem{Exc}{Exercice}
-\Newassociation{correction}{Soln}{mycor}
-\Newassociation{indication}{Indi}{myind}
-%\newcommand{\precorrection}{~{\bf \footnotesize [Exercice corrig\'e]}}
-%\newcommand{\preindication}{~{\bf \footnotesize [Indication]}}
-\renewcommand{\Solnlabel}[1]{\bf \emph{Correction #1}}
-\renewcommand{\Indilabel}[1]{\bf \emph{Indication #1}}
-
-\def\exo#1{\futurelet\testchar\MaybeOptArgmyexoo}
-\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
-                        \else \let\next\NoOptArgmyexoo \fi \next}
-\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
-\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
-
-\newcommand{\finexo}{\end{Exc}}
-\newcommand{\flag}[1]{}
-
-\newtheorem{question}{Question}
-
-
-
-%---- Style de l'entete -----                     % -> à personnaliser <-
-\setlength{\parindent}{0cm}
-\newcommand{\entete}[1]
-{
-{\noindent
-  \textsf{Feuille d'exercices}    \hfill   \textsf{ISEN}          % Université
-}
-\hrule
-\hrule
-\begin{center} 
-\textbf{\textsf{\Large 
-     Probabilité discrète     % TITRE
-}}
-\end{center}
-\hrule
-}
-
-
+\documentclass{book}
+\usepackage{commeunjeustyle}
 \begin{document}
-
-%--- Gestion des corrections ---
- \Opensolutionfile{mycor}[ficcorex]
- \Opensolutionfile{myind}[ficind]
- \entete{\'Enoncés}
-\section*{Variable aléatoire}
-\subsection*{Calculs de lois, d'espérances, de variances}
-\vskip0.3cm\noindent\textsc{Exercice 1} - Loi conjointe
-\vskip0.2cm
-Soit $X$ et $Y$ deux variables aléatoires à valeurs dans  $\mathbb{N}^*$ de loi conjointe :
+\section*{Variable alÃ©atoire}
+\subsection*{Calculs de lois, d'espÃ©rances, de variances}
+\begin{Exercice}[Loi conjointe]
+Soit $X$ et $Y$ deux variables alÃ©atoires Ã  valeurs dans  $\mathbb{N}^*$ de loi conjointe :
 $$\forall (i,j)\in \mathbb{N}^*\times\mathbb{N}^*:\quad   P(X=i,Y=j)=\frac{a}{2^{i+j}}$$
 \begin{itemize}
-\item Déterminer $a$ pour que la loi soit bien définie,
-\item Déterminer les lois marginales,
-\item Démontrer que $X$ et $Y$ sont indépendantes. 
+\item DÃ©terminer $a$ pour que la loi soit bien dÃ©finie,
+\item DÃ©terminer les lois marginales,
+\item DÃ©montrer que $X$ et $Y$ sont indÃ©pendantes. 
 \end{itemize}
-
+\end{Exercice}
   
-\vskip0.3cm\noindent\textsc{Exercice 1} - Loi de Pascal
-\vskip0.2cm
-On lance une pièce de monnaie dont la probabilité de tomber sur pile vaut $p$.
-On note $X$ la variable aléatoire correspondant au nombre de lancers nécessaires pour obtenir
+\begin{Exercice}[Loi de Pascal]
+On lance une piÃ¨ce de monnaie dont la probabilitÃ© de tomber sur pile vaut $p$.
+On note $X$ la variable alÃ©atoire correspondant au nombre de lancers nÃ©cessaires pour obtenir
 $r$ fois pile. Quelle est la loi de $X$?
+\end{Exercice}
 
-\vskip0.3cm\noindent\textsc{Exercice 1} - Couple géométrique
-\vskip0.2cm
-Soit $X$ et $Y$ deux variables aléatoires indépendantes suivant la même loi géométrique de paramètre $p\in ]0,1[$. On pose $Z=\min(X,Y)$ et $q=1-p$. Soit en outre $n$ un entier strictement positif.
+\begin{Exercice}[Couple gÃ©omÃ©trique]
+Soit $X$ et $Y$ deux variables alÃ©atoires indÃ©pendantes suivant la mÃªme loi gÃ©omÃ©trique de paramÃ¨tre $p\in ]0,1[$. On pose $Z=\min(X,Y)$ et $q=1-p$. Soit en outre $n$ un entier strictement positif.
 \begin{enumerate}
 \item Calculer $P(X\geq n)$.
-\item Calculer $P(Z\geq n)$. En déduire $P(Z=n)$. Quelle est la loi de $Z$?
-\item Les variables $X$ et $Z$ sont-elles indépendantes?
+\item Calculer $P(Z\geq n)$. En dÃ©duire $P(Z=n)$. Quelle est la loi de $Z$?
+\item Les variables $X$ et $Z$ sont-elles indÃ©pendantes?
 \end{enumerate}
+\end{Exercice}
 
-\vskip0.3cm\noindent\textsc{Exercice 1} - Gardien
-\vskip0.2cm
+\begin{Exercice}[Gardien]
 Un gardien de nuit doit ouvrir une porte dans le noir, avec 10 clefs dont
-une seule est la bonne. Soit X la variable aléatoire qui compte le nombre
-d'essais jusqu'à ce que la porte s'ouvre.
+une seule est la bonne. Soit X la variable alÃ©atoire qui compte le nombre
+d'essais jusqu'Ã  ce que la porte s'ouvre.
 \begin{enumerate}
-\item Il met de côté celles qu'il a déjà essayées. Quelle est la loi de
-probabilité de X ? Calculer l'espérance ainsi que la variance. Donner la
-probabilité de réussir en moins de 8 coups.
-\item Lorsqu'il est ivre, il n'isole pas les clefs essayées et donc les mélanges à
-chaque fois. Il tire à chaque fois une nouvelle clef au hasard entre les
-10. Quelle est la loi de probabilité ? Donner la probabilité de réussir en
+\item Il met de cÃ´tÃ© celles qu'il a dÃ©jÃ  essayÃ©es. Quelle est la loi de
+probabilitÃ© de X ? Calculer l'espÃ©rance ainsi que la variance. Donner la
+probabilitÃ© de rÃ©ussir en moins de 8 coups.
+\item Lorsqu'il est ivre, il n'isole pas les clefs essayÃ©es et donc les mÃ©langes Ã 
+chaque fois. Il tire Ã  chaque fois une nouvelle clef au hasard entre les
+10. Quelle est la loi de probabilitÃ© ? Donner la probabilitÃ© de rÃ©ussir en
 moins de 8 coups
 \end{enumerate}
+\end{Exercice}
 
-
-% Exercice 1293
-
-
-\vskip0.3cm\noindent\textsc{Exercice 2} - Deux fois pile
-\vskip0.2cm
-On joue à pile ou face avec une pièce non équilibrée. A chaque lancer, la probabilité d'obtenir pile est 2/3, et donc celle d'obtenir face est 1/3.
-Les lancers sont supposés indépendants, et on note $X$ la variable aléatoire réelle égale au nombre de lancers nécessaires pour obtenir, pour la première fois, deux piles consécutifs.
-Pour $n\geq 1$, on note $p_n$ la probabilité $P(X=n)$.
+\begin{Exercice}[Deux fois pile]
+On joue Ã  pile ou face avec une piÃ¨ce non Ã©quilibrÃ©e. A chaque lancer, la probabilitÃ© d'obtenir pile est 2/3, et donc celle d'obtenir face est 1/3.
+Les lancers sont supposÃ©s indÃ©pendants, et on note $X$ la variable alÃ©atoire rÃ©elle Ã©gale au nombre de lancers nÃ©cessaires pour obtenir, pour la premiÃ¨re fois, deux piles consÃ©cutifs.
+Pour $n\geq 1$, on note $p_n$ la probabilitÃ© $P(X=n)$.
 \begin{enumerate}
-\item Expliciter les événements $(X=2)$, $(X=3)$, $(X=4)$, et déterminer la valeur de $p_2$, $p_3$, $p_4$.
+\item Expliciter les Ã©vÃ©nements $(X=2)$, $(X=3)$, $(X=4)$, et dÃ©terminer la valeur de $p_2$, $p_3$, $p_4$.
 \item Montrer que l'on a $p_n=\frac{2}{9}p_{n-2}+\frac{1}{3}p_{n-1}$, $n\geq 4$.
-\item En déduire l'expression de $p_n$ pour tout $n$.
-\item Rappeler, pour $q\in]-1,1[$, l'expression de $\sum_{n=0}^{+\infty}nq^n$, et calculer alors $E(X)$. Interpréter.
+\item En dÃ©duire l'expression de $p_n$ pour tout $n$.
+\item Rappeler, pour $q\in]-1,1[$, l'expression de $\sum_{n=0}^{+\infty}nq^n$, et calculer alors $E(X)$. InterprÃ©ter.
 \end{enumerate}
+\end{Exercice}
 
-
-% Exercice 1294
-
-
-\vskip0.3cm\noindent\textsc{Exercice 3} - Une certaine variable aléatoire
-\vskip0.2cm
-Soit $p\in]0,1[$. On dispose d'une pièce amenant "pile" avec la probabilité $p$. On lance cette pièce jusqu'à obtenir pour la deuxième fois "pile". Soit $X$ le nombre de "face" obtenus au cours de cette expérience.
+\begin{Exercice}[Une certaine variable alÃ©atoire]
+Soit $p\in]0,1[$. On dispose d'une piÃ¨ce amenant "pile" avec la probabilitÃ© $p$. On lance cette piÃ¨ce jusqu'Ã  obtenir pour la deuxiÃ¨me fois "pile". Soit $X$ le nombre de "face" obtenus au cours de cette expÃ©rience.
 \begin{enumerate}
-\item Déterminer la loi de $X$.
-\item Montrer que $X$ admet une espérance, et la calculer.
+\item DÃ©terminer la loi de $X$.
+\item Montrer que $X$ admet une espÃ©rance, et la calculer.
 \end{enumerate}
+\end{Exercice}
 
-
-% Exercice 1294
-
-
-
-
-\vskip0.3cm\noindent\textsc{Exercice 5} - Permis de conduire
-\vskip0.2cm
-Tous les jours, Rémi fait le trajet entre son domicile et son travail. Un jour sur deux, il dépasse la vitesse autorisée. Un jour sur dix, un contrôle radar est effectué. On suppose que ces deux événements (dépassement de la vitesse limite et contrôle radar) sont indépendants, et que leur survenue un jour donné ne dépend pas de ce qui se passe les autres jours. Si le radar enregistre son excès de vitesse, Rémi perd un point sur son permis de conduite. On note $X_i$ le nombre de points perdus le jour $i$.
+\begin{Exercice}[Permis de conduire]
+Tous les jours, RÃ©mi fait le trajet entre son domicile et son travail. Un jour sur deux, il dÃ©passe la vitesse autorisÃ©e. Un jour sur dix, un contrÃ´le radar est effectuÃ©. On suppose que ces deux Ã©vÃ©nements (dÃ©passement de la vitesse limite et contrÃ´le radar) sont indÃ©pendants, et que leur survenue un jour donnÃ© ne dÃ©pend pas de ce qui se passe les autres jours. Si le radar enregistre son excÃ¨s de vitesse, RÃ©mi perd un point sur son permis de conduite. On note $X_i$ le nombre de points perdus le jour $i$.
 \begin{enumerate}
-\item Question préliminaire : soit $x\in ]-1,1[$ et $r\in\mathbb N$. Justifier que 
+\item Question prÃ©liminaire : soit $x\in ]-1,1[$ et $r\in\mathbb N$. Justifier que 
 $$\sum_{n\geq r}n(n-1)\cdots (n-r+1)x^{n-r}=\frac{r!}{(1-x)^{r+1}}.$$
-\item Pour tout $n\geq 1$, on note $S_n=\sum_{i=1}^n X_i$. Que représente $S_n$? Donner sa loi, son espérance, sa variance.
-\item En tant que jeune conducteur, Rémi ne dispose que de 6 points sur son permis. On note $T$ le nombre de jours de validité de son permis dans le cas où celui-ci lui est retiré. Sinon, on définit $T=0$. Quelle est la loi de $T$? Son espérance?
+\item Pour tout $n\geq 1$, on note $S_n=\sum_{i=1}^n X_i$. Que reprÃ©sente $S_n$? Donner sa loi, son espÃ©rance, sa variance.
+\item En tant que jeune conducteur, RÃ©mi ne dispose que de 6 points sur son permis. On note $T$ le nombre de jours de validitÃ© de son permis dans le cas oÃ¹ celui-ci lui est retirÃ©. Sinon, on dÃ©finit $T=0$. Quelle est la loi de $T$? Son espÃ©rance?
 \end{enumerate}
-
+\end{Exercice}
 
 % Exercice 2023
 
 \subsection*{Loi de Poisson}
-\vskip0.3cm\noindent\textsc{Exercice 6} - Décroissance d'une loi de Poisson
-\vskip0.2cm
-Soit $X$ une variable aléatoire suivant une loi de Poisson $\mathcal P(\lambda)$. Donner une condition nécessaire et suffisante sur $\lambda$ pour que la suite $(P(X=k))$ soit décroissante.
+\begin{Exercice}[DÃ©croissance d'une loi de Poisson]
+Soit $X$ une variable alÃ©atoire suivant une loi de Poisson $\mathcal P(\lambda)$. Donner une condition nÃ©cessaire et suffisante sur $\lambda$ pour que la suite $(P(X=k))$ soit dÃ©croissante.
+\end{Exercice}
 
+\begin{Exercice}[Maximum d'une loi de Poisson]
+Soit $X$ une variable alÃ©atoire rÃ©elle suivant une loi de Poisson $\mathcal P(\lambda)$.
+Pour quelle(s) valeur(s) de $k\in\mathbb N$ la probabilitÃ© $P(X=k)$ est maximale?
+\end{Exercice}
 
-% Exercice 1279
+\begin{Exercice}[Retrouver une loi connaissant son conditionnement]
+Soit $X$ et $Y$ deux variables alÃ©atoires. On suppose que $X$ suit une loi de Poisson $\mathcal P(\lambda)$ et que la loi de $Y$ conditionnÃ©e par $(X=n)$ est la loi binomiale $\mathcal B(n,p)$, pour tout $n\in\mathbb N$. Quelle est la loi de $Y$?
+\end{Exercice}
 
-
-\vskip0.3cm\noindent\textsc{Exercice 7} - Maximum d'une loi de Poisson
-\vskip0.2cm
-Soit $X$ une variable aléatoire réelle suivant une loi de Poisson $\mathcal P(\lambda)$.
-Pour quelle(s) valeur(s) de $k\in\mathbb N$ la probabilité $P(X=k)$ est maximale?
-
-
-% Exercice 1280
-
-
-\vskip0.3cm\noindent\textsc{Exercice 8} - Retrouver une loi connaissant son conditionnement
-\vskip0.2cm
-Soit $X$ et $Y$ deux variables aléatoires. On suppose que $X$ suit une loi de Poisson $\mathcal P(\lambda)$ et que la loi de $Y$ conditionnée par $(X=n)$ est la loi binomiale $\mathcal B(n,p)$, pour tout $n\in\mathbb N$. Quelle est la loi de $Y$?
-
-
-% Exercice 2022
-
-
-\vskip0.3cm\noindent\textsc{Exercice 9} - Tirage et loi de Poisson
-\vskip0.2cm
-On tire un nombre entier naturel $X$ au hasard, et on suppose que $X$ suit une loi de Poisson de paramètre $a>0$. Si $X$ est impair, Pierre gagne et reçoit $X$ euros de Paul. Si $X$ est pair supérieur ou égal à 2, Paul gagne et reçoit $X$ euros de Pierre. Si $X=0$, la partie est nulle.
-On note $p$ la probabilité que Pierre gagne et $q$ la probabilité que Paul gagne.
+\begin{Exercice}[Tirage et loi de Poisson]
+On tire un nombre entier naturel $X$ au hasard, et on suppose que $X$ suit une loi de Poisson de paramÃ¨tre $a>0$. Si $X$ est impair, Pierre gagne et reÃ§oit $X$ euros de Paul. Si $X$ est pair supÃ©rieur ou Ã©gal Ã  2, Paul gagne et reÃ§oit $X$ euros de Pierre. Si $X=0$, la partie est nulle.
+On note $p$ la probabilitÃ© que Pierre gagne et $q$ la probabilitÃ© que Paul gagne.
 \begin{enumerate}
-\item En calculant $p+q$ et $p-q$, déterminer la valeur de $p$ et de $q$.
-\item Déterminer l'espérance des gains de chacun.
+\item En calculant $p+q$ et $p-q$, dÃ©terminer la valeur de $p$ et de $q$.
+\item DÃ©terminer l'espÃ©rance des gains de chacun.
 \end{enumerate}
-
+\end{Exercice}
 
 % Exercice 1275
 
-\subsection*{Loi géométrique}
-\vskip0.3cm\noindent\textsc{Exercice 10} - Diagonalisable?
-\vskip0.2cm
-Soient $X_1$ et $X_2$ deux variables aléatoires indépendantes qui suivent une loi géométrique de paramètre $p\in ]0,1[$. Soit 
+\subsection*{Loi gÃ©omÃ©trique}
+\begin{Exercice}[Diagonalisable ?]
+Soient $X_1$ et $X_2$ deux variables alÃ©atoires indÃ©pendantes qui suivent une loi gÃ©omÃ©trique de paramÃ¨tre $p\in ]0,1[$. Soit 
 $$A=\left(\begin{array}{cc} X_1&1\\0&X_2\end{array}\right).$$
-Quelle est la probabilité que $A$ soit diagonalisable?
+Quelle est la probabilitÃ© que $A$ soit diagonalisable?
+\end{Exercice}
 
+\begin{Exercice}[Un problÃ¨me chinois!]
 
-% Exercice 1290
-
-
-\vskip0.3cm\noindent\textsc{Exercice 11} - Un problème chinois!
-\vskip0.2cm
-On suppose qu'à la naissance, la probabilité qu'un nouveau-né soit un garçon est égale à $1/2$. On suppose que
-tous les couples ont des enfants jusqu'à obtenir un garçon. On souhaite évaluer la proportion de garçons dans une génération
+On suppose qu'Ã  la naissance, la probabilitÃ© qu'un nouveau-nÃ© soit un garÃ§on est Ã©gale Ã  $1/2$. On suppose que
+tous les couples ont des enfants jusqu'Ã  obtenir un garÃ§on. On souhaite Ã©valuer la proportion de garÃ§ons dans une gÃ©nÃ©ration
 de cette population. On note $X$ le nombre d'enfants d'un couple pris au hasard dans la population.
 \begin{enumerate}
-\item Donner la loi de la variable aléatoire $X$.
-\item On suppose qu'une génération en âge de procréer est constituée de $N$ couples, et on note $X_1,\cdots,X_N$ le nombre d'enfants respectif de chaque couple. On note enfin $P$ la proportion de garçons issus de cette génération. 
+\item Donner la loi de la variable alÃ©atoire $X$.
+\item On suppose qu'une gÃ©nÃ©ration en Ã¢ge de procrÃ©er est constituÃ©e de $N$ couples, et on note $X_1,\cdots,X_N$ le nombre d'enfants respectif de chaque couple. On note enfin $P$ la proportion de garÃ§ons issus de cette gÃ©nÃ©ration. 
 Exprimer $P$ en fonction de $X_1,\dots,X_N$.
 \item Quelle est la limite de $P$ lorsque $N$ tend vers l'infini. Qu'en pensez-vous?
 \end{enumerate}
+\end{Exercice}
 
-
-% Exercice 1287
-
-
-\vskip0.3cm\noindent\textsc{Exercice 12} - Service de dépannage
-\vskip0.2cm
-Le service de dépannage d'un grand magasin dispose d'équipes intervenant sur appel de la clientèle. Pour des causes diverses, les interventions ont parfois lieu avec retard. On admet que les appels se produisent indépendamment les uns des autres, et que, pour chaque appel, la probabilité d'un retard est de 0,25.
+\begin{Exercice}[Service de dÃ©pannage]
+Le service de dÃ©pannage d'un grand magasin dispose d'Ã©quipes intervenant sur appel de la clientÃ¨le. Pour des causes diverses, les interventions ont parfois lieu avec retard. On admet que les appels se produisent indÃ©pendamment les uns des autres, et que, pour chaque appel, la probabilitÃ© d'un retard est de 0,25.
 \begin{enumerate}
-\item Un client appelle le service à 4 reprises. On désigne par $X$ la variable aléatoire prenant pour valeurs le nombre de fois où ce client 
-a dû subir un retard. 
+\item Un client appelle le service Ã  4 reprises. On dÃ©signe par $X$ la variable alÃ©atoire prenant pour valeurs le nombre de fois oÃ¹ ce client 
+a dÃ» subir un retard. 
 \begin{enumerate}
-\item Déterminer la loi de probabilité de $X$, son espérance, sa variance.
-\item Calculer la probabilité de l'événement : "Le client a au moins subi un retard".
+\item DÃ©terminer la loi de probabilitÃ© de $X$, son espÃ©rance, sa variance.
+\item Calculer la probabilitÃ© de l'Ã©vÃ©nement : "Le client a au moins subi un retard".
 \end{enumerate}
-\item Le nombre d'appels reçus par jour est une variable aléatoire $Y$ qui suit une loi de Poisson de paramètre $m$. On note $Z$ le nombre d'appels traités en retard.
+\item Le nombre d'appels reÃ§us par jour est une variable alÃ©atoire $Y$ qui suit une loi de Poisson de paramÃ¨tre $m$. On note $Z$ le nombre d'appels traitÃ©s en retard.
 \begin{enumerate}
-\item Exprimer la probabilité conditionnelle de $Z=k$ sachant que $Y=n$. 
-\item En déduire la probabilité de $"Z=k\textrm{ et }Y=n"$.
-\item Déterminer la loi de $Z$. On trouvera que $Z$ suit une loi de Poisson de paramètre $m\times0,25$.
+\item Exprimer la probabilitÃ© conditionnelle de $Z=k$ sachant que $Y=n$. 
+\item En dÃ©duire la probabilitÃ© de $"Z=k\textrm{ et }Y=n"$.
+\item DÃ©terminer la loi de $Z$. On trouvera que $Z$ suit une loi de Poisson de paramÃ¨tre $m\times0,25$.
 \end{enumerate}
-\item En 2020, le standard a reçu une succession d'appels. On note $U$ le premier appel reçu en retard. Quelle est la loi de $U$? Quelle est son espérance?
+\item En 2020, le standard a reÃ§u une succession d'appels. On note $U$ le premier appel reÃ§u en retard. Quelle est la loi de $U$? Quelle est son espÃ©rance?
 \end{enumerate}
-
-
-
-
+\end{Exercice}
 \end{document}
-\endinput
-
-
-
-

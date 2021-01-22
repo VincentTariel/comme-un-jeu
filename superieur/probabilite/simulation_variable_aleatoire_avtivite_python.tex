@@ -1,182 +1,111 @@
-\documentclass[a4paper]{book}
-\usepackage{t1enc}
-\usepackage[latin1]{inputenc}
-\usepackage[french]{minitoc}
- \usepackage{amsmath}
-\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
-\usepackage[francais]{babel}
-\usepackage{amsmath}
-\usepackage{TikZ}
-\usetikzlibrary{shapes,backgrounds}
-\usepackage{tkz-fct}   
-\usepackage{a4wide,jlq2eams} 
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{slashbox}
-\usepackage{thmbox}
-\usepackage{xcolor}
-\usepackage{sectsty}
-\usepackage{longtable} 
-\usepackage{listings}
-\usepackage{caption}
-\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
-\sectionfont{\color{magenta}}
-\subsectionfont{\color{red}}
-\subsubsectionfont{\color{red}}
-\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}}
-
-\setlength{\shadowsize}{1.5pt}
- 
-\pagestyle{fancy}
-\addtolength{\headwidth}{\marginparsep}
-\addtolength{\headwidth}{\marginparwidth} 
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-\fancyhf{}
-\fancyhead[LE,RO]{\bfseries\thepage}
-\fancyhead[LO]{\bfseries\rightmark}
-\fancyhead[RE]{\bfseries\leftmark}
-\fancypagestyle{plain}{%
-   \fancyhead{} % get rid of headers
-   \renewcommand{\headrulewidth}{0pt} % and the line
-}
-
-\setcounter{minitocdepth}{3}
-
-
-
-\thmboxoptions{S,bodystyle=\itshape\noindent}
-\newtheorem[L]{Lem}{Lemme}[section]
-\newtheorem[L]{Th}[Lem]{Théorème}
-\newtheorem[L]{Cor}[Lem]{Corollaire}
-\newtheorem[L]{Prop}[Lem]{Proposition}
-
-\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
-\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
-\newtheorem[S,bodystyle=\upshape\noindent]{Exo}{Exercice}
-\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
-\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\E}{(-4,-1) rectangle (4,4);\node[above right] at (-4,-1) {$\Omega$};}
-\newcommand{\A}{(0,0) ++(135:2) circle (2);\node at (-1.4,-0.75) {$A$};}
-\newcommand{\B}{(0,0) ++(45:2) circle (2);\node at (1.4,-0.75) {$B$};}
-\newcommand{\AuB}{(0,0) arc(-135:135:2) arc(45:315:2);\node at (0,1.5) {$A\cup B$};}
-\newcommand{\AnB}{(0,0) arc (-45:45:2) arc (135:225:2);\node at (0,1.5) {$A\cap B$};}
-
-
-
-
-
-
-\lstset{language={Python}}
-
+\documentclass{book}
+\usepackage{commeunjeustyle}
 \begin{document}
-\section*{Simulation de variables aléatoires}
+\section*{Simulation de variables alÃ©atoires}
 
 \paragraph{Principe}
-Simuler une variable aléatoire, $X$, consiste à écrire un programme exécuter par la machine afin de réaliser virtuellement l'expérience
-aléatoire aboutissant à une réalisation de la variable aléatoire, $X(\omega)$, où $\omega$ est une issue de l'expérience aléatoire. 
-Un avantage important de l'outil informatique est qu'il peut répéter
-un grand nombre de fois une expérience en très peu de temps.
-\paragraph*{Bibliothèque Numpy}
-La bibliothèque numpy.random contient des fonctions permettant de simuler la
-réalisation d'une variable aléatoire suivant une loi donnée parmi les lois classiques.\\ 
-Commençons par faire les importations nécessaires :
+Simuler une variable alÃ©atoire, $X$, consiste Ã  Ã©crire un programme exÃ©cuter par la machine afin de rÃ©aliser virtuellement l'expÃ©rience
+alÃ©atoire aboutissant Ã  une rÃ©alisation de la variable alÃ©atoire, $X(\omega)$, oÃ¹ $\omega$ est une issue de l'expÃ©rience alÃ©atoire. 
+Un avantage important de l'outil informatique est qu'il peut rÃ©pÃ©ter
+un grand nombre de fois une expÃ©rience en trÃ¨s peu de temps.
+\paragraph*{BibliothÃ¨que Numpy}
+La bibliothÃ¨que numpy.random contient des fonctions permettant de simuler la
+rÃ©alisation d'une variable alÃ©atoire suivant une loi donnÃ©e parmi les lois classiques.\\ 
+CommenÃ§ons par faire les importations nÃ©cessaires :
 \begin{lstlisting}
 import numpy.random as rd
 \end{lstlisting}
-%Cette vidéo \url{https://www.youtube.com/watch?v=HJ9bTO5yYw0} vous explique comment importer la bibliothèque numpy dans pycharm.
+%Cette vidÃ©o \url{https://www.youtube.com/watch?v=HJ9bTO5yYw0} vous explique comment importer la bibliothÃ¨que numpy dans pycharm.
 \paragraph{Loi uniforme: $X\sim\mathcal{U}(a, b)$}
-On utilise la fonction randint (de l'anglais random integer) pour générer une variable aléatoire suivant la loi uniforme. Attention, le dernier entier est toujours exclu dans la bibliothèque Numpy. Pour simuler un dé à 6 faces, il faudra donc taper
+On utilise la fonction randint (de l'anglais random integer) pour gÃ©nÃ©rer une variable alÃ©atoire suivant la loi uniforme. Attention, le dernier entier est toujours exclu dans la bibliothÃ¨que Numpy. Pour simuler un dÃ© Ã  6 faces, il faudra donc taper
 \begin{lstlisting}
 import numpy.random as rd
 x=rd.randint(1,7)
 print(x)
 \end{lstlisting}
-Exécuter plusieurs fois ce programme afin de remarquer que le résultat est aléatoire.
-\begin{Exo}[Simuler la somme de deux dés]
-Écrire un programme permettant de simuler l'expérience aléatoire consistant à calculer la somme de deux dés jetés.
-\end{Exo}
+ExÃ©cuter plusieurs fois ce programme afin de remarquer que le rÃ©sultat est alÃ©atoire.
+\begin{Exercice}[Simuler la somme de deux dÃ©s]
+Ã‰crire un programme permettant de simuler l'expÃ©rience alÃ©atoire consistant Ã  calculer la somme de deux dÃ©s jetÃ©s.
+\end{Exercice}
 \paragraph{Loi binomial : $X\sim\mathcal{B}(n, p)$}
-On utilise la fonction binomial($n$,$p$) pour générer une variable aléatoire suivant la loi binomial, $\mathcal{B}(n, p)$.
+On utilise la fonction binomial($n$,$p$) pour gÃ©nÃ©rer une variable alÃ©atoire suivant la loi binomial, $\mathcal{B}(n, p)$.
 \begin{lstlisting}
 import numpy.random as rd
 x=rd.binomial(100,0.01)
 print(x)
 \end{lstlisting}
-\begin{Exo}[Pièces défectueuses]
-Écrire un programme permettant de simuler l'expérience aléatoire consistant à compter le nombre de pièces défectueuses  lorsque on prélève 1000 pièces dans une chaîne de fabrication. La probabilité d'être défectueuse par pièce est de $1\%$ .    
-\end{Exo}
+\begin{Exercice}[PiÃ¨ces dÃ©fectueuses]
+Ã‰crire un programme permettant de simuler l'expÃ©rience alÃ©atoire consistant Ã  compter le nombre de piÃ¨ces dÃ©fectueuses  lorsque on prÃ©lÃ¨ve 1000 piÃ¨ces dans une chaÃ®ne de fabrication. La probabilitÃ© d'Ãªtre dÃ©fectueuse par piÃ¨ce est de $1\%$ .    
+\end{Exercice}
 
-\paragraph{Répéter une expérience}
-On peut aussi demander de renvoyer non pas une réalisation, $X(\omega)$, mais plusieurs réalisations d'une
-loi donnée, $(X(\omega_1),X(\omega_2),\dots,X(\omega_n))$. Ceci s'appelle l'échantillonnage (en anglais :
-sampling). Le résultat est un n-uplet appelé échantillon de la loi. La taille de l'échantillon est le nombre de valeurs, soit $n$. En python, la structure de donnée n-uplet est le type
+\paragraph{RÃ©pÃ©ter une expÃ©rience}
+On peut aussi demander de renvoyer non pas une rÃ©alisation, $X(\omega)$, mais plusieurs rÃ©alisations d'une
+loi donnÃ©e, $(X(\omega_1),X(\omega_2),\dots,X(\omega_n))$. Ceci s'appelle l'Ã©chantillonnage (en anglais :
+sampling). Le rÃ©sultat est un n-uplet appelÃ© Ã©chantillon de la loi. La taille de l'Ã©chantillon est le nombre de valeurs, soit $n$. En python, la structure de donnÃ©e n-uplet est le type
 array. On rajoute un argument dans la fonction, pour
-spécifier le nombre de réalisations voulues. Par exemple, pour simuler 100 fois le lancé d'un dé à 6 faces, il faudra donc taper
+spÃ©cifier le nombre de rÃ©alisations voulues. Par exemple, pour simuler 100 fois le lancÃ© d'un dÃ© Ã  6 faces, il faudra donc taper
 \begin{lstlisting}
 import numpy.random as rd
 x=rd.randint(1,7,100)
 print(x)
 \end{lstlisting}
-\begin{Exo}[Gain moyen d'un jeu dés]
-Pour attirer les clients, un casino propose un nouveau jeu : le croupier lance simultanément 2 dés et calcule leur somme,
+\begin{Exercice}[Gain moyen d'un jeu dÃ©s]
+Pour attirer les clients, un casino propose un nouveau jeu : le croupier lance simultanÃ©ment 2 dÃ©s et calcule leur somme,
 \begin{itemize} 
-\item si la somme est égale à 2 ou 12, le joueur gagne 2 euros,
-\item si la somme est égale à 7, le casino gagne 1 euro,
+\item si la somme est Ã©gale Ã  2 ou 12, le joueur gagne 2 euros,
+\item si la somme est Ã©gale Ã  7, le casino gagne 1 euro,
 \item dans les autres cas, c'est nul (le joueur gagne 0 euro).  
 \end{itemize}
-Écrire un programme permettant de simuler cette expérience aléatoire en calculant le gain moyen du joueur après $1 000 000$ de parties. Le jeu est-il favorable au joueur ?
-\end{Exo}
+Ã‰crire un programme permettant de simuler cette expÃ©rience alÃ©atoire en calculant le gain moyen du joueur aprÃ¨s $1 000 000$ de parties. Le jeu est-il favorable au joueur ?
+\end{Exercice}
 
-\section*{Méthode de Monte-Carlo}
+\section*{MÃ©thode de Monte-Carlo}
 \paragraph{Loi faible des grands nombres}
-Si l'on répète identiquement et indépendamment une épreuve de Bernoulli $n$ fois de paramètre $p$, $(X_n)_{n\in \N^*}$,  et qu'on 
-calcule la fréquence, $S_n$, soit la moyenne des résultats obtenus au cours des $n$ premiers lancers
+Si l'on rÃ©pÃ¨te identiquement et indÃ©pendamment une Ã©preuve de Bernoulli $n$ fois de paramÃ¨tre $p$, $(X_n)_{n\in \N^*}$,  et qu'on 
+calcule la frÃ©quence, $S_n$, soit la moyenne des rÃ©sultats obtenus au cours des $n$ premiers lancers
 $$ S_n =\frac{X_1+X_2+\dots+X_n}{n}$$ 
-alors quand $n \to +\infty$ la variable aléatoire $S_n$  converge en probabilité vers $E(X_1)=0.(1-p)+1p=p$.\\
-\paragraph{Estimer la probabilité d'un évènement $E$} Chaque épreuve de Bernoulli, $X_n$,  représente la réalisation de l'événement au n\up{ième} lancer, $E_n$, soit $$
+alors quand $n \to +\infty$ la variable alÃ©atoire $S_n$  converge en probabilitÃ© vers $E(X_1)=0.(1-p)+1p=p$.\\
+\paragraph{Estimer la probabilitÃ© d'un Ã©vÃ¨nement $E$} Chaque Ã©preuve de Bernoulli, $X_n$,  reprÃ©sente la rÃ©alisation de l'Ã©vÃ©nement au n\up{iÃ¨me} lancer, $E_n$, soit $$
 X_n:{\begin{array}{rcl}\Omega &\longrightarrow &\{0,1\}\\\omega &\longmapsto &\left\{{\begin{matrix}1\ {\mbox{si}}\ \omega\ \in \ E_n\\0\ {\mbox{si}}\ \omega\ \notin \ E_n\end{matrix}}\right.\end{array}}.$$
-Par exemple en jetant 10000 fois une pièce, le rapport entre le nombre de fois où l'on obtient FACE et le nombre de lancés, est environ 1/2 soit $P("FACE") = 1/2$.\\
-Pour estimer la probabilité d'un évènement $E$, en particulier dans le cas où il est difficile de calculer théoriquement  $P(E)$ exactement, une possibilité est donc d'observer la
-proportion de fois où celui-ci se réalise lorsqu'on répète un grand nombre de fois
-l'expérience correspondante.
-\begin{Exo}[Auto-correction]
-Un professeur décide de faire corriger les copies par les élèves. A chaque évaluation, il mélange toutes les copies puis les distribue aux élèves. Il se pose la question suivante mais quelle est la probabilité qu'au moins un élève corrige sa propre copie ? 
-L'outil permutation permet de modéliser l'affectation des copies aux élèves. Une permutation, $\sigma$, est une bijection de $\{1,\dots,n\}$ sur lui-même.  Chaque élève a un numéro et  la copie de l'élève numéro $i$ est corrigé par l'élève numéro $\sigma(i)$.  Par exemple, 
+Par exemple en jetant 10000 fois une piÃ¨ce, le rapport entre le nombre de fois oÃ¹ l'on obtient FACE et le nombre de lancÃ©s, est environ 1/2 soit $P("FACE") = 1/2$.\\
+Pour estimer la probabilitÃ© d'un Ã©vÃ¨nement $E$, en particulier dans le cas oÃ¹ il est difficile de calculer thÃ©oriquement  $P(E)$ exactement, une possibilitÃ© est donc d'observer la
+proportion de fois oÃ¹ celui-ci se rÃ©alise lorsqu'on rÃ©pÃ¨te un grand nombre de fois
+l'expÃ©rience correspondante.
+\begin{Exercice}[Auto-correction]
+Un professeur dÃ©cide de faire corriger les copies par les Ã©lÃ¨ves. A chaque Ã©valuation, il mÃ©lange toutes les copies puis les distribue aux Ã©lÃ¨ves. Il se pose la question suivante mais quelle est la probabilitÃ© qu'au moins un Ã©lÃ¨ve corrige sa propre copie ? 
+L'outil permutation permet de modÃ©liser l'affectation des copies aux Ã©lÃ¨ves. Une permutation, $\sigma$, est une bijection de $\{1,\dots,n\}$ sur lui-mÃªme.  Chaque Ã©lÃ¨ve a un numÃ©ro et  la copie de l'Ã©lÃ¨ve numÃ©ro $i$ est corrigÃ© par l'Ã©lÃ¨ve numÃ©ro $\sigma(i)$.  Par exemple, 
 \begin{enumerate}
-\item la copie de l'élève numéro 1 est corrigée par l'élève numéro 4
-\item la copie de l'élève numéro 2 est corrigée par l'élève numéro 1
-\item la copie de l'élève numéro 3 est corrigée par l'élève numéro 3
-\item la copie de l'élève numéro 4 est corrigée par l'élève numéro 2
+\item la copie de l'Ã©lÃ¨ve numÃ©ro 1 est corrigÃ©e par l'Ã©lÃ¨ve numÃ©ro 4
+\item la copie de l'Ã©lÃ¨ve numÃ©ro 2 est corrigÃ©e par l'Ã©lÃ¨ve numÃ©ro 1
+\item la copie de l'Ã©lÃ¨ve numÃ©ro 3 est corrigÃ©e par l'Ã©lÃ¨ve numÃ©ro 3
+\item la copie de l'Ã©lÃ¨ve numÃ©ro 4 est corrigÃ©e par l'Ã©lÃ¨ve numÃ©ro 2
 \end{enumerate}
-est modélisé par la permutation  $\sigma(1)=4,\sigma(2)=1,\sigma(3)=3, \sigma(4)=2$. On représente une permutation par la liste ordonnée des images de la permutation, dans notre exemple $(4,1,3,2)$. Dans l'exemple, un élève corrige sa propre copie (l'élève numéro 3).  La permutation possède un point fixe, c'est dire il existe un  entier image de lui-même (ici $\sigma(3)=3$).  
+est modÃ©lisÃ© par la permutation  $\sigma(1)=4,\sigma(2)=1,\sigma(3)=3, \sigma(4)=2$. On reprÃ©sente une permutation par la liste ordonnÃ©e des images de la permutation, dans notre exemple $(4,1,3,2)$. Dans l'exemple, un Ã©lÃ¨ve corrige sa propre copie (l'Ã©lÃ¨ve numÃ©ro 3).  La permutation possÃ¨de un point fixe, c'est dire il existe un  entier image de lui-mÃªme (ici $\sigma(3)=3$).  
 \begin{enumerate}
-\item \textbf{Modéliser le mélange} : écrire une fonction permute(n) qui génère une permutation aléatoire, c'est à dire une liste contenant les entiers de 1 à n dans un ordre aléatoire.  
-\item \textbf{Tester qu'un élève ait sa propre copie} : écrire une fonction pointFixe(permutation)
+\item \impo{ModÃ©liser le mÃ©lange} : Ã©crire une fonction permute(n) qui gÃ©nÃ¨re une permutation alÃ©atoire, c'est Ã  dire une liste contenant les entiers de 1 Ã  n dans un ordre alÃ©atoire.  
+\item \impo{Tester qu'un Ã©lÃ¨ve ait sa propre copie} : Ã©crire une fonction pointFixe(permutation)
 qui renvoie True ou False selon que liste permutation contienne ou non un point fixe.
-\item  \textbf{Estimer $P$("au moins un élève corrige sa propre copie")} : en utilisant les deux questions précédentes, écrire une fonction probaCorrection(n, nbrexp)
-qui estime $P$("un élève corrige sa propre copie") par le principe de Monte-Carlo en réalisant l'expérience nbexp fois avec $n$ élèves
-\item \textbf{$P$("au moins un élève corrige sa propre copie")$\approx 1-1/e$} : estimer cette probabilité pour $n=23$ et pour $n=49$. Que remarquez-vous ?  (note, on peut démontrer ce résultat \url{https://fr.wikiversity.org/wiki/Formule_du_crible/D%C3%A9nombrement_des_d%C3%A9rangements}).
+\item  \impo{Estimer $P$("au moins un Ã©lÃ¨ve corrige sa propre copie")} : en utilisant les deux questions prÃ©cÃ©dentes, Ã©crire une fonction probaCorrection(n, nbrexp)
+qui estime $P$("un Ã©lÃ¨ve corrige sa propre copie") par le principe de Monte-Carlo en rÃ©alisant l'expÃ©rience nbexp fois avec $n$ Ã©lÃ¨ves
+\item \impo{$P$("au moins un Ã©lÃ¨ve corrige sa propre copie")$\approx 1-1/e$} : estimer cette probabilitÃ© pour $n=23$ et pour $n=49$. Que remarquez-vous ?  (note, on peut dÃ©montrer ce rÃ©sultat \url{https://fr.wikiversity.org/wiki/Formule_du_crible/D%C3%A9nombrement_des_d%C3%A9rangements}).
 \end{enumerate}
-\end{Exo}
-\begin{Exo}[Estimer $\pi$]
-Un joueur tire une flèche aléatoirement sur une cible carré avec un disque inscrit (voir figure~1). 
+\end{Exercice}
+\begin{Exercice}[Estimer $\pi$]
+Un joueur tire une flÃ¨che alÃ©atoirement sur une cible carrÃ© avec un disque inscrit (voir figure~1). 
 \begin{center}
-\includegraphics[scale=0.25]{monteCarlo.png}
-\captionof{figure}{Les points bleues représentent les issues dans le disque et les points rouges à l'extérieur}
+\includegraphics[scale=0.25]{monteCarlo.png}\\
+Les points bleues reprÃ©sentent les issues dans le disque et les points rouges Ã  l'extÃ©rieur
 \end{center}
-Quelle est la loi de probabilité que la flèche soit dans le disque ?\\
-La méthode pour estimer $\pi$ consiste alors à tirer au hasard des nombres $x$ et $y$ dans l'intervalle $[-1,1]$ ; 
-si $x^2 + y^2 < 1$ le point $M(x,y)$ appartient au disque de rayon 1. On utilise la commande uniform(-1,1) pour générer une variable aléatoire suivant la loi uniforme dans le segment $[-1,1]$. On répète cette expérience un grand nombre de fois pour estimer $P$("Flèche dans disque") et ainsi estimer $\pi$. 
+Quelle est la loi de probabilitÃ© que la flÃ¨che soit dans le disque ?\\
+La mÃ©thode pour estimer $\pi$ consiste alors Ã  tirer au hasard des nombres $x$ et $y$ dans l'intervalle $[-1,1]$ ; 
+si $x^2 + y^2 < 1$ le point $M(x,y)$ appartient au disque de rayon 1. On utilise la commande uniform(-1,1) pour gÃ©nÃ©rer une variable alÃ©atoire suivant la loi uniforme dans le segment $[-1,1]$. On rÃ©pÃ¨te cette expÃ©rience un grand nombre de fois pour estimer $P$("FlÃ¨che dans disque") et ainsi estimer $\pi$. 
 \begin{enumerate}
-\item \textbf{Tirer} : écrire une fonction lancerFleche() qui génère un couple de variables aléatoires suivant la loi uniforme dans le segment $[-1,1]$  
-\item \textbf{Tester dans disque} : écrire une fonction dansDisque(x,y)
-qui renvoie True ou False selon que la flèche de coordonnées (x,y) est dans le disque.
-\item  \textbf{Estimer $P$("Flèche dans disque")} : en utilisant les deux questions précédentes, écrire une fonction probaDisque(nbrexp)
-qui estime $P$("Flèche dans disque") par le principe de Monte-Carlo en réalisant l'expérience nbrexp fois
-\item \textbf{Estimer $\pi$} : donner une approximation de $\pi$.
+\item \impo{Tirer} : Ã©crire une fonction lancerFleche() qui gÃ©nÃ¨re un couple de variables alÃ©atoires suivant la loi uniforme dans le segment $[-1,1]$  
+\item \impo{Tester dans disque} : Ã©crire une fonction dansDisque(x,y)
+qui renvoie True ou False selon que la flÃ¨che de coordonnÃ©es (x,y) est dans le disque.
+\item  \impo{Estimer $P$("FlÃ¨che dans disque")} : en utilisant les deux questions prÃ©cÃ©dentes, Ã©crire une fonction probaDisque(nbrexp)
+qui estime $P$("FlÃ¨che dans disque") par le principe de Monte-Carlo en rÃ©alisant l'expÃ©rience nbrexp fois
+\item \impo{Estimer $\pi$} : donner une approximation de $\pi$.
 \end{enumerate}
-\end{Exo}
+\end{Exercice}
 \end{document}

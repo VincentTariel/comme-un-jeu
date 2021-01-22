@@ -1,150 +1,519 @@
-
-\documentclass[12pt,a4paper]{article}
-\usepackage{amsfonts,amsmath,amssymb,graphicx}
-\usepackage[francais]{babel}
-\usepackage[latin1]{inputenc}
-\usepackage{answers}
-\usepackage{a4wide,jlq2eams} 
-
-%---- Dimensions des marges ---
-\setlength{\paperwidth}{21cm} 
-\setlength{\paperheight}{29.7cm}
-\setlength{\evensidemargin}{0cm}
-\setlength{\oddsidemargin}{0cm} 
-\setlength{\topmargin}{-2.5cm}
-\setlength{\headsep}{0.7cm} 
-\setlength{\headheight}{1cm}
-\setlength{\textheight}{25cm} 
-\setlength{\textwidth}{17cm}
-
-
-
-
-%---- Structure Exercice -----
-\newtheorem{Exc}{Exercice}
-\Newassociation{correction}{Soln}{mycor}
-\Newassociation{indication}{Indi}{myind}
-%\newcommand{\precorrection}{~{\bf \footnotesize [Exercice corrig\'e]}}
-%\newcommand{\preindication}{~{\bf \footnotesize [Indication]}}
-\renewcommand{\Solnlabel}[1]{\bf \emph{Correction #1}}
-\renewcommand{\Indilabel}[1]{\bf \emph{Indication #1}}
-
-\def\exo#1{\futurelet\testchar\MaybeOptArgmyexoo}
-\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
-                        \else \let\next\NoOptArgmyexoo \fi \next}
-\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
-\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
-
-\newcommand{\finexo}{\end{Exc}}
-\newcommand{\flag}[1]{}
-
-\newtheorem{question}{Question}
-
-
-
-%---- Style de l'entete -----                     % -> � personnaliser <-
-\setlength{\parindent}{0cm}
-\newcommand{\entete}[1]
-{
-{\noindent
-  \textsf{Feuille d'exercices}    \hfill   \textsf{ISEN}          % Universit�
-}
-\hrule
-\hrule
-\begin{center} 
-\textbf{\textsf{\Large 
-     Probabilit� finie     % TITRE
-}}
-\end{center}
-\hrule
-}
-
-
+\documentclass{book}
+\usepackage{commeunjeustyle}
 \begin{document}
+\section*{Modélisation probabilistes pour un univers fini}
+\subsection*{Algèbre des événements}
+%Exercices probabilités finies
+\begin{Exercice}[Écriture ensembliste]
+Soit $\Omega$ un univers et soient $A,B,C$ trois événements de $\Omega$. Traduire en termes ensemblistes
+(en utilisant uniquement les symboles d'union, d'intersection et de passage au complémentaire, ainsi que $A$, $B$ 
+et $C$) les événements suivants :
+\begin{enumerate}
+ \item Seul $A$ se réalise;
+\item $A$ et $B$ se réalisent, mais pas $C$.
+\item les trois événements se réalisent;
+\item au moins l'un des trois événements se réalise;
+\item au moins deux des trois événements se réalisent;
+\item aucun ne se réalise;
+\item au plus l'un des trois se réalise;
+\item exactement deux des trois se réalisent;
+\end{enumerate}
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[Evenements]
+On jette deux dés (à 6 faces). Expliciter l'univers $\Omega$.
 
-%--- Gestion des corrections ---
- \Opensolutionfile{mycor}[ficcorex]
- \Opensolutionfile{myind}[ficind]
- \entete{\'Enonc�s}
-\section*{Mod�lisation probabilistes pour un univers fini}
-\subsection*{Alg�bre des �v�nements}
-\input{exercice/probabilite_finie_exo_ecriture_ensembliste}
-\input{exercice/probabilite_finie_exo_evenements}
+Soit $A_0$ l'événement \og{}la somme des points est paire\fg{},
+$A_1$ l'événement \og{}la somme des points est impaire\fg{}
+et $B$ l'événement \og{}la valeur absolue de la différence des points est égale à 4\fg{}.
+Combien comptez-vous d'événements élémentaires dans $A_0\setminus B$,
+dans $A_1\setminus B$?
+\end{Exercice}
+\subsection*{Axiomes des probabilités}
+%Exercices probabilités finies
+\begin{Exercice}[Sur la probabilité de l'intersection]
+Soient $A$ et $B$ deux événements d'un espace probabilisé. Démontrer que 
+$$\max\big(0,P(A)+P(B)-1\big)\leq P(A\cap B)\leq \min\big(P(A),P(B)\big).$$
+
+Soit $A$ et $B$ deux événements tels que $P(A)=P(B)=\frac34$.\\
+Donner un encadrement, le meilleur possible, de $P(A\cap B)$?
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[Dés pipés]
+On plombe un dé à 6 faces de sorte que la probabilité d'apparition d'une face
+donnée est proportionnelle au nombre de points de cette face.
+On lance le dé deux fois.
+Quelle est la probabilité d'obtenir une somme des points égale à 4?
+\end{Exercice}
+\subsection*{Probabilité uniforme}
+%Exercices probabilités finies
+\begin{Exercice}[Course de chevaux]
+Dans une course de $20$ chevaux, quelle est la probabilité, en jouant
+$3$ chevaux, de gagner le tiercé dans l'ordre?
+dans l'ordre ou le désordre?
+dans le désordre?
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[Loto]
+Au Loto, on doit cocher 6 cases dans une grille comportant 49 numéros.
+\begin{enumerate}
+\item
+  Quelle est la probabilité de gagner le gros lot (c'est-à-dire d'avoir les 6 bons numéros)?
+\item
+  On gagne quelque chose à partir du moment où l'on a au moins 3 bons numéros.
+  Avec quelle probabilité cela arrive-t-il?
+\item
+  En fait, on peut aussi (en payant plus cher) cocher 7, 8, 9 ou même 10 numéros
+  sur la grille. Dans chacun des cas, quelle est la probabilité de gagner le
+  gros lot?
+\end{enumerate}
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[Comité]
+On choisit au hasard un comité de quatre personnes parmi huit américains, cinq anglais et trois français. Quelle est la probabilité:
+\begin{itemize}
+\item
+  qu'il ne se compose que d'américains?
+\item
+  qu'aucun américain ne figure dans ce comité?
+\item
+  qu'au moins un membre de chaque nation figure dans le comité?
+\end{itemize}
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[\og{}paradoxe\fg{} des anniversaires]
+
+Dans une classe de $n$ élèves, quelle est la probabilité pour que
+deux étudiants au moins aient même anniversaire?
+
+Quel est le nombre minimum de personnes dans le groupe pour que
+cette probabilité soit d'au moins $50\%$? de $90\%$?
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[Bridge]
+Alice, Bob, Charly et Denis jouent au bridge, et
+reçoivent chacuns $13$ cartes d'un (même) jeu de $52$ cartes.
+
+Sachant qu'Alice et Charly ont à eux deux $8$ Piques,
+on en déduit que Bob et Denis ont $5$ Piques à eux deux.
+Quelle est la probabilité pour que les Piques soient \og{}bien répartis\fg{},
+c.-à-d. pour que la répartition des $5$ Piques soit $3-2$ ou $2-3$ entre Bob et Denis?
+\end{Exercice}
 
 
-\subsection*{Axiomes des probabilit�s}
-\input{exercice/probabilite_finie_exo_intersection}
-\input{exercice/probabilite_finie_exo_des_pipes}
+\subsection*{Indépendance}
+%Exercices probabilités finies
+\begin{Exercice}[Indépendance deux à deux et indépendance mutuelle]
+Votre voisine a deux enfants dont vous ignorez le sexe. On considère les trois événement suivants :
+\begin{itemize}
+\item $A$="les deux enfants sont de sexes différents"
+\item $B$="l'ainé est une fille"
+\item $C$="le cadet est un garçon".
+\end{itemize}
+Montrer que $A$, $B$ et $C$ sont deux à deux indépendants, mais ne sont pas mutuellement indépendants.
+\end{Exercice}
+\begin{Exercice}[Indépendance et contexte]
+Une urne contient 12 boules numérotées de 1 à 12. On en tire une hasard, et on considère les événements 
+$$A=\textrm{"tirage d'un nombre pair''},$$
+$$B=\textrm{"tirage d'un multiple de 3''}.$$
+Les événements $A$ et $B$ sont-ils indépendants?\\
+Reprendre la question avec une urne contenant 13 boules.
+\end{Exercice}
 
+%Exercices probabilités finies
+\begin{Exercice}[Probabilité d'une réunion et indépendance]
+Soient $A_1, \dots,A_n$  $n$ événements d?un espace probabilisé $(\Omega,P)$.  On les suppose mutuellement indépendants et de probabilités respectives $p_i = P(A_i)$. 
+ Donner une expression simple de $P(A_1\cup\dots\cup A_n)$ en fonction de $p_1,\dots,p_n$.\\
+Application : on suppose qu'une personne est soumise à $n$ expériences indépendantes les unes des autres et qu'à chaque expérience, elle ait une probabilité $p$ d'avoir un accident. Quelle est la probabilité qu'elle ait au moins un accident?
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[Irradiation]
+L'irradiation par les rayons $X$ de vers à soie induit certaines anomalies.
+La probabilité d'une anomalie particulière est $p=\frac1{10}$.
+\begin{itemize}
+\item
+  Quelle est la probabilité de trouver au moins un embryon présentant
+  cette anomalie, sur dix disséqués?
+\item
+  Combien faut-il en disséquer pour trouver au moins une anomalie
+  avec une probabilité supérieure à $50\%$? à $95\%$?
+\end{itemize}
+\end{Exercice}
+\begin{Exercice}[Vrai/Faux]
+Les assertions suivantes sont-elles vraies ou fausses?
+\begin{enumerate}
+\item Deux événements incompatibles sont indépendants.
+\item Deux événements indépendants sont incompatibles.
+\item Si $P(A)+P(B)=1$, alors $A=\bar B$.
+\item Si $A$ et $B$ sont deux événements indépendants, alors $P(A\cup B)=P(A)+P(B)$.
+\item Soit $(A_n)_{n\in\mathbb N}$ et $(B_p)_{p\in\mathbb N}$ deux systèmes complets d'événements. Alors $(A_n\cap B_p)_{(n,p)\in\mathbb N^2}$ est un système complet d'événement.
+\end{enumerate}
+\end{Exercice}
 
-\subsection*{Probabilit� uniforme}
-\input{exercice/probabilite_finie_exo_chevaux}
-\input{exercice/probabilite_finie_exo_loto}
-\input{exercice/probabilite_finie_exo_comite}
-\input{exercice/probabilite_finie_exo_anniversaires}
-\input{exercice/probabilite_finie_exo_bridge}
+\subsection*{Système complets d'événements}
+%Exercices probabilités finies
+\begin{Exercice}[la chaîne des menteurs]
 
+On suppose qu'un message binaire ($0$ ou $1$) est transmis depuis un émetteur $M_0$ à travers une chaîne $M_1, M_2, \dots, M_n$ de messagers menteurs, qui transmettent correctement le message avec une probabilité $p$, mais qui changent sa valeur avec une probabilité $1-p$.
 
-\subsection*{Ind�pendance}
-\input{exercice/probabilite_finie_exo_independance_mutuelle}
-\input{exercice/probabilite_finie_exo_independance_contexte}
-\input{exercice/probabilite_finie_exo_probabilite_reunion}
-\input{exercice/probabilite_finie_exo_irradiation}
-\input{exercice/probabilite_finie_exo_vrai_faux}
+Si l'on note $a_n$ la probabilité que l'information transmise par $M_n$ soit identique à celle envoyée par $M_0$ (avec comme convention que $a_0=1$), déterminer $a_{n+1}$ en fonction de $a_n$, puis une expression explicite de $a_n$ en fonction de $n$, ainsi que la valeur limite de la suite $(a_n)_{n\in\N}$. Le résultat est-il conforme à ce à quoi l'on pouvait s'attendre?
+\end{Exercice}
 
-\subsection*{Syst�me complets d'�v�nements}
-\input{exercice/probabilite_finie_exo_menteurs}
-\subsection*{Formule des probabilit�s compos�es}
-\input{exercice/probabilite_finie_exo_composees}
-\input{exercice/probabilite_finie_exo_roulette_russe}
+\subsection*{Formule des probabilités composées}
+%Exercices probabilités finies
+\begin{Exercice}[Tirage sans remise]
+On considère une urne contenant 4 boules blanches et 3 boules noires. On tire 
+une à une et sans remise 3 boules de l'urne. Quelle est la probabilité pour que la première boule tirée
+soit blanche, la seconde blanche et la troisième noire?
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[Roulette russe]
+Trois personnes (Alduire, Basilis et Cléophie)
+jouent à la roulette russe
+de la façon suivante: on fait tourner une fois le barillet au début,
+puis chacun appuie sur la détente à son tour
+(Alduire, puis Basilis, puis Cléophie).
+Préféreriez-vous être à la place d'Alduire, de Basilis ou de Cléophie?
+\end{Exercice}
+\subsection*{Probabilité conditionnelle}
+\begin{Exercice}[Optimisation]
+Un professeur décide de faire passer rapidement l'oral de \og{}probabilités\fg{}.
+L'étudiant est autorisé à répartir quatre boules, deux blanches et deux noires,
+entre deux urnes. Le professeur choisit au hasard une des urnes et en extrait
+une boule. Si la boule est noire, l'étudiant est reçu.
+Comment répartiriez-vous les boules?
+\end{Exercice}
 
-\subsection*{Probabilit� conditionnelle}
-\input{exercice/probabilite_finie_exo_optimisation}
 
 \subsection*{Formule de Bayes}
-\input{exercice/probabilite_finie_exo_QCM}
-\input{exercice/probabilite_finie_exo_de_pipe}
-\input{exercice/probabilite_finie_exo_ateliers}
-\input{exercice/probabilite_finie_exo_USB}
-\input{exercice/probabilite_finie_exo_pieces_defectueuses}
-\input{exercice/probabilite_finie_exo_assurances}
-
-
-
-
-\section*{Variables al�atoires}
-
-\subsection*{Loi de probabilit�}
-\input{exercice/probabilite_finie_exo_va_mille}
-\input{exercice/probabilite_finie_exo_va_des}
-
-
-\subsection*{Esp�rance}
-\input{exercice/probabilite_finie_exo_va_garagiste}
-\input{exercice/probabilite_finie_exo_va_note}
-\input{exercice/probabilite_finie_exo_va_arnaque}
-
+%Exercices probabilités finies
+\begin{Exercice}[QCM]
+Un questionnaire à choix multiples propose $m$ réponses pour chaque question. Soit $p$ la probabilité qu'un étudiant connaisse la bonne réponse à une question donnée. S'il ignore la réponse, il choisit au hasard l'une des réponses proposées. Quelle est pour le correcteur la probabilité qu'un étudiant connaisse vraiment la bonne réponse lorsqu'il l'a donnée?
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[Dé pipé]
+Un lot de 100 dés contient 25 dés pipés tels que la probabilité d'apparition d'un six soit de 1/2. On choisit un dé au hasard, on le jette, et on obtient un 6. Quelle est la probabilité que le dé soit pipé?
+\end{Exercice}
+\begin{Exercice}[Deux ateliers]
+Dans une entreprise deux ateliers fabriquent les mêmes pièces. L'atelier 1 fabrique en une journée deux fois plus de pièces que l'atelier 2.
+Le pourcentage de pièces défectueuses est $3\%$ pour l'atelier 1 et $4\%$ pour l'atelier 2. On prélève une pièce au hasard dans l'ensemble de la production d'une journée.
+Déterminer 
+\begin{enumerate}
+ \item la probabilité que cette pièce provienne de l'atelier 1;
+ \item la probabilité que cette pièce provienne de l'atelier 1 et est défectueuse;
+ \item la probabilité que cette pièce provienne de l'atelier 1 sachant qu'elle est défectueuse.
+\end{enumerate}
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[Clés USB]
+Le gérant d'un magasin d'informatique a reçu un lot de clés USB. $5\%$ des boites sont abîmées. Le gérant estime que :
+\begin{itemize}
+\item $60\%$ des boites abîmées contiennent au moins une clé défectueuse.
+\item $98\%$ des boites non abîmées ne contiennent aucune clé défectueuse.
+\end{itemize}
+Un client achète une boite du lot. On désigne par $A$ l'événement : ``la boite est abîmée'' et par $D$ l'événement ``la boite achetée contient au moins une clé défectueuse''. 
+\begin{enumerate}
+\item Donner les probabilités de $P(A)$, $P(\bar A)$, $P(D|A)$, $P(D|\bar A)$, $P(\bar D|A)$ et $P(\bar D|\bar A)$. En déduire la probabilité de $D$.
+\item Le client constate qu'un des clés achetées est défectueuse. Quelle est
+la probabilité pour qu'il ait acheté une boite abîmée?
+\end{enumerate}
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[Pièces défectueuses]
+Une usine fabrique des pièces, avec une proportion de 0,05 de pièces défectueuses. Le contrôle des 
+fabrications est tel que :
+\begin{itemize}
+\item si la pièce est bonne, elle est acceptée avec la probabilité 0,96.
+\item si la pièce est mauvaise, elle est refusée avec la probabilité 0,98.
+\end{itemize}
+On choisit une pièce au hasard et on la contrôle.Quelle est la probabilité
+\begin{enumerate}
+\item qu'il y ait une erreur de contrôle?
+\item qu'une pièce acceptée soit mauvaise?
+\end{enumerate}
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[Compagnie d'assurance]
+Une compagnie d'assurance répartit ses clients en trois classes $R_1$, $R_2$ et $R_3$ : les bons risques, les risques moyens, et les mauvais risques.
+Les effectifs de ces trois classes représentent $20\%$ de la population totale pour la classe $R_1$, $50\%$ pour la classe $R_2$, et 
+$30\%$ pour la classe $R_3$. Les statistiques indiquent que les probabilités d'avoir un accident au cours de l'année pour une personne de l'une de ces trois classes sont respectivement de 0.05, 0.15 et 0.30.
+\begin{enumerate}
+\item Quelle est la probabilité qu'une personne choisie au hasard dans la population ait un accident dans l'année?
+\item Si M.Martin n'a pas eu d'accident cette année, quelle est la probabilité qu'il soit un bon risque?
+\end{enumerate}
+\end{Exercice}
+\section*{Variables aléatoires}
+\subsection*{Loi de probabilité}
+%Exercices probabilités finies
+\begin{Exercice}[En plein dans le mille!]
+Un joueur tire sur une cible de 10 cm de rayon, constituée de couronnes concentriques,
+délimitées par des cercles de rayons 1,2, ..., 10 cm, et numérotées respectivement de 10 à 1. La
+probabilité d'atteindre la couronne $k$ est proportionnelle à l'aire de cette couronne, et on suppose que
+le joueur atteint sa cible à chaque lancer. Soit $X$ la variable aléatoire qui à chaque lancer associe le numéro de la cible.
+\begin{enumerate}
+\item Quelle est la loi de probabilité de X ?
+\item Le joueur gagne $k$ euros s'il atteint la couronne numérotée $k$ pour $k$ compris entre 6 et 10, tandis qu'il perd 2 euros s'il atteint l'une des couronnes périphériques numérotées de 1 à 5. Le jeu est-il
+favorable au joueur ?
+\end{enumerate}
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[Lancer de dés]
+On lance deux dés parfaitement équilibrés.\\
+On note $X$ le plus grand des numéros obtenus. Déterminer la loi de la variable aléatoire $X$.\\
+On note $Y$ la différence des numéros obtenus. Déterminer la loi de la variable aléatoire $Y$.\\
+On note $Z$ la produit des numéros obtenus. Déterminer la loi de la variable aléatoire $Z$.
+\end{Exercice}
+\subsection*{Espérance}
+\begin{Exercice}[Garagiste]
+Un garagiste dispose de deux voitures de location. Chacune est utilisable en moyenne 4 jours sur 5. Il loue les voitures avec une marge brute de 300 euros par jour et par voiture.
+On considère $X$ la variable aléatoire égale au nombre de clients se présentant chaque jour pour louer une voiture. On suppose que $X(\Omega)=\{0,1,2,3\}$ avec 
+$$P(X=0)=0,1\ \ P(X=1)=0,3\ \ P(X=2)=0,4\ \ P(X=3)=0,2.$$
+\begin{enumerate}
+\item On note $Z$ le nombre de voitures disponibles par jour. Déterminer la loi de $Z$. On pourra considérer dans la suite que $X$ et $Z$ sont indépendantes.
+\item On note $Y$ la variable aléatoire : " nombre de clients satisfaits par jour". Déterminer la loi de $Y$.
+\item Calculer la marge brute moyenne par jour.
+\end{enumerate}
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[Note]
+Pour déterminer la note de fin d'année, un professeur procède ainsi:
+il lance deux dés, et considère la plus petite valeur obtenue.
+Il définit alors la variable aléatoire $N$, valant $3$ fois la
+plus petite valeur obtenue.
+Décrire la loi de $N$, puis calculer son espérance et son écart-type.
+\end{Exercice}
+%Exercices probabilités finies
+\begin{Exercice}[Arnaque]
+Monsieur Duchmol affirme que, grâce à son ordinateur, il peut prédire
+le sexe des enfants à naître. Pour cette prédiction, il ne demande que
+5 Euros, destinés à couvrir les frais de gestion; de plus, pour
+\og{}prouver\fg{} sa bonne foi, il s'engage à rembourser intégralement
+en cas de prédiction erronée.
+\begin{enumerate}
+\item
+  Soit $X$ le gain de monsieur Duchmol; écrire la loi de probabilité de $X$.
+\item
+  Si monsieur Duchmol trouve 1000 naïfs, combien peut-il espérer gagner?
+\end{enumerate}
+\end{Exercice}
 \subsection*{Lois usuels}
-\input{exercice/probabilite_finie_exo_va_commencer}
-\input{exercice/probabilite_finie_exo_va_avions}
-\input{exercice/probabilite_finie_exo_va_loi_uniforme}
-\input{exercice/probabilite_finie_exo_va_harry_poter}
-\input{exercice/probabilite_finie_exo_va_maximum_vraisemblance}
-\input{exercice/probabilite_finie_exo_va_code_route}
-\input{exercice/probabilite_finie_exo_va_restaurateur}
+\begin{Exercice}[Pour commencer !]
+\begin{enumerate}
+\item
+  Un automobiliste rencontre successivement 5 feux de circulation indépendants sur le boulevard de Strasbourg.
+  La probabilité qu'un feu soit vert est de $1/2$.
+  On note $X$ le nombre de feux verts pour l'automobiliste.
+  Déterminer la loi de $X$, son espérance et sa variance.
+\item
+  Un parking souterrain contient 20 scooters à trois roues, 20 motos et 20 voitures.
+  On choisit un véhicule au hasard, et on note $X$ le nombre de roues de ce véhicule.
+  Déterminer la loi de $X$, son espérance, et sa variance.
+\item
+  Une étude statistique a permis de déterminer que 10\% de la population est gauchère.
+  Quelle est la probabilité qu'un groupe de 8 personnes contienne un seul gaucher?
+  Au plus deux gauchers?
+\item
+  Le stock d'un fournisseur de lasagnes contient une proportion $p = 49/1000$
+  de barquettes de lasagnes à base de viande de cheval.
+  Un contrôleur examine des barquettes de lasagnes chez ce fournisseur.
+  Combien doit-il contrôler de barquettes en moyenne pour qu'il trouve au moins une barquette à base de viande de cheval?
+\end{enumerate}
+\end{Exercice}
+\begin{Exercice}[Avions]
+Deux avions $A_1$ et $A_2$ possèdent respectivement deux et quatre moteurs.
+Chaque moteur a la probabilité $p$ (où $p\in ]0,1[$) de tomber en panne
+et les moteurs sont indépendants les uns des autres.
+Les deux avions partent pour un même trajet.
+Chacun des avions arrivent à destination si strictement plus de la moitié de ses moteurs reste en état de marche.
+Vous partez pour cette destination.
+Quel avion choisissez vous?
+\end{Exercice}
+
+\begin{Exercice}[Trouver le paramètre d'une loi uniforme connaissant son espérance]
+Soit $X$ une variable aléatoire suivant une loi uniforme sur $\{0,1,\dots,a\}$, où $a\in\mathbb N$. On suppose que $E(X)=6$. Déterminer $a$.
+\end{Exercice}
+\begin{Exercice}[Harry Poter]
+Harry P., apprenti-sorcier de son état, sort en moyenne deux soirs par semaine.
+Comme les lendemains matins sont plutôt difficile, il soulage alors ses maux de tête par un sortilège.
+Cependant, ainsi que Hermione G. l'en avait averti, ce sortilège possède un effet secondaire parfois gênant:
+une fois sur cent, aléatoirement, le sorcier se retrouve transformé pour la journée en une icône disco, dans son cas un \emph{Village People}.
+
+Quelle est la probabilité que Harry P., sur le cours d'une année entière, se retrouve au moins 3 jours sous cette forme?
+\end{Exercice}
+
+\begin{Exercice}[Méthode du maximum de vraisemblance]
+Un étang contient des brochets et des truites. On note $p$ la proportion de truites dans l'étang. On souhaite évaluer $p$. On prélève 20 poissons au hasard. On suppose que le nombre de poissons est suffisamment grand pour que ce prélèvement s'apparente à 20 tirages indépendants avec remise. On note $X$ le nombre de truites obtenues.
+\begin{enumerate}
+\item Quelle est la loi de $X$?
+\item Le prélèvement a donné $8$ truites. Pour quelle valeur de $p$ la quantité $P(X=8)$ est-elle maximale?
+\end{enumerate}
+\end{Exercice}
+
+\begin{Exercice}[Code de la route!]
+L'examen du code de la route se compose de 40 questions. Pour chaque question, on a le choix entre 4 réponses possibles. Une seule de ces réponses est correcte. Un candidat se présente à l'examen. Il arrive qu?il connaisse la réponse
+à certaines questions. Il répond alors à coup sûr. S?il ignore la réponse, il
+choisit au hasard entre les 4 réponses proposées. On suppose toutes les questions
+indépendantes et que pour chacune de ces questions, la probabilité que
+le candidat connaisse la vraie réponse est $p$. On note, pour $1\leq i\leq 40$, $A_i$ l'événement : "le candidat donne la bonne réponse à la $i$-ème 
+question". On note $S$ la variable aléatoire égale au nombre total de bonnes réponses.
+\begin{enumerate}
+\item Calculer $P(A_i)$.
+\item Quelle est la loi de $S$ (justifier!)?
+\item A quelle condition sur $p$ le candidat donnera en moyenne au moins 36 bonnes réponses?
+\end{enumerate}
+\end{Exercice}
+
+\begin{Exercice}[Restaurateur]
+Un restaurateur accueille chaque soir 70 clients. Il sait qu'en moyenne, deux clients sur cinq prennent une crème brûlée. Il pense que s'il prépare 30 crèmes brûlées, dans plus de 70\% des cas, la demande sera satisfaite.
+\begin{enumerate}
+\item A-t-il raison?
+\item Combien de crèmes brûlées doit-il fabriquer au minimum pour que la demande soit satisfaite dans au moins 90\% des cas.
+\end{enumerate}
+\end{Exercice}
 
 \subsection*{Grand classiques}
-\input{exercice/probabilite_finie_exo_va_marche_aleatoire}
-\input{exercice/probabilite_finie_exo_va_permiere_occurence}
-\input{exercice/probabilite_finie_exo_va_analyse_sang}
-\input{exercice/probabilite_finie_exo_va_CD}
-\input{exercice/probabilite_finie_exo_va_lemme_borel_cantelli}
-\input{exercice/probabilite_finie_exo_va_marche_aleatoire2}
-\input{exercice/probabilite_finie_exo_va_loi_hypergeometrique}
+\begin{Exercice}[Marche aléatoire]
+Un mobile se déplace de façon aléatoire sur un axe gradué.
+À l'instant $0$, il est à l'origine.
+À chaque instant entier, il se déplace d'une unité vers la droite avec la probabilité $p\in ]0,1[$
+ou d'un pas vers la gauche avec la probabilité $q=1-p$,
+et de ce façon indépendante.
+On note $X_n$ son abscisse après $n$ pas.
+\begin{enumerate}
+\item
+  Soit $D_n$ la variable aléatoire égale au nombre de pas vers la droite.
+  Quelle est la loi de $D_n$? Exprimer $X_n$ en fonction de $D_n$.
+\item
+  En déduire l'espérance et la variance de $X_n$.
+  Pour quelle valeur de $p$ la variable $X_n$ est-elle centrée?
+  Interpréter.
+\item
+  Reprendre l'exercice avec une autre méthode:
+  on note, pour $n?1$, $Y_n = X_n - X_{n-1}$.
 
+  \begin{enumerate}
+  \item
+    Déterminer la loi de $Y_n$.
+  \item
+    Justifier l'indépendance de $Y_1, \dots, Y_n$.
+  \item
+    En déduire l'espérance et la variance de $X_n$.
+  \end{enumerate}
+\end{enumerate}
+\end{Exercice}
+
+\begin{Exercice}[Première occurrence]
+
+Une urne contient deux boules blanches et $n-2$ boules noires.
+On tire les boules successivement, sans remise.
+On appelle $X$ le rang de sortie de la première boule blanche,
+$Y$ le nombre de boules noires restantes à ce moment dans l'urne
+et $Z$ le rang de sortie de la seconde boule blanche.
+\begin{enumerate}
+\item
+  Déterminer la loi de $X$ et son espérance.
+\item
+  Exprimer $Y$ en fonction de $X$ et calculer $E(Y)$.
+\item
+  Trouver un lien entre $Z$ et $X$ et en déduire la loi de~$Z$.
+\end{enumerate}
+\end{Exercice}
+
+\begin{Exercice}[Analyse de sang]
+On cherche à dépister une maladie détectable à l'aide d'un examen sanguin. On suppose que dans notre population, il y a une proportion $p$ de personnes qui n'ont pas cette maladie.
+\begin{enumerate}
+\item On analyse le sang de $r$ personnes de la population, avec $r$ entier au moins égal à 2. On suppose que l'effectif de la population est suffisamment grand pour que le choix de ces $r$ personnes s'apparente à un tirage avec remise. Quelle est la probabilité qu'aucune de ces personnes ne soit atteinte de la maladie?
+\item On regroupe le sang de ces $r$ personnes, puis on procède à l'analyse de sang. Si l'analyse est négative, aucune de ces personnes n'est malade et on arrête. Si l'analyse est positive, on fait toutes les analyses individuelles (on avait pris soin de conserver une partie du sang recueilli avant l'analyse groupée). On note $Y$ la variable aléatoire qui donne le nombre d'analyses de sang effectuées. Donner la loi de probabilité de $Y$ et calculer son espérance en fonction de $r$ et de $p$.
+\item On s'intéresse à une population de $n$ personnes, et on effectue des analyses collectives après avoir mélangé les prélèvements par groupe de $r$ personnes, où $r$ est un diviseur de $n$. Montrer que le nombre d'analyses que l'on peut espérer économiser, par rapport à la démarche consistant à tester immédiatement toutes les personnes, est égal à $np^r-\frac nr$.
+\item Dans cette question, on suppose que $p=0,9$ et on admet qu'il existe un réel $a>1$ de sorte que la fonction $x\mapsto p^x-\frac{1}x$ est croissante sur $[1,a]$ et décroissante sur $[a,+\infty[$. \'Ecrire un algorithme permettant de déterminer 
+pour quelle valeur de l'entier $r$ le nombre $p^r-\frac 1r$ est maximal.
+\end{enumerate} 
+\end{Exercice}
+
+\begin{Exercice}[Choix de CD]
+Casimir a une technique bien particulière pour choisir quel nouveau CD il va acheter.
+Il commence par choisir un CD au hasard, et l'achète s'il lui plaît,
+et le repose dans le cas contraire.
+Or Casimir est difficile: il n'aime que $1\%$ des CDs.
+Bien sûr, tant qu'il n'a pas trouvé de CD à sa convenance, il recommence l'opération.
+\begin{enumerate}
+\item
+  Soit $N$ le nombre de CDs que Casimir regarde avant de se décider.
+  Calculer $?(N=k)$.
+\item
+  Déterminer l'espérance et l'écart-type de $N$.
+\item
+  En fait, Casimir, toujours curieux, lance deux dés quand le CD ne lui plaît pas.
+  S'il obtient deux as, il prend le CD quand même, se disant qu'il y a là
+  un signe. Que vaut maintenant l'espérance de $N$?
+\end{enumerate}
+\end{Exercice}
+
+\begin{Exercice}[***, Lemme de Borel-Cantelli]
+Soit $(A_n)_{n\in \N}$ une suite d'évènements dans un même espace probabilisé.
+On note 
+$A =$ «~Il y a une infinité d'évènements parmi les $A_n$ qui sont réalisés~».\\
+a) Montrer que $A$ est un évènement.\\
+b) Si la série $\sum_k P(A_k)$ est convergente, montrer que $P(A)=0$.\\
+c) Si la série $\sum_k P(A_k)$ est divergente et si les $A_k$ sont mutuellement
+    indépendants, montrer que ${P(A)=1}$.\\
+d) Donner un cas où $P(A)=\frac12$.
+   
+\begin{Correction}
+$A = \cap_{n=0}^\infty(\cup_{k=n}^\infty A_k)$\\
+b) $P(\cup_{k=n}^\infty A_k)\leq \sum_{k=n}^\infty P(A_k)\rightarrow_{n\rightarrow \infty}0$.\\c) $1-P(\cup_{k=n}^\infty A_k) = 1-P(A_n) + P(\overline{A_n}\cap A_{n+1})+ P(\overline{A_n}\cap\overline{A_{n+1}}\cap A_{n+2})+\ldots                   =(1-P(A_n))(1-P(A_{n+1}))\ldots $
+
+    La série de terme général $-\ln(1-P(A_n))$ est divergente : grossièrement   si $P(A_n)$ ne tend pas vers zéro, sinon par équivalence si  $P(A_n)\to_{n\to \infty}0$. Donc le produit infini précédent est nul, ce qui suffit à conclure.\\
+    d) Tous les $A_k$ égaux à un même évènement de probabilité~$\frac12$.
+\end{Correction}
+\end{Exercice}
+\begin{Exercice}[Marche aléatoire]
+Une particule se trouve à l'instant 0 au point d'abscisse $a$ ($a$ entier), sur un segment gradué de $0$ à $N$ (on suppose donc $0\leq a\leq N$).
+A chaque instant, elle fait un bond de $+1$ avec la probabilité $p$ ($0<p<1/2$), ou un bond de $-1$ avec la probabilité $q=1-p$.
+Autrement dit, si $x_n$ est l'abscisse de la particule à l'instant $n$, on a :
+$$x_{n+1}=\left\{\begin{array}{ll}
+x_n+1&\textrm{avec probabilité $p$}\\
+x_n-1&\textrm{avec probabilité $1-p$.}
+\end{array}\right.$$
+Le processus se termine lorsque la particule atteint une des extrémités du segment (i.e. s'il existe $x_n$ avec $x_n=0$ ou $x_n=N$).
+\begin{enumerate}
+\item \'Ecrire un algorithme qui simule cette marche aléatoire. En particulier, cet algorithme prendra en entrée l'abscisse $a$ de départ,
+la longueur $N$ du segment,
+et produira en sortie un message indiquant si la marche s'arrête en 0 ou en $N$, et le nombre de pas nécessaires pour que le processus s'arrête.
+On supposera qu'on dispose d'une fonction alea() qui retourne un nombre aléatoire suivant une loi uniforme sur $[0,1]$.
+\item On note $u_a$ la probabilité pour que la particule partant de $a$, le processus s'arrête en $0$. 
+\begin{enumerate}
+\item Que vaut $u_0$? $u_N$?
+\item Montrer que si $0<a<N$, alors $u_a={pu_{a+1}}+qu_{a-1}$.
+\item En déduire l'expression exacte de $u_a$.
+\end{enumerate}
+\item On note $v_a$ la probabilité pour que la particule partant de $a$, le processus s'arrête en $N$. Reprendre les questions précédentes avec $v_a$ au lieu de $u_a$.
+\item Calculer $u_a+v_a$. Qu'en déduisez-vous?
+\end{enumerate}
+%\begin{indication}
+%\includegraphics[width=15cm]{3_saut_puce.png}
+%\end{indication}
+
+% correction http://www.bibmath.net/ressources/index.php?action=affiche&quoi=mathsup/colles/espaceproba&type=fexo
+\end{Exercice}
+
+\begin{Exercice}[loi hypergéométrique]
+
+Une urne contient $a$ boules blanches et $b$ boules noires.
+On tire une poignée de $n$ boules dans l'urne, avec $(a,b) \in(\N^*)^2$ et $n \in\{1,\dots,a+b\}$.
+On appelle $X$ le nombre de boules blanches dans la poignée.
+\begin{enumerate}
+\item
+  Déterminer le support de $X$.
+\item
+  Déterminer la loi de $X$.
+\item
+  Calculer l'espérance de $X$.
+\item
+  Calculer l'espérance de $X(X-1)$ puis la variance de $X$.
+\item
+  Comparer l'espérance et la variance de $X$ à celle d'une loi binomiale de paramètres
+  $n$ et $a/(a+b)$. Commentaire?
+\end{enumerate}
+\end{Exercice}
 \end{document}
-\endinput
-
-
-
-

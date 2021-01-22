@@ -1,80 +1,13 @@
-
-\documentclass[12pt,a4paper]{article}
-\usepackage{mathrsfs}
-\usepackage{amsfonts,amsmath,amssymb,graphicx}
-\usepackage[francais]{babel}
-\usepackage[latin1]{inputenc}
-\usepackage{answers}
-\usepackage{a4wide,jlq2eams} 
-\usepackage{multicol}
-%---- Dimensions des marges ---
-\setlength{\paperwidth}{21cm} 
-\setlength{\paperheight}{29.7cm}
-\setlength{\evensidemargin}{0cm}
-\setlength{\oddsidemargin}{0cm} 
-\setlength{\topmargin}{-2.5cm}
-\setlength{\headsep}{0.7cm} 
-\setlength{\headheight}{1cm}
-\setlength{\textheight}{25cm} 
-\setlength{\textwidth}{17cm}
-
-
-
-
-%---- Structure Exercice -----
-\newtheorem{Exc}{Exercice}
-\Newassociation{correction}{Soln}{mycor}
-\Newassociation{indication}{Indi}{myind}
-%\newcommand{\precorrection}{~{\bf \footnotesize [Exercice corrig\'e]}}
-%\newcommand{\preindication}{~{\bf \footnotesize [Indication]}}
-\renewcommand{\Solnlabel}[1]{\bf \emph{Correction #1}}
-\renewcommand{\Indilabel}[1]{\bf \emph{Indication #1}}
-
-\def\exo#1{\futurelet\testchar\MaybeOptArgmyexoo}
-\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
-                        \else \let\next\NoOptArgmyexoo \fi \next}
-\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
-\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
-
-\newcommand{\finexo}{\end{Exc}}
-\newcommand{\flag}[1]{}
-
-\newtheorem{question}{Question}
-
-
-
-%---- Style de l'entete -----                     % -> à personnaliser <-
-\setlength{\parindent}{0cm}
-\newcommand{\entete}[1]
-{
-{\noindent
-  \textsf{Feuille d'exercices}            % Université
-}
-\hrule
-\hrule
-\begin{center} 
-\textbf{\textsf{\Large 
-     Applications linéaires     % TITRE
-}}
-\end{center}
-\hrule
-}
-
+\documentclass{book}
+\usepackage{commeunjeustyle}
 
 \begin{document}
-
-%--- Gestion des corrections ---
- \Opensolutionfile{mycor}[ficcorex]
- \Opensolutionfile{myind}[ficind]
- \entete{\'Enoncés}
+\chapter*{Matrices : feuille d'exercices}
 
 
-\section{Matrice}
-
-
-\subsection{Calcul matriciel} 
-\exo{tariel}[Des calculs de produits]
-Calculer lorsqu'ils sont définis les produits $AB$ et $BA$ dans chacun des cas suivants :
+\section{Calcul matriciel} 
+\begin{Exercice}[Des calculs de produits]
+Calculer lorsqu'ils sont dÃ©finis les produits $AB$ et $BA$ dans chacun des cas suivants :
 \begin{enumerate}
 \item $\displaystyle A= \left(\begin{array}{cc}
 1  &  0  \\
@@ -106,17 +39,17 @@ $
 \end{array}\right)
 $
 \end{enumerate}
-\finexo
-\exo{tariel}[Commutant]
-Soient $a$ et $b$ des réels non nuls, et $A=\left( \begin{array}{cc} a & b\\ 
+\end{Exercice}
+\begin{Exercice}[Commutant]
+Soient $a$ et $b$ des rÃ©els non nuls, et $A=\left( \begin{array}{cc} a & b\\ 
  0 &a \end{array} \right).$ Trouver toutes les matrices $B\in\mathcal M_2(\mathbb R)$ qui commutent avec $A$,
-c'est-à-dire telles que $AB=BA$.
+c'est-Ã -dire telles que $AB=BA$.
 
-\finexo
+\end{Exercice}
 
-\exo{tariel}[Annulateur]
+\begin{Exercice}[Annulateur]
 
-On considère les matrices $A=\left(\begin{array}{ccc}
+On considÃ¨re les matrices $A=\left(\begin{array}{ccc}
 1&0&0\\
 0&1&1\\
 3&1&1\end{array}\right)$, $B=\left(\begin{array}{ccc}
@@ -125,26 +58,26 @@ On considère les matrices $A=\left(\begin{array}{ccc}
 1&0&0\end{array}\right)$ et $C=\left(\begin{array}{ccc}
 1&1&1\\
 1&2&1\\
-0&-1&-1\end{array}\right)$. Calculer $AB$, $AC$. Que constate-t-on? La matrice $A$ peut-elle être inversible? 
-Trouver toutes les matrices $F\in\mathcal M_3(\mathbb R)$ telles que $AF=0$ (où $0$ désigne la matrice nulle).
-\finexo
+0&-1&-1\end{array}\right)$. Calculer $AB$, $AC$. Que constate-t-on? La matrice $A$ peut-elle Ãªtre inversible? 
+Trouver toutes les matrices $F\in\mathcal M_3(\mathbb R)$ telles que $AF=0$ (oÃ¹ $0$ dÃ©signe la matrice nulle).
+\end{Exercice}
 
-\exo{tariel}[Produit non commutatif]
+\begin{Exercice}[Produit non commutatif]
 
-Déterminer deux éléments $A$ et $B$ de
+DÃ©terminer deux Ã©lÃ©ments $A$ et $B$ de
 $\mathcal M_2({\mathbb R})$ tels que : $AB=0$ et $BA\not = 0$.
-\finexo
+\end{Exercice}
 
 
-\exo{tariel}[Matrices stochastiques en petite taille]
+\begin{Exercice}[Matrices stochastiques en petite taille]
 On dit qu'une matrice $A\in\mathcal M_n(\mathbb R)$ est une matrice stochastique si la somme des coefficients
-sur chaque colonne de $A$ est égale à 1. Démontrer que le produit de deux matrices stochastiques est
+sur chaque colonne de $A$ est Ã©gale Ã  1. DÃ©montrer que le produit de deux matrices stochastiques est
 une matrice stochastique si $n=2$. Reprendre la question si $n\leq 1$.
-\finexo
+\end{Exercice}
 
-\exo{tariel}[Puissance $n$-ième, par récurrence]
+\begin{Exercice}[Puissance $n$-iÃ¨me, par rÃ©currence]
 
-Calculer la puissance $n$-ième des matrices suivantes : 
+Calculer la puissance $n$-iÃ¨me des matrices suivantes : 
 $$A=\left(\begin{array}{cc}
 1&-1\\
 -1&1\\
@@ -152,9 +85,9 @@ $$A=\left(\begin{array}{cc}
 1&1\\
 0&2\\
 \end{array}\right).$$
-\finexo
+\end{Exercice}
 
-\exo{tariel}[Puissance $n$-ième - avec la formule du binôme]
+\begin{Exercice}[Puissance $n$-iÃ¨me - avec la formule du binÃ´me]
 
 Soit $$A=\left(
 \begin{array}{ccc}
@@ -169,22 +102,22 @@ I=\left(
 0&0&1
 \end{array}\right)\textrm{ et }
 B=A-I.$$
-Calculer $B^n$ pour tout $n\in\mathbb N$. En déduire $A^n$.
-\finexo
+Calculer $B^n$ pour tout $n\in\mathbb N$. En dÃ©duire $A^n$.
+\end{Exercice}
 
-\exo{tariel}[Puissance $n$-ième - avec un polynôme annulateur]
+\begin{Exercice}[Puissance $n$-iÃ¨me - avec un polynÃ´me annulateur]
 
 \begin{enumerate}
-\item Pour $n\geq 2$, déterminer le reste de la division euclidienne de $X^n$ par $X^2-3X+2$.
+\item Pour $n\geq 2$, dÃ©terminer le reste de la division euclidienne de $X^n$ par $X^2-3X+2$.
 \item Soit  $A=\begin{pmatrix} 
 0&1&-1\\
 -1&2&-1\\
 1&-1&2
-\end{pmatrix}$. Déduire de la question précédente la valeur de $A^n$, pour $n\geq 2$.
+\end{pmatrix}$. DÃ©duire de la question prÃ©cÃ©dente la valeur de $A^n$, pour $n\geq 2$.
 \end{enumerate}
-\finexo
+\end{Exercice}
 
-\exo{tariel}[Inverser une matrice  sans calculs!]
+\begin{Exercice}[Inverser une matrice  sans calculs!]
 
 \begin{enumerate}
 \item Soit $A=\left(
@@ -192,24 +125,24 @@ Calculer $B^n$ pour tout $n\in\mathbb N$. En déduire $A^n$.
 -1&1&1\\
 1&-1&1\\
 1&1&-1
-\end{array}\right)$. Montrer que $A^2=2I_3-A$, en déduire que $A$ est inversible et calculer $A^{-1}$.
+\end{array}\right)$. Montrer que $A^2=2I_3-A$, en dÃ©duire que $A$ est inversible et calculer $A^{-1}$.
 \item  Soit $ A=\begin{pmatrix} 1 & 0 & 2 \cr
 0 & -1 & 1 \cr
 1 & -2 & 0 \cr \end{pmatrix} .$ Calculer $
-A^3-A .$ En déduire
-que $ A $ est inversible puis déterminer $ A^{-1} .$ 
+A^3-A .$ En dÃ©duire
+que $ A $ est inversible puis dÃ©terminer $ A^{-1} .$ 
 \item Soit $A=\begin{pmatrix} 
 0&1&-1\\
 -1&2&-1\\
 1&-1&2
-\end{pmatrix}$. Calculer $A^2-3A+2I_3$. En déduire que $A$ est inversible, et calculer $A^{-1}$.
+\end{pmatrix}$. Calculer $A^2-3A+2I_3$. En dÃ©duire que $A$ est inversible, et calculer $A^{-1}$.
 \end{enumerate}
-\finexo
+\end{Exercice}
 
-\exo{tariel}[Inverse avec calculs!]
+\begin{Exercice}[Inverse avec calculs!]
 
 Dire si les matrices suivantes sont inversibles et, le
-cas échéant, calculer leur inverse :
+cas Ã©chÃ©ant, calculer leur inverse :
 $$A=\left(
 \begin{array}{rcl}
 1&1&2\\
@@ -224,15 +157,15 @@ B=\left(
 0&2&3
 \end{array}
 \right).$$
-\finexo
+\end{Exercice}
 
-\exo{tariel}[Matrice nilpotente]
+\begin{Exercice}[Matrice nilpotente]
 
-Soit $A\in\mathcal M_n(\mathbb R)$ une matrice nilpotente, c'est-à-dire qu'il existe $p\geq 1$ tel que $A^p=0$. Démontrer que la matrice $I_n-A$ est inversible, et déterminer son inverse.
-\finexo
-\subsection{Puissance d'une matrice}
-\exo{tariel}[Modélisation matricielle de suites définies par une récurrences linéaires]
-On considère les suites $(u_n)$, $(v_n)$ et $(w_n)$ définies par leur premier terme
+Soit $A\in\mathcal M_n(\mathbb R)$ une matrice nilpotente, c'est-Ã -dire qu'il existe $p\geq 1$ tel que $A^p=0$. DÃ©montrer que la matrice $I_n-A$ est inversible, et dÃ©terminer son inverse.
+\end{Exercice}
+\section{Puissance d'une matrice}
+\begin{Exercice}[ModÃ©lisation matricielle de suites dÃ©finies par une rÃ©currences linÃ©aires]
+On considÃ¨re les suites $(u_n)$, $(v_n)$ et $(w_n)$ dÃ©finies par leur premier terme
 $u_0$, $v_0$ et $w_0$ et les relations suivantes :
 $$\left\{
 \begin{array}{rcl}
@@ -247,47 +180,25 @@ pour $n\geq 0$. On pose $X_n=\left(
 \item Exprimer $X_{n+1}$ en fonction d'une matrice $A$ et de $X_n$.
 \item  Exprimer $X_{n}$ en fonction d'une matrice $A$ et de $X_0$.
 \end{enumerate}
-\finexo
-\exo{tariel}[ Puissance d'une matrice triangulaire de diagonale nulle]
+\end{Exercice}
+\begin{Exercice}[ Puissance d'une matrice triangulaire de diagonale nulle]
 
-Démontrer qu'une matrice triangulaire de diagonale nulle  $A=\begin{pmatrix}0&a_{1,2}&\cdots &\cdots &a_{1,n}\\0&0&&&a_{2,n}\\\vdots &\ddots &\ddots &&\vdots \\\vdots &&\ddots &\ddots &a_{n-1,n}\\0&\cdots &\cdots &0&0\\\end{pmatrix}$ est nilpotente
-\finexo
+DÃ©montrer qu'une matrice triangulaire de diagonale nulle  $A=\begin{pmatrix}0&a_{1,2}&\cdots &\cdots &a_{1,n}\\0&0&&&a_{2,n}\\\vdots &\ddots &\ddots &&\vdots \\\vdots &&\ddots &\ddots &a_{n-1,n}\\0&\cdots &\cdots &0&0\\\end{pmatrix}$ est nilpotente
+\end{Exercice}
 
-\subsection{Trace}
-\exo{tariel}[Matrice nilpotente]
+\section{Trace}
+\begin{Exercice}[Matrice nilpotente]
 
-Soit $A\in\mathcal M_n(\mathbb R)$ une matrice nilpotente, c'est-à-dire qu'il existe $p\geq 1$ tel que $A^p=0$. Démontrer que la matrice $I_n-A$ est inversible, et déterminer son inverse.
-\finexo
+Soit $A\in\mathcal M_n(\mathbb R)$ une matrice nilpotente, c'est-Ã -dire qu'il existe $p\geq 1$ tel que $A^p=0$. DÃ©montrer que la matrice $I_n-A$ est inversible, et dÃ©terminer son inverse.
+\end{Exercice}
 
-\exo{tariel}[Matrice nilpotente]
+\begin{Exercice}[Matrice nilpotente]
 Soit $A\in\mathcal M_n(\mathbb R)$.\\
-Démontrer que $\Tr(\transposee{A} A)=\sum_{i=1}^n\sum_{j=1}^p a_{ij}^2$
+DÃ©montrer que $\Tr(\transposee{A} A)=\sum_{i=1}^n\sum_{j=1}^p a_{ij}^2$
 
-\finexo
-
-%
-
-%--- Fin des exercices ---
-%------------------------------------------------------
-%------------------------------------------------------
-
-%--- Gestion des corrections ---
-% \ \newpage
-% \setcounter{page}{1}
-% \entete{Indications}
-%
-% \Closesolutionfile{myind}
-% \Readsolutionfile{myind}
-
-% \ \newpage
-% \setcounter{page}{1}
-% \entete{Corrections}
-
- \Closesolutionfile{mycor}
- \Readsolutionfile{mycor}
-
+\end{Exercice}
 \end{document}
-\endinput
+
 
 
 

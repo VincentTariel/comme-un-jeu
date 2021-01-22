@@ -1,136 +1,65 @@
-\documentclass[a4paper]{book}
-\usepackage{t1enc}
-\usepackage[latin1]{inputenc}
-\usepackage[french]{minitoc}
- \usepackage{amsmath}
-\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
-\usepackage[francais]{babel}
-\usepackage{amsmath}
-\usepackage{a4wide,jlq2eams} 
-\usepackage{graphicx}
-\usepackage{thmbox}
-\usepackage{xcolor}
-\usepackage{sectsty}
-\usepackage{ifthen}
-\usepackage{TikZ}
-
-\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
-\sectionfont{\color{magenta}}
-\subsectionfont{\color{red}}
-\subsubsectionfont{\color{red}}
-\setlength{\shadowsize}{1.5pt}
-\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}} 
-\setlength{\shadowsize}{1.5pt}
- 
-\pagestyle{fancy}
-\addtolength{\headwidth}{\marginparsep}
-\addtolength{\headwidth}{\marginparwidth} 
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-\fancyhf{}
-\fancyhead[LE,RO]{\bfseries\thepage}
-\fancyhead[LO]{\bfseries\rightmark}
-\fancyhead[RE]{\bfseries\leftmark}
-\fancypagestyle{plain}{%
-   \fancyhead{} % get rid of headers
-   \renewcommand{\headrulewidth}{0pt} % and the line
-}
-
-\setcounter{minitocdepth}{3}
-
-\thmboxoptions{S,bodystyle=\itshape\noindent}
-\newtheorem[L]{Lem}{Lemme}[section]
-\newtheorem[L]{Th}[Lem]{Théorème}
-\newtheorem[L]{Cor}[Lem]{Corollaire}
-\newtheorem[L]{Prop}[Lem]{Proposition}
-
-\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
-\newtheorem[S,bodystyle=\upshape\noindent]{DfProp}{Définition-Proposition}
-\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
-\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
-\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
-\newtheorem[S,bodystyle=\upshape\noindent]{principe}{Principe}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newif\ifLEVEL
-\LEVELtrue
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+\documentclass{book}
+\usepackage{commeunjeustyle}
 \begin{document}
-%\dominitoc
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Dénombrement}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\minitoc
-%\newpage
-%\ifLEVEL
-%toto
-%\fi
-
-Le dénombrement s'emploie à étudier et à dénombrer divers types de groupements que l'on peut faire à partir d'ensembles finis.
-Il est né de l'étude des jeux de hasard et s'est fortement développé sous l'influence du calcul des probabilités, notamment dans une
-situation d'équiprobabilité : dans ce cas, en effet, de façon assez intuitive, la probabilité d'un événement
-est le rapport entre le nombre d'issues favorables et le nombre total d'issues possibles. Pour cette raison, le dénombrement semble trouver sa place naturelle au début d'un cours de probabilité,
-même si ses applications sont beaucoup plus diverses dans l'ensemble des mathématiques.\\
-La cardinalité est une notion de taille pour les ensembles. Lorsqu'un ensemble est fini, c'est-à-dire si ses éléments peuvent être listés par une suite finie, son cardinal est la longueur de cette suite, autrement dit il s'agit du nombre d'éléments de l'ensemble. En particulier, le cardinal de l'ensemble vide est zéro. Lorsqu'on décompte une collection "sur ses doigts", on crée une bijection entre la collection et ses doigts. On définit naturellement le cardinal comme le nombre de doigts. Il ne s'agit bien entendu pas de revenir au stade du CP et d'apprendre à compter sur ses doigts, mais
-bien de définir des objets et notations mathématiques permettant de compter le nombre d'éléments
-d'ensembles bien trop gros et compliqués pour être dénombrés à la main.
-
+\chapter*{DÃ©nombrement}
+Le dÃ©nombrement s'emploie Ã  Ã©tudier et Ã  dÃ©nombrer divers types de groupements que l'on peut faire Ã  partir d'ensembles finis.
+Il est nÃ© de l'Ã©tude des jeux de hasard et s'est fortement dÃ©veloppÃ© sous l'influence du calcul des probabilitÃ©s, notamment dans une
+situation d'Ã©quiprobabilitÃ© : dans ce cas, en effet, de faÃ§on assez intuitive, la probabilitÃ© d'un Ã©vÃ©nement
+est le rapport entre le nombre d'issues favorables et le nombre total d'issues possibles. Pour cette raison, le dÃ©nombrement semble trouver sa place naturelle au dÃ©but d'un cours de probabilitÃ©, mÃªme si ses applications sont beaucoup plus diverses dans l'ensemble des mathÃ©matiques.\\
+La cardinalitÃ© est une notion de taille pour les ensembles. Lorsqu'un ensemble est fini, c'est-Ã -dire si ses Ã©lÃ©ments peuvent Ãªtre listÃ©s par une suite finie, son cardinal est la longueur de cette suite, autrement dit il s'agit du nombre d'Ã©lÃ©ments de l'ensemble. En particulier, le cardinal de l'ensemble vide est zÃ©ro. Lorsqu'on dÃ©compte une collection "sur ses doigts", on crÃ©e une bijection entre la collection et ses doigts. On dÃ©finit naturellement le cardinal comme le nombre de doigts. Il ne s'agit bien entendu pas de revenir au stade du CP et d'apprendre Ã  compter sur ses doigts, mais
+bien de dÃ©finir des objets et notations mathÃ©matiques permettant de compter le nombre d'Ã©lÃ©ments
+d'ensembles bien trop gros et compliquÃ©s pour Ãªtre dÃ©nombrÃ©s Ã  la main.
 \section{Cardinal d'un ensemble}
-%La clé du dénombrement combinatoire est la notion de bijection : si je peux construire une correspondance
-%un-à-un entre les objets d'un ensemble $E$ et les objets d'un ensemble $F$ (c?est-à-dire une bijection de $E$
+%La clÃ© du dÃ©nombrement combinatoire est la notion de bijection : si je peux construire une correspondance
+%un-Ã -un entre les objets d'un ensemble $E$ et les objets d'un ensemble $F$ (c?est-Ã -dire une bijection de $E$
 %dans $F$), alors $E$ a autant d'objets que $F$.
-\begin{DfProp}[Cardinal]
+\begin{DefinitionProposition}[Cardinal]
 Un ensemble $E$ est \defi{fini} si $E=\emptyset$ ou si il existe $ n\in\N^{\ast}$ tel que $E$ est en bijection avec $\Intf{1}{n}$.\\
-Cet entier, $n$, est \textbf{unique}, il est appelé le \defi{cardinal} de $E$ noté $\operatorname{Card}{E}$.\\
+Cet entier, $n$, est \impo{unique}, il est appelÃ© le \defi{cardinal} de $E$ notÃ© $\operatorname{Card}{E}$.\\
 Si $E=\emptyset$, on pose $\operatorname{Card} E=0$.
-\end{DfProp}
+\end{DefinitionProposition}
 %\ifLEVEL
-%\begin{proof}
-%Supposons qu'il ne soit pas unique. Par symétrie, il suffit de 
-%\end{proof}
+%\begin{Demonstration}
+%Supposons qu'il ne soit pas unique. Par symÃ©trie, il suffit de 
+%\end{Demonstration}
 %\fi
-\begin{Ex}
-Le cardinal des couleurs d'un jeu de carte $\{\clubsuit , \spadesuit, \lozenge,\heartsuit\}$ est 4.  La fonction $f$ définie par \[f(1)=\clubsuit, f(2)=\spadesuit, f(3)=\lozenge, f(4)=\heartsuit\] est bien une bijection entre l'ensemble des couleurs et l'ensemble $\{1,2,3,4\}$.
-\end{Ex}
+\begin{Exemple}
+Le cardinal des couleurs d'un jeu de carte $\{\clubsuit , \spadesuit, \lozenge,\heartsuit\}$ est 4.  La fonction $f$ dÃ©finie par \[f(1)=\clubsuit, f(2)=\spadesuit, f(3)=\lozenge, f(4)=\heartsuit\] est bien une bijection entre l'ensemble des couleurs et l'ensemble $\{1,2,3,4\}$.
+\end{Exemple}
 
 
-\begin{Df}[Dénombrable]
-Un ensemble est \defi{dénombrable} s'il est en bijection $\N$.
-\end{Df}
-\begin{Ex}L'ensemble des entiers pairs, noté $2\N$, est dénombrable et infini car la fonction
+\begin{Definition}[DÃ©nombrable]
+Un ensemble est \defi{dÃ©nombrable} s'il est en bijection $\N$.
+\end{Definition}
+\begin{Exemple}L'ensemble des entiers pairs, notÃ© $2\N$, est dÃ©nombrable et infini car la fonction
 $$
 \Fonction{f}{\N}{2\N}{n}{2n}
 $$ 
 est bijective.
-\end{Ex}
-\begin{NB}\label{rq_index}
-Les éléments d'un ensemble fini ou dénombrable peuvent être indexés  sous la forme $\{x_i ; i\in I \}$ avec $I=\Intf{1}{n}$ ou $I=\N$ respectivement. Ainsi, on identifie tout ensemble fini de cardinal $n$ à l'ensemble $\Intf{1}{n}$ et tout ensemble dénombrable à $\N$. Par exemple pour les couleurs d'un jeu de carte, on a $\clubsuit \rightarrow 1, \spadesuit \rightarrow 2,  \lozenge \rightarrow 3,  \heartsuit \rightarrow 4 $.   
-\end{NB}
+\end{Exemple}
+\begin{Remarque}\label{rq_index}
+Les Ã©lÃ©ments d'un ensemble fini ou dÃ©nombrable peuvent Ãªtre indexÃ©s  sous la forme $\{x_i ; i\in I \}$ avec $I=\Intf{1}{n}$ ou $I=\N$ respectivement. Ainsi, on identifie tout ensemble fini de cardinal $n$ Ã  l'ensemble $\Intf{1}{n}$ et tout ensemble dÃ©nombrable Ã  $\N$. Par exemple pour les couleurs d'un jeu de carte, on a $\clubsuit \rightarrow 1, \spadesuit \rightarrow 2,  \lozenge \rightarrow 3,  \heartsuit \rightarrow 4 $.   
+\end{Remarque}
 
 
-\begin{Df}[Équipotent] Deux ensembles (fini ou non) sont \defi{équipotents} ou de \defi{même cardinal} s'il existe une bijection entre eux. 
-\end{Df}
+\begin{Definition}[Ã‰quipotent] Deux ensembles (fini ou non) sont \defi{Ã©quipotents} ou de \defi{mÃªme cardinal} s'il existe une bijection entre eux. 
+\end{Definition}
 
 
 
-\begin{Ex}Soient $E=\{1,2,3,4\}$ et $F=\{1,2,3\}$. 
+\begin{Exemple}Soient $E=\{1,2,3,4\}$ et $F=\{1,2,3\}$. 
 \begin{itemize}
 \item Il existe une application surjective de $E$ sur $F$, mais pas d'application injective. 
 \item Il existe application injective de $F$ sur $E$, mais pas d'application surjective. 
 \end{itemize}
-En fait, il n'y a pas assez d'éléments dans $F$ (ou trop peu dans $E$). 
-\end{Ex} 
+En fait, il n'y a pas assez d'Ã©lÃ©ments dans $F$ (ou trop peu dans $E$). 
+\end{Exemple} 
 
 
-\section{Principes fondamentaux de dénombrement}
+\section{Principes fondamentaux de dÃ©nombrement}
 
-\begin{principe}[Modélisation avec une urne]\normalfont Un problème d'urne est une représentation d'expériences aléatoires par un tirage aléatoire uniforme de boules dans une urne. L'urne est supposée contenir un  nombre de boules numérotés de $1$ à $n$,\setlength{\unitlength}{1mm}
- qui sont indiscernables au toucher, c'est-à-dire que lorsque l'on tire une boule à l'intérieur, le tirage est aléatoire et chaque boule à l'intérieur de l'urne a la même chance d'être tirée. 
+\begin{Methode}[ModÃ©lisation avec une urne]\normalfont Un problÃ¨me d'urne est une reprÃ©sentation d'expÃ©riences alÃ©atoires par un tirage alÃ©atoire uniforme de boules dans une urne. L'urne est supposÃ©e contenir un  nombre de boules numÃ©rotÃ©s de $1$ Ã  $n$,\setlength{\unitlength}{1mm}
+ qui sont indiscernables au toucher, c'est-Ã -dire que lorsque l'on tire une boule Ã  l'intÃ©rieur, le tirage est alÃ©atoire et chaque boule Ã  l'intÃ©rieur de l'urne a la mÃªme chance d'Ãªtre tirÃ©e. 
 \begin{center}
  \begin{picture}(25,25)
 \put(0,5){
@@ -152,49 +81,49 @@ En fait, il n'y a pas assez d'éléments dans $F$ (ou trop peu dans $E$).
 \put(0,0){Urne de 4 boules}
 \end{picture}
 \end{center}
-Il y a deux critères pour distinguer ces tirages au sort :
+Il y a deux critÃ¨res pour distinguer ces tirages au sort :
 \begin{itemize}
-\item l'\defi{ordre} dans lequel on tire les boules est pris en considération, on dit que
-c'est un « tirage avec ordre », sinon on parle d'un « tirage sans ordre ». Avec ordre, le tirage est noté avec des parenthèses pour un $p$-uplet \footnote{Un $p$-uplet  est une collection ordonnée de $p$ éléments d'un même ensemble, par exemple, le $2$-uplet $(x_1,x_2)\in \R^2$ est un vecteur du plan.}
+\item l'\defi{ordre} dans lequel on tire les boules est pris en considÃ©ration, on dit que
+c'est un Â« tirage avec ordre Â», sinon on parle d'un Â« tirage sans ordre Â». Avec ordre, le tirage est notÃ© avec des parenthÃ¨ses pour un $p$-uplet \footnote{Un $p$-uplet  est une collection ordonnÃ©e de $p$ Ã©lÃ©ments d'un mÃªme ensemble, par exemple, le $2$-uplet $(x_1,x_2)\in \R^2$ est un vecteur du plan.}
 et sans ordre, avec des accolades pour un ensemble
-% (l'ensemble des boules du tirage est une partie de l'ensemble des boules de l'urne\footnote{Un ensemble E est une collection d'éléments dont l'ordre n'a pas d'importance
-%(ainsi, les ensembles $\{2, 3\}$ et $\{3, 2\}$ sont les mêmes ensembles) et comptés sans multiplicité
-%(par exemple, $\{2,2\}=\{2\}$). On note $x \in A$ si x appartient à l'ensemble $A$. Si $A$ et $B$ sont deux
-%ensemble, on écrit $A \subset B$ et on dit que $A$ est inclus dans $B$ si chaque élément de $A$ appartient à
-%$B$. L'ensemble vide, qui ne contient aucun élément, est noté $\emptyset$}).
+% (l'ensemble des boules du tirage est une partie de l'ensemble des boules de l'urne\footnote{Un ensemble E est une collection d'Ã©lÃ©ments dont l'ordre n'a pas d'importance
+%(ainsi, les ensembles $\{2, 3\}$ et $\{3, 2\}$ sont les mÃªmes ensembles) et comptÃ©s sans multiplicitÃ©
+%(par exemple, $\{2,2\}=\{2\}$). On note $x \in A$ si x appartient Ã  l'ensemble $A$. Si $A$ et $B$ sont deux
+%ensemble, on Ã©crit $A \subset B$ et on dit que $A$ est inclus dans $B$ si chaque Ã©lÃ©ment de $A$ appartient Ã 
+%$B$. L'ensemble vide, qui ne contient aucun Ã©lÃ©ment, est notÃ© $\emptyset$}).
 Par exemple, pour le tirage des boules 7, 33 et 24, avec ordre, on note $(7,33,24)$ et sans ordre $\{7,33,24\}$. Remarque, on a bien entendu $\{7,33,24\}=\{33,24,7\}$ par contre $(7,33,24)\neq (33,24,7)$.
-\item la \defi{répétition} si on remet chaque boule tirée dans l'urne avant de tirer la suivante, on peut
-tirer plusieurs fois la même boule : on parle alors d'un tirage \defi{avec remise} et dans la cas contraire on parle d'un tirage
+\item la \defi{rÃ©pÃ©tition} si on remet chaque boule tirÃ©e dans l'urne avant de tirer la suivante, on peut
+tirer plusieurs fois la mÃªme boule : on parle alors d'un tirage \defi{avec remise} et dans la cas contraire on parle d'un tirage
 \defi{sans remise}.
 \end{itemize}
-\end{principe}
-\begin{Ex} La question : « Dans une course de chevaux avec 10 participants, de combien de
-façons peut-on parier pour le tierce ? » peut être reformulée de la manière
-suivante : « De combien de façons peut-on tirer avec ordre et sans remise 3 boules d'une urne qui en
-contient 10 ? ».
-\end{Ex}
-\begin{principe}[Décomposition]\normalfont Si une opération globale peut se décomposer en $k$ opérations élémentaires successives,
-ces dernières pouvant s'effectuer respectivement de $n_1, n_2, ..., n_k$ manières, alors
-l'opération globale peut se faire de $n_1 n_2 ... n_k$ manières différentes.
-\end{principe}
-\begin{Ex}Les localités X et Y sont reliées par trois routes a, b et c et les localités Y et Z par deux
-routes d et e. Combien y a-t-il de trajets de X à Z en passant par Y ?\\
+\end{Methode}
+\begin{Exemple} La question : Â« Dans une course de chevaux avec 10 participants, de combien de
+faÃ§ons peut-on parier pour le tierce ? Â» peut Ãªtre reformulÃ©e de la maniÃ¨re
+suivante : Â« De combien de faÃ§ons peut-on tirer avec ordre et sans remise 3 boules d'une urne qui en
+contient 10 ? Â».
+\end{Exemple}
+\begin{Methode}[DÃ©composition]\normalfont Si une opÃ©ration globale peut se dÃ©composer en $k$ opÃ©rations Ã©lÃ©mentaires successives,
+ces derniÃ¨res pouvant s'effectuer respectivement de $n_1, n_2, ..., n_k$ maniÃ¨res, alors
+l'opÃ©ration globale peut se faire de $n_1 n_2 ... n_k$ maniÃ¨res diffÃ©rentes.
+\end{Methode}
+\begin{Exemple}Les localitÃ©s X et Y sont reliÃ©es par trois routes a, b et c et les localitÃ©s Y et Z par deux
+routes d et e. Combien y a-t-il de trajets de X Ã  Z en passant par Y ?\\
 \begin{center}
 \includegraphics[width=5cm]{chemin.png}
 \end{center}
-Il y a 6= 3·2 trajets possibles : (a, d), (a, e), (b, d), (b, e), (c, d) et (c, e).
-\end{Ex}
-\begin{principe}[Double-comptage] \normalfont Il consiste à établir une égalité en comptant de deux manières différentes une certaines quantité. 
-\end{principe}
-\begin{Ex}
-Un berger ne voyant que les pattes de ses moutons pourra déterminer le nombre d'animaux en divisant le nombre de pattes par quatre. Le berger a compté le nombre de pattes de deux manières différentes : l'un directement, l'autre avec le principe de décomposition.  
-\end{Ex}
+Il y a 6= 3Â·2 trajets possibles : (a, d), (a, e), (b, d), (b, e), (c, d) et (c, e).
+\end{Exemple}
+\begin{Methode}[Double-comptage] \normalfont Il consiste Ã  Ã©tablir une Ã©galitÃ© en comptant de deux maniÃ¨res diffÃ©rentes une certaines quantitÃ©. 
+\end{Methode}
+\begin{Exemple}
+Un berger ne voyant que les pattes de ses moutons pourra dÃ©terminer le nombre d'animaux en divisant le nombre de pattes par quatre. Le berger a comptÃ© le nombre de pattes de deux maniÃ¨res diffÃ©rentes : l'un directement, l'autre avec le principe de dÃ©composition.  
+\end{Exemple}
 \section{Tirage avec ordre et avec remise}
-\begin{Prop} Le nombre de tirages différents avec remise et avec ordre dans une urne $n$ boules en tirant $p$ boules est  $n^p$.
-\end{Prop}
+\begin{Proposition} Le nombre de tirages diffÃ©rents avec remise et avec ordre dans une urne $n$ boules en tirant $p$ boules est  $n^p$.
+\end{Proposition}
 
-\begin{proof} 
-Il y a $n$ façons de tirer la première boule, puis $n$ façons de tirer la seconde boule et ainsi de suite, d'où, après le principe de décomposition, en totalité $\overbrace{n.n.\dots.n}^{p \text{ fois}}=n^p$ façons.
+\begin{Demonstration} 
+Il y a $n$ faÃ§ons de tirer la premiÃ¨re boule, puis $n$ faÃ§ons de tirer la seconde boule et ainsi de suite, d'oÃ¹, aprÃ¨s le principe de dÃ©composition, en totalitÃ© $\overbrace{n.n.\dots.n}^{p \text{ fois}}=n^p$ faÃ§ons.
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
 \node at (2,1.8) {1er boule };
@@ -216,45 +145,45 @@ Il y a $n$ façons de tirer la première boule, puis $n$ façons de tirer la second
 Diagramme en arbre d'un tirage avec ordre et avec remise  dans une urne de 3 boules en tirant 2 boules.
 \end{center}
 
-\end{proof}
+\end{Demonstration}
 
 
-\begin{Cor}[Cardinal d'un produit cartésien]Soit $E$  de cardinal $n$.\\ Alors $card(E^p)=n^p$.
-\end{Cor}
+\begin{Corollaire}[Cardinal d'un produit cartÃ©sien]Soit $E$  de cardinal $n$.\\ Alors $card(E^p)=n^p$.
+\end{Corollaire}
 
 
-\begin{proof} Soit un p-uplet $(x_1,\dots,x_p)\in E^p$. Pour chaque coordonnée $x_i$, $i$ représente le numéro du tirage et $x_i$ le numéro de la boule. $(x_1,\dots,x_p)$ représente un tirage avec ordre et avec remise dans une urne $n$ boules en tirant $p$ fois. 
-En conclusion le cardinal $E^p$ est le nombre  de tirages différents avec remise et avec ordre dans une urne $n$ boules en tirant $p$ boules, soit  $n^p$.
-\end{proof}
-\begin{DfProp}[p-uplet] Soit $E$  de cardinal $n$ et $p\in\N^*$.\\
-On appelle \defi{p-liste} de $E$ ou \defi{p-uplet} de $E$ tout élément de $E^p$. Un 2-uplet est un \defi{couple}.  Un 3-uplet est un \defi{triplet}.\\ 
+\begin{Demonstration} Soit un p-uplet $(x_1,\dots,x_p)\in E^p$. Pour chaque coordonnÃ©e $x_i$, $i$ reprÃ©sente le numÃ©ro du tirage et $x_i$ le numÃ©ro de la boule. $(x_1,\dots,x_p)$ reprÃ©sente un tirage avec ordre et avec remise dans une urne $n$ boules en tirant $p$ fois. 
+En conclusion le cardinal $E^p$ est le nombre  de tirages diffÃ©rents avec remise et avec ordre dans une urne $n$ boules en tirant $p$ boules, soit  $n^p$.
+\end{Demonstration}
+\begin{DefinitionProposition}[p-uplet] Soit $E$  de cardinal $n$ et $p\in\N^*$.\\
+On appelle \defi{p-liste} de $E$ ou \defi{p-uplet} de $E$ tout Ã©lÃ©ment de $E^p$. Un 2-uplet est un \defi{couple}.  Un 3-uplet est un \defi{triplet}.\\ 
 Il existe $n^p$ p-uplet de $E$.
-\end{DfProp}
-\begin{Ex} Combien de combinaisons à quatre chiffres peut-on former avec les chiffres de 0 à 9 ?\\
-Une combinaison est un 4-uplet de $\Intf{0}{9}$ correspondant à un tirage avec ordre et avec remise  dans une urne de 10 boules en tirant 4 fois.   Donc le nombre de combinaisons est $10^4$.
-\end{Ex}
-\begin{Cor}[Nombre d'applications entre deux ensembles]\label{diff}Soit $E$  de cardinal $p$ et $F$ de cardinal $n$.\\ Alors le cardinal de l'ensemble 
-des applications de $E$ dans $F$ est égale à  $n^p$.
-\end{Cor}
-\begin{proof} D'après la remarque~\ref{rq_index}, l'ensemble $E$  de cardinal $p$ est identifié à $\Intf{1}{p}$ et l'ensemble $F$ de cardinal $n$ à $\Intf{1}{n}$.  La fonction $\phi$ définie par :
+\end{DefinitionProposition}
+\begin{Exemple} Combien de combinaisons Ã  quatre chiffres peut-on former avec les chiffres de 0 Ã  9 ?\\
+Une combinaison est un 4-uplet de $\Intf{0}{9}$ correspondant Ã  un tirage avec ordre et avec remise  dans une urne de 10 boules en tirant 4 fois.   Donc le nombre de combinaisons est $10^4$.
+\end{Exemple}
+\begin{Corollaire}[Nombre d'applications entre deux ensembles]\label{diff}Soit $E$  de cardinal $p$ et $F$ de cardinal $n$.\\ Alors le cardinal de l'ensemble 
+des applications de $E$ dans $F$ est Ã©gale Ã   $n^p$.
+\end{Corollaire}
+\begin{Demonstration} D'aprÃ¨s la remarque~\ref{rq_index}, l'ensemble $E$  de cardinal $p$ est identifiÃ© Ã  $\Intf{1}{p}$ et l'ensemble $F$ de cardinal $n$ Ã  $\Intf{1}{n}$.  La fonction $\phi$ dÃ©finie par :
 \[
 \Fonction{\phi}{\left\{ f\in\Intf{1}{p}\to \Intf{1}{n}\right\} }{ \Intf{1}{n}^p}{f}{\left (f(1),f(2),\dots, f(p)\right )}
 \]
-associe à chaque  numéro du tirage, $i$, le numéro de  de la boule $f(i)$. Elle est bijective.\\
-Comme l'ensemble d'arrivée de la fonction $\phi$ est l'ensemble des tirages avec remise et avec ordre, de cardinal $n^p$, le cardinal de l'ensemble des applications $E$ dans $F$ est bien $n^p$.
-\end{proof}
+associe Ã  chaque  numÃ©ro du tirage, $i$, le numÃ©ro de  de la boule $f(i)$. Elle est bijective.\\
+Comme l'ensemble d'arrivÃ©e de la fonction $\phi$ est l'ensemble des tirages avec remise et avec ordre, de cardinal $n^p$, le cardinal de l'ensemble des applications $E$ dans $F$ est bien $n^p$.
+\end{Demonstration}
 
 
 \section{Tirage avec ordre et sans remise}
-\begin{Df}[Factoriel] Le nombre $\prod_{i=1}^ni= 1\times 2\times \dots  times (n-1)\times n$ est appelé \defi{factorielle} $n$ et
-est noté $n!$.
-\end{Df}
-\begin{DfProp}[Arrangement]\label{proparran}
-Un tirage sans remise et avec ordre dans une urne $n$ boules en tirant $p$ boules correspond à p-uplet d'éléments distincts.\\
-Le nombre de tirages différents  avec $p\leq n$  est $\frac{n!}{(n-p)!}$.\\
+\begin{Definition}[Factoriel] Le nombre $\prod_{i=1}^ni= 1\times 2\times \dots  times (n-1)\times n$ est appelÃ© \defi{factorielle} $n$ et
+est notÃ© $n!$.
+\end{Definition}
+\begin{DefinitionProposition}[Arrangement]\label{proparran}
+Un tirage sans remise et avec ordre dans une urne $n$ boules en tirant $p$ boules correspond Ã  p-uplet d'Ã©lÃ©ments distincts.\\
+Le nombre de tirages diffÃ©rents  avec $p\leq n$  est $\frac{n!}{(n-p)!}$.\\
  On l'appelle \defi{arrangement}  et on le note $A^p_n$.
-\end{DfProp}
-\begin{proof} Comme on a $n$ façons de tirer la première boule, puis $n-1$ façons de tirer la seconde boule et ainsi de suite, d'après le principe de décomposition, on obtient $n.(n-1)\dots(n-p+1)=\frac{n.(n-1)\dots(n-p+1).(n-p).(n-p-1)\dots 2.1}{(n-p).(n-p-1)\dots 2.1}=\frac{n!}{(n-p)!}$.
+\end{DefinitionProposition}
+\begin{Demonstration} Comme on a $n$ faÃ§ons de tirer la premiÃ¨re boule, puis $n-1$ faÃ§ons de tirer la seconde boule et ainsi de suite, d'aprÃ¨s le principe de dÃ©composition, on obtient $n.(n-1)\dots(n-p+1)=\frac{n.(n-1)\dots(n-p+1).(n-p).(n-p-1)\dots 2.1}{(n-p).(n-p-1)\dots 2.1}=\frac{n!}{(n-p)!}$.
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
 \node at (2,1.8) {1er boule };
@@ -272,87 +201,87 @@ Le nombre de tirages différents  avec $p\leq n$  est $\frac{n!}{(n-p)!}$.\\
 \end{tikzpicture}\\
 Diagramme en arbre d'un tirage avec ordre et avec remise  dans une urne de 2 boules en tirant 2 fois.
 \end{center}
-\end{proof}
+\end{Demonstration}
 
 
 
-\begin{Ex} Dans une course de chevaux avec 10 participants, de combien de
-façons peut-on parier pour le tierce ? \\
-Un tierce correspond à un tirage avec ordre et sans remise dan une urne de 10 boules en tirant 3 boules. Donc le nombre de tierce est $A^3_{10}=8.9.10=720$
-\end{Ex}
-\begin{Cor}[Nombre d'applications injectives entre deux ensembles]
+\begin{Exemple} Dans une course de chevaux avec 10 participants, de combien de
+faÃ§ons peut-on parier pour le tierce ? \\
+Un tierce correspond Ã  un tirage avec ordre et sans remise dan une urne de 10 boules en tirant 3 boules. Donc le nombre de tierce est $A^3_{10}=8.9.10=720$
+\end{Exemple}
+\begin{Corollaire}[Nombre d'applications injectives entre deux ensembles]
 Soit $E$ de cardinal $p$ et $F$ de cardinal $n$ avec  $n$ et $p$ deux entiers non nuls. \\
-Alors le cardinal de l'ensemble des applications injectives de $E$ dans $F$  est égale à  $A^p_n$.
-\end{Cor}
-\begin{proof}Idem que la démonstration du corolaire~\ref{diff} sauf que, comme le tirage est sans remise, les numéros de chaque boule sont différents deux à deux. Cela implique l'injectivité de la fonction.
-\end{proof}
-\begin{Cor}[$n=p$]Le nombre de tirages différents sans remise et avec ordre dans une urne $n$ boules en tirant toutes les boules est $n!$.
-\end{Cor}
-\begin{Ex}Pour 3 boules, on a $6=3.2.1$ manières \includegraphics[scale=0.1]{permutation_bille.png}
-\end{Ex}
-\begin{DfProp}[Permutation (cas n=p)]
-Tout classement ordonné de $n$ éléments distincts correspondant à un triage avec ordre de toutes les boules est une \defi{permutation} de ces $n$
-éléments. \\
-Lorsque l'ensemble $E = \Intf{1}{n}$, on note \defi{$S_n$} l'ensemble des permutations, soit l'ensemble des bijections de $E$ sur lui même. Cet ensemble possède une structure de groupe, on l'appelle \defi{groupe symétrique}.\\
+Alors le cardinal de l'ensemble des applications injectives de $E$ dans $F$  est Ã©gale Ã   $A^p_n$.
+\end{Corollaire}
+\begin{Demonstration}Idem que la dÃ©monstration du corolaire~\ref{diff} sauf que, comme le tirage est sans remise, les numÃ©ros de chaque boule sont diffÃ©rents deux Ã  deux. Cela implique l'injectivitÃ© de la fonction.
+\end{Demonstration}
+\begin{Corollaire}[$n=p$]Le nombre de tirages diffÃ©rents sans remise et avec ordre dans une urne $n$ boules en tirant toutes les boules est $n!$.
+\end{Corollaire}
+\begin{Exemple}Pour 3 boules, on a $6=3.2.1$ maniÃ¨res \includegraphics[scale=0.1]{permutation_bille.png}
+\end{Exemple}
+\begin{DefinitionProposition}[Permutation (cas n=p)]
+Tout classement ordonnÃ© de $n$ Ã©lÃ©ments distincts correspondant Ã  un triage avec ordre de toutes les boules est une \defi{permutation} de ces $n$
+Ã©lÃ©ments. \\
+Lorsque l'ensemble $E = \Intf{1}{n}$, on note \defi{$S_n$} l'ensemble des permutations, soit l'ensemble des bijections de $E$ sur lui mÃªme. Cet ensemble possÃ¨de une structure de groupe, on l'appelle \defi{groupe symÃ©trique}.\\
 On a $\operatorname{Card}(S_n)=n!$.
-\end{DfProp}
-\begin{Ex} Par exemple la liste $(1,3,2,5,4)$ est la permutation $\sigma$ telle que $\sigma(1)=1, \sigma(2)=3, \sigma(3)=2, \sigma(4)=5 \text{ et }\sigma(5)=4$ que l'on peut écrire   
+\end{DefinitionProposition}
+\begin{Exemple} Par exemple la liste $(1,3,2,5,4)$ est la permutation $\sigma$ telle que $\sigma(1)=1, \sigma(2)=3, \sigma(3)=2, \sigma(4)=5 \text{ et }\sigma(5)=4$ que l'on peut Ã©crire   
 $\sigma =\begin{pmatrix}
 1 & 2 & 3 & 4 & 5 \\
 1 & 3 & 2 & 5 & 4
 \end{pmatrix}$.
-\end{Ex} 
+\end{Exemple} 
 \section{Tirage sans ordre et sans remise}
 \begin{center}
 \includegraphics[width=0.5\textwidth]{bd_combinatoire.png}
 \end{center}
 
-\begin{DfProp}[Combinaison]\label{propcomb} 
-Un tirage sans remise et sans ordre dans une urne $n$ boules en tirant $p$ boules avec $p\leq n$  est appelé \defi{combinaison}. Le nombre de combinaisons est égale au  coefficient binomial, $\begin{pmatrix}n\\p\end{pmatrix}$, tel que $$\begin{pmatrix}n\\p\end{pmatrix}=\frac{n!}{p!(n-p)!}.$$ 
+\begin{DefinitionProposition}[Combinaison]\label{propcomb} 
+Un tirage sans remise et sans ordre dans une urne $n$ boules en tirant $p$ boules avec $p\leq n$  est appelÃ© \defi{combinaison}. Le nombre de combinaisons est Ã©gale au  coefficient binomial, $\begin{pmatrix}n\\p\end{pmatrix}$, tel que $$\begin{pmatrix}n\\p\end{pmatrix}=\frac{n!}{p!(n-p)!}.$$ 
 Pour $p>n$, on pose $\begin{pmatrix}n\\p\end{pmatrix}=0$ 
-\end{DfProp}
-\begin{proof}Avec le principe de double-comptage, on dénombre le nombre d'arrangements de deux façons différentes. L'un d'après la proposition~\ref{proparran}, on a $A_p^n=\frac{n!}{(n-p)!}$, et l'autre on commence par choisir une combinaison de $p$ boules parmi $n$ ($\begin{pmatrix}n\\p\end{pmatrix}$ configurations possibles
+\end{DefinitionProposition}
+\begin{Demonstration}Avec le principe de double-comptage, on dÃ©nombre le nombre d'arrangements de deux faÃ§ons diffÃ©rentes. L'un d'aprÃ¨s la proposition~\ref{proparran}, on a $A_p^n=\frac{n!}{(n-p)!}$, et l'autre on commence par choisir une combinaison de $p$ boules parmi $n$ ($\begin{pmatrix}n\\p\end{pmatrix}$ configurations possibles
 de choisir) et on l'ordonne par permutation des boules pour obtenir tous les
 arrangements simples ($p!$ configurations possibles
-de les ordonner), soit d'après le principe de décomposition $p!\begin{pmatrix}n\\p\end{pmatrix}$. D'où $p!\begin{pmatrix}n\\p\end{pmatrix}=\frac{n!}{(n-p)!}$, donc $\begin{pmatrix}n\\p\end{pmatrix}=\frac{n!}{p!(n-p)!}$.
-\end{proof}
-\begin{Ex} Le nombre de tirages au Loto (5 numéros parmi 49) est  $\begin{pmatrix}49\\5\end{pmatrix}=1 906 884$.
-\end{Ex}
-\begin{Ex} Le nombre d'anagrammes $00111$ est $\begin{pmatrix}5\\3\end{pmatrix}$. Un anagramme est une combinaison où les positions des 1 dans le mot correspond au résultat d'un tirage sans remise et sans ordre dans une urne numérotée de  $5$ boules en tirant $3$ boules. Par exemple, l'anagramme  $01101$ correspond au tirage $\{2,3,5\}$.
-\end{Ex}
-\begin{Cor}[Nombre de parties $p$ éléments d'un ensemble]
-Le nombre de configurations de sous-ensemble à $p$ éléments d'un ensemble à $n$ éléments est $\begin{pmatrix}n\\p\end{pmatrix}$.
-\end{Cor}
-\begin{proof}Soit $E=\Intf{1}{n}$. Soit $A=\{i_1,i_2,\dots,i_p\}$ un sous-ensemble de p éléments de $E$. L'ensemble $A$ correspond bien à un tirage sans ordre et sans remise dans une urne $n$ boules en tirant $p$ boules. CQFD. 
-\end{proof}
+de les ordonner), soit d'aprÃ¨s le principe de dÃ©composition $p!\begin{pmatrix}n\\p\end{pmatrix}$. D'oÃ¹ $p!\begin{pmatrix}n\\p\end{pmatrix}=\frac{n!}{(n-p)!}$, donc $\begin{pmatrix}n\\p\end{pmatrix}=\frac{n!}{p!(n-p)!}$.
+\end{Demonstration}
+\begin{Exemple} Le nombre de tirages au Loto (5 numÃ©ros parmi 49) est  $\begin{pmatrix}49\\5\end{pmatrix}=1 906 884$.
+\end{Exemple}
+\begin{Exemple} Le nombre d'anagrammes $00111$ est $\begin{pmatrix}5\\3\end{pmatrix}$. Un anagramme est une combinaison oÃ¹ les positions des 1 dans le mot correspond au rÃ©sultat d'un tirage sans remise et sans ordre dans une urne numÃ©rotÃ©e de  $5$ boules en tirant $3$ boules. Par exemple, l'anagramme  $01101$ correspond au tirage $\{2,3,5\}$.
+\end{Exemple}
+\begin{Corollaire}[Nombre de parties $p$ Ã©lÃ©ments d'un ensemble]
+Le nombre de configurations de sous-ensemble Ã  $p$ Ã©lÃ©ments d'un ensemble Ã  $n$ Ã©lÃ©ments est $\begin{pmatrix}n\\p\end{pmatrix}$.
+\end{Corollaire}
+\begin{Demonstration}Soit $E=\Intf{1}{n}$. Soit $A=\{i_1,i_2,\dots,i_p\}$ un sous-ensemble de p Ã©lÃ©ments de $E$. L'ensemble $A$ correspond bien Ã  un tirage sans ordre et sans remise dans une urne $n$ boules en tirant $p$ boules. CQFD. 
+\end{Demonstration}
 
 
 
 
-\begin{Prop}
+\begin{Proposition}
 \begin{enumerate}
 \item $\forall n \in \N, \begin{pmatrix}n\\0\end{pmatrix}=\begin{pmatrix}n\\n\end{pmatrix}=1$
 \item $\forall n \in \N, \begin{pmatrix}n\\1\end{pmatrix}=\begin{pmatrix}n\\n-1\end{pmatrix}=n$
 \item $\forall n,p \in \N,\text{ avec }p\leq n \begin{pmatrix}n\\p\end{pmatrix}=\begin{pmatrix}n\\n-p\end{pmatrix}$
 \item Formule de Pascale : $\forall n,p \in \N,\text{ avec }p\leq n, \quad \begin{pmatrix}n-1\\p-1\end{pmatrix}+\begin{pmatrix}n-1\\p\end{pmatrix}=\begin{pmatrix}n\\p\end{pmatrix}$
 \end{enumerate}
-\end{Prop}
-\begin{proof}
+\end{Proposition}
+\begin{Demonstration}
 Argumentation combinatoire :
 \begin{enumerate}
-\item une urne à $n$ boules a un unique tirage à zéro boule, l'ensemble vide $\emptyset$, et un unique tirage de n boule, lui-même
-\item une urne de $n$ boules a $n$ tirages à une boule pour la première boule
-\item choisir $p$ boules parmi $n$ revient à sélectionner les $n - k$ boules qu'on ne choisira pas.
-\item Dénombrons par principe de double-comptage l'ensemble des combinaisons de $p$ boules parmi $n$. D'abord, la proposition~\ref{propcomb} nous donne $\begin{pmatrix}n\\p\end{pmatrix}$.\\
-Puis on recherche le nombre d'anagrammes comportant $p$ 0 et $(n-p)$ 1. On sépare en deux cas sur la dernière lettre du mot :
+\item une urne Ã  $n$ boules a un unique tirage Ã  zÃ©ro boule, l'ensemble vide $\emptyset$, et un unique tirage de n boule, lui-mÃªme
+\item une urne de $n$ boules a $n$ tirages Ã  une boule pour la premiÃ¨re boule
+\item choisir $p$ boules parmi $n$ revient Ã  sÃ©lectionner les $n - k$ boules qu'on ne choisira pas.
+\item DÃ©nombrons par principe de double-comptage l'ensemble des combinaisons de $p$ boules parmi $n$. D'abord, la proposition~\ref{propcomb} nous donne $\begin{pmatrix}n\\p\end{pmatrix}$.\\
+Puis on recherche le nombre d'anagrammes comportant $p$ 0 et $(n-p)$ 1. On sÃ©pare en deux cas sur la derniÃ¨re lettre du mot :
 \begin{itemize}
-\item \textit{égale à 0} : les anagrammes de la forme $\overbrace{*\dots*}^{n-1 \text{ lettres}}0$ doivent comporter $p-1$ zéro parmi $n-1$ lettres pour être un anagramme de  $p$ zéro parmi $n$ lettres. Son cardinal est   $\begin{pmatrix}n-1\\p-1\end{pmatrix}$,
-\item \textit{égale à 1} : les anagrammes de la forme $\overbrace{*\dots*}^{n-1 \text{ lettres}}1$ doivent comporter $p$ zéro parmi $n-1$ lettres pour être un anagramme de  $p$ zéro parmi $n$ lettres. Son cardinal est   $\begin{pmatrix}n-1\\p\end{pmatrix}$,
+\item \textit{Ã©gale Ã  0} : les anagrammes de la forme $\overbrace{*\dots*}^{n-1 \text{ lettres}}0$ doivent comporter $p-1$ zÃ©ro parmi $n-1$ lettres pour Ãªtre un anagramme de  $p$ zÃ©ro parmi $n$ lettres. Son cardinal est   $\begin{pmatrix}n-1\\p-1\end{pmatrix}$,
+\item \textit{Ã©gale Ã  1} : les anagrammes de la forme $\overbrace{*\dots*}^{n-1 \text{ lettres}}1$ doivent comporter $p$ zÃ©ro parmi $n-1$ lettres pour Ãªtre un anagramme de  $p$ zÃ©ro parmi $n$ lettres. Son cardinal est   $\begin{pmatrix}n-1\\p\end{pmatrix}$,
 \end{itemize}   
 Au total on a donc $\begin{pmatrix}n-1\\p-1\end{pmatrix}+\begin{pmatrix}n-1\\p\end{pmatrix}$ d'anagrammes, soit le nombre 
-de combinaisons de $p$ boules parmi $n$ d'où le résultat.\\
-%Dis autrement, on sépare en deux cas : ceux contenant la boule $n$ qui sont l'ensemble des combinaison de $p-1$ boules parmi $n-1$  au nombre $\begin{pmatrix}n-1\\p-1\end{pmatrix}$ et ceux ne contenant pas la boule $n$  qui sont l'ensemble des combinaison de $p$ boules parmi $n-1$  au nombre $\begin{pmatrix}n-1\\p\end{pmatrix}$. Au total on a donc $\begin{pmatrix}n-1\\p-1\end{pmatrix}+\begin{pmatrix}n-1\\p\end{pmatrix}$
-%des combinaison de $p$ boules parmi $n$ d'où le résultat.
+de combinaisons de $p$ boules parmi $n$ d'oÃ¹ le rÃ©sultat.\\
+%Dis autrement, on sÃ©pare en deux cas : ceux contenant la boule $n$ qui sont l'ensemble des combinaison de $p-1$ boules parmi $n-1$  au nombre $\begin{pmatrix}n-1\\p-1\end{pmatrix}$ et ceux ne contenant pas la boule $n$  qui sont l'ensemble des combinaison de $p$ boules parmi $n-1$  au nombre $\begin{pmatrix}n-1\\p\end{pmatrix}$. Au total on a donc $\begin{pmatrix}n-1\\p-1\end{pmatrix}+\begin{pmatrix}n-1\\p\end{pmatrix}$
+%des combinaison de $p$ boules parmi $n$ d'oÃ¹ le rÃ©sultat.
 \end{enumerate}
 La formule de Pascal nous permet de construire le triangle de Pascal.
 \begin{center}
@@ -369,25 +298,25 @@ La formule de Pascal nous permet de construire le triangle de Pascal.
 \multicolumn{1}{l}{} &\multicolumn{7}{c}{$p$}
 \end{tabular}
 \end{center}
-\end{proof}
+\end{Demonstration}
 
 
-\begin{Prop}[Formule du binôme de Newton] Soit $x, y$ des nombres réels et $n > 1$ un
+\begin{Proposition}[Formule du binÃ´me de Newton] Soit $x, y$ des nombres rÃ©els et $n > 1$ un
 entier. \\
 Alors :
 \[
 (x+y)^n= \sum_{p=0}^n \begin{pmatrix}n\\p\end{pmatrix} x^p y^{n-p}
 \]
-\end{Prop}
-\begin{proof} Lorsqu'on développe $(x+y).(x+y) \dots (x+y)$, pour trouver le coefficient
+\end{Proposition}
+\begin{Demonstration} Lorsqu'on dÃ©veloppe $(x+y).(x+y) \dots (x+y)$, pour trouver le coefficient
 devant $x^p y^{n-p}$, parmi les $n$ facteurs $(x + y)$, il faut en choisir $p$ pour lesquels on garde le $x$ et
-qui vont donner un terme $x^p$, et les $n - p$ autres facteurs pour lesquels on sélectionne $y$ (et qui
-sont fixés par le choix des $p$ premiers) vont donner le terme $y^{n-p}$. Le résultat s'ensuit.
-\end{proof}
+qui vont donner un terme $x^p$, et les $n - p$ autres facteurs pour lesquels on sÃ©lectionne $y$ (et qui
+sont fixÃ©s par le choix des $p$ premiers) vont donner le terme $y^{n-p}$. Le rÃ©sultat s'ensuit.
+\end{Demonstration}
 
 
 
-\textbf{Synthèse} :
+\impo{SynthÃ¨se} :
 
 Tirage de $p$ boules dans une urne en contenant $n$.\\
 \begin{tabular}{c|c|c}
@@ -395,22 +324,4 @@ Tirage de $p$ boules dans une urne en contenant $n$.\\
  avec ordre &  $n^p$ &  $A^p_n=\frac{n!}{(n-p)!}$, si $n=p$ $A_n^p=n!$\\  \hline
  sans ordre &        & $\begin{pmatrix}n\\p\end{pmatrix} =\frac{n!}{p!(n-p)!}$
 \end{tabular}
-
-
-%\faketableofcontents % <- JMS
-%\tableofcontents
-
-%\include{eqdiff}    % chapitre 1 : équations différentielles;
-%\include{evn}       % chapitre 2 : espace vectoriel normé;
-%\include{suite}     % chapitre 3 : suite dans un espace vectoriel normé;
-%\include{serienum}  % chapitre 4 : série numérique;
-%\include{contevn}   % chapitre 5 : continuité dans un espace vectoriel normé;
-%\include{suitfonc}  % chapitre 6 : suite et série de fonctions;
-%\include{derivevn}  % chapitre 7 : dérivation des fonctions vectorielles;
-%\include{seriefou}  % chapitre 8 : série de Fourier;
-%\include{integseg}  % chapitre 9 : intégration sur un segment;
-%\include{integint}  % chapitre 10 : intégration sur un intervalle;
-%\include{serieent}  % chapitre 11 : série entière;
-%\include{plusvars}  % chapitre 12 : fonctions de plusieurs variables;
-
 \end{document}

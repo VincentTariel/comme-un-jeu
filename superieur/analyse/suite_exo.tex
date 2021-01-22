@@ -1,176 +1,93 @@
-
-\documentclass[12pt,a4paper]{article}
-\usepackage{amsfonts,amsmath,amssymb,graphicx}
-\usepackage[francais]{babel}
-\usepackage[latin1]{inputenc}
-\usepackage{answers}
-\usepackage{a4wide,jlq2eams} 
-\usepackage{multicol}
-%---- Dimensions des marges ---
-\setlength{\paperwidth}{21cm} 
-\setlength{\paperheight}{29.7cm}
-\setlength{\evensidemargin}{0cm}
-\setlength{\oddsidemargin}{0cm} 
-\setlength{\topmargin}{-2.5cm}
-\setlength{\headsep}{0.7cm} 
-\setlength{\headheight}{1cm}
-\setlength{\textheight}{25cm} 
-\setlength{\textwidth}{17cm}
-
-
-
-
-%---- Structure Exercice -----
-\newtheorem{Exc}{Exercice}
-\Newassociation{correction}{Soln}{mycor}
-\Newassociation{indication}{Indi}{myind}
-%\newcommand{\precorrection}{~{\bf \footnotesize [Exercice corrig\'e]}}
-%\newcommand{\preindication}{~{\bf \footnotesize [Indication]}}
-\renewcommand{\Solnlabel}[1]{\bf \emph{Correction #1}}
-\renewcommand{\Indilabel}[1]{\bf \emph{Indication #1}}
-
-\def\exo#1{\futurelet\testchar\MaybeOptArgmyexoo}
-\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
-                        \else \let\next\NoOptArgmyexoo \fi \next}
-\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
-\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
-
-\newcommand{\finexo}{\end{Exc}}
-\newcommand{\flag}[1]{}
-
-\newtheorem{question}{Question}
-
-
-
-%---- Style de l'entete -----                     % -> à personnaliser <-
-\setlength{\parindent}{0cm}
-\newcommand{\entete}[1]
-{
-{\noindent
-  \textsf{Feuille d'exercices}    \hfill   \textsf{ISEN}          % Université
-}
-\hrule
-\hrule
-\begin{center} 
-\textbf{\textsf{\Large 
-     Suite numérique     % TITRE
-}}
-\end{center}
-\hrule
-}
-
-
+\documentclass{book}
+\usepackage{commeunjeustyle}
 \begin{document}
-
-%--- Gestion des corrections ---
- \Opensolutionfile{mycor}[ficcorex]
- \Opensolutionfile{myind}[ficind]
- \entete{\'Enoncés}
-
-\input{exercice/suite_exo_borne}
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Nature]
-\'Etudier la nature des suites suivantes, et déterminer leur limite éventuelle :
+\begin{Exercice}[Convergence implique bornÃ©e]
+ Montrer que toute suite convergente est bornÃ©e.
+\begin{Correction}
+Soit $(u_n)$ une suite convergeant vers $l \in \R$. Par
+d\'efinition
+$$\forall \epsilon > 0 \quad \exists N \in \N \quad  \forall n\geqslant N \qquad |u_n-\ell| < \epsilon.$$
+Choisissons $\epsilon = 1$, nous obtenons le  $N$ correspondant.
+Alors pour $n\geqslant N$, nous avons $|u_n-\ell| < 1$ ; 
+autrement dit $\ell -1 <
+u_n < \ell + 1$. Notons $M = \max_{n=0,\ldots,N-1}  \{u_n\}$  et
+puis $ M' = \max (M,\ell+1)$. Alors  pour tout $n \in \N$ $u_n
+\leq M'$. De m\^eme en posant $m = \min_{n=0,\ldots,N-1} \{u_n\}$ et
+$m' = \min(m,\ell -1)$ nous obtenons pour tout $n\in \N$, $u_n
+\geq m'$.
+\end{Correction}
+\end{Exercice}
+\begin{Exercice}[Nature]
+\'Etudier la nature des suites suivantes, et dÃ©terminer leur limite Ã©ventuelle :
 $$\begin{array}{lcl}
 \displaystyle \mathbf 1.\ u_n=\frac{\sin(n)+3\cos\left(n^2\right)}{\sqrt{n}}&&\displaystyle \mathbf 2.\ u_n=\frac{2n+(-1)^n}{5n+(-1)^{n+1}}\\
 \displaystyle \mathbf 3.\ u_n=\frac{n^3+5n}{4n^2+\sin(n)+\ln(n)}&&\displaystyle \mathbf 4.\ u_n=
 \sqrt{2n+1}-\sqrt{2n-1}\\
 \displaystyle \mathbf 5.\ u_n=3^ne^{-3n}.
 \end{array}$$
-\finexo
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*,Somme télescopique]
+\end{Exercice}
+\begin{Exercice}[Somme tÃ©lescopique]
 \begin{enumerate}
-\item Déterminer deux réels $a$ et $b$ tels que
+\item DÃ©terminer deux rÃ©els $a$ et $b$ tels que
 $$\frac{1}{k^2-1}=\frac{a}{k-1}+\frac{b}{k+1}.$$
-\item En déduire la limite de la suite 
+\item En dÃ©duire la limite de la suite 
 $$u_n=\sum_{k=2}^n \frac{1}{k^2-1}.$$
-\item Sur le même modèle, déterminer la limite de la suite 
+\item Sur le mÃªme modÃ¨le, dÃ©terminer la limite de la suite 
 $$v_n=\sum_{k=0}^n\frac{1}{k^2+3k+2}.$$
 \end{enumerate}
-\finexo
+\end{Exercice}
 
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Exemple de suites adjacentes]
-Démontrer que les suites $(u_n)$ et $(v_n)$ données ci-dessous forment
+\begin{Exercice}[Exemple de suites adjacentes]
+DÃ©montrer que les suites $(u_n)$ et $(v_n)$ donnÃ©es ci-dessous forment
 des couples de suites adjacentes.
 $$
 \begin{array}{ll}
 \mathbf{1.}\quad \displaystyle u_n=\sum_{k=1}^n \frac1{k^2}\textrm{ et }v_n=u_n+\frac 1n\\
 \mathbf{2.}\quad \displaystyle u_n=\sum_{k=1}^n\frac{1}{k+n}\textrm{ et }v_n=\sum_{k=n}^{2n}\frac 1k.
 \end{array}$$
-\finexo
+\end{Exercice}
 
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Avec des quantificateurs]
-Soit $(u_n)$ une suite de nombres réels. \'Ecrire avec des quantificateurs les propositions suivantes : 
+\begin{Exercice}[Avec des quantificateurs]
+Soit $(u_n)$ une suite de nombres rÃ©els. \'Ecrire avec des quantificateurs les propositions suivantes : 
 \begin{enumerate}
-\item $(u_n)$ est bornée.
+\item $(u_n)$ est bornÃ©e.
 \item $(u_n)$ n'est pas croissante.
 \item $(u_n)$ n'est pas monotone.
-\item $(u_n)$ n'est pas majorée.
+\item $(u_n)$ n'est pas majorÃ©e.
 \item $(u_n)$ ne tend pas vers $+\infty$.
 \end{enumerate}
-\finexo
+\end{Exercice}
 
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Moyenne de Ces\`aro]
-Soit $(u_n)_{n\geq 1}$ une suite réelle. On pose $S_n=\frac{u_1+\dots+u_n}{n}$.
+\begin{Exercice}[Moyenne de Ces\`aro]
+Soit $(u_n)_{n\geq 1}$ une suite rÃ©elle. On pose $S_n=\frac{u_1+\dots+u_n}{n}$.
 \begin{enumerate}
 \item On suppose que $(u_n)$ converge vers 0. Soient $\varepsilon>0$ et $n_0\in\mathbb N$ tel que, pour
 $n\geq n_0$, on a $|u_n|\leq\varepsilon$.
 \begin{enumerate}
 \item Montrer qu'il existe une constante $M$ telle que, pour $n\geq n_0$, on a 
 $$|S_n|\leq \frac{M(n_0-1)}{n}+\varepsilon.$$
-\item En déduire que $(S_n)$ converge vers 0.
+\item En dÃ©duire que $(S_n)$ converge vers 0.
 \end{enumerate}
-\item On suppose que $u_n=(-1)^n$. Que dire de $(S_n)$? Qu'en déduisez-vous?
+\item On suppose que $u_n=(-1)^n$. Que dire de $(S_n)$? Qu'en dÃ©duisez-vous?
 \item On suppose que $(u_n)$ converge vers $l$. Montrer que $(S_n)$ converge vers $l$.
 \item On suppose que $(u_n)$ tend vers $+\infty$. Montrer que $(S_n)$ tend vers $+\infty$.
 \end{enumerate}
-\item Trouver un exemple de suite qui diverge mais dont la moyenne de Cesàro converge.
-\finexo
+\item Trouver un exemple de suite qui diverge mais dont la moyenne de CesÃ ro converge.
+\end{Exercice}
 % Exercice 98
 
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Convergence des suites extraites]
-Soit $(u_n)$ une suite de nombres réels.
+\begin{Exercice}[Convergence des suites extraites]
+Soit $(u_n)$ une suite de nombres rÃ©els.
 \begin{enumerate}
-\item On suppose que $(u_{2n})$ et $(u_{2n+1})$ convergent vers la même limite. Prouver que $(u_n)$ est convergente.
+\item On suppose que $(u_{2n})$ et $(u_{2n+1})$ convergent vers la mÃªme limite. Prouver que $(u_n)$ est convergente.
 \item Donner un exemple de suite telle que $(u_{2n})$ converge, $(u_{2n+1})$ converge, mais $(u_{n})$ n'est pas convergente.
 \item On suppose que les suites $(u_{2n})$, $(u_{2n+1})$ et $(u_{3n})$ sont convergentes. Prouver que $(u_n)$ est convergente.
 \end{enumerate}
-\finexo
+\end{Exercice}
 
 
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*, Suite Héron]
+\begin{Exercice}[Suite HÃ©ron]
 Etudier la suite :
   $$u_0 > \sqrt{2} , u_{n+1} = \frac12\left(u_n + \frac{2}{u_n}\right)$$
-\finexo
-
-%\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[*,Questions de cours]
-%Soit $(u_n)$ une suite de nombre réels croissante.
-%\begin{enumerate}
-%\item On suppose que $(u_n)$ converge vers $l$. Démontrer que pour tout entier $n$, on a $u_n\leq l$.
-%\item On suppose que $(u_n)$ n'est pas majorée. Démontrer que $(u_n)$ tend vers $+\infty$.
-%\end{enumerate}
-%\finexo
-%--- Fin des exercices ---
-%------------------------------------------------------
-%------------------------------------------------------
-
-%--- Gestion des corrections ---
-% \ \newpage
-% \setcounter{page}{1}
-% \entete{Indications}
-%
-% \Closesolutionfile{myind}
-% \Readsolutionfile{myind}
-
- \ \newpage
- \setcounter{page}{1}
- \entete{Corrections}
-
- \Closesolutionfile{mycor}
- \Readsolutionfile{mycor}
-
+\end{Exercice}
 \end{document}
-\endinput
-
-
-
-

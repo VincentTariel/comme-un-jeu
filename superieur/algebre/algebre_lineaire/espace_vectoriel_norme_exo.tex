@@ -1,111 +1,44 @@
-
-\documentclass[12pt,a4paper]{article}
-\usepackage{mathrsfs}
-\usepackage{amsfonts,amsmath,amssymb,graphicx}
-\usepackage[francais]{babel}
-\usepackage[latin1]{inputenc}
-\usepackage{answers}
-\usepackage{a4wide,jlq2eams} 
-\usepackage{multicol}
-%---- Dimensions des marges ---
-\setlength{\paperwidth}{21cm} 
-\setlength{\paperheight}{29.7cm}
-\setlength{\evensidemargin}{0cm}
-\setlength{\oddsidemargin}{0cm} 
-\setlength{\topmargin}{-2.5cm}
-\setlength{\headsep}{0.7cm} 
-\setlength{\headheight}{1cm}
-\setlength{\textheight}{25cm} 
-\setlength{\textwidth}{17cm}
-
-
-
-
-%---- Structure Exercice -----
-\newtheorem{Exc}{Exercice}
-\Newassociation{correction}{Soln}{mycor}
-\Newassociation{indication}{Indi}{myind}
-%\newcommand{\precorrection}{~{\bf \footnotesize [Exercice corrig\'e]}}
-%\newcommand{\preindication}{~{\bf \footnotesize [Indication]}}
-\renewcommand{\Solnlabel}[1]{\bf \emph{Correction #1}}
-\renewcommand{\Indilabel}[1]{\bf \emph{Indication #1}}
-
-\def\exo#1{\futurelet\testchar\MaybeOptArgmyexoo}
-\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
-                        \else \let\next\NoOptArgmyexoo \fi \next}
-\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
-\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
-
-\newcommand{\finexo}{\end{Exc}}
-\newcommand{\flag}[1]{}
-
-\newtheorem{question}{Question}
-
-
-
-%---- Style de l'entete -----                     % -> ‡ personnaliser <-
-\setlength{\parindent}{0cm}
-\newcommand{\entete}[1]
-{
-{\noindent
-  \textsf{Feuille d'exercices}            % UniversitÈ
-}
-\hrule
-\hrule
-\begin{center} 
-\textbf{\textsf{\Large 
-     Espace vectoriel normÈ
-}}
-\end{center}
-\hrule
-}
-
-
+\documentclass{book}
+\usepackage{commeunjeustyle}
 \begin{document}
-
-%--- Gestion des corrections ---
- \Opensolutionfile{mycor}[ficcorex]
- \Opensolutionfile{myind}[ficind]
- \entete{\'EnoncÈs}
-
-\section*{Espace vectoriel normÈ}
-\subsection*{Norme}
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Normes sur $\K^n$]
+\section{Espace vectoriel norm√©}
+\subsection{Norme}
+\begin{Exercice}[Normes sur $\K^n$]
 Pour $\vec{x} =(x_1,\dots,x_n)\in \K^n$, on pose
 \begin{enumerate}
 \item $\norme{\vec{x}}_1 = \sum_{k=1}^n |x_k|$
 \item $\norme{\vec{x}}_2 = \sqrt{\sum_{k=1}^n |x_k|^2}$
 \item $\norme{\vec{x}}_\infty = \max\Big(|x_1|,\dots,|x_n|\Big)$
 \end{enumerate}
-DÈmontrer que $\norme{\,}_\infty$, $\norme{\,}_1$ et $\norme{\,}_2$ sont trois normes de $\K^n$.
-\finexo
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Normes sur des espaces de fonctions]
+D√©montrer que $\norme{\,}_\infty$, $\norme{\,}_1$ et $\norme{\,}_2$ sont trois normes de $\K^n$.
+\end{Exercice}
+\begin{Exercice}[Normes sur des espaces de fonctions]
 \begin{enumerate}
-\item Soit $\mathcal{B}(I, \K)$ l'espace des fonctions bornÈes sur l'intervalle I de $\R$ ‡ valeurs dans $\K$.  Pour $f \in  \mathcal{B}(I, \K)$, on pose :
+\item Soit $\mathcal{B}(I, \K)$ l'espace des fonctions born√©es sur l'intervalle I de $\R$ √† valeurs dans $\K$.  Pour $f \in  \mathcal{B}(I, \K)$, on pose :
 $$\norme{f}_\infty=\sup_{x\in I}|f(x)|.$$
-DÈmontrer que $\norme{\,}_\infty$ est une norme sur $\mathcal{B}(I, \K)$.
-\item Soit $L_1(I, \K)$ l'espace des fonctions continues et intÈgrables sur l'intervalle $I$ de $\R$ ‡ valeurs dans $\K$. Pour $f \in L_1(I, \K)$, on pose :
+D√©montrer que $\norme{\,}_\infty$ est une norme sur $\mathcal{B}(I, \K)$.
+\item Soit $L_1(I, \K)$ l'espace des fonctions continues et int√©grables sur l'intervalle $I$ de $\R$ √† valeurs dans $\K$. Pour $f \in L_1(I, \K)$, on pose :
 $$\norme{f}_1=\int_I|f(x)|\,\mathrm{dx}.$$
-DÈmontrer que  $\norme{\,}_1$ est une norme sur $L_1(I, \K)$.
-\item Soit $L_2(I, \K)$ l'espace des fonctions continues de carrÈ intÈgrables sur l'intervalle $I$ de $\R$ ‡ valeurs dans $\K$. Pour $f \in L_2(I, \K)$, on pose :
+D√©montrer que  $\norme{\,}_1$ est une norme sur $L_1(I, \K)$.
+\item Soit $L_2(I, \K)$ l'espace des fonctions continues de carr√© int√©grables sur l'intervalle $I$ de $\R$ √† valeurs dans $\K$. Pour $f \in L_2(I, \K)$, on pose :
 $$\norme{f}_1=\int_I|f(x)|\,\mathrm{dx}.$$
-DÈmontrer que  $\norme{\,}_2$ est une norme sur $L_2(I, \K)$.
+D√©montrer que  $\norme{\,}_2$ est une norme sur $L_2(I, \K)$.
 \end{enumerate}
-\finexo
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Normes sur des espaces de suites]
+\end{Exercice}
+\begin{Exercice}[Normes sur des espaces de suites]
 \begin{enumerate}
-\item Soit $\mathcal{B}(I, \K)$ l'espace des fonctions bornÈes sur l'intervalle I de $\R$ ‡ valeurs dans $\K$.  Pour $f \in  \mathcal{B}(I, \K)$, on pose :
+\item Soit $\mathcal{B}(I, \K)$ l'espace des fonctions born√©es sur l'intervalle I de $\R$ √† valeurs dans $\K$.  Pour $f \in  \mathcal{B}(I, \K)$, on pose :
 $$\norme{f}_\infty=\sup_{x\in I}|f(x)|.$$
-DÈmontrer que $\norme{\,}_\infty$ est une norme sur $\mathcal{B}(I, \K)$.
-\item Soit $L_1(I, \K)$ l'espace des fonctions continues et intÈgrables sur l'intervalle $I$ de $\R$ ‡ valeurs dans $\K$. Pour $f \in L_1(I, \K)$, on pose :
+D√©montrer que $\norme{\,}_\infty$ est une norme sur $\mathcal{B}(I, \K)$.
+\item Soit $L_1(I, \K)$ l'espace des fonctions continues et int√©grables sur l'intervalle $I$ de $\R$ √† valeurs dans $\K$. Pour $f \in L_1(I, \K)$, on pose :
 $$\norme{f}_1=\int_I|f(x)|\,\mathrm{dx}.$$
-DÈmontrer que  $\norme{\,}_1$ est une norme sur $L_1(I, \K)$.
-\item Soit $L_2(I, \K)$ l'espace des fonctions continues de carrÈ intÈgrables sur l'intervalle $I$ de $\R$ ‡ valeurs dans $\K$. Pour $f \in L_2(I, \K)$, on pose :
+D√©montrer que  $\norme{\,}_1$ est une norme sur $L_1(I, \K)$.
+\item Soit $L_2(I, \K)$ l'espace des fonctions continues de carr√© int√©grables sur l'intervalle $I$ de $\R$ √† valeurs dans $\K$. Pour $f \in L_2(I, \K)$, on pose :
 $$\norme{f}_1=\int_I|f(x)|\,\mathrm{dx}.$$
-DÈmontrer que  $\norme{\,}_2$ est une norme sur $L_2(I, \K)$.
+D√©montrer que  $\norme{\,}_2$ est une norme sur $L_2(I, \K)$.
 \end{enumerate}
-\finexo
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[normes sur les matrices]
+\end{Exercice}
+\begin{Exercice}[normes sur les matrices]
 Pour $A\in \MnK$, $A = \Big( a_{i,j} \Big)_{1\leq i,j\leq n}$, on pose:
 \begin{itemize}
 \item $\norme{A}_1 = \sum_{i=1}^n \sum_{j=1}^n |a_{i,j}|$;
@@ -115,10 +48,10 @@ Pour $A\in \MnK$, $A = \Big( a_{i,j} \Big)_{1\leq i,j\leq n}$, on pose:
 \end{itemize}
 \begin{enumerate}
 \item Montrer qu'il s'agit de normes sur $ \MnK$.
-\item Montrer que la norme $ \MnK$ est une \emph{norme d'algËbre}, c.-‡-d. que $$\forall A,B \in E,\quad N(AB) \leq N(A) N(B).$$
+\item Montrer que la norme $ \MnK$ est une \emph{norme d'alg√®bre}, c.-√†-d. que $$\forall A,B \in E,\quad N(AB) \leq N(A) N(B).$$
 \end{enumerate}
-\finexo
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Normes de polynÙmes]
+\end{Exercice}
+\begin{Exercice}[Normes de polyn√¥mes]
 Pour $P=\sum_{k=0}^d a_k X^k \in \K[X]$, on pose:
 \begin{itemize}
 \item $ N_1(P) = \sum_{k=0}^d |a_k|$;
@@ -126,54 +59,54 @@ Pour $P=\sum_{k=0}^d a_k X^k \in \K[X]$, on pose:
 \item $ N_\infty(P) = \max_{0\leq k\leq d} |a_k|$;
 \item $ N(P) = \sup_{x\in[0,1]} |a_k|$.
 \end{itemize}
-DÈmontrer qu'il s'agit de normes sur $E$.
-\finexo
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Normes d'applications linÈaires]
-Soient $E$,$F$ deux $\K$-espaces vectoriels normÈs et $\mathcal{L}_c(E,F)$ l'espace des applications linÈaires continues de $E$ dans $F$.\\
-DÈmontrer  $$ \|u\|=\sup_{x\neq 0}\frac{ \| u(x)\|_F }{\|x\|_E}$$ est une norme sur $\mathcal{L}_c (E,F)$
-\finexo
+D√©montrer qu'il s'agit de normes sur $E$.
+\end{Exercice}
+\begin{Exercice}[Normes d'applications lin√©aires]
+Soient $E$,$F$ deux $\K$-espaces vectoriels norm√©s et $\mathcal{L}_c(E,F)$ l'espace des applications lin√©aires continues de $E$ dans $F$.\\
+D√©montrer  $$ \|u\|=\sup_{x\neq 0}\frac{ \| u(x)\|_F }{\|x\|_E}$$ est une norme sur $\mathcal{L}_c (E,F)$
+\end{Exercice}
 
 
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[IntÈrieur]
-Soit $(E, N)$ un espace vectoriel normÈ. Soit $F$ un sous-espace vectoriel strict de $E$. Montrer que l'intÈrieur de $F$ est l'ensemble vide.
-\finexo
+\begin{Exercice}[Int√©rieur]
+Soit $(E, N)$ un espace vectoriel norm√©. Soit $F$ un sous-espace vectoriel strict de $E$. Montrer que l'int√©rieur de $F$ est l'ensemble vide.
+\end{Exercice}
 
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[IntÈrieur]
-DÈmontrer que $\GLnK$ est dense dans $\MnK$
-\finexo
+\begin{Exercice}[Int√©rieur]
+D√©montrer que $\GLnK$ est dense dans $\MnK$
+\end{Exercice}
 
 
 \subsection{Suite}
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[UnicitÈ de la limite]
-DÈmontrer que si une suite converge, alors sa limite est unique.
-\finexo
+\begin{Exercice}[Unicit√© de la limite]
+D√©montrer que si une suite converge, alors sa limite est unique.
+\end{Exercice}
 
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[BornÈe]
-DÈmontrer que si une suite converge, alors elle est bornÈe.
-\finexo
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Suite extraite]
+\begin{Exercice}[Born√©e]
+D√©montrer que si une suite converge, alors elle est born√©e.
+\end{Exercice}
+\begin{Exercice}[Suite extraite]
 Si une suite converge, alors toute suite extraite converge.
-\finexo
+\end{Exercice}
 
 
 \subsection{Fonctions lipschitziennes}
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Application norme]
-Soit $(E, N)$ un espace vectoriel normÈ.
-DÈmontrer que l'application norme est 1-lipschitzienne.
-\finexo
-\exo{ 0402 , tariel, 01/11/2017, 1-2, {}}[Application norme]
-Soit $(E, N)$ un espace vectoriel normÈ.
-DÈmontrer que dans un espace vectoriel normÈ de dimension finie, tout sous-espace vectoriel est un fermÈ.
-\finexo
-%\Exercice[TranslatÈe d'une boule]
-%Soit $(E,\|\cdot\|)$ un espace vectoriel normÈ, $x,y\in E$. DÈmontrer que $$x+\bar B(y,r)=\bar B(x+y,r)$$.
+\begin{Exercice}[Application norme]
+Soit $(E, N)$ un espace vectoriel norm√©.
+D√©montrer que l'application norme est 1-lipschitzienne.
+\end{Exercice}
+\begin{Exercice}[Application norme]
+Soit $(E, N)$ un espace vectoriel norm√©.
+D√©montrer que dans un espace vectoriel norm√© de dimension finie, tout sous-espace vectoriel est un ferm√©.
+\end{Exercice}
+%\Exercice[Translat√©e d'une boule]
+%Soit $(E,\|\cdot\|)$ un espace vectoriel norm√©, $x,y\in E$. D√©montrer que $$x+\bar B(y,r)=\bar B(x+y,r)$$.
 
-%\section*{Topologie sur les espaces vectoriels normÈs}
-%\subsection*{Boules et normes}
+%\section{Topologie sur les espaces vectoriels norm√©s}
+%\subsection{Boules et normes}
 %
 %
-%\Exercice[TranslatÈe d'une boule]
-%Soit $(E,\|\cdot\|)$ un espace vectoriel normÈ, $x,y\in E$. DÈmontrer que $$x+\bar B(y,r)=\bar B(x+y,r)$$.
+%\Exercice[Translat√©e d'une boule]
+%Soit $(E,\|\cdot\|)$ un espace vectoriel norm√©, $x,y\in E$. D√©montrer que $$x+\bar B(y,r)=\bar B(x+y,r)$$.
 %
 
 %
@@ -184,19 +117,19 @@ DÈmontrer que dans un espace vectoriel normÈ de dimension finie, tout sous-espac
 %Soit $I$ un intervalle de $?$.
 %\begin{enumerate}
 %\item
-%  On note $\mathscr{L}^1$ l'ensemble des fonctions $f$ continues et intÈgrables de $I$ dans $??$.
+%  On note $\mathscr{L}^1$ l'ensemble des fonctions $f$ continues et int√©grables de $I$ dans $??$.
 %  Pour $f ? \mathscr{L}^1$, on note
 %  \[ \Norm{f}_1 = ?_I \abs{f(x)} \D x. \]
 %  Montrer qu'il s'agit d'une norme sur $\mathscr{L}^1$.
 %
 %\item
-%  On note $\mathscr{L}^2$ l'ensemble des fonctions $f$ continues de $I$ dans $??$ telles que $f^2$ est intÈgrable sur $I$.
+%  On note $\mathscr{L}^2$ l'ensemble des fonctions $f$ continues de $I$ dans $??$ telles que $f^2$ est int√©grable sur $I$.
 %  Pour $f ? \mathscr{L}^2$, on note
 %  \[ \Norm{f}_2 = ?{?_I \abs{f(x)}^2 \D x}. \]
-%  Montrer que $\mathscr{L}^2$ est un £ev. et que $\Norme_2$ est une norme sur $\mathscr{L}^2$.
+%  Montrer que $\mathscr{L}^2$ est un ¬£ev. et que $\Norme_2$ est une norme sur $\mathscr{L}^2$.
 %
 %\item
-%  On note $\mathscr{L}^?$ l'ensemble des fonctions $f$ continues et bornÈes de $I$ dans $??$.
+%  On note $\mathscr{L}^?$ l'ensemble des fonctions $f$ continues et born√©es de $I$ dans $??$.
 %  Pour $f ? \mathscr{L}^?$, on note
 %  \[ \Norm{f}_? = \sup_{x?I} \abs{f(x)}. \]
 %  Montrer qu'il s'agit d'une norme sur $\mathscr{L}^?$.
@@ -205,19 +138,19 @@ DÈmontrer que dans un espace vectoriel normÈ de dimension finie, tout sous-espac
 %% Exercice 1465
 %
 %
-%\Exercice[InÈgalitÈs sur les normes]
-%Soit $(E,\|\cdot\|)$ un espace vectoriel normÈ. 
+%\Exercice[In√©galit√©s sur les normes]
+%Soit $(E,\|\cdot\|)$ un espace vectoriel norm√©. 
 %\begin{enumerate}
-%\item DÈmontrer que, pour tous $x,y\in E$, on a 
+%\item D√©montrer que, pour tous $x,y\in E$, on a 
 %$$\|x\|+\|y\|\leq \|x+y\|+\|x-y\|.$$
-%En dÈduire que 
+%En d√©duire que 
 %$$\|x\|+\|y\|\leq 2\max(\|x+y\|,\|x-y\|).$$
-%La constante $2$ peut elle Ítre amÈliorÈe?
-%\item On suppose dÈsormais que la norme est issue d'un produit scalaire. DÈmontrer que, pour tous $x,y\in E$, on a 
+%La constante $2$ peut elle √™tre am√©lior√©e?
+%\item On suppose d√©sormais que la norme est issue d'un produit scalaire. D√©montrer que, pour tous $x,y\in E$, on a 
 %$$(\|x\|+\|y\|)^2\leq \|x+y\|^2+\|x-y\|^2.$$
-%En dÈduire que 
+%En d√©duire que 
 %$$\|x\|+\|y\|\leq \sqrt 2\max(\|x+y\|,\|x-y\|).$$
-%La constante $\sqrt 2$ peut elle Ítre amÈliorÈe?
+%La constante $\sqrt 2$ peut elle √™tre am√©lior√©e?
 %\end{enumerate}
 %
 %\Exercice
@@ -226,157 +159,157 @@ DÈmontrer que dans un espace vectoriel normÈ de dimension finie, tout sous-espac
 %\item Montrer que pour tout $x???^n$, on a
 %  $\Norm{x}_1 ??n \Norm{x}_2 ?n \Norm{x}_??n \Norm{x}_1$.
 %\item Montrer que les constantes sont optimales.
-%\item En dÈduire que $u_n \to?$ a la mÍme signification pour les trois normes.
+%\item En d√©duire que $u_n \to?$ a la m√™me signification pour les trois normes.
 %\end{enumerate}
 %
 %
 %\Exercice[CNS pour avoir une norme]
-%Soient $a_1,\dots,a_n$ des rÈels et $N:\mathbb R^n\to\mathbb R$ dÈfinie par 
+%Soient $a_1,\dots,a_n$ des r√©els et $N:\mathbb R^n\to\mathbb R$ d√©finie par 
 %$$N(x_1,\dots,x_n)=a_1|x_1|+\dots +a_n |x_n|.$$
-%Donner une condition nÈcessaire et suffisante portant sur les $a_k$ pour que $N$ soit une norme sur $\mathbb R^n$.
+%Donner une condition n√©cessaire et suffisante portant sur les $a_k$ pour que $N$ soit une norme sur $\mathbb R^n$.
 %
 %\Exercice[Sup de deux normes]
 %Soient $N_1$ et $N_2$ deux normes sur un espace vectoriel $E$. On pose $N=\max(N_1,N_2)$.
-%DÈmontrer que $N$ est une norme sur $E$.
+%D√©montrer que $N$ est une norme sur $E$.
 %
 %
 %\Exercice[Espace de matrices]
-%On dÈfinit une application sur $\mathcal M_n(\mtr)$ en posant
+%On d√©finit une application sur $\mathcal M_n(\mtr)$ en posant
 %$$N(A)=n\max_{i,j}{|a_{i,j}|}\textrm{ si }A=(a_{i,j}).$$
-%VÈrifier que l'on dÈfinit bien une norme sur $\mathcal M_n(\mtr)$, puis qu'il s'agit d'une norme
-%d'algËbre, c'est-‡-dire que 
+%V√©rifier que l'on d√©finit bien une norme sur $\mathcal M_n(\mtr)$, puis qu'il s'agit d'une norme
+%d'alg√®bre, c'est-√†-dire que 
 %$$N(AB)\leq N(A)N(B)\textrm{ pour toutes matrices }A,B\in \mathcal M_n(\mtr).$$
 %
 %
-%\Exercice[Sup sur les polynÙmes]
-%Soit $A$ une partie non vide de $\mathbb R$. Pour tout polynÙme $P\in\mathbb R[X]$, on pose
+%\Exercice[Sup sur les polyn√¥mes]
+%Soit $A$ une partie non vide de $\mathbb R$. Pour tout polyn√¥me $P\in\mathbb R[X]$, on pose
 %$$\|P\|_A=\sup_{x\in A}|P(x)|.$$
 %Quelles conditions $A$ doit-elle satisfaire pour que l'on obtienne une norme sur $\mathbb R[X]$?
 %
 %
-%\Exercice[InÈgalitÈs de Hˆlder et de Minkowski]
-%Soient $(x,y,p,q)\in\mtr_+^*$ tels que $1/p+1/q=1$, et $a_1,\dots,a_n,b_1,\dots,b_n$ $2n$ rÈels strictement positifs.
+%\Exercice[In√©galit√©s de H√∂lder et de Minkowski]
+%Soient $(x,y,p,q)\in\mtr_+^*$ tels que $1/p+1/q=1$, et $a_1,\dots,a_n,b_1,\dots,b_n$ $2n$ r√©els strictement positifs.
 %\begin{enumerate}
 %\item Montrer que 
 %$$xy\leq \frac{1}{p}x^p+\frac{1}{q}y^q.$$
 %\item On suppose dans cette question que $\sum_{i=1}^n a_i^p=\sum_{i=1}^n b_i^q=1.$ Montrer que $\sum_{i=1}^n a_ib_i\leq 1$.
-%\item En dÈduire la splendide inÈgalitÈ de Hˆlder :
+%\item En d√©duire la splendide in√©galit√© de H√∂lder :
 %$$\sum_{i=1}^n a_ib_i\leq\left(\sum_{i=1}^n a_i^p\right)^{1/p}\left(\sum_{i=1}^n b_i^q\right)^{1/q}.$$
-%\item On suppose en outre que $p>1$. DÈduire de l'inÈgalitÈ de Hˆlder l'inÈgalitÈ de Minkowski :
+%\item On suppose en outre que $p>1$. D√©duire de l'in√©galit√© de H√∂lder l'in√©galit√© de Minkowski :
 %$$\left(\sum_{i=1}^n (a_i+b_i)^p\right)^{1/p}\leq\left(\sum_{i=1}^na_i^p\right)^{1/p}+\left(\sum_{i=1}^n b_i^p\right)^{1/p}.$$
-%\item On dÈfinit pour  $x=(x_1,\dots,x_n)\in \mathbb R^n$ 
+%\item On d√©finit pour  $x=(x_1,\dots,x_n)\in \mathbb R^n$ 
 %$$\|x\|_p=(|x_1|^p+\dots+|x_n|^p)^{1/p}.$$
-%DÈmontrer que $\|\cdot\|_p$ est une norme sur $\mathbb R^n$.
+%D√©montrer que $\|\cdot\|_p$ est une norme sur $\mathbb R^n$.
 %\end{enumerate}
 %
 %
-%\Exercice[Normes classiques sur les polynÙmes]
-%Soit $E=\mtr[X]$ l'espace vectoriel des polynÙmes. On dÈfinit sur $E$ trois normes par, si $P=\sum_{i=0}^p a_iX^i$ :
+%\Exercice[Normes classiques sur les polyn√¥mes]
+%Soit $E=\mtr[X]$ l'espace vectoriel des polyn√¥mes. On d√©finit sur $E$ trois normes par, si $P=\sum_{i=0}^p a_iX^i$ :
 %$$N_1(P)=\sum_{i=0}^p |a_i|,\ N_2(P)=\left(\sum_{i=0}^p |a_i|^2\right)^{1/2},\ N_\infty(P)=\max_i |a_i|.$$
-%VÈrifier qu'il s'agit de 3 normes sur $\mtr[X]$. Sont-elles Èquivalentes deux ‡ deux?
+%V√©rifier qu'il s'agit de 3 normes sur $\mtr[X]$. Sont-elles √©quivalentes deux √† deux?
 %
 %
 %\Exercice[Normes classiques sur les fonctions continues]
-%Soit $E=\mathcal C([0,1],\mathbb R)$. On dÈfinit les normes $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$ par 
+%Soit $E=\mathcal C([0,1],\mathbb R)$. On d√©finit les normes $\|\cdot\|_1$, $\|\cdot\|_2$ et $\|\cdot\|_\infty$ par 
 %$$\|f\|_1=\int_0^1|f(t)|dt,\ \|f\|_2=\left(\int_0^1|f(t)|^2\right)^{1/2}\textrm{ et }\|f\|_\infty=\sup_{x\in [0,1]}|f(x)|.$$
-%DÈmontrer que ces trois normes ne sont pas Èquivalentes deux ‡ deux.
+%D√©montrer que ces trois normes ne sont pas √©quivalentes deux √† deux.
 %
 %
-%\Exercice[Deux normes Èquivalentes sur $\mathcal C^1$]
-%Soit $E=\mathcal C^1([0,1],\mathbb R)$. On dÈfinit 
+%\Exercice[Deux normes √©quivalentes sur $\mathcal C^1$]
+%Soit $E=\mathcal C^1([0,1],\mathbb R)$. On d√©finit 
 %$$N(f)=|f(0)|+\|f'\|_\infty,\ N'(f)=\|f\|_{\infty}+\|f'\|_\infty.$$
 %\begin{enumerate}
-%\item DÈmontrer que $N$ et $N'$ sont deux normes sur $E$.
-%\item DÈmontrer que $N$ et $N'$ sont Èquivalentes.
-%\item Sont-elles Èquivalentes ‡ $\|\cdot\|_\infty$?
+%\item D√©montrer que $N$ et $N'$ sont deux normes sur $E$.
+%\item D√©montrer que $N$ et $N'$ sont √©quivalentes.
+%\item Sont-elles √©quivalentes √† $\|\cdot\|_\infty$?
 %\end{enumerate}
 %
 %
-%\Exercice[Normes sur les polynÙmes]
-%Soit $a\geq 0$. Pour $P\in\mathbb R[X]$, on dÈfinit
+%\Exercice[Normes sur les polyn√¥mes]
+%Soit $a\geq 0$. Pour $P\in\mathbb R[X]$, on d√©finit
 %$$N_a(P)=|P(a)|+\int_0^1 |P'(t)|dt.$$
 %\begin{enumerate}
-%\item DÈmontrer que $N_a$ est une norme sur $\mathbb R[X]$.
-%\item Soit $a,b\geq 0$ avec $a< b$ et $b>1$. DÈmontrer que $N_a$ et $N_b$ ne sont pas Èquivalentes.
-%\item DÈmontrer que si $(a,b)\in [0,1]^2$, alors $N_a$ et $N_b$ sont Èquivalentes.
+%\item D√©montrer que $N_a$ est une norme sur $\mathbb R[X]$.
+%\item Soit $a,b\geq 0$ avec $a< b$ et $b>1$. D√©montrer que $N_a$ et $N_b$ ne sont pas √©quivalentes.
+%\item D√©montrer que si $(a,b)\in [0,1]^2$, alors $N_a$ et $N_b$ sont √©quivalentes.
 %\end{enumerate}
 %
-%\subsection*{Ouverts ou fermÈs}
-%\Exercice[Exemples d'ouverts et de fermÈs de $\mathbb R$]
-%Dans l'espace vectoriel normÈ $\mathbb R$, dÈterminer si les parties suivantes sont ouvertes ou fermÈes : $\mathbb N$, $\mathbb Z$, $\mathbb Q$, $[0,1[$, $[0,+?[$, $]0,1[\cup {2}$, $\{1/n, n \in\mathbb N^*\}$, $\bigcap_{n\geq 1}]-1/n,1/n[$.
-%\Exercice[Ouverts ou fermÈs]
-%DÈmontrer que les deux ensembles suivants sont ouverts  :
+%\subsection{Ouverts ou ferm√©s}
+%\Exercice[Exemples d'ouverts et de ferm√©s de $\mathbb R$]
+%Dans l'espace vectoriel norm√© $\mathbb R$, d√©terminer si les parties suivantes sont ouvertes ou ferm√©es : $\mathbb N$, $\mathbb Z$, $\mathbb Q$, $[0,1[$, $[0,+?[$, $]0,1[\cup {2}$, $\{1/n, n \in\mathbb N^*\}$, $\bigcap_{n\geq 1}]-1/n,1/n[$.
+%\Exercice[Ouverts ou ferm√©s]
+%D√©montrer que les deux ensembles suivants sont ouverts  :
 %$$F=\left\{(x,y)\in\mtr^2;\ x^2<\exp(\sin y)+ 12\right\},\quad\quad G=\{(x,y)\in\mtr^2; -1<\ln (x^2+1)<1\}.$$
-%\Exercice[StabilitÈ]
+%\Exercice[Stabilit√©]
 %Soit $(A_n)_{n \in \mathbb{N}}$ une suite de parties ouvertes de $\mathbb{R}$. 
 %\begin{itemize}
-%\item Est-ce que la rÈunion des An est encore une partie
+%\item Est-ce que la r√©union des An est encore une partie
 %ouverte ? Et leur intersection ?
-%\item MÍme question pour une famille de parties fermÈes.
+%\item M√™me question pour une famille de parties ferm√©es.
 %\end{itemize}
-%\subsection*{Topologie des espaces de matrices}
-%\Exercice[Ouvert/fermÈ/compact]
+%\subsection{Topologie des espaces de matrices}
+%\Exercice[Ouvert/ferm√©/compact]
 %\begin{enumerate}
-%\item DÈmontrer que l'ensemble des matrices symÈtriques est un fermÈ de $MnR$.
+%\item D√©montrer que l'ensemble des matrices sym√©triques est un ferm√© de $MnR$.
 %\item Montrer que l'ensemble $GLnR$ des matrices inversibles est un ouvert de $MnR$.
 %\item Montrer que l'ensemble des matrices orthogonales $OnR$  est un compact de $MnR$.
 %\end{enumerate}
-%\section*{Applications}
-%\subsection*{Limite de suite}
+%\section{Applications}
+%\subsection{Limite de suite}
 %
 %\Exercice[Convergence des suites extraites]
-%Soit $(u_n)$ une suite de nombres rÈels.
+%Soit $(u_n)$ une suite de nombres r√©els.
 %\begin{enumerate}
-%\item On suppose que $(u_{2n})$ et $(u_{2n+1})$ convergent vers la mÍme limite. Prouver que $(u_n)$ est convergente.
+%\item On suppose que $(u_{2n})$ et $(u_{2n+1})$ convergent vers la m√™me limite. Prouver que $(u_n)$ est convergente.
 %\item Donner un exemple de suite telle que $(u_{2n})$ converge, $(u_{2n+1})$ converge, mais $(u_{n})$ n'est pas convergente.
 %\item On suppose que les suites $(u_{2n})$, $(u_{2n+1})$ et $(u_{3n})$ sont convergentes. Prouver que $(u_n)$ est convergente.
 %\end{enumerate}
 %
 %
-%\Exercice[Suites extraites vÈrifiant certaines propriÈtes]
-%Soit $(u_n)$ une suite de nombre rÈels.
+%\Exercice[Suites extraites v√©rifiant certaines propri√©tes]
+%Soit $(u_n)$ une suite de nombre r√©els.
 %\begin{enumerate}
 %\item On suppose que $(u_n)$ est croissante et qu'elle admet une suite extraite convergente. Que dire de $(u_n)$?
-%\item On suppose que $(u_n)$ est croissante et qu'elle admet une suite extraite majorÈe. Que dire de $(u_n)$?
-%\item On suppose que $(u_n)$ n'est pas majorÈe. Montrer qu'elle admet une suite extraite qui diverge vers $+\infty$.
+%\item On suppose que $(u_n)$ est croissante et qu'elle admet une suite extraite major√©e. Que dire de $(u_n)$?
+%\item On suppose que $(u_n)$ n'est pas major√©e. Montrer qu'elle admet une suite extraite qui diverge vers $+\infty$.
 %\end{enumerate}
-%\Exercice[Exemples de valeurs d'adhÈrence]
+%\Exercice[Exemples de valeurs d'adh√©rence]
 %\begin{enumerate}
-%\item Quelles sont les valeurs d'adhÈrence de la suite $(-1)^n$? de la suite $\cos(n\pi/3)$?
-%\item Donner un exemple de suite qui ne converge pas et qui possËde une unique valeur d'adhÈrence.
+%\item Quelles sont les valeurs d'adh√©rence de la suite $(-1)^n$? de la suite $\cos(n\pi/3)$?
+%\item Donner un exemple de suite qui ne converge pas et qui poss√®de une unique valeur d'adh√©rence.
 %\end{enumerate}
 %
 %
 %
 %\Exercice[Suites de Cauchy]
-%Une suite $(u_n)$ de nombre rÈels est appelÈe suite de Cauchy si, pour tout $\veps>0$, il existe un entier $N$ tel que,
+%Une suite $(u_n)$ de nombre r√©els est appel√©e suite de Cauchy si, pour tout $\veps>0$, il existe un entier $N$ tel que,
 %pour tout $p,q\geq N$, on a 
 %$$|u_p-u_q|<\veps.$$
 %\begin{enumerate}
 %\item Montrer que toute suite convergente est une suite de Cauchy.
-%\item On souhaite prouver la rÈciproque ‡ la question prÈcÈdente.
+%\item On souhaite prouver la r√©ciproque √† la question pr√©c√©dente.
 %Soit $(u_n)$ une suite de Cauchy. 
 %\begin{enumerate}
-%\item Montrer que $(u_n)$ est bornÈe.
+%\item Montrer que $(u_n)$ est born√©e.
 %\item On suppose que $(u_n)$ admet une suite extraite convergente. Montrer que $(u_n)$ est convergente.
 %\item Conclure.
 %\end{enumerate}
 %\end{enumerate}
 %
-%\subsection*{ContinuitÈ et limite}
-%\Exercice[ContinuitÈ et Èquation fonctionnelle]
-%Soit $E$ un espace vectoriel normÈ, et $h:E\to E$ une application continue admettant une limite $\ell$ en $0$ et vÈrifiant $h(x)=h(x/2)$ pour tout $x\in E$. DÈmontrer que $h$ est constante.
+%\subsection{Continuit√© et limite}
+%\Exercice[Continuit√© et √©quation fonctionnelle]
+%Soit $E$ un espace vectoriel norm√©, et $h:E\to E$ une application continue admettant une limite $\ell$ en $0$ et v√©rifiant $h(x)=h(x/2)$ pour tout $x\in E$. D√©montrer que $h$ est constante.
 %
-%\Exercice[Calcul de limites dÈtaillÈ]
+%\Exercice[Calcul de limites d√©taill√©]
 %\begin{enumerate}
-%\item Montrer que si $x$ et $y$ sont des rÈels, on a :
+%\item Montrer que si $x$ et $y$ sont des r√©els, on a :
 %$$2|xy|\leq x^2+y^2$$
-%\item Soit $f$ l'application de $A=\mtr^2\backslash\{(0,0)\}$ dans $\mtr$ dÈfinie par 
+%\item Soit $f$ l'application de $A=\mtr^2\backslash\{(0,0)\}$ dans $\mtr$ d√©finie par 
 %$$f(x,y)=\frac{3x^2+xy}{\sqrt{x^2+y^2}}.$$
 %Montrer que, pour tout $(x,y)$ de $A$, on a :
 %$$|f(x,y)|\leq 4\|(x,y)\|_2,$$
-%o˘ $\|(x,y)\|_2=\sqrt{x^2+y^2}.$
-%En dÈduire que $f$ admet une limite en $(0,0)$.
+%o√π $\|(x,y)\|_2=\sqrt{x^2+y^2}.$
+%En d√©duire que $f$ admet une limite en $(0,0)$.
 %\end{enumerate}
 %
 %\Exercice[Diverses limites]
@@ -387,12 +320,12 @@ DÈmontrer que dans un espace vectoriel normÈ de dimension finie, tout sous-espac
 %\item $\dis f(x,y)=\frac{1-\cos(xy)}{xy^2}$.
 %\end{enumerate}
 %
-%\Exercice[Prolongement par continuitÈ]
-%DÈmontrer que la fonction dÈfinie par $f(x,y)=\frac{\sin (xy)}{xy}$ se
+%\Exercice[Prolongement par continuit√©]
+%D√©montrer que la fonction d√©finie par $f(x,y)=\frac{\sin (xy)}{xy}$ se
 %prolonge en une fonction continue sur $\mathbb R^2$.
-%\Exercice[Avec la dÈrivÈe]
+%\Exercice[Avec la d√©riv√©e]
 %
-%Soit $f:\mathbb R\to\mathbb R$ une fonction de classe $C^1$. On dÈfinit $F:\mathbb R^2\to\mathbb R$ par
+%Soit $f:\mathbb R\to\mathbb R$ une fonction de classe $C^1$. On d√©finit $F:\mathbb R^2\to\mathbb R$ par
 %$$F(x,y)=\left\{
 %\begin{array}{ll}
 %\frac{f(x)-f(y)}{x-y}&\textrm{ si }x\neq y\\
@@ -400,13 +333,13 @@ DÈmontrer que dans un espace vectoriel normÈ de dimension finie, tout sous-espac
 %\end{array}
 %\right.
 %$$
-%DÈmontrer que $F$ est continue sur $\mathbb R^2$. 
-%\subsection*{Application linÈaire}
+%D√©montrer que $F$ est continue sur $\mathbb R^2$. 
+%\subsection{Application lin√©aire}
 %\Exercice[Sont-elles continues?]
-%DÈterminer si l'application linÈaire $T:(E,N_1)\to (F,N_2)$ est continue dans les cas suivants :
+%D√©terminer si l'application lin√©aire $T:(E,N_1)\to (F,N_2)$ est continue dans les cas suivants :
 %\begin{enumerate}
-%\item $E=\mathcal C([0,1],\mathbb R)$ muni de $\|f\|_1=\int_0^1 |f(t)|dt$ et $T:(E,\|.\|_1)\to (E,\|.\|_1),\ f\mapsto fg$ o˘
-%$g\in E$ est fixÈ.
+%\item $E=\mathcal C([0,1],\mathbb R)$ muni de $\|f\|_1=\int_0^1 |f(t)|dt$ et $T:(E,\|.\|_1)\to (E,\|.\|_1),\ f\mapsto fg$ o√π
+%$g\in E$ est fix√©.
 %\item $E=\mathbb R[X]$ muni de $\|\sum_{k\geq 0}a_k X^k\|=\sum_{k\geq 0}|a_k|$ et $T:(E,\|.\|)\to (E,\|.\|)$, $P\mapsto
 %P'$.
 %\item $E=\mathbb R_n[X]$ muni de $\|\sum_{k=0}^n a_k X^k\|=\sum_{k=0}^n |a_k|$ et $T:(E,\|.\|)\to (E,\|.\|)$, $P\mapsto
@@ -414,8 +347,8 @@ DÈmontrer que dans un espace vectoriel normÈ de dimension finie, tout sous-espac
 %\item $E=\mathbb R[X]$ muni de $\|\sum_{k\geq 0}a_k X^k\|=\sum_{k\geq 0}k!|a_k|$ et $T:(E,\|.\|)\to (E,\|.\|)$, $P\mapsto
 %P'$.
 %\item $E=\mathcal C([0,1],\mathbb R)$ muni de $\|f\|_2=\left(\int_0^1 |f(t)|^2dt\right)^{1/2}$, $F=\mathcal C([0,1],\mathbb R)$ muni de $\|f\|_1=\int_0^1 |f(t)|dt$
-%et $T:(E,\|.\|_2)\to (F,\|.\|_1),\ f\mapsto fg$ o˘
-%$g\in E$ est fixÈ.
+%et $T:(E,\|.\|_2)\to (F,\|.\|_1),\ f\mapsto fg$ o√π
+%$g\in E$ est fix√©.
 %\end{enumerate}
 %
 %
@@ -425,73 +358,55 @@ DÈmontrer que dans un espace vectoriel normÈ de dimension finie, tout sous-espac
 %Soit $E=\mathcal C([0,1],\mathbb R)$. Pour $f\in E$, on pose
 %$$\|f\|_1=\int_0^1 |f(t)|dt,$$
 %dont on admettra qu'il s'agit d'une norme sur $E$. Soit
-%$\phi$ l'endomorphisme de $E$ dÈfini par 
+%$\phi$ l'endomorphisme de $E$ d√©fini par 
 %$$\phi(f)(x)=\int_0^x f(t)dt.$$
 %\begin{enumerate}
 %\item Justifier la terminologie : "$\phi$ est un endomorphisme de $E$."
-%\item DÈmontrer que $\phi$ est continue.
-%\item Pour $n\geq 0$, on considËre $f_n$ l'ÈlÈment de $E$ dÈfini par
+%\item D√©montrer que $\phi$ est continue.
+%\item Pour $n\geq 0$, on consid√®re $f_n$ l'√©l√©ment de $E$ d√©fini par
 %$f_n(x)=ne^{-nx}$, $x\in[0,1]$. Calculer $\|f_n\|_1$ et $\|\phi(f_n)\|_1$.
 %\item On pose $\|\!|\phi\|\!|=\sup_{f\neq 0_E}\frac{\|\phi(f)\|_1}{\|f\|_1}$.
-%DÈterminer $\|\!|\phi\|\!|$.
+%D√©terminer $\|\!|\phi\|\!|$.
 %\end{enumerate}
 %
-%\Exercice[Applications linÈaires sur les polynÙmes]
+%\Exercice[Applications lin√©aires sur les polyn√¥mes]
 %Soit $E=\mathbb R[X]$, muni de la norme $\|\sum_i a_i X^i\|=\sum_i |a_i|$.
 %\begin{enumerate}
-%\item Est-ce que l'application linÈaire $\phi:(E,\|.\|)\to (E,\|.\|)$, $P(X)\mapsto P(X+1)$
+%\item Est-ce que l'application lin√©aire $\phi:(E,\|.\|)\to (E,\|.\|)$, $P(X)\mapsto P(X+1)$
 %est continue sur $E$?
-%\item Est-ce que l'application linÈaire $\psi:(E,\|.\|)\to (E,\|.\|)$, $P(X)\mapsto AP$, o˘
-%$A$ est un ÈlÈment fixÈ de $E$,
+%\item Est-ce que l'application lin√©aire $\psi:(E,\|.\|)\to (E,\|.\|)$, $P(X)\mapsto AP$, o√π
+%$A$ est un √©l√©ment fix√© de $E$,
 %est continue sur $E$?
 %\end{enumerate}
 %
 %
-%\Exercice[Norme d'une application linÈaire continue]
-%Soit $E$ un espace vectoriel normÈ et $\mathcal L_c(E)$ l'ensemble des applications linÈaires continues sur $E$. Pour $u\in\mathcal L_c(E)$, on pose 
+%\Exercice[Norme d'une application lin√©aire continue]
+%Soit $E$ un espace vectoriel norm√© et $\mathcal L_c(E)$ l'ensemble des applications lin√©aires continues sur $E$. Pour $u\in\mathcal L_c(E)$, on pose 
 %$$\|u\|=\sup\{\|u(x)\|;\ \|x\|\leq 1\}.$$
 %\begin{enumerate}
-%\item DÈmontrer que ceci dÈfinit une norme sur $\mathcal L_c(E)$.
-%\item DÈmontrer que, pour tout $x\in E$ et tout $u\in\mathcal L_c(E)$, on a 
+%\item D√©montrer que ceci d√©finit une norme sur $\mathcal L_c(E)$.
+%\item D√©montrer que, pour tout $x\in E$ et tout $u\in\mathcal L_c(E)$, on a 
 %$$\|u(x)\|\leq \|u\|\times \|x\|.$$
-%En dÈduire que, pour tous  $u,v\in \mathcal L_c(E)$, alors $\|u\circ v\|\leq \|u\|\times \|v\|.$
+%En d√©duire que, pour tous  $u,v\in \mathcal L_c(E)$, alors $\|u\circ v\|\leq \|u\|\times \|v\|.$
 %\end{enumerate}
-%\subsection*{Application Lipschitzienne}
+%\subsection{Application Lipschitzienne}
 %\Exercice[Fonction usuel]
-%Soit $f$ la fonction dÈfinie par :$$\Fonction{f}{\mathbb{R}}{\mathbb{R}}{x}{x^2}$$
+%Soit $f$ la fonction d√©finie par :$$\Fonction{f}{\mathbb{R}}{\mathbb{R}}{x}{x^2}$$
 %$f$ est-elle Lipschitzienne ?
-%\Exercice[DÈrivÈe]
-%Soit $f$ la fonction dÈfinie par :$$\Fn{f}{A\subset\mathbb{R}}{\mathbb{R}}$$ dÈrivable dont la fonction dÈrivÈe est bornÈe sur $A$.\\
+%\Exercice[D√©riv√©e]
+%Soit $f$ la fonction d√©finie par :$$\Fn{f}{A\subset\mathbb{R}}{\mathbb{R}}$$ d√©rivable dont la fonction d√©riv√©e est born√©e sur $A$.\\
 %$f$ est-elle Lipschitzienne ?
 %
-%\Exercice[ContinuitÈ de la norme]
-%Soit $E$ un espace vectoriel normÈ, de norme $\|?\|$.\\ 
-%DÈmontrer que l'application norme : $\|?\|:E\to \mathbb{R}^+$ est continue. 
+%\Exercice[Continuit√© de la norme]
+%Soit $E$ un espace vectoriel norm√©, de norme $\|?\|$.\\ 
+%D√©montrer que l'application norme : $\|?\|:E\to \mathbb{R}^+$ est continue. 
 
-%
-%
 
-%--- Fin des exercices ---
-%------------------------------------------------------
-%------------------------------------------------------
 
-%--- Gestion des corrections ---
-% \ \newpage
-% \setcounter{page}{1}
-% \entete{Indications}
-%
-% \Closesolutionfile{myind}
-% \Readsolutionfile{myind}
 
-% \ \newpage
-% \setcounter{page}{1}
-% \entete{Corrections}
-
- \Closesolutionfile{mycor}
- \Readsolutionfile{mycor}
 
 \end{document}
-\endinput
+
 
 
 

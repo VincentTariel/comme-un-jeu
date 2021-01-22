@@ -1,23 +1,23 @@
 \documentclass[a4paper]{book}
-\usepackage{jlq2eams}
+\usepackage{commeunjeustyle}
 
 \begin{document}
-\chapter*{Système d'équations linéaires}
+\chapter*{SystÃ¨me d'Ã©quations linÃ©aires}
 % ressource http://univmaths.e-monsite.com/medias/files/cours-d-algebre-lineaire.pdf http://exo7.emath.fr/cours/ch_syslin.pdf
-La résolution des systèmes d'équations linéaires appartient aux problèmes les plus anciens dans les mathématiques et ceux-ci apparaissent dans beaucoup de domaines, comme en traitement numérique du signal, en optimisation linéaire, ou dans l'approximation de problèmes non linéaires en analyse numérique
-Les systèmes linéaires interviennent à travers leurs applications dans de nombreux contextes, car ils forment la base
-calculatoire de l'algèbre linéaire. Ils permettent également de traiter une bonne partie de la théorie de l'algèbre linéaire
-en dimension finie. C'est pourquoi ce cours commence avec une étude des équations linéaires et de leur résolution.
-Le but de ce chapitre est essentiellement pratique : il s'agit de résoudre des systèmes linéaires. La partie théorique
-sera revue et prouvée dans le chapitre « Matrices »
+La rÃ©solution des systÃ¨mes d'Ã©quations linÃ©aires appartient aux problÃ¨mes les plus anciens dans les mathÃ©matiques et ceux-ci apparaissent dans beaucoup de domaines, comme en traitement numÃ©rique du signal, en optimisation linÃ©aire, ou dans l'approximation de problÃ¨mes non linÃ©aires en analyse numÃ©rique
+Les systÃ¨mes linÃ©aires interviennent Ã  travers leurs applications dans de nombreux contextes, car ils forment la base
+calculatoire de l'algÃ¨bre linÃ©aire. Ils permettent Ã©galement de traiter une bonne partie de la thÃ©orie de l'algÃ¨bre linÃ©aire
+en dimension finie. C'est pourquoi ce cours commence avec une Ã©tude des Ã©quations linÃ©aires et de leur rÃ©solution.
+Le but de ce chapitre est essentiellement pratique : il s'agit de rÃ©soudre des systÃ¨mes linÃ©aires. La partie thÃ©orique
+sera revue et prouvÃ©e dans le chapitre Â« Matrices Â»
 \section{Exemple introductif}
-La somme des tailles d'un fils et du père est de 2,5 mètres. La différence de tailles  est de 0.5 mètres.
+La somme des tailles d'un fils et du pÃ¨re est de 2,5 mÃ¨tres. La diffÃ©rence de tailles  est de 0.5 mÃ¨tres.
 Quel est la taille du fils ? 
-\subsection{Modélisation}
-Soit la variable $x$ représentant la taille du fils et la variable $y$ représentant la taille du père.\\
+\subsection{ModÃ©lisation}
+Soit la variable $x$ reprÃ©sentant la taille du fils et la variable $y$ reprÃ©sentant la taille du pÃ¨re.\\
 La somme est 2,5 donc $x+y=2,5$.\\
-La différence est 0,5 donc $y-x=0,5$.\\
-Ainsi on cherche $x$ et $y$ vérifiant le système $(S)$  :
+La diffÃ©rence est 0,5 donc $y-x=0,5$.\\
+Ainsi on cherche $x$ et $y$ vÃ©rifiant le systÃ¨me $(S)$  :
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
 \draw[line width=0.3mm, <->,color=red] (0,0) -- node[left] {$x$}(0,1);
@@ -41,40 +41,40 @@ $
 \end{center}
 
 
-\subsection{Résolution par pivot de Gauss}
-Pour déterminer l'ensemble des solutions $x$ et $y$ vérifiant ce système, une idée est de découpler par itérations les dépendances entre les inconnues dans les équations par combinaison ou élimination. A chaque itération, ces deux opérations transforment  un système d'équations en un autre équivalent (ayant les mêmes solutions).\\
-L'application à l'exemple introductif est :
+\subsection{RÃ©solution par pivot de Gauss}
+Pour dÃ©terminer l'ensemble des solutions $x$ et $y$ vÃ©rifiant ce systÃ¨me, une idÃ©e est de dÃ©coupler par itÃ©rations les dÃ©pendances entre les inconnues dans les Ã©quations par combinaison ou Ã©limination. A chaque itÃ©ration, ces deux opÃ©rations transforment  un systÃ¨me d'Ã©quations en un autre Ã©quivalent (ayant les mÃªmes solutions).\\
+L'application Ã  l'exemple introductif est :
 \begin{enumerate}
-\item pour éliminer $x$ de la ligne 2,  on ajoute à la ligne 2 la ligne 1 :
+\item pour Ã©liminer $x$ de la ligne 2,  on ajoute Ã  la ligne 2 la ligne 1 :
 $$\begin{cases}
 x+y&=2,5\\
 2y&=3
 \end{cases}
 $$
-\item pour déterminer $y$, on divise la ligne 2 par 2 : 
+\item pour dÃ©terminer $y$, on divise la ligne 2 par 2 : 
 $$\begin{cases}
 x+y&=2,5\\
 y&=1,5
 \end{cases}
 $$
-\item pour éliminer $y$  de la ligne 2, on soustraie à la ligne 1 la ligne 2 :
+\item pour Ã©liminer $y$  de la ligne 2, on soustraie Ã  la ligne 1 la ligne 2 :
 $$\begin{cases}
 x&=1\\
 y&=1,5
 \end{cases}
 $$
 \end{enumerate}
-Ainsi l'ensemble des solution est l'unique solution $(1 , 1,5 )$ car ce dernier système d'équations est équivalent au premier.
+Ainsi l'ensemble des solution est l'unique solution $(1 , 1,5 )$ car ce dernier systÃ¨me d'Ã©quations est Ã©quivalent au premier.
 \subsection{Structure de l'ensemble des solutions}
-Le système équation :
+Le systÃ¨me Ã©quation :
 $$(S)\quad \begin{cases}
 x+y&=2,5\quad(D_1)\\
 -x+y&=0,5\quad(D_2)
 \end{cases}$$
-est constitué de deux équations de deux droites $D_1$ et $D_2$. 
-Trois cas se présentent alors :
+est constituÃ© de deux Ã©quations de deux droites $D_1$ et $D_2$. 
+Trois cas se prÃ©sentent alors :
 \begin{enumerate}
-\item Si les droites $D_1$ et $D_2$ ne sont pas parallèles, alors elle s'intersecte en un unique point et le système $(S)$ a une
+\item Si les droites $D_1$ et $D_2$ ne sont pas parallÃ¨les, alors elle s'intersecte en un unique point et le systÃ¨me $(S)$ a une
 unique solution.
 \begin{center}
 \begin{tikzpicture}[scale=0.5]
@@ -84,7 +84,7 @@ unique solution.
 \draw[-,color=blue] (-2,4.5) -- (6,3)node[anchor=north] {$D_2$};
 \end{tikzpicture}	
 \end{center}
-\item Si les droites $D_1$ et $D_2$  sont parallèles et non confondues, alors elle ne s'intersecte pas et le système $(S)$ n'a pas de solution.
+\item Si les droites $D_1$ et $D_2$  sont parallÃ¨les et non confondues, alors elle ne s'intersecte pas et le systÃ¨me $(S)$ n'a pas de solution.
 \begin{center}
 \begin{tikzpicture}[scale=0.5]
 \draw[thick,->] (-2,0) -- (6,0)node[anchor=west] {$x$};
@@ -93,7 +93,7 @@ unique solution.
 \draw[-,color=blue] (-2,1) -- (6,4)node[anchor=north] {$D_2$};
 \end{tikzpicture}	
 \end{center}
-\item Si les droites $D_1$ et $D_2$  sont parallèles et  confondues, alors elle s'intersecte en une infinité de points et le système $(S)$ a une infinité de solutions.
+\item Si les droites $D_1$ et $D_2$  sont parallÃ¨les et  confondues, alors elle s'intersecte en une infinitÃ© de points et le systÃ¨me $(S)$ a une infinitÃ© de solutions.
 \begin{center}
 \begin{tikzpicture}[scale=0.5]
 \draw[thick,->] (-2,0) -- (6,0)node[anchor=west] {$x$};
@@ -106,7 +106,7 @@ Dans notre exemple, comme les vecteurs normaux aux deux droites $\begin{pmatrix}
 1\\1
 \end{pmatrix}$ et $\begin{pmatrix}
 -1\\1
-\end{pmatrix}$ ne sont pas colinéaires, les deux droites ne sont pas parallèles et donc admettent un unique point d'intersection.
+\end{pmatrix}$ ne sont pas colinÃ©aires, les deux droites ne sont pas parallÃ¨les et donc admettent un unique point d'intersection.
 \begin{center}
 \begin{tikzpicture}[scale=0.5]
 \draw[step=1cm,gray,very thin] (-2,-2) grid (6,6);
@@ -125,31 +125,31 @@ Dans notre exemple, comme les vecteurs normaux aux deux droites $\begin{pmatrix}
 \end{tikzpicture}	
 \end{center}
 Ainsi l'ensemble des solution admet une unique solution.\\
-La prochaine section est l'étude théorique qui permettra de généraliser à quelque soit le système d'équations linéaires
+La prochaine section est l'Ã©tude thÃ©orique qui permettra de gÃ©nÃ©raliser Ã  quelque soit le systÃ¨me d'Ã©quations linÃ©aires
 \begin{itemize}
-\item la méthode de résolution à l'aide du pivot de gauss,
-\item la structure de l'ensemble des résultats du système, c'est à dire  une unique solution ou bien aucune solution ou bien une infinité de solutions.
+\item la mÃ©thode de rÃ©solution Ã  l'aide du pivot de gauss,
+\item la structure de l'ensemble des rÃ©sultats du systÃ¨me, c'est Ã  dire  une unique solution ou bien aucune solution ou bien une infinitÃ© de solutions.
 \end{itemize}
 
 
-\section{Étude théorique}
-\begin{Df}[Équation linéaire]
-On appelle \defi{équation linéaire} dans les variables  (ou inconnues) $x_1,\dots,x_n$ toute
+\section{Ã‰tude thÃ©orique}
+\begin{Definition}[Ã‰quation linÃ©aire]
+On appelle \defi{Ã©quation linÃ©aire} dans les variables  (ou inconnues) $x_1,\dots,x_n$ toute
 relation de la forme
 $$a_1 x_1 + \dots + a_n x_n = b $$
-où $a_1,\dots ,a_n$ et $b$ sont des nombres réels.\\
-\end{Df}
-\begin{Ex}
-$2x + 3y = 6$ est une équation linéaire, alors que les équations suivantes ne sont pas des équations
-linéaires :
+oÃ¹ $a_1,\dots ,a_n$ et $b$ sont des nombres rÃ©els.\\
+\end{Definition}
+\begin{Exemple}
+$2x + 3y = 6$ est une Ã©quation linÃ©aire, alors que les Ã©quations suivantes ne sont pas des Ã©quations
+linÃ©aires :
 $2x + y^2 = 1$ ou $y = \sin x$.
-\end{Ex}
+\end{Exemple}
 
 
 
-\begin{Df}[Système d'équations linéaires]
-Un \defi{système de $n$ équations linéaires à $p$ variables} est une liste de $n$ équations linéaires dans les variables  $x_1,\dots,x_p$.\\
-La forme générale d'un système linéaire de $n$ équations à $p$ inconnues est la suivante :
+\begin{Definition}[SystÃ¨me d'Ã©quations linÃ©aires]
+Un \defi{systÃ¨me de $n$ Ã©quations linÃ©aires Ã  $p$ variables} est une liste de $n$ Ã©quations linÃ©aires dans les variables  $x_1,\dots,x_p$.\\
+La forme gÃ©nÃ©rale d'un systÃ¨me linÃ©aire de $n$ Ã©quations Ã  $p$ inconnues est la suivante :
 $$\left\{{\begin{matrix}
 a_{11}x_{1}&+&a_{12}x_{2}&+&\dots &+&a_{1p}x_{p}&=&b_{1}\\
 a_{21}x_{1}&+&a_{22}x_{2}&+&\dots &+&a_{2p}x_{p}&=&b_{2}\\
@@ -158,40 +158,40 @@ a_{i1}x_{1}&+&a_{i2}x_{2}&+&\dots &+&a_{ip}x_{p}&=&b_{i}\\
 \vdots&&\vdots&& &&\vdots&=&\vdots \\
 a_{n1}x_{1}&+&a_{n2}x_{2}&+&\dots &+&a_{np}x_{n}&=&b_{n}\\
 \end{matrix}}\right. $$
-où  les nombres $a_{ij}$ sont les \defi{coefficients} du système et les nombres $b_i$ constituent le \defi{second membre} du système. Les coefficients $a_{ij}$ et $b_i$ donnés.\\
-Le système est rangé 
+oÃ¹  les nombres $a_{ij}$ sont les \defi{coefficients} du systÃ¨me et les nombres $b_i$ constituent le \defi{second membre} du systÃ¨me. Les coefficients $a_{ij}$ et $b_i$ donnÃ©s.\\
+Le systÃ¨me est rangÃ© 
 \begin{itemize}
-\item en \defi{lignes, $L_i$}, correspondant aux équations numérotées de $1$ à
+\item en \defi{lignes, $L_i$}, correspondant aux Ã©quations numÃ©rotÃ©es de $1$ Ã 
 $n$, 
 \item en \defi{colonnes, $C_j$},  correspondant aux variables $x_j$
-numérotées de $1$ à
+numÃ©rotÃ©es de $1$ Ã 
 $p$.
 \end{itemize}
- La notation avec double indice $a_{i j}$ correspond à ce rangement : $i$ la ligne et  $j$ la colonne.
-\end{Df}
-\begin{Ex}
-Le système suivant a $2$ équations et $3$ variables :
+ La notation avec double indice $a_{i j}$ correspond Ã  ce rangement : $i$ la ligne et  $j$ la colonne.
+\end{Definition}
+\begin{Exemple}
+Le systÃ¨me suivant a $2$ Ã©quations et $3$ variables :
 $$\left\{{\begin{matrix}
 x_{1}&-&2x_{2}&+&4x_{3}&=&1\\
 2x_{1}&+&1x_{2}&-&3x_{3}&=&2\\
 \end{matrix}}\right. $$
-\end{Ex}
-\begin{Df}[Solution]
-Une \defi{solution} du système linéaire est un p-uplet $(s_1,s2,\dots,s_p)$ tel que si l?on
+\end{Exemple}
+\begin{Definition}[Solution]
+Une \defi{solution} du systÃ¨me linÃ©aire est un p-uplet $(s_1,s2,\dots,s_p)$ tel que si l?on
 substitue $s_1$ pour $x_1$
-, $s_2$ pour $x_2$ et ainsi de suite  dans le système linéaire, on obtient une égalité.\\
- L'ensemble des solutions du système est l'ensemble de tous ces p-uplets.
-\end{Df}
-\begin{Df}[Implicite et explicite]
-Un système d'équation linéaire est \defi{implicite} en décrivant une liste de 
-de relations linéaires entre les variables. \\
-\defi{Résoudre} un système signifie le rendre \defi{explicite} en déterminant l'ensemble des solutions du système.
-\end{Df}
-\begin{Ex}
-Soit le système constitué de l'équation linéaire $3x_1 + x_2= 6$.\\ 
-On paramètre $x_1$ avec $t$ puis on résolve l'équation par
-rapport à $t$ : $x_1 = t$, $x_2 = -3t+6$.\\
-La représentation paramétrique de l'ensemble des solutions du système est : 
+, $s_2$ pour $x_2$ et ainsi de suite  dans le systÃ¨me linÃ©aire, on obtient une Ã©galitÃ©.\\
+ L'ensemble des solutions du systÃ¨me est l'ensemble de tous ces p-uplets.
+\end{Definition}
+\begin{Definition}[Implicite et explicite]
+Un systÃ¨me d'Ã©quation linÃ©aire est \defi{implicite} en dÃ©crivant une liste de 
+de relations linÃ©aires entre les variables. \\
+\defi{RÃ©soudre} un systÃ¨me signifie le rendre \defi{explicite} en dÃ©terminant l'ensemble des solutions du systÃ¨me.
+\end{Definition}
+\begin{Exemple}
+Soit le systÃ¨me constituÃ© de l'Ã©quation linÃ©aire $3x_1 + x_2= 6$.\\ 
+On paramÃ¨tre $x_1$ avec $t$ puis on rÃ©solve l'Ã©quation par
+rapport Ã  $t$ : $x_1 = t$, $x_2 = -3t+6$.\\
+La reprÃ©sentation paramÃ©trique de l'ensemble des solutions du systÃ¨me est : 
 $$\begin{pmatrix}
 x_1\\x_2
 \end{pmatrix}= t \begin{pmatrix}
@@ -202,9 +202,9 @@ x_1\\x_2
 6
 \end{pmatrix},\quad \forall t\in \R.$$
 Elle est explicite.
-\end{Ex}
- \begin{Df}[Équation homogène]
-Un \defi{système homogène} est un système ayant un second membre avec des coefficients nuls. Il est de la forme :
+\end{Exemple}
+ \begin{Definition}[Ã‰quation homogÃ¨ne]
+Un \defi{systÃ¨me homogÃ¨ne} est un systÃ¨me ayant un second membre avec des coefficients nuls. Il est de la forme :
 $$(S_H):\left\{{\begin{matrix}
 a_{11}x_{1}&+&a_{12}x_{2}&+&\dots &+&a_{1p}x_{p}&=&0\\
 a_{21}x_{1}&+&a_{22}x_{2}&+&\dots &+&a_{2p}x_{p}&=&0\\
@@ -213,10 +213,10 @@ a_{i1}x_{1}&+&a_{i2}x_{2}&+&\dots &+&a_{ip}x_{p}&=&0\\
 \vdots&&\vdots&& &&\vdots&=&\vdots \\
 a_{n1}x_{1}&+&a_{n2}x_{2}&+&\dots &+&a_{np}x_{n}&=&0\\
 \end{matrix}}\right. $$
-Le \defi{système homogène}, noté $S_H$, correspondant à un système $S$, est le même  excepté que les coefficients  du second membre ont été fixés à zéro.    
-\end{Df}
-\begin{Ex}
-Le système homogène de ce système  
+Le \defi{systÃ¨me homogÃ¨ne}, notÃ© $S_H$, correspondant Ã  un systÃ¨me $S$, est le mÃªme  exceptÃ© que les coefficients  du second membre ont Ã©tÃ© fixÃ©s Ã  zÃ©ro.    
+\end{Definition}
+\begin{Exemple}
+Le systÃ¨me homogÃ¨ne de ce systÃ¨me  
 $\left\{{\begin{matrix}
 x_{1}&-&2x_{2}&+&4x_{3}&=&1\\
 2x_{1}&+&1x_{2}&-&3x_{3}&=&2\\
@@ -224,103 +224,103 @@ x_{1}&-&2x_{2}&+&4x_{3}&=&1\\
 x_{1}&-&2x_{2}&+&4x_{3}&=&0\\
 2x_{1}&+&1x_{2}&-&3x_{3}&=&0\\
 \end{matrix}}\right. $.
-\end{Ex}
-\begin{Th}[Structure de l'ensemble des solutions d'un système linéaire]
-Deux cas se présentent :
+\end{Exemple}
+\begin{Theoreme}[Structure de l'ensemble des solutions d'un systÃ¨me linÃ©aire]
+Deux cas se prÃ©sentent :
 \begin{itemize}
-\item ou bien le système n'admet pas de solution, on dit qu'il est \defi{incompatible}, 
-\item ou bien le système admet au moins une solution $(x_1,\dots,x_n)$, appelée \defi{solution particulière}, on dit qu'il est \defi{compatible}. Dans ce cas, les solutions sont de la forme :
-$$ S=\{\overbrace{(x_1,\dots ,x_n)}^{\text{Solution particulière}}+ \overbrace{(y_1,\dots,y_p)}^{\text{Solution homogène}}:\quad (y_1,\dots,y_p) \in S_H\}.$$
+\item ou bien le systÃ¨me n'admet pas de solution, on dit qu'il est \defi{incompatible}, 
+\item ou bien le systÃ¨me admet au moins une solution $(x_1,\dots,x_n)$, appelÃ©e \defi{solution particuliÃ¨re}, on dit qu'il est \defi{compatible}. Dans ce cas, les solutions sont de la forme :
+$$ S=\{\overbrace{(x_1,\dots ,x_n)}^{\text{Solution particuliÃ¨re}}+ \overbrace{(y_1,\dots,y_p)}^{\text{Solution homogÃ¨ne}}:\quad (y_1,\dots,y_p) \in S_H\}.$$
 \end{itemize}
-\end{Th}
-\begin{Proof}
+\end{Theoreme}
+\begin{Demonstration}
 Voir le chapitre sur les matrices.
-\end{Proof}
-\begin{Ex}
-Déterminer les solutions du système : 
+\end{Demonstration}
+\begin{Exemple}
+DÃ©terminer les solutions du systÃ¨me : 
 $$\left\{{\begin{matrix}
 x_{1}&-&2x_{2}&+&6x_{3}&=&1\\
 2x_{1}&+&x_{2}&-&3x_{3}&=&2\\
 \end{matrix}}\right. .$$
-On a une solution particulière évidente $(1,0,0)$. L'équation homogène est :
+On a une solution particuliÃ¨re Ã©vidente $(1,0,0)$. L'Ã©quation homogÃ¨ne est :
 $$\left\{{\begin{matrix}
 x_{1}&-&2x_{2}&+&6x_{3}&=&0\\
 2x_{1}&+&1x_{2}&-&3x_{3}&=&0\\
 \end{matrix}}\right. .$$
-En soustrayant deux fois la ligne 1 à la ligne 2, on obtient :
+En soustrayant deux fois la ligne 1 Ã  la ligne 2, on obtient :
 $$\left\{{\begin{matrix}
 x_{1}&-&2x_{2}&+&6x_{3}&=&0\\
      &&5x_{2}&-&15x_{3}&=&0\\
 \end{matrix}}\right. $$
-En posant $x_3=t$, la ligne 2 donne $x_2=3t$ et la ligne 1 donne $x_1=0$. Ainsi l'ensemble des solutions du système est 
-$$\{  \overbrace{(1,0,0)}^{\text{Sol particulière}} +\overbrace{t(0,3,1)}^{\text{Sol homogène}}:\quad\forall t \in \R \}.$$
-\end{Ex}
-\section{Résolution par pivot de Gauss}
-\begin{Df}[Système équivalent]
-On dit que deux systèmes linéaires sont \defi{équivalents} s'ils ont le même ensemble de solutions.
-\end{Df}
+En posant $x_3=t$, la ligne 2 donne $x_2=3t$ et la ligne 1 donne $x_1=0$. Ainsi l'ensemble des solutions du systÃ¨me est 
+$$\{  \overbrace{(1,0,0)}^{\text{Sol particuliÃ¨re}} +\overbrace{t(0,3,1)}^{\text{Sol homogÃ¨ne}}:\quad\forall t \in \R \}.$$
+\end{Exemple}
+\section{RÃ©solution par pivot de Gauss}
+\begin{Definition}[SystÃ¨me Ã©quivalent]
+On dit que deux systÃ¨mes linÃ©aires sont \defi{Ã©quivalents} s'ils ont le mÃªme ensemble de solutions.
+\end{Definition}
 
-\begin{Df}[Opérations élémentaires]
-Les opérations suivantes sont appelées \defi{opérations élémentaires} sur le système :
+\begin{Definition}[OpÃ©rations Ã©lÃ©mentaires]
+Les opÃ©rations suivantes sont appelÃ©es \defi{opÃ©rations Ã©lÃ©mentaires} sur le systÃ¨me :
 \begin{enumerate}
-\item  $L_i\leftrightarrow L_k$ : échanger deux lignes,
+\item  $L_i\leftrightarrow L_k$ : Ã©changer deux lignes,
 \item  $L_i\leftarrow \lambda L_i$ avec $\lambda\neq 0$ : multiplier une ligne par un nombre non nul, 
-\item  $L_i \leftarrow  L_i +\lambda L_k$ avec $\lambda\in\R$ et $i\neq k$ : ajouter à la ligne $L_i$ $\lambda$ d'une autre ligne $L_k$.
+\item  $L_i \leftarrow  L_i +\lambda L_k$ avec $\lambda\in\R$ et $i\neq k$ : ajouter Ã  la ligne $L_i$ $\lambda$ d'une autre ligne $L_k$.
 \end{enumerate}
-\end{Df}
+\end{Definition}
 
-\begin{Prop}[Équivalence par opérations élémentaires]
-Les opérations élémentaires transforment un système linéaire en un système linéaire équivalent.
-\end{Prop}
-\begin{Proof}
+\begin{Proposition}[Ã‰quivalence par opÃ©rations Ã©lÃ©mentaires]
+Les opÃ©rations Ã©lÃ©mentaires transforment un systÃ¨me linÃ©aire en un systÃ¨me linÃ©aire Ã©quivalent.
+\end{Proposition}
+\begin{Demonstration}
 Voir le chapitre sur les matrices.
-\end{Proof}
-\begin{NB}
-Pour résoudre un système, on utilisera une succession d'opérations élémentaires jusqu'à obtenir un système où l'on peut effecteur des substitutions.    
-\end{NB}
-\begin{Ex}
-Le système 
+\end{Demonstration}
+\begin{Remarque}
+Pour rÃ©soudre un systÃ¨me, on utilisera une succession d'opÃ©rations Ã©lÃ©mentaires jusqu'Ã  obtenir un systÃ¨me oÃ¹ l'on peut effecteur des substitutions.    
+\end{Remarque}
+\begin{Exemple}
+Le systÃ¨me 
 $\quad \begin{cases}
 x+y&=\frac 5 2\\
 -x+y&=\frac 1 2
 \end{cases}
 $
-et le système 
+et le systÃ¨me 
 $\begin{cases}
 x+y&=\frac 5 2\\
 2y&=3
 \end{cases}
-$ sont équivalents car le second système est la transformation du premier système par l'opération élémentaire $L_2\leftarrow L_2+L_1$. La ligne 2 du dernier système donne $y=\frac 3 2$ et substituant 
-\end{Ex}
-\begin{Alg}[Pivot de Gauss]
-Afin de faciliter la compréhension, nous noterons $\bigstar$ un pivot, $\blacksquare$ un coefficient non nul et 
+$ sont Ã©quivalents car le second systÃ¨me est la transformation du premier systÃ¨me par l'opÃ©ration Ã©lÃ©mentaire $L_2\leftarrow L_2+L_1$. La ligne 2 du dernier systÃ¨me donne $y=\frac 3 2$ et substituant 
+\end{Exemple}
+\begin{Algorithme}[Pivot de Gauss]
+Afin de faciliter la comprÃ©hension, nous noterons $\bigstar$ un pivot, $\blacksquare$ un coefficient non nul et 
 $ $ un coefficient nul.\\
 Par exemple, 
 $\left\{{\begin{matrix}
 0x_{1}&+&0x_{2}&+&1x_{3}&+&3x_{4}&=&2\\
 0x_{1}&+&3x_{2}&+&0x_{3}&+&1x_{4}&=&1\\
 0x_{1}&+&3x_{2}&+&1x_{3}&+&1x_{4}&=&3\\
-\end{matrix}}\right.$ est noté $\left\{{\begin{matrix}
+\end{matrix}}\right.$ est notÃ© $\left\{{\begin{matrix}
 &+&&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 &+&\blacksquare&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 &+&\blacksquare&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 \end{matrix}}\right.$
 
 \begin{enumerate}
-\item Identifier la colonne se trouvant le plus à gauche contenant au moins un élément non nul qui est le pivot.\\
+\item Identifier la colonne se trouvant le plus Ã  gauche contenant au moins un Ã©lÃ©ment non nul qui est le pivot.\\
 Exemple : 
 $$\left\{{\begin{matrix}
 &+&&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 &+&\blacksquare&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 &+&\blacksquare&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 \end{matrix}}\right.$$
-Le pivot est sur la deuxième colonne et deuxième ligne. 
+Le pivot est sur la deuxiÃ¨me colonne et deuxiÃ¨me ligne. 
 $$\left\{{\begin{matrix}
 &+&&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 &+&\bigstar&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 &+&\blacksquare&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 \end{matrix}}\right.$$
-\item Permuter, s'il le faut, la première ligne avec une autre, pour que le coefficient en haut de la colonne soit non nul. C'est le pivot.\\
+\item Permuter, s'il le faut, la premiÃ¨re ligne avec une autre, pour que le coefficient en haut de la colonne soit non nul. C'est le pivot.\\
 Exemple suite: 
 $$\left\{{\begin{matrix}
 &+&&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
@@ -333,7 +333,7 @@ $$\left\{{\begin{matrix}
 &+&&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 &+&\blacksquare&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 \end{matrix}}\right.$$
-\item Ajouter des multiples adéquats de la première ligne aux lignes en-dessous pour annuler les
+\item Ajouter des multiples adÃ©quats de la premiÃ¨re ligne aux lignes en-dessous pour annuler les
 coefficients.\\
 Exemple suite: 
 $$\left\{{\begin{matrix}
@@ -347,32 +347,32 @@ $$\left\{{\begin{matrix}
 &+&&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 &+&&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 \end{matrix}}\right.$$
-\item Recommencer à l'étape (1) avec oubli de la première ligne.\\
+\item Recommencer Ã  l'Ã©tape (1) avec oubli de la premiÃ¨re ligne.\\
 Exemple suite: 
 $$\left\{{\begin{matrix}
 &+&\bigstar&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 &+&&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 &+&&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 \end{matrix}}\right.$$
-Le nouveau pivot est sur la troisième colonne et deuxième ligne
+Le nouveau pivot est sur la troisiÃ¨me colonne et deuxiÃ¨me ligne
 $$\left\{{\begin{matrix}
 &+&\bigstar&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 &+&&+&\bigstar&+&\blacksquare&=&\blacksquare\\
 &+&&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 \end{matrix}}\right.$$
-Comme le nouveau pivot est déjà en haut de la colonne, on n'effectue rien à l'étape (2). Pour l'étape (3),  $L_3\leftarrow L_3 -\lambda L_2$
+Comme le nouveau pivot est dÃ©jÃ  en haut de la colonne, on n'effectue rien Ã  l'Ã©tape (2). Pour l'Ã©tape (3),  $L_3\leftarrow L_3 -\lambda L_2$
 $$\left\{{\begin{matrix}
 &+&\bigstar&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 &+&&+&\bigstar&+&\blacksquare&=&\blacksquare\\
 &+&&+&&+&\blacksquare&=&\blacksquare\\
-\end{matrix}}\right. .$$ On recommence à l'étape (1) avec oubli des deux premières lignes. Le nouveau pivot est sur la dernière ligne et dernière colonne :
+\end{matrix}}\right. .$$ On recommence Ã  l'Ã©tape (1) avec oubli des deux premiÃ¨res lignes. Le nouveau pivot est sur la derniÃ¨re ligne et derniÃ¨re colonne :
 $$\left\{{\begin{matrix}
 &+&\bigstar&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
 &+&&+&\bigstar&+&\blacksquare&=&\blacksquare\\
 &+&&+&&+&\bigstar&=&\blacksquare\\
 \end{matrix}}\right. .$$
 La boucle se termine car chaque ligne contient un pivot.
-\item Annuler tous les coefficients au dessus des pivots en commençant par la dernière ligne.\\
+\item Annuler tous les coefficients au dessus des pivots en commenÃ§ant par la derniÃ¨re ligne.\\
 Exemple suite:  
 $$\left\{{\begin{matrix}
 &+&\bigstar&+&\blacksquare&+&\blacksquare&=&\blacksquare\\
@@ -391,16 +391,16 @@ $$\left\{{\begin{matrix}
 &+&&+&\bigstar&+&&=&\blacksquare\\
 &+&&+&&+&\bigstar&=&\blacksquare\\
 \end{matrix}}\right. .$$
-\item Exprimer les variables pivots en fonctions des variables paramétrées.\\
+\item Exprimer les variables pivots en fonctions des variables paramÃ©trÃ©es.\\
 Exemple suite :\\  
-Les variables des trois dernière colonnes exprimés en fonction de la variable de la première colonne.
+Les variables des trois derniÃ¨re colonnes exprimÃ©s en fonction de la variable de la premiÃ¨re colonne.
 \end{enumerate}
-\end{Alg}
-\begin{Ex}[Unique solution]
+\end{Algorithme}
+\begin{Exemple}[Unique solution]
 \begin{center}
 \begin{tabular}{c|c}
-Système d'équations&	Opérations élémentaires	\\\hline
-$\left\{\begin{matrix}2x_1&+&x_2&-&x_3&=&8&\\-3x_1&-&x_2&+&2x_3&=&-11&\\-2x_1&+&x_2&+&2x_3&=&-3&\end{matrix}\right.$&Pivot première ligne première colonne\\\hline
+SystÃ¨me d'Ã©quations&	OpÃ©rations Ã©lÃ©mentaires	\\\hline
+$\left\{\begin{matrix}2x_1&+&x_2&-&x_3&=&8&\\-3x_1&-&x_2&+&2x_3&=&-11&\\-2x_1&+&x_2&+&2x_3&=&-3&\end{matrix}\right.$&Pivot premiÃ¨re ligne premiÃ¨re colonne\\\hline
 $\left\{\begin{matrix}2x_1&+&x_2&-&x_3&=&8&\\&&\frac 1 2x_2&+&\frac 1 2x_3&=&1&\\&&2x_2&+&1x_3&=&5&\end{matrix}\right.$&$\left.\begin{matrix}\\L_2\leftarrow L_2-\frac 3 2 L_1\\ L_3\leftarrow L_3+ L_1 \end{matrix}\right.$\\\hline
 $\left\{\begin{matrix}2x_1&+&x_2&-&x_3&=&8&\\&&\frac 1 2x_2&+&\frac 1 2x_3&=&1&\\&&&&-x_3&=&1&\end{matrix}\right.$&$\left.\begin{matrix}\\\\ L_3\leftarrow L_3-4 L_2 \end{matrix}\right.$\\\hline
 $\left\{\begin{matrix}2x_1&+&x_2&-&x_3&=&8&\\&&\frac 1 2x_2&+&\frac 1 2x_3&=&1&\\&&2x_2&+&1x_3&=&5&\end{matrix}\right.$&$\left.\begin{matrix}\\L_2\leftarrow L_2-\frac 3 2 L_1\\ L_3\leftarrow L_3+ L_1 \end{matrix}\right.$\\\hline
@@ -410,9 +410,9 @@ $\left\{\begin{matrix}x_1&&&&&=&2&\\&&x_2&&&=&3 &\\&&&&x_3&=&-1&\end{matrix}\rig
 \end{tabular}
 \end{center}
 L'ensemble des solution est l'unique triplet $(2,3,-1)$.
-\end{Ex}
-\begin{Ex}[Une infinité de solutions]
- Considérons le système homogène
+\end{Exemple}
+\begin{Exemple}[Une infinitÃ© de solutions]
+ ConsidÃ©rons le systÃ¨me homogÃ¨ne
 $$\left\{\begin{matrix}
 3x_1 &+& 3x_2 &-& 2x_3   & &      &-& x_5 &= 0\\
 -x_1 &-& x_2  &+& x_3  &+& 3x_4 &+& x_5 &= 0\\
@@ -420,7 +420,7 @@ $$\left\{\begin{matrix}
      &&       & & x_3 &+& 8x_4 &+& 4x_5 &= 0
      \end{matrix}
 \right.$$
-L'application de l'algorithme du pivot de Gauss donne le système équivalent suivant :
+L'application de l'algorithme du pivot de Gauss donne le systÃ¨me Ã©quivalent suivant :
 $$\left\{\begin{matrix}
 x_1 &+& x_2 &&    & &      &+& 13x_5 &= 0\\
  -&  &+& x_2 &&  &+& 20x_5 &= 0\\
@@ -428,7 +428,7 @@ x_1 &+& x_2 &&    & &      &+& 13x_5 &= 0\\
      &&       & & x_3 &+& 8x_4 &+& 4x_5 &= 0
      \end{matrix}
 \right.$$
-Les variables pivots sont $x_1$, $x_3$ et $x_4$ alors que les variables paramétrées sont $x_2$ et $x_5$. Posons alors
+Les variables pivots sont $x_1$, $x_3$ et $x_4$ alors que les variables paramÃ©trÃ©es sont $x_2$ et $x_5$. Posons alors
 $x_2 = s$ et  $x_5 = t$.
 On obtient
 $$\left\{\begin{matrix}
@@ -441,23 +441,23 @@ x_5 &=& &t
 \right.$$
 L'ensemble des solutions est donc
 $$S=\{s(-1,1,0,0,0)+t(-13,0,-20,2,1):\forall s,y\in\R\}.$$
-\end{Ex}
+\end{Exemple}
 
-\begin{Ex}[Pas de solutions]
- Considérons le système homogène
+\begin{Exemple}[Pas de solutions]
+ ConsidÃ©rons le systÃ¨me homogÃ¨ne
 $$\left\{\begin{matrix}
 x_1 &+& x_2  &= 1\\
 x_1 &-& x_2  &= 1\\
 x_1 &-& 2x_2 &=2
      \end{matrix}
 \right.$$
-L'application de l'algorithme du pivot de Gauss ($L_2\leftarrow L_2-L_1$ et $L_3\leftarrow L_3-L_1$) donne le système équivalent suivant :
+L'application de l'algorithme du pivot de Gauss ($L_2\leftarrow L_2-L_1$ et $L_3\leftarrow L_3-L_1$) donne le systÃ¨me Ã©quivalent suivant :
 $$\left\{\begin{matrix}
 x_1 &+& x_2  &= 1\\
  &-& 2x_2  &= 0\\
  &-& 3x_2 &=1
      \end{matrix}
 \right.$$
-Comme $x_2$ doit être égale à $0$ et à $-\frac 3 2$, il n'existe pas de solution au système.
-\end{Ex}
+Comme $x_2$ doit Ãªtre Ã©gale Ã  $0$ et Ã  $-\frac 3 2$, il n'existe pas de solution au systÃ¨me.
+\end{Exemple}
 \end{document}

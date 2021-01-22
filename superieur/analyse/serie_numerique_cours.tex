@@ -1,85 +1,21 @@
-\documentclass[a4paper]{book}
-\usepackage{t1enc}
-\usepackage[latin1]{inputenc}
-\usepackage[french]{minitoc}
- \usepackage{amsmath}
-\usepackage{fancyhdr,amsmath,amsthm,amssymb,fancybox}
-\usepackage[francais]{babel}
-\usepackage{amsmath}
-\usepackage{TikZ}
-\usetikzlibrary{shapes,backgrounds}
-\usepackage{tkz-fct}   
-\usepackage{a4wide,jlq2eams} 
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{slashbox}
-\usepackage{thmbox}
-\usepackage{xcolor}
-\usepackage{sectsty}
-\usepackage{longtable} 
-\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
-\sectionfont{\color{magenta}}
-\subsectionfont{\color{red}}
-\subsubsectionfont{\color{red}}
-\newcommand{\defi}[1]{\textbf{\textcolor{orange}{#1}}}
-
-\setlength{\shadowsize}{1.5pt}
- 
-\pagestyle{fancy}
-\addtolength{\headwidth}{\marginparsep}
-\addtolength{\headwidth}{\marginparwidth} 
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-\fancyhf{}
-\fancyhead[LE,RO]{\bfseries\thepage}
-\fancyhead[LO]{\bfseries\rightmark}
-\fancyhead[RE]{\bfseries\leftmark}
-\fancypagestyle{plain}{%
-   \fancyhead{} % get rid of headers
-   \renewcommand{\headrulewidth}{0pt} % and the line
-}
-
-\setcounter{minitocdepth}{3}
-
-
-
-\thmboxoptions{S,bodystyle=\itshape\noindent}
-\newtheorem[L]{Lem}{Lemme}[section]
-\newtheorem[L]{Th}[Lem]{Théorème}
-\newtheorem[L]{Cor}[Lem]{Corollaire}
-\newtheorem[L]{Prop}[Lem]{Proposition}
-
-\newtheorem[S,bodystyle=\upshape\noindent]{Df}{Définition}
-\newtheorem[S,bodystyle=\upshape\noindent]{Ex}{Exemple}
-\newtheorem[S,bodystyle=\upshape\noindent]{NB}{Remarque}
-\newtheorem[S,bodystyle=\upshape\noindent]{intr}{Introduction}
-
-
-
-
-
-\newcommand\SUI{(u_n)_{n\in\N}}
-\newcommand\SER{ \sum u_n}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\documentclass{book}
+\usepackage{commeunjeustyle}
 \begin{document}
-%\dominitoc
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Série numérique}
+\chapter*{SÃ©rie numÃ©rique}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-En mathématiques, la notion de série permet de généraliser la notion de somme finie.\\
-\'Etant donnée une suite  $(u_n)_{n\in\N}$, étudier la série de terme général $u_n$ c'est étudier la suite $(S_n)_{n\in\N}$ obtenue en prenant la somme des premiers termes de la suite $(u_n)_{n\in\N}$, c'est à dire :
+En mathÃ©matiques, la notion de sÃ©rie permet de gÃ©nÃ©raliser la notion de somme finie.\\
+\'Etant donnÃ©e une suite  $(u_n)_{n\in\N}$, Ã©tudier la sÃ©rie de terme gÃ©nÃ©ral $u_n$ c'est Ã©tudier la suite $(S_n)_{n\in\N}$ obtenue en prenant la somme des premiers termes de la suite $(u_n)_{n\in\N}$, c'est Ã  dire :
 $$ S_{n}=u_{0}+u_{1}+\cdots +u_{n}=\sum _{k=0}^{n}u_{k}.$$
-Peut-on donner un sens à la somme de tous les termes d'une suite infinie de nombres
-réels : 
+Peut-on donner un sens Ã  la somme de tous les termes d'une suite infinie de nombres
+rÃ©els : 
 $$
 \lim_{n\to\infty}S_n= u_{0}+u_{1}+u_{3}+u_{4}+\cdots =\lim_{n\to\infty}\sum _{k=0}^{n}u_{n} ?$$ 
-Peut-on  permuter les termes de la suite ou opérer des regroupement sans modifier ni la convergence ni la somme de la série ?
-\begin{Ex}[Partager un carré]
-Peut-on partager un carré en une infinité de
-rectangles de façon à enlever à chaque étape la moitié de l'aire restante ? La figure ci-dessous montre une solution.
+Peut-on  permuter les termes de la suite ou opÃ©rer des regroupement sans modifier ni la convergence ni la somme de la sÃ©rie ?
+\begin{Exemple}[Partager un carrÃ©]
+Peut-on partager un carrÃ© en une infinitÃ© de
+rectangles de faÃ§on Ã  enlever Ã  chaque Ã©tape la moitiÃ© de l'aire restante ? La figure ci-dessous montre une solution.
 \begin{center}
  \begin{picture}(128,128)
 \put(0,0){\line(1,0){128}}
@@ -101,61 +37,61 @@ rectangles de façon à enlever à chaque étape la moitié de l'aire restante ? La f
 %\put(0,16){\line(0,1){32}}
 \end{picture}
 \end{center}
-En prenant comme unité d'aire, l'aire du carré de départ, on en déduit la relation :
+En prenant comme unitÃ© d'aire, l'aire du carrÃ© de dÃ©part, on en dÃ©duit la relation :
 $$ 1 =\frac{1}{2}+ \frac{1}{4}+\frac{1}{8}+\frac{1}{16}+\frac{1}{32}+\dots= \lim_{n\to\infty}\sum_{k=1}^n 2^{-k}.$$ 
-La somme de tous les termes de la suite $(2^{-n})_{n\in\N^*}$ converge et est égale à 1.
-\end{Ex}
-\begin{Ex}[Somme harmonique]
-La somme harmonique est la somme des inverses des entiers naturels non nuls qui est donc égale à
+La somme de tous les termes de la suite $(2^{-n})_{n\in\N^*}$ converge et est Ã©gale Ã  1.
+\end{Exemple}
+\begin{Exemple}[Somme harmonique]
+La somme harmonique est la somme des inverses des entiers naturels non nuls qui est donc Ã©gale Ã 
 $$ H_{n}=1+{\frac {1}{2}}+{\frac {1}{3}}+{\frac {1}{4}}+\cdots +{\frac {1}{n}}=\sum _{k=1}^{n}{\frac {1}{k}}.$$
 On peut remarquer\footnote{On peut aussi regrouper les termes 
 $$ \lim_{n\to\infty}H_{n}=1+{\frac {1}{2}}+\overbrace{\frac {1}{3}+\frac {1}{4}}^{\geq \frac 1 2}_{2 \text{ termes}}+\overbrace{\frac {1}{5}+\frac {1}{6}+\frac {1}{7}+\frac {1}{8}}^{\geq \frac 1 2}_{4 \text{ termes}}+\overbrace{\frac {1}{9}+\dots+\frac {1}{16}}^{\geq \frac 1 2}_{8 \text{ termes}}+\dots$$
-et la limite est donc supérieur à une somme infini de $1/2$ donc la limite est l'infinie (voir \url{https://www.youtube.com/watch?v=_AtkIpi6KP0}).} que l'aire sous la courbe rouge est inférieur à la somme des aires des rectangles oranges 
+et la limite est donc supÃ©rieur Ã  une somme infini de $1/2$ donc la limite est l'infinie (voir \url{https://www.youtube.com/watch?v=_AtkIpi6KP0}).} que l'aire sous la courbe rouge est infÃ©rieur Ã  la somme des aires des rectangles oranges 
 \begin{center}
 \includegraphics[width=6cm]{serie_numerique_fig_serie_harmonique}
 \end{center}
-d'où
+d'oÃ¹
 $$ H_{n}=1+{\frac {1}{2}}+{\frac {1}{3}}+{\frac {1}{4}}+\cdots +{\frac {1}{n}}\geq\int_1^{n+1}\frac 1 x dx=\ln(n+1).$$
 Comme  $\lim\limits_{n\to\infty}\ln(n+1)=+\infty$, la suite $(H_n)$ diverge.\\
 La somme de tous les termes de la suite $(1/n)_{n\in\N}$ diverge vers l'infini.
-\end{Ex}
-\begin{Ex}[Non commutativité des sommes infinies]
-On considère cette somme
+\end{Exemple}
+\begin{Exemple}[Non commutativitÃ© des sommes infinies]
+On considÃ¨re cette somme
 $$ S_{n}=1-{\frac {1}{2}}+{\frac {1}{3}}-{\frac {1}{4}}+\cdots +{\frac {(-1)^{n+1}}{n}}.$$
 On a $$\lim_{n\to\infty}S_{n}=\overbrace{1-{\frac {1}{2}}}^{\geq \frac 1 2}+\overbrace{\frac {1}{3}-\frac {1}{4}}^{\geq  0}+\overbrace{\frac {1}{5}-\frac {1}{6}}^{\geq  0}+\cdots \geq \frac 1 2.$$
-En réorganisant les termes, on obtient :
-	\begin{align*}
+En rÃ©organisant les termes, on obtient :
+	$$\begin{aligned}
 	\lim_{n\to\infty}S_{n}&= \left(1 - \frac 1 2\right) - \frac 1 4 + \left(\frac 1 3 - \frac 1 6\right)- \frac 1  8+ \left(\frac 1 5 - \frac{1}{10}\right)\cdots  \\
 					     &=\frac 1 2 - \frac 1 4  + \frac 1 6 - \frac 1  8+  \frac{1}{10}+ \cdots\\
 					     &=\frac 1 2 (1-{\frac {1}{2}}+{\frac {1}{3}}-{\frac {1}{4}}+{\frac {1}{5}}+\cdots)\\
 					     &=\frac 1 2 (\lim_{n\to\infty}S_{n})\\
 					     &=0
-	\end{align*}
-D'où une contradiction car $\lim_{n\to\infty}S_{n}\geq \frac 1 2 $ et $\lim_{n\to\infty}S_{n}=0$.
-\end{Ex}
+	\end{aligned}$$
+D'oÃ¹ une contradiction car $\lim_{n\to\infty}S_{n}\geq \frac 1 2 $ et $\lim_{n\to\infty}S_{n}=0$.
+\end{Exemple}
 \newpage
 
-\section{Généralités}
+\section{GÃ©nÃ©ralitÃ©s}
 
 
-\begin{Df}[Série numérique]
-Soit $\SUI$ une suite numérique.\\
-On appelle suite des \defi{somme partielle} donnée par pour tout $n\in\N$, $S_n=u_0+u_1+\dots+u_n=\sum _{k=0}^{n}u_{k}$.\\
-La suite   $(S_n)_{n\in\N}$ est appelée \defi{série numérique} de \defi{terme général} et noté $\SER$.
-\end{Df}
-\begin{Ex}
-La somme partielle de  la série harmonique $\sum \frac 1 n$ est  égale à $S_n=1+\frac 1 2 +\frac 1 3+\cdots +\frac 1 n$. 
-\end{Ex}
-\begin{Df}
-On dit que la série $\SER$ est convergente (respectivement divergente, majorée, minorée, bornée, croissante ou décroissante) si et seulement si la suite $(S_n)_{n\in\N}$ l'est.\\
-Dans ce cas, on appelle \defi{somme de la série} la limite $S$ de la suite de ses sommes partielles $(S_n)_{n\in\N}$, et on la note $\sum_{n=0}^{+\infty} u_n$.
+\begin{Definition}[SÃ©rie numÃ©rique]
+Soit $(u_n)_{n\in\N}$ une suite numÃ©rique.\\
+On appelle suite des \defi{somme partielle} donnÃ©e par pour tout $n\in\N$, $S_n=u_0+u_1+\dots+u_n=\sum _{k=0}^{n}u_{k}$.\\
+La suite   $(S_n)_{n\in\N}$ est appelÃ©e \defi{sÃ©rie numÃ©rique} de \defi{terme gÃ©nÃ©ral} et notÃ© $\sum u_n$.
+\end{Definition}
+\begin{Exemple}
+La somme partielle de  la sÃ©rie harmonique $\sum \frac 1 n$ est  Ã©gale Ã  $S_n=1+\frac 1 2 +\frac 1 3+\cdots +\frac 1 n$. 
+\end{Exemple}
+\begin{Definition}
+On dit que la sÃ©rie $\sum u_n$ est convergente (respectivement divergente, majorÃ©e, minorÃ©e, bornÃ©e, croissante ou dÃ©croissante) si et seulement si la suite $(S_n)_{n\in\N}$ l'est.\\
+Dans ce cas, on appelle \defi{somme de la sÃ©rie} la limite $S$ de la suite de ses sommes partielles $(S_n)_{n\in\N}$, et on la note $\sum_{n=0}^{+\infty} u_n$.
 Ainsi, 
 \begin{center}
 \shadowbox{
 $S = \sum_{n=0}^{+\infty} u_n = \lim_{n\to\infty} S_n = \lim_{n\to\infty} \sum_{k=0}^n u_k.$
 }
 \end{center}
-De plus, on appelle \defi{reste} d'ordre $n$ de la série la quantité
+De plus, on appelle \defi{reste} d'ordre $n$ de la sÃ©rie la quantitÃ©
 \begin{center}
 \shadowbox{
 $R_n = S - S_n = \sum_{k=0}^{+\infty} u_k -\sum_{k=0}^n u_k = \sum_{k=n+1}^{+\infty} u_k = \sum_{k>n} u_k.$
@@ -163,99 +99,99 @@ $R_n = S - S_n = \sum_{k=0}^{+\infty} u_k -\sum_{k=0}^n u_k = \sum_{k=n+1}^{+\in
 \end{center}
 On a :
 $$ \lim_{n\to\infty}R_n=0.$$
-\end{Df}
+\end{Definition}
 
 
-\begin{NB} Attention :
+\begin{Remarque} Attention :
 \begin{itemize}
-\item $\SER$ est une suite,
+\item $\sum u_n$ est une suite,
 \item $\sum_{k=0}^n u_k$ est un nombre,
-\item $\sum_{n=0}^\infty u_n$ est un nombre si la série est convergente.
+\item $\sum_{n=0}^\infty u_n$ est un nombre si la sÃ©rie est convergente.
 \end{itemize}
-\end{NB}
+\end{Remarque}
 
-\begin{Ex}[Série géométrique]
-Soit $\sum q^n$ la série géométrique.
+\begin{Exemple}[SÃ©rie gÃ©omÃ©trique]
+Soit $\sum q^n$ la sÃ©rie gÃ©omÃ©trique.
 Pour $q\ne 1$, on a :
-\begin{align*}
+$$\begin{aligned}
 	S_{n}&= 1+q+q^2+\dots+q^n  \\
 	-qS_{n}&=-q-q^2+\dots+q^n-q^{n+1} \\
 	S_{n}-qS_{n}&= 1 -q^{n+1}
-\end{align*}
+\end{aligned}$$
 $$ S_{n} = \frac{1-q^{n+1}}{1-q} $$
-La série converge  si et seulement si $|q|<1$. Dans le cas de convergence,  sa somme est $\frac{1}{1-q}$. \\
-On retrouve par exemple que $\frac 1 9= 0,111\dots$, d'où $1 = 0, 999\dots$ car $0,111\dots=\sum_{n=1}^{\infty}\left(\frac{1}{10}\right)^n=\frac{1/10}{1-1/10}=\frac{1}{9}.$
+La sÃ©rie converge  si et seulement si $|q|<1$. Dans le cas de convergence,  sa somme est $\frac{1}{1-q}$. \\
+On retrouve par exemple que $\frac 1 9= 0,111\dots$, d'oÃ¹ $1 = 0, 999\dots$ car $0,111\dots=\sum_{n=1}^{\infty}\left(\frac{1}{10}\right)^n=\frac{1/10}{1-1/10}=\frac{1}{9}.$
 
-\end{Ex}
+\end{Exemple}
 
-\begin{Ex}[Séries télescopiques]
-Soit $(a_n)_{n\in\N}$ une suite numérique et $u_n = a_{n+1} - a_n$.\\
-On a \begin{align*}
-S_n &= (a_1 - a_0)+ (a_2 - a_1)+\cdots+(a_{n+1} - a_n)\\&=a_{n+1}-a_0.\end{align*}
-Donc la série $\SER$ télescopiques converge si et seulement si la suite $(a_n)_{n\in\N}$ converge. Si la série converge, sa limite est  $\lim\limits_{n\to\infty}a_n-a_0$.\\
-Par exemple, la série $\sum \frac{1}{n(n+1)}=\sum\left(\frac{1}{n}-\frac{1}{n+1}\right)$ converge vers $1$. 
-\end{Ex}
+\begin{Exemple}[SÃ©ries tÃ©lescopiques]
+Soit $(a_n)_{n\in\N}$ une suite numÃ©rique et $u_n = a_{n+1} - a_n$.\\
+On a $$\begin{aligned}
+S_n &= (a_1 - a_0)+ (a_2 - a_1)+\cdots+(a_{n+1} - a_n)\\&=a_{n+1}-a_0.\end{aligned}$$
+Donc la sÃ©rie $\sum u_n$ tÃ©lescopiques converge si et seulement si la suite $(a_n)_{n\in\N}$ converge. Si la sÃ©rie converge, sa limite est  $\lim\limits_{n\to\infty}a_n-a_0$.\\
+Par exemple, la sÃ©rie $\sum \frac{1}{n(n+1)}=\sum\left(\frac{1}{n}-\frac{1}{n+1}\right)$ converge vers $1$. 
+\end{Exemple}
 
-\begin{Prop}[Indépendance du rang]
-Pour tout $ n_0 \in \N$, les séries $\sum_{n\geq 0}u_n$ et  $\sum_{n\geq n_0}u_n$ sont de même nature,
-c'est-à-dire ou toutes deux convergentes ou toutes deux divergent.
-\end{Prop}
-\begin{proof}
-\begin{align*}
+\begin{Proposition}[IndÃ©pendance du rang]
+Pour tout $ n_0 \in \N$, les sÃ©ries $\sum_{n\geq 0}u_n$ et  $\sum_{n\geq n_0}u_n$ sont de mÃªme nature,
+c'est-Ã -dire ou toutes deux convergentes ou toutes deux divergent.
+\end{Proposition}
+\begin{Demonstration}
+$$\begin{aligned}
 \sum_{n\geq 0}u_n \text{ converge}\Leftrightarrow &\forall \epsilon \in \R^{+*}, \exists N\in N, \forall n \geq N:  |\sum_{k=0}^{n}u_k-\sum_{k=0}^{\infty} u_k|\leq \epsilon\\
 \Leftrightarrow &\forall \epsilon \in \R^{+*}, \exists N\in N, \forall n \geq N:  |\sum_{k=n_0}^{n}u_k-(\sum_{k=0}^{\infty} u_k-\sum_{k=0}^{n_0-1}u_k)|\leq \epsilon\\
 \Leftrightarrow &\sum_{n\geq n_0}u_n \text{ converge.}
-\end{align*}  
-\end{proof}
+\end{aligned}$$  
+\end{Demonstration}
 
 
 
 
-\begin{Prop}[Espace vectoriel]
-L'ensemble des séries convergentes est un espace vectoriel, c'est à dire si $\sum u_n$ et $\sum v_n$ convergent vers $S$ et $S'$, la série $\sum (a u_n + b v_n)$ converge pour toutes constantes réelle $a,b$. De plus, dans ce cas, le somme est  $aS+bS'$.
-\end{Prop}
-\begin{proof}
+\begin{Proposition}[Espace vectoriel]
+L'ensemble des sÃ©ries convergentes est un espace vectoriel, c'est Ã  dire si $\sum u_n$ et $\sum v_n$ convergent vers $S$ et $S'$, la sÃ©rie $\sum (a u_n + b v_n)$ converge pour toutes constantes rÃ©elle $a,b$. De plus, dans ce cas, le somme est  $aS+bS'$.
+\end{Proposition}
+\begin{Demonstration}
 Voir le cours sur les suites. 
-\end{proof}
-\begin{Ex}
-La série $\sum \left(3 (\frac{\sqrt{2}}{2})^n-5(0.999)^n\right)$ converge.
-\end{Ex}
-\begin{NB} Attention la réciproque est FAUSSE ($\sum (a u_n + b v_n)$ converge implique que $\sum u_n$ et $\sum v_n$ convergent).
-Comme contre-exemple, la série $\sum \frac{1}{n(n+1)}=\sum \left(\frac{1}{n}-\frac{1}{n+1}\right)$ est convergente comme série télescopique. Cependant la série harmonique $\sum \frac{1}{n}$ est divergente.  
-\end{NB}
+\end{Demonstration}
+\begin{Exemple}
+La sÃ©rie $\sum \left(3 (\frac{\sqrt{2}}{2})^n-5(0.999)^n\right)$ converge.
+\end{Exemple}
+\begin{Remarque} Attention la rÃ©ciproque est FAUSSE ($\sum (a u_n + b v_n)$ converge implique que $\sum u_n$ et $\sum v_n$ convergent).
+Comme contre-exemple, la sÃ©rie $\sum \frac{1}{n(n+1)}=\sum \left(\frac{1}{n}-\frac{1}{n+1}\right)$ est convergente comme sÃ©rie tÃ©lescopique. Cependant la sÃ©rie harmonique $\sum \frac{1}{n}$ est divergente.  
+\end{Remarque}
 
 
 
 
 
 
-\begin{Prop}[Grossièrement divergente]
-Soit $\SER$ une série numérique.\\
-Si la série converge, alors $ \lim_{n\to\infty}u_n= 0$.\\
-On dit que la série numérique $\SER$ est \defi{grossièrement divergente} si $u_n$ ne tend pas vers 0.
-\end{Prop}
-\begin{proof}
-Soit $\SER$ une série convergente.
-On a $u_n = S_{n}-S_{n-1}.$ Par passage à la limite (l'ensemble des suites convergentes est un espace vectoriel), on a  :$$\lim_{n\to\infty}u_n =\lim_{n\to\infty}( S_{n}-S_{n-1})=S-S=0.$$
-\end{proof}
-\begin{NB}
-La réciproque est fausse.
-Le contre-exemple classique est la série harmonique
+\begin{Proposition}[GrossiÃ¨rement divergente]
+Soit $\sum u_n$ une sÃ©rie numÃ©rique.\\
+Si la sÃ©rie converge, alors $ \lim_{n\to\infty}u_n= 0$.\\
+On dit que la sÃ©rie numÃ©rique $\sum u_n$ est \defi{grossiÃ¨rement divergente} si $u_n$ ne tend pas vers 0.
+\end{Proposition}
+\begin{Demonstration}
+Soit $\sum u_n$ une sÃ©rie convergente.
+On a $u_n = S_{n}-S_{n-1}.$ Par passage Ã  la limite (l'ensemble des suites convergentes est un espace vectoriel), on a  :$$\lim_{n\to\infty}u_n =\lim_{n\to\infty}( S_{n}-S_{n-1})=S-S=0.$$
+\end{Demonstration}
+\begin{Remarque}
+La rÃ©ciproque est fausse.
+Le contre-exemple classique est la sÃ©rie harmonique
 $\sum_{n\geq 1} \frac1n$ qui est divergente,
 bien que $ \lim_{n\to\infty} \frac1n =0$.
-\end{NB}
+\end{Remarque}
 %
 %
 %%% -----------------------------------------------------------------------------
-\section{Séries à termes positifs (SATP)}
+\section{SÃ©ries Ã  termes positifs (SATP)}
 
 \subsection{Croissance des sommes partielles}
 %\begin{intr}
-Les séries à termes positifs jouent un rôle clé dans la théorie des séries. Si elle diverge, alors la suite des sommes partielles tend vers $+\infty$. Les
-possibilités de divergence sont bien plus diverses pour une série dont les termes changent de signe une infinité de fois.
+Les sÃ©ries Ã  termes positifs jouent un rÃ´le clÃ© dans la thÃ©orie des sÃ©ries. Si elle diverge, alors la suite des sommes partielles tend vers $+\infty$. Les
+possibilitÃ©s de divergence sont bien plus diverses pour une sÃ©rie dont les termes changent de signe une infinitÃ© de fois.
 
-Pour comprendre le comportement d'une série $\SER$ à termes positifs, il convient d'observer que dans ce cas la suite de ses sommes partielles $(S_n)$ est une suite croissante de réels positifs. En effet, pour tout $n \geq 1 , S_n - S_{n-1}= u_n \geq  0$, donc $S_n \geq S_{n-1}$. Il est commode de représenter une telle suite croissante $(S_n)$ par un escalier infini, où la $n^e$ marche est
-le segment horizontal d'extrémités les points de coordonnées $(n, S_n)$ et $(n+1, S_n)$. Ainsi la figure 1.2 représente  l'escalier associé à la série harmonique
+Pour comprendre le comportement d'une sÃ©rie $\sum u_n$ Ã  termes positifs, il convient d'observer que dans ce cas la suite de ses sommes partielles $(S_n)$ est une suite croissante de rÃ©els positifs. En effet, pour tout $n \geq 1 , S_n - S_{n-1}= u_n \geq  0$, donc $S_n \geq S_{n-1}$. Il est commode de reprÃ©senter une telle suite croissante $(S_n)$ par un escalier infini, oÃ¹ la $n^e$ marche est
+le segment horizontal d'extrÃ©mitÃ©s les points de coordonnÃ©es $(n, S_n)$ et $(n+1, S_n)$. Ainsi la figure 1.2 reprÃ©sente  l'escalier associÃ© Ã  la sÃ©rie harmonique
 (en posant $u_0 = 0)$,
 \begin{figure}[!h]
 \begin{center}
@@ -268,142 +204,142 @@ le segment horizontal d'extrémités les points de coordonnées $(n, S_n)$ et $(n+1
 \foreach \y in {0,1,2,3}
     \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east] {$\y$};
 \end{tikzpicture}
-\caption{Escalier infini de la série harmonique}
+\caption{Escalier infini de la sÃ©rie harmonique}
 \end{center}
 \end{figure}
 
 
 Sur cette figure, on voit que la pente est de plus en plus douce, mais comme dans le cas
-d'une représentation graphique de fonction, cela ne suffit pas pour conclure à l'existence
-d'une asymptote horizontale. On observe le même phénomène avec la représentation graphique de la fonction logarithme et il est bien connu que $\ln x$ tend vers l'infini quand $x$
+d'une reprÃ©sentation graphique de fonction, cela ne suffit pas pour conclure Ã  l'existence
+d'une asymptote horizontale. On observe le mÃªme phÃ©nomÃ¨ne avec la reprÃ©sentation graphique de la fonction logarithme et il est bien connu que $\ln x$ tend vers l'infini quand $x$
 tend vers l'infini et donc qu'il ne peut y avoir d'asymptote horizontale.
 
 
-Pour un escalier infini représentant une série à termes positifs, il y a que deux  possibilités :
+Pour un escalier infini reprÃ©sentant une sÃ©rie Ã  termes positifs, il y a que deux  possibilitÃ©s :
 \begin{itemize}
-\item ou bien l'escalier est plafonné, autrement dit il existe une altitude $M$
-qu'il ne peut jamais franchir (mathématiquement, $M$ est un majorant de l'ensemble
+\item ou bien l'escalier est plafonnÃ©, autrement dit il existe une altitude $M$
+qu'il ne peut jamais franchir (mathÃ©matiquement, $M$ est un majorant de l'ensemble
 de toutes les valeurs de la suite $(S_n)_{n\in\N}:  \forall n \in \N, S_n \leq M)$ ;
-\item ou bien il n'est pas plafonné et finit donc par dépasser toute altitude fixée à l'avance.
-Dans le deuxième cas, comme la suite $(S_n)_{n\in\N}$ est croissante, pour chaque altitude $A$
-fixée, à partir d'un certain rang $n_0$, $S_{n}\geq A$ pour tous les indices suivants.
+\item ou bien il n'est pas plafonnÃ© et finit donc par dÃ©passer toute altitude fixÃ©e Ã  l'avance.
+Dans le deuxiÃ¨me cas, comme la suite $(S_n)_{n\in\N}$ est croissante, pour chaque altitude $A$
+fixÃ©e, Ã  partir d'un certain rang $n_0$, $S_{n}\geq A$ pour tous les indices suivants.
 Comme A est quelconque, cela signifie que $(S_n)_{n\in\N}$ tend vers l'infini.
 \end{itemize}
 %\end{intr}
 
 
-\begin{Df}[Série à termes positifs]
-Une \defi{série à termes positifs} est une série réelle $\SER$ telle que $$\forall n\in\N,\quad u_n\geq 0.$$
-\end{Df}
-\begin{Prop}[Adaptation du théorème de la limite monotone]
-Une SATP converge si et seulement si la suite de ses sommes partielles est majorée.\\
-De plus, si elle converge, sa somme est égale à la borne supérieure
+\begin{Definition}[SÃ©rie Ã  termes positifs]
+Une \defi{sÃ©rie Ã  termes positifs} est une sÃ©rie rÃ©elle $\sum u_n$ telle que $$\forall n\in\N,\quad u_n\geq 0.$$
+\end{Definition}
+\begin{Proposition}[Adaptation du thÃ©orÃ¨me de la limite monotone]
+Une SATP converge si et seulement si la suite de ses sommes partielles est majorÃ©e.\\
+De plus, si elle converge, sa somme est Ã©gale Ã  la borne supÃ©rieure
 des sommes partielles.\\
 De plus, si elle diverge, elle diverge vers l'infinie. 
-\end{Prop}
-\begin{proof}
-Comme $S_{n+1}-S_n=u_{n+1}\geq 0$, la suite $(S_n)_{n\in\N}$ est croissante. Une suite croissante converge si set seulement si la suite est majorée. De plus, si elle converge, sa somme est égale à la borne supérieure.
-\end{proof}
+\end{Proposition}
+\begin{Demonstration}
+Comme $S_{n+1}-S_n=u_{n+1}\geq 0$, la suite $(S_n)_{n\in\N}$ est croissante. Une suite croissante converge si set seulement si la suite est majorÃ©e. De plus, si elle converge, sa somme est Ã©gale Ã  la borne supÃ©rieure.
+\end{Demonstration}
 
-\subsection{Règles de convergence}
+\subsection{RÃ¨gles de convergence}
 
 
-\begin{Prop}[Règle de comparaison]
+\begin{Proposition}[RÃ¨gle de comparaison]
 \label{prop:satp}
-Soit $(u_n)_{n\in\N}$ et $(u_n)_{n\in\N}$ deux suites réelles tel que $$\forall n\in\N,\quad 0\leq u_n\leq v_n.$$
+Soit $(u_n)_{n\in\N}$ et $(u_n)_{n\in\N}$ deux suites rÃ©elles tel que $$\forall n\in\N,\quad 0\leq u_n\leq v_n.$$
 \begin{itemize}
 \item
-  Si $\sum v_n$ converge, alors $\SER$ converge également.
+  Si $\sum v_n$ converge, alors $\sum u_n$ converge Ã©galement.
 \item
-  Si $\SER$ diverge, alors $\sum v_n$ diverge également.
+  Si $\sum u_n$ diverge, alors $\sum v_n$ diverge Ã©galement.
 \end{itemize}
-\end{Prop}
-\begin{proof}
-Soit $(u_n)_{n\in\N}$ et $(u_n)_{n\in\N}$ deux suites réelles tel que $\forall n\in\N,\quad 0\leq u_n\leq v_n.$
+\end{Proposition}
+\begin{Demonstration}
+Soit $(u_n)_{n\in\N}$ et $(u_n)_{n\in\N}$ deux suites rÃ©elles tel que $\forall n\in\N,\quad 0\leq u_n\leq v_n.$
 Soit  $\sum v_n$ convergente. 
 $\sum u_n$ est une SATP.  On a : 
-$$\forall n \in \N : \quad \sum_{k=0}^n u_n\leq  \sum_{k=0}^n v_n \overbrace{\leq}^{\text{théorème de limité monotome}}  \sum_{k=0}^{+\infty} v_n<+\infty.$$
-Comme la suite des sommes partielles est bornée, d'après la proposition précédente,  $\sum u_n$ est convergente. Idem pour la divergence.
-\end{proof}
+$$\forall n \in \N : \quad \sum_{k=0}^n u_n\leq  \sum_{k=0}^n v_n \overbrace{\leq}^{\text{thÃ©orÃ¨me de limitÃ© monotome}}  \sum_{k=0}^{+\infty} v_n<+\infty.$$
+Comme la suite des sommes partielles est bornÃ©e, d'aprÃ¨s la proposition prÃ©cÃ©dente,  $\sum u_n$ est convergente. Idem pour la divergence.
+\end{Demonstration}
 
-\begin{NB}
-Les inégalités $$\quad 0\leq u_n\leq v_n$$  peuvent être vérifiées uniquement à partir d'un certain rang car la convergence ou la divergence d'une série ne dépendent pas des premiers termes. 
-\end{NB}
-\begin{Ex}
-Étudions la nature de la  série $\sum e^{-n^2}$ à termes positifs. On a  $\forall n\in\N : 0\leq e^{-n^2}\leq e^{-n}=(\frac 1 e)^n$. Comme la série géométrique $\sum \left(\frac 1 e\right)^n$ est convergente car $|\left(\frac 1 e\right)|<1$, la série $\sum e^{-n^2}$ est convergente d'après la règle de comparaison. 
-\end{Ex}
+\begin{Remarque}
+Les inÃ©galitÃ©s $$\quad 0\leq u_n\leq v_n$$  peuvent Ãªtre vÃ©rifiÃ©es uniquement Ã  partir d'un certain rang car la convergence ou la divergence d'une sÃ©rie ne dÃ©pendent pas des premiers termes. 
+\end{Remarque}
+\begin{Exemple}
+Ã‰tudions la nature de la  sÃ©rie $\sum e^{-n^2}$ Ã  termes positifs. On a  $\forall n\in\N : 0\leq e^{-n^2}\leq e^{-n}=(\frac 1 e)^n$. Comme la sÃ©rie gÃ©omÃ©trique $\sum \left(\frac 1 e\right)^n$ est convergente car $|\left(\frac 1 e\right)|<1$, la sÃ©rie $\sum e^{-n^2}$ est convergente d'aprÃ¨s la rÃ¨gle de comparaison. 
+\end{Exemple}
 
-\begin{Prop}[Règle du petit o et grand O] \label{prop:comp}
-Soit $\SER$ et $\sum v_n$ deux SATP.
+\begin{Proposition}[RÃ¨gle du petit o et grand O] \label{prop:comp}
+Soit $\sum u_n$ et $\sum v_n$ deux SATP.
 On suppose que $u_n = \GrandO_\ninf(v_n)$ (ou  $u_n = \PetitO_\ninf(v_n)$).
 Alors:
 \begin{itemize}
 \item
-  Si $\sum v_n$ converge, alors $\SER$ converge également.
+  Si $\sum v_n$ converge, alors $\sum u_n$ converge Ã©galement.
 \item
-  Si $\SER$ diverge, alors $\sum v_n$ diverge également.
+  Si $\sum u_n$ diverge, alors $\sum v_n$ diverge Ã©galement.
 \end{itemize}
-\end{Prop} 
-\begin{proof}
+\end{Proposition} 
+\begin{Demonstration}
 On suppose $\sum v_n$ converge.\\
-On a  $(u_n)$ et $(u_n)$ deux suites réelles positives tel que $u_n = \GrandO_\ninf(v_n)$. Cela signifie qu'il existe 
+On a  $(u_n)$ et $(u_n)$ deux suites rÃ©elles positives tel que $u_n = \GrandO_\ninf(v_n)$. Cela signifie qu'il existe 
 $ M\in \R^+,\forall n\geq N :\quad  u_n\leq M v_n.$\\
 On a :
-$$\forall n \in \N :	\sum_{k=0}^n u_k\leq \sum_{k=0}^n(M v_k) \leq M\sum_{k=0}^n v_k\overbrace{\leq}^{\text{théorème de limité monotome}} M\sum_{k=0}^{\infty} v_k $$
-Donc la suite des sommes partielles est bornée, donc la série $\sum u_n$ est convergente. 
-\end{proof}
-\begin{Ex}
-Étudions la nature de la  série $\sum \frac{1}{\sqrt{n}}$ à termes positifs. On a  $\frac{1}{n}=\PetitO_\ninf(\frac{1}{\sqrt{n}})$. Comme la série harmonique $\sum \frac 1 n$ est divergente, la série $\sum \frac{1}{\sqrt{n}}$ est divergente d'après la règle de comparaison. 
-\end{Ex}
-\begin{Prop}[Règle d'équivalence]
-Soit $\SER$ et $\sum v_n$ deux SATP telles que $u_n \Sim_\ninf v_n$.\\
-Alors $\SER$ et $\sum v_n$ sont de même nature.
-\end{Prop}
-\begin{proof}
-$u_n \Sim_\ninf v_n$ implique que $u_n= \GrandO_\ninf(v_n)$ et que $v_n= \GrandO_\ninf(u_n)$. On conclut à l'aide de la proposition~\ref{prop:comp}.
-\end{proof}
-\begin{Ex}
-Étudions la nature de la  série $\sum \frac{1}{\ln(1+n)}$ à termes positifs. On a  $\frac{1}{\ln(1+n)}\Sim_\ninf \frac 1 n$. Comme la série harmonique $\sum \frac 1 n$ est divergente,   la série $\sum \frac{1}{\ln(1+n)}$ est divergente d'après la règle d'équivalence. 
-\end{Ex} 
+$$\forall n \in \N :	\sum_{k=0}^n u_k\leq \sum_{k=0}^n(M v_k) \leq M\sum_{k=0}^n v_k\overbrace{\leq}^{\text{thÃ©orÃ¨me de limitÃ© monotome}} M\sum_{k=0}^{\infty} v_k $$
+Donc la suite des sommes partielles est bornÃ©e, donc la sÃ©rie $\sum u_n$ est convergente. 
+\end{Demonstration}
+\begin{Exemple}
+Ã‰tudions la nature de la  sÃ©rie $\sum \frac{1}{\sqrt{n}}$ Ã  termes positifs. On a  $\frac{1}{n}=\PetitO_\ninf(\frac{1}{\sqrt{n}})$. Comme la sÃ©rie harmonique $\sum \frac 1 n$ est divergente, la sÃ©rie $\sum \frac{1}{\sqrt{n}}$ est divergente d'aprÃ¨s la rÃ¨gle de comparaison. 
+\end{Exemple}
+\begin{Proposition}[RÃ¨gle d'Ã©quivalence]
+Soit $\sum u_n$ et $\sum v_n$ deux SATP telles que $u_n \Sim_\ninf v_n$.\\
+Alors $\sum u_n$ et $\sum v_n$ sont de mÃªme nature.
+\end{Proposition}
+\begin{Demonstration}
+$u_n \Sim_\ninf v_n$ implique que $u_n= \GrandO_\ninf(v_n)$ et que $v_n= \GrandO_\ninf(u_n)$. On conclut Ã  l'aide de la proposition~\ref{prop:comp}.
+\end{Demonstration}
+\begin{Exemple}
+Ã‰tudions la nature de la  sÃ©rie $\sum \frac{1}{\ln(1+n)}$ Ã  termes positifs. On a  $\frac{1}{\ln(1+n)}\Sim_\ninf \frac 1 n$. Comme la sÃ©rie harmonique $\sum \frac 1 n$ est divergente,   la sÃ©rie $\sum \frac{1}{\ln(1+n)}$ est divergente d'aprÃ¨s la rÃ¨gle d'Ã©quivalence. 
+\end{Exemple} 
 
-\begin{Prop}[Règle de d'Alembert]
-Soit une SATP $\sum u_n$.  On suppose que la suite $\left(\frac{u_{n+1}}{u_n}\right)_{n\in\N}$  est définie à partir d'un certain rang et admet une limite $L$  quand  $n$ tend vers $+\infty$.\\
+\begin{Proposition}[RÃ¨gle de d'Alembert]
+Soit une SATP $\sum u_n$.  On suppose que la suite $\left(\frac{u_{n+1}}{u_n}\right)_{n\in\N}$  est dÃ©finie Ã  partir d'un certain rang et admet une limite $L$  quand  $n$ tend vers $+\infty$.\\
 Alors
 \begin{itemize}
-\item si $L<1$, la série $\sum u_n$ est convergente,
-\item si $L>1$, la série $\sum u_n$ est divergente.
+\item si $L<1$, la sÃ©rie $\sum u_n$ est convergente,
+\item si $L>1$, la sÃ©rie $\sum u_n$ est divergente.
 \end{itemize}
-\end{Prop}
-\begin{NB}
-Si $L=1$, on ne pas conclure. En effet, on a $L=1$ pour la série $\sum \frac{1}{n}$ et $\sum \frac{1}{n^2}$ et pourtant la première diverge et la seconde converge.   
-\end{NB}
+\end{Proposition}
+\begin{Remarque}
+Si $L=1$, on ne pas conclure. En effet, on a $L=1$ pour la sÃ©rie $\sum \frac{1}{n}$ et $\sum \frac{1}{n^2}$ et pourtant la premiÃ¨re diverge et la seconde converge.   
+\end{Remarque}
 
-\begin{proof}
+\begin{Demonstration}
 Supposons   $L<1$. Soit $L\leq A\leq 1$.  A partir d'un certain rang $n_0$,  on a 
 $$\forall  n\geq n_0 :\quad \frac{u_{n+1}}{u_n}\leq A$$
 $$\forall  n\geq n_0 :\quad u_n \leq A^{n-n_0}u_{n_0}$$ 
-La série géométrique $\sum_{n\geq n_0}  A^{n-n_0}$ converge car $|A|<1$. Par règle de comparaison, $\sum_{n\geq n_0}  u_n$ converge, donc $\sum  u_n$  convergente.\\
+La sÃ©rie gÃ©omÃ©trique $\sum_{n\geq n_0}  A^{n-n_0}$ converge car $|A|<1$. Par rÃ¨gle de comparaison, $\sum_{n\geq n_0}  u_n$ converge, donc $\sum  u_n$  convergente.\\
 Supposons   $L>1$. Soit $L\geq A \geq 1$.  A partir d'un certain rang $n_0$,  on a 
 $$\forall  n\geq n_0 :\quad \frac{u_{n+1}}{u_n}\geq A$$
 $$\forall  n\geq n_0 :\quad u_n \geq A^{n-n_0}u_{n_0}$$ 
-La série géométrique $\sum_{n\geq n_0}  A^{n-n_0}$  diverge car $|A|>1$. Par règle de comparaison, $\sum_{n\geq n_0}  u_n$ diverge, donc $\sum  u_n$ est diverge.
-\end{proof}
-\begin{Ex}[Série exponentielle]
-Soit $a\in \R^+$. La série $\sum \frac{a^n}{n!}$ converge car d'après la règle de d'Alembert, on a :
+La sÃ©rie gÃ©omÃ©trique $\sum_{n\geq n_0}  A^{n-n_0}$  diverge car $|A|>1$. Par rÃ¨gle de comparaison, $\sum_{n\geq n_0}  u_n$ diverge, donc $\sum  u_n$ est diverge.
+\end{Demonstration}
+\begin{Exemple}[SÃ©rie exponentielle]
+Soit $a\in \R^+$. La sÃ©rie $\sum \frac{a^n}{n!}$ converge car d'aprÃ¨s la rÃ¨gle de d'Alembert, on a :
 $$\frac{ \frac{a^{n+1}}{(n+1)!}}{\frac{a^{n}}{(n)!}}=\frac{a}{n+1}\xrightarrow[n \to +\infty]{}0.$$
-Dans le chapitre sur les séries entières, on définira la fonction exponentielle ainsi  $$\exp:x\to \sum_{n=0}^{+\infty} \frac{x^n}{n!}.$$
-\end{Ex}
+Dans le chapitre sur les sÃ©ries entiÃ¨res, on dÃ©finira la fonction exponentielle ainsi  $$\exp:x\to \sum_{n=0}^{+\infty} \frac{x^n}{n!}.$$
+\end{Exemple}
 
 
 
 %
 %
 %
-\subsection{Comparaison série-intégrale}
-Les séries sont un procédé de sommation de grandeurs discrètes, l'intégrale de grandeurs continues. L'analogie formelle entre les deux domaines permet de faire passer des idées intéressantes de l'une à l'autre. On compare ces deux objets mathématiques à l'aide d'inégalités.\\
+\subsection{Comparaison sÃ©rie-intÃ©grale}
+Les sÃ©ries sont un procÃ©dÃ© de sommation de grandeurs discrÃ¨tes, l'intÃ©grale de grandeurs continues. L'analogie formelle entre les deux domaines permet de faire passer des idÃ©es intÃ©ressantes de l'une Ã  l'autre. On compare ces deux objets mathÃ©matiques Ã  l'aide d'inÃ©galitÃ©s.\\
 \begin{tikzpicture}[scale=0.75]
 \tkzInit[xmax=8,ymax=2]
-\tkzAxeXY[ticks=false]
+\tkzAxeXY
 \tkzGrid
 \draw (1,1.3) node[above]{$x\to\frac 1 x $} ; 
 \draw [domain=1:8,samples=200,color=red] plot (\x,{1/\x});  
@@ -419,7 +355,7 @@ Les séries sont un procédé de sommation de grandeurs discrètes, l'intégrale de g
 \end{tikzpicture}
 \begin{tikzpicture}[scale=0.75]
 \tkzInit[xmax=8,ymax=2]
-\tkzAxeXY[ticks=false]
+\tkzAxeXY
 \tkzGrid
 \draw (1,1.3) node[above]{$x\to\frac 1 x $} ; 
 \draw [domain=1:8,samples=200,color=red] plot (\x,{1/\x});  
@@ -439,41 +375,41 @@ L'aire entre $1$ et $n$ est:
 \item des rectangles verte  : $\sum_{n=1}^{N-1}f(n)$,
 \item  des rectangles bleues  : $\sum_{n=2}^{N}f(n)$.
 \end{itemize}
-Géométriquement, on a les inégalités :
+GÃ©omÃ©triquement, on a les inÃ©galitÃ©s :
 $$\sum_{n=1}^{N-1}f(n)\leq \int_1^N f(x)dx \leq \sum_{n=2}^{N}f(n).$$
-Par passage à la limite, on a :
+Par passage Ã  la limite, on a :
 $$\sum_{n=1}^{+\infty}f(n)\leq \int_1^{+\infty} f(x)dx \leq \sum_{n=2}^{+\infty}f(n).$$
-On peut affirmer que série $\sum f(n)$ converge si et seulement si la suite $\left( \int_1^n f(x) dx \right)_{n\in\N}$ converge.
+On peut affirmer que sÃ©rie $\sum f(n)$ converge si et seulement si la suite $\left( \int_1^n f(x) dx \right)_{n\in\N}$ converge.
 
 
-\begin{Th}[Comparaison série-intégrale]
-Soit f continue sur $[1,+\infty[$, décroissante
+\begin{Theoreme}[Comparaison sÃ©rie-intÃ©grale]
+Soit f continue sur $[1,+\infty[$, dÃ©croissante
 et positive sur cet intervalle. \\
-La série $\sum_{n\geq 1} f(n)$ converge si et seulement si la suite $\left( \int_{1}^n f(x) dx \right)_{n\in\N}$ converge.
-\end{Th}
-\begin{proof}
-Par décroissance de $f$, on a :
+La sÃ©rie $\sum_{n\geq 1} f(n)$ converge si et seulement si la suite $\left( \int_{1}^n f(x) dx \right)_{n\in\N}$ converge.
+\end{Theoreme}
+\begin{Demonstration}
+Par dÃ©croissance de $f$, on a :
 $$\forall n> 0,\quad \forall x\in [n,n+1]:\quad f(n+1)\leq f(x) \leq f(n)$$
-On intègre : 
+On intÃ¨gre : 
 $$\forall n> 0 : \quad \int_n^{n+1}f(n+1)dx\leq \int_n^{n+1}f(x)\,dx \leq \int_n^{n+1}f(n)dx$$
 $$\forall n>0 : \quad f(n+1)\int_n^{n+1}dx\leq \int_n^{n+1}f(x)\,dx \leq f(n)\int_n^{n}dx$$
 $$\forall n> 0 : \quad f(n+1)\leq \int_n^{n+1}f(x)\,dx \leq f(n)$$
-En sommant ces inégalités depuis $1$ jusqu'à $N-1$, les intégrales se raccordent et l'on obtient : 
+En sommant ces inÃ©galitÃ©s depuis $1$ jusqu'Ã  $N-1$, les intÃ©grales se raccordent et l'on obtient : 
  $$\sum_{n=2}^{N}f(n)\leq \int_1^N f(x)\,dx \leq \sum_{n=1}^{N-1}f(n).$$
-Supposons que la série $\sum_{n\geq 1} f(n)$ converge. Comme $\int_1^N f(x)dx \leq \sum_{n=1}^{N-1}f(n)<+\infty$, la suite croissante $\left( \int_{1}^n f(x)\, dx \right)_{n\in\N}$ est  bornée donc convergente. \\
-Supposons que la série $\sum_{n\geq 1}f(n)$ diverge. Comme elle est à termes positifs, elle diverge vers l'infini.  Comme $\sum_{n=2}^{N}f(n)\leq \int_1^N\, f(x)dx$, la suite croissante $\left( \int_{n_0}^n f(x) dx \right)_{n\in\N}$ n'est pas bornée donc divergente. 
-\end{proof}
-\begin{Th}[Comparaison série-intégrale (version intégrale impropre)]
-Soit f continue sur $[1,+\infty[$, décroissante
+Supposons que la sÃ©rie $\sum_{n\geq 1} f(n)$ converge. Comme $\int_1^N f(x)dx \leq \sum_{n=1}^{N-1}f(n)<+\infty$, la suite croissante $\left( \int_{1}^n f(x)\, dx \right)_{n\in\N}$ est  bornÃ©e donc convergente. \\
+Supposons que la sÃ©rie $\sum_{n\geq 1}f(n)$ diverge. Comme elle est Ã  termes positifs, elle diverge vers l'infini.  Comme $\sum_{n=2}^{N}f(n)\leq \int_1^N\, f(x)dx$, la suite croissante $\left( \int_{n_0}^n f(x) dx \right)_{n\in\N}$ n'est pas bornÃ©e donc divergente. 
+\end{Demonstration}
+\begin{Theoreme}[Comparaison sÃ©rie-intÃ©grale (version intÃ©grale impropre)]
+Soit f continue sur $[1,+\infty[$, dÃ©croissante
 et positive sur cet intervalle. \\
-La série $\sum_{n\geq 1} f(n)$ et l'intégrale $\int_{1}^\infty f(x) dx$ sont de même nature.
-\end{Th}
-\begin{Prop}[Séries de Riemann]
-La série $\sum \frac{1}{n^a}$ converge si et seulement si $a> 1$.
-\end{Prop}
-\begin{proof}
-Pour $a\leq 0$, le terme général de la série ne tend pas vers 0 en l'infini donc la série diverge grossièrement.\\
-Pour $a>0$, on applique le théorème de la comparaison série-intégrale avec la fonction $f:x\to\frac{1}{x^a}$ décroissante et continue sur $[1,+\infty[$.\\
+La sÃ©rie $\sum_{n\geq 1} f(n)$ et l'intÃ©grale $\int_{1}^\infty f(x) dx$ sont de mÃªme nature.
+\end{Theoreme}
+\begin{Proposition}[SÃ©ries de Riemann]
+La sÃ©rie $\sum \frac{1}{n^a}$ converge si et seulement si $a> 1$.
+\end{Proposition}
+\begin{Demonstration}
+Pour $a\leq 0$, le terme gÃ©nÃ©ral de la sÃ©rie ne tend pas vers 0 en l'infini donc la sÃ©rie diverge grossiÃ¨rement.\\
+Pour $a>0$, on applique le thÃ©orÃ¨me de la comparaison sÃ©rie-intÃ©grale avec la fonction $f:x\to\frac{1}{x^a}$ dÃ©croissante et continue sur $[1,+\infty[$.\\
 De plus si $a\neq 1$, on a   :
 $$ \int_{1}^n \frac{1}{x^a} dx =
 \left[\frac{1}{(-a+1)x^{a-1} }\right]_1^n=\frac{1}{-a+1}\left(\frac{1}{n^{a-1}}-1\right) \xrightarrow[n\to \infty]{}\begin{cases}
@@ -482,157 +418,157 @@ $$ \int_{1}^n \frac{1}{x^a} dx =
 \end{cases}.$$ 
 De plus si $a= 1$, on a   :
 $$ \int_{1}^n \frac{1}{x} dx = \ln n  \xrightarrow[n\to \infty]{}+\infty .$$ 
-En conclusion, la série $\sum \frac{1}{n^a}$ converge si et seulement si $a> 1$.
+En conclusion, la sÃ©rie $\sum \frac{1}{n^a}$ converge si et seulement si $a> 1$.
 %$$ \int_{1}^n f(x) dx =\begin{cases}
 %\left[\frac{1}{(-a+1)x^{a-1} }\right]_1^n=\frac{1}{-a+1}\left(\frac{1}{n^{a-1}}-1\right) \text{ si }a\neq 1 \t\\
 %\left[\ln x\right]_1^n=\ln n  \text{ si }a=1
 %\end{cases}$$ 
-\end{proof}
+\end{Demonstration}
 
-\section{Séries à termes de signe variable}
+\section{SÃ©ries Ã  termes de signe variable}
 \subsection{Absolument convergente}
-Nous passons maintenant à l'étude des séries qui ne sont pas à termes positifs. Pour expliquer le titre de cette section,
+Nous passons maintenant Ã  l'Ã©tude des sÃ©ries qui ne sont pas Ã  termes positifs. Pour expliquer le titre de cette section,
  il convient de remarquer que si le signe de $u_n$ est constant
-à partir d'un certain rang $n_0$, l'étude de la convergence de $\sum u_n$ se ramène à celle d'une
-série à termes positifs. En effet, $\sum_{n\geq 0} u_n$et $\sum_{n\geq n_0} u_n$ sont de même nature et si $u_n < 0$ à partir du rang $n_0$, il suffit de considérer la série $\sum
+Ã  partir d'un certain rang $n_0$, l'Ã©tude de la convergence de $\sum u_n$ se ramÃ¨ne Ã  celle d'une
+sÃ©rie Ã  termes positifs. En effet, $\sum_{n\geq 0} u_n$et $\sum_{n\geq n_0} u_n$ sont de mÃªme nature et si $u_n < 0$ Ã  partir du rang $n_0$, il suffit de considÃ©rer la sÃ©rie $\sum
 _{n\geq n_0} (-u_)n$.
 
-Ce que nous allons voir dans cette section n'est donc réellement nouveau que pour les séries dont le terme général change de signe
-une infinité de fois.
+Ce que nous allons voir dans cette section n'est donc rÃ©ellement nouveau que pour les sÃ©ries dont le terme gÃ©nÃ©ral change de signe
+une infinitÃ© de fois.
 
-Une première idée pour l'étude des séries à terme de signe variable est d'exprimer ses
-sommes partielles comme différences de sommes partielles de deux séries à termes positifs.
-Pour cela, il suffit d'utiliser la décomposition $u_n = u_n^+-u_n^-$ où $u_n^+$ est la partie positive
-du réel $u_n$ et $u_n^-$
-sa partie négative\footnote{Soit $x$ un nombre réel. Sa
+Une premiÃ¨re idÃ©e pour l'Ã©tude des sÃ©ries Ã  terme de signe variable est d'exprimer ses
+sommes partielles comme diffÃ©rences de sommes partielles de deux sÃ©ries Ã  termes positifs.
+Pour cela, il suffit d'utiliser la dÃ©composition $u_n = u_n^+-u_n^-$ oÃ¹ $u_n^+$ est la partie positive
+du rÃ©el $u_n$ et $u_n^-$
+sa partie nÃ©gative\footnote{Soit $x$ un nombre rÃ©el. Sa
 partie positive $x^+$
- et sa partie négative $x^-$ sont les réels positifs :
+ et sa partie nÃ©gative $x^-$ sont les rÃ©els positifs :
 $$x^+=\max(0,x), \quad x^-=\max(0,-x).$$
-On a les égalités suivantes : 
+On a les Ã©galitÃ©s suivantes : 
 $$x=x^+-x^-,\quad |x|=x^++x^-,\quad x^+=\frac{x+|x|}{2}\quad x^-=\frac{-x+|x|}{2}$$
-et les inégalités suivantes :
+et les inÃ©galitÃ©s suivantes :
 $$0\leq x^+ \leq |x| , \quad 0\leq x^- \leq |x|.$$
 }.
 On a :
 $ \sum_{k=0}^n u_k= \sum_{k=0}^n (u^+_k-u^-_k) = \sum_{k=0}^n u_k^+ -  \sum_{k=0}^n u_k^-.$
-Une condition suffisante pour que la série $\sum u_n$ converge et que les deux SATP $\sum u_k^+$ et $\sum u_k^-$ convergent. 
-Compte tenu des inégalités $0\leq u_n^+ \leq |u_n| , \quad 0\leq u_n^- \leq |u_n|$, le
-théorème de comparaison des séries à termes positifs nous permet de conclure qu'une
+Une condition suffisante pour que la sÃ©rie $\sum u_n$ converge et que les deux SATP $\sum u_k^+$ et $\sum u_k^-$ convergent. 
+Compte tenu des inÃ©galitÃ©s $0\leq u_n^+ \leq |u_n| , \quad 0\leq u_n^- \leq |u_n|$, le
+thÃ©orÃ¨me de comparaison des sÃ©ries Ã  termes positifs nous permet de conclure qu'une
 condition suffisante pour la convergence de $\sum u_k^+$ et $\sum u_k^-$
-et donc aussi $\sum|u_n|$ converge. Nous venons ainsi d'établir le résultat le plus important pour
-la convergence d'une série à termes de signe variable.\\
+et donc aussi $\sum|u_n|$ converge. Nous venons ainsi d'Ã©tablir le rÃ©sultat le plus important pour
+la convergence d'une sÃ©rie Ã  termes de signe variable.\\
 \includegraphics[scale=0.8]{serie_numerique_fig_1.png}
 
-\begin{Th}
+\begin{Theoreme}
 Si la SATP $\sum |u_n|$ converge alors $\sum u_n$ converge.
-\end{Th}
-\begin{Df}[Absolue convergence]
-La série est dite \defi{absolument convergente} si la série $\sum |u_n|$ converge.\\ 
-Le théorème précédent s'énonce ainsi : "toute série absolument convergente est convergente".
-\end{Df}
-\begin{Ex}
-Nature de la série $\sum \frac{\sin n }{n^2}$.\\
+\end{Theoreme}
+\begin{Definition}[Absolue convergence]
+La sÃ©rie est dite \defi{absolument convergente} si la sÃ©rie $\sum |u_n|$ converge.\\ 
+Le thÃ©orÃ¨me prÃ©cÃ©dent s'Ã©nonce ainsi : "toute sÃ©rie absolument convergente est convergente".
+\end{Definition}
+\begin{Exemple}
+Nature de la sÃ©rie $\sum \frac{\sin n }{n^2}$.\\
  On a :
 $$\forall n \in\N^+:\quad \frac{|\sin n| }{n^2}\leq \frac{1}{n^2}$$
-Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \frac{\sin n }{n^2}$ est absolument convergent par règle de comparaison donc convergente.
-\end{Ex}
-\subsection{Série alternée}
+Comme la sÃ©rie de Riemann $\sum \frac{1}{n^2}$ est convergente, la sÃ©rie $\sum \frac{\sin n }{n^2}$ est absolument convergent par rÃ¨gle de comparaison donc convergente.
+\end{Exemple}
+\subsection{SÃ©rie alternÃ©e}
 
-\begin{Df}[Alternée]
-Une série $\sum u_n$ est dite \defi{alternée} si $u_n$ et $u_{n+1}$ sont de signes contraires, pour tout $n\in\N$.\\
-On écrira cette série sous cette forme $\sum u_n =\sum (-1)^n a_n$ avec $(a_n)_{n\in\N}$ une suite de réels positifs. 
-\end{Df}
-\begin{Th}[Critère spécial]
-Soit $\sum (-1)^n a_n$ une série alternée. Si  $(a_n)_{n\in\N}$ est une suite décroissante tendant vers $0$,\\
+\begin{Definition}[AlternÃ©e]
+Une sÃ©rie $\sum u_n$ est dite \defi{alternÃ©e} si $u_n$ et $u_{n+1}$ sont de signes contraires, pour tout $n\in\N$.\\
+On Ã©crira cette sÃ©rie sous cette forme $\sum u_n =\sum (-1)^n a_n$ avec $(a_n)_{n\in\N}$ une suite de rÃ©els positifs. 
+\end{Definition}
+\begin{Theoreme}[CritÃ¨re spÃ©cial]
+Soit $\sum (-1)^n a_n$ une sÃ©rie alternÃ©e. Si  $(a_n)_{n\in\N}$ est une suite dÃ©croissante tendant vers $0$,\\
 Alors
 \begin{enumerate}
 \item  $\sum (-1)^n a_n$ converge,
-\item  les deux sommes partielles consécutives encadrent la somme : $$\forall n\in \N : \quad  S_{2n+1}\leq S \leq S_{2n},$$
-\item  la reste est borné par le terme générale de la série: $$\forall n\in \N : \quad  |R_n|\leq a_{n+1}.$$
+\item  les deux sommes partielles consÃ©cutives encadrent la somme : $$\forall n\in \N : \quad  S_{2n+1}\leq S \leq S_{2n},$$
+\item  la reste est bornÃ© par le terme gÃ©nÃ©rale de la sÃ©rie: $$\forall n\in \N : \quad  |R_n|\leq a_{n+1}.$$
 \end{enumerate}
-\end{Th}
-\begin{proof}
+\end{Theoreme}
+\begin{Demonstration}
 Montrons que les suites des sommes partielles paires et impaires  $(S_{2n})_{n\in\N}$ et $(S_{2n+1})_{n\in\N}$ sont adjacentes :
 \begin{enumerate}
-\item \textit{décroissance de $(S_{2n})_{n\in\N}$} : on a $$S_{2(n+1)}-S_{2n}=\sum_{k=0}^{2n+2}(-1)^n a_n -\sum_{k=0}^{2n}(-1)^n a_n =   -a_{2n+1}+a_{2n+2}\leq 0$$ car $(a_n)_{n\in\N}$ est une suite décroissante positive,
-\item \textit{croissance de $(S_{2n+1})_{n\in\N}$} : de même avec $S_{2(n+1)+1}-S_{2n+1}=  a_{2n+2}-a_{2n+3}\geq 0$,
+\item \textit{dÃ©croissance de $(S_{2n})_{n\in\N}$} : on a $$S_{2(n+1)}-S_{2n}=\sum_{k=0}^{2n+2}(-1)^n a_n -\sum_{k=0}^{2n}(-1)^n a_n =   -a_{2n+1}+a_{2n+2}\leq 0$$ car $(a_n)_{n\in\N}$ est une suite dÃ©croissante positive,
+\item \textit{croissance de $(S_{2n+1})_{n\in\N}$} : de mÃªme avec $S_{2(n+1)+1}-S_{2n+1}=  a_{2n+2}-a_{2n+3}\geq 0$,
 \item \textit{limite} : $S_{2n+1}-S_{2n}=-a_{n+1}\xrightarrow[n \to +\infty]{} 0$ car $(a_n)$ tend vers 0.
 \end{enumerate}
-Donc, les suites d'indices pairs et impairs $(S_{2n})_{n\in\N}$ et $(S_{2n+1})_{n\in\N}$ convergent vers une même limite $S$. Ainsi, la suite $(S_{n})_{n\in\N}$ converge vers cette même limite.\\
+Donc, les suites d'indices pairs et impairs $(S_{2n})_{n\in\N}$ et $(S_{2n+1})_{n\in\N}$ convergent vers une mÃªme limite $S$. Ainsi, la suite $(S_{n})_{n\in\N}$ converge vers cette mÃªme limite.\\
 De plus, on   $S_{2n+1}\leq S \leq S_{2n}$ pour tout $n\in\N$.\\
-Pour borné le reste, on part de l'inégalité précédente :
-\begin{align*}
+Pour bornÃ© le reste, on part de l'inÃ©galitÃ© prÃ©cÃ©dente :
+$$\begin{aligned}
 S_{2n+1}\leq S \leq S_{2n}\\
 S_{2n+1}\leq S_{2n}+R_{2n} \leq S_{2n}\\
 S_{2n+1}-S_{2n}\leq R_{2n} \leq 0\\
 -a_{2n+1}\leq R_{2n} \leq 0\\
 | R_{2n}|\leq a_{2n+1}
-\end{align*}
+\end{aligned}$$
 et aussi :
-\begin{align*}
+$$\begin{aligned}
 S_{2n+1}\leq S \leq S_{2n}\\
 S_{2n+1}\leq S_{2n+1}+R_{2n+1} \leq S_{2n}\\
 0\leq R_{2n+1} \leq S_{2n+1}-S_{2n+1}\\
 | R_{2n+1}|\leq a_{2n+2}.
-\end{align*}
+\end{aligned}$$
 En conclusion, on a $\forall n\in \N : \quad  |R_n|\leq a_{n+1}.$
-\end{proof}
-\begin{Ex}
-La série alternée $\sum \frac{(-1)^n}{n}$ respecte le critère spéciale donc elle est convergente. Cependant elle n'est pas absolument convergente car la série harmonique $\sum\frac1n$ est divergente.
-\end{Ex}
+\end{Demonstration}
+\begin{Exemple}
+La sÃ©rie alternÃ©e $\sum \frac{(-1)^n}{n}$ respecte le critÃ¨re spÃ©ciale donc elle est convergente. Cependant elle n'est pas absolument convergente car la sÃ©rie harmonique $\sum\frac1n$ est divergente.
+\end{Exemple}
 
 \section{Produit de Cauchy}
 
-\begin{Df}[Produit de Cauchy]
-Le \defi{produit de Cauchy} de deux séries $\sum a_{n}$  et $\sum b_{n}$ est la série de terme général 
+\begin{Definition}[Produit de Cauchy]
+Le \defi{produit de Cauchy} de deux sÃ©ries $\sum a_{n}$  et $\sum b_{n}$ est la sÃ©rie de terme gÃ©nÃ©ral 
 $$ c_{n}=\sum _{k=0}^{n}a_{k}b_{n-k} $$
-\end{Df}
-\begin{Th}
-Soit $\sum a_n$ et $\sum b_n$ deux séries absolument convergentes.\\
+\end{Definition}
+\begin{Theoreme}
+Soit $\sum a_n$ et $\sum b_n$ deux sÃ©ries absolument convergentes.\\
 Alors  leur produit de Cauchy $\sum c_n$ est absolument convergent et 
 $$ \sum_{n=0}^{+\infty} c_n = \left(\sum_{n=0}^{+\infty} a_n \right) \left(\sum_{n=0}^{+\infty} b_n \right)$$
-\end{Th}
-\begin{proof}
-Soit $\sum a_n$ et $\sum b_n$ deux séries à termes positifs convergentes.\\
+\end{Theoreme}
+\begin{Demonstration}
+Soit $\sum a_n$ et $\sum b_n$ deux sÃ©ries Ã  termes positifs convergentes.\\
 On a :
-\begin{align*}
+$$\begin{aligned}
 C_{n}&=\sum _{k=0}^n c_{k}\\
      &=\sum _{k=0}^n \sum_{j=0}^k a_j b_{k-j} \\
      &=\sum _{j=0}^n \sum_{k=j}^n a_j b_{k-j} \\
      &=\sum _{j=0}^n a_j \sum_{k=j}^n  b_{k-j} \\
      &=\sum _{j=0}^n a_j \sum_{k=0}^{n-j}  b_{k} \\
      &=\sum _{j=0}^n a_j B_{n-j}
-\end{align*}
+\end{aligned}$$
 Montrons que la suite $(C_n)$ converge vers $AB$ avec $A=\sum_{n=0}^{+\infty} a_n$ et $B=\sum_{n=0}^{+\infty} b_n$.
 On a :
 $$|C_n - AB|\leq  |C_n - A_n B| + | A_n B- AB |.$$
 Le second terme $| A_n B- AB |$ tend vers $0$ quand $n$ tend vers $+\infty$ car l'ensemble des suites convergentes est un espace vectoriel.\\
 Pour le premier terme, on a :
-\begin{align*}
+$$\begin{aligned}
 |C_n - A_n B|&=|\sum _{j=0}^n a_j B_{n-j} - \sum _{j=0}^n a_j B|\\
 |C_n - A_n B|&=|\sum _{j=0}^n a_j (B_{n-j}-B) |\\
 |C_n - A_n B|&\leq \sum _{j=0}^n a_j |B_{n-j}-B|
-\end{align*}
-Comme $B_n\xrightarrow[n \to +\infty]{} B$, à partir d'un certain rang $N$, on a $|B_n-B|\leq\epsilon$, d'où:
-\begin{align*}
+\end{aligned}$$
+Comme $B_n\xrightarrow[n \to +\infty]{} B$, Ã  partir d'un certain rang $N$, on a $|B_n-B|\leq\epsilon$, d'oÃ¹:
+$$\begin{aligned}
 |C_n - A_n B|&\leq \sum _{j=0}^{n-N} a_j |B_{n-j}-B| + \sum _{j=n-N}^{n} a_j |B_{n-j}-B|\\
 |C_n - A_n B|&\leq \epsilon A + \sum _{j=n-N}^{n} a_j |B_{n-j}-B|
-\end{align*}
-La suite $(B_n)$ est convergente donc bornée par une constante $M$. Comme la série $\sum a_n$, la suite $(a_n)$ converge vers 0. Donc à partir d'un certain rang $N'\geq N$, $|a_n|\leq \frac{\epsilon}{N}$. D'où
-\begin{align*} 
+\end{aligned}$$
+La suite $(B_n)$ est convergente donc bornÃ©e par une constante $M$. Comme la sÃ©rie $\sum a_n$, la suite $(a_n)$ converge vers 0. Donc Ã  partir d'un certain rang $N'\geq N$, $|a_n|\leq \frac{\epsilon}{N}$. D'oÃ¹
+$$\begin{aligned} 
 |C_n - A_n B|&\leq \epsilon A + 2 M \sum _{j=n-N}^{n} a_j\\
 |C_n - A_n B|&\leq  \epsilon (A+2M).
-\end{align*}
-Ce qui achève la preuve.
-\end{proof}
-\begin{Ex}[Produit de séries exponentielles]
+\end{aligned}$$
+Ce qui achÃ¨ve la preuve.
+\end{Demonstration}
+\begin{Exemple}[Produit de sÃ©ries exponentielles]
 Soit $a,b\in\R$.\\
-Le produit de Cauchy des séries  exponentielles $\sum \frac{a^n}{n!}$ et $\sum \frac{b^n}{n!}$  et la série  exponentielle $\sum \frac{(a+b)^n}{n!}$.
+Le produit de Cauchy des sÃ©ries  exponentielles $\sum \frac{a^n}{n!}$ et $\sum \frac{b^n}{n!}$  et la sÃ©rie  exponentielle $\sum \frac{(a+b)^n}{n!}$.
 On a : $$c_n= \sum_{j=0}^n \frac{a^j}{j!} \frac{b^{n-j}}{n-j!}=\frac{1 }{n!}\sum_{j=0}^n \begin{pmatrix}
 n\\j
 \end{pmatrix} a^j b^{n-j} = \frac{(a+b)^n}{n!}$$ 
 
-Les séries exponentielles sont absolument convergentes en utilisant la règle d'Alembert. Donc :
+Les sÃ©ries exponentielles sont absolument convergentes en utilisant la rÃ¨gle d'Alembert. Donc :
 $$\exp(a)\times \exp(b)= \sum_{n=0}^{+\infty} \frac{a^n}{n!}\times \sum_{n=0}^{+\infty} \frac{b^n}{n!}\underbrace{=}_{\text{th Cauchy}}\sum_{n=0}^{+\infty} c_n= \sum_{n=0}^{+\infty} \frac{(a+b)^n}{n!} =\exp(a+b).$$   
-\end{Ex}
+\end{Exemple}
 \end{document}

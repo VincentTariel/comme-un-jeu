@@ -1,109 +1,234 @@
-
-\documentclass[12pt,a4paper]{article}
-\usepackage{amsfonts,amsmath,amssymb,graphicx}
-\usepackage[francais]{babel}
-\usepackage[latin1]{inputenc}
-\usepackage{answers}
-\usepackage{a4wide,jlq2eams} 
-\usepackage{multicol}
-%---- Dimensions des marges ---
-\setlength{\paperwidth}{21cm} 
-\setlength{\paperheight}{29.7cm}
-\setlength{\evensidemargin}{0cm}
-\setlength{\oddsidemargin}{0cm} 
-\setlength{\topmargin}{-2.5cm}
-\setlength{\headsep}{0.7cm} 
-\setlength{\headheight}{1cm}
-\setlength{\textheight}{25cm} 
-\setlength{\textwidth}{17cm}
-
-
-
-
-%---- Structure Exercice -----
-\newtheorem{Exc}{Exercice}
-\Newassociation{correction}{Soln}{mycor}
-\Newassociation{indication}{Indi}{myind}
-%\newcommand{\precorrection}{~{\bf \footnotesize [Exercice corrig\'e]}}
-%\newcommand{\preindication}{~{\bf \footnotesize [Indication]}}
-\renewcommand{\Solnlabel}[1]{\bf \emph{Correction #1}}
-\renewcommand{\Indilabel}[1]{\bf \emph{Indication #1}}
-
-\def\exo#1{\futurelet\testchar\MaybeOptArgmyexoo}
-\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
-                        \else \let\next\NoOptArgmyexoo \fi \next}
-\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
-\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
-
-\newcommand{\finexo}{\end{Exc}}
-\newcommand{\flag}[1]{}
-
-\newtheorem{question}{Question}
-
-
-
-%---- Style de l'entete -----                     % -> � personnaliser <-
-\setlength{\parindent}{0cm}
-\newcommand{\entete}[1]
-{
-{\noindent
-  \textsf{Feuille d'exercices}    \hfill   \textsf{Brouillon}          % Universit�
-}
-\hrule
-\hrule
-\begin{center} 
-\textbf{\textsf{\Large 
-     S�rie num�rique     % TITRE
-}}
-\end{center}
-\hrule
-}
-
-
+\documentclass{book}
+\usepackage{commeunjeustyle}
 \begin{document}
+\begin{Exercice}[Nature]
+Étudier la convergence des séries $\sum u_n$ suivantes :
 
-%--- Gestion des corrections ---
- \Opensolutionfile{mycor}[ficcorex]
- \Opensolutionfile{myind}[ficind]
- \entete{\'Enonc�s}
-
-
-
-\input{exercice/serie_numerique_exo_convergence_1}
-\input{exercice/serie_numerique_exo_convergence_2}
-\input{exercice/serie_numerique_exo_convergence_3}
-\input{exercice/serie_numerique_exo_harmonique}
-\input{exercice/serie_numerique_exo_somme}
-\input{exercice/serie_numerique_exo_alternee}
-\input{exercice/serie_numerique_exo_cauchy}
-\input{exercice/serie_numerique_exo_scalaire}
-\input{exercice/serie_numerique_exo_convergence_th}
-\input{exercice/serie_numerique_exo_ln}
+    \begin{enumerate}
+        \item $u_n =  \frac{n+1}{3^n}$ 
+        \item $u_n=\frac{n}{n^3+1}$
+        \item $u_n=\frac{\sqrt n}{n^2+\sqrt n}$
+        \item $u_n=n\sin(1/n)$
+        \item $u_n=\frac{1}{\sqrt{n}}\ln\left(1+\frac{1}{\sqrt{n}}\right)$
+        \item $u_n=\frac{\sqrt {n+1}-\sqrt{n}}{n}$
+        \item $u_n=\frac{(-1)^n +n}{n^2+1}$
+        \item $u_n=\ln\left(\frac{n^2+n+1}{n^2+n-1}\right)$
+    \end{enumerate}
 
 
 
-%--- Fin des exercices ---
-%------------------------------------------------------
-%------------------------------------------------------
 
-%--- Gestion des corrections ---
-% \ \newpage
-% \setcounter{page}{1}
-% \entete{Indications}
+\begin{Correction}
+    \begin{enumerate}
+    \item on a : $$\frac{u_{n+1}}{u_n} =\frac{n+1}{3n}\tend[n\to\infty]\frac{1}{3}$$ D'après le critère de d'Alembert, la série est convergente.
+        \item $\sum \frac{n}{n^3+1}$ est une série à termes positifs. On a :
+$$\frac{n}{n^3+1}\Sim_{n\to\infty}\frac{1}{n^2}.$$
+Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \frac{n}{n^3+1}$ est convergente par règle de comparaison.
+        \item $\sum \frac{\sqrt n}{n^2+\sqrt n}$ est une série à termes positifs. On a :
+$$\frac{\sqrt n}{n^2+\sqrt n} =\frac{\sqrt n}{n^2(1 +\sqrt n /n^2)}  \Sim_{n\to\infty}\frac{1}{n^{3/2}}.$$
+Comme la série de Riemann $\sum \frac{1}{n^{3/2}}$ est convergente, la série $\sum \frac{n}{n^3+1}$ est convergente par règle d'équivalence.
+\item Comme  $ n\sin(1/n)\Sim_{n\to\infty} 1$, le terme générale de série ne converge pas vers 0, donc la série diverge grossièrement.
+\item $\sum \frac{1}{\sqrt{n}}\ln\left(1+\frac{1}{\sqrt{n}}\right)$ est une série à termes positifs. On a :
+$$\frac{1}{\sqrt{n}}\ln\left(1+\frac{1}{\sqrt{n}}\right)   \Sim_{n\to\infty}\frac{1}{n}.$$ 
+Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum \frac{1}{\sqrt{n}}\ln\left(1+\frac{1}{\sqrt{n}}\right)$  est divergente par règle d'équivalence.
+\item $\sum \frac{\sqrt n}{n^2+\sqrt n}$ est une série à termes positifs. On a :
+$$\frac{\sqrt {n+1}-\sqrt{n}}{n} =\frac{\sqrt{n}(\sqrt {1+1/n}-1)}{n}  \Sim_{n\to\infty}\frac{\sqrt{n}(\frac{1}{2n})}{n}\Sim_{n\to\infty}\frac{1}{2n^{3/2}}   .$$
+Comme la série de Riemann $\sum \frac{1}{n^{3/2}}$ est convergente, la série $\sum \frac{n}{n^3+1}$ est convergente par règle d'équivalence.
+ \item $\sum \frac{(-1)^n +n}{n^2+1}$ est une série à termes positifs. On a :
+$$\frac{(-1)^n +n}{n^2+1}   \Sim_{n\to\infty}\frac{1}{n}.$$ 
+Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum \frac{(-1)^n +n}{n^2+1}$  est divergente par règle d'équivalence.
+ \item  
+ 
+ 
+ 
+  $\sum \ln\left(\frac{n^2+n+1}{n^2+n-1}\right)$ est une série à termes positifs. 
+\begin{itemize}
+\item Version courte :
+$$u_n=\ln\left(1+\frac{1}{n}+\frac{1}{n^2}\right)-\ln\left(1+\frac{1}{n}-\frac{1}{n^2}\right)\underset{n\rightarrow+\infty}{=}\left(\frac{1}{n}+O\left(\frac{1}{n^2}\right)\right)-\left(\frac{1}{n}+O\left(\frac{1}{n^2}\right)\right)=O\left(\frac{1}{n^2}\right).$$
+\item Version longue :
+$$u_n=\ln\left(1+\frac{1}{n}+\frac{1}{n^2}\right)-\ln\left(1+\frac{1}{n}-\frac{1}{n^2}\right)$$
+$$u_n=\left(\frac{1}{n}+\frac{1}{n^2}\right)-\frac{\left(\frac{1}{n}+\frac{1}{n^2}\right)^2}{2}-\left(\left(\frac{1}{n}-\frac{1}{n^2}\right)-\frac{\left(\frac{1}{n}-\frac{1}{n^2 }\right)^2}{2}\right)+ o\left(\frac{1}{n^2}\right)$$
+$$u_n=\left(\frac{1}{n}+\frac{1}{n^2}\right)-\frac{\left(\frac{1}{n}+\frac{1}{n^2}\right)^2}{2}-\left(\left(\frac{1}{n}-\frac{1}{n^2}\right)-\frac{\left(\frac{1}{n}-\frac{1}{n^2 }\right)^2}{2}\right)+ o\left(\frac{1}{n^2}\right)$$
+$$ u_n= \frac{2}{n^2} +o\left(\frac{1}{n^2}\right) \Sim_{n\to\infty}\frac{2}{n^2}$$
+\end{itemize}  
+  
+Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \ln\left(\frac{n^2+n+1}{n^2+n-1}\right)$ converge par règle de comparaison.
+    \end{enumerate}
+\end{Correction}
+\end{Exercice}
+\begin{Exercice}[Nature]
+Étudier la convergence des séries $\sum u_n$ suivantes :\\
+    \begin{enumerate}
+        \item  $u_n=\frac{1}{n+(-1)^n\sqrt{n}}$
+        \item $u_n=\left(\frac{n+3}{2n+1}\right)^{\ln n}$
+        \item  $u_n=\frac{1}{\ln(n)\ln(\ch n)}$
+        \item  $u_n=e-\left(1+\frac{1}{n}\right)^n$
+      \end{enumerate}      
+       
+
+
+
+\begin{Correction}
+    \begin{enumerate}
+        \item $\sum \frac{1}{n+(-1)^n\sqrt{n}}$ est une série à termes positifs. On a :
+$$\frac{1}{n+(-1)^n\sqrt{n}} = \frac{1}{n(1+(-1)^n\sqrt{n}/n)}\Sim_{n\to\infty}\frac{1}{n}.$$
+Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum \frac{1}{n+(-1)^n\sqrt{n}}$ est divergente par règle de comparaison.
+        \item $\sum \left(\frac{n+3}{2n+1}\right)^{\ln n}$ est une série à termes positifs. On a :
+$$\left(\frac{n+3}{2n+1}\right)^{\ln n} =e^{\ln(n)\ln\left(\frac{n+3}{2n+1}\right) } \Sim_{n\to\infty}e^{\ln(n)\ln\left(\frac{1}{2}\right) }\Sim_{n\to\infty}\frac{1}{n^{\ln 2}} .$$
+Comme la série de Riemann $\sum \frac{1}{n^{\ln 2}}$ est divergente, la série $\sum \left(\frac{n+3}{2n+1}\right)^{\ln n}$ est divergente par règle de comparaison.
+\item $\sum\frac{1}{\ln(n)\ln(\ch n)}$ est une série à termes positifs. On a :
+$$\ln(\ch(n)) = \ln\left(  \frac{e^n+e^{-n}}{2}\right)\Sim_{n\to\infty}\ln(e^n/2  )\Sim_{n\to\infty}n-2\Sim_{n\to\infty}n.$$
+Étudions la nature de la série $\sum \frac{1}{\ln(n)n}$ à l'aide d'une comparaison série intégrale.\\
+La fonction $x\rightarrow x\ln x$ est continue, croissante et strictement positive sur $]1,+\infty[$ (produit de deux fonctions strictement positives et croissantes sur $]1,+\infty[$). Par suite, la fonction $x\rightarrow\frac{1}{x\ln x}$ est continue, décroissante sur $]1,+\infty[$ et de limite 0 en l'infini. Les hypothèses étant vérifiée, la série $\sum \frac{1}{\ln(n)n}$ est de même nature que la suite $\left(\int_{2}^n \frac{1}{x\ln x}dx\right)=\left(\ln(\ln(n))-2\right)$. Cette suite diverge donc la série aussi.\\
+Enfin par théorème de comparaison, la série $\sum\frac{1}{\ln(n)\ln(\ch n)}$ diverge.
+\item On a :
+$$ e-\left(1+\frac{1}{n}\right)^n=e-e^{n\ln(1+\frac{1}{n})}=e-e^{n(\frac{1}{n}-\frac{1}{2n^2}+O(\frac{1}{n^2}))}=e(1-e^{-\frac{1}{2n}+O(\frac{1}{n})})\Sim_{n\to\infty}\frac{e}{2n}  $$
+Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum e-\left(1+\frac{1}{n}\right)^n$ est divergente par règle de comparaison.
+    \end{enumerate}
+\end{Correction}
+\end{Exercice}
+\begin{Exercice}[ Nature]
+Etudier la convergence des séries $\sum u_n$ suivantes :
+    \begin{enumerate}
+        \item $u_n =\frac{\sin(\frac 1 n)}{n}$ 
+        \item $u_n=\frac{\sin(n)+\cos(n)}{n^2}$
+        \item $u_n=\frac{|\sin(n)|+|\cos(n)|}{n}$
+        \item $u_n=\frac{(n!)^2}{2n!}$
+        \item $u_n=(\ln(n+1))^2-(\ln(n))^2$
+        \item $u_n=\frac{\ln(n)}{n^2}$
+    \end{enumerate}
+\begin{Correction}
+    \begin{enumerate}
+        \item $\sum \frac{\sin(\frac 1 n)}{n}$ est une série à termes positifs (SATP). On a :
+$$\frac{\sin(\frac 1 n)}{n}\Sim_{n\to\infty}\frac{\frac 1 n}{n}=\frac{1}{n^2}.$$
+Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \frac{\sin(\frac 1 n)}{n}$ est convergente par règle de comparaison.
+	   \item 	Étudions la nature de SATP $\sum \frac{|\sin(n)+\cos(n)|}{n^2}$. On a :
+	   $$\frac{|\sin(n)+\cos(n)|}{n^2} \leq \frac{2}{n^2}.$$
+	   Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \frac{|\sin(n)+\cos(n)|}{n^2}$ est convergente par règle de comparaison. La série 
+	   $\sum \frac{\sin(n)+\cos(n)}{n^2}$ est absolument convergente donc convergente.
+	   \item  $\sum\frac{|\sin(n)|+|\cos(n)|}{n}$ est une STAP. On a :
+ 	   $$\frac{|\sin(n)|+|\cos(n)|}{n} \geq \frac{|\sin(n)|^2+|\cos(n)|^2}{n}= \frac{1}{n}.$$
+	   Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum\frac{|\sin(n)|+|\cos(n)|}{n}$  est divergente par règle de comparaison.
+	   \item 	$\sum\frac{(n!)^2}{2n!}$ est une SATP. On a :
+ $$\frac{u_{n+1}}{u_n}=\frac{\frac{((n+1)!)^2}{2(n+1)!}}{\frac{(n!)^2}{2n!}}=\frac{((n+1)!)^2}{(n!)^2}\frac{2n!}{(2(n+1))!}=\frac{(n+1)^2}{(2n+1)(2n+2)}\to_{n\to\infty}\frac 1 4.$$	  
+D'après la règle de d'Alembert ($\frac 1 4 <1$), la série $\sum\frac{(n!)^2}{2n!}$ est convergente.
+	    \item  On a $u_n=a_{n+1}-a_n$  avec $a_n = (\ln(n))^2$. $\sum (\ln(n+1))^2-(\ln(n))^2$ est une série télescopique. Sa somme partielle est égale :
+	    $$S_n =  (\ln(n+1))^2 - (\ln(1))^2=(\ln(n+1))^2\to_{n\to\infty} +\infty.$$
+	    Donc la série diverge.
+	    \item 	$\sum\frac{\ln(n)}{n^2}$ est une SATP. On a :
+	    $$\frac{\ln(n)}{n^2}=o\left(\frac{1}{n^{3/2}}\right)\text{ car }\lim\limits_{n\to+\infty}\frac{\frac{\ln(n)}{n^2}}{\frac{1}{n^{3/2}}}=\lim\limits_{n\to+\infty}\frac{\ln(n)}{n^{1/2}}=0$$
+	    Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente ($\frac{3}{2}>1$), la série $\sum\frac{\ln(n)}{n^2}$ est convergente par règle de comparaison.
+    \end{enumerate}
+\end{Correction}
+\end{Exercice}
+
+
+\begin{Exercice}[Série harmonique]
+Pour $n\geq 1$, on note $H_n=\sum_{k=1}^n \frac 1k$. 
+\begin{enumerate}
+\item Démontrer que, pour tout $n\geq 1$, 
+$$\ln(n+1)\leq H_n\leq 1+\ln(n).$$
+\item En déduire un équivalent de $H_n$.
+\item On pose pour $n\geq 1$, $v_n=H_n-\ln(n)$. Vérifier que $v_{n}-v_{n-1}=\frac 1n+\ln\left(1-\frac 1n\right)$.
+\item \'Etudier la monotonie de $(v_n)$.
+\item En déduire que la suite $(H_n-\ln(n))$ est convergente.
+\end{enumerate}
+          
+\begin{Correction}
+    \begin{enumerate}
+        \item Voir la démonstration sur la comparaison série-intégrale. On a :
+$$ \int_{1}^{n+1}\frac{1}{x}dx=\ln(n+1) \leq H_n \leq 1 + \int_{1}^{n}\frac{1}{x}dx=1 + \ln(n)$$.
+\item On divise ces inégalités par $\ln(n)$ :
+$$1 + \ln(1+1/n) \leq H_n/\ln(n) \leq 1+1/\ln(n).$$
+Les deux extrémités tendent vers 1 donc   $H_n \Sim_{n\to\infty} \ln(n).$
+\item $v_{n}-v_{n-1}=H_n-H_{n-1}-  \ln(n) + \ln(n-1)= \frac{1}{n}+\ln\left(1-\frac 1n\right).$
+\item On a $\ln(1-x)\leq -x$. D'où $x+\ln(1-x)\leq 0$. Ainsi $(v_n)$ est décroissante car $v_{n}-v_{n-1}\leq 0$. 
+\item D'après l'inégalité de la question 1 on $0\geq \ln(n+1)-\ln(n)\leq H_n - \ln(n)$. La suite $(v_n)=(H_n-\ln(n))$ est minorée et décroissante donc convergente.
+  \end{enumerate}      
+
+\end{Correction}
+\end{Exercice}
+
+
+\begin{Exercice}[Calcul d'une somme]
+Calculer la somme de la série : $\sum \frac{n+1}{3^n}.$
+\begin{Correction}
+Sans l'outil des séries entières, on bricole :
+$$\begin{aligned}
+\frac{1}{3}S&=\sum_{n=0}^{+\infty}\frac{n+1}{3^{n+1}}=\sum_{n=1}^{+\infty}\frac{n}{3^{n}}=\sum_{n=1}^{+\infty}\frac{n+1}{3^{n}}-\sum_{n=1}^{+\infty}\frac{1}{3^{n}}\\
+ &=(S-1)-\frac{1}{3}\frac{1}{1-\frac{1}{3}}=S-\frac{3}{2}.
+\end{aligned}$$
+On en déduit que $S=\frac{9}{4}.$
+\end{Correction}
+\end{Exercice}
+
+
+\begin{Exercice}[Alternée]
+\'Etudier la nature des séries $\sum u_n$ suivantes :
+$$\begin{array}{lll}
+\mathbf 1.\ u_n=\frac{\sin n^2}{n^2}&&\mathbf 2.\ u_n=\frac{(-1)^n\ln n}{n}\\
+\mathbf 3.\  u_n=\frac{\cos (n^2\pi)}{n\ln n}
+\end{array}$$
 %
-% \Closesolutionfile{myind}
-% \Readsolutionfile{myind}
+\begin{Correction}
+\begin{enumerate}
+\item On a : $|u_n|\leq \frac{1}{n^2}$, donc la série converge absolument.
+\item La série est alternée, et la suite $(\ln(n)/n$ est décroissante  à partir d'un certain rang et  converge vers 0. Donc par application du critère des séries alternées, la série converge.
+\item On a $cos(n^2 \pi)=(?1)^n$. La suite $(1/\ln(n)n$ est décroissante et  converge vers 0.  Donc la série converge par application du critère des séries alternées. 
+\end{enumerate}
+\end{Correction}
+\end{Exercice}
+\begin{Exercice}[Cauchy]
+On note, pour tout $n \in \N^*$  : 
+$$u_n = \sum_{k=0}^n\frac{(-1) ^k}{3^k(n-k)!}$$
+Montrer que la série$\sum u_n$ converge et  calculer sa somme. 
 
- \ \newpage
- \setcounter{page}{1}
- \entete{Corrections}
+\begin{Correction}
+Le terme général $\sum_{k=0}^n\frac{(-1) ^k}{3^k(n-k)!}$  est le produit de Cauchy de la suite $\left( \left(-\frac{1}{3}\right)^n \right)$ et de la suite  $(\frac{1}{n!})$.\\
+Les deux séries  $\sum -\left(\frac{1}{3}\right)^n $ et $\sum \frac{1}{n!}$ sont absolument convergente donc la série produit de Cauchy est absolument convergente.\\
 
- \Closesolutionfile{mycor}
- \Readsolutionfile{mycor}
 
+De plus, sa somme est égale au produit des deux sommes, soit :
+$$\sum_{n=0}^{+\infty}u_n = \sum_{n=0}^{+\infty} \left(-\frac{1}{3}\right)^n\times\sum_{n=0}^{+\infty} \frac{1}{n!}=\frac{1}{1+\frac{1}{3}}e^1=\frac{4e}{3}.$$
+\end{Correction}
+\end{Exercice}
+
+\begin{Exercice}[Produit scalaire]
+Soit $(u_n)$ et $(v_n)$ deux suites. Les séries $\sum u_n ^2$ et $\sum v_n ^2$ sont convergentes.\\ 
+Démontrer que la série $\sum u_n v_n$ est convergente.
+
+
+
+
+Application : soit $(a_n)$ une suite positive telle que la série de terme général $a_n$ converge. Étudier la nature de la série de terme général $\frac{\sqrt{a_n}}{n}$.
+\begin{Correction}
+En développement l'inégalité $(|a|-|b|)^2\geq 0$, on obtient $|a||b|\leq \frac{1}{2}(a^2+b^2)$. Donc: 
+$$|u_nv_n|\leq  \frac{1}{2}(u_n^2+v_n^2).$$
+Les séries $\sum u_n ^2$ et $\sum v_n ^2$ sont convergentes donc la série $\sum \frac{1}{2}(u_n^2+v_n^2)$ est convergente. Par critère de comparaison, la série $\sum |u_nv_n| $ est convergente. Donc la série $\sum u_nv_n $ est absolument convergente.\\
+C'est une application directe du théorème précédent en prenant $u_n=\sqrt{a_n}$ et $v_n=\frac{1}{n}$. 
+\end{Correction}
+\end{Exercice}
+
+\begin{Exercice}[convergence]
+Soit $\sum u_n$  une série convergente, à 
+termes positifs.\\ 
+Montrer que la série $\sum u_n^2$ converge. 
+\begin{Correction}
+Puisque la série  $\sum u_n$ converge, on a: 
+$$ u_n \xrightarrow[n\to\infty]{}0.$$ 
+A partir d'un certain rang $N$, on a  $0 \leq u_n \leq 1 ,\forall n\geq N.$  
+Multiplions cette inégalité par $u_n$, on a :
+$$0 \leq u_n^2 \leq u_n ,\forall n\geq N.$$
+Comme la série $\sum u_n$ est convergente, la série $\sum_{n\geq N} u_n$ est convergente par critère par comparaison. Donc la série $\sum u_n$  est convergente.
+\end{Correction}
+\end{Exercice}
+
+\begin{Exercice}[Convergence]
+Soit $\sum u_n$ une série à termes positif convergente.\\ 
+Démontrer que la suite $\left(\prod_{k=0}^n (1+u_k)\right)$ est convergente.
+\begin{Correction}
+On a $\ln(\prod_{k=0}^n (1+u_k))=\sum_{k=0}^n \ln( (1+u_k))$. 
+Comme la série $\sum u_n$ converge, on a $u_n\xrightarrow[n\to\infty]{}0$ d'où $\ln(1+u_n)\Sim_{n\to\infty}u_n$. La série à  termes positifs  $\sum \ln (1+u_n)$ est convergente car $\sum u_n$ est convergente. Comme la fonction $\ln$ est continue, la suite $\left(\prod_{k=0}^n (1+u_k)\right)$ est convergente.
+\end{Correction}
+\end{Exercice}
 \end{document}
-\endinput
-
-
-
-
