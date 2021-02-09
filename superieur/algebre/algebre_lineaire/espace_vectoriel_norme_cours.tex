@@ -81,15 +81,15 @@ Démontrons que $\norme{\,}_\infty$ est une norme sur $\K^n$. \\
 \begin{itemize}
 \item \textit{positivité :} le plus grand élément d'un nombre fini de réels positifs est lui-même un réel positif. 
 \item \textit{définie :} Soit $\vec{x}=(x_1,\dots,x_n)\in \K^n$ tel que $\norme{\vec{x}}_\infty=0$. On a :
- $$\forall i\in \ccro{1}{n} :\quad  0\leq |x_i|\leq \norme{\vec{x}}_\infty=0.$$ Donc pour tout $i\in\ccro{1}{n},x_i=0$, soit  $\vec{x}=\vec{0}$.
+ $$\forall i\in \Intf{1}{n} :\quad  0\leq |x_i|\leq \norme{\vec{x}}_\infty=0.$$ Donc pour tout $i\in\Intf{1}{n},x_i=0$, soit  $\vec{x}=\vec{0}$.
 \item \textit{homogénéité :} Soit $\vec{x}=(x_1,\dots,x_n)\in \K^n$ et $\lambda\in\K$.  Si $\lambda$ est nul, l'égalité cherchée est immédiate. On suppose $\lambda$ non nul.
 On a :
-$$\forall i\in \ccro{1}{n} : |\lambda x_i| = |\lambda| |x_i|\leq |\lambda| \norme{\vec{x}}_\infty.$$ Comme tous les termes sont majorés par une même constante, on en déduit que  $  \norme{\lambda\vec{x}}_\infty \leq |\lambda| \norme{\vec{x}}_\infty$.\\
+$$\forall i\in \Intf{1}{n} : |\lambda x_i| = |\lambda| |x_i|\leq |\lambda| \norme{\vec{x}}_\infty.$$ Comme tous les termes sont majorés par une même constante, on en déduit que  $  \norme{\lambda\vec{x}}_\infty \leq |\lambda| \norme{\vec{x}}_\infty$.\\
 On a aussi :
 $$\norme{\vec{x}}_\infty=\norme{\frac{1}{\lambda}\lambda\vec{x}}_\infty\leq \frac{1}{|\lambda|} \norme{\lambda\vec{x}}_\infty.$$
  et on obtient ainsi une deuxième inégalité, puis l'égalité voulue. 
 \item \textit{inégalité triangulaire :} Soit $\vec{x}=(x_1,\dots,x_n),vec{y}=(y_1,\dots,y_n)\in \K^n$.
-$$\forall i\in \ccro{1}{n} :\quad  0\leq |x_i+y_i|\leq |x_i|+|y_i|\leq \norme{\vec{x}}_\infty +\norme{\vec{y}}_\infty .$$ Comme tous les termes sont majorés par une même constante, on en déduit que  $  \norme{\vec{x}+\vec{y}}_\infty \leq  \norme{\vec{x}}_\infty+\norme{\vec{y}}_\infty$.
+$$\forall i\in \Intf{1}{n} :\quad  0\leq |x_i+y_i|\leq |x_i|+|y_i|\leq \norme{\vec{x}}_\infty +\norme{\vec{y}}_\infty .$$ Comme tous les termes sont majorés par une même constante, on en déduit que  $  \norme{\vec{x}+\vec{y}}_\infty \leq  \norme{\vec{x}}_\infty+\norme{\vec{y}}_\infty$.
 \end{itemize}  
 
 \end{Exemple}
@@ -164,11 +164,7 @@ Soit $A$ partie non vide de $E$ et $\vec{x}\in E$.\\
 La \defi{distance d'un point à une partie non vide} appelé distance de $x$ à $A$ est le réel positif ou nul
 $$d (\vec{x}, A) = \inf_{\vec{a} \in A}  \norme{\vec{x} - \vec{a}}.$$
 \end{Definition}
-\begin{Definition}[Distance à une partie]
-Soit $A$ partie non vide de $E$ et $\vec{x}\in E$.\\
-La \defi{distance d'un point à une partie non vide} appelé distance de $x$ à $A$ est le réel positif ou nul
-$$d (\vec{x}, A) = \inf_{\vec{a} \in A}  \norme{\vec{x} - \vec{a}}.$$
-\end{Definition}
+
 
 \subsection{Boules}
 \begin{Definition}[Boule ouverte, boule fermé, sphère]
@@ -283,7 +279,7 @@ On note fréquemment le \defi{terme} $\vec{x_n}$ au lieu de $\vec{x}(n)$ pour re
      \addplot[pink, thick, mark=none] {x^4}node[pos=0.2,above] {$f_4:x\to 5x^4$};
    \end{axis}
 \end{tikzpicture}\\
-Représentation graphique des premier termes de la suite de fonctions $(f_n:x\to x^n)_{n\in \N   }$
+Représentation graphique des premiers termes de la suite de fonctions $(f_n:x\to x^n)_{n\in \N   }$
 \end{center}
 \end{Exemple}
 
@@ -337,7 +333,7 @@ On dit que la suite $(\vec{x_n})_{n\in\N}$ \defi{converge} vers  $\vec{l}$.\\
 Dans le cas contraire, la suite $(\vec{x_n})_{n\in\N}$ \defi{diverge}.\\
 \end{Definition}
 \begin{Proposition}
-La suite $(\vec{x_n})_{n\in\N}$ \defi{converge} vers  $\vec{l}$ si et seulement si la suite réelle $(\norme{\vec{x_n}-\vec{l}})_{n\in\N}$ converge vers 0.
+La suite $(\vec{x_n})_{n\in\N}$ converge vers  $\vec{l}$ si et seulement si la suite réelle $(\norme{\vec{x_n}-\vec{l}})_{n\in\N}$ converge vers 0.
 \end{Proposition}
 \begin{DefinitionProposition}[Unicité de la limite]
 Si $(\vec{x_n})_{n\in\N}$ converge vers $\vec{l}$ au sens de $\norme{\,}$, $\vec{l}$ est unique pour cette norme.\\
@@ -461,11 +457,11 @@ De même pour la notion de bornée.
 \begin{Demonstration}
 \begin{itemize}
 \item $\Longrightarrow$ : On suppose que la suite $(\vec{x_n})_{n\in\N}$ convergeant vers  $\vec{l}=\sum_{i=1}^n l_i \vec{e_i}.$ Comme la notion de convergence ne dépend pas la norme, on choisit la convergence suivant la norme $\norme{\,}_\infty$ dans la base $\mathcal{B}$. On a alors :
-$$\forall \epsilon >0,\exists N\in \N, \forall n\geq N:\quad \norme{\vec{x_n}-\vec{l}}=\max_{1 \leq i \leq p }|x_{i,n}-l_i|<\epsilon \text{ et donc }\forall i\in\ccro{1}{p}|x_{i,n}|<\epsilon.$$
+$$\forall \epsilon >0,\exists N\in \N, \forall n\geq N:\quad \norme{\vec{x_n}-\vec{l}}=\max_{1 \leq i \leq p }|x_{i,n}-l_i|<\epsilon \text{ et donc }\forall i\in\Intf{1}{p}|x_{i,n}|<\epsilon.$$
 Donc toutes les suites $(x_{i,n})_{n\in\N}$ convergent respectivement vers $l_i$.
 \item $\Longleftarrow$ : On suppose les suites $(x_{i,n})_{n\in\N}$ convergent respectivement vers $l_i$. On a :
-$$\forall \epsilon >0, \forall i\in\ccro{1}{p},\exists N_i\in \N, \forall n\geq N_i:\quad |x_{n,i}-l_i|<\epsilon.$$
-En posant $N_m=\max(N_1,\dots,N_p)$, on a   $\forall i\in\ccro{1}{p}, \forall n\geq N:\quad |x_{n,i}-l_i|<\epsilon$, donc $\norme{\vec{x_n}-\vec{l}}=\max_{1 \leq i \leq p }|x_{i,n}-l_i|<\epsilon$ avec $\vec{l}=\sum_{i=1}^n l_i \vec{e_i}$.
+$$\forall \epsilon >0, \forall i\in\Intf{1}{p},\exists N_i\in \N, \forall n\geq N_i:\quad |x_{n,i}-l_i|<\epsilon.$$
+En posant $N_m=\max(N_1,\dots,N_p)$, on a   $\forall i\in\Intf{1}{p}, \forall n\geq N:\quad |x_{n,i}-l_i|<\epsilon$, donc $\norme{\vec{x_n}-\vec{l}}=\max_{1 \leq i \leq p }|x_{i,n}-l_i|<\epsilon$ avec $\vec{l}=\sum_{i=1}^n l_i \vec{e_i}$.
 \end{itemize}
 \end{Demonstration}
 \begin{Exemple}[Convergence de matrices]
@@ -497,7 +493,7 @@ L'intérieur de $\Q$ dans $\R$ est $\emptyset$ car  toute boule ouverte de $\R$ 
 \end{Exemple}
 \begin{Definition}[Adhérent]
 Soit $A$ une partie de $\K^n$.\\
-$\vec{x}$ est \defi{adhérent} à $A$ si $$\exists  r > 0, B (\vec{x}, r) \cap A\neq \emptyset .$$
+$\vec{x}$ est \defi{adhérent} à $A$ si $$\forall  r > 0, B (\vec{x}, r) \cap A\neq \emptyset .$$
 L'\defi{adhérence de $A$}, notée $\overline {A}$, est l'ensemble des points adhérents à $A$.\\
 %$\overline {A}$ est le plus petit (au sens de l'inclusion) fermé de $\K^n$ contenant  $A$.
 \end{Definition}
@@ -540,7 +536,7 @@ La frontière  $\Q$ dans $\R$ est $\R$.
 Un ouvert $A$ est une partie de $E$ qui présente la propriété caractéristique suivante : en choisissant comme origine un point quelconque de ce sous-ensemble, tous les points autour de celui-ci sont encore dans $A$ à condition de ne pas trop s'éloigner. C'est à dire si tous ses points sont à l'intérieur de lui-même. 
 \begin{Definition}[Ouvert et fermé]
 \begin{itemize}
-\item Une \defi{partie ouverte} de $\K^n$, ou plus simplement un \defi{ouvert} de $\K^n$, est une partie $A$ de $\K^n$ telle que $$\forall \vec{x}\in A, \exists r>0:\quad B(\vec{x},r)\subset U,$$
+\item Une \defi{partie ouverte} de $\K^n$, ou plus simplement un \defi{ouvert} de $\K^n$, est une partie $A$ de $\K^n$ telle que $$\forall \vec{x}\in A, \exists r>0:\quad B(\vec{x},r)\subset \K^n$$
 c'est à dire  $\stackrel {\ \circ }{A}=A.$
 \item Une \defi{partie fermée} de $\K^n$, ou plus simplement un \defi{fermé} de $\K^n$, est une partie $F$ de $\K^n$ telle que le complémentaire de $\K^n$ dans $F$, $\K^n\setminus F$, est un ouvert de $\K^n$.
 \end{itemize}
@@ -617,9 +613,9 @@ Ainsi $K^n\setminus \{\vec{x}\}$ est un ouvert donc  $\{\vec{x}\}$ est un fermé
   Comme  $U_i\subset \cup_{j\in I} U_j$, $B(\vec{x},r)\subset\cup_{j\in I} U_j$.
 \item \emph{stabilité par intersection finie}:
   Soit $(U_i)_{1\leq i\leq n}$ une famille finie d'ouverts de $\K^n$.\\
- Soit $\vec{x}\in\cap_{i\in I} U_i$. Pour tout indice $i\in \ccro{1}{n}$, $\vec{x}\in U_i$.\\
+ Soit $\vec{x}\in\cap_{i\in I} U_i$. Pour tout indice $i\in \Intf{1}{n}$, $\vec{x}\in U_i$.\\
   Comme $U_i$ est un ouvert, il existe $r_i>$ tel que $B(\vec{x},r_i)\subset U_i$.\\
-  Soit $r=\min(r_1,\dots,r_n)$. Donc, pour tout indice $i\in \ccro{1}{n}$, $B(\vec{x},r)\subset B(\vec{x},r_i)\subset U_i$.\\
+  Soit $r=\min(r_1,\dots,r_n)$. Donc, pour tout indice $i\in \Intf{1}{n}$, $B(\vec{x},r)\subset B(\vec{x},r_i)\subset U_i$.\\
   Ainsi $B(\vec{x},r)\subset \cap_{i=1}^n U_i$ et $\cap_{i=1}^n U_i$ est un ouvert. 
 \end{itemize}
 \end{Demonstration}
@@ -863,7 +859,7 @@ On a :
 $$\begin{aligned}
 \norme{f(\vec{x})-f(\vec{a})}_\infty&\overbrace{=}^{\text{Linéarité}}\norme{ \sum_{i=1}^n (x_i-a_i)f(\vec{e_i})}_{\infty}\\
 &\overbrace{\leq }^{\text{Inégalité triangulaire}}\sum_{i=1}^n |x_i-a_i| \norme{ f(\vec{e_i})}_{\infty}\\
-&\leq \sup_{i\in\ccro{1}{n} } |x_i-a_i| \sum_{i=1}^n \norme{ f(\vec{e_i})}_{\infty}\\
+&\leq \sup_{i\in\Intf{1}{n} } |x_i-a_i| \sum_{i=1}^n \norme{ f(\vec{e_i})}_{\infty}\\
 &\leq M \norme{ \vec{x}-\vec{a})}_{\infty}\text{ avec }M=\sum_{i=1}^n \norme{ f(\vec{e_i})}_{\infty}\\
 \end{aligned}$$ 
 Donc $f$ est lipschitzienne. Ainsi les fonctions linéaires sont continues.\\
@@ -873,7 +869,7 @@ Quelques exemples :
 \begin{itemize}
 \item $(\lambda, \vec{x})\mapsto \lambda.\vec{x}$ est continue sur $\K × E$.
 \item $(\vec{x}, \vec{y}) \mapsto \PS{\vec{x}}{\vec{y}}$ est continue sur $E × E$, si $E$ est un espace vectoriel euclidien.
-\item $(u, v) \mapsto u \circ v$ est continue sur $\LE × \LE$. 
+\item $(u, v) \mapsto u \circ v$ est continue sur $\mathcal{L}(E) × \mathcal{L}(E)$. 
 \item $(A, B)\mapsto A × B$ est continue sur $\MnK × \MnK$.
 \item de nouveau le déterminant est continu car l'application déterminant est une forme n-linéaire.
 \end{itemize}

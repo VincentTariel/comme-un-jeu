@@ -80,119 +80,10 @@ Une stratégie efficace pour étudier ces ensembles est :
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Structure algébrique}
-\begin{Definition}[Loi de composition interne : \(\Vect{x} \bigtriangleup \Vect{y}\)  ]
-Soit $A$ un ensemble.\\
-Une \defi{loi de composition interne}, $\bigtriangleup$, est une application qui, à deux éléments de $A$, associe un élément de $A$ :
-$$ \Fonction{\bigtriangleup}{A\times A}{A}{(x,y)}{x \bigtriangleup y}.$$
-\end{Definition}
-\begin{Exemple}
-\begin{itemize}
-\item Sur $\R$, l'addition définie par $\Fonction{+}{\R\times \R}{\R}{(x,y)}{x + y}$, la soustraction $\Fonction{-}{\R\times \R}{\R}{(x,y)}{x - y}$ et la multiplication $\Fonction{-}{\R\times \R}{\R}{(x,y)}{x \times y}$ sont des lois de composition internes.
-\item Soit $X$ un ensemble. Sur l'ensemble des parties de $X$, $\mathcal{P}(X)$, l'union définie par $\Fonction{\cup}{\mathcal{P}(X)\times \mathcal{P}(X)}{\mathcal{P}(X)}{(A,B)}{A \cup B}$ et l'intersection $\Fonction{\cap}{\mathcal{P}(X)\times \mathcal{P}(X)}{\mathcal{P}(X)}{(A,B)}{A \cap B}$ sont des lois de composition internes.
-\end{itemize}
+\section{Définition}
 
-\end{Exemple}
-\begin{Definition}[Propriétés usuelles]
-On dit que $\bigtriangleup$ est
-\begin{enumerate}
-\item  \defi{associative} : si $\in(x,y,z)\in A^3$, $x \bigtriangleup (y \bigtriangleup z) = (x \bigtriangleup y) \bigtriangleup z$.
-  On ne considèrera que des loi associatives.
-\item
- \defi{commutative} : si $\forall(x,y)\in A^2$, $x \bigtriangleup y = y \bigtriangleup x$.
- \end{enumerate}
-\end{Definition} 
- \begin{Exemple}
-\begin{itemize}
-\item Sur $\R$, l'addition et la multiplication sont commutatives et associatives. Ce n'est pas le cas de la soustraction car $1-0\neq 0-1$ et $1-(2-3)=2\neq -4= (1-2)-3.$
-\item Sur  $\mathcal{P}(X)$, l'union et l'intersection sont commutatives et associatives.
-\end{itemize}
-\end{Exemple}
-\begin{DefinitionProposition}[Inverse et élément neutre]
-On dit que $\bigtriangleup$ admet \defi{un élément neutre} si $\exists e\in A$ tel que $\forall x\in A$, $x \bigtriangleup e = e \bigtriangleup x = x$.\\
-Si il existe un élément $e$ vérifiant cette propriété, il est unique et on l'appelle \defi{le neutre}  de la loi $\bigtriangleup$.\\
-On dit que $\bigtriangleup$ est   \defi{symétrique} (ou \defi{inverse} si loi est $\times$ , ou \defi{opposé} si la loi est $+$)
-  Si $\bigtriangleup$ est une loi associative qui admet un neutre $e$, et si $x\in A$, on appelle  de $x$ pour la loi $\bigtriangleup$ tout élément $x'\in A$ tel que $x \bigtriangleup x' = x' \bigtriangleup x = e$.
-  Si $\bigtriangleup$ est également associative, il existe au plus un élément $x'$ vérifiant cette propriété, et on l'appelle le \defi{symétrique}  de $x$ pour la loi $\bigtriangleup$.
+Dans ce cours, un corps $\K$ désigne soit l'ensemble des nombres réels $\R$ ou soit l'ensemble des nombres complexes $\C$. 
 
-\end{DefinitionProposition}
-
-\begin{Definition}[Groupe]
-Un \defi{groupe} est un couple $(G,\bigtriangleup)$ où $G$ est un ensemble et $\bigtriangleup$ une loi de composition interne sur $G$ associative, admettant un neutre et pour laquelle tout élément de $G$ admet un symétrique pour la loi $\bigtriangleup$.
-Un groupe est dit \defi{abélien} ou \defi{commutatif} si la loi $\bigtriangleup$ est de plus commutative.
-\end{Definition}
-\begin{Exemple}[Le Groupe \((\R^n,+)\) ]
-La loi d'addition sur $\R^n$ est définie par 
-$$ \Fonction{+}{\R^n\times\R^n}{\R^n}{(\vec{x}=(x_1,x_2,\dots,x_n),\Vect{y}=(y_1,y_2,\dots,y_n))}{\Vect{x}+\Vect{y}=(x_1+y_1, x_2+y_2, \dots, x_n+y_n)}.$$
-
-\begin{itemize}
-\item  \defi{associative} : Soit $\Vect{x}=(x_1,x_2,\dots,x_n),\Vect{y}=(y_1,y_2,\dots,y_n),\Vect{z}=(z_1,z_2,\dots,z_n)\in\R^n .$\\
- On a :
- $$\begin{aligned}
- \Vect{x}+(\Vect{y}+\Vect{z})&=(x_1,x_2,\dots,x_n)+\left((y_1,y_2,\dots,y_n)+(z_1,z_2,\dots,z_n)\right)\\
- &=(x_1,x_2,\dots,x_n)+(y_1+z_1, y_2+z_2, \dots, y_n+z_n)\\
- &=(x_1+y_1+z_1, x_2+y_2+z_2, \dots, x_n+y_n+z_n)\\
-  &=(x_1+y_1, x_2+y_2, \dots, x_n+y_n)+(z_1,z_2,\dots,z_n)\\
-  &=\left((x_1,x_2,\dots,x_n)+(y_1,y_2,\dots,y_n)\right)+(z_1,z_2,\dots,z_n)\\
-  &=(\Vect{x}+\Vect{y})+\Vect{z}
- \end{aligned}$$
- \item  \defi{commutative} : Soit $\Vect{x}=(x_1,x_2,\dots,x_n),\Vect{y}=(y_1,y_2,\dots,y_n)\in\R^n .$\\
- On a :
- $$\begin{aligned}
- \Vect{x}+\Vect{y}&=(x_1,x_2,\dots,x_n)+(y_1,y_2,\dots,y_n)\\
-  &=(x_1+y_1, x_2+y_2, \dots, x_n+y_n)\\
-  &=(y_1+x_1, y_2+x_2, \dots, y_n+x_n)\\
-  &=\Vect{y}+\Vect{x}
- \end{aligned}$$
- \item  \defi{élément neutre} : Soit $\Vect{x}=(x_1,x_2,\dots,x_n)\in\R^n$\\
- Montrons que $\Vect{0}=(0,0,\dots,0)$ est l'élément neutre\\
- On a :
- $$\begin{aligned}
- \Vect{x}+\Vect{0}&=(x_1+0,x_2+0,\dots,x_n+0)\\
-  &=(x_1, x_2, \dots, x_n)\\
-  &=\Vect{x}
- \end{aligned}$$
-  \item  \defi{symétrique} : Soit $\Vect{x}=(x_1,x_2,\dots,x_n)\in\R^n$\\
- Montrons que $-\Vect{x}=(-x_1,-x_2,\dots,-x_n)$ est l'opposé de $\Vect{x}$.\\
- On a :
- $$\begin{aligned}
- \Vect{x}+(-\Vect{x})&=(x_1,x_2,\dots,x_n)+(-x_1,-x_2,\dots,-x_n)\\
-  &=(x_1-x_1, x_2-x_2, \dots, x_n-x_n)\\
-  &=(0, 0, \dots, 0)\\
-  &=\Vect{0}
- \end{aligned}$$
-\end{itemize}
-Donc $(\R^n,+)$ est un groupe commutatif.
-\end{Exemple}
-
-
-\begin{Definition}[Loi de composition externe : \(\lambda.\Vect{x}\)] Soit $\K$ et $A$ deux ensembles.\\ Une \defi{loi de composition externe}, $.$, est une application qui, à un élément de $\K$ et un élément de $A$, associe un élément de $A$ :
-$$ \Fonction{.}{\K\times A}{A}{(\lambda,x)}{\lambda. x} $$
-\end{Definition}
-\begin{Exemple}[\((\R^n,.)\)]
-La loi de multiplication sur $\R^n$ est définie par 
-$$ \Fonction{.}{\R\times\R^n}{\R^n}{(\lambda,\Vect{x}=(x_1,x_2,\dots,x_n))}{\lambda.\Vect{x}=(\lambda.x_1, \lambda.x_2, \dots, \lambda.x_n)}.$$
-Par exemple sur $\R^2$, $2.(1,-2)=(2,-4)$.
-\end{Exemple}
-
-\begin{Definition}[Corps \(\K\) : \(\R\) ou \(C\)] Dans ce cours%\samepage\footnote{%\begin{tiny}
-%Un \defi{corps} (commutatif) $(K,+,\times )$ est un ensemble muni de deux lois internes possédant les propriétés suivantes :
-%\begin{itemize}
-%\item $(K,+)$ est un groupe abélien, dont l'élément neutre est noté $0$ ;
-%\item $(K\setminus \{0\},\times )$ est également un groupe abélien, dont l'élément neutre est noté $1$ ;
-%\item $\times$ est distributive par rapport à $+$.
-%\end{itemize}
-%\impo{Remarque} Lorsque le contexte est clair, on écrit souvent $\K$ au lieu de $(\K,+,×)$.\\
-%\impo{Exemples}
-%\begin{itemize}
-%\item le corps des réels $\R$, des complexes $\C$, des rationnels $\Q$;
-%\item si $\K$ est un corps, le corps des fractions rationnelles à coefficients dans $\K$, noté $\K(X)$;
-%\item $\Q [i] = \{a+ib:(a,b)\in \Q ^2\}$;
-%\item le corps des entiers modulo un nombre premier $p$, noté $\Z/p\Z$.
-%\end{itemize}
-%}
-, un corps $\K$ désigne soit l'ensemble des nombres réels $\R$ ou soit l'ensemble des nombres complexes $\C$. 
-\end{Definition}
 \begin{Definition}[Espace vectoriel : \(\lambda\Vect{x}+\mu\Vect{y}\)]
 Soit $\K$ un corps.\\
 Un \defi{$\K$-espace vectoriel} est un triplet $(E,+,.)$ où
@@ -205,12 +96,18 @@ vérifiant les propriétés suivantes:
  \begin{enumerate}
   \item $\forall(\lambda ,\mu )\in\K^2$, $\forall \Vect{x}\in E$, $(\lambda +\mu ) . \Vect{x} = (\lambda . \Vect{x}) + (\mu . \Vect{x})$;
   \item $\forall\lambda \in\K$, $\forall(\Vect{x},\Vect{y})\in E^2$, $\lambda . (\Vect{x}+\Vect{y}) = (\lambda . \Vect{x}) + (\lambda . \Vect{y})$;
-  \item $\forall\Vect{x}\in E$, $1_\K. \Vect{x} = \Vect{x}$;
+  \item $\forall\Vect{x}\in E$, $1_\K. 1\cdot\Vect{x} = \Vect{x}$;
   \item $\forall(\lambda ,\mu )\in\K^2$, $\forall\Vect{x}\in E$, $\lambda . (\mu . \Vect{x}) = (\lambda \mu ) . \Vect{x}$.
   \end{enumerate}
 \end{enumerate}
 Un élément d'un $\K$-espace vectoriel est appelé un \defi{vecteur} et est noté dans ce cours avec une flèche  $\Vect{x}$. Un élément du corps $\K$ est un \defi{scalaire} et est noté dans ce cours à l'aide d'une lettre grecque, $\lambda$.   
 \end{Definition}
+\begin{Vocabulaire}
+L'opération qui à $(u,v)$ associe $u+(-v)$ s'appelle la \defi{soustraction}.
+ Le vecteur $u+(-v)$ est noté $u-v$.
+ Les propriétés suivantes sont satisfaites : $\lambda (u-v)=\lambda u -\lambda v$
+ et $(\lambda -\mu)u=\lambda u-\mu u$.
+\end{Vocabulaire}
 
 
 \begin{Exemple}
@@ -223,6 +120,53 @@ Un élément d'un $\K$-espace vectoriel est appelé un \defi{vecteur} et est not
  si $X$ est un ensemble et $E$ un $\K$-espace vectoriel, l'ensemble des fonctions $\mathcal{F}(X,E)$ muni des lois usuelles.
 \end{itemize}
 \end{Exemple}
+
+
+
+
+\begin{Proposition}
+Soit $E$ un $\K $-espace vectoriel. Soit $u \in E$ et $\lambda \in \K$.\\
+Alors on a:
+ \begin{enumerate}
+ \item $0 \cdot \Vect{x} = \Vect{0_E}$
+ \item $\lambda \cdot \Vect{0_E} = \Vect{0_E}$
+ \item $(-1)\cdot \Vect{x} = -\Vect{x}$
+ \item $\lambda \cdot \Vect{x} = \Vect{0_E} \iff \lambda = 0$  ou  $\Vect{x} = \Vect{0_E}$
+ \end{enumerate}
+\end{Proposition}
+
+\begin{Demonstration}
+Les démonstrations des propriétés sont des manipulations sur les axiomes définissant les espaces vectoriels.
+
+\begin{enumerate}
+  \item On a $(0+0)\cdot \Vect{x}=0 \cdot \Vect{x}$ du fait de l'égalité dans $\K$ : $0+0=0$. En utilisant la distributivité de la loi externe par rapport à la loi interne, on obtient $0 \cdot \Vect{x} +0 \cdot \Vect{x} =0 \cdot \Vect{x}$. En ajoutant $-(0\cdot \Vect{x})$ de chaque côté de l'égalité, on obtient :
+    $0 \cdot \Vect{x}=\Vect{0_{E}}$.
+  \item La preuve est semblable en partant de l'égalité $\Vect{0_{E}}+\Vect{0_{E}}=\Vect{0_{E}}$.
+
+  \item Montrer $(-1)\cdot \Vect{x} = -\Vect{x}$ signifie exactement que $(-1)\cdot \Vect{x}$
+  est le symétrique de $\Vect{x}$, c'est-à-dire vérifie  $\Vect{x} + (-1)\cdot \Vect{x} = \Vect{0_E}$.
+  En effet :
+  $$\Vect{x}+(-1)\cdot \Vect{x}=1\cdot \Vect{x}+(-1) \cdot \Vect{x}=\left ( 1+ (-1)\right ) \cdot \Vect{x}=0 \cdot \Vect{x}= \Vect{0_{E}}.$$
+
+  \item On sait déjà que si \ $\lambda = 0$  ou  $\Vect{x} = \Vect{0_E}$,alors les propriétés précédentes
+  impliquent $\lambda \cdot \Vect{x} = \Vect{0_E}$.\\
+  Pour la réciproque, soit $\lambda \in \K$ un scalaire et $\Vect{x} \in E$  un vecteur
+  tels que $\lambda \cdot \Vect{x}=\Vect{0_{E}}$.\\
+  Supposons $\lambda$ différent de $0$. On doit alors montrer que $\Vect{x}=\Vect{0_E}$.\\
+  Comme $\lambda\neq0$, alors $\lambda$ est inversible pour le produit dans le corps $\K$. Soit
+  $\lambda ^{-1}$ son inverse.\\
+En multipliant par $\lambda^{-1}$ les deux membres de l'égalité $\lambda \cdot \Vect{x} = \Vect{0_{E}}$, il vient :
+  $\lambda^{-1} \cdot (\lambda \cdot \Vect{x})=\lambda ^{-1} \cdot \Vect{0_{E}}$.\\
+  D'où en utilisant les propriétés de la multiplication par un scalaire
+    $(\lambda^{-1} \times \lambda) \cdot \Vect{x}=\Vect{0_{E}}$ et donc $1 \cdot \Vect{x}=\Vect{0_{E}}.$
+D'où $\Vect{x}=\Vect{0_{E}}$.
+
+\end{enumerate}
+\end{Demonstration}
+
+
+
+
 %\begin{Proposition}[Structure de $\K $-espace vectoriel]
 %$\MnpK$ possède une structure de $\K $-espace vectoriel. 
 %\end{Proposition}
@@ -244,11 +188,11 @@ Muni des lois induites, F est alors un espace vectoriel.
 \end{DefinitionProposition}
 \begin{Exemple}
 $F=\{(x,y)\in\R^2:x+2y=0\}$ \begin{tikzpicture}[general,scale=1]
-\draw [quadrillage,loosely dashed] (-3,-2) grid (3,2);
-\draw [->, ] (0,0) -- (1,0)node[right]{$\Vect{e_1}$};
-\draw [->] (0,0) -- (0,1)node[right]{$\Vect{e_2}$};
+%\draw [quadrillage] (-3,-2) grid (3,2);
+\draw [->,color=black!30 ] (0,0) -- (1,0)node[right]{$\Vect{e_1}$};
+\draw [->,color=black!30] (0,0) -- (0,1)node[right]{$\Vect{e_2}$};
 \draw [-] (-3,1.5) -- (3,-1.5)node[right]{$F$};
-\node[above]{$\Vect{0}$};
+\node[below,color=black!30]{$\Vect{0}$};
 \end{tikzpicture} est un sous espace vectoriel de $\R^2$ 
 car :
 \begin{itemize}
@@ -281,7 +225,7 @@ $F$ est un sous espace vectoriel  de $E$ si et seulement si
 \end{itemize}
 \end{Proposition}
 \subsubsection{Engendré par une famille finie :  }
-$\Vectt (\Vect{x_1},\dots,\Vect{x_p})=\{\lambda_1. \Vect{x_1}+\dots + \lambda_p. \Vect{x_p} \}$
+$\operatorname{Vec} (\Vect{x_1},\dots,\Vect{x_p})=\{\lambda_1. \Vect{x_1}+\dots + \lambda_p. \Vect{x_p} \}$
 \begin{Definition}[Famille finie]
 Soit $E$ un $\K $-espace vectoriel.\\
 Une \defi{famille finie} de vecteurs de $E$ est un $p$-uplet $\mathcal{F} = (\Vect{x}_1,\dots,\Vect{x_p})$ formée de vecteurs de $E$, où $p\in \N$.
@@ -289,29 +233,43 @@ Une \defi{famille finie} de vecteurs de $E$ est un $p$-uplet $\mathcal{F} = (\Ve
 \begin{Definition}[Combinaison linéaire]
 Avec les mêmes notations, une \defi{combinaison linéaire} de la famille $\mathcal{F}$ est un vecteur $\Vect{x} \in E$ de la forme $\Vect{x} = \lambda_1. \Vect{x_1}+\dots + \lambda_p. \Vect{x_p}$ où $\lambda_1,\dots,\lambda_p \in  \K$.\\
 Les scalaires $\lambda_1,\dots,\lambda_p$ sont appelés \defi{coefficients} de la combinaison linéaire.\\
-On note \defi{$\Vectt (\mathcal{F})$} l'ensemble des combinaison linéaires de la famille $(\Vect{x}_1,\dots,\Vect{x_p})$.\\
-$$\Vectt (\mathcal{F})=\{ \lambda_1. \Vect{x_1}+\dots + \lambda_p. \Vect{x_p} : \lambda_1,\dots,\lambda_p \in  \K \}.$$
-Par convention, $\Vectt(\emptyset)= \{\Vect{0}_E\}$.
+On note \defi{$\operatorname{Vec}  (\mathcal{F})$} l'ensemble des combinaison linéaires de la famille $(\Vect{x}_1,\dots,\Vect{x_p})$.\\
+$$\operatorname{Vec}  (\mathcal{F})=\{ \lambda_1. \Vect{x_1}+\dots + \lambda_p. \Vect{x_p} : \lambda_1,\dots,\lambda_p \in  \K \}.$$
+Par convention, $\operatorname{Vec} (\emptyset)= \{\Vect{0}_E\}$.
 \end{Definition}
 \begin{DefinitionProposition}[Espace engendré]
 Soit $E$ un $\K $-espace vectoriel et $(\Vect{x}_1,\dots,\Vect{x_p})$ une famille de vecteurs de $E$.\\
-L'ensemble $\Vectt(\Vect{x}_1,\dots,\Vect{x_p})$ est un sous espace vectoriel  de $E$, appelé \defi{espace engendré} par la famille $(\Vect{x}_1,\dots,\Vect{x_p})$.
+L'ensemble $\operatorname{Vec} (\Vect{x}_1,\dots,\Vect{x_p})$ est un sous espace vectoriel  de $E$, appelé \defi{espace engendré} par la famille $(\Vect{x}_1,\dots,\Vect{x_p})$.
 Il s'agit du plus petit (pour l'inclusion) sous espace vectoriel  de $E$ contenant $\Vect{x_1},\dots,\Vect{x_p}$.
 \end{DefinitionProposition}
-\begin{Exemple}[Droite vectoriel]
-Lorsque que $p=1$ avec $ \Vect{x} \neq \Vect{0}$, $\Vectt(\Vect{x}) = \{\lambda .\Vect{x} : \forall \lambda  \in  \K  \}$
+\begin{Exemple}[Droite vectorielle]
+Lorsque que $p=1$ avec $ \Vect{x} \neq \Vect{0}$, $\operatorname{Vec} (\Vect{x}) = \{\lambda .\Vect{x} : \forall \lambda  \in  \K  \}$
 est la \defi{droite vectorielle} engendrée par $\Vect{x}$. On la note $\R \Vect{x}$.\\
-Une droite vectorielle dans $\R ^2$ est 
+Une droite vectorielle dans $\R ^2$ est :
 \begin{center}
-\includegraphics[width=6cm]{espace_vectoriel_droite.png}
+\begin{tikzpicture}[general,scale=1]
+\draw [->,color=black!30] (0,0) -- (1,0)node[right]{$\Vect{e_1}$};
+\draw [->,color=black!30] (0,0) -- (0,1)node[right]{$\Vect{e_2}$};
+\node[below,color=black!30]{$\Vect{0}$};
+\draw [-,color=colordef ] (-1,-0.5) -- (3,1.5)node[right]{$\operatorname{Vec}(\Vect{x}) $};
+\draw [->,color=colorprop] (0,0) -- (2,1)node[right]{$\Vect{x}$};
+\end{tikzpicture} 
 \end{center}
 \end{Exemple}
 \begin{Exemple}[Plan vectoriel]
-Lorsque que $p=2$ avec $ \Vect{x_1}$ non colinéaire à $\Vect{x_2}$, $\Vectt (\Vect{x_1},\Vect{x_2}) = \{\lambda .\Vect{x_1}+\mu.\Vect{x_2} : \forall \lambda ,\mu \in  \K  \}$
+Lorsque que $p=2$ avec $ \Vect{x_1}$ non colinéaire à $\Vect{x_2}$, $\operatorname{Vec}  (\Vect{x_1},\Vect{x_2}) = \{\lambda .\Vect{x_1}+\mu.\Vect{x_2} : \forall \lambda ,\mu \in  \K  \}$
 est le \defi{plan vectorielle} engendrée par $(\Vect{x_1},\Vect{x_2})$. On le note $\R \Vect{x_1}+\R \Vect{x_2}$.\\
 Un plan vectorielle dans $\R ^3$  est 
 \begin{center}
-\includegraphics[width=6cm]{espace_vectoriel_plan.png}
+
+\begin{tikzpicture}[general,scale=1]
+\draw [->,color=black!60] (0,0) -- (1,0)node[right]{$\Vect{e_1}$};
+\draw [->,color=black!60] (0,0) -- (0.8,0.3)node[right]{$\Vect{e_2}$};
+\draw [draw=white, fill=colordef, opacity=0.8] (-1.5,-2) -- (-3.5,-1.5) -- (1.5,2) -- (3.5,1.5)node[left]{$\operatorname{Vec}(\Vect{x_1},\Vect{x_2})$}; -- cycle ;
+\draw [->,color=black!60] (0,0) -- (0,1)node[right]{$\Vect{e_3}$};
+\draw [->,color=colorprop] (0,0) -- (1,1)node[right]{$\Vect{x_1}$};
+\draw [->,color=colorprop] (0,0) -- (1.5,0.7)node[right]{$\Vect{x_2}$};
+\end{tikzpicture} 
 \end{center}
 \end{Exemple}
 \subsubsection{Intersection $F_1\cap F_2$}
@@ -335,7 +293,12 @@ Ainsi pour tout $i \in \Intf{1}{p}: \lambda\Vect{x}\in F_i$ donc $\lambda \Vect{
 \end{Demonstration}
 \begin{Exemple}$F=\overbrace{\{(x,y,z)\in \R^3: z=0\}}^{=F_1}\cap \overbrace{\{(x,y,z)\in \R^3: z=x\}}^{=F_2} $  l'intersection de deux plans vectoriels, $F_1$ et $F_2$ dans $\R ^3$
 \begin{center}
-\includegraphics[width=6cm]{espace_vectoriel_inter.png}
+\begin{tikzpicture}[general,scale=1]
+\draw [color=colordef,fill=colordef, opacity=0.8] (-1.5,-2) -- (-3.5,-1.5) -- (1.5,2) -- (3.5,1.5)node[color=black,left]{$F_2$}; -- cycle ;
+\draw [color=colordef, fill=colordef, opacity=0.8] (-0.5,-2.3) -- (-2.5,-1.8) -- (0.5,2.3) -- (2.5,1.8)node[color=black,left]{$F_1$}; -- cycle ;
+\draw [color=colorprop] (-1,0.3) -- (1,-0.3) node[color=black,right]{$F_1\cap F_2$};
+\node[below] at(0,0){$\Vect{0}$};
+\end{tikzpicture} 
 \end{center}
 \end{Exemple}
 
@@ -344,7 +307,17 @@ Ainsi pour tout $i \in \Intf{1}{p}: \lambda\Vect{x}\in F_i$ donc $\lambda \Vect{
 L'union $\cup_{i=1}^p F_i$ n'est presque jamais un sous espace vectoriel.
 
 \begin{center}
-\includegraphics[width=4.5cm]{espace_vectoriel_union.png}
+\begin{tikzpicture}[general,scale=1]
+%\draw [quadrillage] (-1,-2) grid (3,2);
+\node[below] at(0,0){$\Vect{0}$};
+%\draw [->,color=black!30] (0,0) -- (1,0)node[right]{$\Vect{e_1}$};
+%\draw [->,color=black!30] (0,0) -- (0,1)node[right]{$\Vect{e_2}$};
+\draw [-,color=colordef ] (-1,-0.5) -- (3,1.5)node[right]{$F_1 $};
+\draw [->,color=colorprop] (0,0) -- (2,1)node[right]{$\Vect{x}$};
+\draw [-,color=colordef ] (-1,1) -- (2,-2)node[right]{$F_2 $};
+\draw [->,color=colorprop] (0,0) -- (1,-1)node[right]{$\Vect{y}$};
+\draw [->,color=colorprop] (0,0) -- (3,0)node[right]{$\Vect{x}+\Vect{y}\notin F_1\cup F_2$};
+\end{tikzpicture} 
 \end{center}
 Sur cette figure, les vecteurs $\Vect{x},\Vect{y}\in F_1\cup F_2$ et on a $\Vect{x}+\Vect{y}\not\in  F_1 \cup F_2.$ La somme permet de construire le plus petit (au sens de l'inclusion) sous espace vectoriel  de $E$ contenant $F_1$ et $F_2$.
 \end{Remarque}
@@ -371,14 +344,20 @@ $\lambda (\Vect{x}+\Vect{y})=\underbrace{\lambda\Vect{x}}_{\in F_1}+\underbrace{
 \end{itemize}
 \end{Demonstration}
 \begin{Exemple}
-Soit $\R \Vect{x}_1$ et $\R \Vect{x}_2$ deux droite vectorielles distinctes. La somme de ces deux espace vectoriels forme le plan vectoriel $\R \Vect{x}_1+\R \Vect{x}_2$.
+Soit $F_1$ et $F_2$ deux droite vectorielles distinctes. La somme de ces deux espace vectoriels forme le plan vectoriel $F_1+F_2$.
 \begin{center}
-\includegraphics[width=8cm]{espace_vectoriel_somme.png}
+\begin{tikzpicture}[general,scale=1]
+\draw [color=colordef,fill=colordef] (-1.5,-2) -- (-3.5,-1.5) -- (1.5,2) -- (3.5,1.5)node[right]{$F_1+F_2$}; -- cycle ;
+\draw [-,color=colorprop] (-1.6,-2) -- (1.6,2)node[right]{$F_1$};
+\draw [-,color=colorprop] (-2.2,-0.6) -- (2.2,0.6)node[right]{$F_2$};
+\node[below] at(0,0){$\Vect{0}$};
+\end{tikzpicture} 
+
 \end{center}
 \end{Exemple}
 
 \begin{Definition}[Somme directe]
-Avec les mêmes notations, on dit que la somme $F_1+F_2$ est \defi{directe} si tout vecteur de la somme se décompose \impo{de façon unique} sous la forme $\Vect{x} +\Vect{y}$ où $\Vect{x}\in F_1$ et $\Vect{y}\in F_2$.
+Avec les mêmes notations, on dit que la somme $F_1+F_2$ est \defi{directe} si tout vecteur de la somme se décompose \defi{de façon unique} sous la forme $\Vect{x} +\Vect{y}$ où $\Vect{x}\in F_1$ et $\Vect{y}\in F_2$.
 On note alors la somme $F_1\oplus F_2$.
 \end{Definition}
 \begin{Proposition}[Critère 1]
@@ -423,7 +402,12 @@ Comme $F_1\cap F_2 = \{\Vect{0_E}\}$, on a $\Vect{x} -\Vect{x'}=\Vect{0}$ et $\V
 
 \begin{Exemple} Géométriquement, l'intersection entre deux plans vectoriels distincts, $F_1$ et $F_2$, est une droite vectoriel, $F_1\cap F_2$, donc la somme n'est pas directe.
 \begin{center}
-\includegraphics[width=6cm]{espace_vectoriel_inter.png}
+\begin{tikzpicture}[general,scale=1]
+\draw [color=colordef,fill=colordef, opacity=0.8] (-1.5,-2) -- (-3.5,-1.5) -- (1.5,2) -- (3.5,1.5)node[color=black,left]{$F_2$}; -- cycle ;
+\draw [color=colordef, fill=colordef, opacity=0.8] (-0.5,-2.3) -- (-2.5,-1.8) -- (0.5,2.3) -- (2.5,1.8)node[color=black,left]{$F_1$}; -- cycle ;
+\draw [color=colorprop] (-1,0.3) -- (1,-0.3) node[color=black,right]{$F_1\cap F_2$};
+\node[below] at(0,0){$\Vect{0}$};
+\end{tikzpicture} 
 \end{center}
 Si $F_1=\{(x,y,z)\in\R^3: x+y+z=0\}$ et $F_1=\{(x,y,z)\in\R^3: x-y+z=0\}$. On a :
 $$\begin{aligned}
@@ -432,7 +416,7 @@ $$\begin{aligned}
  & \Leftrightarrow \begin{cases}x+z=0 \\ y=0 \end{cases}\\
  & \Leftrightarrow  z=\lambda, x=-\lambda , y=0,\quad  \forall t\in \R \\
  & \Leftrightarrow  (x,y,z) = \lambda(-1,0,1),\quad  \forall t\in \R \\
- & \Leftrightarrow  (x,y,z) \in \Vectt( -1,0,1)
+ & \Leftrightarrow  (x,y,z) \in \operatorname{Vec} ( -1,0,1)
  \end{aligned}$$
 Finalement  $F_1 \cap F_2 = \R  ( -1,0,1)$. 
 \end{Exemple}
@@ -442,14 +426,14 @@ on dit que $F_1$ et $F_2$ sont \defi{supplémentaires}, et on note
 \[ E = F_1\oplus F_2. \]
 \end{Definition}
 \begin{Exemple}
-Montrons que $\R_n[X]=\R_{n-1}[X]\oplus \Vectt(X^n)$.\\
+Montrons que $\R_n[X]=\R_{n-1}[X]\oplus \operatorname{Vec} (X^n)$.\\
 \begin{itemize}
-\item \textit{$\R_n[X]=\R_{n-1}[X]+ \Vectt(X^n) $} :\\
+\item \textit{$\R_n[X]=\R_{n-1}[X]+ \operatorname{Vec} (X^n) $} :\\
 Soit $P =a_0+a_1 X+\dots+a_{n-1} X^{n-1}+a_{n} X^{n}\in \R_n[X].$
-On a $$P =\overbrace{a_0+a_1 X+\dots+a_{n-1} X^{n-1}}^{\in \R_{n-1}[X]}+\overbrace{a_{n} X^{n}}^{\in \Vectt(X^n)}.$$
-\item \textit{$\R_{n-1}[X]\cap  \Vectt(X^n)=\{\Vect{0}_{\R_n[X]}\}$ :}\\
-Soit $P \in \R_{n-1}[X]\cap \Vectt(X^n)$.\\
-Comme $P \in \R_{n-1}[X]$, on a $deg(P)<n$. Comme  $P \in \Vectt(X^n)$, on a $P=\lambda X^n$. Si $\lambda\neq 0$, on a $deg(P=\lambda X^n)=n$, d'où une contradiction.  Donc $P=0$.  
+On a $$P =\overbrace{a_0+a_1 X+\dots+a_{n-1} X^{n-1}}^{\in \R_{n-1}[X]}+\overbrace{a_{n} X^{n}}^{\in \operatorname{Vec} (X^n)}.$$
+\item \textit{$\R_{n-1}[X]\cap  \operatorname{Vec} (X^n)=\{\Vect{0}_{\R_n[X]}\}$ :}\\
+Soit $P \in \R_{n-1}[X]\cap \operatorname{Vec} (X^n)$.\\
+Comme $P \in \R_{n-1}[X]$, on a $deg(P)<n$. Comme  $P \in \operatorname{Vec} (X^n)$, on a $P=\lambda X^n$. Si $\lambda\neq 0$, on a $deg(P=\lambda X^n)=n$, d'où une contradiction.  Donc $P=0$.  
 \end{itemize}
 \end{Exemple}
 \begin{DefinitionProposition}[Somme]
@@ -509,7 +493,7 @@ On définit de manière analogue le $\K $-espace vectoriel $E$,  produit cartés
 \section{Base: $\forall \vec{x}\in E, \exists !(\lambda_1,\dots \lambda_p),\quad \vec{x} = \lambda_1 \vec{e_1}+\dots +\lambda_p \vec{e_p}$}
 \subsection{Définition}
 \subsubsection{Famille génératrice : existence}
-\begin{Definition}[Famille génératrice] Une famille finie  $\mathcal{F}=(\Vect{e}_1,\dots,\Vect{e_p})$ est \defi{génératrice} de $E$ si tout vecteur de $E$ est combinaison linéaire de $\mathcal{F}$, c'est à dire si $\Vectt(\mathcal{F}) = E$, c'est à dire si 
+\begin{Definition}[Famille génératrice] Une famille finie  $\mathcal{F}=(\Vect{e}_1,\dots,\Vect{e_p})$ est \defi{génératrice} de $E$ si tout vecteur de $E$ est combinaison linéaire de $\mathcal{F}$, c'est à dire si $\operatorname{Vec} (\mathcal{F}) = E$, c'est à dire si 
 \[ \forall \Vect{x} \in E,\exists \lambda_1,\dots,\lambda_p \in \K,\quad \Vect{x} = \lambda_1 \Vect{e_1}+ \lambda_2 \Vect{e_2}+\dots +\lambda_p \Vect{e_p}. \]
 \end{Definition}
 \begin{Exemple} La famille  $\{(1,1), (0,1), (1,-1)\}$  est génératrice de $\R^2$. En effet, soit $\Vect{x}=(x,y)\in\R^2$, on a :
@@ -519,7 +503,7 @@ En revanche,  la combinaison linéaire n'est pas unique car $(x,y)= x(1,1)+(y-1)
 \subsubsection{Famille libre : unicité}
 \begin{Definition}[Famille libre]
 Une famille finie  $\mathcal{F}=(\Vect{e}_1,\dots,\Vect{e_p})$ est \defi{libre} si tout vecteur appartenant à l'espace vectoriel engendré par la famille s'exprime de manière unique comme combinaison linéaire de la famille, c'est à dire si 
-\[ \forall \Vect{x} \in \Vectt((\Vect{e}_1,\dots,\Vect{e_p}),\exists ! \lambda_1,\dots,\lambda_n \in \K,\quad \Vect{x} = \lambda_1 \Vect{e_1}+ \lambda_2 \Vect{e_2}+\dots +\lambda_p \Vect{e_p}. \]
+\[ \forall \Vect{x} \in \operatorname{Vec} ((\Vect{e}_1,\dots,\Vect{e_p}),\exists ! \lambda_1,\dots,\lambda_n \in \K,\quad \Vect{x} = \lambda_1 \Vect{e_1}+ \lambda_2 \Vect{e_2}+\dots +\lambda_p \Vect{e_p}. \]
 Autrement dit aucun des vecteurs de la famille n'est combinaison linéaire des autres.
 \end{Definition}
 \begin{Proposition}[Critère]
@@ -610,7 +594,7 @@ Soit $(\Vect{v}_1, \Vect{v}_2,\dots \Vect{v}_{n+1})$ une famille de $n+1$ vecteu
 Pour tout $i\in \Intf{1}{n+1}$, il existe $\lambda_{i,1},\lambda_{i,2},\dots,\lambda_{i,n}\in\K$ tel que $$\Vect{v}_i=  \lambda_{i,1}\Vect{g}_1 + \lambda_{i,2}\Vect{g_2}+\dots+\lambda_{i,n}.\Vect{g_n}$$
 Quitte à réorganiser les deux familles, on peut supposer que $\lambda_{n+1,n}\neq 0$. \\
 Pour tout  $i\in \Intf{1}{n}$, on a 
-$$\Vect{v}_i-\frac{\lambda_{i,n}}{\lambda_{n+1,n}}\Vect{v}_{n+1}\in \Vectt(\Vect{g_1},\dots,\Vect{g}_{n-1}).$$
+$$\Vect{v}_i-\frac{\lambda_{i,n}}{\lambda_{n+1,n}}\Vect{v}_{n+1}\in \operatorname{Vec} (\Vect{g_1},\dots,\Vect{g}_{n-1}).$$
 On applique l'hypothèse de récurrence à l'espace vectoriel générée par la famille $(\Vect{g_1},\dots,\Vect{g}_{n-1})$. Donc la famille $\left(\Vect{v}_1-\frac{\lambda_{1,n}}{\lambda_{n+1,n}}\Vect{v}_{n+1},\dots, \Vect{v}_n-\frac{\lambda_{n,n}}{\lambda_{n+1,n}}\Vect{v}_{n+1}\right)$ est liée. Il existe  $\beta_{1},\beta_{2},\dots,\beta{n}\in\K$ non tous nuls tel que :
 $$\beta_1 (\Vect{v}_1-\frac{\lambda_{1,n}}{\lambda_{n+1,n}}\Vect{v}_{n+1})+\dots+\beta_n (\Vect{v}_n-\frac{\lambda_{n,n}}{\lambda_{n+1,n}}\Vect{v}_{n+1})=\Vect{0}.$$
 d'où 

@@ -596,6 +596,55 @@ Soit $E$ un espace vectoriel et $p,q$ deux projecteurs de $E$ tels que $p\neq 0$
 Soient $E_1,\dots ,E_n$ des sous-espaces vectoriels de $E$. On suppose que $E_1\oplus \dots \oplus E_n=E$. On note $p_i$ le projecteur sur $E_i$ parallèlement à $\oplus_{j\neq i}E_j$.\\ 
 Montrer que $p_i\circ p_j=0$ si $i\neq j$ et $p_1+\dots+p_n=\mathrm{Id}_E$.
 \end{Exercice}
+
+
+Soit $\mathbb R_2[X]$ l'espace vectoriel des polynômes à coefficients réels de degré inférieur ou égal à 2.
+On définit l'application $\phi$ par : 
+$$
+\Fonction{\phi}{\R _2[X]}{\R _2[X]}{P}{P-P'}
+$$ où $P'$ est le polynôme dérivé de $P$.
+\begin{enumerate}
+\item Démontrer que $\phi$ est un endomorphisme. 
+\item  Démontrer que $\phi$ est un automorphisme de $\mathbb R_2[X]$.
+\item Déterminer l'inverse de $\phi$.
+\end{enumerate}
+Correction :
+\begin{enumerate}
+\item 2 solutions :
+\begin{enumerate}
+\item 
+\begin{itemize}
+\item \textit{Définie} : L'application $\phi$ est bien définie car $deg(P-P')\leq deg(P)$.
+\item \textit{Linéaire} : soit $P,Q\in \mathbb R_2[X]$ et soit $\lambda,\mu \in \R $.\\
+$$\phi(\lambda P + \mu Q)= (\lambda P + \mu Q)-(\lambda P + \mu Q)'=\lambda (P - P')+\mu(Q - Q')= \lambda\phi( P) + \mu \phi(Q) $$
+\end{itemize} 
+\item Les applications, identité $\mathrm{Id}_{\R _2[X]}:P\mapsto P$ et dérivée $\psi:P\mapsto P'$, sont linéaires. Comme $\mathcal{L}(R_2[X])$ est un espace vectoriel, $\phi$ est une application linéaire car combinaison linéaire de $\mathrm{Id}_{\R _2[X]}$ et $\psi$. 
+\end{enumerate}
+\item 2 solutions :
+\begin{enumerate}
+\item Comme $\phi$ est un endomorphisme d'un espace vectoriel de dimension finie, il suffit de démontrer que  $\phi$ est injective, soit  $\Ker\phi=\{0_{\R _2[X]} \}$ .\\
+Montrons que  $\{0_{\R _2[X]} \} \subset \Ker\phi $.\\
+\hspace{1cm}$\Ker\phi$ est un espace vectoriel donc il contient l'élément neutre.\\
+Montrons que $\Ker\phi   \subset \{0_{\R _2[X]} \}$.\\
+\hspace{1cm}Soit $P\in \Ker\phi$, c'est à dire que $\phi(P)=0_{\R _2[X]}$. Soit $P=P'$. D'où $P=0_{\R _2[X]}$.
+\item  Déterminons la matrice de l'endomorphisme de $\phi$ dans la base canonique, $\mathcal{B}=(1,X,X^2)$ de $\R _2[X]$.
+$$[\phi]_{\mathcal{B}}=\begin{pmatrix}1 &-1&0\\0 &1&-2\\0&0&1 \end{pmatrix}\text{ car } \phi(X^i)=X^i-i  X^{i-1}.$$
+Comme $\det ([\phi]_{\mathcal{B}})=1$, produit des coefficients de la diagonale pour une matrice triangulaire supérieur,  $[\phi]_{\mathcal{B}}$ est inversible, donc $\phi$ est bijectif.  
+\end{enumerate}
+\item 2 solutions :
+\begin{enumerate}
+\item L'application dérivée $\psi:P\mapsto P'$, est nilpotente car $\psi^3=0$. Comme $\psi$ et $\mathrm{Id}_{\R _2[X]}$ commutent,
+on a$$ \mathrm{Id}_{\R _2[X]}=\mathrm{Id}^3_{\R _2[X]}-\psi^3=(\mathrm{Id}_{\R _2[X]}-\psi)\circ(\mathrm{Id}_{\R _2[X]}+\psi+\psi^2)=\phi\circ (\mathrm{Id}_{\R _2[X]}+\psi+\psi^2).$$ Donc l'inverse de $\phi$ est $\phi^{-1}=(\mathrm{Id}_{\R _2[X]}+\psi+\psi^2)$.
+\item  Déterminons l'inverse de matrice de l'endomorphisme de $\phi$ par la méthode du pivot de Gauss:
+$$\begin{array}{rl}
+&\left({\begin{array}{rrr|rrr}1 &-1&0&1&0&0\\0 &1&-2&0&1&0\\0&0&1&0&0&1 \end{array}}\right)\\
+\begin{small}\begin{array}{r} \\(L2)\leftarrow (L2)+2(L3) \end{array}\end{small}&\left({\begin{array}{rrr|rrr}1 &-1&0&1&0&0\\0 &1&0&0&1&2\\0&0&1&0&0&1 \end{array}}\right)\\
+\begin{small}\begin{array}{r} \\(L1)\leftarrow (L1)+(L2) \end{array}\end{small}&\left({\begin{array}{rrr|rrr}1 &0&0&1&1&2\\0 &1&0&0&1&2\\0&0&1&0&0&1 \end{array}}\right)
+\end{array}.$$
+D'où $\phi^{-1}(1)=1,\phi^{-1}(X)=1+X$ et $\phi^{-1}(X^2)=2+2X+X^2$.  Soit $\phi^{-1}=(\mathrm{Id}_{\R _2[X]}+\psi+\psi^2)$.
+\end{enumerate}
+\end{enumerate}
+
 %\subsubsection{Forme linéaire}
 %\Exercice[Une forme linéaire]
 %

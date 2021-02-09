@@ -393,13 +393,23 @@ title=Corollaire  \bfseries{#1}}
 \newcommand{\MnpK}{\M{n}{p}{\K}}
 \newcommand{\GLnK}{\mathcal{GL}_n(\K)}
 \newcommand{\GLn}[2][n]{\mathcal{GL}_{#1}(#2)}
-
+\newcommand{\In}{I_n}
   % trace d'une matrice, ...
 %--------------------------------------------------
 % Espaces vectoriels
 %--------------------------------------------------
 
+\newcommand{\somdir}{\mathop{\oplus}\nolimits}
+\newcommand{\Somdir}{\mathop{\oplus}\limits}
+%\newcommand{\somDir}{\mathop{\bigoplus}\nolimits}
+%\newcommand{\SomDir}{\mathop{\bigoplus}\limits}
 
+\newcommand{\lin}[1]{\mathcal{L}(#1)}
+\newcommand{\Lin}[2]{\mathcal{L}(#1,#2)}
+
+\newcommand{\LEF}[1][E,F]{\mathcal{L}(#1)}
+\newcommand{\LE}[1][E]{\mathcal{L}(#1)}
+\newcommand{\LK}[2][K]{\mathcal{L}_{\#1}(#2)}
 
 \newcommand{\SE}[1][E]{\mathscr{S}(#1)}
   % ensemble des endomorphismes symétriques sur #1, E par défaut
@@ -410,7 +420,7 @@ title=Corollaire  \bfseries{#1}}
 \newcommand{\AnR}[1][\R]{\mathscr{A}_n(#1)}
   % ensemble des matrices antisymétriques d'ordre n sur #1, \R par défaut
 
-\newcommand{\LE}[1][E]{\mathcal{L}(#1)}
+
 \newcommand{\GLE}[1][E]{\mathcal{GL}(#1)}
   % groupe des automorphismes de #1, par défaut E
 \newcommand{\GLK}[2][K]{\mathcal{GL}_{\#1}(#2)}
