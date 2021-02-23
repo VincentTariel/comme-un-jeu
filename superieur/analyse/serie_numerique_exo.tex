@@ -20,22 +20,22 @@
 
 \begin{Correction}
     \begin{enumerate}
-    \item on a : $$\frac{u_{n+1}}{u_n} =\frac{n+1}{3n}\tend[n\to\infty]\frac{1}{3}$$ D'après le critère de d'Alembert, la série est convergente.
+    \item on a : $$\frac{u_{n+1}}{u_n} =\frac{n+1}{3n}\xrightarrow[n\to\infty]{}\frac{1}{3}$$ D'après le critère de d'Alembert, la série est convergente.
         \item $\sum \frac{n}{n^3+1}$ est une série à termes positifs. On a :
-$$\frac{n}{n^3+1}\Sim_{n\to\infty}\frac{1}{n^2}.$$
+$$\frac{n}{n^3+1}\sim_{n\to\infty}\frac{1}{n^2}.$$
 Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \frac{n}{n^3+1}$ est convergente par règle de comparaison.
         \item $\sum \frac{\sqrt n}{n^2+\sqrt n}$ est une série à termes positifs. On a :
-$$\frac{\sqrt n}{n^2+\sqrt n} =\frac{\sqrt n}{n^2(1 +\sqrt n /n^2)}  \Sim_{n\to\infty}\frac{1}{n^{3/2}}.$$
+$$\frac{\sqrt n}{n^2+\sqrt n} =\frac{\sqrt n}{n^2(1 +\sqrt n /n^2)}  \sim_{n\to\infty}\frac{1}{n^{3/2}}.$$
 Comme la série de Riemann $\sum \frac{1}{n^{3/2}}$ est convergente, la série $\sum \frac{n}{n^3+1}$ est convergente par règle d'équivalence.
-\item Comme  $ n\sin(1/n)\Sim_{n\to\infty} 1$, le terme générale de série ne converge pas vers 0, donc la série diverge grossièrement.
+\item Comme  $ n\sin(1/n)\sim_{n\to\infty} 1$, le terme générale de série ne converge pas vers 0, donc la série diverge grossièrement.
 \item $\sum \frac{1}{\sqrt{n}}\ln\left(1+\frac{1}{\sqrt{n}}\right)$ est une série à termes positifs. On a :
-$$\frac{1}{\sqrt{n}}\ln\left(1+\frac{1}{\sqrt{n}}\right)   \Sim_{n\to\infty}\frac{1}{n}.$$ 
+$$\frac{1}{\sqrt{n}}\ln\left(1+\frac{1}{\sqrt{n}}\right)   \sim_{n\to\infty}\frac{1}{n}.$$ 
 Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum \frac{1}{\sqrt{n}}\ln\left(1+\frac{1}{\sqrt{n}}\right)$  est divergente par règle d'équivalence.
 \item $\sum \frac{\sqrt n}{n^2+\sqrt n}$ est une série à termes positifs. On a :
-$$\frac{\sqrt {n+1}-\sqrt{n}}{n} =\frac{\sqrt{n}(\sqrt {1+1/n}-1)}{n}  \Sim_{n\to\infty}\frac{\sqrt{n}(\frac{1}{2n})}{n}\Sim_{n\to\infty}\frac{1}{2n^{3/2}}   .$$
+$$\frac{\sqrt {n+1}-\sqrt{n}}{n} =\frac{\sqrt{n}(\sqrt {1+1/n}-1)}{n}  \sim_{n\to\infty}\frac{\sqrt{n}(\frac{1}{2n})}{n}\sim_{n\to\infty}\frac{1}{2n^{3/2}}   .$$
 Comme la série de Riemann $\sum \frac{1}{n^{3/2}}$ est convergente, la série $\sum \frac{n}{n^3+1}$ est convergente par règle d'équivalence.
  \item $\sum \frac{(-1)^n +n}{n^2+1}$ est une série à termes positifs. On a :
-$$\frac{(-1)^n +n}{n^2+1}   \Sim_{n\to\infty}\frac{1}{n}.$$ 
+$$\frac{(-1)^n +n}{n^2+1}   \sim_{n\to\infty}\frac{1}{n}.$$ 
 Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum \frac{(-1)^n +n}{n^2+1}$  est divergente par règle d'équivalence.
  \item  
  
@@ -49,7 +49,7 @@ $$u_n=\ln\left(1+\frac{1}{n}+\frac{1}{n^2}\right)-\ln\left(1+\frac{1}{n}-\frac{1
 $$u_n=\ln\left(1+\frac{1}{n}+\frac{1}{n^2}\right)-\ln\left(1+\frac{1}{n}-\frac{1}{n^2}\right)$$
 $$u_n=\left(\frac{1}{n}+\frac{1}{n^2}\right)-\frac{\left(\frac{1}{n}+\frac{1}{n^2}\right)^2}{2}-\left(\left(\frac{1}{n}-\frac{1}{n^2}\right)-\frac{\left(\frac{1}{n}-\frac{1}{n^2 }\right)^2}{2}\right)+ o\left(\frac{1}{n^2}\right)$$
 $$u_n=\left(\frac{1}{n}+\frac{1}{n^2}\right)-\frac{\left(\frac{1}{n}+\frac{1}{n^2}\right)^2}{2}-\left(\left(\frac{1}{n}-\frac{1}{n^2}\right)-\frac{\left(\frac{1}{n}-\frac{1}{n^2 }\right)^2}{2}\right)+ o\left(\frac{1}{n^2}\right)$$
-$$ u_n= \frac{2}{n^2} +o\left(\frac{1}{n^2}\right) \Sim_{n\to\infty}\frac{2}{n^2}$$
+$$ u_n= \frac{2}{n^2} +o\left(\frac{1}{n^2}\right) \sim_{n\to\infty}\frac{2}{n^2}$$
 \end{itemize}  
   
 Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \ln\left(\frac{n^2+n+1}{n^2+n-1}\right)$ converge par règle de comparaison.
@@ -61,7 +61,7 @@ Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum
     \begin{enumerate}
         \item  $u_n=\frac{1}{n+(-1)^n\sqrt{n}}$
         \item $u_n=\left(\frac{n+3}{2n+1}\right)^{\ln n}$
-        \item  $u_n=\frac{1}{\ln(n)\ln(\ch n)}$
+        \item  $u_n=\frac{1}{\ln(n)\ln(\text{ch} n)}$
         \item  $u_n=e-\left(1+\frac{1}{n}\right)^n$
       \end{enumerate}      
        
@@ -71,18 +71,18 @@ Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum
 \begin{Correction}
     \begin{enumerate}
         \item $\sum \frac{1}{n+(-1)^n\sqrt{n}}$ est une série à termes positifs. On a :
-$$\frac{1}{n+(-1)^n\sqrt{n}} = \frac{1}{n(1+(-1)^n\sqrt{n}/n)}\Sim_{n\to\infty}\frac{1}{n}.$$
+$$\frac{1}{n+(-1)^n\sqrt{n}} = \frac{1}{n(1+(-1)^n\sqrt{n}/n)}\sim_{n\to\infty}\frac{1}{n}.$$
 Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum \frac{1}{n+(-1)^n\sqrt{n}}$ est divergente par règle de comparaison.
         \item $\sum \left(\frac{n+3}{2n+1}\right)^{\ln n}$ est une série à termes positifs. On a :
-$$\left(\frac{n+3}{2n+1}\right)^{\ln n} =e^{\ln(n)\ln\left(\frac{n+3}{2n+1}\right) } \Sim_{n\to\infty}e^{\ln(n)\ln\left(\frac{1}{2}\right) }\Sim_{n\to\infty}\frac{1}{n^{\ln 2}} .$$
+$$\left(\frac{n+3}{2n+1}\right)^{\ln n} =e^{\ln(n)\ln\left(\frac{n+3}{2n+1}\right) } \sim_{n\to\infty}e^{\ln(n)\ln\left(\frac{1}{2}\right) }\sim_{n\to\infty}\frac{1}{n^{\ln 2}} .$$
 Comme la série de Riemann $\sum \frac{1}{n^{\ln 2}}$ est divergente, la série $\sum \left(\frac{n+3}{2n+1}\right)^{\ln n}$ est divergente par règle de comparaison.
-\item $\sum\frac{1}{\ln(n)\ln(\ch n)}$ est une série à termes positifs. On a :
-$$\ln(\ch(n)) = \ln\left(  \frac{e^n+e^{-n}}{2}\right)\Sim_{n\to\infty}\ln(e^n/2  )\Sim_{n\to\infty}n-2\Sim_{n\to\infty}n.$$
+\item $\sum\frac{1}{\ln(n)\ln(\text{ch} n)}$ est une série à termes positifs. On a :
+$$\ln(\text{ch}(n)) = \ln\left(  \frac{e^n+e^{-n}}{2}\right)\sim_{n\to\infty}\ln(e^n/2  )\sim_{n\to\infty}n-2\sim_{n\to\infty}n.$$
 Étudions la nature de la série $\sum \frac{1}{\ln(n)n}$ à l'aide d'une comparaison série intégrale.\\
 La fonction $x\rightarrow x\ln x$ est continue, croissante et strictement positive sur $]1,+\infty[$ (produit de deux fonctions strictement positives et croissantes sur $]1,+\infty[$). Par suite, la fonction $x\rightarrow\frac{1}{x\ln x}$ est continue, décroissante sur $]1,+\infty[$ et de limite 0 en l'infini. Les hypothèses étant vérifiée, la série $\sum \frac{1}{\ln(n)n}$ est de même nature que la suite $\left(\int_{2}^n \frac{1}{x\ln x}dx\right)=\left(\ln(\ln(n))-2\right)$. Cette suite diverge donc la série aussi.\\
-Enfin par théorème de comparaison, la série $\sum\frac{1}{\ln(n)\ln(\ch n)}$ diverge.
+Enfin par théorème de comparaison, la série $\sum\frac{1}{\ln(n)\ln(\text{ch} n)}$ diverge.
 \item On a :
-$$ e-\left(1+\frac{1}{n}\right)^n=e-e^{n\ln(1+\frac{1}{n})}=e-e^{n(\frac{1}{n}-\frac{1}{2n^2}+O(\frac{1}{n^2}))}=e(1-e^{-\frac{1}{2n}+O(\frac{1}{n})})\Sim_{n\to\infty}\frac{e}{2n}  $$
+$$ e-\left(1+\frac{1}{n}\right)^n=e-e^{n\ln(1+\frac{1}{n})}=e-e^{n(\frac{1}{n}-\frac{1}{2n^2}+O(\frac{1}{n^2}))}=e(1-e^{-\frac{1}{2n}+O(\frac{1}{n})})\sim_{n\to\infty}\frac{e}{2n}  $$
 Comme la série de Riemann $\sum \frac{1}{n}$ est divergente, la série $\sum e-\left(1+\frac{1}{n}\right)^n$ est divergente par règle de comparaison.
     \end{enumerate}
 \end{Correction}
@@ -100,7 +100,7 @@ Etudier la convergence des séries $\sum u_n$ suivantes :
 \begin{Correction}
     \begin{enumerate}
         \item $\sum \frac{\sin(\frac 1 n)}{n}$ est une série à termes positifs (SATP). On a :
-$$\frac{\sin(\frac 1 n)}{n}\Sim_{n\to\infty}\frac{\frac 1 n}{n}=\frac{1}{n^2}.$$
+$$\frac{\sin(\frac 1 n)}{n}\sim_{n\to\infty}\frac{\frac 1 n}{n}=\frac{1}{n^2}.$$
 Comme la série de Riemann $\sum \frac{1}{n^2}$ est convergente, la série $\sum \frac{\sin(\frac 1 n)}{n}$ est convergente par règle de comparaison.
 	   \item 	Étudions la nature de SATP $\sum \frac{|\sin(n)+\cos(n)|}{n^2}$. On a :
 	   $$\frac{|\sin(n)+\cos(n)|}{n^2} \leq \frac{2}{n^2}.$$
@@ -140,7 +140,7 @@ $$\ln(n+1)\leq H_n\leq 1+\ln(n).$$
 $$ \int_{1}^{n+1}\frac{1}{x}dx=\ln(n+1) \leq H_n \leq 1 + \int_{1}^{n}\frac{1}{x}dx=1 + \ln(n)$$.
 \item On divise ces inégalités par $\ln(n)$ :
 $$1 + \ln(1+1/n) \leq H_n/\ln(n) \leq 1+1/\ln(n).$$
-Les deux extrémités tendent vers 1 donc   $H_n \Sim_{n\to\infty} \ln(n).$
+Les deux extrémités tendent vers 1 donc   $H_n \sim_{n\to\infty} \ln(n).$
 \item $v_{n}-v_{n-1}=H_n-H_{n-1}-  \ln(n) + \ln(n-1)= \frac{1}{n}+\ln\left(1-\frac 1n\right).$
 \item On a $\ln(1-x)\leq -x$. D'où $x+\ln(1-x)\leq 0$. Ainsi $(v_n)$ est décroissante car $v_{n}-v_{n-1}\leq 0$. 
 \item D'après l'inégalité de la question 1 on $0\geq \ln(n+1)-\ln(n)\leq H_n - \ln(n)$. La suite $(v_n)=(H_n-\ln(n))$ est minorée et décroissante donc convergente.
@@ -228,7 +228,7 @@ Soit $\sum u_n$ une série à termes positif convergente.\\
 Démontrer que la suite $\left(\prod_{k=0}^n (1+u_k)\right)$ est convergente.
 \begin{Correction}
 On a $\ln(\prod_{k=0}^n (1+u_k))=\sum_{k=0}^n \ln( (1+u_k))$. 
-Comme la série $\sum u_n$ converge, on a $u_n\xrightarrow[n\to\infty]{}0$ d'où $\ln(1+u_n)\Sim_{n\to\infty}u_n$. La série à  termes positifs  $\sum \ln (1+u_n)$ est convergente car $\sum u_n$ est convergente. Comme la fonction $\ln$ est continue, la suite $\left(\prod_{k=0}^n (1+u_k)\right)$ est convergente.
+Comme la série $\sum u_n$ converge, on a $u_n\xrightarrow[n\to\infty]{}0$ d'où $\ln(1+u_n)\sim_{n\to\infty}u_n$. La série à  termes positifs  $\sum \ln (1+u_n)$ est convergente car $\sum u_n$ est convergente. Comme la fonction $\ln$ est continue, la suite $\left(\prod_{k=0}^n (1+u_k)\right)$ est convergente.
 \end{Correction}
 \end{Exercice}
 \end{document}

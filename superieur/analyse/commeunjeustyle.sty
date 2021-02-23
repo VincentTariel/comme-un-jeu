@@ -23,6 +23,7 @@
 \usepackage{geometry}
 \usepackage{pgfplots}
 \usepackage[most]{tcolorbox}
+\usepackage[colorlinks = true,urlcolor  = colorprop]{hyperref}
 
 \geometry{hmargin=2cm,vmargin=1.5cm}
 \pagestyle{fancy}
@@ -71,59 +72,105 @@
 \subsubsectionfont{\color{black}}
 
 
-\newcommand{\definebox}[3]{%
-  \newcounter{#1}
-  \newenvironment{#1}[1][]{%
-    \stepcounter{#1}%
-    \mdfsetup{%
-        frametitle={%
-            \tikz[baseline=(current bounding box.east),outer sep=0pt]
-            \node[anchor=east,rectangle,fill=white]
-            {\strut \color{#3}\MakeUppercase#2~\csname \endcsname\ifstrempty{##1}{}{:~##1}};}}%
-    \mdfsetup{innertopmargin=10pt,linecolor=#3,%
-        linewidth=1pt,topline=true,roundcorner=5pt,
-        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}%
-    \begin{mdframed}[]\ignorespaces\relax
-    }{\end{mdframed}}%
-    \ignorespaces
+
+
+
+\newtcolorbox{Demonstration}[1][]{
+	enhanced,
+	attach boxed title to top left={yshift=-0.1in,xshift=-0.1in},
+	boxed title style={colframe=white },
+    breakable,
+	colback=white,
+	colbacktitle=white,
+	coltitle=colorprop,
+	bottomrule=0pt,
+	toprule=0pt,
+	leftrule=1pt,
+	rightrule=0pt,
+	titlerule=0pt,
+	arc=0pt,
+	outer arc=0pt,
+	colframe=colorprop, 
+	title= Démonstration
 }
-\newcommand{\defineboxx}[3]{%
-  \newcounter{#1}
-  \newenvironment{#1}[1][]{%
-    \stepcounter{#1}%
-    \mdfsetup{%
-        frametitle={%
-            \hspace*{-40pt}\tikz[baseline=(current bounding box.east),outer sep=0pt]
-            \node[anchor=east,rectangle,fill=white]
-            {\strut \MakeUppercase#2~\csname \endcsname\ifstrempty{##1}{}{:~##1}};}}%
-    \mdfsetup{innertopmargin=0pt,linecolor=#3,%
-        linewidth=1pt,topline=false,innerleftmargin=20pt,bottomline=false,rightline=false,
-        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}%
-    \begin{mdframed}[]\relax%
-    }{\end{mdframed}}%
-}
-\newcommand{\defineboxxx}[3]{%
-  \newcounter{#1}
-  \newenvironment{#1}[1][]{%
-    \stepcounter{#1}%
-    \mdfsetup{%
-        frametitle={%
-            \hspace*{-40pt}\tikz[baseline=(current bounding box.east),outer sep=0pt]
-            \node[anchor=east,rectangle,fill=white]
-            {\strut \MakeUppercase#2~\csname \endcsname\ifstrempty{##1}{}{:~##1}};}}%
-    \mdfsetup{innertopmargin=0pt,linecolor=#3,%
-        linewidth=1pt,topline=false,innerleftmargin=20pt,bottomline=false,rightline=false,leftline=false,
-        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}%
-    \begin{mdframed}[]\relax%
-    }{\end{mdframed}}%
+\newtcolorbox{Exemple}[1][]{
+	enhanced,
+	attach boxed title to top left={yshift=-0.1in,xshift=-0.2in},
+	boxed title style={colframe=white },
+    breakable,
+	colback=white,
+	colbacktitle=white,
+	coltitle=black,
+	bottomrule=0pt,
+	toprule=0pt,
+	leftrule=1pt,
+	rightrule=0pt,
+	titlerule=0pt,
+	arc=0pt,
+	outer arc=0pt,
+	colframe=black, 
+	title= Exemple  \bfseries{#1}
 }
 
-\defineboxx{Demonstration}{Démonstration}{colorprop}
-\defineboxx{Exemple}{Exemple}{black}
-\defineboxx{Activite}{Activité}{black}
-\defineboxxx{Remarque}{Remarque}{black}
-\defineboxx{Exercice}{Exercice}{black}
-\usepackage[colorlinks = true,urlcolor  = colorprop]{hyperref}
+\newtcolorbox{Activite}[1][]{
+	enhanced,
+	attach boxed title to top left={yshift=-0.1in,xshift=-0.2in},
+	boxed title style={colframe=white },    
+    breakable,
+	colback=white,
+	colbacktitle=white,
+	coltitle=black,
+	bottomrule=0pt,
+	toprule=0pt,
+	leftrule=1pt,
+	rightrule=0pt,
+	titlerule=0pt,
+	arc=0pt,
+	outer arc=0pt,
+	colframe=black, 
+	title= Activité  \bfseries{#1}
+}
+\newtcolorbox{Remarque}[1][]{
+	enhanced,
+	attach boxed title to top left={yshift=-0.1in,xshift=-0.2in},
+	boxed title style={colframe=white },    
+    breakable,
+	colback=white,
+	colbacktitle=white,
+	coltitle=black,
+	bottomrule=0pt,
+	toprule=0pt,
+	leftrule=1pt,
+	rightrule=0pt,
+	titlerule=0pt,
+	arc=0pt,
+	outer arc=0pt,
+	colframe=black, 
+	title= Remarque  \bfseries{#1}
+}
+\newtcolorbox{Exercice}[1][]{
+	enhanced,
+	attach boxed title to top left={yshift=-0.1in,xshift=-0.2in},
+	boxed title style={colframe=white },    
+    breakable,
+	colback=white,
+	colbacktitle=white,
+	coltitle=black,
+	bottomrule=0pt,
+	toprule=0pt,
+	leftrule=1pt,
+	rightrule=0pt,
+	titlerule=0pt,
+	arc=0pt,
+	outer arc=0pt,
+	colframe=black, 
+	title= Exercice  \bfseries{#1}
+}
+
+
+
+
+
 \newenvironment{Texte}{}{}
 \newenvironment{Figure}{}{}
 \newenvironment{Titre}{}{}
@@ -131,7 +178,7 @@
    
 \newcommand{\defi}[1]{\textbf{\textcolor{colordef}{#1}}} 
 \newcommand{\propri}[1]{\textbf{\textcolor{colorprop}{#1}}}
-\newcommand{\impo}[1]{\textbf{\textcolor{colorprop}{#1}}}
+\newcommand{\impo}[1]{\textbf{\textcolor{black}{#1}}}
 
 \newtcolorbox{Definition}[1][]{
                 lower separated=false,
@@ -296,13 +343,13 @@ title=Corollaire  \bfseries{#1}}
 % Limites
 %--------------------------------------------------
 
-\def\buildrel#1_#2^#3{\mathrel{\mathop{\kern 0pt#1}\limits_{#2}^{#3}}}
+%\def\buildrel#1_#2^#3{\mathrel{\mathop{\kern 0pt#1}\limits_{#2}^{#3}}}
   % définit une macro pour mettre #2 en dessous et #3 au dessus de #1
-\newcommand{\tend}[1][n]{\buildrel{\longrightarrow}_{#1}^{}}
+%\newcommand{\tend}[1][n]{\buildrel{\longrightarrow}_{#1}^{}}
   % -> avec un "n" dessous par défaut
-\newcommand{\tendpas}[1][n]{\buildrel{\not\longrightarrow}_{#1}^{}}
+%\newcommand{\tendpas}[1][n]{\buildrel{\not\longrightarrow}_{#1}^{}}
   % /-> avec un "n" dessous par défaut
-\newcommand{\equivalent}[1][n]{\buildrel{\sim}_{#1}^{}}
+%\newcommand{\equivalent}[1][n]{\buildrel{\sim}_{#1}^{}}
   % le signe "équivalent" avec un "n" dessous par défaut
 
 

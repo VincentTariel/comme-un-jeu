@@ -1326,12 +1326,12 @@ Soit $(X_n)_{n\in\N^*}$ une suite de variables aléatoires indépendantes et de 
 type $\sigma$.\\
 On pose $S_n =\frac{X_1+X_2+\dots+X_n}{n}.$\\
 Alors 
-$$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon \right )\tend[n\to+\infty]0.$$
+$$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon \right )\xrightarrow[n\to+\infty]{}0.$$
 On dit que la suite des variables aléatoires $(s_n)$ \defi{converge en probabilité} vers $m$. 
 \end{Theoreme}
 \begin{Demonstration}
 D'après l'inégalité de Bienaymé-Tchebychev et par indépendance des variables aléatoires,
-$$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon\right)\leq \frac{V(S_n)}{\epsilon^2}=\frac{\frac{V(X_1+X_2+\dots+X_n)}{n^2}}{\epsilon^2}=\frac{\sigma^2}{n\epsilon^2} \tend[n\to+\infty]0.$$
+$$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon\right)\leq \frac{V(S_n)}{\epsilon^2}=\frac{\frac{V(X_1+X_2+\dots+X_n)}{n^2}}{\epsilon^2}=\frac{\sigma^2}{n\epsilon^2} \xrightarrow[n\to+\infty]{}0.$$
 \end{Demonstration}
 
 

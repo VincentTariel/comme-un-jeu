@@ -741,13 +741,7 @@ $$\lim_{\vec{x}\to\vec{a} } f(\vec{x})= \vec{l}.$$
 Soit $\Fonction{f}{\R\setminus \{0\}}{\R}{x}{\frac{\sin x }{x}} $.\\
  $0$ est adhérent à $\R\setminus \{0\}$ et la fonction admet $1$ pour limite en $0$ du fait du développement limité à l'ordre 1 en 0 de la fonction sinus ($\sin x = x + o(x)$, d'où $\frac{\sin x}{x} = 1 + o(1)$).
 \end{Exemple}
-\begin{Remarque}
-\begin{itemize}
-\item Si une suite converge, alors sa limite est unique.
-\item Si une suite converge, alors elle est bornée.
-\item Si une suite converge, alors toute suite extraite converge.
-\end{itemize}
-\end{Remarque}
+%TODO AUTRE Exemple par exemple racine(x) limite en 0
 
 %\begin{Exemple}
 %Soit $\Fonction{f}{\R\setminus \{0\}}{\R}{x}{\frac{\sin x }{x}} $.\\
@@ -783,7 +777,7 @@ Soit $f:A\to F$.\\
 On dit que $f$ est \defi{continue en $\vec{a}\in A$} si $\lim\limits_{\vec{x}\to\vec{a} } f(\vec{x})= f(\vec{a})$.\\
 On dit que $f$ est \defi{continue} si elle est continue en tout point de $A$.
 \end{Definition}
-\begin{Definition}[Opérations sur les fonctions continues]
+\begin{Proposition}[Opérations sur les fonctions continues]
 Soit $E$, $F$ et $G$ trois espaces vectoriels normés et $A\subset E, B\subset F$.
 \begin{itemize}
 \item \textit{Combinaison linéaire} :  soit $f:A\to F$ et $g:A\to F$ et $\lambda,\mu\in\K$.\\
@@ -799,7 +793,7 @@ Alors $\frac{f}{g}$ est continue en $\vec{a}$ (ou sur $A$).
 Si $f$ est continues en $\vec{a}\in A$ et $g$ est continue en $f(\vec{a})$,\\
 Alors $g\circ f$ est continue en $\vec{a}$.
 \end{itemize}
-\end{Definition}
+\end{Proposition}
 \begin{Proposition}[Continuité et coordonnées]
 Soit $E$ et $F$ deux espaces vectoriels normés avec $F$ de dimension finie avec $\mathcal{B}=(\vec{e_1},\dots, \vec{e_p})$ une base de $F$.\\
 Soit $f:A\to F$ avec $A\subset E$.

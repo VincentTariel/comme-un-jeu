@@ -148,7 +148,7 @@ Alors la série numérique $\sum a_n z^n$ diverge grossièrement pour tout $z\in
 \end{Lemme}
 \begin{Demonstration}
 Fixons $|z|\geq  |z_{0}|$.\\
-$$ \forall n\in \N: \quad |a_{n}\,z^{n}|=\left|a_{n}\,z_{0}^{n}\right|\left|\frac {z}{z_{0}}\right|^{n}\geq\left|a_{n}\,z_{0}^{n}\right|\tend[n\to\infty]\infty\text{ car }(a_n z_0^n)_{n\in \N }\text{ n'est pas bornée}.$$
+$$ \forall n\in \N: \quad |a_{n}\,z^{n}|=\left|a_{n}\,z_{0}^{n}\right|\left|\frac {z}{z_{0}}\right|^{n}\geq\left|a_{n}\,z_{0}^{n}\right|\xrightarrow[n\to\infty]{}\infty\text{ car }(a_n z_0^n)_{n\in \N }\text{ n'est pas bornée}.$$
 Le terme général de la série ne converge  pas vers 0, donc la série numérique $\sum a_n z^n$ diverge grossièrement.
 \end{Demonstration}
 Si on note $R$, la borne supérieur des rayons telle que la suite $(|a_n| r^n)_{n\in\N}$ est bornée, alors 
@@ -278,9 +278,9 @@ respectivement $R_a$ et $R_b$.
 \item
   Si $|a_n| \leq  |b_n| $ à partir d'un certain rang, alors $R_a\geq R_b$.
 \item
-  Si $|a_n| = \PetitO \left(  |b_n| \right)$   quand $n\to+\infty $, alors $R_a\geq R_b$.
+  Si $|a_n| = o \left(  |b_n| \right)$   quand $n\to+\infty $, alors $R_a\geq R_b$.
 \item
-  Si $|a_n| = \GrandO \left(  |b_n| \right)$   quand $n\to+\infty $, alors $R_a\geq R_b$.
+  Si $|a_n| = O \left(  |b_n| \right)$   quand $n\to+\infty $, alors $R_a\geq R_b$.
 \item
   S'il existe  $K>0$ tel que $|a_n| \sim K  |b_n|$ quand $n\to+\infty $, alors $R_a = R_b$.
 \end{enumerate}
@@ -488,7 +488,7 @@ Cette égalité $0=\sum_{n=0}^{+\infty} 0 x^n$ est importante.
 \end{Remarque}
 
 \begin{Corollaire}[développement limitée]
-Si $$\forall x \in] - r, r [,\quad f(x)=\sum_{n=0}^{+\infty} a_n x^n$$alors on a : $$\forall x \in] - r, r [,\quad f(x)=\sum_{n=0}^N a_n x^n+\PetitO(x^N).$$
+Si $$\forall x \in] - r, r [,\quad f(x)=\sum_{n=0}^{+\infty} a_n x^n$$alors on a : $$\forall x \in] - r, r [,\quad f(x)=\sum_{n=0}^N a_n x^n+o(x^N).$$
 \end{Corollaire}
 \subsection{Méthodes pratiques}
 \begin{enumerate}
@@ -555,8 +555,8 @@ On a aussi :\\
 \begin{tabular}{l|ll}
 $R=\infty$ & $\forall x \in\R:$& $\cos x  = \sum\limits_{n=0}^{+\infty} \frac{(-1)^n}{(2n)!} \, x^{2n}$\\ \hline
 $R=\infty$ & $\forall x \in\R:$&$\sin x  =  \sum\limits_{n=0}^{+\infty} \frac{(-1)^n}{(2n+1)!} \, x^{2n+1}$\\ \hline
-$R=\infty$ & $\forall x \in\R: $&$\ch x =  \sum\limits_{n=0}^{+\infty} \frac{1}{(2n)!} \, x^{2n}$\\ \hline
-$R=\infty$ & $\forall x \in\R:$&$ \sh x =  \sum\limits_{n=0}^{+\infty} \frac{1}{(2n+1)!} \, x^{2n+1}$\\ \hline
+$R=\infty$ & $\forall x \in\R: $&$\text{ch} x =  \sum\limits_{n=0}^{+\infty} \frac{1}{(2n)!} \, x^{2n}$\\ \hline
+$R=\infty$ & $\forall x \in\R:$&$ \text{sh} x =  \sum\limits_{n=0}^{+\infty} \frac{1}{(2n+1)!} \, x^{2n+1}$\\ \hline
 $R=1$ & $\forall x \in]-1,1[:$&$ \frac{1}{1+x} = \sum\limits_{n=0}^{+\infty} (-1)^n \, x^{n}$\\ \hline
 $R=1$ & $\forall x \in]-1,1[:$&$ \ln(1+x) =  \sum\limits_{n=0}^{+\infty} \frac{(-1)^{n+1}}{n} \, x^{n}$
 \end{tabular}

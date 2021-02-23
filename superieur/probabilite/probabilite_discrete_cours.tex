@@ -508,7 +508,7 @@ P(X_n = k) &= \begin{pmatrix}n \\ k \end{pmatrix} (p_n)^k (1-p_n)^{n-k}\\
 &= \frac{1}{k!} n.(n-1).\dots (n-k+1)(p_n)^k (1-p_n)^{n-k} \\
 &= \frac{1}{k!} 1.(1-1/n).\dots (1-(k+1)/n)(p_n/n)^k (1-p_n)^{n-k} \\
 \end{aligned}$$
-D'une part  $\overbrace{1.(1-1/n).\dots (1-(k+1)/n)}^{k \text{ facteurs fixes}}\tend[n\to+\infty]1$, d'autre part $(p_n/n)^k\tend[n\to+\infty] \lambda^k$ et enfin $(1-p_n)^{n-k}=e^{(n-k)\ln(1-p_n)}\tend[n\to+\infty] e^{-\lambda}$ car $(n-k)\ln(1-p_n)\equivalent[n\to+\infty] -np_n$. Finalement
+D'une part  $\overbrace{1.(1-1/n).\dots (1-(k+1)/n)}^{k \text{ facteurs fixes}}\xrightarrow[n\to+\infty]{}1$, d'autre part $(p_n/n)^k\xrightarrow[n\to+\infty]{} \lambda^k$ et enfin $(1-p_n)^{n-k}=e^{(n-k)\ln(1-p_n)}\xrightarrow[n\to+\infty]{} e^{-\lambda}$ car $(n-k)\ln(1-p_n)\sim{\infty} -np_n$. Finalement
 $$\lim\limits_{n\to\infty} P(X_n = k) = e^{-\lambda}\frac{\lambda^k}{k!}.$$
 \end{Demonstration}
 %TODO DEMO
@@ -557,11 +557,11 @@ Soit $(X_n)_{n\in\N^*}$ une suite de variables aléatoires discrètes définies 
 suppose toutes les variables indépendantes et de même loi, admettant une espérance $m$ et un écart
 type $\sigma$. Posons $S_n =\frac{X_1+X_2+\dots+X_n}{n}.$\\
 Alors 
-$$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon \right )\tend[n\to+\infty]0.$$
+$$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon \right )\xrightarrow[n\to+\infty]{}0.$$
 \end{Theoreme}
 \begin{Demonstration}
 D'après l'inégalité de Bienaymé-Tchebychev et par indépendance des variables aléatoires,
-$$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon\right)\leq \frac{V(S_n)}{\epsilon^2}=\frac{\frac{V(X_1+X_2+\dots+X_n)}{n^2}}{\epsilon^2}=\frac{\sigma^2}{n\epsilon^2} \tend[n\to+\infty]0.$$
+$$ \forall \epsilon>0: \quad P\left(\left| S_n - m \right|\geq \epsilon\right)\leq \frac{V(S_n)}{\epsilon^2}=\frac{\frac{V(X_1+X_2+\dots+X_n)}{n^2}}{\epsilon^2}=\frac{\sigma^2}{n\epsilon^2} \xrightarrow[n\to+\infty]{}0.$$
 \end{Demonstration}
 \begin{Remarque}
 Le TP Python \url{https://github.com/VincentTariel/cours/blob/master/probabilite/simulation_variable_aleatoire_avtivite_python.pdf} permet de vous familiariser avec ce théorème sur des applications.

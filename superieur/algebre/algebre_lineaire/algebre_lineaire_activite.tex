@@ -3,12 +3,15 @@
 \usepackage{commeunjeustyle} 
 
 \begin{document}
-\chapter*{Activité de découverte de l'algèbre linéaire}
+
+\chapter*{Exemple fil de rouge de l'algèbre linéaire}
+
+\begin{Texte}
 L'algèbre linéaire est un outil essentiel pour toutes les branches des mathématiques, en particulier lorsqu'il s'agit
 de modéliser puis résoudre numériquement des problèmes issus de divers domaines : des sciences physiques ou
 mécaniques, des sciences du vivant, de la chimie, de l'économie, des sciences de l'ingénieur...\\
 Cette exemple introductif permet de présenter les \impo{différentes représentations} de l'objet mathématique système d'équations linéaires.
-
+\end{Texte}
 \begin{Exemple}
 Problème : la somme des tailles d'un fils et du père est de 2,5 mètres. La différence de tailles  est de 0.5 mètres.
 Quel est la taille du fils ? \\
@@ -112,13 +115,13 @@ Dans notre exemple, comme les vecteurs normaux aux deux droites $\begin{pmatrix}
 \end{pmatrix}$ ne sont pas colinéaires, les deux droites ne sont pas parallèles et donc admettent un unique point d'intersection.
 \begin{center}
 \begin{tikzpicture}[scale=0.5]
-\draw[step=1cm,gray,very thin] (-2,-2) grid (6,6);
+%\draw[step=1cm,gray,very thin] (-2,-2) grid (6,6);
 \draw[thick,->] (-2,0) -- (6,0)node[anchor=west] {$x$};
 \draw[thick,->] (0,-2) -- (0,6)node[anchor=south] {$y$};
-\foreach \x in {-2,-1,0,1,2,3,4,5}
-   \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
-\foreach \y in {-2,-1,0,1,2,3,4,5}
-    \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east] {$\y$};
+%\foreach \x in {-2,-1,0,1,2,3,4,5}
+%   \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
+%\foreach \y in {-2,-1,0,1,2,3,4,5}
+%    \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east] {$\y$};
 \draw[-,color=red] (-2,-1.5) -- (5.5,6)node[anchor=south] {$D_1 : y=x+0,5$};
 \draw[-,color=blue] (-2,4.5) -- (4.5,-2)node[anchor=north] {$D_2 : y=-x+2,5$};
 
@@ -127,9 +130,8 @@ Dans notre exemple, comme les vecteurs normaux aux deux droites $\begin{pmatrix}
 \draw[->,color=blue] (1.75,0.75) -- (2.75,1.75)node[anchor=south] {$\begin{pmatrix}1\\1\end{pmatrix}$};
 \end{tikzpicture}	
 \end{center}
-Ainsi l'ensemble des solution admet une unique solution. Par lecture graphique, l'unique solution est $(1 , 1,5 )$.\\
+Ainsi l'ensemble des solution admet une unique solution. Par lecture graphique, l'unique solution est $(1 , 1,5 )$.
 La notion de vecteurs normaux sera l'objet du chapitre \impo{espaces préhilbertiens}. 
-
 \section{Calcul matricielle}
 On sait résoudre par de simples opérations algébriques une équation linéaire à une inconnue. Par exemple, pour l'équation $2x+1=5$, on additionne l'opposé de $1$, soit $-1$ $$2x+1+(-1)=5+(-1)$$ ce qui donne $2x=4$, puis on multiple par l'inverse de 2, ce qui donne $x=2$.\\
 Une idée est de transformer le système de deux équations à deux inconnues à une équation à une inconnue. Cette transformation est une abstraction sur la nature des coefficients et des variables des équations : de \impo{réels} à  \impo{tableaux de nombres}.\\
@@ -207,7 +209,7 @@ $$ \begin{pmatrix}
 Par identification, l'ensemble des solution est de nouveau l'unique solution $x=1$ et $y=1,5$. 
 Les\impo{matrices} seront étudiées dans le chapitre \impo{matrices}. 
 \section{Espace vectoriel}
-Une idée est de transformer ce système deux équations à deux inconnues en un système d'une équation à deux inconnues. On a :\\
+Une idée est de transformer ce système de deux équations à deux inconnues en un système d'une équation à deux inconnues. On a :\\
 $$\begin{cases}
 {\color{red}x}+{\color{green}y}&={\color{blue}2,5}\\
 {\color{red}-x}+{\color{green}y}&={\color{blue}0,5}
@@ -223,6 +225,16 @@ $$\begin{cases}
  {\color{blue}2,5}   \\
  {\color{blue}0,5}  \\
 \end{pmatrix}$$
+Il s'agit de déterminer $x,y$ afin d'exprimer $\begin{pmatrix}
+ 2,5   \\
+ 0,5  \\
+\end{pmatrix}$  comme une combinaison linéaire de la famille des vecteurs $(\begin{pmatrix}
+ 1    \\
+ -1   \\
+\end{pmatrix},\begin{pmatrix}
+ 1   \\
+  1  \\
+\end{pmatrix})$. 
 \begin{center}
 \begin{tikzpicture}[general,scale=1.5]
 \draw [quadrillage] (-0.1,-1.1) grid (3,1.1);
@@ -249,57 +261,46 @@ $$\begin{cases}
 \end{pmatrix}$};
 \end{tikzpicture}
 \end{center}
-Il s'agit de déterminer $x,y$ afin d'exprimer $\begin{pmatrix}
- 2,5   \\
- 0,5  \\
-\end{pmatrix}$  comme combinaisons linéaires des vecteurs $\begin{pmatrix}
- 1    \\
- -1   \\
-\end{pmatrix}$ et $\begin{pmatrix}
- 1   \\
-  1  \\
-\end{pmatrix}$ (voir animation GeoGebra \url{https://www.geogebra.org/m/shsawcqc}). D'un point de vue mathématiques, on se pose trois questions :
+Avec GeoGebra \url{https://www.geogebra.org/m/shsawcqc}), on trouve l'unique couple $(x=1,y=1,5)$. D'un point de vue mathématiques, on se pose trois questions :
 \begin{enumerate}
-\item \impo{Existence:} la famille est \impo{génératrice} de $\R^2$, c'est à dire  
-pour tout vecteur de $\R^2$ il existe un couple $(x,y)$ tel que ce vecteur s'exprime comme combinaison linéaire de   $\begin{pmatrix}
+\item \impo{Existence:} la famille est-elle \impo{génératrice} de $\R^2$ ? C'est à dire, peut-on  exprimer tout vecteur de $\R^2$ comme  une combinaison linéaire de la famille des vecteurs $(\begin{pmatrix}
  1    \\
  -1   \\
-\end{pmatrix}$ et $\begin{pmatrix}
+\end{pmatrix},\begin{pmatrix}
  1   \\
   1  \\
-\end{pmatrix}$. Cela est vrai, en particulier pour le vecteur $\begin{pmatrix}
+\end{pmatrix})$ ? Si cela est vraie, alors, en particulier,  le vecteur $\begin{pmatrix}
  2,5   \\
  0,5  \\
-\end{pmatrix}$. Avec  GeoGebra, on trouve la couple $(x=1,y=1,5)$.
-\item \impo{Unicité:} la famille est \impo{libre},  , c'est à dire si un vecteur de $\R^2$ s'exprime comme combinaison linéaire de   $\begin{pmatrix}
+\end{pmatrix}$ s'exprime comme  une combinaison linéaire de la famille des vecteurs $(\begin{pmatrix}
+ 1    \\
+ -1   \\
+\end{pmatrix},\begin{pmatrix}
+ 1   \\
+  1  \\
+\end{pmatrix})$.
+\item \impo{Unicité:} la famille est-elle \impo{libre} ? Lorsque un vecteur de $\R^2$ s'exprime comme combinaison linéaire de   $\begin{pmatrix}
  1    \\
  -1   \\
 \end{pmatrix}$ et $\begin{pmatrix}
  1   \\
   1  \\
-\end{pmatrix}$ alors cette combinaison est unique. Cela est vrai, en particulier pour le vecteur $\begin{pmatrix}
+\end{pmatrix}$, y-a-il unicité de cette combinaison  linéaire ? Si cela est vraie, alors, en particulier, il y a unicité  de la combinaison linéaire pour exprimer le vecteur $\begin{pmatrix}
  2,5   \\
  0,5  \\
-\end{pmatrix}$,   on ne peut pas trouver un autre couple que $(x=1,y=1,5)$.\\
-\item \impo{Existence} et \impo{Unicité} : les vecteurs $\begin{pmatrix}
+\end{pmatrix}$.
+\item \impo{Existence} et \impo{Unicité} : la famille est-elle \impo{base} ? c'est à dire la famille est-elle \impo{génératrice et libre} ? c'est à dire peut-on  exprimer tout vecteur de $\R^2$ comme  une unique combinaison linéaire de la famille des vecteurs $(\begin{pmatrix}
  1    \\
  -1   \\
-\end{pmatrix}$ et $\begin{pmatrix}
+\end{pmatrix},\begin{pmatrix}
  1   \\
   1  \\
-\end{pmatrix}$ forment une \impo{base} de $\R^2$, c'est à dire que pour tout vecteur de $\R^2$ il existe un unique couple $(x,y)$ tel que ce vecteur s'exprime comme combinaison linéaire de   $\begin{pmatrix}
- 1    \\
- -1   \\
-\end{pmatrix}$ et $\begin{pmatrix}
- 1   \\
-  1  \\
-\end{pmatrix}$. Cela est vrai, en particulier pour le vecteur $\begin{pmatrix}
+\end{pmatrix})$ ?. Si cela est vraie, alors, en particulier, il y a existence et unicité  de la combinaison linéaire pour exprimer le vecteur $\begin{pmatrix}
  2,5   \\
  0,5  \\
-\end{pmatrix}$.  On a ainsi l'existence et l'unicité de la solution du système linéaire. \\
+\end{pmatrix}$ et l'ensemble des solutions est un unique couple.  
 \end{enumerate}
-L'étude des combinaisons linéaires sera fait dans le chapitre espaces vectoriels.\\
-   
+L'étude des combinaisons linéaires sera fait dans le chapitre sur les espaces vectoriels. 
 \section{Application linéaire}
 La dernière idée est de considérer le membre de gauche de l'équation comme l'image d'une fonction :
 \begin{center}
@@ -372,5 +373,21 @@ son étude est plus facile. Ainsi on peut démontrer qu'elle est bijective et qu
  {\color{blue}0,5}  \\
 \end{pmatrix}$. Le système admet une unique solution.\\
 L'étude des applications linéaires sera fait dans le chapitre \impo{applications linéaires}.
+
+
+
+
+%Système linéaire
+%matrices
+%espace vectoriel
+%application linéaires
+%matrices et applications linéaires
+%determinant
+%categories d'applications linéaires
+%polynome d'endomrophismes
+%reduction
+%espace prehilbertion
+%endomorphismes remarquables d’un espace euclidien
+
 
 \end{document}

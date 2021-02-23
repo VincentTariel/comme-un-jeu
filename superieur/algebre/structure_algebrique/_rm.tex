@@ -1,0 +1,78 @@
+\documentclass{book}
+\usepackage{commeunjeustyle}
+\newtcolorbox{Exemple1}[1][]{
+    breakable,
+	colback=white,
+	colbacktitle=white,
+	coltitle=black,
+	bottomrule=0pt,
+	toprule=0pt,
+	leftrule=1pt,
+	rightrule=0pt,
+	titlerule=0pt,
+	arc=0pt,
+	outer arc=0pt,
+	colframe=black, 
+	title= Exemple  \bfseries{#1},
+	enhanced,
+	attach boxed title to top left={yshift=-0.1in,xshift=-0.1in},
+	boxed title style={colframe=white }
+}
+
+
+\begin{document}
+\begin{Exemple1}[toto]%label=introduction
+L'enfant apprend d'abord : 
+\begin{itemize}
+\item à \impo{compter} le nombre d'objets en itérant l'ajout d'une unité à partir de 0 c'est à dire en construisant l'ensemble $\N$  avec l'opération "suivant"
+\begin{center}
+\begin{tikzpicture}
+\draw[color=colorprop] (0,0) rectangle (1,1);
+\node at (0.5,-0.3){$0$};
+\draw[color=colorprop] (1.5,0) rectangle (2.5,1);
+\draw[color=colordef] (2,0.5) circle (0.15);
+\node at (2,-0.3){$1$};
+\draw[color=colorprop] (3,0) rectangle (4,1);
+\draw[color=colordef] (3.3,0.2) circle (0.15);
+\draw[color=colordef] (3.7,0.7) circle (0.15);
+\node at (3.5,-0.3){$2$};
+\draw[color=colorprop] (4.5,0) rectangle (5.5,1);
+\draw[color=colordef] (4.8,0.75) circle (0.15);
+\draw[color=colordef] (4.7,0.2) circle (0.15);
+\draw[color=colordef] (5.3,0.5) circle (0.15);
+\node at (5,-0.3){$3$};
+\end{tikzpicture}
+\end{center}
+\end{itemize}
+\end{Exemple1}
+
+\begin{Exemple}%label=introduction
+L'enfant apprend d'abord : 
+\begin{itemize}
+\item à \impo{compter} le nombre d'objets en itérant l'ajout d'une unité à partir de 0 c'est à dire en construisant l'ensemble $\N$  avec l'opération "suivant"
+\begin{center}
+\begin{tikzpicture}
+\draw[color=colorprop] (0,0) rectangle (1,1);
+\node at (0.5,-0.3){$0$};
+\draw[color=colorprop] (1.5,0) rectangle (2.5,1);
+\draw[color=colordef] (2,0.5) circle (0.15);
+\node at (2,-0.3){$1$};
+\draw[color=colorprop] (3,0) rectangle (4,1);
+\draw[color=colordef] (3.3,0.2) circle (0.15);
+\draw[color=colordef] (3.7,0.7) circle (0.15);
+\node at (3.5,-0.3){$2$};
+\draw[color=colorprop] (4.5,0) rectangle (5.5,1);
+\draw[color=colordef] (4.8,0.75) circle (0.15);
+\draw[color=colordef] (4.7,0.2) circle (0.15);
+\draw[color=colordef] (5.3,0.5) circle (0.15);
+\node at (5,-0.3){$3$};
+\end{tikzpicture}
+\end{center}
+\end{itemize}
+\end{Exemple}
+
+
+
+
+
+\end{document}

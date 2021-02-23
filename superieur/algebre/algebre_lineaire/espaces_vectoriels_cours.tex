@@ -1,31 +1,28 @@
 \documentclass{book}
 \usepackage{commeunjeustyle}
 
+
 \begin{document}
+\chapter*{Espaces vectoriels}%label=ch_espaces_vectoriels,dep=ch_vecteurs,dep=ch_groupes
 
-%TODO proof  et rajouter des exemples
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter*{Espaces vectoriels}
-
-\section{Exemples introductifs}
-
-\begin{Exemple}[Vecteurs du plan \(\R^2\)]
-Tout d'abord, commençons par les vecteurs du plan :\\
+\begin{Texte}%type=introduction,ref=ch_espaces_vectoriels
+Tout d'abord, commençons par des rappels les vecteurs du plan :\\
 \begin{tabular}{c|c|c|c}
  &Vecteur géométrique  &   Vecteur  numérique  &   Vecteur  algébrique       \\  \hline
 Représentation&\begin{tikzpicture}[general,scale=1]
 \draw [quadrillage] (-0.1,-0.1) grid (2.1,1.1);
-\draw [-> ] (0,0) -- (1,0)node[right]{$\Vect{e_1}$};
-\draw [->] (0,0) -- (0,1)node[right]{$\Vect{e_2}$};
+\draw [->,color=black!30] (0,0) -- (1,0)node[right]{$\Vect{e_1}$};
+\draw [->,color=black!30] (0,0) -- (0,1)node[right]{$\Vect{e_2}$};
+\node[below,color=black!30]{$\Vect{0}$};
 \draw [->, epais,color=red] (0,0) -- (2,1)node[right]{$\Vect{u}$};
 \end{tikzpicture}& $\begin{pmatrix}
 2\\1
 \end{pmatrix}$ & $\Vect{u}= 2 \Vect{e}_1 + 1 \Vect{e}_2 $  \\\hline
-Multiplication par un scalaire &\begin{tikzpicture}[general,scale=1]
+Homothétie &\begin{tikzpicture}[general,scale=1]
 \draw [quadrillage] (-1.1,-1.1) grid (2.1,1.1);
-\draw [->, ] (0,0) -- (1,0)node[right]{$\Vect{e_1}$};
-\draw [->] (0,0) -- (0,1)node[right]{$\Vect{e_2}$};
+\draw [->,color=black!30] (0,0) -- (1,0)node[right]{$\Vect{e_1}$};
+\draw [->,color=black!30] (0,0) -- (0,1)node[right]{$\Vect{e_2}$};
+\node[below,color=black!30]{$\Vect{0}$};
 \draw [->, epais,color=blue] (0,0) -- (-1,-0.5)node[above,right]{$\Vect{v}=-0,5 \Vect{u}$};
 \draw [->, epais,color=red] (0,0) -- (2,1)node[right]{$\Vect{u}$};
 \end{tikzpicture}   & $\begin{pmatrix}
@@ -35,8 +32,9 @@ Multiplication par un scalaire &\begin{tikzpicture}[general,scale=1]
 \end{pmatrix}$  &  $\Vect{v}=-0.5.\Vect{u}$ \\\hline
 Addition  &\begin{tikzpicture}[general,scale=1]
 \draw [quadrillage] (-0.1,-0.1) grid (2.1,2.1);
-\draw [->, ] (0,0) -- (1,0)node[right]{$\Vect{e_1}$};
-\draw [->] (0,0) -- (0,1)node[right]{$\Vect{e_2}$};
+\draw [->,color=black!30] (0,0) -- (1,0)node[right]{$\Vect{e_1}$};
+\draw [->,color=black!30] (0,0) -- (0,1)node[right]{$\Vect{e_2}$};
+\node[below,color=black!30]{$\Vect{0}$};
 \draw [->, epais,color=red] (0,0) --node[above,right]{$\Vect{u}$} (2,1);
 \draw [->, epais,color=blue] (2,1) --node[right]{$\Vect{v}$} (1,2);
 \draw [->, epais,color=black] (0,0) -- (1,2)node[above,left]{$\Vect{w}=\Vect{u}+\Vect{v}$};
@@ -46,44 +44,162 @@ Addition  &\begin{tikzpicture}[general,scale=1]
 2\\1
 \end{pmatrix}+\begin{pmatrix}
 -1\\1
-\end{pmatrix}$&$ \Vect{w}= \Vect{u}+\Vect{v}$
+\end{pmatrix}$&$ \Vect{w}= \Vect{u}+\Vect{v}$\\\hline
+Combinaison linéaire  &\begin{tikzpicture}[general,scale=1]
+\draw [quadrillage] (-1.1,-1.1) grid (2.1,2.1);
+\draw [->,color=black!30] (0,0) -- (1,0)node[right]{$\Vect{e_1}$};
+\draw [->,color=black!30] (0,0) -- (0,1)node[right]{$\Vect{e_2}$};
+\node[below,color=black!30]{$\Vect{0}$};
+\draw [->, epais,color=red] (0,0) -- (2,1)node[right]{$\Vect{u}$};
+\draw [->, epais,color=blue] (0,0) -- (-1,1)node[left]{$\Vect{v}$};
+\draw [->] (0,0) -- node[above]{$0.5\Vect{u}$}(1,0.5);
+\draw [->] (1,0.5) --node[right]{$-\Vect{v}$} (2,-0.5);
+\draw [->, epais,color=black] (0,0) -- (2,-0.5)node[below]{$\Vect{w}=0.5\Vect{u}-\Vect{v}$};
+\end{tikzpicture}  & $\begin{pmatrix}
+2\\-0.5
+\end{pmatrix}=0.5\begin{pmatrix}
+2\\1
+\end{pmatrix}-\begin{pmatrix}
+-1\\1
+\end{pmatrix}$&$ \Vect{w}=0.5\Vect{u}-\Vect{v}$\\
 \end{tabular}
-\begin{Remarque}
-Du fait de l'équivalence dans le plan et l'espace entre ces trois représentations,  géométrique,  numérique et algébrique, tout ce qui est vrai ou faux pour l'un l'est aussi pour l'autre. Savoir passer d'une représentation à l'autre est essentiel pour bien comprendre l'algèbre linéaire. 
-\end{Remarque}
+\begin{Exemple}[Tailles d'un père et d'un fils]
+La somme des tailles d'un fils et du père est de 2,5 mètres. La différence de tailles  est de 0.5 mètres.
+Quel est la taille du fils ? \\
+Soit la variable $x$ représentant la taille du fils et la variable $y$ représentant la taille du père.\\
+Le couple $(x,y)$ vérifie le système suivant  :
+$$(S)\quad \begin{cases}
+x+y&=2,5\\
+-x+y&=0,5
+\end{cases}
+$$
+Une idée est de transformer ce système de deux équations à deux inconnues en un système d'une équation à deux inconnues. On a :\\
+$$\begin{cases}
+{\color{red}x}+{\color{green}y}&={\color{blue}2,5}\\
+{\color{red}-x}+{\color{green}y}&={\color{blue}0,5}
+\end{cases}
+\Leftrightarrow
+	 {\color{red}x}\begin{pmatrix}
+ 1    \\
+ -1   \\
+\end{pmatrix}+{\color{green}y}\begin{pmatrix}
+  1   \\
+  1  \\
+\end{pmatrix}=\begin{pmatrix}
+ {\color{blue}2,5}   \\
+ {\color{blue}0,5}  \\
+\end{pmatrix}$$
+Il s'agit de déterminer $x,y$ afin d'exprimer $\begin{pmatrix}
+ 2,5   \\
+ 0,5  \\
+\end{pmatrix}$  comme une combinaison linéaire de la famille des vecteurs $(\begin{pmatrix}
+ 1    \\
+ -1   \\
+\end{pmatrix},\begin{pmatrix}
+ 1   \\
+  1  \\
+\end{pmatrix})$. 
+\begin{center}
+\begin{tikzpicture}[general,scale=1.5]
+\draw [quadrillage] (-0.1,-1.1) grid (3,1.1);
+\axeX{-0.1}{3}{1}
+\axeY{-1.1}{1.1}{1}
+\draw [->, epais] (0,0) -- (1,-1)node[right]{$\begin{pmatrix}
+ 1    \\
+ -1   \\
+\end{pmatrix}$};
+\draw [->, epais] (0,0) -- (1,1)node[right]{$\begin{pmatrix}
+ 1    \\
+ 1   \\
+\end{pmatrix}$};
+\draw [->, epais] (0,0) -- (2.5,0.5)node[right]{$\begin{pmatrix}
+ {\color{blue}2,5}   \\
+ {\color{blue}0,5}  \\
+\end{pmatrix}$};
+\draw [->, epais] (0,0) -- (2.3,-0.5)node[right]{$ {\color{red}x}\begin{pmatrix}
+ 1    \\
+ -1   \\
+\end{pmatrix}+{\color{green}y}\begin{pmatrix}
+  1   \\
+  1  \\
+\end{pmatrix}$};
+\end{tikzpicture}
+\end{center}
+Avec GeoGebra \url{https://www.geogebra.org/m/shsawcqc}), on trouve l'unique couple $(x=1,y=1,5)$. D'un point de vue mathématiques, on se pose trois questions :
+\begin{enumerate}
+\item \impo{Existence:} la famille est-elle \impo{génératrice} de $\R^2$ ? C'est à dire, peut-on  exprimer tout vecteur de $\R^2$ comme  une combinaison linéaire de la famille des vecteurs $(\begin{pmatrix}
+ 1    \\
+ -1   \\
+\end{pmatrix},\begin{pmatrix}
+ 1   \\
+  1  \\
+\end{pmatrix})$ ? Si cela est vraie, alors, en particulier,  le vecteur $\begin{pmatrix}
+ 2,5   \\
+ 0,5  \\
+\end{pmatrix}$ s'exprime comme  une combinaison linéaire de la famille des vecteurs $(\begin{pmatrix}
+ 1    \\
+ -1   \\
+\end{pmatrix},\begin{pmatrix}
+ 1   \\
+  1  \\
+\end{pmatrix})$.
+\item \impo{Unicité:} la famille est-elle \impo{libre} ? Lorsque un vecteur de $\R^2$ s'exprime comme combinaison linéaire de   $\begin{pmatrix}
+ 1    \\
+ -1   \\
+\end{pmatrix}$ et $\begin{pmatrix}
+ 1   \\
+  1  \\
+\end{pmatrix}$, y-a-il unicité de cette combinaison  linéaire ? Si cela est vraie, alors, en particulier, il y a unicité  de la combinaison linéaire pour exprimer le vecteur $\begin{pmatrix}
+ 2,5   \\
+ 0,5  \\
+\end{pmatrix}$.
+\item \impo{Existence} et \impo{Unicité} : la famille est-elle \impo{base} ? c'est à dire la famille est-elle \impo{génératrice et libre} ? c'est à dire peut-on  exprimer tout vecteur de $\R^2$ comme  une unique combinaison linéaire de la famille des vecteurs $(\begin{pmatrix}
+ 1    \\
+ -1   \\
+\end{pmatrix},\begin{pmatrix}
+ 1   \\
+  1  \\
+\end{pmatrix})$ ?. Si cela est vraie, alors, en particulier, il y a existence et unicité  de la combinaison linéaire pour exprimer le vecteur $\begin{pmatrix}
+ 2,5   \\
+ 0,5  \\
+\end{pmatrix}$ et l'ensemble des solutions est un unique couple.  
+\end{enumerate}
 \end{Exemple}
-
-
-
-
-\begin{Exemple}[Exemples d'ensembles de vecteurs : \(E=\{\Vect{x}\}\)]
-Il existe de très nombreux ensembles  où il est possible d'effectuer une addition et une homothétie soit une combinaison linéaire, par exemples :
+%\begin{Remarque}
+%Du fait de l'équivalence dans le plan et l'espace entre ces trois représentations,  géométrique,  numérique et algébrique, tout ce qui est vrai ou faux pour l'un l'est aussi pour l'autre. Savoir passer d'une représentation à l'autre est essentiel pour bien comprendre l'algèbre linéaire. 
+%\end{Remarque}
+Il existe de très nombreux ensembles  où il est possible d'effectuer des combinaisons linéaires, par exemples :
 \begin{itemize}
-\item l'ensemble des n-uplet réels : $\Vect{x}=(x_{1},x_{2},\ldots ,x_{n})$ et $E=\R^n$ et , où chaque $x_{i}$ est un réel,
+\item l'ensemble des n-uplet réels : $\Vect{x}=(x_{1},x_{2},\ldots ,x_{n})$ et $E=\R^n$,
 %jeu vidéo: rendu d'objets dans une scène (jeux vidéos) et un vecteur d'appréciation de films 
 \item l'ensemble des matrices carrés réels : $\Vect{x}=\begin{pmatrix}
 a_{1,1} & a_{1,2} & \cdots & a_{1,n}\\
 a_{2,1} & a_{2,2} & \cdots & a_{2,n}\\
 \vdots & \vdots & \ddots & \vdots\\
 a_{n,1} & a_{n,2} & \cdots & a_{n,n}\\
-\end{pmatrix}$ et $E=\mathcal{M}_{n}(\R)$ , où  chaque $a_{i,j}$ est un un réel,
+\end{pmatrix}$ et $E=\mathcal{M}_{n}(\R)$,
 \item l'ensemble des solutions d'une équations différentielles linéaire d'ordre 1 homogène : $\Vect{x}=f$  et $E=\{f\in C_1 :  f'+a_{0}f=0\}$,
 \item l'ensemble des polynômes réels : $\Vect{x}= a_{0}+a_{1}X^{1}+a_{2}X^{2}+\dots +a_{n}X^{n}$ et $E=\R[X]$,
 \item l'ensemble des suites réels : $\Vect{x}=(u_{n})_{n\in \mathbb {N} }$ et $E=\R^{\N}$,
 \item etc.
 \end{itemize}
-\end{Exemple}
+
 Une stratégie efficace pour étudier ces ensembles est :
 \begin{enumerate}
-\item de définir une structure algébrique ayant la propriété de pouvoir effectuer des \defi{combinaisons linéaires} entre les éléments : cette structure s'appelle \defi{espace vectoriel},
-\item de démontrer des énoncés sur cette structure  : ce qui est vrai ou faux dans cette structure  l'est aussi pour tous les cas particuliers. 
+\item de définir une structure algébrique basée sur les propriétés de la \impo{combinaison linéaire} entre les éléments : cette structure s'appelle \impo{espace vectoriel},
+\item de démontrer des énoncés sur cette structure  : ce qui est vrai ou faux dans cette structure  l'est aussi pour tous les cas particuliers, par exemple la famille $(\begin{pmatrix}
+ 1    \\
+ -1   \\
+\end{pmatrix},\begin{pmatrix}
+ 1   \\
+  1  \\
+\end{pmatrix})$ est une \impo{base} de $\R^2$ donc il existe une unique solution au problème des tailles du père et du fils. 
 \end{enumerate}
+\end{Texte}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Définition}
-
 Dans ce cours, un corps $\K$ désigne soit l'ensemble des nombres réels $\R$ ou soit l'ensemble des nombres complexes $\C$. 
-
 \begin{Definition}[Espace vectoriel : \(\lambda\Vect{x}+\mu\Vect{y}\)]
 Soit $\K$ un corps.\\
 Un \defi{$\K$-espace vectoriel} est un triplet $(E,+,.)$ où

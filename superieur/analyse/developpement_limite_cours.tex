@@ -132,7 +132,7 @@ $$ \ln(1-x)=-x-{\frac {x^{2}}{2}}-{\frac {x^{3}}{3}}-\cdots -{\frac {x^{n+1}}{n+
 \subsection{Étude d'une fonction}
 \begin{enumerate}
 \item \textit{Calcul de limite d'une fonction} : déterminer la limite en 0 de la fonction $x\to\frac{\sin x}{x}$. On a : 
-$$\frac{\sin x}{x}= \frac{x+o(x)}{x}=1+o(1)\tend[x\to 0] 1.$$
+$$\frac{\sin x}{x}= \frac{x+o(x)}{x}=1+o(1)\xrightarrow[x\to 0]{} 1.$$
 \item \textit{Étude locale d'une courbe} : déterminer la tangente au point d'abscisse 0  et démontrer que la tangente traverse la courbe de la fonction : $x\to \frac{1}{1+e^x}$.\\
 En utilisant les technique opératoires classiques, on trouve que :
 $$\frac{1}{1+e^x}=\frac 1 2 - \frac 1 4 x + \frac{1}{48}x^3+x^3\epsilon(x).$$
@@ -145,11 +145,11 @@ Donc,  pour $x$ petit, cette quantité est positive pour $x>0$, et négative pou
 \subsection{Étude d'une suite}
 \begin{enumerate}
 \item \textit{Calcul de limite d'une suite} : déterminer la limite de la suite donnée par $u_n=(1+\frac a n )^n$. On a : 
-$$(1+\frac a n )^n = e^{n\ln(1+\frac a n)}\overbrace{=}^{ \ln(1+x)=x+o(x)\text{ avec }x=\frac 1 n }e^{n\left(\frac a n + o(\frac 1 n)\right) }=e^{a+ o(1)}\tend[n\to\infty] e^a\text{ car exp est continue.}$$
+$$(1+\frac a n )^n = e^{n\ln(1+\frac a n)}\overbrace{=}^{ \ln(1+x)=x+o(x)\text{ avec }x=\frac 1 n }e^{n\left(\frac a n + o(\frac 1 n)\right) }=e^{a+ o(1)} \xrightarrow[n\to\infty]{}  e^a\text{ car exp est continue.}$$
 \item \textit{Déterminer un équivalent} : déterminer la limite de la suite $u_n=\frac{\sqrt{n+1}-\sqrt{n}}{n}$. On a :
 $$\frac{\sqrt{n+1}-\sqrt{n}}{n} = \frac{\sqrt{1+\frac 1 n}-1}{\sqrt{n}}\overbrace{=}^{ \sqrt{1+x}=1+\frac x 2 +o(x)\text{ avec }x=\frac 1 n}\frac{1+\frac{1}{2n}+o(\frac 1 n) -1}{\sqrt{n}}=\frac{1}{2n^{3/2}}+o\left(\frac{1}{n^{3/2}}\right).$$
 Ainsi
-$$\frac{\sqrt{n+1}-\sqrt{n}}{n} \equivalent[\infty] \frac{1}{2n^{3/2}}.$$
+$$\frac{\sqrt{n+1}-\sqrt{n}}{n} \sim_{\infty} \frac{1}{2n^{3/2}}.$$
 On conclut que la vitesse de convergence de la suite $(u_n)_{n\in\N}$ vers $0$ est de l'ordre de  $\frac{1}{n^{3/2}}$.  A titre d'exercice, donner la vitesse de convergence de la suite $\left((1+\frac a n )^n\right)_{n\in\N}$ vers $e^a$.
 \end{enumerate}
 \end{document}

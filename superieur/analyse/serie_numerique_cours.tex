@@ -271,7 +271,7 @@ Les inégalités $$\quad 0\leq u_n\leq v_n$$  peuvent être vérifiées uniqueme
 
 \begin{Proposition}[Règle du petit o et grand O] \label{prop:comp}
 Soit $\sum u_n$ et $\sum v_n$ deux SATP.
-On suppose que $u_n = \GrandO_\ninf(v_n)$ (ou  $u_n = \PetitO_\ninf(v_n)$).
+On suppose que $u_n = O_{n\to \infty }(v_n)$ (ou  $u_n = o_{n\to \infty }(v_n)$).
 Alors:
 \begin{itemize}
 \item
@@ -282,24 +282,24 @@ Alors:
 \end{Proposition} 
 \begin{Demonstration}
 On suppose $\sum v_n$ converge.\\
-On a  $(u_n)$ et $(u_n)$ deux suites réelles positives tel que $u_n = \GrandO_\ninf(v_n)$. Cela signifie qu'il existe 
+On a  $(u_n)$ et $(u_n)$ deux suites réelles positives tel que $u_n = O_{n\to \infty }(v_n)$. Cela signifie qu'il existe 
 $ M\in \R^+,\forall n\geq N :\quad  u_n\leq M v_n.$\\
 On a :
 $$\forall n \in \N :	\sum_{k=0}^n u_k\leq \sum_{k=0}^n(M v_k) \leq M\sum_{k=0}^n v_k\overbrace{\leq}^{\text{théorème de limité monotome}} M\sum_{k=0}^{\infty} v_k $$
 Donc la suite des sommes partielles est bornée, donc la série $\sum u_n$ est convergente. 
 \end{Demonstration}
 \begin{Exemple}
-Étudions la nature de la  série $\sum \frac{1}{\sqrt{n}}$ à termes positifs. On a  $\frac{1}{n}=\PetitO_\ninf(\frac{1}{\sqrt{n}})$. Comme la série harmonique $\sum \frac 1 n$ est divergente, la série $\sum \frac{1}{\sqrt{n}}$ est divergente d'après la règle de comparaison. 
+Étudions la nature de la  série $\sum \frac{1}{\sqrt{n}}$ à termes positifs. On a  $\frac{1}{n}=o_{n\to \infty }(\frac{1}{\sqrt{n}})$. Comme la série harmonique $\sum \frac 1 n$ est divergente, la série $\sum \frac{1}{\sqrt{n}}$ est divergente d'après la règle de comparaison. 
 \end{Exemple}
 \begin{Proposition}[Règle d'équivalence]
-Soit $\sum u_n$ et $\sum v_n$ deux SATP telles que $u_n \Sim_\ninf v_n$.\\
+Soit $\sum u_n$ et $\sum v_n$ deux SATP telles que $u_n \sim_{n\to \infty } v_n$.\\
 Alors $\sum u_n$ et $\sum v_n$ sont de même nature.
 \end{Proposition}
 \begin{Demonstration}
-$u_n \Sim_\ninf v_n$ implique que $u_n= \GrandO_\ninf(v_n)$ et que $v_n= \GrandO_\ninf(u_n)$. On conclut à l'aide de la proposition~\ref{prop:comp}.
+$u_n \sim_{n\to \infty } v_n$ implique que $u_n= O_{n\to \infty }(v_n)$ et que $v_n= O_{n\to \infty }(u_n)$. On conclut à l'aide de la proposition~\ref{prop:comp}.
 \end{Demonstration}
 \begin{Exemple}
-Étudions la nature de la  série $\sum \frac{1}{\ln(1+n)}$ à termes positifs. On a  $\frac{1}{\ln(1+n)}\Sim_\ninf \frac 1 n$. Comme la série harmonique $\sum \frac 1 n$ est divergente,   la série $\sum \frac{1}{\ln(1+n)}$ est divergente d'après la règle d'équivalence. 
+Étudions la nature de la  série $\sum \frac{1}{\ln(1+n)}$ à termes positifs. On a  $\frac{1}{\ln(1+n)}\sim_{n\to \infty } \frac 1 n$. Comme la série harmonique $\sum \frac 1 n$ est divergente,   la série $\sum \frac{1}{\ln(1+n)}$ est divergente d'après la règle d'équivalence. 
 \end{Exemple} 
 
 \begin{Proposition}[Règle de d'Alembert]

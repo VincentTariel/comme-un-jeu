@@ -174,14 +174,14 @@ Soit $\fn$ une suite de fonctions de $I$ dans $\K  $, et soit $f \colon I \to\K 
 On dit que la suite de fonctions $\fn$ \defi{converge uniformément} vers $f$ sur $I$ si 
 \[ \forall  \epsilon>0 , \exists N\in \N , \forall  n\geq N ,\forall  x\in I, \left|f_n(x) - f(x)\right| \leq  \epsilon, \]
 ou de façon équivalente, si la suite numérique $(\sup_{x\in I} \left|f_n(x) - f(x)\right|)_{n\in\mathbb{N}}$ converge vers 0, c'est à dire:
-\[  \sup_{x\in I} \left|f_n(x) - f(x)\right|   \tend[n\to+\infty ]0.  \]
+\[  \sup_{x\in I} \left|f_n(x) - f(x)\right|   \xrightarrow[n\to+\infty ]{}0.  \]
 \end{Definition}
 
 \begin{Proposition}
 Si $\fn$ converge uniformément vers $f$, alors $\fn$ converge simplement vers $f$.
 \end{Proposition}
 \begin{Demonstration}
-Fixons $a\in I$. On a$$ \left|f_n(a) - f(a)\right|\leq   \sup_{x\in I} \left|f_n(x) - f(x)\right|  \overbrace{\tend[n\to+\infty ]0.}^{\text{convergence uniforme}}$$
+Fixons $a\in I$. On a$$ \left|f_n(a) - f(a)\right|\leq   \sup_{x\in I} \left|f_n(x) - f(x)\right|  \overbrace{\xrightarrow[n\to+\infty ]{}0.}^{\text{convergence uniforme}}$$
 Donc la suite numérique $(f_n(a))_{n\in\N}$ converge vers $f(a)$. Donc  $\fn$ converge simplement vers $f$.
 \end{Demonstration}
 \begin{Methode}[Prouver la convergence uniforme]
@@ -215,7 +215,7 @@ $|h_n|$ atteint son maximum en $1/n$, d'où $$\sup_{x\in  \R ^+} \left|h_n(x) \r
 Soit la suite de fonctions $(f_n:x\mapsto x^n)_{n\in \mathbb{N}}$ convergeant simplement vers la fonction nulle $x\mapsto 0$ sur $[0,a]$ avec $0<a<1$. On a :
 $$\forall n\in \N, \forall x\in[0,a]:\quad |x^n|\leq a^n$$ c'est à dire :
 $$ \forall n\in \N, \sup_{x\in[0,a]}|x^n|\leq a^n.$$
-Comme $a^n\tend[n\to+\infty]0$, on déduit que $\sup_{x\in[0,a]}|x^n| \tend[n\to+\infty]0$ par théorème de comparaison. \\
+Comme $a^n\xrightarrow[n\to+\infty]{}0$, on déduit que $\sup_{x\in[0,a]}|x^n| \xrightarrow[n\to+\infty]{}0$ par théorème de comparaison. \\
 En conclusion, la suite de fonctions $(x\mapsto x^n)_{n\in \mathbb{N}}$ converge uniformément vers la fonction nulle $x\mapsto 0$ sur $[0,a]$ .
 \end{Exemple}
 
@@ -313,7 +313,7 @@ Alors:
 \item
   $\lim\limits_{x\to a} f(x) = l$, c'est à dire
   \[ 
-      \lim_{x\to a} \; \lim_\ninf \; f_n(x) = \lim_\ninf \; \lim_{x\to a} \; f_n(x).
+      \lim_{x\to a} \; \lim_{n\to\infty} \; f_n(x) = \lim_{n\to\infty} \; \lim_{x\to a} \; f_n(x).
    \]
 \end{itemize}
 \end{Theoreme}
@@ -375,7 +375,7 @@ Alors $f$ est continue sur $I$.
 \end{Theoreme}
 \begin{Demonstration}
 Ce théorème est un corollaire du théorème de la double limite. Soit $a\in I$. On a :
-$$\lim_{x\to a} f(x)=\lim_{x\to a}\lim_\ninf \; f_n(x) \underset{\text{th double limite}}{=}\lim_\ninf \lim_{x\to a} \; f_n(x)\underset{f_n \text{ continue}}{=}\lim_\ninf f_n(a)= f(a).  $$
+$$\lim_{x\to a} f(x)=\lim_{x\to a}\lim_{n\to\infty} \; f_n(x) \underset{\text{th double limite}}{=}\lim_{n\to\infty} \lim_{x\to a} \; f_n(x)\underset{f_n \text{ continue}}{=}\lim_{n\to\infty} f_n(a)= f(a).  $$
 \end{Demonstration}
 %
 \begin{Remarque}
@@ -410,20 +410,20 @@ On suppose que:
   $\fn$ converge uniformément vers $f$ sur $[a,b]$.
 \end{itemize}
 Alors $f$ est continue (donc intégrable) sur $[a,b]$ et
-\[  \lim_\ninf \int_a^b f_n(t)dt = \int_a^b \lim_\ninf f_n(t)dt = \int_a^b f(t)dt. \]
+\[  \lim\limits_{n \to \infty} \int_a^b f_n(t)dt = \int_a^b \lim\limits_{n \to \infty} f_n(t)dt = \int_a^b f(t)dt. \]
 \end{Theoreme}
 \begin{Demonstration}
 $$\begin{aligned}
 \left|\int_a^b f_n(t)dt -\int_a^b f(t)dt\right|=&\left|\int_a^b (f_n(t)-f(t))dt\right|\\
 \leq&\int_a^b\left|f_n(t)-f(t)\right|dt\\
-\leq &\sup_{x\in[a,b]}\left|f_n(t)-f(t)\right|\int_a^b dt=(b-a) \sup_{x\in[a,b]}\left|f_n(t)-f(t)\right|  \tend[n\to+\infty ]0.
+\leq &\sup_{x\in[a,b]}\left|f_n(t)-f(t)\right|\int_a^b dt=(b-a) \sup_{x\in[a,b]}\left|f_n(t)-f(t)\right|  \xrightarrow[n\to+\infty ]{}0.
 \end{aligned}$$ 
 \end{Demonstration}
 
 \begin{Remarque}
 Si il n'y pas convergence uniforme, on ne peut pas permuter en générale limite et intégrale. \\
 Par exemple, on observe dans cette animation géogébra \url{https://www.geogebra.org/graphing/qwwbjxgv},
- \begin{center}\includegraphics[width=3cm]{contre_exemple_limite_integrale.png}\end{center} que la suite de fonctions $\fn$ converge simplement vers la fonction nulle sur $[0,1]$. L'intégrale de la fonction nulle sur $[0,1]$ est $0$. Comme l'intégrale de chaque fonctions $f_n$ est $\frac 1 2$, la limite des intégrales est $\frac 1 2$. L'égalité n'est donc pas vérifiée car $$ \lim_\ninf \int_0^1 f_n(t)dt =  \lim_\ninf \frac 1 2 = \frac 1 2 \neq 0  = \int_0^1 0dt= \int_0^1 \lim_\ninf f_n(t)dt.$$
+ \begin{center}\includegraphics[width=3cm]{contre_exemple_limite_integrale.png}\end{center} que la suite de fonctions $\fn$ converge simplement vers la fonction nulle sur $[0,1]$. L'intégrale de la fonction nulle sur $[0,1]$ est $0$. Comme l'intégrale de chaque fonctions $f_n$ est $\frac 1 2$, la limite des intégrales est $\frac 1 2$. L'égalité n'est donc pas vérifiée car $$ \lim\limits_{n \to \infty} \int_0^1 f_n(t)dt =  \lim\limits_{n \to \infty} \frac 1 2 = \frac 1 2 \neq 0  = \int_0^1 0dt= \int_0^1 \lim\limits_{n \to \infty} f_n(t)dt.$$
 On peut vérifier que la suite de fonctions $\fn$ définie par :
 $$\forall n \in \mathbb{N}^* :\quad  \Fonction{f_n}{[0,1]}{\mathbb{R}}{x}{\begin{cases}2n^2x&\text{ si } 0\leq x < \frac{1}{2n}\\2n-2n^2x&\text{ si } \frac{1}{2n}\leq x < \frac{1}{n}  \\0&\text{ si } \frac{1}{n}\leq x \leq 0 \end{cases}}$$ converge et simplement vers la fonction nulle et que  $\int_0^1 f_n(t)dt = \frac 1 2$. 
 \end{Remarque}
@@ -481,7 +481,7 @@ Alors:
   $f$ est de classe $C^1$ sur $I$;
 \item
   $f' = g$ c'est à dire:
-$$\forall x \in I:\quad  \left(\lim_\ninf f_n(x) \right)'=\lim_\ninf f'_n(x)$$
+$$\forall x \in I:\quad  \left(\lim\limits_{n \to \infty} f_n(x) \right)'=\lim\limits_{n \to \infty} f'_n(x)$$
   
   
 \end{itemize}

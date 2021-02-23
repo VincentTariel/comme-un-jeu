@@ -3,11 +3,11 @@
 
 \begin{document}
 
-\chapter*{Structures algébriques}
-\begin{Texte}
-L'enfant, après avoir appris 
+\chapter*{Structures algébriques}%label=ch_structures_algebriques
+\begin{Texte}%label=introduction
+L'enfant apprend d'abord : 
 \begin{itemize}
-\item à \impo{compter} le nombre d'objets en ajoutant des unités à partir de 0 c'est à dire en construisant l'ensemble $\N$  avec l'opération "suivant"
+\item à \impo{compter} le nombre d'objets en itérant l'ajout d'une unité à partir de 0 c'est à dire en construisant l'ensemble $\N$  avec l'opération "suivant"
 \begin{center}
 \begin{tikzpicture}
 \draw[color=colorprop] (0,0) rectangle (1,1);
@@ -25,7 +25,7 @@ L'enfant, après avoir appris
 \draw[color=colordef] (5.3,0.5) circle (0.15);
 \node at (5,-0.3){$3$};
 \end{tikzpicture}\\
-Désignation à l'aide d'un nombre de la quantité de cercles 
+Désignation à l'aide d'un nombre de la quantité de cercles dans le carré à partir de $0$
 \end{center}
 \item à \impo{ordonner} en comparant des quantités c'est à munir d'une structure d'ordre à l'ensemble $\N$ 
 \begin{center}
@@ -41,7 +41,7 @@ Désignation à l'aide d'un nombre de la quantité de cercles
 Comparaison de deux quantités de cercles 
 \end{center}
 \end{itemize}
-commence
+Puis il commence :
 \begin{itemize}
 \item  à \impo{additionner} les nombres en opérant des regroupements.
 \begin{center}
@@ -89,7 +89,7 @@ Regroupement de cubes pour additionner
 Regroupement itéré de cubes pour multiplier
 \end{center}
  \end{itemize}
-puis s'intéresse aux propriétés des opérations :
+Ensuite il s'intéresse aux propriétés des opérations :
 \begin{itemize}
  \item \impo{associativité} de l'addition $(a+b)+c=a+(b+c)$ et de la multiplication $(a\times b)\times c=a\times(b \times c)$
 \begin{center}
@@ -217,7 +217,7 @@ Démonstration géométrique élémentaire de la commutativité  de la multiplic
 Démonstration géométrique élémentaire de la distributivité  $\overbrace{(b+c)+\dots+(b+c)}^{a \text{ fois}}\quad=\quad  ( \overbrace{b+\dots+b}^{a \text{ fois}})+(\overbrace{c+\dots+c}^{a \text{ fois}})$
 \end{center}
  \end{itemize}
-ensuite après avoir défini $0$ comme l'\impo{élément neutre} de l'addition (additionner $0$ à un nombre donne ce même nombre) 
+Enfin il découvre que $0$ est  un nombre particulier $0$ de l'addition, appelé l'\impo{élément neutre}, car additionner $0$ à un nombre donne ce même nombre 
 \begin{center}
  \begin{tikzpicture}
 \draw (0,0) circle (1);
@@ -228,26 +228,22 @@ ensuite après avoir défini $0$ comme l'\impo{élément neutre} de l'addition (
 \end{tikzpicture}\\
 Cas particulier bien connu 0+0=0
 \end{center}
-  on construit l'ensemble des entiers relatifs à partir de l'\impo{opposé} d'un entier naturel :
+A partir de $0$,  il construit l'ensemble des entiers relatifs :
 $$\begin{aligned}
 2+(2-4)&=&(2+2)-4&=&0\\
 2+(1-3)&=&(2+1)-3&=&0\\
 2+(0-2)&=&(2+0)-2&=&0\\
 \end{aligned}$$
-Ainsi "en supprimant le zéro", 
+Ainsi "en supprimant le zéro" dans le membre de gauche, l'égalité devient 
 $$2+(-2)=0.$$
-le nombre négatif $-2$ "naît".\\ 
-Dans le supérieur, nous rencontrons de nombreux ensembles : les entiers naturels, les entiers relatifs, les fractions, les réels, les complexes, les polynômes, les vecteurs, les matrices, les fonctions continues etc. L'objectif de ce cours est de suivre le cheminement de l'enfant en généralisant à un ensemble  $A$  quelconque et non plus l'ensemble des entiers.\\
-Structurer un ensemble $A$ avec une relation d'ordre $\leq$ pour définir un ensemble ordonné $(A\leq)$ sera faite dans un autre cours.  Comme un enfant aimant additionner et multiplier, un Mathématicien souhaite structurer un ensemble avec des opérations appelées \impo{lois de composition} qu'il appelle une \impo{structure algébrique}. L'addition et la multiplication  obéissent à plusieurs propriétés algébriques : l'associativité et la commutativité. De nombreuses structures algébriques étudiées obéissent à certaines, mais pas nécessairement à toutes, de ces lois. \\
-$0$ est un élément particulier de l'addition appelé l'\impo{élément neutre} c'est à dire il laissent tous les autres éléments inchangés lorsqu'il est composé avec eux. On se posera la question d'existence et d'unicité de l'élément neutre. La notion d'\impo{élément symétrique} généralise le concept d'opposé en rapport avec l'addition.\\
-%l'element neutre est central : résolutuon d'équation et construction de Z et Q 
-Enfin, on étudiera une première structure algébrique appelé \impo{groupe}.    
+le nombre négatif $-2$ "naît" et il l'\impo{opposé} de 2 .\\ 
+Dans le supérieur, nous rencontrons de nombreux ensembles : les entiers naturels, les entiers relatifs, les fractions, les réels, les complexes, les polynômes, les vecteurs, les matrices, les fonctions continues etc.  L'objectif de ce cours est de suivre le cheminement de l'enfant en généralisant à un ensemble  $A$  quelconque et non plus l'ensemble des entiers. 
+Comme un enfant aimant additionner et multiplier, un Mathématicien souhaite structurer un ensemble avec des opérations appelées \impo{lois de composition} qu'il appelle une \impo{structure algébrique}. L'addition et la multiplication  obéissent à plusieurs propriétés algébriques : l'associativité et la commutativité. De nombreuses structures algébriques étudiées obéissent à certaines, mais pas nécessairement à toutes, de ces lois. $0$ est un élément particulier de l'addition appelé l'\impo{élément neutre} c'est à dire il laissent tous les autres éléments inchangés lorsqu'il est composé avec eux. On se posera la question d'existence et d'unicité de l'élément neutre. La notion d'\impo{élément symétrique} généralise le concept d'opposé en rapport avec l'addition.\\
+ 
 \end{Texte}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Loi de composition}
-\subsection{Définition}
+\section{Lois de compositions}
 \begin{Definition}[Loi de composition interne]
 Soit $A$ un ensemble.\\
 Une \defi{loi de composition interne}, $\bigtriangleup$, est une application qui, à deux éléments de $A$, associe un élément de $A$ :
@@ -272,8 +268,7 @@ La multiplication par un scalaire sur l'ensemble des vecteurs du plan  $\R^2$ d�
 $$ \Fonction{.}{\R\times\R^2}{\R^2}{(\lambda,(x_1,x_2))}{(\lambda.x_1, \lambda.x_2)}.$$ est une loi de composition externe.
 \end{Exemple}
 
-
-\subsection{Propriétés éventuelles des lois de composition interne}
+\section{Propriétés éventuelles des lois de composition interne}
 \begin{Definition}[Commutativité et associativité]
 $\bigtriangleup$ est
 \begin{enumerate}
@@ -309,7 +304,7 @@ $$ \forall x, y, z  \in A :\quad   x \bigtriangleup (y \square z) = (x \bigtrian
 \item Sur  $\mathcal{P}(X)$, l'union et l'intersection sont distributives l'une par rapport à l'autre.
 \end{itemize}
 \end{Exemple}
-\subsection{Élément neutre et symétrique}
+\section{Élément neutre et symétrique}
 \begin{Definition}[Elément neutre]
 $\bigtriangleup$ admet \defi{un élément neutre} si il existe $ e\in A$ tel que $\forall x\in A$, $x \bigtriangleup e = e \bigtriangleup x = x$.
 \end{Definition}
@@ -358,7 +353,7 @@ La loi $\bigtriangleup$ est  \defi{symétrique} si la loi est associative et si 
 \begin{Exemple}
 Sur $\R$, la multiplication n'est pas inversible car $0$ n'a pas d'inverse. En revanche sur $\R^*$, la multiplication est inversible.
 \end{Exemple}
-\subsection{Parties stables}
+\section{Parties stables}
 \begin{Definition}[Partie stable]
 Soit $B$ une partie non vide de $A$.\\
 $B$ est \defi{stable} pour $\bigtriangleup$ si  
@@ -379,165 +374,13 @@ Pour alléger les notations, on identifie $\tilde{\bigtriangleup}$ à $\bigtrian
 \end{Definition}
 \begin{Exemple}On munit  l'ensemble $ \mathcal{U}$ des nombres complexes de module 1 avec la loi induite $*$ sur $\C$.
 \end{Exemple}
-\section{Groupes}
-\subsection{Définition}
-\begin{Definition}[Groupe]
-Un \defi{groupe} est un couple $(G,\ast)$ où $G$ est un ensemble et $\ast$ une loi de composition interne sur $G$ associative, admettant un neutre et pour laquelle tout élément de $G$ admet un symétrique pour la loi $\ast$.
-Un groupe est dit \defi{abélien} ou \defi{commutatif} si la loi $\ast$ est de plus commutative.
-\end{Definition}
-\begin{Proposition}[Groupes de référence]
-$(\Z, +), (\Q, +), (\R, +)$ et  $(\C, +)$  sont des groupes commutatifs.\\
-$(\Q^*, \times), (\R^*, \times)$ et  $(\C^*,\times)$  sont des groupes commutatifs.\\ 
-\end{Proposition}
-\begin{Demonstration}
-Les hypothèses à vérifier ont été énoncées dans la section précédente.
-\end{Demonstration}
-\begin{Exemple}
-Une symétrie transforme une figure du plan en elle-même. Pour le carré, l'ensemble des symétrie est  congruente à elle-même. Cependant, certaines figures sont congruentes à elles-mêmes de plus d'une manière, et ces congruences supplémentaires sont appelées symétries. Un carré a huit symétries
-\begin{itemize}
-\item l'application identité, laissant tout inchangé, 
-\item les rotations de 90° , 180° et 270° vers la droite de Le centre le point d'intersection des diagonales du carré,
-\item les réflexions ayant pour axes les médiatrices des côtés du carré  ou ses diagonales .
-\end{itemize}
-
-\begin{center}
-\begin{Figure}
-\begin{tikzpicture}
-\node[draw=red,circle](A) at  (0,0) {$0$};
-\node[draw=blue,circle](B) at (2,0) {$1$};
-\node[draw=green,circle](C) at (2,-2) {$2$};
-\node[draw=yellow,circle](D) at (0,-2) {$3$};
-\draw (A) -- (B);
-\draw (B) -- (C);
-\draw (C) -- (D);
-\draw (D) -- (A);
-\draw [->] (2.2,-1) -- (6.2,-1) node [midway, above] {réflexion horizontale};
-\node[draw=red,circle](A) at  (6.4,-2) {$0$};
-\node[draw=blue,circle](B) at (8.4,-2) {$1$};
-\node[draw=green,circle](C) at (8.4,0) {$2$};
-\node[draw=yellow,circle](D) at (6.4,0) {$3$};
-\draw (A) -- (B);
-\draw (B) -- (C);
-\draw (C) -- (D);
-\draw (D) -- (A);
-\end{tikzpicture}\\
-\begin{Titre}
- Les sommets du carré sont identifiés par une couleur et une nombre.
-\end{Titre}
-\end{Figure}
-\end{center}
-Deux symétries quelconques peuvent être composées, c'est-à-dire appliquées l'une après l'autre.
-\end{Exemple}
-
-\begin{Remarque}
-Lors de l'introduction d'un groupe $(G,*)$, on omet de mentionner la loi $*$ afin d'alléger les notations.\\
-L'ensemble $G$ ne peut pas être vide car il contient au moins l'élément neutre.
-\end{Remarque}
-\subsection{Sous-groupes}
-\begin{Definition}[Sous-Groupe]
-Soit $(G, *)$ un groupe et $H$ une partie de $G$.\\
-$(H, *)$ est un \defi{sous-groupe} de $(G, *)$  si $H$ est stable pour $*$ et, muni de la loi induite, est un groupe.
-\end{Definition}
 
 
 
 
 
-%\begin{Exemple}[Le Groupe \((\R^n,+)\) ]
-%La loi d'addition sur $\R^n$ est définie par 
-%$$ \Fonction{+}{\R^n\times\R^n}{\R^n}{(\vec{x}=(x_1,x_2,\dots,x_n),\Vect{y}=(y_1,y_2,\dots,y_n))}{\Vect{x}+\Vect{y}=(x_1+y_1, x_2+y_2, \dots, x_n+y_n)}.$$
-%
-%\begin{itemize}
-%\item  \defi{associative} : Soit $\Vect{x}=(x_1,x_2,\dots,x_n),\Vect{y}=(y_1,y_2,\dots,y_n),\Vect{z}=(z_1,z_2,\dots,z_n)\in\R^n .$\\
-% On a :
-% $$\begin{aligned}
-% \Vect{x}+(\Vect{y}+\Vect{z})&=(x_1,x_2,\dots,x_n)+\left((y_1,y_2,\dots,y_n)+(z_1,z_2,\dots,z_n)\right)\\
-% &=(x_1,x_2,\dots,x_n)+(y_1+z_1, y_2+z_2, \dots, y_n+z_n)\\
-% &=(x_1+y_1+z_1, x_2+y_2+z_2, \dots, x_n+y_n+z_n)\\
-%  &=(x_1+y_1, x_2+y_2, \dots, x_n+y_n)+(z_1,z_2,\dots,z_n)\\
-%  &=\left((x_1,x_2,\dots,x_n)+(y_1,y_2,\dots,y_n)\right)+(z_1,z_2,\dots,z_n)\\
-%  &=(\Vect{x}+\Vect{y})+\Vect{z}
-% \end{aligned}$$
-% \item  \defi{commutative} : Soit $\Vect{x}=(x_1,x_2,\dots,x_n),\Vect{y}=(y_1,y_2,\dots,y_n)\in\R^n .$\\
-% On a :
-% $$\begin{aligned}
-% \Vect{x}+\Vect{y}&=(x_1,x_2,\dots,x_n)+(y_1,y_2,\dots,y_n)\\
-%  &=(x_1+y_1, x_2+y_2, \dots, x_n+y_n)\\
-%  &=(y_1+x_1, y_2+x_2, \dots, y_n+x_n)\\
-%  &=\Vect{y}+\Vect{x}
-% \end{aligned}$$
-% \item  \defi{élément neutre} : Soit $\Vect{x}=(x_1,x_2,\dots,x_n)\in\R^n$\\
-% Montrons que $\Vect{0}=(0,0,\dots,0)$ est l'élément neutre\\
-% On a :
-% $$\begin{aligned}
-% \Vect{x}+\Vect{0}&=(x_1+0,x_2+0,\dots,x_n+0)\\
-%  &=(x_1, x_2, \dots, x_n)\\
-%  &=\Vect{x}
-% \end{aligned}$$
-%  \item  \defi{symétrique} : Soit $\Vect{x}=(x_1,x_2,\dots,x_n)\in\R^n$\\
-% Montrons que $-\Vect{x}=(-x_1,-x_2,\dots,-x_n)$ est l'opposé de $\Vect{x}$.\\
-% On a :
-% $$\begin{aligned}
-% \Vect{x}+(-\Vect{x})&=(x_1,x_2,\dots,x_n)+(-x_1,-x_2,\dots,-x_n)\\
-%  &=(x_1-x_1, x_2-x_2, \dots, x_n-x_n)\\
-%  &=(0, 0, \dots, 0)\\
-%  &=\Vect{0}
-% \end{aligned}$$
-%\end{itemize}
-%Donc $(\R^n,+)$ est un groupe commutatif.
-%\end{Exemple}
 
 
-
-
-%\begin{Definition}[Corps \(\K\) : \(\R\) ou \(C\)] Dans ce cours%\samepage\footnote{%\begin{tiny}
-%%Un \defi{corps} (commutatif) $(K,+,\times )$ est un ensemble muni de deux lois internes possédant les propriétés suivantes :
-%%\begin{itemize}
-%%\item $(K,+)$ est un groupe abélien, dont l'élément neutre est noté $0$ ;
-%%\item $(K\setminus \{0\},\times )$ est également un groupe abélien, dont l'élément neutre est noté $1$ ;
-%%\item $\times$ est distributive par rapport à $+$.
-%%\end{itemize}
-%%\impo{Remarque} Lorsque le contexte est clair, on écrit souvent $\K$ au lieu de $(\K,+,×)$.\\
-%%\impo{Exemples}
-%%\begin{itemize}
-%%\item le corps des réels $\R$, des complexes $\C$, des rationnels $\Q$;
-%%\item si $\K$ est un corps, le corps des fractions rationnelles à coefficients dans $\K$, noté $\K(X)$;
-%%\item $\Q [i] = \{a+ib:(a,b)\in \Q ^2\}$;
-%%\item le corps des entiers modulo un nombre premier $p$, noté $\Z/p\Z$.
-%%\end{itemize}
-%%}
-%, un corps $\K$ désigne soit l'ensemble des nombres réels $\R$ ou soit l'ensemble des nombres complexes $\C$. 
-%\end{Definition}
-%\begin{Definition}[Espace vectoriel : \(\lambda\Vect{x}+\mu\Vect{y}\)]
-%Soit $\K$ un corps.\\
-%Un \defi{$\K$-espace vectoriel} est un triplet $(E,+,.)$ où
-%$+$ est une loi de composition interne sur $E$ et
-%$.$ est une loi de composition externe sur $E$,
-%vérifiant les propriétés suivantes:
-%\begin{enumerate}
-%\item $(E, +)$ est un groupe commutatif;
-%\item la loi $.$ est compatible avec la structure de groupe $(E, +)$, i.e.  
-% \begin{enumerate}
-%  \item $\forall(\lambda ,\mu )\in\K^2$, $\forall \Vect{x}\in E$, $(\lambda +\mu ) . \Vect{x} = (\lambda . \Vect{x}) + (\mu . \Vect{x})$;
-%  \item $\forall\lambda \in\K$, $\forall(\Vect{x},\Vect{y})\in E^2$, $\lambda . (\Vect{x}+\Vect{y}) = (\lambda . \Vect{x}) + (\lambda . \Vect{y})$;
-%  \item $\forall\Vect{x}\in E$, $1_\K. \Vect{x} = \Vect{x}$;
-%  \item $\forall(\lambda ,\mu )\in\K^2$, $\forall\Vect{x}\in E$, $\lambda . (\mu . \Vect{x}) = (\lambda \mu ) . \Vect{x}$.
-%  \end{enumerate}
-%\end{enumerate}
-%Un élément d'un $\K$-espace vectoriel est appelé un \defi{vecteur} et est noté dans ce cours avec une flèche  $\Vect{x}$. Un élément du corps $\K$ est un \defi{scalaire} et est noté dans ce cours à l'aide d'une lettre grecque, $\lambda$.   
-%\end{Definition}
-%
-%
-%\begin{Exemple}
-%
-%\begin{itemize}
-%\item les n-uplets $\K^n$ muni des lois usuelles, 
-%\item
-%  les matrices $\mathcal{M}_{n,p}(\K)$ muni des lois usuelles,
-%\item
-% si $X$ est un ensemble et $E$ un $\K$-espace vectoriel, l'ensemble des fonctions $\mathcal{F}(X,E)$ muni des lois usuelles.
-%\end{itemize}
-%\end{Exemple}
 
 
 \end{document}

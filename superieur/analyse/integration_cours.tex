@@ -8,7 +8,7 @@
 \usepackage{tkz-euclide}
 \usetikzlibrary{calc,intersections}
 \begin{document}
-\chapter{Intégrales généralisées}
+\chapter*{Intégrales généralisées}
 Ce chapitre a pour objectif d'étendre la notion d'intégrale sur un intervalle qui n'est pas nécessairement un
 segment, par exemple, $$\int_{1 }^{+\infty } \frac{1}{x^2} \,\mathrm dx = 1.$$
 \begin{center}
@@ -38,7 +38,7 @@ note $\int_a^b f(x) \,\mathrm dx$ cette limite. Sinon, on dit qu'elle diverge.
 Soit l'intégrale $\int_1^{+\infty } \frac{1}{x^2}\,\mathrm dx$.\\
 La fonction $ x\mapsto  \frac{1}{x^2}$ est continue sur $[1,{+\infty }[$.\\ 
 Soit $t\in [1,{+\infty }[$.\\
-On a  $\int_1^t \frac{1}{x^2}\,\mathrm dx=[-\frac 1 x]_1^t=1-\frac{1}{t}\tend[t\to+\infty ]1$.\\
+On a  $\int_1^t \frac{1}{x^2}\,\mathrm dx=[-\frac 1 x]_1^t=1-\frac{1}{t}\xrightarrow[t\to+\infty ]{}1$.\\
 L'intégrale est convergente et son intégrale impropre est égale à 1.
 \end{Exemple}
 \begin{Proposition}[Indépendance de la borne fermée]
@@ -62,7 +62,7 @@ note $\int_a^b f(x) \,\mathrm dx$ cette limite. Sinon, on dit qu'elle diverge.
 \begin{Exemple}
 Soit l'intégrale $\int_0^{1} \frac{1}{x}\,\mathrm dx$.\\
 La fonction $ x\mapsto  \frac{1}{x}$ est continue sur $]0,1]$.  Soit $t\in ]0,1]$.\\
-On a  $\int_t^1 \frac{1}{x}\,\mathrm dx=[\ln (x)]_t^1=-\ln(t)\tend[t\to 0 ]+\infty$. Donc l'intégrale est divergente.
+On a  $\int_t^1 \frac{1}{x}\,\mathrm dx=[\ln (x)]_t^1=-\ln(t)\xrightarrow[t\to 0 ]{}+\infty$. Donc l'intégrale est divergente.
 \end{Exemple}
 \begin{Definition}[Intégrale impropre sur {$]a,b[$}]
 Soit $f$ une fonction continue par morceaux  sur $]a,b[$ avec $a \in \R$ ou $a= -\infty$ et $b \in \R$ ou $b= +\infty$ .\\
@@ -74,9 +74,9 @@ Soit l'intégrale $\int_0^{+\infty } \frac{1}{\sqrt{x}}\,\mathrm dx$.\\
 La fonction $ x\mapsto  \frac{1}{x^2}$ est continue sur $]0,+\infty[$. \\
 \begin{itemize}
 \item \textit{En 0 :}   Soit $t\in ]0,1]$.\\
-On a  $\int_t^1 \frac{1}{\sqrt{x}}\,\mathrm dx=[2 \sqrt{x}]_t^1=2(1-\sqrt{t})\tend[t\to 0 ]2$.\\Donc l'intégrale $\int_0^1  \frac{1}{\sqrt{x}}\,\mathrm dx$  est convergente.
+On a  $\int_t^1 \frac{1}{\sqrt{x}}\,\mathrm dx=[2 \sqrt{x}]_t^1=2(1-\sqrt{t})\xrightarrow[t\to 0 ]{}2$.\\Donc l'intégrale $\int_0^1  \frac{1}{\sqrt{x}}\,\mathrm dx$  est convergente.
 \item \textit{En $+\infty$ :} Soit $t\in [1,{+\infty }[$.\\
-On a  $\int_1^t \frac{1}{\sqrt{x}}\,\mathrm dx=[2 \sqrt{x}]_1^t=2(\sqrt{t}-1)\tend[t\to +\infty ]+\infty $.\\Donc l'intégrale $\int_1^{+\infty } \frac{1}{\sqrt{x}}\,\mathrm dx$ est divergente.
+On a  $\int_1^t \frac{1}{\sqrt{x}}\,\mathrm dx=[2 \sqrt{x}]_1^t=2(\sqrt{t}-1)\xrightarrow[t\to +\infty ]+\infty $.\\Donc l'intégrale $\int_1^{+\infty } \frac{1}{\sqrt{x}}\,\mathrm dx$ est divergente.
 \end{itemize}
 En conclusion,  l'intégrale $\int_0^{+\infty } \frac{1}{\sqrt{x}}\,\mathrm dx$ est divergente.
 \end{Exemple}
@@ -117,7 +117,7 @@ Soit $f$ une  fonction continue sur $[a,b[$ prolongeable par continuité en $b$.
 Comme $\tilde{f}$ est continue sur $[a,b]$, $\tilde{f}$ admet une primitive $\Phi$ sur $[a, b]$. Soit $t \in [a, b[$.
 $$\begin{aligned}
 \int_{a}^{t}f(x)\,\mathrm dx&=\int_{a}^{t}\tilde{f}(x)\,\mathrm dx& \text{ car }\forall x \in [a,b[:f(x)=\tilde{f}(x)\\
-\int_{a}^{t}f(x)\,\mathrm dx&=\Phi(t)- \Phi(a)\tend[t\to b ]\Phi(b)- \Phi(a)=\int_{a}^{b}\tilde{f}(x)\,\mathrm dx &\text{ car }\Phi  \text{ est continue sur }[a,b]\\
+\int_{a}^{t}f(x)\,\mathrm dx&=\Phi(t)- \Phi(a)\xrightarrow[t\to b ]{}\Phi(b)- \Phi(a)=\int_{a}^{b}\tilde{f}(x)\,\mathrm dx &\text{ car }\Phi  \text{ est continue sur }[a,b]\\
 \end{aligned}$$
 L'intégrale  $\int_{a}^{b}f(x)\,\mathrm dx$ converge de limite  $\int_{a}^{b}\tilde{f}(x)\,\mathrm dx$.
 \end{Demonstration}
@@ -168,9 +168,9 @@ $x\mapsto  \frac{1}{x^\alpha}$ est continue sur  $[1,+\infty[$.\\
 Soit $t\in [1,+\infty[$. On a 
 \begin{itemize}
 \item $\alpha\neq 1$
-$$\int_1^{t } \frac{\mathrm dx}{x^\alpha}= \left[\frac{x^{1-\alpha}}{1-\alpha}\right]_1^t=\frac{1}{1-\alpha}(t^{1-\alpha}-1) \tend[t\to +\infty ]\begin{cases}\frac{1}{\alpha-1} &\text{ si } \alpha>1\\ +\infty &\text{ si } \alpha<1 \end{cases}$$
+$$\int_1^{t } \frac{\mathrm dx}{x^\alpha}= \left[\frac{x^{1-\alpha}}{1-\alpha}\right]_1^t=\frac{1}{1-\alpha}(t^{1-\alpha}-1) \xrightarrow[t\to +\infty ]{}\begin{cases}\frac{1}{\alpha-1} &\text{ si } \alpha>1\\ +\infty &\text{ si } \alpha<1 \end{cases}$$
 \item $\alpha= 1$
-$$\int_1^{t } \frac{\mathrm dx}{x}= \left[\ln(x)\right]_1^t=\ln(t)\tend[t\to +\infty ]+\infty $$
+$$\int_1^{t } \frac{\mathrm dx}{x}= \left[\ln(x)\right]_1^t=\ln(t)\xrightarrow[t\to +\infty ]{}+\infty $$
 \end{itemize}
 En conclusion $\int_1^{+\infty } \frac{\mathrm dx}{x^\alpha}$ converge si et seulement si $\alpha>1$.\\
 La démonstration est similaire pour $\int_0^1    \frac{\mathrm dx}{x^\alpha}$ converge si et seulement si $\alpha<1$.
@@ -185,7 +185,7 @@ La démonstration est similaire pour $\int_0^1    \frac{\mathrm dx}{x^\alpha}$ c
 \end{Proposition}
 \begin{Demonstration}
 La fonction $ x\mapsto \ln(x) $ est continue sur $]0,1]$. Soit $t\in ]0,1]$.\\
-$$\int_t^1   \ln(x) \,\mathrm dx \overbrace{=}^{\text{IPP avec }u(x)=\ln(x), v'(x)=1}[\ln(x)x]_t^1- \int_t^1   \frac 1 x x \,\mathrm dx= -\ln(t)t+(t-1)\tend[t\to 0 ] -1\text{ par croissance comparée}.$$
+$$\int_t^1   \ln(x) \,\mathrm dx \overbrace{=}^{\text{IPP avec }u(x)=\ln(x), v'(x)=1}[\ln(x)x]_t^1- \int_t^1   \frac 1 x x \,\mathrm dx= -\ln(t)t+(t-1)\xrightarrow[t\to 0 ]{} -1\text{ par croissance comparée}.$$
 Donc $\int_0^1   \ln(x) \,\mathrm dx$ est convergente. 
 \end{Demonstration}
 \subsection{Propriétés}
@@ -196,7 +196,7 @@ Soit $f$ et $g$ deux fonctions continues par morceaux de $[a,b[$ dans $\K$ et $\
 \end{Proposition}
 \begin{Demonstration}
 Les fonctions $f$ et $g$ sont continues sur $[a,b[$. Soit $t\in [a,b[$.\\
-On a $$\int_a^t (\lambda f(x) +\mu g(x))\,\mathrm dx\overbrace{=}^{\text{linéarité sur un segment}}\lambda \int_a^t f(x)\,\mathrm dx +\mu \int_a^t g(x)\,\mathrm dx\tend[t\to b^-]\lambda \int_a^b f(x)\,\mathrm dx +\mu \int_a^b g(x)\,\mathrm dx.$$
+On a $$\int_a^t (\lambda f(x) +\mu g(x))\,\mathrm dx\overbrace{=}^{\text{linéarité sur un segment}}\lambda \int_a^t f(x)\,\mathrm dx +\mu \int_a^t g(x)\,\mathrm dx\xrightarrow[t\to b^-]{}\lambda \int_a^b f(x)\,\mathrm dx +\mu \int_a^b g(x)\,\mathrm dx.$$
 Donc l'intégrale $\int_a^b (\lambda f(x) +\mu g(x))\,\mathrm dx$ converge et l'égalité.
 \end{Demonstration}
 \begin{Exemple}
@@ -207,7 +207,7 @@ En revanche on ne peut pas écrire
 $$ \int _{1}^{+\infty }{\frac {1}{x(x+1)}}\,\mathrm {d} x=\int _{1}^{+\infty }\frac {1}{x}\,\mathrm {d} x-\int _{1}^{+\infty }\frac {1}{x+1}\,\mathrm {d} x.$$
 car l'intégrale $\int _{1}^{+\infty }\frac {1}{x}\,\mathrm {d} x$ diverge. \\
 Ici il faut intégrer sur le segment $[a, t ]$ avec $t\in [a,b [$ avant de passer à la limite. On a :
-$$ \int _{1}^{t }{\frac {1}{x(x+1)}}\,\mathrm {d} x=\int _{1}^{t }\frac {1}{x}\,\mathrm {d} x-\int _{1}^{t }\frac {1}{x+1}\,\mathrm {d} x=\ln(2)+\ln\left(\frac{t}{1+t}\right)=\ln(2)-\ln\left(1+\frac 1 t\right)\tend[t\to +\infty]\ln(2).$$
+$$ \int _{1}^{t }{\frac {1}{x(x+1)}}\,\mathrm {d} x=\int _{1}^{t }\frac {1}{x}\,\mathrm {d} x-\int _{1}^{t }\frac {1}{x+1}\,\mathrm {d} x=\ln(2)+\ln\left(\frac{t}{1+t}\right)=\ln(2)-\ln\left(1+\frac 1 t\right)\xrightarrow[t\to +\infty]{}\ln(2).$$
 \end{Exemple}
 \begin{Corollaire}[Cas complexe]
 Soit $f$  continue par morceaux de $[a,b[$ dans $\C$.\\
@@ -249,8 +249,8 @@ Supposons que $\int_a^b f(x)\,\mathrm dx$ converge.\\
 Soit $t\in[\alpha,\beta[.$ Par changement de variable sur le
 segment $[\alpha , t]$, 
 $$\int_\alpha^t f(\phi(x))\phi'(x)\,\mathrm dx =\int_a^{\phi(t)} f(x)\,\mathrm dx.$$
-Comme $\phi$ est une bijection croissante, $\phi(t )\tend[t \to \beta] b$. Donc par passage à la limite, 
-$$\int_\alpha^t f(\phi(x))\phi'(x)\,\mathrm dx\tend[t \to \beta ] \int_a^b f(x)\,\mathrm dx.$$
+Comme $\phi$ est une bijection croissante, $\phi(t )\xrightarrow[t \to \beta]{} b$. Donc par passage à la limite, 
+$$\int_\alpha^t f(\phi(x))\phi'(x)\,\mathrm dx\xrightarrow[t \to \beta ]{} \int_a^b f(x)\,\mathrm dx.$$
 Donc $\int_\alpha^\beta f(\phi(x))\phi'(x)\,\mathrm dx $ converge et est égale à  $\int_a^b f(x)\,\mathrm dx$.
 Idem si l'on suppose que $\int_\alpha^\beta f(\phi(x))\phi'(x)\,\mathrm dx$ converge.
 \end{Demonstration}
