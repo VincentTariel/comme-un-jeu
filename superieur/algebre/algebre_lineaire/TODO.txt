@@ -1,14 +1,9 @@
-Activité de découverte autour du systême des poules et des lapins
-4 points de vues
-- x+y=12 et 2x+4y=20     systême d'équations (vecteurs normaux (1,1) et (2,4) aux droites, cas colinéaires ou non -> droites parallèles)
-- x(1,2)+y(1,4)=(12,20)  espace vectoriel (combinaisons linéaires, base)
-- AX=Y                     matrice (opéation inverse, rappel d'une équation de premier degré)
-- X--f-->Y=AX            application linéaire (surjectve existence, injective unicité)
- 
-
-
-SEPARER en quatres chapitres :
--systèmes d'équations
--matrices
--espaces vectoriels
--application linéaire
+Rang lien entre applications linéaires et matrices
+matrices et applications linéaires
+formes linéaires
+projecteurs et symetries
+espace prehilbertien
+polynome d'endomorphisme
+reduction
+isometrie_endomorphisme_symetrique
+revoir cours 
